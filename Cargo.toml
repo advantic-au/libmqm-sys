@@ -1,0 +1,27 @@
+[package]
+name = "libmqm-sys"
+version = "0.1.0"
+description = "Native bindings to the IBM® MQ Interface (MQI) and MQ Administration Interface (MQAI)"
+authors = [ "Warren Spits <warren@advantic.au>" ]
+license = "Apache-2.0"
+readme = "README.md"
+
+edition = "2021"
+links = "mqm"
+build = "build.rs"
+
+[features]
+default = ["link"]
+dlopen2 = ["dep:dlopen2"]
+link = []
+pcf = []
+exits = []
+mqai = []
+
+[dependencies]
+dlopen2 = { version = "0.7.0", optional = true } 
+
+[build-dependencies]
+regex = "1.10"
+bindgen = "0.69"
+cc = "1.0.94"
