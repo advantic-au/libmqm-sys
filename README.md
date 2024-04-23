@@ -13,7 +13,7 @@ Compile time dynamic linking and run-time dynamic linking is supported.
 
 ## Usage
 1. Download and install the redistributable client from IBM:
-  [https://ibm.biz/mq92redistclients]
+  [https://ibm.biz/mq93redistclients]
 
 2. Install the client in `/opt/mqm` or another location.
 
@@ -48,7 +48,12 @@ mod test {
             let mut comp_code = lib::MQCC_UNKNOWN;
             let mut reason = lib::MQRC_NONE;
             let mut qmgr: [i8; 48] = [32; 48]; // All spaces
-            lib::MQCONN(addr_of_mut!(qmgr), addr_of_mut!(hconn), addr_of_mut!(comp_code), addr_of_mut!(reason));
+            lib::MQCONN(
+                addr_of_mut!(qmgr).cast(),
+                addr_of_mut!(hconn),
+                addr_of_mut!(comp_code),
+                addr_of_mut!(reason),
+            );
             assert_eq!(reason, lib::MQRC_NONE, "MQRC");
             assert_eq!(comp_code, lib::MQCC_OK, "MQCC");
             lib::MQDISC(addr_of_mut!(hconn), addr_of_mut!(comp_code), addr_of_mut!(reason));
@@ -64,12 +69,13 @@ mod test {
 | dlopen2        | Support loading the MQ library at run-time using dlopen2 |
 | mqai           | Expose the MQAI functions |
 | pcf            | Generate the PCF structures |
-| exits          | Generate the exit structurs |
+| exits          | Generate the exit structures |
 
 ## Status
 The following needs further work:
 - Testing and support on Microsoft Windows and MacOS.
 - Test and support older versions of MQI.
+- Add complex examples
 
 ## Support
 There are no guarantees of compatibility with any future versions of the crate; the API is subject to change based on feedback and enhancements.

@@ -3,8 +3,10 @@ name = "libmqm-sys"
 version = "0.1.0"
 description = "Native bindings to the IBM® MQ Interface (MQI) and MQ Administration Interface (MQAI)"
 authors = [ "Warren Spits <warren@advantic.au>" ]
+repository = "https://github.com/advantic-au/libmqm-sys"
 license = "Apache-2.0"
 readme = "README.md"
+categories = [ "external-ffi-bindings", "asynchronous" ]
 
 edition = "2021"
 links = "mqm"
