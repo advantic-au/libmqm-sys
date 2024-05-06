@@ -34,6 +34,8 @@ mod pcf {
 
 #[cfg(feature = "exits")]
 mod exits {
+    use crate::lib;
+
     mq_default!(lib::MQACH, mqach_default);
     mq_default!(lib::MQAXC, mqaxc_default);
     mq_default!(lib::MQAXP, mqaxp_default);
@@ -65,7 +67,7 @@ mod mqi {
 
     extern "C" { static mqcd_client_conn_default: lib::MQCD; }
     impl lib::MQCD {
-        /// Default [`lib::MQCD`] suitable for MQI client connections
+        /// Default `lib::MQCD` suitable for MQI client connections
         #[must_use] pub fn client_conn_default() -> Self {
             unsafe { mqcd_client_conn_default }
         }

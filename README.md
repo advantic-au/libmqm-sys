@@ -47,7 +47,7 @@ mod test {
             let mut hconn = lib::MQHC_DEF_HCONN;
             let mut comp_code = lib::MQCC_UNKNOWN;
             let mut reason = lib::MQRC_NONE;
-            let mut qmgr: [i8; 48] = [32; 48]; // All spaces
+            let mut qmgr: [i8; 48] = [b' '; 48]; // All spaces
             lib::MQCONN(
                 addr_of_mut!(qmgr).cast(),
                 addr_of_mut!(hconn),
@@ -73,7 +73,7 @@ mod test {
 
 ## Status
 The following needs further work:
-- Testing and support on Microsoft Windows and MacOS.
+- Testing and support on MacOS.
 - Test and support older versions of MQI.
 - Add complex examples
 

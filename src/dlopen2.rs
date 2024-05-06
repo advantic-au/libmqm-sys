@@ -1,9 +1,35 @@
 #![allow(non_snake_case)]
 #![allow(clippy::too_many_arguments)]
 
+use dlopen2::wrapper::Container;
 use ::dlopen2::wrapper::WrapperApi;
 
 use crate::{function, lib as mqsys};
+
+/// Name of the platform dependent MQM dynamic library 
+pub const MQM_LIB: &str = if cfg!(windows) {
+    "mqm.dll"
+} else {
+    "libmqm_r.so"
+};
+
+/// dlopen2 [Container] for the MQI library
+pub type MqmContainer = Container<MQWrapper>;
+
+pub trait LoadMqm: Sized {
+    /// Loads the mqm library using the platform dependent search rules
+    /// # Safety
+    /// Loading the dynamic library is inheritently unsafe
+    /// # Errors
+    /// Will return `Err` if the dynamic library could not be loaded
+    unsafe fn load_mqm_default() -> Result<Self, dlopen2::Error>;
+}
+
+impl LoadMqm for MqmContainer {
+    unsafe fn load_mqm_default() -> Result<Self, dlopen2::Error> {
+        unsafe { Self::load(MQM_LIB) }
+    }
+}
 
 /// A [dlopen2] [`WrapperApi`] implementation for MQI and MQAI function calls
 #[derive(WrapperApi, Debug)]
@@ -511,7 +537,7 @@ pub struct MQWrapper {
     ),
 }
 
-impl function::MQI for MQWrapper {
+impl function::MQI for MqmContainer {
     unsafe fn MQCONNX(
         &self,
         pQMgrName: mqsys::PMQCHAR,
@@ -521,7 +547,7 @@ impl function::MQI for MQWrapper {
         pReason: mqsys::PMQLONG,
     ) {
         unsafe {
-            Self::MQCONNX(self, pQMgrName, pConnectOpts, pHconn, pCompCode, pReason);
+            MQWrapper::MQCONNX(self, pQMgrName, pConnectOpts, pHconn, pCompCode, pReason);
         }
     }
 
@@ -533,13 +559,13 @@ impl function::MQI for MQWrapper {
         pReason: mqsys::PMQLONG,
     ) {
         unsafe {
-            Self::MQCONN(self, pQMgrName, pHconn, pCompCode, pReason);
+            MQWrapper::MQCONN(self, pQMgrName, pHconn, pCompCode, pReason);
         }
     }
 
     unsafe fn MQDISC(&self, pHconn: mqsys::PMQHCONN, pCompCode: mqsys::PMQLONG, pReason: mqsys::PMQLONG) {
         unsafe {
-            Self::MQDISC(self, pHconn, pCompCode, pReason);
+            MQWrapper::MQDISC(self, pHconn, pCompCode, pReason);
         }
     }
 
@@ -553,7 +579,7 @@ impl function::MQI for MQWrapper {
         pReason: mqsys::PMQLONG,
     ) {
         unsafe {
-            Self::MQOPEN(self, Hconn, pObjDesc, Options, pHobj, pCompCode, pReason);
+            MQWrapper::MQOPEN(self, Hconn, pObjDesc, Options, pHobj, pCompCode, pReason);
         }
     }
 
@@ -569,7 +595,7 @@ impl function::MQI for MQWrapper {
         pReason: mqsys::PMQLONG,
     ) {
         unsafe {
-            Self::MQPUT1(
+            MQWrapper::MQPUT1(
                 self,
                 Hconn,
                 pObjDesc,
@@ -584,7 +610,7 @@ impl function::MQI for MQWrapper {
     }
 
     unsafe fn MQCMIT(&self, Hconn: mqsys::MQHCONN, pCompCode: mqsys::PMQLONG, pReason: mqsys::PMQLONG) {
-        unsafe { Self::MQCMIT(self, Hconn, pCompCode, pReason) };
+        unsafe { MQWrapper::MQCMIT(self, Hconn, pCompCode, pReason) };
     }
 
     unsafe fn MQCLOSE(
@@ -595,7 +621,7 @@ impl function::MQI for MQWrapper {
         pCompCode: mqsys::PMQLONG,
         pReason: mqsys::PMQLONG,
     ) {
-        unsafe { Self::MQCLOSE(self, Hconn, pHobj, Options, pCompCode, pReason) };
+        unsafe { MQWrapper::MQCLOSE(self, Hconn, pHobj, Options, pCompCode, pReason) };
     }
 
     unsafe fn MQGET(
@@ -611,7 +637,7 @@ impl function::MQI for MQWrapper {
         pReason: mqsys::PMQLONG,
     ) {
         unsafe {
-            Self::MQGET(
+            MQWrapper::MQGET(
                 self,
                 Hconn,
                 Hobj,
@@ -638,7 +664,7 @@ impl function::MQI for MQWrapper {
         pReason: mqsys::PMQLONG,
     ) {
         unsafe {
-            Self::MQPUT(
+            MQWrapper::MQPUT(
                 self,
                 Hconn,
                 Hobj,
@@ -666,7 +692,7 @@ impl function::MQI for MQWrapper {
         pReason: mqsys::PMQLONG,
     ) {
         unsafe {
-            Self::MQINQ(
+            MQWrapper::MQINQ(
                 self,
                 Hconn,
                 Hobj,
@@ -692,7 +718,7 @@ impl function::MQI for MQWrapper {
         pReason: mqsys::PMQLONG,
     ) {
         unsafe {
-            Self::MQSUB(self, Hconn, pSubDesc, pHobj, pHsub, pCompCode, pReason);
+            MQWrapper::MQSUB(self, Hconn, pSubDesc, pHobj, pHsub, pCompCode, pReason);
         }
     }
 
@@ -706,7 +732,7 @@ impl function::MQI for MQWrapper {
         pReason: mqsys::PMQLONG,
     ) {
         unsafe {
-            Self::MQSUBRQ(self, Hconn, Hsub, Action, pSubRqOpts, pCompCode, pReason);
+            MQWrapper::MQSUBRQ(self, Hconn, Hsub, Action, pSubRqOpts, pCompCode, pReason);
         }
     }
 
@@ -718,13 +744,13 @@ impl function::MQI for MQWrapper {
         pReason: mqsys::PMQLONG,
     ) {
         unsafe {
-            Self::MQBEGIN(self, Hconn, pBeginOptions, pCompCode, pReason);
+            MQWrapper::MQBEGIN(self, Hconn, pBeginOptions, pCompCode, pReason);
         }
     }
 
     unsafe fn MQBACK(&self, Hconn: mqsys::MQHCONN, pCompCode: mqsys::PMQLONG, pReason: mqsys::PMQLONG) {
         unsafe {
-            Self::MQBACK(self, Hconn, pCompCode, pReason);
+            MQWrapper::MQBACK(self, Hconn, pCompCode, pReason);
         }
     }
 
@@ -737,7 +763,7 @@ impl function::MQI for MQWrapper {
         pReason: mqsys::PMQLONG,
     ) {
         unsafe {
-            Self::MQCRTMH(self, Hconn, pCrtMsgHOpts, pHmsg, pCompCode, pReason);
+            MQWrapper::MQCRTMH(self, Hconn, pCrtMsgHOpts, pHmsg, pCompCode, pReason);
         }
     }
 
@@ -750,7 +776,7 @@ impl function::MQI for MQWrapper {
         pReason: mqsys::PMQLONG,
     ) {
         unsafe {
-            Self::MQDLTMH(self, Hconn, pHmsg, pDltMsgHOpts, pCompCode, pReason);
+            MQWrapper::MQDLTMH(self, Hconn, pHmsg, pDltMsgHOpts, pCompCode, pReason);
         }
     }
 
@@ -769,7 +795,7 @@ impl function::MQI for MQWrapper {
         pReason: mqsys::PMQLONG,
     ) {
         unsafe {
-            Self::MQINQMP(
+            MQWrapper::MQINQMP(
                 self,
                 Hconn,
                 Hmsg,
@@ -800,7 +826,7 @@ impl function::MQI for MQWrapper {
         pReason: mqsys::PMQLONG,
     ) {
         unsafe {
-            Self::MQMHBUF(
+            MQWrapper::MQMHBUF(
                 self,
                 Hconn,
                 Hmsg,
@@ -829,7 +855,7 @@ impl function::MQI for MQWrapper {
         pReason: mqsys::PMQLONG,
     ) {
         unsafe {
-            Self::MQBUFMH(
+            MQWrapper::MQBUFMH(
                 self,
                 Hconn,
                 Hmsg,
@@ -856,7 +882,7 @@ impl function::MQI for MQWrapper {
         pReason: mqsys::PMQLONG,
     ) {
         unsafe {
-            Self::MQCB(
+            MQWrapper::MQCB(
                 self,
                 Hconn,
                 Operation,
@@ -879,7 +905,7 @@ impl function::MQI for MQWrapper {
         pReason: mqsys::PMQLONG,
     ) {
         unsafe {
-            Self::MQCTL(self, Hconn, Operation, pControlOpts, pCompCode, pReason);
+            MQWrapper::MQCTL(self, Hconn, Operation, pControlOpts, pCompCode, pReason);
         }
     }
 
@@ -897,7 +923,7 @@ impl function::MQI for MQWrapper {
         pReason: mqsys::PMQLONG,
     ) {
         unsafe {
-            Self::MQSET(
+            MQWrapper::MQSET(
                 self,
                 Hconn,
                 Hobj,
@@ -927,7 +953,7 @@ impl function::MQI for MQWrapper {
         pReason: mqsys::PMQLONG,
     ) {
         unsafe {
-            Self::MQSETMP(
+            MQWrapper::MQSETMP(
                 self,
                 Hconn,
                 Hmsg,
@@ -952,7 +978,7 @@ impl function::MQI for MQWrapper {
         pReason: mqsys::PMQLONG,
     ) {
         unsafe {
-            Self::MQSTAT(self, Hconn, Type, pStatus, pCompCode, pReason);
+            MQWrapper::MQSTAT(self, Hconn, Type, pStatus, pCompCode, pReason);
         }
     }
 
@@ -966,13 +992,13 @@ impl function::MQI for MQWrapper {
         pReason: mqsys::PMQLONG,
     ) {
         unsafe {
-            Self::MQDLTMP(self, Hconn, Hmsg, pDltPropOpts, pName, pCompCode, pReason);
+            MQWrapper::MQDLTMP(self, Hconn, Hmsg, pDltPropOpts, pName, pCompCode, pReason);
         }
     }
 }
 
 #[cfg(feature = "mqai")]
-impl function::MQAI for MQWrapper {
+impl function::MQAI for MqmContainer {
     unsafe fn mqCreateBag(
         &self,
         Options: mqsys::MQLONG,
@@ -981,13 +1007,13 @@ impl function::MQAI for MQWrapper {
         pReason: mqsys::PMQLONG,
     ) {
         unsafe {
-            Self::mqCreateBag(self, Options, pBag, pCompCode, pReason);
+            MQWrapper::mqCreateBag(self, Options, pBag, pCompCode, pReason);
         }
     }
 
     unsafe fn mqDeleteBag(&self, pBag: mqsys::PMQHBAG, pCompCode: mqsys::PMQLONG, pReason: mqsys::PMQLONG) {
         unsafe {
-            Self::mqDeleteBag(self, pBag, pCompCode, pReason);
+            MQWrapper::mqDeleteBag(self, pBag, pCompCode, pReason);
         }
     }
 
@@ -999,7 +1025,7 @@ impl function::MQAI for MQWrapper {
         pReason: mqsys::PMQLONG,
     ) {
         unsafe {
-            Self::mqAddInquiry(self, Bag, Selector, pCompCode, pReason);
+            MQWrapper::mqAddInquiry(self, Bag, Selector, pCompCode, pReason);
         }
     }
 
@@ -1012,7 +1038,7 @@ impl function::MQAI for MQWrapper {
         pReason: mqsys::PMQLONG,
     ) {
         unsafe {
-            Self::mqDeleteItem(self, Bag, Selector, ItemIndex, pCompCode, pReason);
+            MQWrapper::mqDeleteItem(self, Bag, Selector, ItemIndex, pCompCode, pReason);
         }
     }
 
@@ -1025,7 +1051,7 @@ impl function::MQAI for MQWrapper {
         pReason: mqsys::PMQLONG,
     ) {
         unsafe {
-            Self::mqAddInteger(self, Bag, Selector, ItemValue, pCompCode, pReason);
+            MQWrapper::mqAddInteger(self, Bag, Selector, ItemValue, pCompCode, pReason);
         }
     }
 
@@ -1039,7 +1065,7 @@ impl function::MQAI for MQWrapper {
         pReason: mqsys::PMQLONG,
     ) {
         unsafe {
-            Self::mqAddIntegerFilter(self, Bag, Selector, ItemValue, Operator, pCompCode, pReason);
+            MQWrapper::mqAddIntegerFilter(self, Bag, Selector, ItemValue, Operator, pCompCode, pReason);
         }
     }
 
@@ -1052,7 +1078,7 @@ impl function::MQAI for MQWrapper {
         pReason: mqsys::PMQLONG,
     ) {
         unsafe {
-            Self::mqAddInteger64(self, Bag, Selector, ItemValue, pCompCode, pReason);
+            MQWrapper::mqAddInteger64(self, Bag, Selector, ItemValue, pCompCode, pReason);
         }
     }
 
@@ -1066,7 +1092,7 @@ impl function::MQAI for MQWrapper {
         pReason: mqsys::PMQLONG,
     ) {
         unsafe {
-            Self::mqAddString(self, Bag, Selector, BufferLength, pBuffer, pCompCode, pReason);
+            MQWrapper::mqAddString(self, Bag, Selector, BufferLength, pBuffer, pCompCode, pReason);
         }
     }
 
@@ -1081,7 +1107,7 @@ impl function::MQAI for MQWrapper {
         pReason: mqsys::PMQLONG,
     ) {
         unsafe {
-            Self::mqAddStringFilter(self, Bag, Selector, BufferLength, pBuffer, Operator, pCompCode, pReason);
+            MQWrapper::mqAddStringFilter(self, Bag, Selector, BufferLength, pBuffer, Operator, pCompCode, pReason);
         }
     }
 
@@ -1095,7 +1121,7 @@ impl function::MQAI for MQWrapper {
         pReason: mqsys::PMQLONG,
     ) {
         unsafe {
-            Self::mqAddByteString(self, Bag, Selector, BufferLength, pBuffer, pCompCode, pReason);
+            MQWrapper::mqAddByteString(self, Bag, Selector, BufferLength, pBuffer, pCompCode, pReason);
         }
     }
 
@@ -1110,7 +1136,7 @@ impl function::MQAI for MQWrapper {
         pReason: mqsys::PMQLONG,
     ) {
         unsafe {
-            Self::mqAddByteStringFilter(self, Bag, Selector, BufferLength, pBuffer, Operator, pCompCode, pReason);
+            MQWrapper::mqAddByteStringFilter(self, Bag, Selector, BufferLength, pBuffer, Operator, pCompCode, pReason);
         }
     }
 
@@ -1124,7 +1150,7 @@ impl function::MQAI for MQWrapper {
         pReason: mqsys::PMQLONG,
     ) {
         unsafe {
-            Self::mqSetInteger(self, Bag, Selector, ItemIndex, ItemValue, pCompCode, pReason);
+            MQWrapper::mqSetInteger(self, Bag, Selector, ItemIndex, ItemValue, pCompCode, pReason);
         }
     }
 
@@ -1139,7 +1165,7 @@ impl function::MQAI for MQWrapper {
         pReason: mqsys::PMQLONG,
     ) {
         unsafe {
-            Self::mqSetIntegerFilter(self, Bag, Selector, ItemIndex, ItemValue, Operator, pCompCode, pReason);
+            MQWrapper::mqSetIntegerFilter(self, Bag, Selector, ItemIndex, ItemValue, Operator, pCompCode, pReason);
         }
     }
 
@@ -1152,7 +1178,7 @@ impl function::MQAI for MQWrapper {
         pReason: mqsys::PMQLONG,
     ) {
         unsafe {
-            Self::mqAddBag(self, Bag, Selector, ItemValue, pCompCode, pReason);
+            MQWrapper::mqAddBag(self, Bag, Selector, ItemValue, pCompCode, pReason);
         }
     }
 
@@ -1167,7 +1193,7 @@ impl function::MQAI for MQWrapper {
         pReason: mqsys::PMQLONG,
     ) {
         unsafe {
-            Self::mqSetString(
+            MQWrapper::mqSetString(
                 self,
                 Bag,
                 Selector,
@@ -1192,7 +1218,7 @@ impl function::MQAI for MQWrapper {
         pReason: mqsys::PMQLONG,
     ) {
         unsafe {
-            Self::mqSetStringFilter(
+            MQWrapper::mqSetStringFilter(
                 self,
                 Bag,
                 Selector,
@@ -1217,7 +1243,7 @@ impl function::MQAI for MQWrapper {
         pReason: mqsys::PMQLONG,
     ) {
         unsafe {
-            Self::mqSetByteString(
+            MQWrapper::mqSetByteString(
                 self,
                 Bag,
                 Selector,
@@ -1242,7 +1268,7 @@ impl function::MQAI for MQWrapper {
         pReason: mqsys::PMQLONG,
     ) {
         unsafe {
-            Self::mqSetByteStringFilter(
+            MQWrapper::mqSetByteStringFilter(
                 self,
                 Bag,
                 Selector,
@@ -1266,7 +1292,7 @@ impl function::MQAI for MQWrapper {
         pReason: mqsys::PMQLONG,
     ) {
         unsafe {
-            Self::mqInquireInteger(self, Bag, Selector, ItemIndex, pItemValue, pCompCode, pReason);
+            MQWrapper::mqInquireInteger(self, Bag, Selector, ItemIndex, pItemValue, pCompCode, pReason);
         }
     }
 
@@ -1281,7 +1307,7 @@ impl function::MQAI for MQWrapper {
         pReason: mqsys::PMQLONG,
     ) {
         unsafe {
-            Self::mqInquireIntegerFilter(
+            MQWrapper::mqInquireIntegerFilter(
                 self, Bag, Selector, ItemIndex, pItemValue, pOperator, pCompCode, pReason,
             );
         }
@@ -1297,7 +1323,7 @@ impl function::MQAI for MQWrapper {
         pReason: mqsys::PMQLONG,
     ) {
         unsafe {
-            Self::mqInquireInteger64(self, Bag, Selector, ItemIndex, pItemValue, pCompCode, pReason);
+            MQWrapper::mqInquireInteger64(self, Bag, Selector, ItemIndex, pItemValue, pCompCode, pReason);
         }
     }
 
@@ -1313,7 +1339,7 @@ impl function::MQAI for MQWrapper {
         pReason: mqsys::PMQLONG,
     ) {
         unsafe {
-            Self::mqInquireByteString(
+            MQWrapper::mqInquireByteString(
                 self,
                 Bag,
                 Selector,
@@ -1340,7 +1366,7 @@ impl function::MQAI for MQWrapper {
         pReason: mqsys::PMQLONG,
     ) {
         unsafe {
-            Self::mqInquireString(
+            MQWrapper::mqInquireString(
                 self,
                 Bag,
                 Selector,
@@ -1369,7 +1395,7 @@ impl function::MQAI for MQWrapper {
         pReason: mqsys::PMQLONG,
     ) {
         unsafe {
-            Self::mqInquireStringFilter(
+            MQWrapper::mqInquireStringFilter(
                 self,
                 Bag,
                 Selector,
@@ -1398,7 +1424,7 @@ impl function::MQAI for MQWrapper {
         pReason: mqsys::PMQLONG,
     ) {
         unsafe {
-            Self::mqInquireByteStringFilter(
+            MQWrapper::mqInquireByteStringFilter(
                 self,
                 Bag,
                 Selector,
@@ -1423,7 +1449,7 @@ impl function::MQAI for MQWrapper {
         pReason: mqsys::PMQLONG,
     ) {
         unsafe {
-            Self::mqInquireBag(self, Bag, Selector, ItemIndex, pItemValue, pCompCode, pReason);
+            MQWrapper::mqInquireBag(self, Bag, Selector, ItemIndex, pItemValue, pCompCode, pReason);
         }
     }
 
@@ -1436,7 +1462,7 @@ impl function::MQAI for MQWrapper {
         pReason: mqsys::PMQLONG,
     ) {
         unsafe {
-            Self::mqCountItems(self, Bag, Selector, pItemCount, pCompCode, pReason);
+            MQWrapper::mqCountItems(self, Bag, Selector, pItemCount, pCompCode, pReason);
         }
     }
 
@@ -1453,7 +1479,7 @@ impl function::MQAI for MQWrapper {
         pReason: mqsys::PMQLONG,
     ) {
         unsafe {
-            Self::mqExecute(
+            MQWrapper::mqExecute(
                 self,
                 Hconn,
                 Command,
@@ -1478,13 +1504,13 @@ impl function::MQAI for MQWrapper {
         pReason: mqsys::PMQLONG,
     ) {
         unsafe {
-            Self::mqSetInteger64(self, Bag, Selector, ItemIndex, ItemValue, pCompCode, pReason);
+            MQWrapper::mqSetInteger64(self, Bag, Selector, ItemIndex, ItemValue, pCompCode, pReason);
         }
     }
 
     unsafe fn mqClearBag(&self, Bag: mqsys::MQHBAG, pCompCode: mqsys::PMQLONG, pReason: mqsys::PMQLONG) {
         unsafe {
-            Self::mqClearBag(self, Bag, pCompCode, pReason);
+            MQWrapper::mqClearBag(self, Bag, pCompCode, pReason);
         }
     }
 
@@ -1499,7 +1525,7 @@ impl function::MQAI for MQWrapper {
         pReason: mqsys::PMQLONG,
     ) {
         unsafe {
-            Self::mqGetBag(self, Hconn, Hobj, pMsgDesc, pGetMsgOpts, Bag, pCompCode, pReason);
+            MQWrapper::mqGetBag(self, Hconn, Hobj, pMsgDesc, pGetMsgOpts, Bag, pCompCode, pReason);
         }
     }
 
@@ -1514,7 +1540,7 @@ impl function::MQAI for MQWrapper {
         pReason: mqsys::PMQLONG,
     ) {
         unsafe {
-            Self::mqPutBag(self, Hconn, Hobj, pMsgDesc, pPutMsgOpts, Bag, pCompCode, pReason);
+            MQWrapper::mqPutBag(self, Hconn, Hobj, pMsgDesc, pPutMsgOpts, Bag, pCompCode, pReason);
         }
     }
 
@@ -1526,19 +1552,18 @@ impl function::MQAI for MQWrapper {
         pReason: mqsys::PMQLONG,
     ) {
         unsafe {
-            Self::mqTruncateBag(self, Bag, ItemCount, pCompCode, pReason);
+            MQWrapper::mqTruncateBag(self, Bag, ItemCount, pCompCode, pReason);
         }
     }
 }
 
 #[cfg(test)]
 mod tests {
-    use dlopen2::wrapper::Container;
-
-    use super::MQWrapper;
+    use super::{LoadMqm, MqmContainer};
 
     #[test]
-    fn mqdist_load() {
-        unsafe { Container::<MQWrapper>::load("libmqm_r.so") }.expect("Could not open library or load symbols");
+    fn load_mqm_default() {
+        let _mqm = unsafe { MqmContainer::load_mqm_default() };
     }
+
 }

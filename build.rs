@@ -2,38 +2,52 @@ extern crate bindgen;
 
 use regex::Regex;
 use std::panic::catch_unwind;
-use std::path::PathBuf;
+use std::path::{Path, PathBuf};
 use std::{env, io};
 
 use bindgen::callbacks::{IntKind, ParseCallbacks};
 
-type FeatureFilter<'a, T> = (T, Option<&'a str>);
+// Feature filter to bring consistency in managing lists that are filterable by enabled features
+type FeatureFilter<'a, T> = (&'a [T], Option<&'a [&'a str]>);
+/// Filter iterator by selected build feature
+fn filter_features<'a, T: 'a>(features: impl Iterator<Item = &'a FeatureFilter<'a, T>>) -> impl Iterator<Item = &'a T> {
+    features
+        .filter(|&(.., feature)| match feature {
+            Some(names) => names
+                .iter()
+                .map(|name| env::var("CARGO_FEATURE_".to_string() + &(name.to_uppercase()))) // Retrieve the feature env variable
+                .any(|f| f.is_ok()), // At least one feature must match
+            None => true, // None means always include
+        })
+        .flat_map(|&(x, ..)| x)
+}
 
 /// Source files that are built by cc to support the bindings
 const SOURCE_FILES: &[FeatureFilter<&str>] = &[
-    ("src/c/defaults.c", None),       // MQI, MQAI
-    ("src/c/strings.c", None),        // Strings
-    ("src/c/exits.c", Some("exits")), // Exits
-    ("src/c/pcf.c", Some("pcf")),     // PCF
+    (&["src/c/defaults.c", "src/c/strings.c"], None), // MQI, MQAI, Strings
+    (&["src/c/exits.c"], Some(&["exits"])),           // Exits
+    (&["src/c/pcf.c"], Some(&["pcf"])),               // PCF
 ];
 
 /// Header files that bindgen uses to generate bindings
 const HEADER_FILES: &[FeatureFilter<&str>] = &[
-    ("cmqc.h", None),          // MQI
-    ("cmqxc.h", None),         // Exits and MQCD (required for MQI)
-    ("cmqstrc.h", None),       // Strings
-    ("cmqbc.h", Some("mqai")), // MQAI
-    ("cmqcfc.h", Some("pcf")), // PCF
+    (
+        &[
+            "cmqc.h",    // MQI
+            "cmqxc.h",   // Exits and MQCD (required for MQI)
+            "cmqstrc.h", // Strings
+        ],
+        None,
+    ), // MQI
+    (&["cmqbc.h"], Some(&["mqai"])), // MQAI
+    (&["cmqcfc.h"], Some(&["pcf"])), // PCF
 ];
 
 /// Functions that have bindings generated
-const FUNCTIONS: &[FeatureFilter<&str>] = &[
-    ("MQ.+", None),
-    ("mq.+", Some("mqai"))
-];
+const FUNCTIONS: &[FeatureFilter<&str>] = &[(&["MQ.+"], None), (&["mq.+"], Some(&["mqai"]))];
 
 /// Structures that have bindings generated
-const TYPES: &[FeatureFilter<&[&str]>] = &[
+const TYPES: &[FeatureFilter<&str>] = &[
     (
         &[
             "MQMD", "MQMDE", "MQMD1", "MQMD2", "MQPD", "MQIMPO", "MQMHBO", "MQBO", "MQDMHO", "MQCMHO", "MQSRO", "MQSD",
@@ -48,7 +62,7 @@ const TYPES: &[FeatureFilter<&[&str]>] = &[
             "MQCFH", "MQCFBF", "MQCFBS", "MQCFGR", "MQCFIF", "MQCFIL", "MQCFIL64", "MQCFIN", "MQCFIN64", "MQCFSF",
             "MQCFSL", "MQCFST", "MQEPH",
         ],
-        Some("pcf"),
+        Some(&["pcf"]),
     ),
     (
         &[
@@ -56,7 +70,7 @@ const TYPES: &[FeatureFilter<&[&str]>] = &[
             "MQWDR1", "MQWDR2", "MQWQR", "MQWQR1", "MQWQR2", "MQWQR3", "MQWQR4", "MQWXP", "MQWXP1", "MQWXP2", "MQWXP3",
             "MQWXP4", "MQXEPO",
         ],
-        Some("exits"),
+        Some(&["exits"]),
     ),
 ];
 
@@ -106,53 +120,46 @@ const DEF_CONST: &[(&[&str], IntKind)] = &[
         },
     ),
 ];
-
 #[derive(Debug)]
-struct MQCTypeChooser;
+struct MQCTypeChooser(Vec<(Vec<Regex>, IntKind)>);
 impl ParseCallbacks for MQCTypeChooser {
     fn int_macro(&self, name: &str, _value: i64) -> Option<IntKind> {
-        DEF_CONST
+        let Self(chooser) = self;
+        chooser
             .iter()
-            .find(|&(matchers, _)| matchers.iter().any(|r| Regex::new(r).unwrap().is_match(name)))
-            .map(|&(_, int_kind)| int_kind)
+            .find(|&(matchers, ..)| matchers.iter().any(|r| r.is_match(name)))
+            .map(|&(.., int_kind)| int_kind)
     }
 }
 
-/// Predicate to filter by selected build features
-fn feature_filter<T>((.., feature): &(T, Option<&str>)) -> bool {
-    match feature {
-        Some(name) => env::var("CARGO_FEATURE_".to_string() + &(name.to_uppercase())).is_ok(),
-        None => true,
-    }
-}
-
-fn main() -> Result<(), io::Error> {
-    let mq_home_path = PathBuf::from(env::var("MQ_HOME").unwrap_or_else(|_| "/opt/mqm".to_owned()));
-    let out_path = PathBuf::from(env::var("OUT_DIR").map_err(|e| io::Error::new(io::ErrorKind::InvalidInput, e))?); // Mandatory OUT_DIR
-
-    if env::var("CARGO_FEATURE_LINK").is_ok() {
-        let mq_lib_path = mq_home_path.join("lib64");
-        println!("cargo:rustc-link-search={}", mq_lib_path.display());
-        println!("cargo:rustc-link-lib=mqm_r");
-    }
-
-    let mq_inc_path = mq_home_path.join("inc");
-
-    let sources = SOURCE_FILES
-        .iter()
-        .filter(|t| feature_filter(t))
-        .map(|(source, ..)| source);
-
+fn build_c(mq_inc_path: &PathBuf) -> Result<(), io::Error> {
     catch_unwind(|| {
         cc::Build::new()
             .static_flag(false)
             .flag_if_supported("-nostartfiles")
-            .include(&mq_inc_path)
-            .files(sources)
+            .include(mq_inc_path)
+            .files(filter_features(SOURCE_FILES.iter()))
             .warnings(true)
-            .compile("defaults")
+            .compile("mq_functions")
     })
-    .map_err(|_| io::Error::new(io::ErrorKind::InvalidData, "Failed to compile c files"))?;
+    .map_err(|_| io::Error::new(io::ErrorKind::InvalidData, "Failed to compile c files"))
+}
+
+fn generate_bindings(mq_inc_path: &Path) -> Result<bindgen::Bindings, bindgen::BindgenError> {
+    let chooser = MQCTypeChooser(
+        DEF_CONST
+            .iter()
+            .map(|&(re_list, kind)| {
+                (
+                    re_list
+                        .iter()
+                        .map(|re| Regex::new(re).expect("\"{re}\" is not valid"))
+                        .collect(),
+                    kind,
+                )
+            })
+            .collect(),
+    );
 
     // The bindgen::Builder is the main entry point
     // to bindgen, and lets you build up options for
@@ -163,42 +170,46 @@ fn main() -> Result<(), io::Error> {
         // included header files changed.
         .parse_callbacks(Box::new(bindgen::CargoCallbacks::new()))
         // Chooose the correct type for the various MQC constants
-        .parse_callbacks(Box::new(MQCTypeChooser))
+        .parse_callbacks(Box::new(chooser))
         // Allow all constants
         .allowlist_var(".*");
 
     // Choose the IBM MQI c headers
-    let builder = HEADER_FILES
-        .iter()
-        .filter(|t| feature_filter(t))
+    let builder = filter_features(HEADER_FILES.iter())
         // Add all the header files
-        .try_fold(builder, |builder, (header, ..)| {
-            mq_inc_path
-                .join(header)
-                .to_str()
-                .ok_or(io::Error::new(
-                    io::ErrorKind::InvalidData,
-                    format!("\"{header}\" is not valid"),
-                ))
-                .map(|h| builder.header(h))
-        })?;
-    
+        .fold(builder, |builder, header| {
+            builder.header(mq_inc_path.join(header).to_str().expect("\"{header}\" is not valid"))
+        });
+
     // Choose the types
-    let builder = TYPES
-        .iter()
-        .filter(|t| feature_filter(t))
-        .flat_map(|(struc, ..)| *struc)
-        .fold(builder, |builder, struc| builder.allowlist_type(struc));
+    let builder = filter_features(TYPES.iter()).fold(builder, |builder, &struc| builder.allowlist_type(struc));
 
     // Choose the functions
-    let builder = FUNCTIONS
-        .iter()
-        .filter(|t| feature_filter(t))
-        .fold(builder, |builder, (func, ..)| builder.allowlist_function(func));
+    let builder = filter_features(FUNCTIONS.iter()).fold(builder, |builder, &func| builder.allowlist_function(func));
 
     // Generate the bindings file
-    builder
-        .generate()
-        .map_err(|e| io::Error::new(io::ErrorKind::InvalidData, e))? // Generate the bindings
-        .write_to_file(out_path.join("bindings.rs")) // Write the bindings file
+    builder.generate()
+}
+
+fn main() -> Result<(), io::Error> {
+    if env::var("DOCS_RS").is_ok() {
+        return Ok(());
+    }
+
+    let mq_home_path = PathBuf::from(env::var("MQ_HOME").unwrap_or_else(|_| "/opt/mqm".to_owned()));
+    let out_path = PathBuf::from(env::var("OUT_DIR").map_err(|e| io::Error::new(io::ErrorKind::InvalidInput, e))?); // Mandatory OUT_DIR
+
+    if env::var("CARGO_FEATURE_LINK").is_ok() {
+        let mq_lib_path = mq_home_path.join("lib64");
+        println!("cargo:rustc-link-search={}", mq_lib_path.display());
+        println!("cargo:rustc-link-lib=mqm_r");
+    }
+    let mq_inc_path = mq_home_path.join("inc");
+
+    build_c(&mq_inc_path)?; // Build the c files
+
+    // Generate and write the bindings file
+    generate_bindings(&mq_inc_path)
+        .map_err(|e| io::Error::new(io::ErrorKind::InvalidData, e))?
+        .write_to_file(out_path.join("bindings.rs"))
 }
