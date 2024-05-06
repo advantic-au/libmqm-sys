@@ -1,9 +1,34 @@
 #![allow(non_snake_case)]
 #![allow(clippy::too_many_arguments)]
 
-use ::dlopen2::wrapper::WrapperApi;
+use dlopen2::wrapper::{Container, WrapperApi};
 
 use crate::{function, lib as mqsys};
+
+/// Name of the platform dependent MQM dynamic library 
+pub const MQM_LIB: &str = if cfg!(windows) {
+    "mqm.dll"
+} else {
+    "libmqm_r.so"
+};
+
+/// A [dlopen2] [Container] for the MQI library
+pub type MqmContainer = Container<MQWrapper>;
+
+pub trait LoadMqm: Sized {
+    /// Loads the mqm library using the platform dependent search rules
+    /// # Safety
+    /// Loading the dynamic library is inheritently unsafe
+    /// # Errors
+    /// Will return `Err` if the dynamic library could not be loaded
+    unsafe fn load_mqm_default() -> Result<Self, dlopen2::Error>;
+}
+
+impl LoadMqm for MqmContainer {
+    unsafe fn load_mqm_default() -> Result<Self, dlopen2::Error> {
+        unsafe { Self::load(MQM_LIB) }
+    }
+}
 
 /// A [dlopen2] [`WrapperApi`] implementation for MQI and MQAI function calls
 #[derive(WrapperApi, Debug)]
@@ -1533,12 +1558,11 @@ impl function::MQAI for MQWrapper {
 
 #[cfg(test)]
 mod tests {
-    use dlopen2::wrapper::Container;
-
-    use super::MQWrapper;
+    use crate::dlopen2::LoadMqm;
+    use super::MqmContainer;
 
     #[test]
-    fn mqdist_load() {
-        unsafe { Container::<MQWrapper>::load("libmqm_r.so") }.expect("Could not open library or load symbols");
+    fn mqdist_load_default() {
+        unsafe { MqmContainer::load_mqm_default() }.expect("Could not open library or load symbols");
     }
 }

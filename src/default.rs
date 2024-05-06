@@ -34,6 +34,8 @@ mod pcf {
 
 #[cfg(feature = "exits")]
 mod exits {
+    use crate::lib;
+
     mq_default!(lib::MQACH, mqach_default);
     mq_default!(lib::MQAXC, mqaxc_default);
     mq_default!(lib::MQAXP, mqaxp_default);

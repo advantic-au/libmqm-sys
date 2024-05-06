@@ -126,17 +126,33 @@ fn feature_filter<T>((.., feature): &(T, Option<&str>)) -> bool {
     }
 }
 
+fn default_mq_home() -> &'static str {
+    env::var("CARGO_CFG_WINDOWS").map(|_| "c:/Program Files/IBM/MQ").unwrap_or("/opt/mqm")
+}
+
+fn link_lib() -> &'static str {
+    env::var("CARGO_CFG_WINDOWS").map(|_| "mqm").unwrap_or("mqm_r")
+}
+
+fn inc_path() -> &'static str {
+    env::var("CARGO_CFG_WINDOWS").map(|_| "tools/c/include").unwrap_or("inc")
+}
+
+fn lib_path() -> &'static str {
+    env::var("CARGO_CFG_WINDOWS").map(|_| "tools/lib64").unwrap_or("lib64")
+}
+
 fn main() -> Result<(), io::Error> {
-    let mq_home_path = PathBuf::from(env::var("MQ_HOME").unwrap_or_else(|_| "/opt/mqm".to_owned()));
+    let mq_home_path = PathBuf::from(env::var("MQ_HOME").unwrap_or_else(|_| default_mq_home().to_string()));
     let out_path = PathBuf::from(env::var("OUT_DIR").map_err(|e| io::Error::new(io::ErrorKind::InvalidInput, e))?); // Mandatory OUT_DIR
+    let mq_inc_path = mq_home_path.join(inc_path());
+
 
     if env::var("CARGO_FEATURE_LINK").is_ok() {
-        let mq_lib_path = mq_home_path.join("lib64");
+        let mq_lib_path = mq_home_path.join(lib_path());
         println!("cargo:rustc-link-search={}", mq_lib_path.display());
-        println!("cargo:rustc-link-lib=mqm_r");
+        println!("cargo:rustc-link-lib=dylib={}", link_lib());
     }
-
-    let mq_inc_path = mq_home_path.join("inc");
 
     let sources = SOURCE_FILES
         .iter()
