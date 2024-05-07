@@ -9,6 +9,7 @@ use bindgen::callbacks::{IntKind, ParseCallbacks};
 
 // Feature filter to bring consistency in managing lists that are filterable by enabled features
 type FeatureFilter<'a, T> = (&'a [T], Option<&'a [&'a str]>);
+
 /// Filter iterator by selected build feature
 fn filter_features<'a, T: 'a>(features: impl Iterator<Item = &'a FeatureFilter<'a, T>>) -> impl Iterator<Item = &'a T> {
     features
@@ -132,6 +133,22 @@ impl ParseCallbacks for MQCTypeChooser {
     }
 }
 
+fn default_mq_home() -> &'static str {
+    env::var("CARGO_CFG_WINDOWS").map(|_| "c:/Program Files/IBM/MQ").unwrap_or("/opt/mqm")
+}
+
+fn link_lib() -> &'static str {
+    env::var("CARGO_CFG_WINDOWS").map(|_| "mqm").unwrap_or("mqm_r")
+}
+
+fn inc_path() -> &'static str {
+    env::var("CARGO_CFG_WINDOWS").map(|_| "tools/c/include").unwrap_or("inc")
+}
+
+fn lib_path() -> &'static str {
+    env::var("CARGO_CFG_WINDOWS").map(|_| "tools/lib64").unwrap_or("lib64")
+}
+
 fn build_c(mq_inc_path: &PathBuf) -> Result<(), io::Error> {
     catch_unwind(|| {
         cc::Build::new()
@@ -192,19 +209,15 @@ fn generate_bindings(mq_inc_path: &Path) -> Result<bindgen::Bindings, bindgen::B
 }
 
 fn main() -> Result<(), io::Error> {
-    if env::var("DOCS_RS").is_ok() {
-        return Ok(());
-    }
-
-    let mq_home_path = PathBuf::from(env::var("MQ_HOME").unwrap_or_else(|_| "/opt/mqm".to_owned()));
+    let mq_home_path = PathBuf::from(env::var("MQ_HOME").unwrap_or_else(|_| default_mq_home().to_string()));
     let out_path = PathBuf::from(env::var("OUT_DIR").map_err(|e| io::Error::new(io::ErrorKind::InvalidInput, e))?); // Mandatory OUT_DIR
+    let mq_inc_path = mq_home_path.join(inc_path());
 
     if env::var("CARGO_FEATURE_LINK").is_ok() {
-        let mq_lib_path = mq_home_path.join("lib64");
+        let mq_lib_path = mq_home_path.join(lib_path());
         println!("cargo:rustc-link-search={}", mq_lib_path.display());
-        println!("cargo:rustc-link-lib=mqm_r");
+        println!("cargo:rustc-link-lib=dylib={}", link_lib());
     }
-    let mq_inc_path = mq_home_path.join("inc");
 
     build_c(&mq_inc_path)?; // Build the c files
 

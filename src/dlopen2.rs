@@ -1,8 +1,7 @@
 #![allow(non_snake_case)]
 #![allow(clippy::too_many_arguments)]
 
-use dlopen2::wrapper::Container;
-use ::dlopen2::wrapper::WrapperApi;
+use dlopen2::wrapper::{Container, WrapperApi};
 
 use crate::{function, lib as mqsys};
 
@@ -13,7 +12,7 @@ pub const MQM_LIB: &str = if cfg!(windows) {
     "libmqm_r.so"
 };
 
-/// dlopen2 [Container] for the MQI library
+/// A [dlopen2] [Container] for the MQI library
 pub type MqmContainer = Container<MQWrapper>;
 
 pub trait LoadMqm: Sized {
@@ -1562,8 +1561,7 @@ mod tests {
     use super::{LoadMqm, MqmContainer};
 
     #[test]
-    fn load_mqm_default() {
-        let _mqm = unsafe { MqmContainer::load_mqm_default() };
+    fn mqdist_load_default() {
+        unsafe { MqmContainer::load_mqm_default() }.expect("Could not open library or load symbols");
     }
-
 }
