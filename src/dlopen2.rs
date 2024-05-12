@@ -30,7 +30,7 @@ impl LoadMqm for MqmContainer {
     }
 }
 
-/// A [dlopen2] [`WrapperApi`] implementation for MQI and MQAI function calls
+/// A [`WrapperApi`] implementation for MQI and MQAI function calls
 #[derive(WrapperApi, Debug)]
 pub struct MQWrapper {
     MQCONNX: unsafe extern "C" fn(

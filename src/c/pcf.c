@@ -1,4 +1,5 @@
 #define NULL 0
+#define MQCCSI_APPL 1208
 #include <cmqc.h>
 
 #include <cmqcfc.h>
