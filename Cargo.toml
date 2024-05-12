@@ -10,6 +10,7 @@ keywords = [ "message-queue", "messaging" ]
 categories = [ "external-ffi-bindings", "asynchronous" ]
 
 edition = "2021"
+rust-version = "1.65"
 links = "mqm"
 build = "build.rs"
 
