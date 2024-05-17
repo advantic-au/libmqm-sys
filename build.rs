@@ -114,7 +114,7 @@ const DEF_CONST: &[(&[&str], IntKind)] = &[
     ),
     (&["^MQ.+_MASK$"], IntKind::U32), // _MASKS's are frequently defined outside of the i32 range
     (
-        &["^MQ[A-Z]{2,12}_.+"], // All remaining constants should be MQLONG
+        &["^MQ_?[A-Z]{2,12}_.+"], // All remaining constants should be MQLONG
         IntKind::Custom {
             name: "MQLONG",
             is_signed: true,
