@@ -67,7 +67,7 @@ mod mqi {
 
     extern "C" { static mqcd_client_conn_default: lib::MQCD; }
     impl lib::MQCD {
-        /// Default `lib::MQCD` suitable for MQI client connections
+        /// Default `MQCD` suitable for MQI client connections
         #[must_use] pub fn client_conn_default() -> Self {
             unsafe { mqcd_client_conn_default }
         }
