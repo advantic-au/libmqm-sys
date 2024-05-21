@@ -1,8 +1,7 @@
 #define NULL 0
 #define MQCCSI_APPL 1208
 #include <cmqc.h>
-
-#include <cmqxc.h>
+#include <cmqec.h>
 
 const MQACH mqach_default = { MQACH_DEFAULT };
 const MQAXC mqaxc_default = { MQAXC_DEFAULT };
@@ -28,3 +27,11 @@ const MQWXP2 mqwxp2_default = { MQWXP2_DEFAULT };
 const MQWXP3 mqwxp3_default = { MQWXP3_DEFAULT };
 const MQWXP4 mqwxp4_default = { MQWXP4_DEFAULT };
 const MQXEPO mqxepo_default = { MQXEPO_DEFAULT };
+
+const MQIEP mqiep_default = { MQIEP_DEFAULT };
+
+const MQZED mqzed_default = { MQZED_DEFAULT };
+const MQZAC mqzac_default = { MQZAC_DEFAULT };
+const MQZAD mqzad_default = { MQZAD_DEFAULT };
+const MQZFP mqzfp_default = { MQZFP_DEFAULT };
+const MQZIC mqzic_default = { MQZIC_DEFAULT };

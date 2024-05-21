@@ -8,8 +8,8 @@ You can use `libmqm-sys` to:
 - Connect to an IBM MQ server to send and receive MQ messages through the MQI functions
 - Administer IBM MQ server through the MQAI functions
 
-Functions provided in this crate are the raw `unsafe` functions exposed from the IBM provided library.
-Crate users should build safe rust API wrappers over these functions.
+Functions provided in this crate are the raw `unsafe` functions exposed from the
+IBM provided library. Developers should build safe rust API wrappers over these functions.
 
 Compile time dynamic linking and run-time dynamic linking is supported.
 
@@ -17,11 +17,15 @@ Usage
 -----
 
 1. Download and install the redistributable client from IBM:
-  [https://ibm.biz/mq93redistclients]
+  <https://ibm.biz/mq93redistclients>
 
 2. Install the client in `/opt/mqm` or another location.
 
 3. Set the MQ_HOME environment variable to the installed location.
+
+    ```bash
+    MQ_HOME=/opt/mqm
+    ```
 
 4. Add the following to your `Cargo.toml`
 
@@ -38,8 +42,6 @@ use libmqm-sys as mqsys;
 
 Example
 -------
-
-Connect to the default queue manager using the MQSERVER environment variable.
 
 ```rust
 #[cfg(test)]
@@ -74,7 +76,7 @@ Feature flags
 | Feature        | Description |
 |----------------|-------------|
 | link (default) | Support linking the MQ library at compile-time |
-| dlopen2        | Support loading the MQ library at run-time using dlopen2 |
+| dlopen2        | Support loading the MQ library at run-time using [`dlopen2`](https://crates.io/crates/dlopen2) |
 | mqai           | Expose the MQAI functions |
 | pcf            | Generate the PCF structures |
 | exits          | Generate the exit structures |
@@ -89,20 +91,22 @@ The following needs further work:
 - Test and support older versions of MQI.
 - Add complex examples.
 
-Support
--------
-
-There are no guarantees of compatibility with any future versions of the crate; the API is subject to change based on feedback and enhancements.
-Relentless refactoring may occur before a stable release is finalised.
-
-This crate is provided as-is with no guarantees of support or updates.
-
-This crate is not approved, endorsed, acknowledged, or supported by IBM. You cannot use IBM formal support channels (Cases/PMRs) for assistance on the use of this crate.
-
 Contributions
 -------------
 
 All feedback, suggestions, contributions and enhancements are welcome.
+
+Support
+-------
+
+There are no guarantees of compatibility with any future versions of the crate; the API
+is subject to change based on feedback and enhancements. Relentless refactoring may occur
+before a stable crate is released.
+
+This crate is provided as-is with no guarantees of support or updates.
+
+This crate is not approved, endorsed, acknowledged, or supported by IBM. You cannot use
+IBM formal support channels (Cases/PMRs) for assistance on the use of this crate.
 
 License
 -------
@@ -110,4 +114,4 @@ License
 Licensed under
 
 - Apache License, Version 2.0
-    ([LICENSE-APACHE](LICENSE-APACHE) or <http://www.apache.org/licenses/LICENSE-2.0>)
+   ([LICENSE-APACHE](LICENSE-APACHE) or <http://www.apache.org/licenses/LICENSE-2.0>)

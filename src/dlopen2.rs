@@ -17,8 +17,10 @@ pub type MqmContainer = Container<MQWrapper>;
 
 pub trait LoadMqm: Sized {
     /// Loads the mqm library using the platform dependent search rules
+    /// 
     /// # Safety
-    /// Loading the dynamic library is inheritently unsafe
+    /// Loading the dynamic library is inherently unsafe
+    /// 
     /// # Errors
     /// Will return `Err` if the dynamic library could not be loaded
     unsafe fn load_mqm_default() -> Result<Self, dlopen2::Error>;

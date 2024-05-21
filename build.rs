@@ -52,7 +52,7 @@ const TYPES: &[FeatureFilter<&str>] = &[
     (
         &[
             "MQMD", "MQMDE", "MQMD1", "MQMD2", "MQPD", "MQIMPO", "MQMHBO", "MQBO", "MQDMHO", "MQCMHO", "MQSRO", "MQSD",
-            "MQGMO", "MQPMO", "MQOD", "MQCNO", "MQCD", "MQCSP", "MQSCO", "MQBNO", "MQAIR", "MQBMHO", "MQCBD",
+            "MQGMO", "MQPMO", "MQOD", "MQCNO", "MQCD", "MQCSP", "MQSCO", "MQBNO", "MQAIR", "MQBMHO", "MQCBC", "MQCBD",
             "MQCHARV", "MQCIH", "MQCTLO", "MQDH", "MQDLH", "MQDMPO", "MQIIH", "MQOR", "MQRFH", "MQRFH2", "MQRMH",
             "MQRR", "MQSMPO", "MQSTS", "MQTM", "MQTMC2", "MQWIH", "MQXQH",
         ],
@@ -69,7 +69,7 @@ const TYPES: &[FeatureFilter<&str>] = &[
         &[
             "MQACH", "MQAXC", "MQAXP", "MQCXP", "MQDXP", "MQNXP", "MQPBC", "MQPSXP", "MQSBC", "MQWCR", "MQWDR",
             "MQWDR1", "MQWDR2", "MQWQR", "MQWQR1", "MQWQR2", "MQWQR3", "MQWQR4", "MQWXP", "MQWXP1", "MQWXP2", "MQWXP3",
-            "MQWXP4", "MQXEPO",
+            "MQWXP4", "MQXEPO", "MQIEP", "MQZED", "MQZAC", "MQZAD", "MQZFP", "MQZIC",
         ],
         Some(&["exits"]),
     ),
