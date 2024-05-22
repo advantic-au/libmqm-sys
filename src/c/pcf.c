@@ -3,6 +3,8 @@
 #include <cmqc.h>
 
 #include <cmqcfc.h>
+#include <cmqec.h>
+
 
 const MQCFH mqcfh_default = { MQCFH_DEFAULT };
 const MQCFBF mqcfbf_default = { MQCFBF_DEFAULT };
@@ -17,3 +19,9 @@ const MQCFSF mqcfsf_default = { MQCFSF_DEFAULT };
 const MQCFSL mqcfsl_default = { MQCFSL_DEFAULT };
 const MQCFST mqcfst_default = { MQCFST_DEFAULT };
 const MQEPH mqeph_default = { MQEPH_DEFAULT };
+
+const MQZED mqzed_default = { MQZED_DEFAULT };
+const MQZAC mqzac_default = { MQZAC_DEFAULT };
+const MQZAD mqzad_default = { MQZAD_DEFAULT };
+const MQZFP mqzfp_default = { MQZFP_DEFAULT };
+const MQZIC mqzic_default = { MQZIC_DEFAULT };

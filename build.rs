@@ -41,7 +41,7 @@ const HEADER_FILES: &[FeatureFilter<&str>] = &[
         None,
     ), // MQI
     (&["cmqbc.h"], Some(&["mqai"])), // MQAI
-    (&["cmqcfc.h"], Some(&["pcf"])), // PCF
+    (&["cmqec.h", "cmqcfc.h"], Some(&["pcf"])), // PCF
 ];
 
 /// Functions that have bindings generated
@@ -61,7 +61,7 @@ const TYPES: &[FeatureFilter<&str>] = &[
     (
         &[
             "MQCFH", "MQCFBF", "MQCFBS", "MQCFGR", "MQCFIF", "MQCFIL", "MQCFIL64", "MQCFIN", "MQCFIN64", "MQCFSF",
-            "MQCFSL", "MQCFST", "MQEPH",
+            "MQCFSL", "MQCFST", "MQEPH", "MQZED", "MQZAC", "MQZAD", "MQZFP", "MQZIC"
         ],
         Some(&["pcf"]),
     ),
@@ -69,7 +69,7 @@ const TYPES: &[FeatureFilter<&str>] = &[
         &[
             "MQACH", "MQAXC", "MQAXP", "MQCXP", "MQDXP", "MQNXP", "MQPBC", "MQPSXP", "MQSBC", "MQWCR", "MQWDR",
             "MQWDR1", "MQWDR2", "MQWQR", "MQWQR1", "MQWQR2", "MQWQR3", "MQWQR4", "MQWXP", "MQWXP1", "MQWXP2", "MQWXP3",
-            "MQWXP4", "MQXEPO", "MQIEP", "MQZED", "MQZAC", "MQZAD", "MQZFP", "MQZIC",
+            "MQWXP4", "MQXEPO", "MQIEP",
         ],
         Some(&["exits"]),
     ),
@@ -150,12 +150,16 @@ fn lib_path() -> &'static str {
 }
 
 fn build_c(mq_inc_path: &PathBuf) -> Result<(), io::Error> {
+    let sources = filter_features(SOURCE_FILES.iter()).collect::<Vec<_>>();
+    for source in &sources {
+        println!("cargo:rerun-if-changed={source}")
+    }
     catch_unwind(|| {
         cc::Build::new()
             .static_flag(false)
             .flag_if_supported("-nostartfiles")
             .include(mq_inc_path)
-            .files(filter_features(SOURCE_FILES.iter()))
+            .files(sources)
             .warnings(true)
             .compile("mq_functions")
     })
@@ -182,6 +186,7 @@ fn generate_bindings(mq_inc_path: &Path) -> Result<bindgen::Bindings, bindgen::B
     // to bindgen, and lets you build up options for
     // the resulting bindings.
     let builder = bindgen::builder()
+        .clang_arg(format!("-I{}", mq_inc_path.display()))
         .generate_cstr(true)
         // Tell cargo to invalidate the built crate whenever any of the
         // included header files changed.
