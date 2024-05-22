@@ -105,8 +105,8 @@ before a stable crate is released.
 
 This crate is provided as-is with no guarantees of support or updates.
 
-This crate is not approved, endorsed, acknowledged, or supported by IBM. You cannot use
-IBM formal support channels (Cases/PMRs) for assistance on the use of this crate.
+**This crate is not approved, endorsed, acknowledged, or supported by IBM. You cannot use
+IBM formal support channels (Cases/PMRs) for assistance on the use of this crate.**
 
 License
 -------
