@@ -31,7 +31,7 @@ Usage
 
     ```toml
     [dependencies]
-    libmqm-sys = "0.1.0"
+    libmqm-sys = "0.2.0"
     ```
 
 5. Use the crate in your source code:
