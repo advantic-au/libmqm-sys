@@ -1,6 +1,10 @@
 libmqm-sys
 ==========
 
+[![Latest version](https://img.shields.io/crates/v/libmqm-sys.svg)](https://crates.io/crates/libmqm-sys)
+[![Documentation](https://docs.rs/libmqm-sys/badge.svg)](https://docs.rs/libmqm-sys)
+![License](https://img.shields.io/crates/l/libmqm-sys.svg)
+
 Native bindings to the IBM® MQ Interface (MQI) and MQ Administration Interface (MQAI)
 
 You can use `libmqm-sys` to:
