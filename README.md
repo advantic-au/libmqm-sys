@@ -73,13 +73,14 @@ mod test {
 Feature flags
 -------------
 
-| Feature        | Description |
-|----------------|-------------|
-| link (default) | Support linking the MQ library at compile-time |
-| dlopen2        | Support loading the MQ library at run-time using [`dlopen2`](https://crates.io/crates/dlopen2) |
-| mqai           | Expose the MQAI functions |
-| pcf            | Generate the PCF structures |
-| exits          | Generate the exit structures |
+| Feature           | Description |
+|-------------------|-------------|
+| link (default)    | Support linking the MQ library at compile-time |
+| bindgen (default) | Generate the bindings from MQI library |
+| dlopen2           | Support loading the MQ library at run-time using [`dlopen2`](https://crates.io/crates/dlopen2) |
+| mqai              | Expose the MQAI functions |
+| pcf               | Generate the PCF structures |
+| exits             | Generate the exit structures |
 
 Status
 ------
