@@ -9,8 +9,16 @@
 #![allow(non_snake_case)]
 
 #[allow(clippy::all)]
+#[cfg(feature = "bindgen")]
 pub mod lib {
     include!(concat!(env!("OUT_DIR"), "/bindings.rs"));
+}
+
+#[allow(clippy::all)]
+#[cfg(not(feature = "bindgen"))]
+pub mod lib {
+    mod pregen;
+    pub use pregen::*;
 }
 
 pub mod default;
@@ -20,5 +28,5 @@ pub use function::*;
 #[cfg(feature = "dlopen2")]
 pub mod dlopen2;
 
-#[cfg(feature = "link")]
+#[cfg(feature = "link_api")]
 pub mod link;
