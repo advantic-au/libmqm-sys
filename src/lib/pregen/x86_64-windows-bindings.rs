@@ -197,6 +197,7 @@ pub const MQSCO_RESET_COUNT_DEFAULT: MQLONG = 0;
 pub const MQ_CERT_VAL_POLICY_DEFAULT: MQLONG = 0;
 pub const MQ_CERT_VAL_POLICY_ANY: MQLONG = 0;
 pub const MQ_CERT_VAL_POLICY_RFC5280: MQLONG = 1;
+pub const MQ_CERT_VAL_POLICY_NONE: MQLONG = 2;
 #[allow(unsafe_code)]
 pub const MQCSP_STRUC_ID: &::std::ffi::CStr = unsafe { ::std::ffi::CStr::from_bytes_with_nul_unchecked(b"CSP \0") };
 pub const MQCSP_VERSION_1: MQLONG = 1;
@@ -1800,7 +1801,8 @@ pub const MQCMDL_LEVEL_932: MQLONG = 932;
 pub const MQCMDL_LEVEL_933: MQLONG = 933;
 pub const MQCMDL_LEVEL_934: MQLONG = 934;
 pub const MQCMDL_LEVEL_935: MQLONG = 935;
-pub const MQCMDL_CURRENT_LEVEL: MQLONG = 935;
+pub const MQCMDL_LEVEL_940: MQLONG = 940;
+pub const MQCMDL_CURRENT_LEVEL: MQLONG = 940;
 pub const MQCSRV_CONVERT_NO: MQLONG = 0;
 pub const MQCSRV_CONVERT_YES: MQLONG = 1;
 pub const MQCSRV_DLQ_NO: MQLONG = 0;
@@ -2491,6 +2493,8 @@ pub const MQCOMPRESS_RLE: MQLONG = 1;
 pub const MQCOMPRESS_ZLIBFAST: MQLONG = 2;
 pub const MQCOMPRESS_ZLIBHIGH: MQLONG = 4;
 pub const MQCOMPRESS_SYSTEM: MQLONG = 8;
+pub const MQCOMPRESS_LZ4FAST: MQLONG = 16;
+pub const MQCOMPRESS_LZ4HIGH: MQLONG = 32;
 pub const MQCOMPRESS_ANY: MQLONG = 268435455;
 pub const MQXPT_ALL: MQLONG = -1;
 pub const MQXPT_LOCAL: MQLONG = 0;
@@ -3494,6 +3498,7 @@ pub const MQRCCF_STREAMQ_DEST_NOT_SUPP: MQLONG = 3384;
 pub const MQRCCF_STREAMQ_DEST_CONFLICT: MQLONG = 3385;
 pub const MQRCCF_STREAMQ_NOT_SUPPORTED: MQLONG = 3386;
 pub const MQRCCF_STREAMQ_CONFLICT: MQLONG = 3387;
+pub const MQRCCF_INCOMPATIBLE_QM_IN_QSG: MQLONG = 3389;
 pub const MQRCCF_OBJECT_ALREADY_EXISTS: MQLONG = 4001;
 pub const MQRCCF_OBJECT_WRONG_TYPE: MQLONG = 4002;
 pub const MQRCCF_LIKE_OBJECT_WRONG_TYPE: MQLONG = 4003;
@@ -4281,7 +4286,8 @@ pub const MQIACF_NHA_TOTAL_INSTANCES: MQLONG = 1462;
 pub const MQIACF_Q_MGR_FS_ENCRYPTED: MQLONG = 1463;
 pub const MQIACF_Q_MGR_FS_IN_USE: MQLONG = 1464;
 pub const MQIACF_Q_MGR_FS_SIZE: MQLONG = 1465;
-pub const MQIACF_LAST_USED: MQLONG = 1465;
+pub const MQIACF_SYSP_ZHYPERLINK: MQLONG = 1466;
+pub const MQIACF_LAST_USED: MQLONG = 1466;
 pub const MQCFACCESS_ENABLED: MQLONG = 0;
 pub const MQCFACCESS_SUSPENDED: MQLONG = 1;
 pub const MQCFACCESS_DISABLED: MQLONG = 2;
@@ -15912,7 +15918,7 @@ fn bindgen_test_layout_MQI_BY_VALUE_STR() {
     );
 }
 extern "C" {
-    pub static MQI_BY_VALUE_STR: [MQI_BY_VALUE_STR; 5235usize];
+    pub static MQI_BY_VALUE_STR: [MQI_BY_VALUE_STR; 5241usize];
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -15951,7 +15957,7 @@ fn bindgen_test_layout_MQI_BY_NAME_STR() {
     );
 }
 extern "C" {
-    pub static MQI_BY_NAME_STR: [MQI_BY_NAME_STR; 5235usize];
+    pub static MQI_BY_NAME_STR: [MQI_BY_NAME_STR; 5241usize];
 }
 pub type MQHBAG = MQLONG;
 pub type PMQHBAG = *mut MQHBAG;
