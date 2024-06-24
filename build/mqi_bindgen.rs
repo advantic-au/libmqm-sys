@@ -53,14 +53,14 @@ const TYPES: &[FeatureFilter<&str>] = &[
 /// Rules sequentually applied to constants to determine target rust type
 pub const DEF_CONST: &[(&[&str], IntKind)] = &[
     (
-        &["^MQ.*_ERROR$"], // Errors are always MQLONG
+        &["^MQ.*_ERROR$", "^MQIA_.+" ],
         IntKind::Custom {
             name: "MQLONG",
             is_signed: true,
         },
     ),
     (
-        &[".+_LENGTH(_.)?"], // All lengths should be usize
+        &[".+_LENGTH(_.)?", ".+_LEN$"], // All lengths should be usize
         IntKind::Custom {
             name: "usize",
             is_signed: false,
