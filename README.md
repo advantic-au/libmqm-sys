@@ -91,7 +91,6 @@ Status
 
 The following needs further work:
 
-- Testing and support on MacOS.
 - Documentation.
 - Test and support older versions of MQI.
 - Add complex examples.
