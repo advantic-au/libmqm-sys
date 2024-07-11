@@ -14,13 +14,11 @@ fn feature_enabled(name: &str) -> bool {
 
 /// Filter iterator by selected build feature
 fn filter_features<'a, T: 'a>(features: impl IntoIterator<Item = &'a FeatureFilter<'a, T>>) -> impl Iterator<Item = &'a T> {
-    features.into_iter()
+    features
+        .into_iter()
         .filter(|&(.., feature)| match feature {
-            Some(names) => names
-                .iter()
-                .copied()
-                .any(feature_enabled), // At least one feature must match
-            None => true, // None means always include
+            Some(names) => names.iter().copied().any(feature_enabled), // At least one feature must match
+            None => true,                                              // None means always include
         })
         .flat_map(|&(x, ..)| x)
 }
@@ -33,7 +31,9 @@ const SOURCE_FILES: &[FeatureFilter<&str>] = &[
 ];
 
 fn default_mq_home() -> &'static str {
-    env::var("CARGO_CFG_WINDOWS").map(|_| "c:/Program Files/IBM/MQ").unwrap_or("/opt/mqm")
+    env::var("CARGO_CFG_WINDOWS")
+        .map(|_| "c:/Program Files/IBM/MQ")
+        .unwrap_or("/opt/mqm")
 }
 
 fn link_lib() -> &'static str {
@@ -86,9 +86,9 @@ fn main() -> Result<(), io::Error> {
         // Generate and write the bindings file
         let out_path = PathBuf::from(env::var("OUT_DIR").map_err(|e| io::Error::new(io::ErrorKind::InvalidInput, e))?); // Mandatory OUT_DIR
         mqi_bindgen::generate_bindings(&mq_inc_path)
-        .map_err(|e| io::Error::new(io::ErrorKind::InvalidData, e))?
-        .write_to_file(out_path.join("bindings.rs"))?;
+            .map_err(|e| io::Error::new(io::ErrorKind::InvalidData, e))?
+            .write_to_file(out_path.join("bindings.rs"))?;
     }
-    
+
     Ok(())
 }

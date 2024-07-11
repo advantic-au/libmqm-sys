@@ -5,22 +5,18 @@ use dlopen2::wrapper::{Container, WrapperApi};
 
 use crate::{function, lib as mqsys};
 
-/// Name of the platform dependent MQM dynamic library 
-pub const MQM_LIB: &str = if cfg!(windows) {
-    "mqm.dll"
-} else {
-    "libmqm_r.so"
-};
+/// Name of the platform dependent MQM dynamic library
+pub const MQM_LIB: &str = if cfg!(windows) { "mqm.dll" } else { "libmqm_r.so" };
 
 /// A [dlopen2] [Container] for the MQI library
 pub type MqmContainer = Container<MQWrapper>;
 
 pub trait LoadMqm: Sized {
     /// Loads the mqm library using the platform dependent search rules
-    /// 
+    ///
     /// # Safety
     /// Loading the dynamic library is inherently unsafe
-    /// 
+    ///
     /// # Errors
     /// Will return `Err` if the dynamic library could not be loaded
     unsafe fn load_mqm_default() -> Result<Self, dlopen2::Error>;
@@ -238,12 +234,8 @@ pub struct MQWrapper {
         pReason: mqsys::PMQLONG,
     ),
     #[cfg(feature = "mqai")]
-    mqCreateBag: unsafe extern "C" fn(
-        Options: mqsys::MQLONG,
-        pBag: mqsys::PMQHBAG,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
-    ),
+    mqCreateBag:
+        unsafe extern "C" fn(Options: mqsys::MQLONG, pBag: mqsys::PMQHBAG, pCompCode: mqsys::PMQLONG, pReason: mqsys::PMQLONG),
     #[cfg(feature = "mqai")]
     mqDeleteBag: unsafe extern "C" fn(pBag: mqsys::PMQHBAG, pCompCode: mqsys::PMQLONG, pReason: mqsys::PMQLONG),
     #[cfg(feature = "mqai")]
@@ -269,12 +261,8 @@ pub struct MQWrapper {
         pReason: mqsys::PMQLONG,
     ),
     #[cfg(feature = "mqai")]
-    mqAddInquiry: unsafe extern "C" fn(
-        Bag: mqsys::MQHBAG,
-        Selector: mqsys::MQLONG,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
-    ),
+    mqAddInquiry:
+        unsafe extern "C" fn(Bag: mqsys::MQHBAG, Selector: mqsys::MQLONG, pCompCode: mqsys::PMQLONG, pReason: mqsys::PMQLONG),
     #[cfg(feature = "mqai")]
     mqDeleteItem: unsafe extern "C" fn(
         Bag: mqsys::MQHBAG,
@@ -530,12 +518,8 @@ pub struct MQWrapper {
         pReason: mqsys::PMQLONG,
     ),
     #[cfg(feature = "mqai")]
-    mqTruncateBag: unsafe extern "C" fn(
-        Bag: mqsys::MQHBAG,
-        ItemCount: mqsys::MQLONG,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
-    ),
+    mqTruncateBag:
+        unsafe extern "C" fn(Bag: mqsys::MQHBAG, ItemCount: mqsys::MQLONG, pCompCode: mqsys::PMQLONG, pReason: mqsys::PMQLONG),
 }
 
 impl function::MQI for MqmContainer {
@@ -1194,16 +1178,7 @@ impl function::MQAI for MqmContainer {
         pReason: mqsys::PMQLONG,
     ) {
         unsafe {
-            MQWrapper::mqSetString(
-                self,
-                Bag,
-                Selector,
-                ItemIndex,
-                BufferLength,
-                pBuffer,
-                pCompCode,
-                pReason,
-            );
+            MQWrapper::mqSetString(self, Bag, Selector, ItemIndex, BufferLength, pBuffer, pCompCode, pReason);
         }
     }
 
@@ -1244,16 +1219,7 @@ impl function::MQAI for MqmContainer {
         pReason: mqsys::PMQLONG,
     ) {
         unsafe {
-            MQWrapper::mqSetByteString(
-                self,
-                Bag,
-                Selector,
-                ItemIndex,
-                BufferLength,
-                pBuffer,
-                pCompCode,
-                pReason,
-            );
+            MQWrapper::mqSetByteString(self, Bag, Selector, ItemIndex, BufferLength, pBuffer, pCompCode, pReason);
         }
     }
 
@@ -1308,9 +1274,7 @@ impl function::MQAI for MqmContainer {
         pReason: mqsys::PMQLONG,
     ) {
         unsafe {
-            MQWrapper::mqInquireIntegerFilter(
-                self, Bag, Selector, ItemIndex, pItemValue, pOperator, pCompCode, pReason,
-            );
+            MQWrapper::mqInquireIntegerFilter(self, Bag, Selector, ItemIndex, pItemValue, pOperator, pCompCode, pReason);
         }
     }
 

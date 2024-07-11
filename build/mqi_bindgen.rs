@@ -15,7 +15,7 @@ const HEADER_FILES: &[FeatureFilter<&str>] = &[
         ],
         None,
     ), // MQI
-    (&["cmqbc.h"], Some(&["mqai"])), // MQAI
+    (&["cmqbc.h"], Some(&["mqai"])),            // MQAI
     (&["cmqec.h", "cmqcfc.h"], Some(&["pcf"])), // PCF
 ];
 
@@ -26,25 +26,25 @@ const FUNCTIONS: &[FeatureFilter<&str>] = &[(&["MQ.+"], None), (&["mq.+"], Some(
 const TYPES: &[FeatureFilter<&str>] = &[
     (
         &[
-            "MQMD", "MQMDE", "MQMD1", "MQMD2", "MQPD", "MQIMPO", "MQMHBO", "MQBO", "MQDMHO", "MQCMHO", "MQSRO", "MQSD",
-            "MQGMO", "MQPMO", "MQOD", "MQCNO", "MQCD", "MQCSP", "MQSCO", "MQBNO", "MQAIR", "MQBMHO", "MQCBC", "MQCBD",
-            "MQCHARV", "MQCIH", "MQCTLO", "MQDH", "MQDLH", "MQDMPO", "MQIIH", "MQOR", "MQRFH", "MQRFH2", "MQRMH",
-            "MQRR", "MQSMPO", "MQSTS", "MQTM", "MQTMC2", "MQWIH", "MQXQH",
+            "MQMD", "MQMDE", "MQMD1", "MQMD2", "MQPD", "MQIMPO", "MQMHBO", "MQBO", "MQDMHO", "MQCMHO", "MQSRO", "MQSD", "MQGMO",
+            "MQPMO", "MQOD", "MQCNO", "MQCD", "MQCSP", "MQSCO", "MQBNO", "MQAIR", "MQBMHO", "MQCBC", "MQCBD", "MQCHARV", "MQCIH",
+            "MQCTLO", "MQDH", "MQDLH", "MQDMPO", "MQIIH", "MQOR", "MQRFH", "MQRFH2", "MQRMH", "MQRR", "MQSMPO", "MQSTS", "MQTM",
+            "MQTMC2", "MQWIH", "MQXQH",
         ],
         None,
     ),
     (
         &[
-            "MQCFH", "MQCFBF", "MQCFBS", "MQCFGR", "MQCFIF", "MQCFIL", "MQCFIL64", "MQCFIN", "MQCFIN64", "MQCFSF",
-            "MQCFSL", "MQCFST", "MQEPH", "MQZED", "MQZAC", "MQZAD", "MQZFP", "MQZIC"
+            "MQCFH", "MQCFBF", "MQCFBS", "MQCFGR", "MQCFIF", "MQCFIL", "MQCFIL64", "MQCFIN", "MQCFIN64", "MQCFSF", "MQCFSL",
+            "MQCFST", "MQEPH", "MQZED", "MQZAC", "MQZAD", "MQZFP", "MQZIC",
         ],
         Some(&["pcf"]),
     ),
     (
         &[
-            "MQACH", "MQAXC", "MQAXP", "MQCXP", "MQDXP", "MQNXP", "MQPBC", "MQPSXP", "MQSBC", "MQWCR", "MQWDR",
-            "MQWDR1", "MQWDR2", "MQWQR", "MQWQR1", "MQWQR2", "MQWQR3", "MQWQR4", "MQWXP", "MQWXP1", "MQWXP2", "MQWXP3",
-            "MQWXP4", "MQXEPO", "MQIEP",
+            "MQACH", "MQAXC", "MQAXP", "MQCXP", "MQDXP", "MQNXP", "MQPBC", "MQPSXP", "MQSBC", "MQWCR", "MQWDR", "MQWDR1",
+            "MQWDR2", "MQWQR", "MQWQR1", "MQWQR2", "MQWQR3", "MQWQR4", "MQWXP", "MQWXP1", "MQWXP2", "MQWXP3", "MQWXP4", "MQXEPO",
+            "MQIEP",
         ],
         Some(&["exits"]),
     ),
@@ -53,7 +53,7 @@ const TYPES: &[FeatureFilter<&str>] = &[
 /// Rules sequentually applied to constants to determine target rust type
 pub const DEF_CONST: &[(&[&str], IntKind)] = &[
     (
-        &["^MQ.*_ERROR$", "^MQIA_.+" ],
+        &["^MQ.*_ERROR$", "^MQIA_.+"],
         IntKind::Custom {
             name: "MQLONG",
             is_signed: true,
