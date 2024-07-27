@@ -439,6 +439,37 @@ impl function::MQI for LinkedMQ {
             lib::MQDLTMP(Hconn, Hmsg, pDltPropOpts, pName, pCompCode, pReason);
         }
     }
+
+    unsafe fn MQXCNVC(
+        &self,
+        Hconn: lib::MQHCONN,
+        Options: lib::MQLONG,
+        SourceCCSID: lib::MQLONG,
+        SourceLength: lib::MQLONG,
+        pSourceBuffer: lib::PMQCHAR,
+        TargetCCSID: lib::MQLONG,
+        TargetLength: lib::MQLONG,
+        pTargetBuffer: lib::PMQCHAR,
+        pDataLength: lib::PMQLONG,
+        pCompCode: lib::PMQLONG,
+        pReason: lib::PMQLONG,
+    ) {
+        unsafe {
+            lib::MQXCNVC(
+                Hconn,
+                Options,
+                SourceCCSID,
+                SourceLength,
+                pSourceBuffer,
+                TargetCCSID,
+                TargetLength,
+                pTargetBuffer,
+                pDataLength,
+                pCompCode,
+                pReason,
+            );
+        }
+    }
 }
 
 #[cfg(feature = "mqai")]

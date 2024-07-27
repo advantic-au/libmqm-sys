@@ -233,6 +233,19 @@ pub struct MQWrapper {
         pCompCode: mqsys::PMQLONG,
         pReason: mqsys::PMQLONG,
     ),
+    MQXCNVC: unsafe extern "C" fn(
+        Hconn: mqsys::MQHCONN,
+        Options: mqsys::MQLONG,
+        SourceCCSID: mqsys::MQLONG,
+        SourceLength: mqsys::MQLONG,
+        pSourceBuffer: mqsys::PMQCHAR,
+        TargetCCSID: mqsys::MQLONG,
+        TargetLength: mqsys::MQLONG,
+        pTargetBuffer: mqsys::PMQCHAR,
+        pDataLength: mqsys::PMQLONG,
+        pCompCode: mqsys::PMQLONG,
+        pReason: mqsys::PMQLONG,
+    ),
     #[cfg(feature = "mqai")]
     mqCreateBag:
         unsafe extern "C" fn(Options: mqsys::MQLONG, pBag: mqsys::PMQHBAG, pCompCode: mqsys::PMQLONG, pReason: mqsys::PMQLONG),
@@ -978,6 +991,38 @@ impl function::MQI for MqmContainer {
     ) {
         unsafe {
             MQWrapper::MQDLTMP(self, Hconn, Hmsg, pDltPropOpts, pName, pCompCode, pReason);
+        }
+    }
+
+    unsafe fn MQXCNVC(
+        &self,
+        Hconn: mqsys::MQHCONN,
+        Options: mqsys::MQLONG,
+        SourceCCSID: mqsys::MQLONG,
+        SourceLength: mqsys::MQLONG,
+        pSourceBuffer: mqsys::PMQCHAR,
+        TargetCCSID: mqsys::MQLONG,
+        TargetLength: mqsys::MQLONG,
+        pTargetBuffer: mqsys::PMQCHAR,
+        pDataLength: mqsys::PMQLONG,
+        pCompCode: mqsys::PMQLONG,
+        pReason: mqsys::PMQLONG,
+    ) {
+        unsafe {
+            MQWrapper::MQXCNVC(
+                self,
+                Hconn,
+                Options,
+                SourceCCSID,
+                SourceLength,
+                pSourceBuffer,
+                TargetCCSID,
+                TargetLength,
+                pTargetBuffer,
+                pDataLength,
+                pCompCode,
+                pReason,
+            );
         }
     }
 }

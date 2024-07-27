@@ -229,6 +229,21 @@ pub trait MQI {
         pCompCode: mqsys::PMQLONG,
         pReason: mqsys::PMQLONG,
     );
+
+    unsafe fn MQXCNVC(
+        &self,
+        Hconn: mqsys::MQHCONN,
+        Options: mqsys::MQLONG,
+        SourceCCSID: mqsys::MQLONG,
+        SourceLength: mqsys::MQLONG,
+        pSourceBuffer: mqsys::PMQCHAR,
+        TargetCCSID: mqsys::MQLONG,
+        TargetLength: mqsys::MQLONG,
+        pTargetBuffer: mqsys::PMQCHAR,
+        pDataLength: mqsys::PMQLONG,
+        pCompCode: mqsys::PMQLONG,
+        pReason: mqsys::PMQLONG,
+    );
 }
 
 /// IBM® MQ Administration Interface (MQAI) function calls
