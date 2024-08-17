@@ -5,7 +5,7 @@ use crate::lib;
 pub const LINKED: LinkedMQ = LinkedMQ;
 
 /// Provides access to compile time linked MQI and MQAI functions
-#[derive(Debug)]
+#[derive(Debug, Clone, Copy)]
 pub struct LinkedMQ;
 
 impl function::MQI for LinkedMQ {
