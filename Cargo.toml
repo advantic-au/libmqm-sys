@@ -1,6 +1,6 @@
 [package]
 name = "libmqm-sys"
-version = "0.3.0"
+version = "0.4.0"
 description = "Native bindings to the IBM® MQ Interface (MQI) and MQ Administration Interface (MQAI)"
 authors = [ "Warren Spits <warren@advantic.au>" ]
 repository = "https://github.com/advantic-au/libmqm-sys"
