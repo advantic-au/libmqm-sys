@@ -2,7 +2,7 @@ use crate::lib as mqsys;
 
 /// IBM® MQ Interface (MQI) function calls
 #[allow(clippy::missing_safety_doc, clippy::too_many_arguments, non_snake_case)]
-pub trait MQI {
+pub trait Mqi {
     unsafe fn MQCONNX(
         &self,
         pQMgrName: mqsys::PMQCHAR,
@@ -249,7 +249,7 @@ pub trait MQI {
 /// IBM® MQ Administration Interface (MQAI) function calls
 #[allow(clippy::missing_safety_doc, clippy::too_many_arguments, non_snake_case)]
 #[cfg(feature = "mqai")]
-pub trait MQAI {
+pub trait Mqai {
     unsafe fn mqCreateBag(
         &self,
         Options: mqsys::MQLONG,

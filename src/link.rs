@@ -1,14 +1,11 @@
 use crate::function;
 use crate::lib;
 
-/// Instance to access the MQI and MQAI functions linked at compile time
-pub const LINKED: LinkedMQ = LinkedMQ;
-
 /// Provides access to compile time linked MQI and MQAI functions
 #[derive(Debug, Clone, Copy)]
-pub struct LinkedMQ;
+pub struct LinkedMq;
 
-impl function::MQI for LinkedMQ {
+impl function::Mqi for LinkedMq {
     unsafe fn MQCONNX(
         &self,
         pQMgrName: lib::PMQCHAR,
@@ -473,7 +470,7 @@ impl function::MQI for LinkedMQ {
 }
 
 #[cfg(feature = "mqai")]
-impl function::MQAI for LinkedMQ {
+impl function::Mqai for LinkedMq {
     unsafe fn mqCreateBag(&self, Options: lib::MQLONG, pBag: lib::PMQHBAG, pCompCode: lib::PMQLONG, pReason: lib::PMQLONG) {
         unsafe {
             lib::mqCreateBag(Options, pBag, pCompCode, pReason);

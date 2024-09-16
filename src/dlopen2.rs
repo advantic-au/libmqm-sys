@@ -535,7 +535,7 @@ pub struct MQWrapper {
         unsafe extern "C" fn(Bag: mqsys::MQHBAG, ItemCount: mqsys::MQLONG, pCompCode: mqsys::PMQLONG, pReason: mqsys::PMQLONG),
 }
 
-impl function::MQI for MqmContainer {
+impl function::Mqi for MqmContainer {
     unsafe fn MQCONNX(
         &self,
         pQMgrName: mqsys::PMQCHAR,
@@ -1028,7 +1028,7 @@ impl function::MQI for MqmContainer {
 }
 
 #[cfg(feature = "mqai")]
-impl function::MQAI for MqmContainer {
+impl function::Mqai for MqmContainer {
     unsafe fn mqCreateBag(
         &self,
         Options: mqsys::MQLONG,

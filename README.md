@@ -40,9 +40,9 @@ Usage
 
 5. Use the crate in your source code:
 
-```rust
-use libmqm-sys as mqsys;
-```
+    ```rust
+    use libmqm-sys as mqsys;
+    ```
 
 Example
 -------
