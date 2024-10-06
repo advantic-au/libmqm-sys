@@ -3,7 +3,7 @@ use std::path::Path;
 use bindgen::callbacks::{IntKind, ParseCallbacks};
 use regex::Regex;
 
-use super::{filter_features, FeatureFilter};
+use super::features::{filter_features, FeatureFilter};
 
 /// Header files that bindgen uses to generate bindings
 const HEADER_FILES: &[FeatureFilter<&str>] = &[
@@ -140,7 +140,7 @@ pub fn generate_bindings(mq_inc_path: &Path) -> Result<bindgen::Bindings, bindge
         .allowlist_var(".*");
 
     // Choose the IBM MQI c headers
-    let builder = super::filter_features(HEADER_FILES)
+    let builder = filter_features(HEADER_FILES)
         // Add all the header files
         .fold(builder, |builder, header| {
             builder.header(mq_inc_path.join(header).to_str().expect("\"{header}\" is not valid"))

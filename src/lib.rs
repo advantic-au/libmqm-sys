@@ -8,13 +8,12 @@
 #![allow(non_camel_case_types)]
 #![allow(non_snake_case)]
 
-#[allow(clippy::all)]
 #[cfg(feature = "bindgen")]
 pub mod lib {
-    include!(concat!(env!("OUT_DIR"), "/bindings.rs"));
+    mod bindgen;
+    pub use bindgen::*;
 }
 
-#[allow(clippy::all)]
 #[cfg(not(feature = "bindgen"))]
 pub mod lib {
     mod pregen;

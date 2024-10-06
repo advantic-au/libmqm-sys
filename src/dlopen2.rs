@@ -11,7 +11,7 @@ pub const MQM_LIB: &str = if cfg!(windows) { "mqm.dll" } else { "libmqm_r.so" };
 /// A [dlopen2] [Container] for the MQI library
 pub type MqmContainer = Container<MqWrapper>;
 
-pub trait LoadMqm: Sized {
+pub trait LoadMqm {
     /// Loads the mqm library using the platform dependent search rules
     ///
     /// # Safety
@@ -19,7 +19,7 @@ pub trait LoadMqm: Sized {
     ///
     /// # Errors
     /// Will return `Err` if the dynamic library could not be loaded
-    unsafe fn load_mqm_default() -> Result<Self, dlopen2::Error>;
+    unsafe fn load_mqm_default() -> Result<Self, dlopen2::Error> where Self: std::marker::Sized;
 }
 
 impl LoadMqm for MqmContainer {
