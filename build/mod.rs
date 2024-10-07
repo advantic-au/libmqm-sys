@@ -15,7 +15,9 @@ mod features {
     }
 
     /// Filter iterator by selected build feature
-    pub fn filter_features<'a, T: 'a>(features: impl IntoIterator<Item = &'a FeatureFilter<'a, T>>) -> impl Iterator<Item = &'a T> {
+    pub fn filter_features<'a, T: 'a>(
+        features: impl IntoIterator<Item = &'a FeatureFilter<'a, T>>,
+    ) -> impl Iterator<Item = &'a T> {
         features
             .into_iter()
             .filter(|&(.., feature)| match feature {
@@ -52,7 +54,7 @@ mod mqi_helpers {
                 .compile("mq_functions")
         })
         .map_err(|_| io::Error::new(io::ErrorKind::InvalidData, "Failed to compile c files"))
-    }    
+    }
 }
 
 #[cfg(feature = "link_mqm")]
@@ -62,11 +64,10 @@ mod link_mqm {
     pub fn link_lib() -> &'static str {
         env::var("CARGO_CFG_WINDOWS").map(|_| "mqm").unwrap_or("mqm_r")
     }
-    
 
     pub fn lib_path() -> &'static str {
         env::var("CARGO_CFG_WINDOWS").map(|_| "tools/lib64").unwrap_or("lib64")
-    }    
+    }
 }
 
 mod mq_path {
@@ -80,7 +81,7 @@ mod mq_path {
 
     fn inc_sub_path() -> &'static str {
         env::var("CARGO_CFG_WINDOWS").map(|_| "tools/c/include").unwrap_or("inc")
-    }    
+    }
 
     pub fn home_path() -> PathBuf {
         PathBuf::from(env::var("MQ_HOME").unwrap_or_else(|_| default_home().to_string()))
@@ -89,7 +90,6 @@ mod mq_path {
     pub fn mq_inc_path() -> PathBuf {
         home_path().join(inc_sub_path())
     }
-
 }
 
 fn main() -> Result<(), io::Error> {
@@ -108,7 +108,8 @@ fn main() -> Result<(), io::Error> {
     #[cfg(feature = "bindgen")]
     {
         // Generate and write the bindings file
-        let out_path = std::path::PathBuf::from(std::env::var("OUT_DIR").map_err(|e| io::Error::new(io::ErrorKind::InvalidInput, e))?); // Mandatory OUT_DIR
+        let out_path =
+            std::path::PathBuf::from(std::env::var("OUT_DIR").map_err(|e| io::Error::new(io::ErrorKind::InvalidInput, e))?); // Mandatory OUT_DIR
         mqi_bindgen::generate_bindings(&mq_path::mq_inc_path())
             .map_err(|e| io::Error::new(io::ErrorKind::InvalidData, e))?
             .write_to_file(out_path.join("bindings.rs"))?;

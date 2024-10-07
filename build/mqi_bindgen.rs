@@ -15,8 +15,8 @@ const HEADER_FILES: &[FeatureFilter<&str>] = &[
         ],
         None,
     ), // MQI
-    (&["cmqbc.h"], Some(&["mqai"])),            // MQAI
-    (&["cmqec.h", "cmqcfc.h"], Some(&["pcf"])), // PCF
+    (&["cmqbc.h", "cmqcfc.h"], Some(&["mqai"])), // MQAI
+    (&["cmqec.h", "cmqcfc.h"], Some(&["pcf"])),  // PCF
 ];
 
 /// Functions that have bindings generated

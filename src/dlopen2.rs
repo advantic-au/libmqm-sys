@@ -19,7 +19,9 @@ pub trait LoadMqm {
     ///
     /// # Errors
     /// Will return `Err` if the dynamic library could not be loaded
-    unsafe fn load_mqm_default() -> Result<Self, dlopen2::Error> where Self: std::marker::Sized;
+    unsafe fn load_mqm_default() -> Result<Self, dlopen2::Error>
+    where
+        Self: std::marker::Sized;
 }
 
 impl LoadMqm for MqmContainer {
