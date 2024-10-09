@@ -129,6 +129,7 @@ pub fn generate_bindings(mq_inc_path: &Path) -> Result<bindgen::Bindings, bindge
     // to bindgen, and lets you build up options for
     // the resulting bindings.
     let builder = bindgen::builder()
+        .rust_target(bindgen::RustTarget::Stable_1_77)
         .clang_arg(format!("-I{}", mq_inc_path.display()))
         .generate_cstr(true)
         // Tell cargo to invalidate the built crate whenever any of the
