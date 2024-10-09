@@ -19,7 +19,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Cache MQC redist
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         id: cache-mqc-redist
         with:
           path: ${{ env.MQ_HOME }}

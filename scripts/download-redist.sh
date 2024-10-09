@@ -10,3 +10,4 @@ cd $TARGET
 curl --retry 10 --retry-connrefused --location --silent --show-error --fail -O https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/messaging/mqdev/redist/$MQC_REDIST_TAR
 echo $MQC_REDIST_SHA256 $MQC_REDIST_TAR | sha256sum --check --status
 tar zxf $MQC_REDIST_TAR
+rm $MQC_REDIST_TAR
