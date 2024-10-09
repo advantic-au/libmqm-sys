@@ -15,6 +15,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Cache MQC redist
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-mqc-redist
+          mqi-path: /tmp/mqc_redist
+        with:
+          path: ${{ env.mqi-path }}
+          key: build-${{ env.cache-name }}-${{ hashFiles('scripts/download-redist.sh') }}
+      
+      - if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
+        name: Download MQC redist
+        run: sh scripts/download-redist.sh ${{ env.mqi-path }}
+
       - name: Install stable
         uses: dtolnay/rust-toolchain@stable
         with:
@@ -24,4 +37,4 @@ jobs:
         run: cargo fmt -- --check
 
       - name: Run clippy
-        run: cargo clippy --tests
+        run: cargo clippy --tests --all-features
