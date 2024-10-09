@@ -1,7 +1,7 @@
 use std::path::Path;
 
 use bindgen::callbacks::{IntKind, ParseCallbacks};
-use regex::Regex;
+use regex_lite::Regex;
 
 use super::features::{filter_features, FeatureFilter};
 
