@@ -12,21 +12,22 @@ jobs:
   rustfmt-clippy:
     runs-on: ubuntu-latest
 
+    env:
+      MQ_HOME: /tmp/mqc_redist
+
     steps:
       - uses: actions/checkout@v4
 
       - name: Cache MQC redist
         uses: actions/cache@v3
-        env:
-          cache-name: cache-mqc-redist
-          mqi-path: /tmp/mqc_redist
+        id: cache-mqc-redist
         with:
-          path: ${{ env.mqi-path }}
-          key: build-${{ env.cache-name }}-${{ hashFiles('scripts/download-redist.sh') }}
+          path: ${{ env.MQ_HOME }}
+          key: mqc-redist-${{ hashFiles('scripts/download-redist.sh') }}
       
-      - if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
+      - if: ${{ steps.cache-mqc-redist.outputs.cache-hit != 'true' }}
         name: Download MQC redist
-        run: sh scripts/download-redist.sh ${{ env.mqi-path }}
+        run: sh scripts/download-redist.sh ${{ env.MQ_HOME }}
 
       - name: Install stable
         uses: dtolnay/rust-toolchain@stable
