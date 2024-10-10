@@ -1575,6 +1575,6 @@ mod tests {
 
     #[test]
     fn mqdist_load_default() {
-        unsafe { MqmContainer::load_mqm_default() }.expect("Could not open library or load symbols");
+        unsafe { MqmContainer::load_mqm_default() }.expect("MQM library to be loaded");
     }
 }

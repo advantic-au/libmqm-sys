@@ -14,8 +14,13 @@ You can use `libmqm-sys` to:
 
 Functions provided in this crate are the raw `unsafe` functions exposed from the
 IBM provided library. Developers should build safe rust API wrappers over these functions.
+Developers who do not want to use the unsafe API should use the
+[mqi](https::/github.com/advantic-au/mqi) crate for a *safe* API over the MQI.
 
 Compile time dynamic linking and run-time dynamic linking is supported.
+
+Developers must download the [MQI library](https://ibm.biz/mq94redistclients) directly from IBM.
+Refer to the [Usage] instructions.
 
 Usage
 -----
@@ -74,6 +79,8 @@ mod test {
 }
 ```
 
+For further examples of using the API, refer to the [MQI crate usage](https://github.com/advantic-au/mqi/blob/develop/src/core/mqi_verbs.rs).
+
 Feature flags
 -------------
 
@@ -93,7 +100,6 @@ The following needs further work:
 
 - Documentation.
 - Test and support older versions of MQI.
-- Add complex examples.
 
 Contributions
 -------------

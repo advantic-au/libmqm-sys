@@ -117,7 +117,7 @@ pub fn generate_bindings(mq_inc_path: &Path) -> Result<bindgen::Bindings, bindge
                 (
                     re_list
                         .iter()
-                        .map(|re| Regex::new(re).expect("\"{re}\" is not valid"))
+                        .map(|re| Regex::new(re).expect("\"{re}\" to be valid"))
                         .collect(),
                     kind,
                 )
