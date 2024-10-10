@@ -70,6 +70,7 @@ mod link_mqm {
     }
 }
 
+#[cfg(any(feature = "link_mqm", feature = "mqi_helpers", feature = "bindgen"))]
 mod mq_path {
     use std::{env, path::PathBuf};
 
