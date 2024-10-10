@@ -21,7 +21,7 @@ jobs:
         with:
           path: ${{ env.MQ_HOME }}
           key: mqc-redist-${{ hashFiles('scripts/download-redist.sh') }}
-
+      - uses: actions/checkout@v4
       - if: ${{ steps.cache-mqc-redist.outputs.cache-hit != 'true' }}
         name: Download MQC redist
         run: sh scripts/download-redist.sh ${{ env.MQ_HOME }}
@@ -48,7 +48,7 @@ jobs:
     needs: [mqc-redist]
     name: Current MSRV is 1.77
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       # Re-resolve Cargo.lock with minimal versions
       - uses: dtolnay/rust-toolchain@nightly # -Z option only available on nightly
       - run: cargo update -Z minimal-versions
