@@ -13,33 +13,13 @@ env:
   RUSTFLAGS: -Dwarnings
 
 jobs:
-  mqc-redist:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Cache MQC redist
-        uses: actions/cache@v4
-        id: cache-mqc-redist
-        with:
-          path: ${{ env.MQ_HOME }}
-          key: mqc-redist-${{ hashFiles('scripts/download-redist.sh') }}
-      - if: ${{ steps.cache-mqc-redist.outputs.cache-hit != 'true' }}
-        name: Download MQC redist
-        run: sh scripts/download-redist.sh ${{ env.MQ_HOME }}
-
   rustfmt-clippy:
     runs-on: ubuntu-latest
-    needs: [mqc-redist]
     steps:
       - uses: actions/checkout@v4
-
-      - name: MQC redist
-        uses: actions/cache@v4
-        id: cache-mqc-redist
+      - uses: ./.github/actions/mqc_redist
         with:
           path: ${{ env.MQ_HOME }}
-          key: mqc-redist-${{ hashFiles('scripts/download-redist.sh') }}
 
       - name: Install stable
         uses: dtolnay/rust-toolchain@stable
@@ -52,20 +32,13 @@ jobs:
       - name: Run clippy
         run: cargo clippy --tests --all-features
 
-  minimal:
+  minimum:
     runs-on: ubuntu-latest
-    needs: [mqc-redist]
-    name: Minimal versions of dependencies and MSRV
     steps:
       - uses: actions/checkout@v4
-
-      - name: MQC redist
-        uses: actions/cache@v4
-        id: cache-mqc-redist
+      - uses: ./.github/actions/mqc_redist
         with:
           path: ${{ env.MQ_HOME }}
-          key: mqc-redist-${{ hashFiles('scripts/download-redist.sh') }}
-
       # Re-resolve Cargo.lock with minimal versions
       - uses: dtolnay/rust-toolchain@nightly # -Z option only available on nightly
       - run: cargo generate-lockfile -Z minimal-versions
@@ -73,8 +46,7 @@ jobs:
       - uses: dtolnay/rust-toolchain@1.77
       - run: cargo check --locked --all-features
 
-  doc:
-    name: Documentation
+  docs:
     runs-on: ubuntu-latest
     env:
       RUSTDOCFLAGS: -Dwarnings

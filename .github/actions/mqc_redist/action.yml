@@ -1,0 +1,21 @@
+name: mqc-redist
+description: Downloads the MQ client library redist from IBM
+
+inputs:
+  path:
+    description: Path to download the MQ client library
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Cache MQC redist
+      uses: actions/cache@v4
+      id: cache-mqc-redist
+      with:
+        path: ${{ inputs.path }}
+        key: mqc-redist-${{ hashFiles('scripts/download-redist.sh') }}
+    - if: ${{ steps.cache-mqc-redist.outputs.cache-hit != 'true' }}
+      name: Download MQC redist
+      shell: bash
+      run: ./scripts/download-redist.sh ${{ inputs.path }}
