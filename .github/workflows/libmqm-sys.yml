@@ -10,6 +10,7 @@ on:
 
 env:
   MQ_HOME: /tmp/mqc_redist
+  RUSTFLAGS: -Dwarnings
 
 jobs:
   mqc-redist:
@@ -51,10 +52,10 @@ jobs:
       - name: Run clippy
         run: cargo clippy --tests --all-features
 
-  msrv:
+  minimal:
     runs-on: ubuntu-latest
     needs: [mqc-redist]
-    name: Current MSRV is 1.77
+    name: Minimal versions of dependencies and MSRV
     steps:
       - uses: actions/checkout@v4
 
@@ -67,7 +68,18 @@ jobs:
 
       # Re-resolve Cargo.lock with minimal versions
       - uses: dtolnay/rust-toolchain@nightly # -Z option only available on nightly
-      - run: cargo update -Z minimal-versions
-      # Now check that `cargo build` works with respect to the oldest possible
+      - run: cargo generate-lockfile -Z minimal-versions
+      # Now verify that `cargo check` works with respect to the oldest possible
       - uses: dtolnay/rust-toolchain@1.77
-      - run: cargo build --all-features
+      - run: cargo check --locked --all-features
+
+  doc:
+    name: Documentation
+    runs-on: ubuntu-latest
+    env:
+      RUSTDOCFLAGS: -Dwarnings
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@nightly # Required for cargo-docs-rs
+      - uses: dtolnay/install@cargo-docs-rs
+      - run: cargo docs-rs
