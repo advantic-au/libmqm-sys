@@ -18,7 +18,7 @@ build = "build/mod.rs"
 default = ["link", "mqi_helpers", "bindgen"]
 docsrs = ["link_api", "pcf", "exits", "mqai", "dlopen2"]
 
-dlopen2 = ["dep:dlopen2"]
+dlopen2 = ["dep:dlopen2", "dep:libc"]
 link = [ "link_mqm", "link_api" ]
 link_mqm = []
 link_api = []
@@ -29,7 +29,8 @@ mqai = []
 bindgen = ["dep:bindgen" ]
 
 [dependencies]
-dlopen2 = { version = "0.7.0", optional = true } 
+dlopen2 = { version = "0.7.0", optional = true }
+libc = { version = "0.2.155", optional = true }
 
 [build-dependencies]
 regex-lite = "0.1.6"
