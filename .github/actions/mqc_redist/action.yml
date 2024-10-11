@@ -16,11 +16,11 @@ runs:
       uses: actions/cache@v4
       id: cache-mqc-redist
       with:
-        path: ${{ github.workspace }}/setup-mqclient
+        path: ${{ inputs.path }}
         key: mqclient-${{ runner.os }}-${{ inputs.mq-client-version }}
     - if: ${{ steps.cache-mqc-redist.outputs.cache-hit != 'true' }}
       name: Download MQC client
       uses: SeyfSV/setup-mqclient@v0.3.1
       with:
         mq-client-version: ${{ inputs.mq-client-version }}
-        mq-client-file-path: ${{ inputs.path }}
+        path: ${{ inputs.path }}
