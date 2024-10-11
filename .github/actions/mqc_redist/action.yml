@@ -23,4 +23,4 @@ runs:
       uses: SeyfSV/setup-mqclient@v0.3.1
       with:
         mq-client-version: ${{ inputs.mq-client-version }}
-        mq-data-path: ${{ inputs.path }}
+        mq-client-file-path: ${{ inputs.path }}
