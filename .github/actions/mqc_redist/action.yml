@@ -5,9 +5,6 @@ inputs:
   path:
     description: Path to download the MQ client library
     required: true
-  mq-client-version:
-    description: MQ client version
-    required: true
 
 runs:
   using: composite
@@ -17,10 +14,10 @@ runs:
       id: cache-mqc-redist
       with:
         path: ${{ inputs.path }}
-        key: mqclient-${{ runner.os }}-${{ inputs.mq-client-version }}
+        key: mqclient-${{ runner.os }}-${{ matrix.mq-client-version }}
     - if: ${{ steps.cache-mqc-redist.outputs.cache-hit != 'true' }}
       name: Download MQC client
       uses: eyfSV/setup-mqclient@v0.3.1
       with:
-        mq-client-version: ${{ inputs.mq-client-version }}
+        mq-client-version: 9.4.0.5
         path: ${{ inputs.path }}
