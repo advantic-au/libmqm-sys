@@ -20,7 +20,7 @@ runs:
         key: mqclient-${{ runner.os }}-${{ inputs.mq-client-version }}
     - if: ${{ steps.cache-mqc-redist.outputs.cache-hit != 'true' }}
       name: Download MQC client
-      uses: eyfSV/setup-mqclient@v0.3.1
+      uses: SeyfSV/setup-mqclient@v0.3.1
       with:
         mq-client-version: ${{ inputs.mq-client-version }}
         path: ${{ inputs.path }}
