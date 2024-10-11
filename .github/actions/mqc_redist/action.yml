@@ -14,8 +14,10 @@ runs:
       id: cache-mqc-redist
       with:
         path: ${{ inputs.path }}
-        key: mqc-redist-${{ hashFiles('scripts/download-redist.sh') }}
+        key: mqclient-${{ runner.os }}-${{ matrix.mq-client-version }}
     - if: ${{ steps.cache-mqc-redist.outputs.cache-hit != 'true' }}
-      name: Download MQC redist
-      shell: bash
-      run: ./scripts/download-redist.sh ${{ inputs.path }}
+      name: Download MQC client
+      uses: eyfSV/setup-mqclient@v0.3.1
+      with:
+        mq-client-version: 9.4.0.5
+        path: ${{ input.path }}
