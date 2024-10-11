@@ -1,13 +1,37 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 
-MQC_REDIST_TAR=9.4.0.5-IBM-MQC-Redist-LinuxX64.tar.gz
-MQC_REDIST_SHA256=5398c48756e80f1cbba86d17d75a55d18f9164bafa6b48eb7f501efc5243dfd9
-TARGET=$1
+BASE_URL=https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/messaging/mqdev/redist/
+VERSION=$1
+PLATFORM=$2
+TARGET_PATH=$3
+CHECKSUMS=$(dirname $0)/checksums.txt
 
-mkdir -p $TARGET
-cd $TARGET
-curl --retry 10 --retry-connrefused --location --silent --show-error --fail -O https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/messaging/mqdev/redist/$MQC_REDIST_TAR
-echo $MQC_REDIST_SHA256 $MQC_REDIST_TAR | sha256sum --check --status
-tar zxf $MQC_REDIST_TAR
-rm $MQC_REDIST_TAR
+case $PLATFORM in
+  Linux)
+    MQC_REDIST_ARCHIVE=${VERSION}-IBM-MQC-Redist-LinuxX64.tar.gz
+    ;;
+  Windows)
+    MQC_REDIST_ARCHIVE=${VERSION}-IBM-MQC-Redist-Win64.zip
+    ;;
+  *)
+    >&2 echo "Unsupported platform $PLATFORM"
+    exit 1
+    ;;
+esac
+
+grep $MQC_REDIST_ARCHIVE $CHECKSUMS || (>&2 echo "Unknown archive $MQC_REDIST_ARCHIVE"; exit 1)
+
+curl -o /tmp/$MQC_REDIST_ARCHIVE --retry 10 --retry-connrefused --location --silent --show-error --fail ${BASE_URL}${MQC_REDIST_ARCHIVE}
+grep $MQC_REDIST_ARCHIVE $CHECKSUMS | (cd /tmp; sha256sum --check --status)
+mkdir -p $TARGET_PATH
+case $PLATFORM in
+  Linux)
+    tar -zxf /tmp/$MQC_REDIST_ARCHIVE -C $TARGET_PATH
+    ;;
+  Windows)
+    unzip -q -o /tmp/$MQC_REDIST_ARCHIVE -d $TARGET_PATH
+    ;;
+esac
+
+rm /tmp/$MQC_REDIST_ARCHIVE
