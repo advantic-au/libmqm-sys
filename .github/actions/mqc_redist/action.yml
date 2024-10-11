@@ -16,9 +16,9 @@ runs:
       uses: actions/cache@v4
       id: cache-mqc-redist
       with:
-        path: ${{ inputs.path }}
+        path: ${{ inputs.download-path }}
         key: mqc-redist-${{ runner.os }}-${{ inputs.mq-client-version }}
     - if: ${{ steps.cache-mqc-redist.outputs.cache-hit != 'true' }}
       name: Download MQC redist
       shell: bash
-      run: ./scripts/download-redist.sh ${{ inputs.mq-client-version }} ${{ runner.os }} ${{ inputs.path }}
+      run: ./scripts/download-redist.sh ${{ inputs.mq-client-version }} ${{ runner.os }} ${{ inputs.download-path }}
