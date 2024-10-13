@@ -1,4 +1,9 @@
-use std::io;
+use std::{
+    env::consts::{ARCH, OS},
+    fs::copy,
+    io,
+    path::PathBuf,
+};
 
 #[cfg(feature = "bindgen")]
 mod mqi_bindgen;
@@ -111,9 +116,23 @@ fn main() -> Result<(), io::Error> {
         // Generate and write the bindings file
         let out_path =
             std::path::PathBuf::from(std::env::var("OUT_DIR").map_err(|e| io::Error::new(io::ErrorKind::InvalidInput, e))?); // Mandatory OUT_DIR
+        let out_bindings = out_path.join("bindings.rs");
+
         mqi_bindgen::generate_bindings(&mq_path::mq_inc_path())
             .map_err(|e| io::Error::new(io::ErrorKind::InvalidData, e))?
-            .write_to_file(out_path.join("bindings.rs"))?;
+            .write_to_file(out_bindings.clone())?;
+
+        #[cfg(feature = "pregen")]
+        {
+            copy(
+                out_bindings,
+                PathBuf::from("./src/lib/pregen").join(format!(
+                    "{}-{}-bindings.rs",
+                    if OS == "macOS" { "any" } else { ARCH },
+                    OS
+                )),
+            )?;
+        }
     }
 
     Ok(())

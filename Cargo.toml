@@ -17,6 +17,7 @@ build = "build/mod.rs"
 [features]
 default = ["link", "mqi_helpers", "bindgen"]
 docsrs = ["link_api", "pcf", "exits", "mqai", "dlopen2"]
+pregen = ["pcf", "exits", "mqai", "bindgen"]
 
 dlopen2 = ["dep:dlopen2", "dep:libc"]
 link = [ "link_mqm", "link_api" ]
