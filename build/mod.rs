@@ -1,9 +1,4 @@
-use std::{
-    env::consts::{ARCH, OS},
-    fs::copy,
-    io,
-    path::PathBuf,
-};
+use std::io;
 
 #[cfg(feature = "bindgen")]
 mod mqi_bindgen;
@@ -124,12 +119,14 @@ fn main() -> Result<(), io::Error> {
 
         #[cfg(feature = "pregen")]
         {
-            copy(
+            use std::{env::consts as env_consts, fs, path};
+
+            fs::copy(
                 out_bindings,
-                PathBuf::from("./src/lib/pregen").join(format!(
+                path::PathBuf::from("./src/lib/pregen").join(format!(
                     "{}-{}-bindings.rs",
-                    if OS == "macOS" { "any" } else { ARCH },
-                    OS
+                    if env_consts::OS == "macOS" { "any" } else { env_consts::ARCH },
+                    env_consts::OS
                 )),
             )?;
         }
