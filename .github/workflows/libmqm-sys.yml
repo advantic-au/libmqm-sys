@@ -9,7 +9,6 @@ on:
       - develop
 
 env:
-  MQ_HOME: /tmp/mqc_redist
   MQ_VERSION: 9.4.0.5
   RUSTFLAGS: -Dwarnings
 
@@ -18,9 +17,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: ./.github/actions/mqc_redist
+
+      - uses: advantic-au/action-mq-client@stable
+        id: mq-client
         with:
-          download-path: ${{ env.MQ_HOME }}
           mq-client-version: ${{ env.MQ_VERSION }}
 
       - name: Install stable
@@ -38,9 +38,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: ./.github/actions/mqc_redist
+
+      - uses: advantic-au/action-mq-client@stable
+        id: mq-client
         with:
-          download-path: ${{ env.MQ_HOME }}
           mq-client-version: ${{ env.MQ_VERSION }}
 
       # Re-resolve Cargo.lock with minimal versions
