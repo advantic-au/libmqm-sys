@@ -21,7 +21,7 @@ jobs:
       - uses: advantic-au/action-mq-client@stable
         id: mq-client
         with:
-          mq-client-version: ${{ env.MQ_VERSION }}
+          client-version: ${{ env.MQ_VERSION }}
 
       - name: Install stable
         uses: dtolnay/rust-toolchain@stable
