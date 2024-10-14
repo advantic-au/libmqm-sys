@@ -32,6 +32,8 @@ jobs:
         run: cargo fmt -- --check
 
       - name: Run clippy
+        env:
+          MQ_HOME: ${{ steps.mq-client.outputs.client-install-path }}
         run: cargo clippy --tests --all-features
 
   minimum:
@@ -42,7 +44,7 @@ jobs:
       - uses: advantic-au/action-mq-client@stable
         id: mq-client
         with:
-          mq-client-version: ${{ env.MQ_VERSION }}
+          client-version: ${{ env.MQ_VERSION }}
 
       # Re-resolve Cargo.lock with minimal versions
       - uses: dtolnay/rust-toolchain@nightly # -Z option only available on nightly
