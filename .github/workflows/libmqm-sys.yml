@@ -52,6 +52,8 @@ jobs:
       # Now verify that `cargo check` works with respect to the oldest possible
       - uses: dtolnay/rust-toolchain@1.77
       - run: cargo check --locked --all-features
+        env:
+          MQ_HOME: ${{ steps.mq-client.outputs.client-install-path }}
 
   docs:
     runs-on: ubuntu-latest
