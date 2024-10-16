@@ -42,7 +42,7 @@ jobs:
         env:
           MQ_HOME: ${{ steps.mq-client.outputs.client-install-path }}
         with:
-          args: --tests --all-features
+          check-args: --tests --all-features
           token: ${{secrets.GITHUB_TOKEN}}
 
   minimum:
