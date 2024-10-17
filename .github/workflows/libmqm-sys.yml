@@ -41,7 +41,9 @@ jobs:
           shared-key: "build"
       - name: Run build and refresh bindings
         run: cargo build --no-default-features --features pregen
-      - name: Check pregen changes
+        env:
+          MQ_HOME: ${{ steps.mq-client.outputs.client-install-path }}
+      - name: Check for pregen changes
         run: git diff --quiet --exit-code src/lib/pregen
 
   rustfmt-clippy:
