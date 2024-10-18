@@ -44,7 +44,7 @@ jobs:
         env:
           MQ_HOME: ${{ steps.mq-client.outputs.client-install-path }}
       - name: Check for pregen changes
-        run: git diff --quiet --exit-code src/lib/pregen
+        run: git diff --stat --exit-code src/lib/pregen
 
   rustfmt-clippy:
     runs-on: ubuntu-latest

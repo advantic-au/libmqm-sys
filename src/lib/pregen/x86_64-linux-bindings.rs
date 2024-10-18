@@ -1493,6 +1493,7 @@ pub const MQRC_CALLBACK_LINK_ERROR: MQLONG = 2487;
 pub const MQRC_OPERATION_ERROR: MQLONG = 2488;
 pub const MQRC_BMHO_ERROR: MQLONG = 2489;
 pub const MQRC_UNSUPPORTED_PROPERTY: MQLONG = 2490;
+pub const MQRC_MSG_LENGTH_ERROR: MQLONG = 2491;
 pub const MQRC_PROP_NAME_NOT_CONVERTED: MQLONG = 2492;
 pub const MQRC_GET_ENABLED: MQLONG = 2494;
 pub const MQRC_MODULE_NOT_FOUND: MQLONG = 2495;
@@ -9468,7 +9469,7 @@ const _: () = {
     ["Offset of field: MQI_BY_VALUE_STR::name"][::std::mem::offset_of!(MQI_BY_VALUE_STR, name) - 8usize];
 };
 extern "C" {
-    pub static MQI_BY_VALUE_STR: [MQI_BY_VALUE_STR; 5241usize];
+    pub static MQI_BY_VALUE_STR: [MQI_BY_VALUE_STR; 5242usize];
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -9484,7 +9485,7 @@ const _: () = {
     ["Offset of field: MQI_BY_NAME_STR::value"][::std::mem::offset_of!(MQI_BY_NAME_STR, value) - 8usize];
 };
 extern "C" {
-    pub static MQI_BY_NAME_STR: [MQI_BY_NAME_STR; 5241usize];
+    pub static MQI_BY_NAME_STR: [MQI_BY_NAME_STR; 5242usize];
 }
 pub type MQHBAG = MQLONG;
 pub type PMQHBAG = *mut MQHBAG;
