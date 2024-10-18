@@ -1,6 +1,6 @@
 [package]
 name = "libmqm-sys"
-version = "0.3.0"
+version = "0.4.0"
 description = "Native bindings to the IBM® MQ Interface (MQI) and MQ Administration Interface (MQAI)"
 authors = [ "Warren Spits <warren@advantic.au>" ]
 repository = "https://github.com/advantic-au/libmqm-sys"
@@ -10,15 +10,16 @@ keywords = [ "message-queue", "messaging" ]
 categories = [ "external-ffi-bindings", "asynchronous" ]
 
 edition = "2021"
-rust-version = "1.65"
+rust-version = "1.77" # Note: Also change the github workflow msrv job
 links = "mqm"
 build = "build/mod.rs"
 
 [features]
 default = ["link", "mqi_helpers", "bindgen"]
 docsrs = ["link_api", "pcf", "exits", "mqai", "dlopen2"]
+pregen = ["pcf", "exits", "mqai", "bindgen"]
 
-dlopen2 = ["dep:dlopen2"]
+dlopen2 = ["dep:dlopen2", "dep:libc"]
 link = [ "link_mqm", "link_api" ]
 link_mqm = []
 link_api = []
@@ -29,12 +30,13 @@ mqai = []
 bindgen = ["dep:bindgen" ]
 
 [dependencies]
-dlopen2 = { version = "0.7.0", optional = true } 
+dlopen2 = { version = "0.7.0", optional = true }
+libc = { version = "0.2.155", optional = true }
 
 [build-dependencies]
-regex = "1.10.4"
-bindgen = { version = "0.69.4", optional = true }
-cc = "1.0.97"
+regex-lite = "0.1.6"
+bindgen = { version = "0.70.1", optional = true }
+cc = "1.1.18"
 
 [package.metadata.docs.rs]
 features = ["docsrs"]

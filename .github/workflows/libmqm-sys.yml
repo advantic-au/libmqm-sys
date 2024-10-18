@@ -1,0 +1,105 @@
+name: libmqm-sys
+
+on:
+  push:
+    branches:
+      - develop
+  pull_request:
+    branches:
+      - develop
+
+env:
+  MQ_VERSION: 9.4.0.5
+  RUSTFLAGS: -Dwarnings
+
+permissions:
+    checks: write # For the clippy action
+
+jobs:
+  pregen:
+    strategy:
+      fail-fast: false
+      matrix:
+        build:
+          - os: windows-latest
+            mq-version: 9.4.0.5
+          - os: ubuntu-latest
+            mq-version: 9.4.0.5
+          - os: macos-latest
+            mq-version: 9.4.0.0
+    runs-on: ${{ matrix.build.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: advantic-au/action-mq-client@stable
+        id: mq-client
+        with:
+          client-version: ${{ matrix.build.mq-version }}
+      - name: Install stable
+        uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+        with:
+          shared-key: "build"
+      - name: Run build and refresh bindings
+        run: cargo build --no-default-features --features pregen
+        env:
+          MQ_HOME: ${{ steps.mq-client.outputs.client-install-path }}
+      - name: Check for pregen changes
+        run: git diff --stat --exit-code src/lib/pregen
+
+  rustfmt_clippy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: advantic-au/action-mq-client@stable
+        id: mq-client
+        with:
+          client-version: ${{ env.MQ_VERSION }}
+
+      - name: Install stable
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+      
+      - uses: Swatinem/rust-cache@v2
+        with:
+          shared-key: "build"
+      - name: Run rustfmt
+        run: cargo fmt -- --check
+
+      - name: Run clippy
+        uses: auguwu/clippy-action@1.4.0
+        env:
+          MQ_HOME: ${{ steps.mq-client.outputs.client-install-path }}
+        with:
+          check-args: --tests --all-features
+          token: ${{secrets.GITHUB_TOKEN}}
+
+  minimum:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: advantic-au/action-mq-client@stable
+        id: mq-client
+        with:
+          client-version: ${{ env.MQ_VERSION }}
+
+      # Re-resolve Cargo.lock with minimal versions
+      - uses: dtolnay/rust-toolchain@nightly # -Z option only available on nightly
+      - run: cargo generate-lockfile -Z minimal-versions
+      # Now verify that `cargo check` works with respect to the oldest possible
+      - uses: dtolnay/rust-toolchain@1.77
+      - run: cargo check --locked --all-features
+        env:
+          MQ_HOME: ${{ steps.mq-client.outputs.client-install-path }}
+
+  docs:
+    runs-on: ubuntu-latest
+    env:
+      RUSTDOCFLAGS: -Dwarnings
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@nightly # Required for cargo-docs-rs
+      - uses: dtolnay/install@cargo-docs-rs
+      - run: cargo docs-rs

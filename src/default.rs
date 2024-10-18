@@ -1,16 +1,16 @@
-
-
 /// Defines the [`Default`] of an MQ structure by using the defines
 /// from the MQI C library
 macro_rules! mq_default {
     ($struc:ty, $cdefault:ident) => {
-        extern "C" { static $cdefault: $struc; } // Refer to the compiled c function
+        extern "C" {
+            static $cdefault: $struc;
+        } // Refer to the compiled c function
         impl ::core::default::Default for $struc {
             fn default() -> Self {
                 unsafe { $cdefault }
             }
         }
-    }
+    };
 }
 
 #[cfg(feature = "pcf")]
@@ -71,10 +71,13 @@ mod exits {
 mod mqi {
     use crate::lib;
 
-    extern "C" { static mqcd_client_conn_default: lib::MQCD; }
+    extern "C" {
+        static mqcd_client_conn_default: lib::MQCD;
+    }
     impl lib::MQCD {
         /// Default `MQCD` suitable for MQI client connections
-        #[must_use] pub fn client_conn_default() -> Self {
+        #[must_use]
+        pub fn client_conn_default() -> Self {
             unsafe { mqcd_client_conn_default }
         }
     }

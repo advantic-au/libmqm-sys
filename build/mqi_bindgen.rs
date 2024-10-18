@@ -1,9 +1,9 @@
 use std::path::Path;
 
 use bindgen::callbacks::{IntKind, ParseCallbacks};
-use regex::Regex;
+use regex_lite::Regex;
 
-use super::{filter_features, FeatureFilter};
+use super::features::{filter_features, FeatureFilter};
 
 /// Header files that bindgen uses to generate bindings
 const HEADER_FILES: &[FeatureFilter<&str>] = &[
@@ -15,8 +15,8 @@ const HEADER_FILES: &[FeatureFilter<&str>] = &[
         ],
         None,
     ), // MQI
-    (&["cmqbc.h"], Some(&["mqai"])), // MQAI
-    (&["cmqec.h", "cmqcfc.h"], Some(&["pcf"])), // PCF
+    (&["cmqbc.h", "cmqcfc.h"], Some(&["mqai"])), // MQAI
+    (&["cmqec.h", "cmqcfc.h"], Some(&["pcf"])),  // PCF
 ];
 
 /// Functions that have bindings generated
@@ -26,25 +26,25 @@ const FUNCTIONS: &[FeatureFilter<&str>] = &[(&["MQ.+"], None), (&["mq.+"], Some(
 const TYPES: &[FeatureFilter<&str>] = &[
     (
         &[
-            "MQMD", "MQMDE", "MQMD1", "MQMD2", "MQPD", "MQIMPO", "MQMHBO", "MQBO", "MQDMHO", "MQCMHO", "MQSRO", "MQSD",
-            "MQGMO", "MQPMO", "MQOD", "MQCNO", "MQCD", "MQCSP", "MQSCO", "MQBNO", "MQAIR", "MQBMHO", "MQCBC", "MQCBD",
-            "MQCHARV", "MQCIH", "MQCTLO", "MQDH", "MQDLH", "MQDMPO", "MQIIH", "MQOR", "MQRFH", "MQRFH2", "MQRMH",
-            "MQRR", "MQSMPO", "MQSTS", "MQTM", "MQTMC2", "MQWIH", "MQXQH",
+            "MQMD", "MQMDE", "MQMD1", "MQMD2", "MQPD", "MQIMPO", "MQMHBO", "MQBO", "MQDMHO", "MQCMHO", "MQSRO", "MQSD", "MQGMO",
+            "MQPMO", "MQOD", "MQCNO", "MQCD", "MQCSP", "MQSCO", "MQBNO", "MQAIR", "MQBMHO", "MQCBC", "MQCBD", "MQCHARV", "MQCIH",
+            "MQCTLO", "MQDH", "MQDLH", "MQDMPO", "MQIIH", "MQOR", "MQRFH", "MQRFH2", "MQRMH", "MQRR", "MQSMPO", "MQSTS", "MQTM",
+            "MQTMC2", "MQWIH", "MQXQH",
         ],
         None,
     ),
     (
         &[
-            "MQCFH", "MQCFBF", "MQCFBS", "MQCFGR", "MQCFIF", "MQCFIL", "MQCFIL64", "MQCFIN", "MQCFIN64", "MQCFSF",
-            "MQCFSL", "MQCFST", "MQEPH", "MQZED", "MQZAC", "MQZAD", "MQZFP", "MQZIC"
+            "MQCFH", "MQCFBF", "MQCFBS", "MQCFGR", "MQCFIF", "MQCFIL", "MQCFIL64", "MQCFIN", "MQCFIN64", "MQCFSF", "MQCFSL",
+            "MQCFST", "MQEPH", "MQZED", "MQZAC", "MQZAD", "MQZFP", "MQZIC",
         ],
         Some(&["pcf"]),
     ),
     (
         &[
-            "MQACH", "MQAXC", "MQAXP", "MQCXP", "MQDXP", "MQNXP", "MQPBC", "MQPSXP", "MQSBC", "MQWCR", "MQWDR",
-            "MQWDR1", "MQWDR2", "MQWQR", "MQWQR1", "MQWQR2", "MQWQR3", "MQWQR4", "MQWXP", "MQWXP1", "MQWXP2", "MQWXP3",
-            "MQWXP4", "MQXEPO", "MQIEP",
+            "MQACH", "MQAXC", "MQAXP", "MQCXP", "MQDXP", "MQNXP", "MQPBC", "MQPSXP", "MQSBC", "MQWCR", "MQWDR", "MQWDR1",
+            "MQWDR2", "MQWQR", "MQWQR1", "MQWQR2", "MQWQR3", "MQWQR4", "MQWXP", "MQWXP1", "MQWXP2", "MQWXP3", "MQWXP4", "MQXEPO",
+            "MQIEP",
         ],
         Some(&["exits"]),
     ),
@@ -53,14 +53,14 @@ const TYPES: &[FeatureFilter<&str>] = &[
 /// Rules sequentually applied to constants to determine target rust type
 pub const DEF_CONST: &[(&[&str], IntKind)] = &[
     (
-        &["^MQ.*_ERROR$"], // Errors are always MQLONG
+        &["^MQ.*_ERROR$", "^MQIA_.+"],
         IntKind::Custom {
             name: "MQLONG",
             is_signed: true,
         },
     ),
     (
-        &[".+_LENGTH(_.)?"], // All lengths should be usize
+        &[".+_LENGTH(_.)?", ".+_LEN$"], // All lengths should be usize
         IntKind::Custom {
             name: "usize",
             is_signed: false,
@@ -109,7 +109,7 @@ impl ParseCallbacks for MQCTypeChooser {
     }
 }
 
-pub fn generate_bindings(mq_inc_path: &Path) -> Result<bindgen::Bindings, bindgen::BindgenError> {
+pub fn generate_bindings(mq_inc_path: &Path, mq_version: &str) -> Result<bindgen::Bindings, bindgen::BindgenError> {
     let chooser = MQCTypeChooser(
         DEF_CONST
             .iter()
@@ -117,7 +117,7 @@ pub fn generate_bindings(mq_inc_path: &Path) -> Result<bindgen::Bindings, bindge
                 (
                     re_list
                         .iter()
-                        .map(|re| Regex::new(re).expect("\"{re}\" is not valid"))
+                        .map(|re| Regex::new(re).expect("\"{re}\" to be valid"))
                         .collect(),
                     kind,
                 )
@@ -129,7 +129,9 @@ pub fn generate_bindings(mq_inc_path: &Path) -> Result<bindgen::Bindings, bindge
     // to bindgen, and lets you build up options for
     // the resulting bindings.
     let builder = bindgen::builder()
+        .rust_target(bindgen::RustTarget::Stable_1_77)
         .clang_arg(format!("-I{}", mq_inc_path.display()))
+        .raw_line(format!("/* Generated with MQ client version {} */", mq_version))
         .generate_cstr(true)
         // Tell cargo to invalidate the built crate whenever any of the
         // included header files changed.
@@ -140,7 +142,7 @@ pub fn generate_bindings(mq_inc_path: &Path) -> Result<bindgen::Bindings, bindge
         .allowlist_var(".*");
 
     // Choose the IBM MQI c headers
-    let builder = super::filter_features(HEADER_FILES)
+    let builder = filter_features(HEADER_FILES)
         // Add all the header files
         .fold(builder, |builder, header| {
             builder.header(mq_inc_path.join(header).to_str().expect("\"{header}\" is not valid"))

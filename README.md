@@ -1,6 +1,10 @@
 libmqm-sys
 ==========
 
+[![Latest version](https://img.shields.io/crates/v/libmqm-sys.svg)](https://crates.io/crates/libmqm-sys)
+[![Documentation](https://docs.rs/libmqm-sys/badge.svg)](https://docs.rs/libmqm-sys)
+![License](https://img.shields.io/crates/l/libmqm-sys.svg)
+
 Native bindings to the IBM® MQ Interface (MQI) and MQ Administration Interface (MQAI)
 
 You can use `libmqm-sys` to:
@@ -10,14 +14,19 @@ You can use `libmqm-sys` to:
 
 Functions provided in this crate are the raw `unsafe` functions exposed from the
 IBM provided library. Developers should build safe rust API wrappers over these functions.
+Developers who do not want to use the unsafe API should use the
+[mqi](https://github.com/advantic-au/mqi) crate for a *safe* API over the MQI.
 
 Compile time dynamic linking and run-time dynamic linking is supported.
+
+Developers must download the [MQI library](https://ibm.biz/mq94redistclients) directly from IBM.
+Refer to the [Usage](#usage) instructions.
 
 Usage
 -----
 
 1. Download and install the redistributable client from IBM:
-  <https://ibm.biz/mq93redistclients>
+  <https://ibm.biz/mq94redistclients>
 
 2. Install the client in `/opt/mqm` or another location.
 
@@ -31,14 +40,14 @@ Usage
 
     ```toml
     [dependencies]
-    libmqm-sys = "0.3.0"
+    libmqm-sys = "0.4.0"
     ```
 
 5. Use the crate in your source code:
 
-```rust
-use libmqm-sys as mqsys;
-```
+    ```rust
+    use libmqm-sys as mqsys;
+    ```
 
 Example
 -------
@@ -70,6 +79,8 @@ mod test {
 }
 ```
 
+For further examples of using the API, refer to the [MQI crate usage](https://github.com/advantic-au/mqi/blob/develop/src/core/mqi_verbs.rs).
+
 Feature flags
 -------------
 
@@ -87,10 +98,8 @@ Status
 
 The following needs further work:
 
-- Testing and support on MacOS.
 - Documentation.
 - Test and support older versions of MQI.
-- Add complex examples.
 
 Contributions
 -------------
