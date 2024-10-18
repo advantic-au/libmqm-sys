@@ -145,7 +145,7 @@ fn main() -> Result<(), io::Error> {
                 out_bindings,
                 path::PathBuf::from("./src/lib/pregen").join(format!(
                     "{}-{}-bindings.rs",
-                    if env_consts::OS == "macOS" { "any" } else { env_consts::ARCH },
+                    if env_consts::OS == "macos" { "any" } else { env_consts::ARCH },
                     env_consts::OS
                 )),
             )?;
