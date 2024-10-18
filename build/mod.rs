@@ -127,7 +127,7 @@ fn main() -> Result<(), io::Error> {
         let dspmqver_output = String::from_utf8(Command::new(mq_path::dspmqver()).stdout(Stdio::piped()).output()?.stdout)
             .map_err(|e| io::Error::new(io::ErrorKind::InvalidData, e))?;
 
-        let mq_version = Regex::new(r"\s*Version:\s+(?<version>.*)")
+        let mq_version = Regex::new(r"(?m)^\s*Version:\s+(?<version>.*?)\s*$")
             .expect("valid regex")
             .captures(&dspmqver_output)
             .map(|m| m["version"].to_owned())
