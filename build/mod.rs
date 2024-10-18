@@ -91,6 +91,14 @@ mod mq_path {
     pub fn mq_inc_path() -> PathBuf {
         home_path().join(inc_sub_path())
     }
+
+    pub fn dspmqver() -> PathBuf {
+        home_path().join(
+            env::var("CARGO_CFG_WINDOWS")
+                .map(|_| "bin64/dspmqver.exe")
+                .unwrap_or("bin/dspmqver"),
+        )
+    }
 }
 
 fn main() -> Result<(), io::Error> {
@@ -108,12 +116,24 @@ fn main() -> Result<(), io::Error> {
 
     #[cfg(feature = "bindgen")]
     {
+        use regex_lite::Regex;
+        use std::process::{Command, Stdio};
+
         // Generate and write the bindings file
         let out_path =
             std::path::PathBuf::from(std::env::var("OUT_DIR").map_err(|e| io::Error::new(io::ErrorKind::InvalidInput, e))?); // Mandatory OUT_DIR
         let out_bindings = out_path.join("bindings.rs");
 
-        mqi_bindgen::generate_bindings(&mq_path::mq_inc_path())
+        let dspmqver_output = String::from_utf8(Command::new(mq_path::dspmqver()).stdout(Stdio::piped()).output()?.stdout)
+            .map_err(|e| io::Error::new(io::ErrorKind::InvalidData, e))?;
+
+        let mq_version = Regex::new(r"\s*Version:\s+(?<version>.*)")
+            .expect("valid regex")
+            .captures(&dspmqver_output)
+            .map(|m| m["version"].to_owned())
+            .ok_or_else(|| io::Error::new(io::ErrorKind::InvalidData, "could not extract version from dspmqver"))?;
+
+        mqi_bindgen::generate_bindings(&mq_path::mq_inc_path(), &mq_version)
             .map_err(|e| io::Error::new(io::ErrorKind::InvalidData, e))?
             .write_to_file(out_bindings.clone())?;
 

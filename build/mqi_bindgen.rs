@@ -109,7 +109,7 @@ impl ParseCallbacks for MQCTypeChooser {
     }
 }
 
-pub fn generate_bindings(mq_inc_path: &Path) -> Result<bindgen::Bindings, bindgen::BindgenError> {
+pub fn generate_bindings(mq_inc_path: &Path, mq_version: &str) -> Result<bindgen::Bindings, bindgen::BindgenError> {
     let chooser = MQCTypeChooser(
         DEF_CONST
             .iter()
@@ -131,6 +131,7 @@ pub fn generate_bindings(mq_inc_path: &Path) -> Result<bindgen::Bindings, bindge
     let builder = bindgen::builder()
         .rust_target(bindgen::RustTarget::Stable_1_77)
         .clang_arg(format!("-I{}", mq_inc_path.display()))
+        .raw_line(format!("/* Generated with MQ client version {} */", mq_version))
         .generate_cstr(true)
         // Tell cargo to invalidate the built crate whenever any of the
         // included header files changed.
