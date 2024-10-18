@@ -8,6 +8,8 @@ jobs:
       fail-fast: false
       matrix:
         build:
+          - os: windows-latest
+            mq-version: 9.4.0.5
           - os: ubuntu-latest
             mq-version: 9.4.0.5
           - os: macos-latest
