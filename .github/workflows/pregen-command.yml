@@ -32,3 +32,8 @@ jobs:
         run: cargo build --no-default-features --features pregen
         env:
           MQ_HOME: ${{ steps.mq-client.outputs.client-install-path }}
+      - uses: qoomon/actions--setup-git@v1
+      - name: Modify pull request with refreshed pregen files
+        run: |
+          git commit -am "pregen: MQ client ${{ matrix.build.mq-version }} ${{ matrix.build.os }}"
+          git push
