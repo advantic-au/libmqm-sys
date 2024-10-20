@@ -1,5 +1,5 @@
 #define NULL 0
-#define MQCCSI_APPL 1208
+#include "ccsid.h"
 #include <cmqc.h>
 #include <cmqec.h>
 

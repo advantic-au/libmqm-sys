@@ -1,3 +1,3 @@
-#define MQCCSI_APPL 1208
+#include "ccsid.h"
 #include <cmqc.h>
 #include <cmqstrc.h>

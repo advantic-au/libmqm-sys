@@ -2,6 +2,11 @@ name: Slash Command Dispatch
 on:
   issue_comment:
     types: [created]
+
+permissions:
+  issues: write # for reactions
+  pull-requests: write # for reactions
+
 jobs:
   slash_command_dispatch:
     runs-on: ubuntu-latest
