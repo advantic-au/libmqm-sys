@@ -2,6 +2,1840 @@
 
 /* Generated with MQ client version 9.4.0.5 */
 
+pub type MQBYTE = ::std::os::raw::c_uchar;
+pub type PMQBYTE = *mut MQBYTE;
+pub type MQBYTE4 = [MQBYTE; 4usize];
+pub type MQBYTE8 = [MQBYTE; 8usize];
+pub type MQBYTE16 = [MQBYTE; 16usize];
+pub type MQBYTE24 = [MQBYTE; 24usize];
+pub type MQBYTE32 = [MQBYTE; 32usize];
+pub type MQBYTE40 = [MQBYTE; 40usize];
+pub type MQBYTE48 = [MQBYTE; 48usize];
+pub type MQBYTE128 = [MQBYTE; 128usize];
+pub type MQCHAR = ::std::os::raw::c_char;
+pub type PMQCHAR = *mut MQCHAR;
+pub type MQCHAR4 = [MQCHAR; 4usize];
+pub type MQCHAR8 = [MQCHAR; 8usize];
+pub type MQCHAR12 = [MQCHAR; 12usize];
+pub type MQCHAR28 = [MQCHAR; 28usize];
+pub type MQCHAR32 = [MQCHAR; 32usize];
+pub type MQCHAR48 = [MQCHAR; 48usize];
+pub type MQCHAR64 = [MQCHAR; 64usize];
+pub type MQCHAR128 = [MQCHAR; 128usize];
+pub type MQCHAR256 = [MQCHAR; 256usize];
+pub type MQLONG = ::std::os::raw::c_long;
+pub type MQINT64 = ::std::os::raw::c_longlong;
+pub type PMQLONG = *mut MQLONG;
+pub type PMQINT64 = *mut MQINT64;
+pub type MQIEP = tagMQIEP;
+pub type PMQIEP = *mut MQIEP;
+pub type MQHCONFIG = PMQIEP;
+pub type MQHCONN = MQLONG;
+pub type PMQHCONN = *mut MQHCONN;
+pub type MQHOBJ = MQLONG;
+pub type PMQHOBJ = *mut MQHOBJ;
+pub type MQPTR = *mut ::std::os::raw::c_void;
+pub type PMQPTR = *mut MQPTR;
+pub type PMQFUNC = *mut ::std::os::raw::c_void;
+pub type PMQVOID = *mut ::std::os::raw::c_void;
+pub type MQBOOL = MQLONG;
+pub type MQHMSG = MQINT64;
+pub type PMQHMSG = *mut MQHMSG;
+pub type MQPID = MQLONG;
+pub type MQTID = MQLONG;
+pub type MQAIR = tagMQAIR;
+pub type PMQAIR = *mut MQAIR;
+pub type MQBNO = tagMQBNO;
+pub type PMQBNO = *mut MQBNO;
+pub type MQBMHO = tagMQBMHO;
+pub type MQBO = tagMQBO;
+pub type MQCBC = tagMQCBC;
+pub type MQCBD = tagMQCBD;
+pub type MQCHARV = tagMQCHARV;
+pub type MQCIH = tagMQCIH;
+pub type MQCMHO = tagMQCMHO;
+pub type MQCTLO = tagMQCTLO;
+pub type MQSCO = tagMQSCO;
+pub type PMQSCO = *mut MQSCO;
+pub type MQCSP = tagMQCSP;
+pub type PMQCSP = *mut MQCSP;
+pub type MQCNO = tagMQCNO;
+pub type PMQCNO = *mut MQCNO;
+pub type MQDH = tagMQDH;
+pub type MQDLH = tagMQDLH;
+pub type MQDMHO = tagMQDMHO;
+pub type MQDMPO = tagMQDMPO;
+pub type MQGMO = tagMQGMO;
+pub type MQIIH = tagMQIIH;
+pub type MQIMPO = tagMQIMPO;
+pub type MQMD = tagMQMD;
+pub type PMQMD = *mut MQMD;
+pub type MQMDE = tagMQMDE;
+pub type MQMD1 = tagMQMD1;
+pub type MQMD2 = tagMQMD2;
+pub type MQMHBO = tagMQMHBO;
+pub type MQOD = tagMQOD;
+pub type MQOR = tagMQOR;
+pub type MQPD = tagMQPD;
+pub type MQPMO = tagMQPMO;
+pub type MQRFH = tagMQRFH;
+pub type MQRFH2 = tagMQRFH2;
+pub type MQRMH = tagMQRMH;
+pub type MQRR = tagMQRR;
+pub type MQSD = tagMQSD;
+pub type MQSMPO = tagMQSMPO;
+pub type MQSRO = tagMQSRO;
+pub type MQSTS = tagMQSTS;
+pub type MQTM = tagMQTM;
+pub type MQTMC2 = tagMQTMC2;
+pub type MQWIH = tagMQWIH;
+pub type MQXQH = tagMQXQH;
+pub type MQ_BACK_CALL = ::std::option::Option<unsafe extern "C" fn(Hconn: MQHCONN, pCompCode: PMQLONG, pReason: PMQLONG)>;
+pub type PMQ_BACK_CALL = MQ_BACK_CALL;
+pub type MQ_BEGIN_CALL =
+    ::std::option::Option<unsafe extern "C" fn(Hconn: MQHCONN, pBeginOptions: PMQVOID, pCompCode: PMQLONG, pReason: PMQLONG)>;
+pub type PMQ_BEGIN_CALL = MQ_BEGIN_CALL;
+pub type MQ_BUFMH_CALL = ::std::option::Option<
+    unsafe extern "C" fn(
+        Hconn: MQHCONN,
+        Hmsg: MQHMSG,
+        pBufMsgHOpts: PMQVOID,
+        pMsgDesc: PMQVOID,
+        BufferLength: MQLONG,
+        pBuffer: PMQVOID,
+        pDataLength: PMQLONG,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    ),
+>;
+pub type PMQ_BUFMH_CALL = MQ_BUFMH_CALL;
+pub type MQ_CB_CALL = ::std::option::Option<
+    unsafe extern "C" fn(
+        Hconn: MQHCONN,
+        Operation: MQLONG,
+        pCallbackDesc: PMQVOID,
+        Hobj: MQHOBJ,
+        pMsgDesc: PMQVOID,
+        pGetMsgOpts: PMQVOID,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    ),
+>;
+pub type PMQ_CB_CALL = MQ_CB_CALL;
+pub type MQ_CLOSE_CALL = ::std::option::Option<
+    unsafe extern "C" fn(Hconn: MQHCONN, pHobj: PMQHOBJ, Options: MQLONG, pCompCode: PMQLONG, pReason: PMQLONG),
+>;
+pub type PMQ_CLOSE_CALL = MQ_CLOSE_CALL;
+pub type MQ_CMIT_CALL = ::std::option::Option<unsafe extern "C" fn(Hconn: MQHCONN, pCompCode: PMQLONG, pReason: PMQLONG)>;
+pub type PMQ_CMIT_CALL = MQ_CMIT_CALL;
+pub type MQ_CONN_CALL =
+    ::std::option::Option<unsafe extern "C" fn(pQMgrName: PMQCHAR, pHconn: PMQHCONN, pCompCode: PMQLONG, pReason: PMQLONG)>;
+pub type PMQ_CONN_CALL = MQ_CONN_CALL;
+pub type MQ_CONNX_CALL = ::std::option::Option<
+    unsafe extern "C" fn(pQMgrName: PMQCHAR, pConnectOpts: PMQCNO, pHconn: PMQHCONN, pCompCode: PMQLONG, pReason: PMQLONG),
+>;
+pub type PMQ_CONNX_CALL = MQ_CONNX_CALL;
+pub type MQ_CRTMH_CALL = ::std::option::Option<
+    unsafe extern "C" fn(Hconn: MQHCONN, pCrtMsgHOpts: PMQVOID, pHmsg: PMQHMSG, pCompCode: PMQLONG, pReason: PMQLONG),
+>;
+pub type PMQ_CRTMH_CALL = MQ_CRTMH_CALL;
+pub type MQ_CTL_CALL = ::std::option::Option<
+    unsafe extern "C" fn(Hconn: MQHCONN, Operation: MQLONG, pControlOpts: PMQVOID, pCompCode: PMQLONG, pReason: PMQLONG),
+>;
+pub type PMQ_CTL_CALL = MQ_CTL_CALL;
+pub type MQ_DISC_CALL = ::std::option::Option<unsafe extern "C" fn(pHconn: PMQHCONN, pCompCode: PMQLONG, pReason: PMQLONG)>;
+pub type PMQ_DISC_CALL = MQ_DISC_CALL;
+pub type MQ_DLTMH_CALL = ::std::option::Option<
+    unsafe extern "C" fn(Hconn: MQHCONN, pHmsg: PMQHMSG, pDltMsgHOpts: PMQVOID, pCompCode: PMQLONG, pReason: PMQLONG),
+>;
+pub type PMQ_DLTMH_CALL = MQ_DLTMH_CALL;
+pub type MQ_DLTMP_CALL = ::std::option::Option<
+    unsafe extern "C" fn(
+        Hconn: MQHCONN,
+        Hmsg: MQHMSG,
+        pDltPropOpts: PMQVOID,
+        pName: PMQVOID,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    ),
+>;
+pub type PMQ_DLTMP_CALL = MQ_DLTMP_CALL;
+pub type MQ_GET_CALL = ::std::option::Option<
+    unsafe extern "C" fn(
+        Hconn: MQHCONN,
+        Hobj: MQHOBJ,
+        pMsgDesc: PMQVOID,
+        pGetMsgOpts: PMQVOID,
+        BufferLength: MQLONG,
+        pBuffer: PMQVOID,
+        pDataLength: PMQLONG,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    ),
+>;
+pub type PMQ_GET_CALL = MQ_GET_CALL;
+pub type MQ_INQ_CALL = ::std::option::Option<
+    unsafe extern "C" fn(
+        Hconn: MQHCONN,
+        Hobj: MQHOBJ,
+        SelectorCount: MQLONG,
+        pSelectors: PMQLONG,
+        IntAttrCount: MQLONG,
+        pIntAttrs: PMQLONG,
+        CharAttrLength: MQLONG,
+        pCharAttrs: PMQCHAR,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    ),
+>;
+pub type PMQ_INQ_CALL = MQ_INQ_CALL;
+pub type MQ_INQMP_CALL = ::std::option::Option<
+    unsafe extern "C" fn(
+        Hconn: MQHCONN,
+        Hmsg: MQHMSG,
+        pInqPropOpts: PMQVOID,
+        pName: PMQVOID,
+        pPropDesc: PMQVOID,
+        pType: PMQLONG,
+        ValueLength: MQLONG,
+        pValue: PMQVOID,
+        pDataLength: PMQLONG,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    ),
+>;
+pub type PMQ_INQMP_CALL = MQ_INQMP_CALL;
+pub type MQ_MHBUF_CALL = ::std::option::Option<
+    unsafe extern "C" fn(
+        Hconn: MQHCONN,
+        Hmsg: MQHMSG,
+        pMsgHBufOpts: PMQVOID,
+        pName: PMQVOID,
+        pMsgDesc: PMQVOID,
+        BufferLength: MQLONG,
+        pBuffer: PMQVOID,
+        pDataLength: PMQLONG,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    ),
+>;
+pub type PMQ_MHBUF_CALL = MQ_MHBUF_CALL;
+pub type MQ_OPEN_CALL = ::std::option::Option<
+    unsafe extern "C" fn(
+        Hconn: MQHCONN,
+        pObjDesc: PMQVOID,
+        Options: MQLONG,
+        pHobj: PMQHOBJ,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    ),
+>;
+pub type PMQ_OPEN_CALL = MQ_OPEN_CALL;
+pub type MQ_PUT_CALL = ::std::option::Option<
+    unsafe extern "C" fn(
+        Hconn: MQHCONN,
+        Hobj: MQHOBJ,
+        pMsgDesc: PMQVOID,
+        pPutMsgOpts: PMQVOID,
+        BufferLength: MQLONG,
+        pBuffer: PMQVOID,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    ),
+>;
+pub type PMQ_PUT_CALL = MQ_PUT_CALL;
+pub type MQ_PUT1_CALL = ::std::option::Option<
+    unsafe extern "C" fn(
+        Hconn: MQHCONN,
+        pObjDesc: PMQVOID,
+        pMsgDesc: PMQVOID,
+        pPutMsgOpts: PMQVOID,
+        BufferLength: MQLONG,
+        pBuffer: PMQVOID,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    ),
+>;
+pub type PMQ_PUT1_CALL = MQ_PUT1_CALL;
+pub type MQ_SET_CALL = ::std::option::Option<
+    unsafe extern "C" fn(
+        Hconn: MQHCONN,
+        Hobj: MQHOBJ,
+        SelectorCount: MQLONG,
+        pSelectors: PMQLONG,
+        IntAttrCount: MQLONG,
+        pIntAttrs: PMQLONG,
+        CharAttrLength: MQLONG,
+        pCharAttrs: PMQCHAR,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    ),
+>;
+pub type PMQ_SET_CALL = MQ_SET_CALL;
+pub type MQ_SETMP_CALL = ::std::option::Option<
+    unsafe extern "C" fn(
+        Hconn: MQHCONN,
+        Hmsg: MQHMSG,
+        pSetPropOpts: PMQVOID,
+        pName: PMQVOID,
+        pPropDesc: PMQVOID,
+        Type: MQLONG,
+        ValueLength: MQLONG,
+        pValue: PMQVOID,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    ),
+>;
+pub type PMQ_SETMP_CALL = MQ_SETMP_CALL;
+pub type MQ_STAT_CALL = ::std::option::Option<
+    unsafe extern "C" fn(Hconn: MQHCONN, Type: MQLONG, pStatus: PMQVOID, pCompCode: PMQLONG, pReason: PMQLONG),
+>;
+pub type PMQ_STAT_CALL = MQ_STAT_CALL;
+pub type MQ_SUB_CALL = ::std::option::Option<
+    unsafe extern "C" fn(Hconn: MQHCONN, pSubDesc: PMQVOID, pHobj: PMQHOBJ, pHsub: PMQHOBJ, pCompCode: PMQLONG, pReason: PMQLONG),
+>;
+pub type PMQ_SUB_CALL = MQ_SUB_CALL;
+pub type MQ_SUBRQ_CALL = ::std::option::Option<
+    unsafe extern "C" fn(Hconn: MQHCONN, Hsub: MQHOBJ, Action: MQLONG, pSubRqOpts: PMQVOID, pCompCode: PMQLONG, pReason: PMQLONG),
+>;
+pub type PMQ_SUBRQ_CALL = MQ_SUBRQ_CALL;
+pub type MQCD = tagMQCD;
+pub type PMQCD = *mut MQCD;
+pub type PPMQCD = *mut PMQCD;
+pub type MQACH = tagMQACH;
+pub type PMQACH = *mut MQACH;
+pub type MQAXC = tagMQAXC;
+pub type MQAXP = tagMQAXP;
+pub type MQCXP = tagMQCXP;
+pub type MQDXP = tagMQDXP;
+pub type PMQDXP = *mut MQDXP;
+pub type MQNXP = tagMQNXP;
+pub type MQPBC = tagMQPBC;
+pub type MQPSXP = tagMQPSXP;
+pub type MQSBC = tagMQSBC;
+pub type MQWCR = tagMQWCR;
+pub type MQWDR = tagMQWDR;
+pub type PMQWDR = *mut MQWDR;
+pub type PPMQWDR = *mut PMQWDR;
+pub type MQWDR1 = tagMQWDR1;
+pub type MQWDR2 = tagMQWDR2;
+pub type MQWQR = tagMQWQR;
+pub type PMQWQR = *mut MQWQR;
+pub type PPMQWQR = *mut PMQWQR;
+pub type MQWQR1 = tagMQWQR1;
+pub type MQWQR2 = tagMQWQR2;
+pub type MQWQR3 = tagMQWQR3;
+pub type MQWQR4 = tagMQWQR4;
+pub type MQWXP = tagMQWXP;
+pub type PMQWXP = *mut MQWXP;
+pub type MQWXP1 = tagMQWXP1;
+pub type MQWXP2 = tagMQWXP2;
+pub type MQWXP3 = tagMQWXP3;
+pub type MQWXP4 = tagMQWXP4;
+pub type MQXEPO = tagMQXEPO;
+pub type PMQXEPO = *mut MQXEPO;
+pub type MQ_XEP_CALL = ::std::option::Option<
+    unsafe extern "C" fn(
+        Hconfig: MQHCONFIG,
+        ExitReason: MQLONG,
+        Function: MQLONG,
+        pEntryPoint: PMQFUNC,
+        pExitOpts: PMQXEPO,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    ),
+>;
+pub type PMQ_XEP_CALL = MQ_XEP_CALL;
+pub type MQ_XCLWLN_CALL = ::std::option::Option<
+    unsafe extern "C" fn(
+        pExitParms: PMQWXP,
+        CurrentRecord: MQPTR,
+        NextOffset: MQLONG,
+        pNextRecord: PMQPTR,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    ),
+>;
+pub type PMQ_XCLWLN_CALL = MQ_XCLWLN_CALL;
+pub type MQ_XCNVC_CALL = ::std::option::Option<
+    unsafe extern "C" fn(
+        Hconn: MQHCONN,
+        Options: MQLONG,
+        SourceCCSID: MQLONG,
+        SourceLength: MQLONG,
+        pSourceBuffer: PMQCHAR,
+        TargetCCSID: MQLONG,
+        TargetLength: MQLONG,
+        pTargetBuffer: PMQCHAR,
+        pDataLength: PMQLONG,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    ),
+>;
+pub type PMQ_XCNVC_CALL = MQ_XCNVC_CALL;
+pub type MQ_XDX_CALL = ::std::option::Option<
+    unsafe extern "C" fn(
+        pDataConvExitParms: PMQDXP,
+        pMsgDesc: PMQMD,
+        InBufferLength: MQLONG,
+        pInBuffer: PMQVOID,
+        OutBufferLength: MQLONG,
+        pOutBuffer: PMQVOID,
+    ),
+>;
+pub type PMQ_XDX_CALL = MQ_XDX_CALL;
+pub type MQHBAG = MQLONG;
+pub type PMQHBAG = *mut MQHBAG;
+pub type MQCFH = tagMQCFH;
+pub type MQCFBF = tagMQCFBF;
+pub type MQCFBS = tagMQCFBS;
+pub type MQCFGR = tagMQCFGR;
+pub type MQCFIF = tagMQCFIF;
+pub type MQCFIL = tagMQCFIL;
+pub type MQCFIL64 = tagMQCFIL64;
+pub type MQCFIN = tagMQCFIN;
+pub type MQCFIN64 = tagMQCFIN64;
+pub type MQCFSF = tagMQCFSF;
+pub type MQCFSL = tagMQCFSL;
+pub type MQCFST = tagMQCFST;
+pub type MQEPH = tagMQEPH;
+pub type MQZED = tagMQZED;
+pub type PMQZED = *mut MQZED;
+pub type MQZAC = tagMQZAC;
+pub type MQZAD = tagMQZAD;
+pub type MQZFP = tagMQZFP;
+pub type MQZIC = tagMQZIC;
+pub type MQ_ZEP_CALL = ::std::option::Option<
+    unsafe extern "C" fn(Hconfig: MQHCONFIG, Function: MQLONG, pEntryPoint: PMQFUNC, pCompCode: PMQLONG, pReason: PMQLONG),
+>;
+pub type PMQ_ZEP_CALL = MQ_ZEP_CALL;
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQAIR {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub AuthInfoType: MQLONG,
+    pub AuthInfoConnName: [MQCHAR; 264usize],
+    pub LDAPUserNamePtr: PMQCHAR,
+    pub LDAPUserNameOffset: MQLONG,
+    pub LDAPUserNameLength: MQLONG,
+    pub LDAPPassword: MQCHAR32,
+    pub OCSPResponderURL: MQCHAR256,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQBNO {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub ApplType: MQLONG,
+    pub Timeout: MQLONG,
+    pub Options: MQLONG,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQBMHO {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub Options: MQLONG,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQBO {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub Options: MQLONG,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQCBC {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub CallType: MQLONG,
+    pub Hobj: MQHOBJ,
+    pub CallbackArea: MQPTR,
+    pub ConnectionArea: MQPTR,
+    pub CompCode: MQLONG,
+    pub Reason: MQLONG,
+    pub State: MQLONG,
+    pub DataLength: MQLONG,
+    pub BufferLength: MQLONG,
+    pub Flags: MQLONG,
+    pub ReconnectDelay: MQLONG,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQCBD {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub CallbackType: MQLONG,
+    pub Options: MQLONG,
+    pub CallbackArea: MQPTR,
+    pub CallbackFunction: MQPTR,
+    pub CallbackName: MQCHAR128,
+    pub MaxMsgLength: MQLONG,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQCHARV {
+    pub VSPtr: MQPTR,
+    pub VSOffset: MQLONG,
+    pub VSBufSize: MQLONG,
+    pub VSLength: MQLONG,
+    pub VSCCSID: MQLONG,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQCIH {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub StrucLength: MQLONG,
+    pub Encoding: MQLONG,
+    pub CodedCharSetId: MQLONG,
+    pub Format: MQCHAR8,
+    pub Flags: MQLONG,
+    pub ReturnCode: MQLONG,
+    pub CompCode: MQLONG,
+    pub Reason: MQLONG,
+    pub UOWControl: MQLONG,
+    pub GetWaitInterval: MQLONG,
+    pub LinkType: MQLONG,
+    pub OutputDataLength: MQLONG,
+    pub FacilityKeepTime: MQLONG,
+    pub ADSDescriptor: MQLONG,
+    pub ConversationalTask: MQLONG,
+    pub TaskEndStatus: MQLONG,
+    pub Facility: MQBYTE8,
+    pub Function: MQCHAR4,
+    pub AbendCode: MQCHAR4,
+    pub Authenticator: MQCHAR8,
+    pub Reserved1: MQCHAR8,
+    pub ReplyToFormat: MQCHAR8,
+    pub RemoteSysId: MQCHAR4,
+    pub RemoteTransId: MQCHAR4,
+    pub TransactionId: MQCHAR4,
+    pub FacilityLike: MQCHAR4,
+    pub AttentionId: MQCHAR4,
+    pub StartCode: MQCHAR4,
+    pub CancelCode: MQCHAR4,
+    pub NextTransactionId: MQCHAR4,
+    pub Reserved2: MQCHAR8,
+    pub Reserved3: MQCHAR8,
+    pub CursorPosition: MQLONG,
+    pub ErrorOffset: MQLONG,
+    pub InputItem: MQLONG,
+    pub Reserved4: MQLONG,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQCMHO {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub Options: MQLONG,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQCTLO {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub Options: MQLONG,
+    pub Reserved: MQLONG,
+    pub ConnectionArea: MQPTR,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQSCO {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub KeyRepository: MQCHAR256,
+    pub CryptoHardware: MQCHAR256,
+    pub AuthInfoRecCount: MQLONG,
+    pub AuthInfoRecOffset: MQLONG,
+    pub AuthInfoRecPtr: PMQAIR,
+    pub KeyResetCount: MQLONG,
+    pub FipsRequired: MQLONG,
+    pub EncryptionPolicySuiteB: [MQLONG; 4usize],
+    pub CertificateValPolicy: MQLONG,
+    pub CertificateLabel: MQCHAR64,
+    pub KeyRepoPasswordPtr: MQPTR,
+    pub KeyRepoPasswordOffset: MQLONG,
+    pub KeyRepoPasswordLength: MQLONG,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQCSP {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub AuthenticationType: MQLONG,
+    pub Reserved1: MQBYTE4,
+    pub CSPUserIdPtr: MQPTR,
+    pub CSPUserIdOffset: MQLONG,
+    pub CSPUserIdLength: MQLONG,
+    pub Reserved2: MQBYTE8,
+    pub CSPPasswordPtr: MQPTR,
+    pub CSPPasswordOffset: MQLONG,
+    pub CSPPasswordLength: MQLONG,
+    pub Reserved3: MQBYTE8,
+    pub InitialKeyPtr: MQPTR,
+    pub InitialKeyOffset: MQLONG,
+    pub InitialKeyLength: MQLONG,
+    pub Reserved4: MQBYTE8,
+    pub TokenPtr: MQPTR,
+    pub TokenOffset: MQLONG,
+    pub TokenLength: MQLONG,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQCNO {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub Options: MQLONG,
+    pub ClientConnOffset: MQLONG,
+    pub ClientConnPtr: MQPTR,
+    pub ConnTag: MQBYTE128,
+    pub SSLConfigPtr: PMQSCO,
+    pub SSLConfigOffset: MQLONG,
+    pub ConnectionId: MQBYTE24,
+    pub SecurityParmsOffset: MQLONG,
+    pub SecurityParmsPtr: PMQCSP,
+    pub CCDTUrlPtr: PMQCHAR,
+    pub CCDTUrlOffset: MQLONG,
+    pub CCDTUrlLength: MQLONG,
+    pub Reserved: MQBYTE8,
+    pub ApplName: MQCHAR28,
+    pub Reserved2: MQBYTE4,
+    pub BalanceParmsPtr: PMQBNO,
+    pub BalanceParmsOffset: MQLONG,
+    pub Reserved3: MQBYTE4,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQDH {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub StrucLength: MQLONG,
+    pub Encoding: MQLONG,
+    pub CodedCharSetId: MQLONG,
+    pub Format: MQCHAR8,
+    pub Flags: MQLONG,
+    pub PutMsgRecFields: MQLONG,
+    pub RecsPresent: MQLONG,
+    pub ObjectRecOffset: MQLONG,
+    pub PutMsgRecOffset: MQLONG,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQDLH {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub Reason: MQLONG,
+    pub DestQName: MQCHAR48,
+    pub DestQMgrName: MQCHAR48,
+    pub Encoding: MQLONG,
+    pub CodedCharSetId: MQLONG,
+    pub Format: MQCHAR8,
+    pub PutApplType: MQLONG,
+    pub PutApplName: MQCHAR28,
+    pub PutDate: MQCHAR8,
+    pub PutTime: MQCHAR8,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQDMHO {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub Options: MQLONG,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQDMPO {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub Options: MQLONG,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQGMO {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub Options: MQLONG,
+    pub WaitInterval: MQLONG,
+    pub Signal1: MQLONG,
+    pub Signal2: MQLONG,
+    pub ResolvedQName: MQCHAR48,
+    pub MatchOptions: MQLONG,
+    pub GroupStatus: MQCHAR,
+    pub SegmentStatus: MQCHAR,
+    pub Segmentation: MQCHAR,
+    pub Reserved1: MQCHAR,
+    pub MsgToken: MQBYTE16,
+    pub ReturnedLength: MQLONG,
+    pub Reserved2: MQLONG,
+    pub MsgHandle: MQHMSG,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQIIH {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub StrucLength: MQLONG,
+    pub Encoding: MQLONG,
+    pub CodedCharSetId: MQLONG,
+    pub Format: MQCHAR8,
+    pub Flags: MQLONG,
+    pub LTermOverride: MQCHAR8,
+    pub MFSMapName: MQCHAR8,
+    pub ReplyToFormat: MQCHAR8,
+    pub Authenticator: MQCHAR8,
+    pub TranInstanceId: MQBYTE16,
+    pub TranState: MQCHAR,
+    pub CommitMode: MQCHAR,
+    pub SecurityScope: MQCHAR,
+    pub Reserved: MQCHAR,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQIMPO {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub Options: MQLONG,
+    pub RequestedEncoding: MQLONG,
+    pub RequestedCCSID: MQLONG,
+    pub ReturnedEncoding: MQLONG,
+    pub ReturnedCCSID: MQLONG,
+    pub Reserved1: MQLONG,
+    pub ReturnedName: MQCHARV,
+    pub TypeString: MQCHAR8,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQMD {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub Report: MQLONG,
+    pub MsgType: MQLONG,
+    pub Expiry: MQLONG,
+    pub Feedback: MQLONG,
+    pub Encoding: MQLONG,
+    pub CodedCharSetId: MQLONG,
+    pub Format: MQCHAR8,
+    pub Priority: MQLONG,
+    pub Persistence: MQLONG,
+    pub MsgId: MQBYTE24,
+    pub CorrelId: MQBYTE24,
+    pub BackoutCount: MQLONG,
+    pub ReplyToQ: MQCHAR48,
+    pub ReplyToQMgr: MQCHAR48,
+    pub UserIdentifier: MQCHAR12,
+    pub AccountingToken: MQBYTE32,
+    pub ApplIdentityData: MQCHAR32,
+    pub PutApplType: MQLONG,
+    pub PutApplName: MQCHAR28,
+    pub PutDate: MQCHAR8,
+    pub PutTime: MQCHAR8,
+    pub ApplOriginData: MQCHAR4,
+    pub GroupId: MQBYTE24,
+    pub MsgSeqNumber: MQLONG,
+    pub Offset: MQLONG,
+    pub MsgFlags: MQLONG,
+    pub OriginalLength: MQLONG,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQMDE {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub StrucLength: MQLONG,
+    pub Encoding: MQLONG,
+    pub CodedCharSetId: MQLONG,
+    pub Format: MQCHAR8,
+    pub Flags: MQLONG,
+    pub GroupId: MQBYTE24,
+    pub MsgSeqNumber: MQLONG,
+    pub Offset: MQLONG,
+    pub MsgFlags: MQLONG,
+    pub OriginalLength: MQLONG,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQMD1 {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub Report: MQLONG,
+    pub MsgType: MQLONG,
+    pub Expiry: MQLONG,
+    pub Feedback: MQLONG,
+    pub Encoding: MQLONG,
+    pub CodedCharSetId: MQLONG,
+    pub Format: MQCHAR8,
+    pub Priority: MQLONG,
+    pub Persistence: MQLONG,
+    pub MsgId: MQBYTE24,
+    pub CorrelId: MQBYTE24,
+    pub BackoutCount: MQLONG,
+    pub ReplyToQ: MQCHAR48,
+    pub ReplyToQMgr: MQCHAR48,
+    pub UserIdentifier: MQCHAR12,
+    pub AccountingToken: MQBYTE32,
+    pub ApplIdentityData: MQCHAR32,
+    pub PutApplType: MQLONG,
+    pub PutApplName: MQCHAR28,
+    pub PutDate: MQCHAR8,
+    pub PutTime: MQCHAR8,
+    pub ApplOriginData: MQCHAR4,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQMD2 {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub Report: MQLONG,
+    pub MsgType: MQLONG,
+    pub Expiry: MQLONG,
+    pub Feedback: MQLONG,
+    pub Encoding: MQLONG,
+    pub CodedCharSetId: MQLONG,
+    pub Format: MQCHAR8,
+    pub Priority: MQLONG,
+    pub Persistence: MQLONG,
+    pub MsgId: MQBYTE24,
+    pub CorrelId: MQBYTE24,
+    pub BackoutCount: MQLONG,
+    pub ReplyToQ: MQCHAR48,
+    pub ReplyToQMgr: MQCHAR48,
+    pub UserIdentifier: MQCHAR12,
+    pub AccountingToken: MQBYTE32,
+    pub ApplIdentityData: MQCHAR32,
+    pub PutApplType: MQLONG,
+    pub PutApplName: MQCHAR28,
+    pub PutDate: MQCHAR8,
+    pub PutTime: MQCHAR8,
+    pub ApplOriginData: MQCHAR4,
+    pub GroupId: MQBYTE24,
+    pub MsgSeqNumber: MQLONG,
+    pub Offset: MQLONG,
+    pub MsgFlags: MQLONG,
+    pub OriginalLength: MQLONG,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQMHBO {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub Options: MQLONG,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQOD {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub ObjectType: MQLONG,
+    pub ObjectName: MQCHAR48,
+    pub ObjectQMgrName: MQCHAR48,
+    pub DynamicQName: MQCHAR48,
+    pub AlternateUserId: MQCHAR12,
+    pub RecsPresent: MQLONG,
+    pub KnownDestCount: MQLONG,
+    pub UnknownDestCount: MQLONG,
+    pub InvalidDestCount: MQLONG,
+    pub ObjectRecOffset: MQLONG,
+    pub ResponseRecOffset: MQLONG,
+    pub ObjectRecPtr: MQPTR,
+    pub ResponseRecPtr: MQPTR,
+    pub AlternateSecurityId: MQBYTE40,
+    pub ResolvedQName: MQCHAR48,
+    pub ResolvedQMgrName: MQCHAR48,
+    pub ObjectString: MQCHARV,
+    pub SelectionString: MQCHARV,
+    pub ResObjectString: MQCHARV,
+    pub ResolvedType: MQLONG,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQOR {
+    pub ObjectName: MQCHAR48,
+    pub ObjectQMgrName: MQCHAR48,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQPD {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub Options: MQLONG,
+    pub Support: MQLONG,
+    pub Context: MQLONG,
+    pub CopyOptions: MQLONG,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQPMO {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub Options: MQLONG,
+    pub Timeout: MQLONG,
+    pub Context: MQHOBJ,
+    pub KnownDestCount: MQLONG,
+    pub UnknownDestCount: MQLONG,
+    pub InvalidDestCount: MQLONG,
+    pub ResolvedQName: MQCHAR48,
+    pub ResolvedQMgrName: MQCHAR48,
+    pub RecsPresent: MQLONG,
+    pub PutMsgRecFields: MQLONG,
+    pub PutMsgRecOffset: MQLONG,
+    pub ResponseRecOffset: MQLONG,
+    pub PutMsgRecPtr: MQPTR,
+    pub ResponseRecPtr: MQPTR,
+    pub OriginalMsgHandle: MQHMSG,
+    pub NewMsgHandle: MQHMSG,
+    pub Action: MQLONG,
+    pub PubLevel: MQLONG,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQRFH {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub StrucLength: MQLONG,
+    pub Encoding: MQLONG,
+    pub CodedCharSetId: MQLONG,
+    pub Format: MQCHAR8,
+    pub Flags: MQLONG,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQRFH2 {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub StrucLength: MQLONG,
+    pub Encoding: MQLONG,
+    pub CodedCharSetId: MQLONG,
+    pub Format: MQCHAR8,
+    pub Flags: MQLONG,
+    pub NameValueCCSID: MQLONG,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQRMH {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub StrucLength: MQLONG,
+    pub Encoding: MQLONG,
+    pub CodedCharSetId: MQLONG,
+    pub Format: MQCHAR8,
+    pub Flags: MQLONG,
+    pub ObjectType: MQCHAR8,
+    pub ObjectInstanceId: MQBYTE24,
+    pub SrcEnvLength: MQLONG,
+    pub SrcEnvOffset: MQLONG,
+    pub SrcNameLength: MQLONG,
+    pub SrcNameOffset: MQLONG,
+    pub DestEnvLength: MQLONG,
+    pub DestEnvOffset: MQLONG,
+    pub DestNameLength: MQLONG,
+    pub DestNameOffset: MQLONG,
+    pub DataLogicalLength: MQLONG,
+    pub DataLogicalOffset: MQLONG,
+    pub DataLogicalOffset2: MQLONG,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQRR {
+    pub CompCode: MQLONG,
+    pub Reason: MQLONG,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQSD {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub Options: MQLONG,
+    pub ObjectName: MQCHAR48,
+    pub AlternateUserId: MQCHAR12,
+    pub AlternateSecurityId: MQBYTE40,
+    pub SubExpiry: MQLONG,
+    pub ObjectString: MQCHARV,
+    pub SubName: MQCHARV,
+    pub SubUserData: MQCHARV,
+    pub SubCorrelId: MQBYTE24,
+    pub PubPriority: MQLONG,
+    pub PubAccountingToken: MQBYTE32,
+    pub PubApplIdentityData: MQCHAR32,
+    pub SelectionString: MQCHARV,
+    pub SubLevel: MQLONG,
+    pub ResObjectString: MQCHARV,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQSMPO {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub Options: MQLONG,
+    pub ValueEncoding: MQLONG,
+    pub ValueCCSID: MQLONG,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQSRO {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub Options: MQLONG,
+    pub NumPubs: MQLONG,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQSTS {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub CompCode: MQLONG,
+    pub Reason: MQLONG,
+    pub PutSuccessCount: MQLONG,
+    pub PutWarningCount: MQLONG,
+    pub PutFailureCount: MQLONG,
+    pub ObjectType: MQLONG,
+    pub ObjectName: MQCHAR48,
+    pub ObjectQMgrName: MQCHAR48,
+    pub ResolvedObjectName: MQCHAR48,
+    pub ResolvedQMgrName: MQCHAR48,
+    pub ObjectString: MQCHARV,
+    pub SubName: MQCHARV,
+    pub OpenOptions: MQLONG,
+    pub SubOptions: MQLONG,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQTM {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub QName: MQCHAR48,
+    pub ProcessName: MQCHAR48,
+    pub TriggerData: MQCHAR64,
+    pub ApplType: MQLONG,
+    pub ApplId: MQCHAR256,
+    pub EnvData: MQCHAR128,
+    pub UserData: MQCHAR128,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQTMC2 {
+    pub StrucId: MQCHAR4,
+    pub Version: MQCHAR4,
+    pub QName: MQCHAR48,
+    pub ProcessName: MQCHAR48,
+    pub TriggerData: MQCHAR64,
+    pub ApplType: MQCHAR4,
+    pub ApplId: MQCHAR256,
+    pub EnvData: MQCHAR128,
+    pub UserData: MQCHAR128,
+    pub QMgrName: MQCHAR48,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQWIH {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub StrucLength: MQLONG,
+    pub Encoding: MQLONG,
+    pub CodedCharSetId: MQLONG,
+    pub Format: MQCHAR8,
+    pub Flags: MQLONG,
+    pub ServiceName: MQCHAR32,
+    pub ServiceStep: MQCHAR8,
+    pub MsgToken: MQBYTE16,
+    pub Reserved: MQCHAR32,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQXQH {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub RemoteQName: MQCHAR48,
+    pub RemoteQMgrName: MQCHAR48,
+    pub MsgDesc: MQMD1,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQCD {
+    pub ChannelName: [MQCHAR; 20usize],
+    pub Version: MQLONG,
+    pub ChannelType: MQLONG,
+    pub TransportType: MQLONG,
+    pub Desc: [MQCHAR; 64usize],
+    pub QMgrName: [MQCHAR; 48usize],
+    pub XmitQName: [MQCHAR; 48usize],
+    pub ShortConnectionName: [MQCHAR; 20usize],
+    pub MCAName: [MQCHAR; 20usize],
+    pub ModeName: [MQCHAR; 8usize],
+    pub TpName: [MQCHAR; 64usize],
+    pub BatchSize: MQLONG,
+    pub DiscInterval: MQLONG,
+    pub ShortRetryCount: MQLONG,
+    pub ShortRetryInterval: MQLONG,
+    pub LongRetryCount: MQLONG,
+    pub LongRetryInterval: MQLONG,
+    pub SecurityExit: [MQCHAR; 128usize],
+    pub MsgExit: [MQCHAR; 128usize],
+    pub SendExit: [MQCHAR; 128usize],
+    pub ReceiveExit: [MQCHAR; 128usize],
+    pub SeqNumberWrap: MQLONG,
+    pub MaxMsgLength: MQLONG,
+    pub PutAuthority: MQLONG,
+    pub DataConversion: MQLONG,
+    pub SecurityUserData: [MQCHAR; 32usize],
+    pub MsgUserData: [MQCHAR; 32usize],
+    pub SendUserData: [MQCHAR; 32usize],
+    pub ReceiveUserData: [MQCHAR; 32usize],
+    pub UserIdentifier: [MQCHAR; 12usize],
+    pub Password: [MQCHAR; 12usize],
+    pub MCAUserIdentifier: [MQCHAR; 12usize],
+    pub MCAType: MQLONG,
+    pub ConnectionName: [MQCHAR; 264usize],
+    pub RemoteUserIdentifier: [MQCHAR; 12usize],
+    pub RemotePassword: [MQCHAR; 12usize],
+    pub MsgRetryExit: [MQCHAR; 128usize],
+    pub MsgRetryUserData: [MQCHAR; 32usize],
+    pub MsgRetryCount: MQLONG,
+    pub MsgRetryInterval: MQLONG,
+    pub HeartbeatInterval: MQLONG,
+    pub BatchInterval: MQLONG,
+    pub NonPersistentMsgSpeed: MQLONG,
+    pub StrucLength: MQLONG,
+    pub ExitNameLength: MQLONG,
+    pub ExitDataLength: MQLONG,
+    pub MsgExitsDefined: MQLONG,
+    pub SendExitsDefined: MQLONG,
+    pub ReceiveExitsDefined: MQLONG,
+    pub MsgExitPtr: MQPTR,
+    pub MsgUserDataPtr: MQPTR,
+    pub SendExitPtr: MQPTR,
+    pub SendUserDataPtr: MQPTR,
+    pub ReceiveExitPtr: MQPTR,
+    pub ReceiveUserDataPtr: MQPTR,
+    pub ClusterPtr: MQPTR,
+    pub ClustersDefined: MQLONG,
+    pub NetworkPriority: MQLONG,
+    pub LongMCAUserIdLength: MQLONG,
+    pub LongRemoteUserIdLength: MQLONG,
+    pub LongMCAUserIdPtr: MQPTR,
+    pub LongRemoteUserIdPtr: MQPTR,
+    pub MCASecurityId: MQBYTE40,
+    pub RemoteSecurityId: MQBYTE40,
+    pub SSLCipherSpec: [MQCHAR; 32usize],
+    pub SSLPeerNamePtr: MQPTR,
+    pub SSLPeerNameLength: MQLONG,
+    pub SSLClientAuth: MQLONG,
+    pub KeepAliveInterval: MQLONG,
+    pub LocalAddress: [MQCHAR; 48usize],
+    pub BatchHeartbeat: MQLONG,
+    pub HdrCompList: [MQLONG; 2usize],
+    pub MsgCompList: [MQLONG; 16usize],
+    pub CLWLChannelRank: MQLONG,
+    pub CLWLChannelPriority: MQLONG,
+    pub CLWLChannelWeight: MQLONG,
+    pub ChannelMonitoring: MQLONG,
+    pub ChannelStatistics: MQLONG,
+    pub SharingConversations: MQLONG,
+    pub PropertyControl: MQLONG,
+    pub MaxInstances: MQLONG,
+    pub MaxInstancesPerClient: MQLONG,
+    pub ClientChannelWeight: MQLONG,
+    pub ConnectionAffinity: MQLONG,
+    pub BatchDataLimit: MQLONG,
+    pub UseDLQ: MQLONG,
+    pub DefReconnect: MQLONG,
+    pub CertificateLabel: [MQCHAR; 64usize],
+    pub SPLProtection: MQLONG,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQACH {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub StrucLength: MQLONG,
+    pub ChainAreaLength: MQLONG,
+    pub ExitInfoName: MQCHAR48,
+    pub NextChainAreaPtr: PMQACH,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQAXC {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub Environment: MQLONG,
+    pub UserId: MQCHAR12,
+    pub SecurityId: MQBYTE40,
+    pub ConnectionName: [MQCHAR; 264usize],
+    pub LongMCAUserIdLength: MQLONG,
+    pub LongRemoteUserIdLength: MQLONG,
+    pub LongMCAUserIdPtr: MQPTR,
+    pub LongRemoteUserIdPtr: MQPTR,
+    pub ApplName: MQCHAR28,
+    pub ApplType: MQLONG,
+    pub ProcessId: MQPID,
+    pub ThreadId: MQTID,
+    pub ChannelName: [MQCHAR; 20usize],
+    pub Reserved1: MQBYTE4,
+    pub pChannelDefinition: PMQCD,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQAXP {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub ExitId: MQLONG,
+    pub ExitReason: MQLONG,
+    pub ExitResponse: MQLONG,
+    pub ExitResponse2: MQLONG,
+    pub Feedback: MQLONG,
+    pub APICallerType: MQLONG,
+    pub ExitUserArea: MQBYTE16,
+    pub ExitData: MQCHAR32,
+    pub ExitInfoName: MQCHAR48,
+    pub ExitPDArea: MQBYTE48,
+    pub QMgrName: MQCHAR48,
+    pub ExitChainAreaPtr: PMQACH,
+    pub Hconfig: MQHCONFIG,
+    pub Function: MQLONG,
+    pub ExitMsgHandle: MQHMSG,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQCXP {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub ExitId: MQLONG,
+    pub ExitReason: MQLONG,
+    pub ExitResponse: MQLONG,
+    pub ExitResponse2: MQLONG,
+    pub Feedback: MQLONG,
+    pub MaxSegmentLength: MQLONG,
+    pub ExitUserArea: MQBYTE16,
+    pub ExitData: MQCHAR32,
+    pub MsgRetryCount: MQLONG,
+    pub MsgRetryInterval: MQLONG,
+    pub MsgRetryReason: MQLONG,
+    pub HeaderLength: MQLONG,
+    pub PartnerName: MQCHAR48,
+    pub FAPLevel: MQLONG,
+    pub CapabilityFlags: MQLONG,
+    pub ExitNumber: MQLONG,
+    pub ExitSpace: MQLONG,
+    pub SSLCertUserid: MQCHAR12,
+    pub SSLRemCertIssNameLength: MQLONG,
+    pub SSLRemCertIssNamePtr: MQPTR,
+    pub SecurityParms: PMQCSP,
+    pub CurHdrCompression: MQLONG,
+    pub CurMsgCompression: MQLONG,
+    pub Hconn: MQHCONN,
+    pub SharingConversations: MQBOOL,
+    pub MCAUserSource: MQLONG,
+    pub pEntryPoints: PMQIEP,
+    pub RemoteProduct: MQCHAR4,
+    pub RemoteVersion: MQCHAR8,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQDXP {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub ExitOptions: MQLONG,
+    pub AppOptions: MQLONG,
+    pub Encoding: MQLONG,
+    pub CodedCharSetId: MQLONG,
+    pub DataLength: MQLONG,
+    pub CompCode: MQLONG,
+    pub Reason: MQLONG,
+    pub ExitResponse: MQLONG,
+    pub Hconn: MQHCONN,
+    pub pEntryPoints: PMQIEP,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQNXP {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub ExitId: MQLONG,
+    pub ExitReason: MQLONG,
+    pub ExitResponse: MQLONG,
+    pub ExitResponse2: MQLONG,
+    pub Feedback: MQLONG,
+    pub ExitDataLength: MQLONG,
+    pub pExitDataPtr: PMQCHAR,
+    pub pExitUserAreaPtr: MQPTR,
+    pub ppMQCDArrayPtr: PPMQCD,
+    pub MQCDArrayCount: MQLONG,
+    pub MaxMQCDVersion: MQLONG,
+    pub pEntryPoints: PMQIEP,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQPBC {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub PubTopicString: MQCHARV,
+    pub MsgDescPtr: PMQMD,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQPSXP {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub ExitId: MQLONG,
+    pub ExitReason: MQLONG,
+    pub ExitResponse: MQLONG,
+    pub ExitResponse2: MQLONG,
+    pub Feedback: MQLONG,
+    pub Hconn: MQHCONN,
+    pub ExitUserArea: MQBYTE16,
+    pub ExitData: MQCHAR32,
+    pub QMgrName: MQCHAR48,
+    pub MsgHandle: MQHMSG,
+    pub MsgDescPtr: PMQMD,
+    pub MsgInPtr: PMQVOID,
+    pub MsgInLength: MQLONG,
+    pub MsgOutPtr: PMQVOID,
+    pub MsgOutLength: MQLONG,
+    pub pEntryPoints: PMQIEP,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQSBC {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub DestinationQMgrName: MQCHAR48,
+    pub DestinationQName: MQCHAR48,
+    pub SubType: MQLONG,
+    pub SubOptions: MQLONG,
+    pub ObjectName: MQCHAR48,
+    pub ObjectString: MQCHARV,
+    pub SubTopicString: MQCHARV,
+    pub SubName: MQCHARV,
+    pub SubId: MQBYTE24,
+    pub SelectionString: MQCHARV,
+    pub SubLevel: MQLONG,
+    pub PSProperties: MQLONG,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQWCR {
+    pub ClusterName: MQCHAR48,
+    pub ClusterRecOffset: MQLONG,
+    pub ClusterFlags: MQLONG,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQWDR {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub StrucLength: MQLONG,
+    pub QMgrFlags: MQLONG,
+    pub QMgrIdentifier: MQCHAR48,
+    pub QMgrName: MQCHAR48,
+    pub ClusterRecOffset: MQLONG,
+    pub ChannelState: MQLONG,
+    pub ChannelDefOffset: MQLONG,
+    pub DestSeqNumber: MQLONG,
+    pub DestSeqFactor: MQINT64,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQWDR1 {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub StrucLength: MQLONG,
+    pub QMgrFlags: MQLONG,
+    pub QMgrIdentifier: MQCHAR48,
+    pub QMgrName: MQCHAR48,
+    pub ClusterRecOffset: MQLONG,
+    pub ChannelState: MQLONG,
+    pub ChannelDefOffset: MQLONG,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQWDR2 {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub StrucLength: MQLONG,
+    pub QMgrFlags: MQLONG,
+    pub QMgrIdentifier: MQCHAR48,
+    pub QMgrName: MQCHAR48,
+    pub ClusterRecOffset: MQLONG,
+    pub ChannelState: MQLONG,
+    pub ChannelDefOffset: MQLONG,
+    pub DestSeqNumber: MQLONG,
+    pub DestSeqFactor: MQINT64,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQWQR {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub StrucLength: MQLONG,
+    pub QFlags: MQLONG,
+    pub QName: MQCHAR48,
+    pub QMgrIdentifier: MQCHAR48,
+    pub ClusterRecOffset: MQLONG,
+    pub QType: MQLONG,
+    pub QDesc: MQCHAR64,
+    pub DefBind: MQLONG,
+    pub DefPersistence: MQLONG,
+    pub DefPriority: MQLONG,
+    pub InhibitPut: MQLONG,
+    pub CLWLQueuePriority: MQLONG,
+    pub CLWLQueueRank: MQLONG,
+    pub DefPutResponse: MQLONG,
+    pub CapExpiry: MQLONG,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQWQR1 {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub StrucLength: MQLONG,
+    pub QFlags: MQLONG,
+    pub QName: MQCHAR48,
+    pub QMgrIdentifier: MQCHAR48,
+    pub ClusterRecOffset: MQLONG,
+    pub QType: MQLONG,
+    pub QDesc: MQCHAR64,
+    pub DefBind: MQLONG,
+    pub DefPersistence: MQLONG,
+    pub DefPriority: MQLONG,
+    pub InhibitPut: MQLONG,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQWQR2 {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub StrucLength: MQLONG,
+    pub QFlags: MQLONG,
+    pub QName: MQCHAR48,
+    pub QMgrIdentifier: MQCHAR48,
+    pub ClusterRecOffset: MQLONG,
+    pub QType: MQLONG,
+    pub QDesc: MQCHAR64,
+    pub DefBind: MQLONG,
+    pub DefPersistence: MQLONG,
+    pub DefPriority: MQLONG,
+    pub InhibitPut: MQLONG,
+    pub CLWLQueuePriority: MQLONG,
+    pub CLWLQueueRank: MQLONG,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQWQR3 {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub StrucLength: MQLONG,
+    pub QFlags: MQLONG,
+    pub QName: MQCHAR48,
+    pub QMgrIdentifier: MQCHAR48,
+    pub ClusterRecOffset: MQLONG,
+    pub QType: MQLONG,
+    pub QDesc: MQCHAR64,
+    pub DefBind: MQLONG,
+    pub DefPersistence: MQLONG,
+    pub DefPriority: MQLONG,
+    pub InhibitPut: MQLONG,
+    pub CLWLQueuePriority: MQLONG,
+    pub CLWLQueueRank: MQLONG,
+    pub DefPutResponse: MQLONG,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQWQR4 {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub StrucLength: MQLONG,
+    pub QFlags: MQLONG,
+    pub QName: MQCHAR48,
+    pub QMgrIdentifier: MQCHAR48,
+    pub ClusterRecOffset: MQLONG,
+    pub QType: MQLONG,
+    pub QDesc: MQCHAR64,
+    pub DefBind: MQLONG,
+    pub DefPersistence: MQLONG,
+    pub DefPriority: MQLONG,
+    pub InhibitPut: MQLONG,
+    pub CLWLQueuePriority: MQLONG,
+    pub CLWLQueueRank: MQLONG,
+    pub DefPutResponse: MQLONG,
+    pub CapExpiry: MQLONG,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQWXP {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub ExitId: MQLONG,
+    pub ExitReason: MQLONG,
+    pub ExitResponse: MQLONG,
+    pub ExitResponse2: MQLONG,
+    pub Feedback: MQLONG,
+    pub Flags: MQLONG,
+    pub ExitUserArea: MQBYTE16,
+    pub ExitData: MQCHAR32,
+    pub MsgDescPtr: PMQMD,
+    pub MsgBufferPtr: PMQVOID,
+    pub MsgBufferLength: MQLONG,
+    pub MsgLength: MQLONG,
+    pub QName: MQCHAR48,
+    pub QMgrName: MQCHAR48,
+    pub DestinationCount: MQLONG,
+    pub DestinationChosen: MQLONG,
+    pub DestinationArrayPtr: PPMQWDR,
+    pub QArrayPtr: PPMQWQR,
+    pub CacheContext: MQPTR,
+    pub CacheType: MQLONG,
+    pub CLWLMRUChannels: MQLONG,
+    pub pEntryPoints: PMQIEP,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQWXP1 {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub ExitId: MQLONG,
+    pub ExitReason: MQLONG,
+    pub ExitResponse: MQLONG,
+    pub ExitResponse2: MQLONG,
+    pub Feedback: MQLONG,
+    pub Flags: MQLONG,
+    pub ExitUserArea: MQBYTE16,
+    pub ExitData: MQCHAR32,
+    pub MsgDescPtr: PMQMD,
+    pub MsgBufferPtr: PMQVOID,
+    pub MsgBufferLength: MQLONG,
+    pub MsgLength: MQLONG,
+    pub QName: MQCHAR48,
+    pub QMgrName: MQCHAR48,
+    pub DestinationCount: MQLONG,
+    pub DestinationChosen: MQLONG,
+    pub DestinationArrayPtr: PPMQWDR,
+    pub QArrayPtr: PPMQWQR,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQWXP2 {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub ExitId: MQLONG,
+    pub ExitReason: MQLONG,
+    pub ExitResponse: MQLONG,
+    pub ExitResponse2: MQLONG,
+    pub Feedback: MQLONG,
+    pub Flags: MQLONG,
+    pub ExitUserArea: MQBYTE16,
+    pub ExitData: MQCHAR32,
+    pub MsgDescPtr: PMQMD,
+    pub MsgBufferPtr: PMQVOID,
+    pub MsgBufferLength: MQLONG,
+    pub MsgLength: MQLONG,
+    pub QName: MQCHAR48,
+    pub QMgrName: MQCHAR48,
+    pub DestinationCount: MQLONG,
+    pub DestinationChosen: MQLONG,
+    pub DestinationArrayPtr: PPMQWDR,
+    pub QArrayPtr: PPMQWQR,
+    pub CacheContext: MQPTR,
+    pub CacheType: MQLONG,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQWXP3 {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub ExitId: MQLONG,
+    pub ExitReason: MQLONG,
+    pub ExitResponse: MQLONG,
+    pub ExitResponse2: MQLONG,
+    pub Feedback: MQLONG,
+    pub Flags: MQLONG,
+    pub ExitUserArea: MQBYTE16,
+    pub ExitData: MQCHAR32,
+    pub MsgDescPtr: PMQMD,
+    pub MsgBufferPtr: PMQVOID,
+    pub MsgBufferLength: MQLONG,
+    pub MsgLength: MQLONG,
+    pub QName: MQCHAR48,
+    pub QMgrName: MQCHAR48,
+    pub DestinationCount: MQLONG,
+    pub DestinationChosen: MQLONG,
+    pub DestinationArrayPtr: PPMQWDR,
+    pub QArrayPtr: PPMQWQR,
+    pub CacheContext: MQPTR,
+    pub CacheType: MQLONG,
+    pub CLWLMRUChannels: MQLONG,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQWXP4 {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub ExitId: MQLONG,
+    pub ExitReason: MQLONG,
+    pub ExitResponse: MQLONG,
+    pub ExitResponse2: MQLONG,
+    pub Feedback: MQLONG,
+    pub Flags: MQLONG,
+    pub ExitUserArea: MQBYTE16,
+    pub ExitData: MQCHAR32,
+    pub MsgDescPtr: PMQMD,
+    pub MsgBufferPtr: PMQVOID,
+    pub MsgBufferLength: MQLONG,
+    pub MsgLength: MQLONG,
+    pub QName: MQCHAR48,
+    pub QMgrName: MQCHAR48,
+    pub DestinationCount: MQLONG,
+    pub DestinationChosen: MQLONG,
+    pub DestinationArrayPtr: PPMQWDR,
+    pub QArrayPtr: PPMQWQR,
+    pub CacheContext: MQPTR,
+    pub CacheType: MQLONG,
+    pub CLWLMRUChannels: MQLONG,
+    pub pEntryPoints: PMQIEP,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQXEPO {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub Options: MQLONG,
+    pub ExitProperties: MQCHARV,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct MQI_BY_VALUE_STR {
+    pub value: MQLONG,
+    pub name: *mut ::std::os::raw::c_char,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct MQI_BY_NAME_STR {
+    pub name: *mut ::std::os::raw::c_char,
+    pub value: MQLONG,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQCFH {
+    pub Type: MQLONG,
+    pub StrucLength: MQLONG,
+    pub Version: MQLONG,
+    pub Command: MQLONG,
+    pub MsgSeqNumber: MQLONG,
+    pub Control: MQLONG,
+    pub CompCode: MQLONG,
+    pub Reason: MQLONG,
+    pub ParameterCount: MQLONG,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQCFBF {
+    pub Type: MQLONG,
+    pub StrucLength: MQLONG,
+    pub Parameter: MQLONG,
+    pub Operator: MQLONG,
+    pub FilterValueLength: MQLONG,
+    pub FilterValue: [MQBYTE; 1usize],
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQCFBS {
+    pub Type: MQLONG,
+    pub StrucLength: MQLONG,
+    pub Parameter: MQLONG,
+    pub StringLength: MQLONG,
+    pub String: [MQBYTE; 1usize],
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQCFGR {
+    pub Type: MQLONG,
+    pub StrucLength: MQLONG,
+    pub Parameter: MQLONG,
+    pub ParameterCount: MQLONG,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQCFIF {
+    pub Type: MQLONG,
+    pub StrucLength: MQLONG,
+    pub Parameter: MQLONG,
+    pub Operator: MQLONG,
+    pub FilterValue: MQLONG,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQCFIL {
+    pub Type: MQLONG,
+    pub StrucLength: MQLONG,
+    pub Parameter: MQLONG,
+    pub Count: MQLONG,
+    pub Values: [MQLONG; 1usize],
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQCFIL64 {
+    pub Type: MQLONG,
+    pub StrucLength: MQLONG,
+    pub Parameter: MQLONG,
+    pub Count: MQLONG,
+    pub Values: [MQINT64; 1usize],
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQCFIN {
+    pub Type: MQLONG,
+    pub StrucLength: MQLONG,
+    pub Parameter: MQLONG,
+    pub Value: MQLONG,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQCFIN64 {
+    pub Type: MQLONG,
+    pub StrucLength: MQLONG,
+    pub Parameter: MQLONG,
+    pub Reserved: MQLONG,
+    pub Value: MQINT64,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQCFSF {
+    pub Type: MQLONG,
+    pub StrucLength: MQLONG,
+    pub Parameter: MQLONG,
+    pub Operator: MQLONG,
+    pub CodedCharSetId: MQLONG,
+    pub FilterValueLength: MQLONG,
+    pub FilterValue: [MQCHAR; 1usize],
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQCFSL {
+    pub Type: MQLONG,
+    pub StrucLength: MQLONG,
+    pub Parameter: MQLONG,
+    pub CodedCharSetId: MQLONG,
+    pub Count: MQLONG,
+    pub StringLength: MQLONG,
+    pub Strings: [MQCHAR; 1usize],
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQCFST {
+    pub Type: MQLONG,
+    pub StrucLength: MQLONG,
+    pub Parameter: MQLONG,
+    pub CodedCharSetId: MQLONG,
+    pub StringLength: MQLONG,
+    pub String: [MQCHAR; 1usize],
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQEPH {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub StrucLength: MQLONG,
+    pub Encoding: MQLONG,
+    pub CodedCharSetId: MQLONG,
+    pub Format: MQCHAR8,
+    pub Flags: MQLONG,
+    pub PCFHeader: MQCFH,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQZED {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub EntityNamePtr: PMQCHAR,
+    pub EntityDomainPtr: PMQCHAR,
+    pub SecurityId: MQBYTE40,
+    pub CorrelationPtr: MQPTR,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQZAC {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub ProcessId: MQPID,
+    pub ThreadId: MQTID,
+    pub ApplName: MQCHAR28,
+    pub UserID: MQCHAR12,
+    pub EffectiveUserID: MQCHAR12,
+    pub Environment: MQLONG,
+    pub CallerType: MQLONG,
+    pub AuthenticationType: MQLONG,
+    pub BindType: MQLONG,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQZAD {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub ProfileName: MQCHAR48,
+    pub ObjectType: MQLONG,
+    pub Authority: MQLONG,
+    pub EntityDataPtr: PMQZED,
+    pub EntityType: MQLONG,
+    pub Options: MQLONG,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQZFP {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub Reserved: MQBYTE8,
+    pub CorrelationPtr: MQPTR,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQZIC {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub UserIdentifier: MQCHAR12,
+    pub AccountingToken: MQBYTE32,
+    pub ApplIdentityData: MQCHAR32,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct tagMQIEP {
+    pub StrucId: MQCHAR4,
+    pub Version: MQLONG,
+    pub StrucLength: MQLONG,
+    pub Flags: MQLONG,
+    pub Reserved: MQPTR,
+    pub MQBACK_Call: PMQ_BACK_CALL,
+    pub MQBEGIN_Call: PMQ_BEGIN_CALL,
+    pub MQBUFMH_Call: PMQ_BUFMH_CALL,
+    pub MQCB_Call: PMQ_CB_CALL,
+    pub MQCLOSE_Call: PMQ_CLOSE_CALL,
+    pub MQCMIT_Call: PMQ_CMIT_CALL,
+    pub MQCONN_Call: PMQ_CONN_CALL,
+    pub MQCONNX_Call: PMQ_CONNX_CALL,
+    pub MQCRTMH_Call: PMQ_CRTMH_CALL,
+    pub MQCTL_Call: PMQ_CTL_CALL,
+    pub MQDISC_Call: PMQ_DISC_CALL,
+    pub MQDLTMH_Call: PMQ_DLTMH_CALL,
+    pub MQDLTMP_Call: PMQ_DLTMP_CALL,
+    pub MQGET_Call: PMQ_GET_CALL,
+    pub MQINQ_Call: PMQ_INQ_CALL,
+    pub MQINQMP_Call: PMQ_INQMP_CALL,
+    pub MQMHBUF_Call: PMQ_MHBUF_CALL,
+    pub MQOPEN_Call: PMQ_OPEN_CALL,
+    pub MQPUT_Call: PMQ_PUT_CALL,
+    pub MQPUT1_Call: PMQ_PUT1_CALL,
+    pub MQSET_Call: PMQ_SET_CALL,
+    pub MQSETMP_Call: PMQ_SETMP_CALL,
+    pub MQSTAT_Call: PMQ_STAT_CALL,
+    pub MQSUB_Call: PMQ_SUB_CALL,
+    pub MQSUBRQ_Call: PMQ_SUBRQ_CALL,
+    pub MQXCLWLN_Call: PMQ_XCLWLN_CALL,
+    pub MQXCNVC_Call: PMQ_XCNVC_CALL,
+    pub MQXDX_Call: PMQ_XDX_CALL,
+    pub MQXEP_Call: PMQ_XEP_CALL,
+    pub MQZEP_Call: PMQ_ZEP_CALL,
+}
+pub const MQCCSI_APPL: MQLONG = 1208;
 #[allow(unsafe_code)]
 pub const MQAIR_STRUC_ID: &::std::ffi::CStr = unsafe { ::std::ffi::CStr::from_bytes_with_nul_unchecked(b"AIR \0") };
 pub const MQAIR_VERSION_1: MQLONG = 1;
@@ -531,7 +2365,6 @@ pub const MQCCSI_DEFAULT: MQLONG = 0;
 pub const MQCCSI_Q_MGR: MQLONG = 0;
 pub const MQCCSI_INHERIT: MQLONG = -2;
 pub const MQCCSI_EMBEDDED: MQLONG = -1;
-pub const MQCCSI_APPL: MQLONG = -3;
 pub const MQCCSI_AS_PUBLISHED: MQLONG = -4;
 #[allow(unsafe_code)]
 pub const MQFMT_NONE: &::std::ffi::CStr = unsafe { ::std::ffi::CStr::from_bytes_with_nul_unchecked(b"        \0") };
@@ -5301,62 +7134,6 @@ pub const MQIEPF_NON_THREADED_LIBRARY: MQLONG = 0;
 pub const MQIEPF_THREADED_LIBRARY: MQLONG = 1;
 pub const MQIEPF_CLIENT_LIBRARY: MQLONG = 0;
 pub const MQIEPF_LOCAL_LIBRARY: MQLONG = 2;
-pub type MQBYTE = ::std::os::raw::c_uchar;
-pub type PMQBYTE = *mut MQBYTE;
-pub type MQBYTE4 = [MQBYTE; 4usize];
-pub type MQBYTE8 = [MQBYTE; 8usize];
-pub type MQBYTE16 = [MQBYTE; 16usize];
-pub type MQBYTE24 = [MQBYTE; 24usize];
-pub type MQBYTE32 = [MQBYTE; 32usize];
-pub type MQBYTE40 = [MQBYTE; 40usize];
-pub type MQBYTE48 = [MQBYTE; 48usize];
-pub type MQBYTE128 = [MQBYTE; 128usize];
-pub type MQCHAR = ::std::os::raw::c_char;
-pub type PMQCHAR = *mut MQCHAR;
-pub type MQCHAR4 = [MQCHAR; 4usize];
-pub type MQCHAR8 = [MQCHAR; 8usize];
-pub type MQCHAR12 = [MQCHAR; 12usize];
-pub type MQCHAR28 = [MQCHAR; 28usize];
-pub type MQCHAR32 = [MQCHAR; 32usize];
-pub type MQCHAR48 = [MQCHAR; 48usize];
-pub type MQCHAR64 = [MQCHAR; 64usize];
-pub type MQCHAR128 = [MQCHAR; 128usize];
-pub type MQCHAR256 = [MQCHAR; 256usize];
-pub type MQLONG = ::std::os::raw::c_long;
-pub type MQINT64 = ::std::os::raw::c_longlong;
-pub type PMQLONG = *mut MQLONG;
-pub type PMQINT64 = *mut MQINT64;
-pub type MQIEP = tagMQIEP;
-pub type PMQIEP = *mut MQIEP;
-pub type MQHCONFIG = PMQIEP;
-pub type MQHCONN = MQLONG;
-pub type PMQHCONN = *mut MQHCONN;
-pub type MQHOBJ = MQLONG;
-pub type PMQHOBJ = *mut MQHOBJ;
-pub type MQPTR = *mut ::std::os::raw::c_void;
-pub type PMQPTR = *mut MQPTR;
-pub type PMQFUNC = *mut ::std::os::raw::c_void;
-pub type PMQVOID = *mut ::std::os::raw::c_void;
-pub type MQBOOL = MQLONG;
-pub type MQHMSG = MQINT64;
-pub type PMQHMSG = *mut MQHMSG;
-pub type MQPID = MQLONG;
-pub type MQTID = MQLONG;
-pub type MQAIR = tagMQAIR;
-pub type PMQAIR = *mut MQAIR;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQAIR {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub AuthInfoType: MQLONG,
-    pub AuthInfoConnName: [MQCHAR; 264usize],
-    pub LDAPUserNamePtr: PMQCHAR,
-    pub LDAPUserNameOffset: MQLONG,
-    pub LDAPUserNameLength: MQLONG,
-    pub LDAPPassword: MQCHAR32,
-    pub OCSPResponderURL: MQCHAR256,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQAIR"][::std::mem::size_of::<tagMQAIR>() - 584usize];
@@ -5371,17 +7148,6 @@ const _: () = {
     ["Offset of field: tagMQAIR::LDAPPassword"][::std::mem::offset_of!(tagMQAIR, LDAPPassword) - 296usize];
     ["Offset of field: tagMQAIR::OCSPResponderURL"][::std::mem::offset_of!(tagMQAIR, OCSPResponderURL) - 328usize];
 };
-pub type MQBNO = tagMQBNO;
-pub type PMQBNO = *mut MQBNO;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQBNO {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub ApplType: MQLONG,
-    pub Timeout: MQLONG,
-    pub Options: MQLONG,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQBNO"][::std::mem::size_of::<tagMQBNO>() - 20usize];
@@ -5392,14 +7158,6 @@ const _: () = {
     ["Offset of field: tagMQBNO::Timeout"][::std::mem::offset_of!(tagMQBNO, Timeout) - 12usize];
     ["Offset of field: tagMQBNO::Options"][::std::mem::offset_of!(tagMQBNO, Options) - 16usize];
 };
-pub type MQBMHO = tagMQBMHO;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQBMHO {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub Options: MQLONG,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQBMHO"][::std::mem::size_of::<tagMQBMHO>() - 12usize];
@@ -5408,14 +7166,6 @@ const _: () = {
     ["Offset of field: tagMQBMHO::Version"][::std::mem::offset_of!(tagMQBMHO, Version) - 4usize];
     ["Offset of field: tagMQBMHO::Options"][::std::mem::offset_of!(tagMQBMHO, Options) - 8usize];
 };
-pub type MQBO = tagMQBO;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQBO {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub Options: MQLONG,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQBO"][::std::mem::size_of::<tagMQBO>() - 12usize];
@@ -5424,24 +7174,6 @@ const _: () = {
     ["Offset of field: tagMQBO::Version"][::std::mem::offset_of!(tagMQBO, Version) - 4usize];
     ["Offset of field: tagMQBO::Options"][::std::mem::offset_of!(tagMQBO, Options) - 8usize];
 };
-pub type MQCBC = tagMQCBC;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQCBC {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub CallType: MQLONG,
-    pub Hobj: MQHOBJ,
-    pub CallbackArea: MQPTR,
-    pub ConnectionArea: MQPTR,
-    pub CompCode: MQLONG,
-    pub Reason: MQLONG,
-    pub State: MQLONG,
-    pub DataLength: MQLONG,
-    pub BufferLength: MQLONG,
-    pub Flags: MQLONG,
-    pub ReconnectDelay: MQLONG,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQCBC"][::std::mem::size_of::<tagMQCBC>() - 64usize];
@@ -5460,19 +7192,6 @@ const _: () = {
     ["Offset of field: tagMQCBC::Flags"][::std::mem::offset_of!(tagMQCBC, Flags) - 52usize];
     ["Offset of field: tagMQCBC::ReconnectDelay"][::std::mem::offset_of!(tagMQCBC, ReconnectDelay) - 56usize];
 };
-pub type MQCBD = tagMQCBD;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQCBD {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub CallbackType: MQLONG,
-    pub Options: MQLONG,
-    pub CallbackArea: MQPTR,
-    pub CallbackFunction: MQPTR,
-    pub CallbackName: MQCHAR128,
-    pub MaxMsgLength: MQLONG,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQCBD"][::std::mem::size_of::<tagMQCBD>() - 168usize];
@@ -5486,16 +7205,6 @@ const _: () = {
     ["Offset of field: tagMQCBD::CallbackName"][::std::mem::offset_of!(tagMQCBD, CallbackName) - 32usize];
     ["Offset of field: tagMQCBD::MaxMsgLength"][::std::mem::offset_of!(tagMQCBD, MaxMsgLength) - 160usize];
 };
-pub type MQCHARV = tagMQCHARV;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQCHARV {
-    pub VSPtr: MQPTR,
-    pub VSOffset: MQLONG,
-    pub VSBufSize: MQLONG,
-    pub VSLength: MQLONG,
-    pub VSCCSID: MQLONG,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQCHARV"][::std::mem::size_of::<tagMQCHARV>() - 24usize];
@@ -5506,49 +7215,6 @@ const _: () = {
     ["Offset of field: tagMQCHARV::VSLength"][::std::mem::offset_of!(tagMQCHARV, VSLength) - 16usize];
     ["Offset of field: tagMQCHARV::VSCCSID"][::std::mem::offset_of!(tagMQCHARV, VSCCSID) - 20usize];
 };
-pub type MQCIH = tagMQCIH;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQCIH {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub StrucLength: MQLONG,
-    pub Encoding: MQLONG,
-    pub CodedCharSetId: MQLONG,
-    pub Format: MQCHAR8,
-    pub Flags: MQLONG,
-    pub ReturnCode: MQLONG,
-    pub CompCode: MQLONG,
-    pub Reason: MQLONG,
-    pub UOWControl: MQLONG,
-    pub GetWaitInterval: MQLONG,
-    pub LinkType: MQLONG,
-    pub OutputDataLength: MQLONG,
-    pub FacilityKeepTime: MQLONG,
-    pub ADSDescriptor: MQLONG,
-    pub ConversationalTask: MQLONG,
-    pub TaskEndStatus: MQLONG,
-    pub Facility: MQBYTE8,
-    pub Function: MQCHAR4,
-    pub AbendCode: MQCHAR4,
-    pub Authenticator: MQCHAR8,
-    pub Reserved1: MQCHAR8,
-    pub ReplyToFormat: MQCHAR8,
-    pub RemoteSysId: MQCHAR4,
-    pub RemoteTransId: MQCHAR4,
-    pub TransactionId: MQCHAR4,
-    pub FacilityLike: MQCHAR4,
-    pub AttentionId: MQCHAR4,
-    pub StartCode: MQCHAR4,
-    pub CancelCode: MQCHAR4,
-    pub NextTransactionId: MQCHAR4,
-    pub Reserved2: MQCHAR8,
-    pub Reserved3: MQCHAR8,
-    pub CursorPosition: MQLONG,
-    pub ErrorOffset: MQLONG,
-    pub InputItem: MQLONG,
-    pub Reserved4: MQLONG,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQCIH"][::std::mem::size_of::<tagMQCIH>() - 180usize];
@@ -5592,14 +7258,6 @@ const _: () = {
     ["Offset of field: tagMQCIH::InputItem"][::std::mem::offset_of!(tagMQCIH, InputItem) - 172usize];
     ["Offset of field: tagMQCIH::Reserved4"][::std::mem::offset_of!(tagMQCIH, Reserved4) - 176usize];
 };
-pub type MQCMHO = tagMQCMHO;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQCMHO {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub Options: MQLONG,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQCMHO"][::std::mem::size_of::<tagMQCMHO>() - 12usize];
@@ -5608,16 +7266,6 @@ const _: () = {
     ["Offset of field: tagMQCMHO::Version"][::std::mem::offset_of!(tagMQCMHO, Version) - 4usize];
     ["Offset of field: tagMQCMHO::Options"][::std::mem::offset_of!(tagMQCMHO, Options) - 8usize];
 };
-pub type MQCTLO = tagMQCTLO;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQCTLO {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub Options: MQLONG,
-    pub Reserved: MQLONG,
-    pub ConnectionArea: MQPTR,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQCTLO"][::std::mem::size_of::<tagMQCTLO>() - 24usize];
@@ -5628,27 +7276,6 @@ const _: () = {
     ["Offset of field: tagMQCTLO::Reserved"][::std::mem::offset_of!(tagMQCTLO, Reserved) - 12usize];
     ["Offset of field: tagMQCTLO::ConnectionArea"][::std::mem::offset_of!(tagMQCTLO, ConnectionArea) - 16usize];
 };
-pub type MQSCO = tagMQSCO;
-pub type PMQSCO = *mut MQSCO;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQSCO {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub KeyRepository: MQCHAR256,
-    pub CryptoHardware: MQCHAR256,
-    pub AuthInfoRecCount: MQLONG,
-    pub AuthInfoRecOffset: MQLONG,
-    pub AuthInfoRecPtr: PMQAIR,
-    pub KeyResetCount: MQLONG,
-    pub FipsRequired: MQLONG,
-    pub EncryptionPolicySuiteB: [MQLONG; 4usize],
-    pub CertificateValPolicy: MQLONG,
-    pub CertificateLabel: MQCHAR64,
-    pub KeyRepoPasswordPtr: MQPTR,
-    pub KeyRepoPasswordOffset: MQLONG,
-    pub KeyRepoPasswordLength: MQLONG,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQSCO"][::std::mem::size_of::<tagMQSCO>() - 648usize];
@@ -5669,31 +7296,6 @@ const _: () = {
     ["Offset of field: tagMQSCO::KeyRepoPasswordOffset"][::std::mem::offset_of!(tagMQSCO, KeyRepoPasswordOffset) - 640usize];
     ["Offset of field: tagMQSCO::KeyRepoPasswordLength"][::std::mem::offset_of!(tagMQSCO, KeyRepoPasswordLength) - 644usize];
 };
-pub type MQCSP = tagMQCSP;
-pub type PMQCSP = *mut MQCSP;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQCSP {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub AuthenticationType: MQLONG,
-    pub Reserved1: MQBYTE4,
-    pub CSPUserIdPtr: MQPTR,
-    pub CSPUserIdOffset: MQLONG,
-    pub CSPUserIdLength: MQLONG,
-    pub Reserved2: MQBYTE8,
-    pub CSPPasswordPtr: MQPTR,
-    pub CSPPasswordOffset: MQLONG,
-    pub CSPPasswordLength: MQLONG,
-    pub Reserved3: MQBYTE8,
-    pub InitialKeyPtr: MQPTR,
-    pub InitialKeyOffset: MQLONG,
-    pub InitialKeyLength: MQLONG,
-    pub Reserved4: MQBYTE8,
-    pub TokenPtr: MQPTR,
-    pub TokenOffset: MQLONG,
-    pub TokenLength: MQLONG,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQCSP"][::std::mem::size_of::<tagMQCSP>() - 104usize];
@@ -5718,32 +7320,6 @@ const _: () = {
     ["Offset of field: tagMQCSP::TokenOffset"][::std::mem::offset_of!(tagMQCSP, TokenOffset) - 96usize];
     ["Offset of field: tagMQCSP::TokenLength"][::std::mem::offset_of!(tagMQCSP, TokenLength) - 100usize];
 };
-pub type MQCNO = tagMQCNO;
-pub type PMQCNO = *mut MQCNO;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQCNO {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub Options: MQLONG,
-    pub ClientConnOffset: MQLONG,
-    pub ClientConnPtr: MQPTR,
-    pub ConnTag: MQBYTE128,
-    pub SSLConfigPtr: PMQSCO,
-    pub SSLConfigOffset: MQLONG,
-    pub ConnectionId: MQBYTE24,
-    pub SecurityParmsOffset: MQLONG,
-    pub SecurityParmsPtr: PMQCSP,
-    pub CCDTUrlPtr: PMQCHAR,
-    pub CCDTUrlOffset: MQLONG,
-    pub CCDTUrlLength: MQLONG,
-    pub Reserved: MQBYTE8,
-    pub ApplName: MQCHAR28,
-    pub Reserved2: MQBYTE4,
-    pub BalanceParmsPtr: PMQBNO,
-    pub BalanceParmsOffset: MQLONG,
-    pub Reserved3: MQBYTE4,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQCNO"][::std::mem::size_of::<tagMQCNO>() - 272usize];
@@ -5769,22 +7345,6 @@ const _: () = {
     ["Offset of field: tagMQCNO::BalanceParmsOffset"][::std::mem::offset_of!(tagMQCNO, BalanceParmsOffset) - 264usize];
     ["Offset of field: tagMQCNO::Reserved3"][::std::mem::offset_of!(tagMQCNO, Reserved3) - 268usize];
 };
-pub type MQDH = tagMQDH;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQDH {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub StrucLength: MQLONG,
-    pub Encoding: MQLONG,
-    pub CodedCharSetId: MQLONG,
-    pub Format: MQCHAR8,
-    pub Flags: MQLONG,
-    pub PutMsgRecFields: MQLONG,
-    pub RecsPresent: MQLONG,
-    pub ObjectRecOffset: MQLONG,
-    pub PutMsgRecOffset: MQLONG,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQDH"][::std::mem::size_of::<tagMQDH>() - 48usize];
@@ -5801,23 +7361,6 @@ const _: () = {
     ["Offset of field: tagMQDH::ObjectRecOffset"][::std::mem::offset_of!(tagMQDH, ObjectRecOffset) - 40usize];
     ["Offset of field: tagMQDH::PutMsgRecOffset"][::std::mem::offset_of!(tagMQDH, PutMsgRecOffset) - 44usize];
 };
-pub type MQDLH = tagMQDLH;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQDLH {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub Reason: MQLONG,
-    pub DestQName: MQCHAR48,
-    pub DestQMgrName: MQCHAR48,
-    pub Encoding: MQLONG,
-    pub CodedCharSetId: MQLONG,
-    pub Format: MQCHAR8,
-    pub PutApplType: MQLONG,
-    pub PutApplName: MQCHAR28,
-    pub PutDate: MQCHAR8,
-    pub PutTime: MQCHAR8,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQDLH"][::std::mem::size_of::<tagMQDLH>() - 172usize];
@@ -5835,14 +7378,6 @@ const _: () = {
     ["Offset of field: tagMQDLH::PutDate"][::std::mem::offset_of!(tagMQDLH, PutDate) - 156usize];
     ["Offset of field: tagMQDLH::PutTime"][::std::mem::offset_of!(tagMQDLH, PutTime) - 164usize];
 };
-pub type MQDMHO = tagMQDMHO;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQDMHO {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub Options: MQLONG,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQDMHO"][::std::mem::size_of::<tagMQDMHO>() - 12usize];
@@ -5851,14 +7386,6 @@ const _: () = {
     ["Offset of field: tagMQDMHO::Version"][::std::mem::offset_of!(tagMQDMHO, Version) - 4usize];
     ["Offset of field: tagMQDMHO::Options"][::std::mem::offset_of!(tagMQDMHO, Options) - 8usize];
 };
-pub type MQDMPO = tagMQDMPO;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQDMPO {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub Options: MQLONG,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQDMPO"][::std::mem::size_of::<tagMQDMPO>() - 12usize];
@@ -5867,27 +7394,6 @@ const _: () = {
     ["Offset of field: tagMQDMPO::Version"][::std::mem::offset_of!(tagMQDMPO, Version) - 4usize];
     ["Offset of field: tagMQDMPO::Options"][::std::mem::offset_of!(tagMQDMPO, Options) - 8usize];
 };
-pub type MQGMO = tagMQGMO;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQGMO {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub Options: MQLONG,
-    pub WaitInterval: MQLONG,
-    pub Signal1: MQLONG,
-    pub Signal2: MQLONG,
-    pub ResolvedQName: MQCHAR48,
-    pub MatchOptions: MQLONG,
-    pub GroupStatus: MQCHAR,
-    pub SegmentStatus: MQCHAR,
-    pub Segmentation: MQCHAR,
-    pub Reserved1: MQCHAR,
-    pub MsgToken: MQBYTE16,
-    pub ReturnedLength: MQLONG,
-    pub Reserved2: MQLONG,
-    pub MsgHandle: MQHMSG,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQGMO"][::std::mem::size_of::<tagMQGMO>() - 112usize];
@@ -5909,27 +7415,6 @@ const _: () = {
     ["Offset of field: tagMQGMO::Reserved2"][::std::mem::offset_of!(tagMQGMO, Reserved2) - 100usize];
     ["Offset of field: tagMQGMO::MsgHandle"][::std::mem::offset_of!(tagMQGMO, MsgHandle) - 104usize];
 };
-pub type MQIIH = tagMQIIH;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQIIH {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub StrucLength: MQLONG,
-    pub Encoding: MQLONG,
-    pub CodedCharSetId: MQLONG,
-    pub Format: MQCHAR8,
-    pub Flags: MQLONG,
-    pub LTermOverride: MQCHAR8,
-    pub MFSMapName: MQCHAR8,
-    pub ReplyToFormat: MQCHAR8,
-    pub Authenticator: MQCHAR8,
-    pub TranInstanceId: MQBYTE16,
-    pub TranState: MQCHAR,
-    pub CommitMode: MQCHAR,
-    pub SecurityScope: MQCHAR,
-    pub Reserved: MQCHAR,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQIIH"][::std::mem::size_of::<tagMQIIH>() - 84usize];
@@ -5951,21 +7436,6 @@ const _: () = {
     ["Offset of field: tagMQIIH::SecurityScope"][::std::mem::offset_of!(tagMQIIH, SecurityScope) - 82usize];
     ["Offset of field: tagMQIIH::Reserved"][::std::mem::offset_of!(tagMQIIH, Reserved) - 83usize];
 };
-pub type MQIMPO = tagMQIMPO;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQIMPO {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub Options: MQLONG,
-    pub RequestedEncoding: MQLONG,
-    pub RequestedCCSID: MQLONG,
-    pub ReturnedEncoding: MQLONG,
-    pub ReturnedCCSID: MQLONG,
-    pub Reserved1: MQLONG,
-    pub ReturnedName: MQCHARV,
-    pub TypeString: MQCHAR8,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQIMPO"][::std::mem::size_of::<tagMQIMPO>() - 64usize];
@@ -5981,41 +7451,6 @@ const _: () = {
     ["Offset of field: tagMQIMPO::ReturnedName"][::std::mem::offset_of!(tagMQIMPO, ReturnedName) - 32usize];
     ["Offset of field: tagMQIMPO::TypeString"][::std::mem::offset_of!(tagMQIMPO, TypeString) - 56usize];
 };
-pub type MQMD = tagMQMD;
-pub type PMQMD = *mut MQMD;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQMD {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub Report: MQLONG,
-    pub MsgType: MQLONG,
-    pub Expiry: MQLONG,
-    pub Feedback: MQLONG,
-    pub Encoding: MQLONG,
-    pub CodedCharSetId: MQLONG,
-    pub Format: MQCHAR8,
-    pub Priority: MQLONG,
-    pub Persistence: MQLONG,
-    pub MsgId: MQBYTE24,
-    pub CorrelId: MQBYTE24,
-    pub BackoutCount: MQLONG,
-    pub ReplyToQ: MQCHAR48,
-    pub ReplyToQMgr: MQCHAR48,
-    pub UserIdentifier: MQCHAR12,
-    pub AccountingToken: MQBYTE32,
-    pub ApplIdentityData: MQCHAR32,
-    pub PutApplType: MQLONG,
-    pub PutApplName: MQCHAR28,
-    pub PutDate: MQCHAR8,
-    pub PutTime: MQCHAR8,
-    pub ApplOriginData: MQCHAR4,
-    pub GroupId: MQBYTE24,
-    pub MsgSeqNumber: MQLONG,
-    pub Offset: MQLONG,
-    pub MsgFlags: MQLONG,
-    pub OriginalLength: MQLONG,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQMD"][::std::mem::size_of::<tagMQMD>() - 364usize];
@@ -6050,23 +7485,6 @@ const _: () = {
     ["Offset of field: tagMQMD::MsgFlags"][::std::mem::offset_of!(tagMQMD, MsgFlags) - 356usize];
     ["Offset of field: tagMQMD::OriginalLength"][::std::mem::offset_of!(tagMQMD, OriginalLength) - 360usize];
 };
-pub type MQMDE = tagMQMDE;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQMDE {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub StrucLength: MQLONG,
-    pub Encoding: MQLONG,
-    pub CodedCharSetId: MQLONG,
-    pub Format: MQCHAR8,
-    pub Flags: MQLONG,
-    pub GroupId: MQBYTE24,
-    pub MsgSeqNumber: MQLONG,
-    pub Offset: MQLONG,
-    pub MsgFlags: MQLONG,
-    pub OriginalLength: MQLONG,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQMDE"][::std::mem::size_of::<tagMQMDE>() - 72usize];
@@ -6084,35 +7502,6 @@ const _: () = {
     ["Offset of field: tagMQMDE::MsgFlags"][::std::mem::offset_of!(tagMQMDE, MsgFlags) - 64usize];
     ["Offset of field: tagMQMDE::OriginalLength"][::std::mem::offset_of!(tagMQMDE, OriginalLength) - 68usize];
 };
-pub type MQMD1 = tagMQMD1;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQMD1 {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub Report: MQLONG,
-    pub MsgType: MQLONG,
-    pub Expiry: MQLONG,
-    pub Feedback: MQLONG,
-    pub Encoding: MQLONG,
-    pub CodedCharSetId: MQLONG,
-    pub Format: MQCHAR8,
-    pub Priority: MQLONG,
-    pub Persistence: MQLONG,
-    pub MsgId: MQBYTE24,
-    pub CorrelId: MQBYTE24,
-    pub BackoutCount: MQLONG,
-    pub ReplyToQ: MQCHAR48,
-    pub ReplyToQMgr: MQCHAR48,
-    pub UserIdentifier: MQCHAR12,
-    pub AccountingToken: MQBYTE32,
-    pub ApplIdentityData: MQCHAR32,
-    pub PutApplType: MQLONG,
-    pub PutApplName: MQCHAR28,
-    pub PutDate: MQCHAR8,
-    pub PutTime: MQCHAR8,
-    pub ApplOriginData: MQCHAR4,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQMD1"][::std::mem::size_of::<tagMQMD1>() - 324usize];
@@ -6142,40 +7531,6 @@ const _: () = {
     ["Offset of field: tagMQMD1::PutTime"][::std::mem::offset_of!(tagMQMD1, PutTime) - 312usize];
     ["Offset of field: tagMQMD1::ApplOriginData"][::std::mem::offset_of!(tagMQMD1, ApplOriginData) - 320usize];
 };
-pub type MQMD2 = tagMQMD2;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQMD2 {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub Report: MQLONG,
-    pub MsgType: MQLONG,
-    pub Expiry: MQLONG,
-    pub Feedback: MQLONG,
-    pub Encoding: MQLONG,
-    pub CodedCharSetId: MQLONG,
-    pub Format: MQCHAR8,
-    pub Priority: MQLONG,
-    pub Persistence: MQLONG,
-    pub MsgId: MQBYTE24,
-    pub CorrelId: MQBYTE24,
-    pub BackoutCount: MQLONG,
-    pub ReplyToQ: MQCHAR48,
-    pub ReplyToQMgr: MQCHAR48,
-    pub UserIdentifier: MQCHAR12,
-    pub AccountingToken: MQBYTE32,
-    pub ApplIdentityData: MQCHAR32,
-    pub PutApplType: MQLONG,
-    pub PutApplName: MQCHAR28,
-    pub PutDate: MQCHAR8,
-    pub PutTime: MQCHAR8,
-    pub ApplOriginData: MQCHAR4,
-    pub GroupId: MQBYTE24,
-    pub MsgSeqNumber: MQLONG,
-    pub Offset: MQLONG,
-    pub MsgFlags: MQLONG,
-    pub OriginalLength: MQLONG,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQMD2"][::std::mem::size_of::<tagMQMD2>() - 364usize];
@@ -6210,14 +7565,6 @@ const _: () = {
     ["Offset of field: tagMQMD2::MsgFlags"][::std::mem::offset_of!(tagMQMD2, MsgFlags) - 356usize];
     ["Offset of field: tagMQMD2::OriginalLength"][::std::mem::offset_of!(tagMQMD2, OriginalLength) - 360usize];
 };
-pub type MQMHBO = tagMQMHBO;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQMHBO {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub Options: MQLONG,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQMHBO"][::std::mem::size_of::<tagMQMHBO>() - 12usize];
@@ -6226,33 +7573,6 @@ const _: () = {
     ["Offset of field: tagMQMHBO::Version"][::std::mem::offset_of!(tagMQMHBO, Version) - 4usize];
     ["Offset of field: tagMQMHBO::Options"][::std::mem::offset_of!(tagMQMHBO, Options) - 8usize];
 };
-pub type MQOD = tagMQOD;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQOD {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub ObjectType: MQLONG,
-    pub ObjectName: MQCHAR48,
-    pub ObjectQMgrName: MQCHAR48,
-    pub DynamicQName: MQCHAR48,
-    pub AlternateUserId: MQCHAR12,
-    pub RecsPresent: MQLONG,
-    pub KnownDestCount: MQLONG,
-    pub UnknownDestCount: MQLONG,
-    pub InvalidDestCount: MQLONG,
-    pub ObjectRecOffset: MQLONG,
-    pub ResponseRecOffset: MQLONG,
-    pub ObjectRecPtr: MQPTR,
-    pub ResponseRecPtr: MQPTR,
-    pub AlternateSecurityId: MQBYTE40,
-    pub ResolvedQName: MQCHAR48,
-    pub ResolvedQMgrName: MQCHAR48,
-    pub ObjectString: MQCHARV,
-    pub SelectionString: MQCHARV,
-    pub ResObjectString: MQCHARV,
-    pub ResolvedType: MQLONG,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQOD"][::std::mem::size_of::<tagMQOD>() - 424usize];
@@ -6280,13 +7600,6 @@ const _: () = {
     ["Offset of field: tagMQOD::ResObjectString"][::std::mem::offset_of!(tagMQOD, ResObjectString) - 392usize];
     ["Offset of field: tagMQOD::ResolvedType"][::std::mem::offset_of!(tagMQOD, ResolvedType) - 416usize];
 };
-pub type MQOR = tagMQOR;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQOR {
-    pub ObjectName: MQCHAR48,
-    pub ObjectQMgrName: MQCHAR48,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQOR"][::std::mem::size_of::<tagMQOR>() - 96usize];
@@ -6294,17 +7607,6 @@ const _: () = {
     ["Offset of field: tagMQOR::ObjectName"][::std::mem::offset_of!(tagMQOR, ObjectName) - 0usize];
     ["Offset of field: tagMQOR::ObjectQMgrName"][::std::mem::offset_of!(tagMQOR, ObjectQMgrName) - 48usize];
 };
-pub type MQPD = tagMQPD;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQPD {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub Options: MQLONG,
-    pub Support: MQLONG,
-    pub Context: MQLONG,
-    pub CopyOptions: MQLONG,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQPD"][::std::mem::size_of::<tagMQPD>() - 24usize];
@@ -6316,31 +7618,6 @@ const _: () = {
     ["Offset of field: tagMQPD::Context"][::std::mem::offset_of!(tagMQPD, Context) - 16usize];
     ["Offset of field: tagMQPD::CopyOptions"][::std::mem::offset_of!(tagMQPD, CopyOptions) - 20usize];
 };
-pub type MQPMO = tagMQPMO;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQPMO {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub Options: MQLONG,
-    pub Timeout: MQLONG,
-    pub Context: MQHOBJ,
-    pub KnownDestCount: MQLONG,
-    pub UnknownDestCount: MQLONG,
-    pub InvalidDestCount: MQLONG,
-    pub ResolvedQName: MQCHAR48,
-    pub ResolvedQMgrName: MQCHAR48,
-    pub RecsPresent: MQLONG,
-    pub PutMsgRecFields: MQLONG,
-    pub PutMsgRecOffset: MQLONG,
-    pub ResponseRecOffset: MQLONG,
-    pub PutMsgRecPtr: MQPTR,
-    pub ResponseRecPtr: MQPTR,
-    pub OriginalMsgHandle: MQHMSG,
-    pub NewMsgHandle: MQHMSG,
-    pub Action: MQLONG,
-    pub PubLevel: MQLONG,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQPMO"][::std::mem::size_of::<tagMQPMO>() - 184usize];
@@ -6366,18 +7643,6 @@ const _: () = {
     ["Offset of field: tagMQPMO::Action"][::std::mem::offset_of!(tagMQPMO, Action) - 176usize];
     ["Offset of field: tagMQPMO::PubLevel"][::std::mem::offset_of!(tagMQPMO, PubLevel) - 180usize];
 };
-pub type MQRFH = tagMQRFH;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQRFH {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub StrucLength: MQLONG,
-    pub Encoding: MQLONG,
-    pub CodedCharSetId: MQLONG,
-    pub Format: MQCHAR8,
-    pub Flags: MQLONG,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQRFH"][::std::mem::size_of::<tagMQRFH>() - 32usize];
@@ -6390,19 +7655,6 @@ const _: () = {
     ["Offset of field: tagMQRFH::Format"][::std::mem::offset_of!(tagMQRFH, Format) - 20usize];
     ["Offset of field: tagMQRFH::Flags"][::std::mem::offset_of!(tagMQRFH, Flags) - 28usize];
 };
-pub type MQRFH2 = tagMQRFH2;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQRFH2 {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub StrucLength: MQLONG,
-    pub Encoding: MQLONG,
-    pub CodedCharSetId: MQLONG,
-    pub Format: MQCHAR8,
-    pub Flags: MQLONG,
-    pub NameValueCCSID: MQLONG,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQRFH2"][::std::mem::size_of::<tagMQRFH2>() - 36usize];
@@ -6416,31 +7668,6 @@ const _: () = {
     ["Offset of field: tagMQRFH2::Flags"][::std::mem::offset_of!(tagMQRFH2, Flags) - 28usize];
     ["Offset of field: tagMQRFH2::NameValueCCSID"][::std::mem::offset_of!(tagMQRFH2, NameValueCCSID) - 32usize];
 };
-pub type MQRMH = tagMQRMH;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQRMH {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub StrucLength: MQLONG,
-    pub Encoding: MQLONG,
-    pub CodedCharSetId: MQLONG,
-    pub Format: MQCHAR8,
-    pub Flags: MQLONG,
-    pub ObjectType: MQCHAR8,
-    pub ObjectInstanceId: MQBYTE24,
-    pub SrcEnvLength: MQLONG,
-    pub SrcEnvOffset: MQLONG,
-    pub SrcNameLength: MQLONG,
-    pub SrcNameOffset: MQLONG,
-    pub DestEnvLength: MQLONG,
-    pub DestEnvOffset: MQLONG,
-    pub DestNameLength: MQLONG,
-    pub DestNameOffset: MQLONG,
-    pub DataLogicalLength: MQLONG,
-    pub DataLogicalOffset: MQLONG,
-    pub DataLogicalOffset2: MQLONG,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQRMH"][::std::mem::size_of::<tagMQRMH>() - 108usize];
@@ -6466,13 +7693,6 @@ const _: () = {
     ["Offset of field: tagMQRMH::DataLogicalOffset"][::std::mem::offset_of!(tagMQRMH, DataLogicalOffset) - 100usize];
     ["Offset of field: tagMQRMH::DataLogicalOffset2"][::std::mem::offset_of!(tagMQRMH, DataLogicalOffset2) - 104usize];
 };
-pub type MQRR = tagMQRR;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQRR {
-    pub CompCode: MQLONG,
-    pub Reason: MQLONG,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQRR"][::std::mem::size_of::<tagMQRR>() - 8usize];
@@ -6480,28 +7700,6 @@ const _: () = {
     ["Offset of field: tagMQRR::CompCode"][::std::mem::offset_of!(tagMQRR, CompCode) - 0usize];
     ["Offset of field: tagMQRR::Reason"][::std::mem::offset_of!(tagMQRR, Reason) - 4usize];
 };
-pub type MQSD = tagMQSD;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQSD {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub Options: MQLONG,
-    pub ObjectName: MQCHAR48,
-    pub AlternateUserId: MQCHAR12,
-    pub AlternateSecurityId: MQBYTE40,
-    pub SubExpiry: MQLONG,
-    pub ObjectString: MQCHARV,
-    pub SubName: MQCHARV,
-    pub SubUserData: MQCHARV,
-    pub SubCorrelId: MQBYTE24,
-    pub PubPriority: MQLONG,
-    pub PubAccountingToken: MQBYTE32,
-    pub PubApplIdentityData: MQCHAR32,
-    pub SelectionString: MQCHARV,
-    pub SubLevel: MQLONG,
-    pub ResObjectString: MQCHARV,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQSD"][::std::mem::size_of::<tagMQSD>() - 344usize];
@@ -6524,16 +7722,6 @@ const _: () = {
     ["Offset of field: tagMQSD::SubLevel"][::std::mem::offset_of!(tagMQSD, SubLevel) - 312usize];
     ["Offset of field: tagMQSD::ResObjectString"][::std::mem::offset_of!(tagMQSD, ResObjectString) - 320usize];
 };
-pub type MQSMPO = tagMQSMPO;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQSMPO {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub Options: MQLONG,
-    pub ValueEncoding: MQLONG,
-    pub ValueCCSID: MQLONG,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQSMPO"][::std::mem::size_of::<tagMQSMPO>() - 20usize];
@@ -6544,15 +7732,6 @@ const _: () = {
     ["Offset of field: tagMQSMPO::ValueEncoding"][::std::mem::offset_of!(tagMQSMPO, ValueEncoding) - 12usize];
     ["Offset of field: tagMQSMPO::ValueCCSID"][::std::mem::offset_of!(tagMQSMPO, ValueCCSID) - 16usize];
 };
-pub type MQSRO = tagMQSRO;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQSRO {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub Options: MQLONG,
-    pub NumPubs: MQLONG,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQSRO"][::std::mem::size_of::<tagMQSRO>() - 16usize];
@@ -6562,27 +7741,6 @@ const _: () = {
     ["Offset of field: tagMQSRO::Options"][::std::mem::offset_of!(tagMQSRO, Options) - 8usize];
     ["Offset of field: tagMQSRO::NumPubs"][::std::mem::offset_of!(tagMQSRO, NumPubs) - 12usize];
 };
-pub type MQSTS = tagMQSTS;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQSTS {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub CompCode: MQLONG,
-    pub Reason: MQLONG,
-    pub PutSuccessCount: MQLONG,
-    pub PutWarningCount: MQLONG,
-    pub PutFailureCount: MQLONG,
-    pub ObjectType: MQLONG,
-    pub ObjectName: MQCHAR48,
-    pub ObjectQMgrName: MQCHAR48,
-    pub ResolvedObjectName: MQCHAR48,
-    pub ResolvedQMgrName: MQCHAR48,
-    pub ObjectString: MQCHARV,
-    pub SubName: MQCHARV,
-    pub OpenOptions: MQLONG,
-    pub SubOptions: MQLONG,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQSTS"][::std::mem::size_of::<tagMQSTS>() - 280usize];
@@ -6604,20 +7762,6 @@ const _: () = {
     ["Offset of field: tagMQSTS::OpenOptions"][::std::mem::offset_of!(tagMQSTS, OpenOptions) - 272usize];
     ["Offset of field: tagMQSTS::SubOptions"][::std::mem::offset_of!(tagMQSTS, SubOptions) - 276usize];
 };
-pub type MQTM = tagMQTM;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQTM {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub QName: MQCHAR48,
-    pub ProcessName: MQCHAR48,
-    pub TriggerData: MQCHAR64,
-    pub ApplType: MQLONG,
-    pub ApplId: MQCHAR256,
-    pub EnvData: MQCHAR128,
-    pub UserData: MQCHAR128,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQTM"][::std::mem::size_of::<tagMQTM>() - 684usize];
@@ -6632,21 +7776,6 @@ const _: () = {
     ["Offset of field: tagMQTM::EnvData"][::std::mem::offset_of!(tagMQTM, EnvData) - 428usize];
     ["Offset of field: tagMQTM::UserData"][::std::mem::offset_of!(tagMQTM, UserData) - 556usize];
 };
-pub type MQTMC2 = tagMQTMC2;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQTMC2 {
-    pub StrucId: MQCHAR4,
-    pub Version: MQCHAR4,
-    pub QName: MQCHAR48,
-    pub ProcessName: MQCHAR48,
-    pub TriggerData: MQCHAR64,
-    pub ApplType: MQCHAR4,
-    pub ApplId: MQCHAR256,
-    pub EnvData: MQCHAR128,
-    pub UserData: MQCHAR128,
-    pub QMgrName: MQCHAR48,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQTMC2"][::std::mem::size_of::<tagMQTMC2>() - 732usize];
@@ -6662,22 +7791,6 @@ const _: () = {
     ["Offset of field: tagMQTMC2::UserData"][::std::mem::offset_of!(tagMQTMC2, UserData) - 556usize];
     ["Offset of field: tagMQTMC2::QMgrName"][::std::mem::offset_of!(tagMQTMC2, QMgrName) - 684usize];
 };
-pub type MQWIH = tagMQWIH;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQWIH {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub StrucLength: MQLONG,
-    pub Encoding: MQLONG,
-    pub CodedCharSetId: MQLONG,
-    pub Format: MQCHAR8,
-    pub Flags: MQLONG,
-    pub ServiceName: MQCHAR32,
-    pub ServiceStep: MQCHAR8,
-    pub MsgToken: MQBYTE16,
-    pub Reserved: MQCHAR32,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQWIH"][::std::mem::size_of::<tagMQWIH>() - 120usize];
@@ -6694,16 +7807,6 @@ const _: () = {
     ["Offset of field: tagMQWIH::MsgToken"][::std::mem::offset_of!(tagMQWIH, MsgToken) - 72usize];
     ["Offset of field: tagMQWIH::Reserved"][::std::mem::offset_of!(tagMQWIH, Reserved) - 88usize];
 };
-pub type MQXQH = tagMQXQH;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQXQH {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub RemoteQName: MQCHAR48,
-    pub RemoteQMgrName: MQCHAR48,
-    pub MsgDesc: MQMD1,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQXQH"][::std::mem::size_of::<tagMQXQH>() - 428usize];
@@ -6714,489 +7817,6 @@ const _: () = {
     ["Offset of field: tagMQXQH::RemoteQMgrName"][::std::mem::offset_of!(tagMQXQH, RemoteQMgrName) - 56usize];
     ["Offset of field: tagMQXQH::MsgDesc"][::std::mem::offset_of!(tagMQXQH, MsgDesc) - 104usize];
 };
-extern "C" {
-    pub fn MQBACK(Hconn: MQHCONN, pCompCode: PMQLONG, pReason: PMQLONG);
-}
-pub type MQ_BACK_CALL = ::std::option::Option<unsafe extern "C" fn(Hconn: MQHCONN, pCompCode: PMQLONG, pReason: PMQLONG)>;
-pub type PMQ_BACK_CALL = MQ_BACK_CALL;
-extern "C" {
-    pub fn MQBEGIN(Hconn: MQHCONN, pBeginOptions: PMQVOID, pCompCode: PMQLONG, pReason: PMQLONG);
-}
-pub type MQ_BEGIN_CALL =
-    ::std::option::Option<unsafe extern "C" fn(Hconn: MQHCONN, pBeginOptions: PMQVOID, pCompCode: PMQLONG, pReason: PMQLONG)>;
-pub type PMQ_BEGIN_CALL = MQ_BEGIN_CALL;
-extern "C" {
-    pub fn MQBUFMH(
-        Hconn: MQHCONN,
-        Hmsg: MQHMSG,
-        pBufMsgHOpts: PMQVOID,
-        pMsgDesc: PMQVOID,
-        BufferLength: MQLONG,
-        pBuffer: PMQVOID,
-        pDataLength: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
-    );
-}
-pub type MQ_BUFMH_CALL = ::std::option::Option<
-    unsafe extern "C" fn(
-        Hconn: MQHCONN,
-        Hmsg: MQHMSG,
-        pBufMsgHOpts: PMQVOID,
-        pMsgDesc: PMQVOID,
-        BufferLength: MQLONG,
-        pBuffer: PMQVOID,
-        pDataLength: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
-    ),
->;
-pub type PMQ_BUFMH_CALL = MQ_BUFMH_CALL;
-extern "C" {
-    pub fn MQCB(
-        Hconn: MQHCONN,
-        Operation: MQLONG,
-        pCallbackDesc: PMQVOID,
-        Hobj: MQHOBJ,
-        pMsgDesc: PMQVOID,
-        pGetMsgOpts: PMQVOID,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
-    );
-}
-pub type MQ_CB_CALL = ::std::option::Option<
-    unsafe extern "C" fn(
-        Hconn: MQHCONN,
-        Operation: MQLONG,
-        pCallbackDesc: PMQVOID,
-        Hobj: MQHOBJ,
-        pMsgDesc: PMQVOID,
-        pGetMsgOpts: PMQVOID,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
-    ),
->;
-pub type PMQ_CB_CALL = MQ_CB_CALL;
-extern "C" {
-    pub fn MQCLOSE(Hconn: MQHCONN, pHobj: PMQHOBJ, Options: MQLONG, pCompCode: PMQLONG, pReason: PMQLONG);
-}
-pub type MQ_CLOSE_CALL = ::std::option::Option<
-    unsafe extern "C" fn(Hconn: MQHCONN, pHobj: PMQHOBJ, Options: MQLONG, pCompCode: PMQLONG, pReason: PMQLONG),
->;
-pub type PMQ_CLOSE_CALL = MQ_CLOSE_CALL;
-extern "C" {
-    pub fn MQCMIT(Hconn: MQHCONN, pCompCode: PMQLONG, pReason: PMQLONG);
-}
-pub type MQ_CMIT_CALL = ::std::option::Option<unsafe extern "C" fn(Hconn: MQHCONN, pCompCode: PMQLONG, pReason: PMQLONG)>;
-pub type PMQ_CMIT_CALL = MQ_CMIT_CALL;
-extern "C" {
-    pub fn MQCONN(pQMgrName: PMQCHAR, pHconn: PMQHCONN, pCompCode: PMQLONG, pReason: PMQLONG);
-}
-pub type MQ_CONN_CALL =
-    ::std::option::Option<unsafe extern "C" fn(pQMgrName: PMQCHAR, pHconn: PMQHCONN, pCompCode: PMQLONG, pReason: PMQLONG)>;
-pub type PMQ_CONN_CALL = MQ_CONN_CALL;
-extern "C" {
-    pub fn MQCONNX(pQMgrName: PMQCHAR, pConnectOpts: PMQCNO, pHconn: PMQHCONN, pCompCode: PMQLONG, pReason: PMQLONG);
-}
-pub type MQ_CONNX_CALL = ::std::option::Option<
-    unsafe extern "C" fn(pQMgrName: PMQCHAR, pConnectOpts: PMQCNO, pHconn: PMQHCONN, pCompCode: PMQLONG, pReason: PMQLONG),
->;
-pub type PMQ_CONNX_CALL = MQ_CONNX_CALL;
-extern "C" {
-    pub fn MQCRTMH(Hconn: MQHCONN, pCrtMsgHOpts: PMQVOID, pHmsg: PMQHMSG, pCompCode: PMQLONG, pReason: PMQLONG);
-}
-pub type MQ_CRTMH_CALL = ::std::option::Option<
-    unsafe extern "C" fn(Hconn: MQHCONN, pCrtMsgHOpts: PMQVOID, pHmsg: PMQHMSG, pCompCode: PMQLONG, pReason: PMQLONG),
->;
-pub type PMQ_CRTMH_CALL = MQ_CRTMH_CALL;
-extern "C" {
-    pub fn MQCTL(Hconn: MQHCONN, Operation: MQLONG, pControlOpts: PMQVOID, pCompCode: PMQLONG, pReason: PMQLONG);
-}
-pub type MQ_CTL_CALL = ::std::option::Option<
-    unsafe extern "C" fn(Hconn: MQHCONN, Operation: MQLONG, pControlOpts: PMQVOID, pCompCode: PMQLONG, pReason: PMQLONG),
->;
-pub type PMQ_CTL_CALL = MQ_CTL_CALL;
-extern "C" {
-    pub fn MQDISC(pHconn: PMQHCONN, pCompCode: PMQLONG, pReason: PMQLONG);
-}
-pub type MQ_DISC_CALL = ::std::option::Option<unsafe extern "C" fn(pHconn: PMQHCONN, pCompCode: PMQLONG, pReason: PMQLONG)>;
-pub type PMQ_DISC_CALL = MQ_DISC_CALL;
-extern "C" {
-    pub fn MQDLTMH(Hconn: MQHCONN, pHmsg: PMQHMSG, pDltMsgHOpts: PMQVOID, pCompCode: PMQLONG, pReason: PMQLONG);
-}
-pub type MQ_DLTMH_CALL = ::std::option::Option<
-    unsafe extern "C" fn(Hconn: MQHCONN, pHmsg: PMQHMSG, pDltMsgHOpts: PMQVOID, pCompCode: PMQLONG, pReason: PMQLONG),
->;
-pub type PMQ_DLTMH_CALL = MQ_DLTMH_CALL;
-extern "C" {
-    pub fn MQDLTMP(Hconn: MQHCONN, Hmsg: MQHMSG, pDltPropOpts: PMQVOID, pName: PMQVOID, pCompCode: PMQLONG, pReason: PMQLONG);
-}
-pub type MQ_DLTMP_CALL = ::std::option::Option<
-    unsafe extern "C" fn(
-        Hconn: MQHCONN,
-        Hmsg: MQHMSG,
-        pDltPropOpts: PMQVOID,
-        pName: PMQVOID,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
-    ),
->;
-pub type PMQ_DLTMP_CALL = MQ_DLTMP_CALL;
-extern "C" {
-    pub fn MQGET(
-        Hconn: MQHCONN,
-        Hobj: MQHOBJ,
-        pMsgDesc: PMQVOID,
-        pGetMsgOpts: PMQVOID,
-        BufferLength: MQLONG,
-        pBuffer: PMQVOID,
-        pDataLength: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
-    );
-}
-pub type MQ_GET_CALL = ::std::option::Option<
-    unsafe extern "C" fn(
-        Hconn: MQHCONN,
-        Hobj: MQHOBJ,
-        pMsgDesc: PMQVOID,
-        pGetMsgOpts: PMQVOID,
-        BufferLength: MQLONG,
-        pBuffer: PMQVOID,
-        pDataLength: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
-    ),
->;
-pub type PMQ_GET_CALL = MQ_GET_CALL;
-extern "C" {
-    pub fn MQINQ(
-        Hconn: MQHCONN,
-        Hobj: MQHOBJ,
-        SelectorCount: MQLONG,
-        pSelectors: PMQLONG,
-        IntAttrCount: MQLONG,
-        pIntAttrs: PMQLONG,
-        CharAttrLength: MQLONG,
-        pCharAttrs: PMQCHAR,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
-    );
-}
-pub type MQ_INQ_CALL = ::std::option::Option<
-    unsafe extern "C" fn(
-        Hconn: MQHCONN,
-        Hobj: MQHOBJ,
-        SelectorCount: MQLONG,
-        pSelectors: PMQLONG,
-        IntAttrCount: MQLONG,
-        pIntAttrs: PMQLONG,
-        CharAttrLength: MQLONG,
-        pCharAttrs: PMQCHAR,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
-    ),
->;
-pub type PMQ_INQ_CALL = MQ_INQ_CALL;
-extern "C" {
-    pub fn MQINQMP(
-        Hconn: MQHCONN,
-        Hmsg: MQHMSG,
-        pInqPropOpts: PMQVOID,
-        pName: PMQVOID,
-        pPropDesc: PMQVOID,
-        pType: PMQLONG,
-        ValueLength: MQLONG,
-        pValue: PMQVOID,
-        pDataLength: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
-    );
-}
-pub type MQ_INQMP_CALL = ::std::option::Option<
-    unsafe extern "C" fn(
-        Hconn: MQHCONN,
-        Hmsg: MQHMSG,
-        pInqPropOpts: PMQVOID,
-        pName: PMQVOID,
-        pPropDesc: PMQVOID,
-        pType: PMQLONG,
-        ValueLength: MQLONG,
-        pValue: PMQVOID,
-        pDataLength: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
-    ),
->;
-pub type PMQ_INQMP_CALL = MQ_INQMP_CALL;
-extern "C" {
-    pub fn MQMHBUF(
-        Hconn: MQHCONN,
-        Hmsg: MQHMSG,
-        pMsgHBufOpts: PMQVOID,
-        pName: PMQVOID,
-        pMsgDesc: PMQVOID,
-        BufferLength: MQLONG,
-        pBuffer: PMQVOID,
-        pDataLength: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
-    );
-}
-pub type MQ_MHBUF_CALL = ::std::option::Option<
-    unsafe extern "C" fn(
-        Hconn: MQHCONN,
-        Hmsg: MQHMSG,
-        pMsgHBufOpts: PMQVOID,
-        pName: PMQVOID,
-        pMsgDesc: PMQVOID,
-        BufferLength: MQLONG,
-        pBuffer: PMQVOID,
-        pDataLength: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
-    ),
->;
-pub type PMQ_MHBUF_CALL = MQ_MHBUF_CALL;
-extern "C" {
-    pub fn MQOPEN(Hconn: MQHCONN, pObjDesc: PMQVOID, Options: MQLONG, pHobj: PMQHOBJ, pCompCode: PMQLONG, pReason: PMQLONG);
-}
-pub type MQ_OPEN_CALL = ::std::option::Option<
-    unsafe extern "C" fn(
-        Hconn: MQHCONN,
-        pObjDesc: PMQVOID,
-        Options: MQLONG,
-        pHobj: PMQHOBJ,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
-    ),
->;
-pub type PMQ_OPEN_CALL = MQ_OPEN_CALL;
-extern "C" {
-    pub fn MQPUT(
-        Hconn: MQHCONN,
-        Hobj: MQHOBJ,
-        pMsgDesc: PMQVOID,
-        pPutMsgOpts: PMQVOID,
-        BufferLength: MQLONG,
-        pBuffer: PMQVOID,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
-    );
-}
-pub type MQ_PUT_CALL = ::std::option::Option<
-    unsafe extern "C" fn(
-        Hconn: MQHCONN,
-        Hobj: MQHOBJ,
-        pMsgDesc: PMQVOID,
-        pPutMsgOpts: PMQVOID,
-        BufferLength: MQLONG,
-        pBuffer: PMQVOID,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
-    ),
->;
-pub type PMQ_PUT_CALL = MQ_PUT_CALL;
-extern "C" {
-    pub fn MQPUT1(
-        Hconn: MQHCONN,
-        pObjDesc: PMQVOID,
-        pMsgDesc: PMQVOID,
-        pPutMsgOpts: PMQVOID,
-        BufferLength: MQLONG,
-        pBuffer: PMQVOID,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
-    );
-}
-pub type MQ_PUT1_CALL = ::std::option::Option<
-    unsafe extern "C" fn(
-        Hconn: MQHCONN,
-        pObjDesc: PMQVOID,
-        pMsgDesc: PMQVOID,
-        pPutMsgOpts: PMQVOID,
-        BufferLength: MQLONG,
-        pBuffer: PMQVOID,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
-    ),
->;
-pub type PMQ_PUT1_CALL = MQ_PUT1_CALL;
-extern "C" {
-    pub fn MQSET(
-        Hconn: MQHCONN,
-        Hobj: MQHOBJ,
-        SelectorCount: MQLONG,
-        pSelectors: PMQLONG,
-        IntAttrCount: MQLONG,
-        pIntAttrs: PMQLONG,
-        CharAttrLength: MQLONG,
-        pCharAttrs: PMQCHAR,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
-    );
-}
-pub type MQ_SET_CALL = ::std::option::Option<
-    unsafe extern "C" fn(
-        Hconn: MQHCONN,
-        Hobj: MQHOBJ,
-        SelectorCount: MQLONG,
-        pSelectors: PMQLONG,
-        IntAttrCount: MQLONG,
-        pIntAttrs: PMQLONG,
-        CharAttrLength: MQLONG,
-        pCharAttrs: PMQCHAR,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
-    ),
->;
-pub type PMQ_SET_CALL = MQ_SET_CALL;
-extern "C" {
-    pub fn MQSETMP(
-        Hconn: MQHCONN,
-        Hmsg: MQHMSG,
-        pSetPropOpts: PMQVOID,
-        pName: PMQVOID,
-        pPropDesc: PMQVOID,
-        Type: MQLONG,
-        ValueLength: MQLONG,
-        pValue: PMQVOID,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
-    );
-}
-pub type MQ_SETMP_CALL = ::std::option::Option<
-    unsafe extern "C" fn(
-        Hconn: MQHCONN,
-        Hmsg: MQHMSG,
-        pSetPropOpts: PMQVOID,
-        pName: PMQVOID,
-        pPropDesc: PMQVOID,
-        Type: MQLONG,
-        ValueLength: MQLONG,
-        pValue: PMQVOID,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
-    ),
->;
-pub type PMQ_SETMP_CALL = MQ_SETMP_CALL;
-extern "C" {
-    pub fn MQSTAT(Hconn: MQHCONN, Type: MQLONG, pStatus: PMQVOID, pCompCode: PMQLONG, pReason: PMQLONG);
-}
-pub type MQ_STAT_CALL = ::std::option::Option<
-    unsafe extern "C" fn(Hconn: MQHCONN, Type: MQLONG, pStatus: PMQVOID, pCompCode: PMQLONG, pReason: PMQLONG),
->;
-pub type PMQ_STAT_CALL = MQ_STAT_CALL;
-extern "C" {
-    pub fn MQSUB(Hconn: MQHCONN, pSubDesc: PMQVOID, pHobj: PMQHOBJ, pHsub: PMQHOBJ, pCompCode: PMQLONG, pReason: PMQLONG);
-}
-pub type MQ_SUB_CALL = ::std::option::Option<
-    unsafe extern "C" fn(Hconn: MQHCONN, pSubDesc: PMQVOID, pHobj: PMQHOBJ, pHsub: PMQHOBJ, pCompCode: PMQLONG, pReason: PMQLONG),
->;
-pub type PMQ_SUB_CALL = MQ_SUB_CALL;
-extern "C" {
-    pub fn MQSUBRQ(Hconn: MQHCONN, Hsub: MQHOBJ, Action: MQLONG, pSubRqOpts: PMQVOID, pCompCode: PMQLONG, pReason: PMQLONG);
-}
-pub type MQ_SUBRQ_CALL = ::std::option::Option<
-    unsafe extern "C" fn(Hconn: MQHCONN, Hsub: MQHOBJ, Action: MQLONG, pSubRqOpts: PMQVOID, pCompCode: PMQLONG, pReason: PMQLONG),
->;
-pub type PMQ_SUBRQ_CALL = MQ_SUBRQ_CALL;
-pub type MQCD = tagMQCD;
-pub type PMQCD = *mut MQCD;
-pub type PPMQCD = *mut PMQCD;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQCD {
-    pub ChannelName: [MQCHAR; 20usize],
-    pub Version: MQLONG,
-    pub ChannelType: MQLONG,
-    pub TransportType: MQLONG,
-    pub Desc: [MQCHAR; 64usize],
-    pub QMgrName: [MQCHAR; 48usize],
-    pub XmitQName: [MQCHAR; 48usize],
-    pub ShortConnectionName: [MQCHAR; 20usize],
-    pub MCAName: [MQCHAR; 20usize],
-    pub ModeName: [MQCHAR; 8usize],
-    pub TpName: [MQCHAR; 64usize],
-    pub BatchSize: MQLONG,
-    pub DiscInterval: MQLONG,
-    pub ShortRetryCount: MQLONG,
-    pub ShortRetryInterval: MQLONG,
-    pub LongRetryCount: MQLONG,
-    pub LongRetryInterval: MQLONG,
-    pub SecurityExit: [MQCHAR; 128usize],
-    pub MsgExit: [MQCHAR; 128usize],
-    pub SendExit: [MQCHAR; 128usize],
-    pub ReceiveExit: [MQCHAR; 128usize],
-    pub SeqNumberWrap: MQLONG,
-    pub MaxMsgLength: MQLONG,
-    pub PutAuthority: MQLONG,
-    pub DataConversion: MQLONG,
-    pub SecurityUserData: [MQCHAR; 32usize],
-    pub MsgUserData: [MQCHAR; 32usize],
-    pub SendUserData: [MQCHAR; 32usize],
-    pub ReceiveUserData: [MQCHAR; 32usize],
-    pub UserIdentifier: [MQCHAR; 12usize],
-    pub Password: [MQCHAR; 12usize],
-    pub MCAUserIdentifier: [MQCHAR; 12usize],
-    pub MCAType: MQLONG,
-    pub ConnectionName: [MQCHAR; 264usize],
-    pub RemoteUserIdentifier: [MQCHAR; 12usize],
-    pub RemotePassword: [MQCHAR; 12usize],
-    pub MsgRetryExit: [MQCHAR; 128usize],
-    pub MsgRetryUserData: [MQCHAR; 32usize],
-    pub MsgRetryCount: MQLONG,
-    pub MsgRetryInterval: MQLONG,
-    pub HeartbeatInterval: MQLONG,
-    pub BatchInterval: MQLONG,
-    pub NonPersistentMsgSpeed: MQLONG,
-    pub StrucLength: MQLONG,
-    pub ExitNameLength: MQLONG,
-    pub ExitDataLength: MQLONG,
-    pub MsgExitsDefined: MQLONG,
-    pub SendExitsDefined: MQLONG,
-    pub ReceiveExitsDefined: MQLONG,
-    pub MsgExitPtr: MQPTR,
-    pub MsgUserDataPtr: MQPTR,
-    pub SendExitPtr: MQPTR,
-    pub SendUserDataPtr: MQPTR,
-    pub ReceiveExitPtr: MQPTR,
-    pub ReceiveUserDataPtr: MQPTR,
-    pub ClusterPtr: MQPTR,
-    pub ClustersDefined: MQLONG,
-    pub NetworkPriority: MQLONG,
-    pub LongMCAUserIdLength: MQLONG,
-    pub LongRemoteUserIdLength: MQLONG,
-    pub LongMCAUserIdPtr: MQPTR,
-    pub LongRemoteUserIdPtr: MQPTR,
-    pub MCASecurityId: MQBYTE40,
-    pub RemoteSecurityId: MQBYTE40,
-    pub SSLCipherSpec: [MQCHAR; 32usize],
-    pub SSLPeerNamePtr: MQPTR,
-    pub SSLPeerNameLength: MQLONG,
-    pub SSLClientAuth: MQLONG,
-    pub KeepAliveInterval: MQLONG,
-    pub LocalAddress: [MQCHAR; 48usize],
-    pub BatchHeartbeat: MQLONG,
-    pub HdrCompList: [MQLONG; 2usize],
-    pub MsgCompList: [MQLONG; 16usize],
-    pub CLWLChannelRank: MQLONG,
-    pub CLWLChannelPriority: MQLONG,
-    pub CLWLChannelWeight: MQLONG,
-    pub ChannelMonitoring: MQLONG,
-    pub ChannelStatistics: MQLONG,
-    pub SharingConversations: MQLONG,
-    pub PropertyControl: MQLONG,
-    pub MaxInstances: MQLONG,
-    pub MaxInstancesPerClient: MQLONG,
-    pub ClientChannelWeight: MQLONG,
-    pub ConnectionAffinity: MQLONG,
-    pub BatchDataLimit: MQLONG,
-    pub UseDLQ: MQLONG,
-    pub DefReconnect: MQLONG,
-    pub CertificateLabel: [MQCHAR; 64usize],
-    pub SPLProtection: MQLONG,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQCD"][::std::mem::size_of::<tagMQCD>() - 1992usize];
@@ -7291,18 +7911,6 @@ const _: () = {
     ["Offset of field: tagMQCD::CertificateLabel"][::std::mem::offset_of!(tagMQCD, CertificateLabel) - 1920usize];
     ["Offset of field: tagMQCD::SPLProtection"][::std::mem::offset_of!(tagMQCD, SPLProtection) - 1984usize];
 };
-pub type MQACH = tagMQACH;
-pub type PMQACH = *mut MQACH;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQACH {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub StrucLength: MQLONG,
-    pub ChainAreaLength: MQLONG,
-    pub ExitInfoName: MQCHAR48,
-    pub NextChainAreaPtr: PMQACH,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQACH"][::std::mem::size_of::<tagMQACH>() - 72usize];
@@ -7314,28 +7922,6 @@ const _: () = {
     ["Offset of field: tagMQACH::ExitInfoName"][::std::mem::offset_of!(tagMQACH, ExitInfoName) - 16usize];
     ["Offset of field: tagMQACH::NextChainAreaPtr"][::std::mem::offset_of!(tagMQACH, NextChainAreaPtr) - 64usize];
 };
-pub type MQAXC = tagMQAXC;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQAXC {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub Environment: MQLONG,
-    pub UserId: MQCHAR12,
-    pub SecurityId: MQBYTE40,
-    pub ConnectionName: [MQCHAR; 264usize],
-    pub LongMCAUserIdLength: MQLONG,
-    pub LongRemoteUserIdLength: MQLONG,
-    pub LongMCAUserIdPtr: MQPTR,
-    pub LongRemoteUserIdPtr: MQPTR,
-    pub ApplName: MQCHAR28,
-    pub ApplType: MQLONG,
-    pub ProcessId: MQPID,
-    pub ThreadId: MQTID,
-    pub ChannelName: [MQCHAR; 20usize],
-    pub Reserved1: MQBYTE4,
-    pub pChannelDefinition: PMQCD,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQAXC"][::std::mem::size_of::<tagMQAXC>() - 424usize];
@@ -7358,28 +7944,6 @@ const _: () = {
     ["Offset of field: tagMQAXC::Reserved1"][::std::mem::offset_of!(tagMQAXC, Reserved1) - 412usize];
     ["Offset of field: tagMQAXC::pChannelDefinition"][::std::mem::offset_of!(tagMQAXC, pChannelDefinition) - 416usize];
 };
-pub type MQAXP = tagMQAXP;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQAXP {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub ExitId: MQLONG,
-    pub ExitReason: MQLONG,
-    pub ExitResponse: MQLONG,
-    pub ExitResponse2: MQLONG,
-    pub Feedback: MQLONG,
-    pub APICallerType: MQLONG,
-    pub ExitUserArea: MQBYTE16,
-    pub ExitData: MQCHAR32,
-    pub ExitInfoName: MQCHAR48,
-    pub ExitPDArea: MQBYTE48,
-    pub QMgrName: MQCHAR48,
-    pub ExitChainAreaPtr: PMQACH,
-    pub Hconfig: MQHCONFIG,
-    pub Function: MQLONG,
-    pub ExitMsgHandle: MQHMSG,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQAXP"][::std::mem::size_of::<tagMQAXP>() - 256usize];
@@ -7402,42 +7966,6 @@ const _: () = {
     ["Offset of field: tagMQAXP::Function"][::std::mem::offset_of!(tagMQAXP, Function) - 240usize];
     ["Offset of field: tagMQAXP::ExitMsgHandle"][::std::mem::offset_of!(tagMQAXP, ExitMsgHandle) - 248usize];
 };
-pub type MQCXP = tagMQCXP;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQCXP {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub ExitId: MQLONG,
-    pub ExitReason: MQLONG,
-    pub ExitResponse: MQLONG,
-    pub ExitResponse2: MQLONG,
-    pub Feedback: MQLONG,
-    pub MaxSegmentLength: MQLONG,
-    pub ExitUserArea: MQBYTE16,
-    pub ExitData: MQCHAR32,
-    pub MsgRetryCount: MQLONG,
-    pub MsgRetryInterval: MQLONG,
-    pub MsgRetryReason: MQLONG,
-    pub HeaderLength: MQLONG,
-    pub PartnerName: MQCHAR48,
-    pub FAPLevel: MQLONG,
-    pub CapabilityFlags: MQLONG,
-    pub ExitNumber: MQLONG,
-    pub ExitSpace: MQLONG,
-    pub SSLCertUserid: MQCHAR12,
-    pub SSLRemCertIssNameLength: MQLONG,
-    pub SSLRemCertIssNamePtr: MQPTR,
-    pub SecurityParms: PMQCSP,
-    pub CurHdrCompression: MQLONG,
-    pub CurMsgCompression: MQLONG,
-    pub Hconn: MQHCONN,
-    pub SharingConversations: MQBOOL,
-    pub MCAUserSource: MQLONG,
-    pub pEntryPoints: PMQIEP,
-    pub RemoteProduct: MQCHAR4,
-    pub RemoteVersion: MQCHAR8,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQCXP"][::std::mem::size_of::<tagMQCXP>() - 240usize];
@@ -7474,24 +8002,6 @@ const _: () = {
     ["Offset of field: tagMQCXP::RemoteProduct"][::std::mem::offset_of!(tagMQCXP, RemoteProduct) - 224usize];
     ["Offset of field: tagMQCXP::RemoteVersion"][::std::mem::offset_of!(tagMQCXP, RemoteVersion) - 228usize];
 };
-pub type MQDXP = tagMQDXP;
-pub type PMQDXP = *mut MQDXP;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQDXP {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub ExitOptions: MQLONG,
-    pub AppOptions: MQLONG,
-    pub Encoding: MQLONG,
-    pub CodedCharSetId: MQLONG,
-    pub DataLength: MQLONG,
-    pub CompCode: MQLONG,
-    pub Reason: MQLONG,
-    pub ExitResponse: MQLONG,
-    pub Hconn: MQHCONN,
-    pub pEntryPoints: PMQIEP,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQDXP"][::std::mem::size_of::<tagMQDXP>() - 56usize];
@@ -7509,25 +8019,6 @@ const _: () = {
     ["Offset of field: tagMQDXP::Hconn"][::std::mem::offset_of!(tagMQDXP, Hconn) - 40usize];
     ["Offset of field: tagMQDXP::pEntryPoints"][::std::mem::offset_of!(tagMQDXP, pEntryPoints) - 48usize];
 };
-pub type MQNXP = tagMQNXP;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQNXP {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub ExitId: MQLONG,
-    pub ExitReason: MQLONG,
-    pub ExitResponse: MQLONG,
-    pub ExitResponse2: MQLONG,
-    pub Feedback: MQLONG,
-    pub ExitDataLength: MQLONG,
-    pub pExitDataPtr: PMQCHAR,
-    pub pExitUserAreaPtr: MQPTR,
-    pub ppMQCDArrayPtr: PPMQCD,
-    pub MQCDArrayCount: MQLONG,
-    pub MaxMQCDVersion: MQLONG,
-    pub pEntryPoints: PMQIEP,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQNXP"][::std::mem::size_of::<tagMQNXP>() - 72usize];
@@ -7547,15 +8038,6 @@ const _: () = {
     ["Offset of field: tagMQNXP::MaxMQCDVersion"][::std::mem::offset_of!(tagMQNXP, MaxMQCDVersion) - 60usize];
     ["Offset of field: tagMQNXP::pEntryPoints"][::std::mem::offset_of!(tagMQNXP, pEntryPoints) - 64usize];
 };
-pub type MQPBC = tagMQPBC;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQPBC {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub PubTopicString: MQCHARV,
-    pub MsgDescPtr: PMQMD,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQPBC"][::std::mem::size_of::<tagMQPBC>() - 40usize];
@@ -7565,29 +8047,6 @@ const _: () = {
     ["Offset of field: tagMQPBC::PubTopicString"][::std::mem::offset_of!(tagMQPBC, PubTopicString) - 8usize];
     ["Offset of field: tagMQPBC::MsgDescPtr"][::std::mem::offset_of!(tagMQPBC, MsgDescPtr) - 32usize];
 };
-pub type MQPSXP = tagMQPSXP;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQPSXP {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub ExitId: MQLONG,
-    pub ExitReason: MQLONG,
-    pub ExitResponse: MQLONG,
-    pub ExitResponse2: MQLONG,
-    pub Feedback: MQLONG,
-    pub Hconn: MQHCONN,
-    pub ExitUserArea: MQBYTE16,
-    pub ExitData: MQCHAR32,
-    pub QMgrName: MQCHAR48,
-    pub MsgHandle: MQHMSG,
-    pub MsgDescPtr: PMQMD,
-    pub MsgInPtr: PMQVOID,
-    pub MsgInLength: MQLONG,
-    pub MsgOutPtr: PMQVOID,
-    pub MsgOutLength: MQLONG,
-    pub pEntryPoints: PMQIEP,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQPSXP"][::std::mem::size_of::<tagMQPSXP>() - 184usize];
@@ -7611,25 +8070,6 @@ const _: () = {
     ["Offset of field: tagMQPSXP::MsgOutLength"][::std::mem::offset_of!(tagMQPSXP, MsgOutLength) - 168usize];
     ["Offset of field: tagMQPSXP::pEntryPoints"][::std::mem::offset_of!(tagMQPSXP, pEntryPoints) - 176usize];
 };
-pub type MQSBC = tagMQSBC;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQSBC {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub DestinationQMgrName: MQCHAR48,
-    pub DestinationQName: MQCHAR48,
-    pub SubType: MQLONG,
-    pub SubOptions: MQLONG,
-    pub ObjectName: MQCHAR48,
-    pub ObjectString: MQCHARV,
-    pub SubTopicString: MQCHARV,
-    pub SubName: MQCHARV,
-    pub SubId: MQBYTE24,
-    pub SelectionString: MQCHARV,
-    pub SubLevel: MQLONG,
-    pub PSProperties: MQLONG,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQSBC"][::std::mem::size_of::<tagMQSBC>() - 288usize];
@@ -7649,14 +8089,6 @@ const _: () = {
     ["Offset of field: tagMQSBC::SubLevel"][::std::mem::offset_of!(tagMQSBC, SubLevel) - 280usize];
     ["Offset of field: tagMQSBC::PSProperties"][::std::mem::offset_of!(tagMQSBC, PSProperties) - 284usize];
 };
-pub type MQWCR = tagMQWCR;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQWCR {
-    pub ClusterName: MQCHAR48,
-    pub ClusterRecOffset: MQLONG,
-    pub ClusterFlags: MQLONG,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQWCR"][::std::mem::size_of::<tagMQWCR>() - 56usize];
@@ -7665,24 +8097,6 @@ const _: () = {
     ["Offset of field: tagMQWCR::ClusterRecOffset"][::std::mem::offset_of!(tagMQWCR, ClusterRecOffset) - 48usize];
     ["Offset of field: tagMQWCR::ClusterFlags"][::std::mem::offset_of!(tagMQWCR, ClusterFlags) - 52usize];
 };
-pub type MQWDR = tagMQWDR;
-pub type PMQWDR = *mut MQWDR;
-pub type PPMQWDR = *mut PMQWDR;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQWDR {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub StrucLength: MQLONG,
-    pub QMgrFlags: MQLONG,
-    pub QMgrIdentifier: MQCHAR48,
-    pub QMgrName: MQCHAR48,
-    pub ClusterRecOffset: MQLONG,
-    pub ChannelState: MQLONG,
-    pub ChannelDefOffset: MQLONG,
-    pub DestSeqNumber: MQLONG,
-    pub DestSeqFactor: MQINT64,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQWDR"][::std::mem::size_of::<tagMQWDR>() - 136usize];
@@ -7699,20 +8113,6 @@ const _: () = {
     ["Offset of field: tagMQWDR::DestSeqNumber"][::std::mem::offset_of!(tagMQWDR, DestSeqNumber) - 124usize];
     ["Offset of field: tagMQWDR::DestSeqFactor"][::std::mem::offset_of!(tagMQWDR, DestSeqFactor) - 128usize];
 };
-pub type MQWDR1 = tagMQWDR1;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQWDR1 {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub StrucLength: MQLONG,
-    pub QMgrFlags: MQLONG,
-    pub QMgrIdentifier: MQCHAR48,
-    pub QMgrName: MQCHAR48,
-    pub ClusterRecOffset: MQLONG,
-    pub ChannelState: MQLONG,
-    pub ChannelDefOffset: MQLONG,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQWDR1"][::std::mem::size_of::<tagMQWDR1>() - 124usize];
@@ -7727,22 +8127,6 @@ const _: () = {
     ["Offset of field: tagMQWDR1::ChannelState"][::std::mem::offset_of!(tagMQWDR1, ChannelState) - 116usize];
     ["Offset of field: tagMQWDR1::ChannelDefOffset"][::std::mem::offset_of!(tagMQWDR1, ChannelDefOffset) - 120usize];
 };
-pub type MQWDR2 = tagMQWDR2;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQWDR2 {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub StrucLength: MQLONG,
-    pub QMgrFlags: MQLONG,
-    pub QMgrIdentifier: MQCHAR48,
-    pub QMgrName: MQCHAR48,
-    pub ClusterRecOffset: MQLONG,
-    pub ChannelState: MQLONG,
-    pub ChannelDefOffset: MQLONG,
-    pub DestSeqNumber: MQLONG,
-    pub DestSeqFactor: MQINT64,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQWDR2"][::std::mem::size_of::<tagMQWDR2>() - 136usize];
@@ -7759,30 +8143,6 @@ const _: () = {
     ["Offset of field: tagMQWDR2::DestSeqNumber"][::std::mem::offset_of!(tagMQWDR2, DestSeqNumber) - 124usize];
     ["Offset of field: tagMQWDR2::DestSeqFactor"][::std::mem::offset_of!(tagMQWDR2, DestSeqFactor) - 128usize];
 };
-pub type MQWQR = tagMQWQR;
-pub type PMQWQR = *mut MQWQR;
-pub type PPMQWQR = *mut PMQWQR;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQWQR {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub StrucLength: MQLONG,
-    pub QFlags: MQLONG,
-    pub QName: MQCHAR48,
-    pub QMgrIdentifier: MQCHAR48,
-    pub ClusterRecOffset: MQLONG,
-    pub QType: MQLONG,
-    pub QDesc: MQCHAR64,
-    pub DefBind: MQLONG,
-    pub DefPersistence: MQLONG,
-    pub DefPriority: MQLONG,
-    pub InhibitPut: MQLONG,
-    pub CLWLQueuePriority: MQLONG,
-    pub CLWLQueueRank: MQLONG,
-    pub DefPutResponse: MQLONG,
-    pub CapExpiry: MQLONG,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQWQR"][::std::mem::size_of::<tagMQWQR>() - 216usize];
@@ -7805,24 +8165,6 @@ const _: () = {
     ["Offset of field: tagMQWQR::DefPutResponse"][::std::mem::offset_of!(tagMQWQR, DefPutResponse) - 208usize];
     ["Offset of field: tagMQWQR::CapExpiry"][::std::mem::offset_of!(tagMQWQR, CapExpiry) - 212usize];
 };
-pub type MQWQR1 = tagMQWQR1;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQWQR1 {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub StrucLength: MQLONG,
-    pub QFlags: MQLONG,
-    pub QName: MQCHAR48,
-    pub QMgrIdentifier: MQCHAR48,
-    pub ClusterRecOffset: MQLONG,
-    pub QType: MQLONG,
-    pub QDesc: MQCHAR64,
-    pub DefBind: MQLONG,
-    pub DefPersistence: MQLONG,
-    pub DefPriority: MQLONG,
-    pub InhibitPut: MQLONG,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQWQR1"][::std::mem::size_of::<tagMQWQR1>() - 200usize];
@@ -7841,26 +8183,6 @@ const _: () = {
     ["Offset of field: tagMQWQR1::DefPriority"][::std::mem::offset_of!(tagMQWQR1, DefPriority) - 192usize];
     ["Offset of field: tagMQWQR1::InhibitPut"][::std::mem::offset_of!(tagMQWQR1, InhibitPut) - 196usize];
 };
-pub type MQWQR2 = tagMQWQR2;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQWQR2 {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub StrucLength: MQLONG,
-    pub QFlags: MQLONG,
-    pub QName: MQCHAR48,
-    pub QMgrIdentifier: MQCHAR48,
-    pub ClusterRecOffset: MQLONG,
-    pub QType: MQLONG,
-    pub QDesc: MQCHAR64,
-    pub DefBind: MQLONG,
-    pub DefPersistence: MQLONG,
-    pub DefPriority: MQLONG,
-    pub InhibitPut: MQLONG,
-    pub CLWLQueuePriority: MQLONG,
-    pub CLWLQueueRank: MQLONG,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQWQR2"][::std::mem::size_of::<tagMQWQR2>() - 208usize];
@@ -7881,27 +8203,6 @@ const _: () = {
     ["Offset of field: tagMQWQR2::CLWLQueuePriority"][::std::mem::offset_of!(tagMQWQR2, CLWLQueuePriority) - 200usize];
     ["Offset of field: tagMQWQR2::CLWLQueueRank"][::std::mem::offset_of!(tagMQWQR2, CLWLQueueRank) - 204usize];
 };
-pub type MQWQR3 = tagMQWQR3;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQWQR3 {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub StrucLength: MQLONG,
-    pub QFlags: MQLONG,
-    pub QName: MQCHAR48,
-    pub QMgrIdentifier: MQCHAR48,
-    pub ClusterRecOffset: MQLONG,
-    pub QType: MQLONG,
-    pub QDesc: MQCHAR64,
-    pub DefBind: MQLONG,
-    pub DefPersistence: MQLONG,
-    pub DefPriority: MQLONG,
-    pub InhibitPut: MQLONG,
-    pub CLWLQueuePriority: MQLONG,
-    pub CLWLQueueRank: MQLONG,
-    pub DefPutResponse: MQLONG,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQWQR3"][::std::mem::size_of::<tagMQWQR3>() - 212usize];
@@ -7923,28 +8224,6 @@ const _: () = {
     ["Offset of field: tagMQWQR3::CLWLQueueRank"][::std::mem::offset_of!(tagMQWQR3, CLWLQueueRank) - 204usize];
     ["Offset of field: tagMQWQR3::DefPutResponse"][::std::mem::offset_of!(tagMQWQR3, DefPutResponse) - 208usize];
 };
-pub type MQWQR4 = tagMQWQR4;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQWQR4 {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub StrucLength: MQLONG,
-    pub QFlags: MQLONG,
-    pub QName: MQCHAR48,
-    pub QMgrIdentifier: MQCHAR48,
-    pub ClusterRecOffset: MQLONG,
-    pub QType: MQLONG,
-    pub QDesc: MQCHAR64,
-    pub DefBind: MQLONG,
-    pub DefPersistence: MQLONG,
-    pub DefPriority: MQLONG,
-    pub InhibitPut: MQLONG,
-    pub CLWLQueuePriority: MQLONG,
-    pub CLWLQueueRank: MQLONG,
-    pub DefPutResponse: MQLONG,
-    pub CapExpiry: MQLONG,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQWQR4"][::std::mem::size_of::<tagMQWQR4>() - 216usize];
@@ -7967,36 +8246,6 @@ const _: () = {
     ["Offset of field: tagMQWQR4::DefPutResponse"][::std::mem::offset_of!(tagMQWQR4, DefPutResponse) - 208usize];
     ["Offset of field: tagMQWQR4::CapExpiry"][::std::mem::offset_of!(tagMQWQR4, CapExpiry) - 212usize];
 };
-pub type MQWXP = tagMQWXP;
-pub type PMQWXP = *mut MQWXP;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQWXP {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub ExitId: MQLONG,
-    pub ExitReason: MQLONG,
-    pub ExitResponse: MQLONG,
-    pub ExitResponse2: MQLONG,
-    pub Feedback: MQLONG,
-    pub Flags: MQLONG,
-    pub ExitUserArea: MQBYTE16,
-    pub ExitData: MQCHAR32,
-    pub MsgDescPtr: PMQMD,
-    pub MsgBufferPtr: PMQVOID,
-    pub MsgBufferLength: MQLONG,
-    pub MsgLength: MQLONG,
-    pub QName: MQCHAR48,
-    pub QMgrName: MQCHAR48,
-    pub DestinationCount: MQLONG,
-    pub DestinationChosen: MQLONG,
-    pub DestinationArrayPtr: PPMQWDR,
-    pub QArrayPtr: PPMQWQR,
-    pub CacheContext: MQPTR,
-    pub CacheType: MQLONG,
-    pub CLWLMRUChannels: MQLONG,
-    pub pEntryPoints: PMQIEP,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQWXP"][::std::mem::size_of::<tagMQWXP>() - 248usize];
@@ -8026,31 +8275,6 @@ const _: () = {
     ["Offset of field: tagMQWXP::CLWLMRUChannels"][::std::mem::offset_of!(tagMQWXP, CLWLMRUChannels) - 236usize];
     ["Offset of field: tagMQWXP::pEntryPoints"][::std::mem::offset_of!(tagMQWXP, pEntryPoints) - 240usize];
 };
-pub type MQWXP1 = tagMQWXP1;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQWXP1 {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub ExitId: MQLONG,
-    pub ExitReason: MQLONG,
-    pub ExitResponse: MQLONG,
-    pub ExitResponse2: MQLONG,
-    pub Feedback: MQLONG,
-    pub Flags: MQLONG,
-    pub ExitUserArea: MQBYTE16,
-    pub ExitData: MQCHAR32,
-    pub MsgDescPtr: PMQMD,
-    pub MsgBufferPtr: PMQVOID,
-    pub MsgBufferLength: MQLONG,
-    pub MsgLength: MQLONG,
-    pub QName: MQCHAR48,
-    pub QMgrName: MQCHAR48,
-    pub DestinationCount: MQLONG,
-    pub DestinationChosen: MQLONG,
-    pub DestinationArrayPtr: PPMQWDR,
-    pub QArrayPtr: PPMQWQR,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQWXP1"][::std::mem::size_of::<tagMQWXP1>() - 224usize];
@@ -8076,33 +8300,6 @@ const _: () = {
     ["Offset of field: tagMQWXP1::DestinationArrayPtr"][::std::mem::offset_of!(tagMQWXP1, DestinationArrayPtr) - 208usize];
     ["Offset of field: tagMQWXP1::QArrayPtr"][::std::mem::offset_of!(tagMQWXP1, QArrayPtr) - 216usize];
 };
-pub type MQWXP2 = tagMQWXP2;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQWXP2 {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub ExitId: MQLONG,
-    pub ExitReason: MQLONG,
-    pub ExitResponse: MQLONG,
-    pub ExitResponse2: MQLONG,
-    pub Feedback: MQLONG,
-    pub Flags: MQLONG,
-    pub ExitUserArea: MQBYTE16,
-    pub ExitData: MQCHAR32,
-    pub MsgDescPtr: PMQMD,
-    pub MsgBufferPtr: PMQVOID,
-    pub MsgBufferLength: MQLONG,
-    pub MsgLength: MQLONG,
-    pub QName: MQCHAR48,
-    pub QMgrName: MQCHAR48,
-    pub DestinationCount: MQLONG,
-    pub DestinationChosen: MQLONG,
-    pub DestinationArrayPtr: PPMQWDR,
-    pub QArrayPtr: PPMQWQR,
-    pub CacheContext: MQPTR,
-    pub CacheType: MQLONG,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQWXP2"][::std::mem::size_of::<tagMQWXP2>() - 240usize];
@@ -8130,34 +8327,6 @@ const _: () = {
     ["Offset of field: tagMQWXP2::CacheContext"][::std::mem::offset_of!(tagMQWXP2, CacheContext) - 224usize];
     ["Offset of field: tagMQWXP2::CacheType"][::std::mem::offset_of!(tagMQWXP2, CacheType) - 232usize];
 };
-pub type MQWXP3 = tagMQWXP3;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQWXP3 {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub ExitId: MQLONG,
-    pub ExitReason: MQLONG,
-    pub ExitResponse: MQLONG,
-    pub ExitResponse2: MQLONG,
-    pub Feedback: MQLONG,
-    pub Flags: MQLONG,
-    pub ExitUserArea: MQBYTE16,
-    pub ExitData: MQCHAR32,
-    pub MsgDescPtr: PMQMD,
-    pub MsgBufferPtr: PMQVOID,
-    pub MsgBufferLength: MQLONG,
-    pub MsgLength: MQLONG,
-    pub QName: MQCHAR48,
-    pub QMgrName: MQCHAR48,
-    pub DestinationCount: MQLONG,
-    pub DestinationChosen: MQLONG,
-    pub DestinationArrayPtr: PPMQWDR,
-    pub QArrayPtr: PPMQWQR,
-    pub CacheContext: MQPTR,
-    pub CacheType: MQLONG,
-    pub CLWLMRUChannels: MQLONG,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQWXP3"][::std::mem::size_of::<tagMQWXP3>() - 240usize];
@@ -8186,35 +8355,6 @@ const _: () = {
     ["Offset of field: tagMQWXP3::CacheType"][::std::mem::offset_of!(tagMQWXP3, CacheType) - 232usize];
     ["Offset of field: tagMQWXP3::CLWLMRUChannels"][::std::mem::offset_of!(tagMQWXP3, CLWLMRUChannels) - 236usize];
 };
-pub type MQWXP4 = tagMQWXP4;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQWXP4 {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub ExitId: MQLONG,
-    pub ExitReason: MQLONG,
-    pub ExitResponse: MQLONG,
-    pub ExitResponse2: MQLONG,
-    pub Feedback: MQLONG,
-    pub Flags: MQLONG,
-    pub ExitUserArea: MQBYTE16,
-    pub ExitData: MQCHAR32,
-    pub MsgDescPtr: PMQMD,
-    pub MsgBufferPtr: PMQVOID,
-    pub MsgBufferLength: MQLONG,
-    pub MsgLength: MQLONG,
-    pub QName: MQCHAR48,
-    pub QMgrName: MQCHAR48,
-    pub DestinationCount: MQLONG,
-    pub DestinationChosen: MQLONG,
-    pub DestinationArrayPtr: PPMQWDR,
-    pub QArrayPtr: PPMQWQR,
-    pub CacheContext: MQPTR,
-    pub CacheType: MQLONG,
-    pub CLWLMRUChannels: MQLONG,
-    pub pEntryPoints: PMQIEP,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQWXP4"][::std::mem::size_of::<tagMQWXP4>() - 248usize];
@@ -8244,16 +8384,6 @@ const _: () = {
     ["Offset of field: tagMQWXP4::CLWLMRUChannels"][::std::mem::offset_of!(tagMQWXP4, CLWLMRUChannels) - 236usize];
     ["Offset of field: tagMQWXP4::pEntryPoints"][::std::mem::offset_of!(tagMQWXP4, pEntryPoints) - 240usize];
 };
-pub type MQXEPO = tagMQXEPO;
-pub type PMQXEPO = *mut MQXEPO;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQXEPO {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub Options: MQLONG,
-    pub ExitProperties: MQCHARV,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQXEPO"][::std::mem::size_of::<tagMQXEPO>() - 40usize];
@@ -8263,1206 +8393,6 @@ const _: () = {
     ["Offset of field: tagMQXEPO::Options"][::std::mem::offset_of!(tagMQXEPO, Options) - 8usize];
     ["Offset of field: tagMQXEPO::ExitProperties"][::std::mem::offset_of!(tagMQXEPO, ExitProperties) - 16usize];
 };
-extern "C" {
-    pub fn MQXEP(
-        Hconfig: MQHCONFIG,
-        ExitReason: MQLONG,
-        Function: MQLONG,
-        pEntryPoint: PMQFUNC,
-        pExitOpts: PMQXEPO,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
-    );
-}
-pub type MQ_XEP_CALL = ::std::option::Option<
-    unsafe extern "C" fn(
-        Hconfig: MQHCONFIG,
-        ExitReason: MQLONG,
-        Function: MQLONG,
-        pEntryPoint: PMQFUNC,
-        pExitOpts: PMQXEPO,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
-    ),
->;
-pub type PMQ_XEP_CALL = MQ_XEP_CALL;
-extern "C" {
-    pub fn MQXCLWLN(
-        pExitParms: PMQWXP,
-        CurrentRecord: MQPTR,
-        NextOffset: MQLONG,
-        pNextRecord: PMQPTR,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
-    );
-}
-pub type MQ_XCLWLN_CALL = ::std::option::Option<
-    unsafe extern "C" fn(
-        pExitParms: PMQWXP,
-        CurrentRecord: MQPTR,
-        NextOffset: MQLONG,
-        pNextRecord: PMQPTR,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
-    ),
->;
-pub type PMQ_XCLWLN_CALL = MQ_XCLWLN_CALL;
-extern "C" {
-    pub fn MQXCNVC(
-        Hconn: MQHCONN,
-        Options: MQLONG,
-        SourceCCSID: MQLONG,
-        SourceLength: MQLONG,
-        pSourceBuffer: PMQCHAR,
-        TargetCCSID: MQLONG,
-        TargetLength: MQLONG,
-        pTargetBuffer: PMQCHAR,
-        pDataLength: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
-    );
-}
-pub type MQ_XCNVC_CALL = ::std::option::Option<
-    unsafe extern "C" fn(
-        Hconn: MQHCONN,
-        Options: MQLONG,
-        SourceCCSID: MQLONG,
-        SourceLength: MQLONG,
-        pSourceBuffer: PMQCHAR,
-        TargetCCSID: MQLONG,
-        TargetLength: MQLONG,
-        pTargetBuffer: PMQCHAR,
-        pDataLength: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
-    ),
->;
-pub type PMQ_XCNVC_CALL = MQ_XCNVC_CALL;
-extern "C" {
-    pub fn MQXDX(
-        pDataConvExitParms: PMQDXP,
-        pMsgDesc: PMQMD,
-        InBufferLength: MQLONG,
-        pInBuffer: PMQVOID,
-        OutBufferLength: MQLONG,
-        pOutBuffer: PMQVOID,
-    );
-}
-pub type MQ_XDX_CALL = ::std::option::Option<
-    unsafe extern "C" fn(
-        pDataConvExitParms: PMQDXP,
-        pMsgDesc: PMQMD,
-        InBufferLength: MQLONG,
-        pInBuffer: PMQVOID,
-        OutBufferLength: MQLONG,
-        pOutBuffer: PMQVOID,
-    ),
->;
-pub type PMQ_XDX_CALL = MQ_XDX_CALL;
-extern "C" {
-    pub fn MQACTIVE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQACTP_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQACTV_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQACT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQADOPT_CHECK_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQADOPT_TYPE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQADPCTX_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQAIT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQAPPL_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQAS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQAT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQAUTHENTICATE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQAUTHOPT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQAUTH_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQAUTOCLUS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQAUTO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQBACF_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQBALANCED_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQBALSTATE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQBL_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQBMHO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQBND_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQBNO_BALTYPE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQBNO_OPTIONS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQBNO_TIMEOUT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQBO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQBPLOCATION_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQBT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCACF_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCACH_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCADSD_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCAFTY_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCAMO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCAP_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCAUT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCA_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCBCF_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCBCT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCBDO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCBD_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCBO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCBT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCCSI_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCCT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCC_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCDC_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCEX_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCFACCESS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCFCONLOS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCFC_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCFOFFLD_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCFOP_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCFO_REFRESH_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCFO_REMOVE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCFR_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCFSTATUS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCFTYPE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCFT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCF_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCGWI_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCHAD_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCHIDS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCHK_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCHLA_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCHLD_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCHRR_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCHSH_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCHSR_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCHSSTATE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCHS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCHTAB_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCHT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCIH_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCIT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCLCT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCLROUTE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCLRS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCLRT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCLST_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCLT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCLWL_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCLXQ_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCMDI_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCMDL_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCMD_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCMHO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCNO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCODL_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCOMPRESS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCOPY_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCQT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCRC_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCSP_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCSRV_CONVERT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCSRV_DLQ_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCTES_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCTLO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQCUOWC_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQDCC_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQDC_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQDELO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQDHF_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQDISCONNECT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQDLV_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQDL_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQDMHO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQDMPO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQDNSWLM_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQDOPT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQDSB_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQDSE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQEC_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQEI_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQENC_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQEPH_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQET_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQEVO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQEVR_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQEXPI_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQEXTATTRS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQEXT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQFB_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQFC_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQFSENC_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQFS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQFUN_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQGACF_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQGMO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQGUR_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQHA_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQHB_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQHC_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQHM_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQHO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQHSTATE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQIACF_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQIACH_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQIAMO64_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQIAMO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQIAMO_MONITOR_DATATYPE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQIAMO_MONITOR_FLAGS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQIASY_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQIAV_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQIA_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQIDO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQIEPF_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQIGQPA_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQIGQ_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQIIH_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQIMGRCOV_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQIMMREASON_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQIMPO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQINBD_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQIND_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQIPADDR_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQIS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQIT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQKAI_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQKEY_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQLDAPC_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQLDAP_AUTHORMD_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQLDAP_NESTGRP_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQLOGTYPE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQLR_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQMASTER_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQMATCH_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQMCAS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQMCAT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQMCB_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQMCEV_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQMCP_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQMC_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQMDEF_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQMDS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQMEDIMGINTVL_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQMEDIMGLOGLN_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQMEDIMGSCHED_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQMF_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQMHBO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQMLP_ENCRYPTION_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQMLP_SIGN_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQMLP_TOLERATE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQMMBI_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQMODE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQMON_OVERRIDE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQMON_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQMON_AVAILABILITY_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQMO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQMT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQMULC_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQNC_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQNHABACKLOG_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQNHACONNACTV_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQNHAINSYNC_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQNHAROLE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQNPMS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQNPM_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQNSH_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQNT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQOL_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQOM_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQOO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQOPER_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQOPMODE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQOP_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQOT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQPAGECLAS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQPA_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQPD_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQPER_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQPL_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQPMO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQPMRF_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQPO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQPRI_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQPROP_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQPROTO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQPRT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQPSCLUS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQPSCT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQPSM_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQPSPROP_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQPSST_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQPS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQPUBO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQQA_BACKOUT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQQA_GET_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQQA_PUT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQQA_SHAREABLE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQQDT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQQFS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQQF_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQQMDT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQQMFAC_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQQMF_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQQMOPT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQQMSTA_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQQMT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQQO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQQSGD_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQQSGS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQQSIE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQQSOT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQQSO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQQSUM_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQQT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQRAR_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQRCCF_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQRCN_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQRCVTIME_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQRC_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQRDNS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQRD_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQREADA_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQRECAUTO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQRECORDING_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQREGO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQREORG_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQRFH_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQRL_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQRMHF_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQROUTE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQRO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQRP_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQRQ_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQRT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQRU_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQSCA_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQSCOPE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQSCO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQSCYC_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQSECCOMM_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQSECITEM_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQSECPROT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQSECSW_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQSECTYPE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQSELTYPE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQSEL_ALL_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQSEL_ANY_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQSMPO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQSO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQSPL_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQSP_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQSQQM_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQSRO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQSR_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQSSL_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQSTAT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQSTDBY_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQST_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQSUBTYPE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQSUB_DURABILITY_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQSUB_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQSUS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQSVC_CONTROL_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQSVC_STATUS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQSVC_TYPE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQSYNCPOINT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQSYSOBJ_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQSYSP_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQS_AVAIL_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQS_EXPANDST_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQS_OPENMODE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQS_STATUS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQTA_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQTA_PROXY_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQTA_PUB_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQTA_SUB_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQTCPKEEP_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQTCPSTACK_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQTC_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQTIME_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQTOPT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQTRAXSTR_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQTRIGGER_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQTSCOPE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQTT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQTYPE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQUCI_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQUIDSUPP_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQUNDELIVERED_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQUOWST_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQUOWT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQUSAGE_DS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQUSAGE_EXPAND_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQUSAGE_PS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQUSAGE_SMDS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQUSEDLQ_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQUSRC_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQUS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQVL_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQVS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQVU_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQWARN_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQWIH_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQWI_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQWS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQWXP_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQXACT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQXCC_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQXC_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQXDR_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQXEPO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQXE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQXF_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQXPT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQXR2_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQXR_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQXT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQZAET_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQZAO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQZAT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQZCI_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQZID_AUTHORITY_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQZID_NAME_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQZID_USERID_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQZID_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQZIO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQZSE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQZSL_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQZTO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQ_CERT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQ_MQTT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn MQ_SUITE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
-}
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct MQI_BY_VALUE_STR {
-    pub value: MQLONG,
-    pub name: *mut ::std::os::raw::c_char,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of MQI_BY_VALUE_STR"][::std::mem::size_of::<MQI_BY_VALUE_STR>() - 16usize];
@@ -9470,15 +8400,6 @@ const _: () = {
     ["Offset of field: MQI_BY_VALUE_STR::value"][::std::mem::offset_of!(MQI_BY_VALUE_STR, value) - 0usize];
     ["Offset of field: MQI_BY_VALUE_STR::name"][::std::mem::offset_of!(MQI_BY_VALUE_STR, name) - 8usize];
 };
-extern "C" {
-    pub static MQI_BY_VALUE_STR: [MQI_BY_VALUE_STR; 5242usize];
-}
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct MQI_BY_NAME_STR {
-    pub name: *mut ::std::os::raw::c_char,
-    pub value: MQLONG,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of MQI_BY_NAME_STR"][::std::mem::size_of::<MQI_BY_NAME_STR>() - 16usize];
@@ -9486,350 +8407,6 @@ const _: () = {
     ["Offset of field: MQI_BY_NAME_STR::name"][::std::mem::offset_of!(MQI_BY_NAME_STR, name) - 0usize];
     ["Offset of field: MQI_BY_NAME_STR::value"][::std::mem::offset_of!(MQI_BY_NAME_STR, value) - 8usize];
 };
-extern "C" {
-    pub static MQI_BY_NAME_STR: [MQI_BY_NAME_STR; 5242usize];
-}
-pub type MQHBAG = MQLONG;
-pub type PMQHBAG = *mut MQHBAG;
-extern "C" {
-    pub fn mqAddBag(Bag: MQHBAG, Selector: MQLONG, ItemValue: MQHBAG, pCompCode: PMQLONG, pReason: PMQLONG);
-}
-extern "C" {
-    pub fn mqAddByteString(
-        Bag: MQHBAG,
-        Selector: MQLONG,
-        BufferLength: MQLONG,
-        pBuffer: PMQBYTE,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
-    );
-}
-extern "C" {
-    pub fn mqAddByteStringFilter(
-        Bag: MQHBAG,
-        Selector: MQLONG,
-        BufferLength: MQLONG,
-        pBuffer: PMQBYTE,
-        Operator: MQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
-    );
-}
-extern "C" {
-    pub fn mqAddInquiry(Bag: MQHBAG, Selector: MQLONG, pCompCode: PMQLONG, pReason: PMQLONG);
-}
-extern "C" {
-    pub fn mqAddInteger(Bag: MQHBAG, Selector: MQLONG, ItemValue: MQLONG, pCompCode: PMQLONG, pReason: PMQLONG);
-}
-extern "C" {
-    pub fn mqAddInteger64(Bag: MQHBAG, Selector: MQLONG, ItemValue: MQINT64, pCompCode: PMQLONG, pReason: PMQLONG);
-}
-extern "C" {
-    pub fn mqAddIntegerFilter(
-        Bag: MQHBAG,
-        Selector: MQLONG,
-        ItemValue: MQLONG,
-        Operator: MQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
-    );
-}
-extern "C" {
-    pub fn mqAddString(
-        Bag: MQHBAG,
-        Selector: MQLONG,
-        BufferLength: MQLONG,
-        pBuffer: PMQCHAR,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
-    );
-}
-extern "C" {
-    pub fn mqAddStringFilter(
-        Bag: MQHBAG,
-        Selector: MQLONG,
-        BufferLength: MQLONG,
-        pBuffer: PMQCHAR,
-        Operator: MQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
-    );
-}
-extern "C" {
-    pub fn mqBagToBuffer(
-        OptionsBag: MQHBAG,
-        DataBag: MQHBAG,
-        BufferLength: MQLONG,
-        pBuffer: PMQVOID,
-        pDataLength: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
-    );
-}
-extern "C" {
-    pub fn mqBufferToBag(
-        OptionsBag: MQHBAG,
-        BufferLength: MQLONG,
-        pBuffer: PMQVOID,
-        DataBag: MQHBAG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
-    );
-}
-extern "C" {
-    pub fn mqClearBag(Bag: MQHBAG, pCompCode: PMQLONG, pReason: PMQLONG);
-}
-extern "C" {
-    pub fn mqCountItems(Bag: MQHBAG, Selector: MQLONG, pItemCount: PMQLONG, pCompCode: PMQLONG, pReason: PMQLONG);
-}
-extern "C" {
-    pub fn mqCreateBag(Options: MQLONG, pBag: PMQHBAG, pCompCode: PMQLONG, pReason: PMQLONG);
-}
-extern "C" {
-    pub fn mqDeleteBag(pBag: PMQHBAG, pCompCode: PMQLONG, pReason: PMQLONG);
-}
-extern "C" {
-    pub fn mqDeleteItem(Bag: MQHBAG, Selector: MQLONG, ItemIndex: MQLONG, pCompCode: PMQLONG, pReason: PMQLONG);
-}
-extern "C" {
-    pub fn mqExecute(
-        Hconn: MQHCONN,
-        Command: MQLONG,
-        OptionsBag: MQHBAG,
-        AdminBag: MQHBAG,
-        ResponseBag: MQHBAG,
-        AdminQ: MQHOBJ,
-        ResponseQ: MQHOBJ,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
-    );
-}
-extern "C" {
-    pub fn mqGetBag(
-        Hconn: MQHCONN,
-        Hobj: MQHOBJ,
-        pMsgDesc: PMQVOID,
-        pGetMsgOpts: PMQVOID,
-        Bag: MQHBAG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
-    );
-}
-extern "C" {
-    pub fn mqInquireBag(
-        Bag: MQHBAG,
-        Selector: MQLONG,
-        ItemIndex: MQLONG,
-        pItemValue: PMQHBAG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
-    );
-}
-extern "C" {
-    pub fn mqInquireByteString(
-        Bag: MQHBAG,
-        Selector: MQLONG,
-        ItemIndex: MQLONG,
-        BufferLength: MQLONG,
-        pBuffer: PMQBYTE,
-        pByteStringLength: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
-    );
-}
-extern "C" {
-    pub fn mqInquireByteStringFilter(
-        Bag: MQHBAG,
-        Selector: MQLONG,
-        ItemIndex: MQLONG,
-        BufferLength: MQLONG,
-        pBuffer: PMQBYTE,
-        pByteStringLength: PMQLONG,
-        pOperator: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
-    );
-}
-extern "C" {
-    pub fn mqInquireInteger(
-        Bag: MQHBAG,
-        Selector: MQLONG,
-        ItemIndex: MQLONG,
-        pItemValue: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
-    );
-}
-extern "C" {
-    pub fn mqInquireInteger64(
-        Bag: MQHBAG,
-        Selector: MQLONG,
-        ItemIndex: MQLONG,
-        pItemValue: PMQINT64,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
-    );
-}
-extern "C" {
-    pub fn mqInquireIntegerFilter(
-        Bag: MQHBAG,
-        Selector: MQLONG,
-        ItemIndex: MQLONG,
-        pItemValue: PMQLONG,
-        pOperator: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
-    );
-}
-extern "C" {
-    pub fn mqInquireItemInfo(
-        Bag: MQHBAG,
-        Selector: MQLONG,
-        ItemIndex: MQLONG,
-        pOutSelector: PMQLONG,
-        pItemType: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
-    );
-}
-extern "C" {
-    pub fn mqInquireString(
-        Bag: MQHBAG,
-        Selector: MQLONG,
-        ItemIndex: MQLONG,
-        BufferLength: MQLONG,
-        pBuffer: PMQCHAR,
-        pStringLength: PMQLONG,
-        pCodedCharSetId: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
-    );
-}
-extern "C" {
-    pub fn mqInquireStringFilter(
-        Bag: MQHBAG,
-        Selector: MQLONG,
-        ItemIndex: MQLONG,
-        BufferLength: MQLONG,
-        pBuffer: PMQCHAR,
-        pStringLength: PMQLONG,
-        pCodedCharSetId: PMQLONG,
-        pOperator: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
-    );
-}
-extern "C" {
-    pub fn mqPad(pString: PMQCHAR, BufferLength: MQLONG, pBuffer: PMQCHAR, pCompCode: PMQLONG, pReason: PMQLONG);
-}
-extern "C" {
-    pub fn mqPutBag(
-        Hconn: MQHCONN,
-        Hobj: MQHOBJ,
-        pMsgDesc: PMQVOID,
-        pPutMsgOpts: PMQVOID,
-        Bag: MQHBAG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
-    );
-}
-extern "C" {
-    pub fn mqSetByteString(
-        Bag: MQHBAG,
-        Selector: MQLONG,
-        ItemIndex: MQLONG,
-        BufferLength: MQLONG,
-        pBuffer: PMQBYTE,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
-    );
-}
-extern "C" {
-    pub fn mqSetByteStringFilter(
-        Bag: MQHBAG,
-        Selector: MQLONG,
-        ItemIndex: MQLONG,
-        BufferLength: MQLONG,
-        pBuffer: PMQBYTE,
-        Operator: MQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
-    );
-}
-extern "C" {
-    pub fn mqSetInteger(
-        Bag: MQHBAG,
-        Selector: MQLONG,
-        ItemIndex: MQLONG,
-        ItemValue: MQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
-    );
-}
-extern "C" {
-    pub fn mqSetInteger64(
-        Bag: MQHBAG,
-        Selector: MQLONG,
-        ItemIndex: MQLONG,
-        ItemValue: MQINT64,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
-    );
-}
-extern "C" {
-    pub fn mqSetIntegerFilter(
-        Bag: MQHBAG,
-        Selector: MQLONG,
-        ItemIndex: MQLONG,
-        ItemValue: MQLONG,
-        Operator: MQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
-    );
-}
-extern "C" {
-    pub fn mqSetString(
-        Bag: MQHBAG,
-        Selector: MQLONG,
-        ItemIndex: MQLONG,
-        BufferLength: MQLONG,
-        pBuffer: PMQCHAR,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
-    );
-}
-extern "C" {
-    pub fn mqSetStringFilter(
-        Bag: MQHBAG,
-        Selector: MQLONG,
-        ItemIndex: MQLONG,
-        BufferLength: MQLONG,
-        pBuffer: PMQCHAR,
-        Operator: MQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
-    );
-}
-extern "C" {
-    pub fn mqTrim(BufferLength: MQLONG, pBuffer: PMQCHAR, pString: PMQCHAR, pCompCode: PMQLONG, pReason: PMQLONG);
-}
-extern "C" {
-    pub fn mqTruncateBag(Bag: MQHBAG, ItemCount: MQLONG, pCompCode: PMQLONG, pReason: PMQLONG);
-}
-pub type MQCFH = tagMQCFH;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQCFH {
-    pub Type: MQLONG,
-    pub StrucLength: MQLONG,
-    pub Version: MQLONG,
-    pub Command: MQLONG,
-    pub MsgSeqNumber: MQLONG,
-    pub Control: MQLONG,
-    pub CompCode: MQLONG,
-    pub Reason: MQLONG,
-    pub ParameterCount: MQLONG,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQCFH"][::std::mem::size_of::<tagMQCFH>() - 36usize];
@@ -9844,17 +8421,6 @@ const _: () = {
     ["Offset of field: tagMQCFH::Reason"][::std::mem::offset_of!(tagMQCFH, Reason) - 28usize];
     ["Offset of field: tagMQCFH::ParameterCount"][::std::mem::offset_of!(tagMQCFH, ParameterCount) - 32usize];
 };
-pub type MQCFBF = tagMQCFBF;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQCFBF {
-    pub Type: MQLONG,
-    pub StrucLength: MQLONG,
-    pub Parameter: MQLONG,
-    pub Operator: MQLONG,
-    pub FilterValueLength: MQLONG,
-    pub FilterValue: [MQBYTE; 1usize],
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQCFBF"][::std::mem::size_of::<tagMQCFBF>() - 24usize];
@@ -9866,16 +8432,6 @@ const _: () = {
     ["Offset of field: tagMQCFBF::FilterValueLength"][::std::mem::offset_of!(tagMQCFBF, FilterValueLength) - 16usize];
     ["Offset of field: tagMQCFBF::FilterValue"][::std::mem::offset_of!(tagMQCFBF, FilterValue) - 20usize];
 };
-pub type MQCFBS = tagMQCFBS;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQCFBS {
-    pub Type: MQLONG,
-    pub StrucLength: MQLONG,
-    pub Parameter: MQLONG,
-    pub StringLength: MQLONG,
-    pub String: [MQBYTE; 1usize],
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQCFBS"][::std::mem::size_of::<tagMQCFBS>() - 20usize];
@@ -9886,15 +8442,6 @@ const _: () = {
     ["Offset of field: tagMQCFBS::StringLength"][::std::mem::offset_of!(tagMQCFBS, StringLength) - 12usize];
     ["Offset of field: tagMQCFBS::String"][::std::mem::offset_of!(tagMQCFBS, String) - 16usize];
 };
-pub type MQCFGR = tagMQCFGR;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQCFGR {
-    pub Type: MQLONG,
-    pub StrucLength: MQLONG,
-    pub Parameter: MQLONG,
-    pub ParameterCount: MQLONG,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQCFGR"][::std::mem::size_of::<tagMQCFGR>() - 16usize];
@@ -9904,16 +8451,6 @@ const _: () = {
     ["Offset of field: tagMQCFGR::Parameter"][::std::mem::offset_of!(tagMQCFGR, Parameter) - 8usize];
     ["Offset of field: tagMQCFGR::ParameterCount"][::std::mem::offset_of!(tagMQCFGR, ParameterCount) - 12usize];
 };
-pub type MQCFIF = tagMQCFIF;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQCFIF {
-    pub Type: MQLONG,
-    pub StrucLength: MQLONG,
-    pub Parameter: MQLONG,
-    pub Operator: MQLONG,
-    pub FilterValue: MQLONG,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQCFIF"][::std::mem::size_of::<tagMQCFIF>() - 20usize];
@@ -9924,16 +8461,6 @@ const _: () = {
     ["Offset of field: tagMQCFIF::Operator"][::std::mem::offset_of!(tagMQCFIF, Operator) - 12usize];
     ["Offset of field: tagMQCFIF::FilterValue"][::std::mem::offset_of!(tagMQCFIF, FilterValue) - 16usize];
 };
-pub type MQCFIL = tagMQCFIL;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQCFIL {
-    pub Type: MQLONG,
-    pub StrucLength: MQLONG,
-    pub Parameter: MQLONG,
-    pub Count: MQLONG,
-    pub Values: [MQLONG; 1usize],
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQCFIL"][::std::mem::size_of::<tagMQCFIL>() - 20usize];
@@ -9944,16 +8471,6 @@ const _: () = {
     ["Offset of field: tagMQCFIL::Count"][::std::mem::offset_of!(tagMQCFIL, Count) - 12usize];
     ["Offset of field: tagMQCFIL::Values"][::std::mem::offset_of!(tagMQCFIL, Values) - 16usize];
 };
-pub type MQCFIL64 = tagMQCFIL64;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQCFIL64 {
-    pub Type: MQLONG,
-    pub StrucLength: MQLONG,
-    pub Parameter: MQLONG,
-    pub Count: MQLONG,
-    pub Values: [MQINT64; 1usize],
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQCFIL64"][::std::mem::size_of::<tagMQCFIL64>() - 24usize];
@@ -9964,15 +8481,6 @@ const _: () = {
     ["Offset of field: tagMQCFIL64::Count"][::std::mem::offset_of!(tagMQCFIL64, Count) - 12usize];
     ["Offset of field: tagMQCFIL64::Values"][::std::mem::offset_of!(tagMQCFIL64, Values) - 16usize];
 };
-pub type MQCFIN = tagMQCFIN;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQCFIN {
-    pub Type: MQLONG,
-    pub StrucLength: MQLONG,
-    pub Parameter: MQLONG,
-    pub Value: MQLONG,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQCFIN"][::std::mem::size_of::<tagMQCFIN>() - 16usize];
@@ -9982,16 +8490,6 @@ const _: () = {
     ["Offset of field: tagMQCFIN::Parameter"][::std::mem::offset_of!(tagMQCFIN, Parameter) - 8usize];
     ["Offset of field: tagMQCFIN::Value"][::std::mem::offset_of!(tagMQCFIN, Value) - 12usize];
 };
-pub type MQCFIN64 = tagMQCFIN64;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQCFIN64 {
-    pub Type: MQLONG,
-    pub StrucLength: MQLONG,
-    pub Parameter: MQLONG,
-    pub Reserved: MQLONG,
-    pub Value: MQINT64,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQCFIN64"][::std::mem::size_of::<tagMQCFIN64>() - 24usize];
@@ -10002,18 +8500,6 @@ const _: () = {
     ["Offset of field: tagMQCFIN64::Reserved"][::std::mem::offset_of!(tagMQCFIN64, Reserved) - 12usize];
     ["Offset of field: tagMQCFIN64::Value"][::std::mem::offset_of!(tagMQCFIN64, Value) - 16usize];
 };
-pub type MQCFSF = tagMQCFSF;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQCFSF {
-    pub Type: MQLONG,
-    pub StrucLength: MQLONG,
-    pub Parameter: MQLONG,
-    pub Operator: MQLONG,
-    pub CodedCharSetId: MQLONG,
-    pub FilterValueLength: MQLONG,
-    pub FilterValue: [MQCHAR; 1usize],
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQCFSF"][::std::mem::size_of::<tagMQCFSF>() - 28usize];
@@ -10026,18 +8512,6 @@ const _: () = {
     ["Offset of field: tagMQCFSF::FilterValueLength"][::std::mem::offset_of!(tagMQCFSF, FilterValueLength) - 20usize];
     ["Offset of field: tagMQCFSF::FilterValue"][::std::mem::offset_of!(tagMQCFSF, FilterValue) - 24usize];
 };
-pub type MQCFSL = tagMQCFSL;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQCFSL {
-    pub Type: MQLONG,
-    pub StrucLength: MQLONG,
-    pub Parameter: MQLONG,
-    pub CodedCharSetId: MQLONG,
-    pub Count: MQLONG,
-    pub StringLength: MQLONG,
-    pub Strings: [MQCHAR; 1usize],
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQCFSL"][::std::mem::size_of::<tagMQCFSL>() - 28usize];
@@ -10050,17 +8524,6 @@ const _: () = {
     ["Offset of field: tagMQCFSL::StringLength"][::std::mem::offset_of!(tagMQCFSL, StringLength) - 20usize];
     ["Offset of field: tagMQCFSL::Strings"][::std::mem::offset_of!(tagMQCFSL, Strings) - 24usize];
 };
-pub type MQCFST = tagMQCFST;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQCFST {
-    pub Type: MQLONG,
-    pub StrucLength: MQLONG,
-    pub Parameter: MQLONG,
-    pub CodedCharSetId: MQLONG,
-    pub StringLength: MQLONG,
-    pub String: [MQCHAR; 1usize],
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQCFST"][::std::mem::size_of::<tagMQCFST>() - 24usize];
@@ -10072,19 +8535,6 @@ const _: () = {
     ["Offset of field: tagMQCFST::StringLength"][::std::mem::offset_of!(tagMQCFST, StringLength) - 16usize];
     ["Offset of field: tagMQCFST::String"][::std::mem::offset_of!(tagMQCFST, String) - 20usize];
 };
-pub type MQEPH = tagMQEPH;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQEPH {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub StrucLength: MQLONG,
-    pub Encoding: MQLONG,
-    pub CodedCharSetId: MQLONG,
-    pub Format: MQCHAR8,
-    pub Flags: MQLONG,
-    pub PCFHeader: MQCFH,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQEPH"][::std::mem::size_of::<tagMQEPH>() - 68usize];
@@ -10098,18 +8548,6 @@ const _: () = {
     ["Offset of field: tagMQEPH::Flags"][::std::mem::offset_of!(tagMQEPH, Flags) - 28usize];
     ["Offset of field: tagMQEPH::PCFHeader"][::std::mem::offset_of!(tagMQEPH, PCFHeader) - 32usize];
 };
-pub type MQZED = tagMQZED;
-pub type PMQZED = *mut MQZED;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQZED {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub EntityNamePtr: PMQCHAR,
-    pub EntityDomainPtr: PMQCHAR,
-    pub SecurityId: MQBYTE40,
-    pub CorrelationPtr: MQPTR,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQZED"][::std::mem::size_of::<tagMQZED>() - 72usize];
@@ -10121,22 +8559,6 @@ const _: () = {
     ["Offset of field: tagMQZED::SecurityId"][::std::mem::offset_of!(tagMQZED, SecurityId) - 24usize];
     ["Offset of field: tagMQZED::CorrelationPtr"][::std::mem::offset_of!(tagMQZED, CorrelationPtr) - 64usize];
 };
-pub type MQZAC = tagMQZAC;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQZAC {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub ProcessId: MQPID,
-    pub ThreadId: MQTID,
-    pub ApplName: MQCHAR28,
-    pub UserID: MQCHAR12,
-    pub EffectiveUserID: MQCHAR12,
-    pub Environment: MQLONG,
-    pub CallerType: MQLONG,
-    pub AuthenticationType: MQLONG,
-    pub BindType: MQLONG,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQZAC"][::std::mem::size_of::<tagMQZAC>() - 84usize];
@@ -10153,19 +8575,6 @@ const _: () = {
     ["Offset of field: tagMQZAC::AuthenticationType"][::std::mem::offset_of!(tagMQZAC, AuthenticationType) - 76usize];
     ["Offset of field: tagMQZAC::BindType"][::std::mem::offset_of!(tagMQZAC, BindType) - 80usize];
 };
-pub type MQZAD = tagMQZAD;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQZAD {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub ProfileName: MQCHAR48,
-    pub ObjectType: MQLONG,
-    pub Authority: MQLONG,
-    pub EntityDataPtr: PMQZED,
-    pub EntityType: MQLONG,
-    pub Options: MQLONG,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQZAD"][::std::mem::size_of::<tagMQZAD>() - 80usize];
@@ -10179,15 +8588,6 @@ const _: () = {
     ["Offset of field: tagMQZAD::EntityType"][::std::mem::offset_of!(tagMQZAD, EntityType) - 72usize];
     ["Offset of field: tagMQZAD::Options"][::std::mem::offset_of!(tagMQZAD, Options) - 76usize];
 };
-pub type MQZFP = tagMQZFP;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQZFP {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub Reserved: MQBYTE8,
-    pub CorrelationPtr: MQPTR,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQZFP"][::std::mem::size_of::<tagMQZFP>() - 24usize];
@@ -10197,16 +8597,6 @@ const _: () = {
     ["Offset of field: tagMQZFP::Reserved"][::std::mem::offset_of!(tagMQZFP, Reserved) - 8usize];
     ["Offset of field: tagMQZFP::CorrelationPtr"][::std::mem::offset_of!(tagMQZFP, CorrelationPtr) - 16usize];
 };
-pub type MQZIC = tagMQZIC;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQZIC {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub UserIdentifier: MQCHAR12,
-    pub AccountingToken: MQBYTE32,
-    pub ApplIdentityData: MQCHAR32,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQZIC"][::std::mem::size_of::<tagMQZIC>() - 84usize];
@@ -10217,52 +8607,6 @@ const _: () = {
     ["Offset of field: tagMQZIC::AccountingToken"][::std::mem::offset_of!(tagMQZIC, AccountingToken) - 20usize];
     ["Offset of field: tagMQZIC::ApplIdentityData"][::std::mem::offset_of!(tagMQZIC, ApplIdentityData) - 52usize];
 };
-extern "C" {
-    pub fn MQZEP(Hconfig: MQHCONFIG, Function: MQLONG, pEntryPoint: PMQFUNC, pCompCode: PMQLONG, pReason: PMQLONG);
-}
-pub type MQ_ZEP_CALL = ::std::option::Option<
-    unsafe extern "C" fn(Hconfig: MQHCONFIG, Function: MQLONG, pEntryPoint: PMQFUNC, pCompCode: PMQLONG, pReason: PMQLONG),
->;
-pub type PMQ_ZEP_CALL = MQ_ZEP_CALL;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct tagMQIEP {
-    pub StrucId: MQCHAR4,
-    pub Version: MQLONG,
-    pub StrucLength: MQLONG,
-    pub Flags: MQLONG,
-    pub Reserved: MQPTR,
-    pub MQBACK_Call: PMQ_BACK_CALL,
-    pub MQBEGIN_Call: PMQ_BEGIN_CALL,
-    pub MQBUFMH_Call: PMQ_BUFMH_CALL,
-    pub MQCB_Call: PMQ_CB_CALL,
-    pub MQCLOSE_Call: PMQ_CLOSE_CALL,
-    pub MQCMIT_Call: PMQ_CMIT_CALL,
-    pub MQCONN_Call: PMQ_CONN_CALL,
-    pub MQCONNX_Call: PMQ_CONNX_CALL,
-    pub MQCRTMH_Call: PMQ_CRTMH_CALL,
-    pub MQCTL_Call: PMQ_CTL_CALL,
-    pub MQDISC_Call: PMQ_DISC_CALL,
-    pub MQDLTMH_Call: PMQ_DLTMH_CALL,
-    pub MQDLTMP_Call: PMQ_DLTMP_CALL,
-    pub MQGET_Call: PMQ_GET_CALL,
-    pub MQINQ_Call: PMQ_INQ_CALL,
-    pub MQINQMP_Call: PMQ_INQMP_CALL,
-    pub MQMHBUF_Call: PMQ_MHBUF_CALL,
-    pub MQOPEN_Call: PMQ_OPEN_CALL,
-    pub MQPUT_Call: PMQ_PUT_CALL,
-    pub MQPUT1_Call: PMQ_PUT1_CALL,
-    pub MQSET_Call: PMQ_SET_CALL,
-    pub MQSETMP_Call: PMQ_SETMP_CALL,
-    pub MQSTAT_Call: PMQ_STAT_CALL,
-    pub MQSUB_Call: PMQ_SUB_CALL,
-    pub MQSUBRQ_Call: PMQ_SUBRQ_CALL,
-    pub MQXCLWLN_Call: PMQ_XCLWLN_CALL,
-    pub MQXCNVC_Call: PMQ_XCNVC_CALL,
-    pub MQXDX_Call: PMQ_XDX_CALL,
-    pub MQXEP_Call: PMQ_XEP_CALL,
-    pub MQZEP_Call: PMQ_ZEP_CALL,
-}
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQIEP"][::std::mem::size_of::<tagMQIEP>() - 264usize];
@@ -10303,3 +8647,789 @@ const _: () = {
     ["Offset of field: tagMQIEP::MQXEP_Call"][::std::mem::offset_of!(tagMQIEP, MQXEP_Call) - 248usize];
     ["Offset of field: tagMQIEP::MQZEP_Call"][::std::mem::offset_of!(tagMQIEP, MQZEP_Call) - 256usize];
 };
+extern "C" {
+    pub fn MQBACK(Hconn: MQHCONN, pCompCode: PMQLONG, pReason: PMQLONG);
+    pub fn MQBEGIN(Hconn: MQHCONN, pBeginOptions: PMQVOID, pCompCode: PMQLONG, pReason: PMQLONG);
+    pub fn MQBUFMH(
+        Hconn: MQHCONN,
+        Hmsg: MQHMSG,
+        pBufMsgHOpts: PMQVOID,
+        pMsgDesc: PMQVOID,
+        BufferLength: MQLONG,
+        pBuffer: PMQVOID,
+        pDataLength: PMQLONG,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
+    pub fn MQCB(
+        Hconn: MQHCONN,
+        Operation: MQLONG,
+        pCallbackDesc: PMQVOID,
+        Hobj: MQHOBJ,
+        pMsgDesc: PMQVOID,
+        pGetMsgOpts: PMQVOID,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
+    pub fn MQCLOSE(Hconn: MQHCONN, pHobj: PMQHOBJ, Options: MQLONG, pCompCode: PMQLONG, pReason: PMQLONG);
+    pub fn MQCMIT(Hconn: MQHCONN, pCompCode: PMQLONG, pReason: PMQLONG);
+    pub fn MQCONN(pQMgrName: PMQCHAR, pHconn: PMQHCONN, pCompCode: PMQLONG, pReason: PMQLONG);
+    pub fn MQCONNX(pQMgrName: PMQCHAR, pConnectOpts: PMQCNO, pHconn: PMQHCONN, pCompCode: PMQLONG, pReason: PMQLONG);
+    pub fn MQCRTMH(Hconn: MQHCONN, pCrtMsgHOpts: PMQVOID, pHmsg: PMQHMSG, pCompCode: PMQLONG, pReason: PMQLONG);
+    pub fn MQCTL(Hconn: MQHCONN, Operation: MQLONG, pControlOpts: PMQVOID, pCompCode: PMQLONG, pReason: PMQLONG);
+    pub fn MQDISC(pHconn: PMQHCONN, pCompCode: PMQLONG, pReason: PMQLONG);
+    pub fn MQDLTMH(Hconn: MQHCONN, pHmsg: PMQHMSG, pDltMsgHOpts: PMQVOID, pCompCode: PMQLONG, pReason: PMQLONG);
+    pub fn MQDLTMP(Hconn: MQHCONN, Hmsg: MQHMSG, pDltPropOpts: PMQVOID, pName: PMQVOID, pCompCode: PMQLONG, pReason: PMQLONG);
+    pub fn MQGET(
+        Hconn: MQHCONN,
+        Hobj: MQHOBJ,
+        pMsgDesc: PMQVOID,
+        pGetMsgOpts: PMQVOID,
+        BufferLength: MQLONG,
+        pBuffer: PMQVOID,
+        pDataLength: PMQLONG,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
+    pub fn MQINQ(
+        Hconn: MQHCONN,
+        Hobj: MQHOBJ,
+        SelectorCount: MQLONG,
+        pSelectors: PMQLONG,
+        IntAttrCount: MQLONG,
+        pIntAttrs: PMQLONG,
+        CharAttrLength: MQLONG,
+        pCharAttrs: PMQCHAR,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
+    pub fn MQINQMP(
+        Hconn: MQHCONN,
+        Hmsg: MQHMSG,
+        pInqPropOpts: PMQVOID,
+        pName: PMQVOID,
+        pPropDesc: PMQVOID,
+        pType: PMQLONG,
+        ValueLength: MQLONG,
+        pValue: PMQVOID,
+        pDataLength: PMQLONG,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
+    pub fn MQMHBUF(
+        Hconn: MQHCONN,
+        Hmsg: MQHMSG,
+        pMsgHBufOpts: PMQVOID,
+        pName: PMQVOID,
+        pMsgDesc: PMQVOID,
+        BufferLength: MQLONG,
+        pBuffer: PMQVOID,
+        pDataLength: PMQLONG,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
+    pub fn MQOPEN(Hconn: MQHCONN, pObjDesc: PMQVOID, Options: MQLONG, pHobj: PMQHOBJ, pCompCode: PMQLONG, pReason: PMQLONG);
+    pub fn MQPUT(
+        Hconn: MQHCONN,
+        Hobj: MQHOBJ,
+        pMsgDesc: PMQVOID,
+        pPutMsgOpts: PMQVOID,
+        BufferLength: MQLONG,
+        pBuffer: PMQVOID,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
+    pub fn MQPUT1(
+        Hconn: MQHCONN,
+        pObjDesc: PMQVOID,
+        pMsgDesc: PMQVOID,
+        pPutMsgOpts: PMQVOID,
+        BufferLength: MQLONG,
+        pBuffer: PMQVOID,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
+    pub fn MQSET(
+        Hconn: MQHCONN,
+        Hobj: MQHOBJ,
+        SelectorCount: MQLONG,
+        pSelectors: PMQLONG,
+        IntAttrCount: MQLONG,
+        pIntAttrs: PMQLONG,
+        CharAttrLength: MQLONG,
+        pCharAttrs: PMQCHAR,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
+    pub fn MQSETMP(
+        Hconn: MQHCONN,
+        Hmsg: MQHMSG,
+        pSetPropOpts: PMQVOID,
+        pName: PMQVOID,
+        pPropDesc: PMQVOID,
+        Type: MQLONG,
+        ValueLength: MQLONG,
+        pValue: PMQVOID,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
+    pub fn MQSTAT(Hconn: MQHCONN, Type: MQLONG, pStatus: PMQVOID, pCompCode: PMQLONG, pReason: PMQLONG);
+    pub fn MQSUB(Hconn: MQHCONN, pSubDesc: PMQVOID, pHobj: PMQHOBJ, pHsub: PMQHOBJ, pCompCode: PMQLONG, pReason: PMQLONG);
+    pub fn MQSUBRQ(Hconn: MQHCONN, Hsub: MQHOBJ, Action: MQLONG, pSubRqOpts: PMQVOID, pCompCode: PMQLONG, pReason: PMQLONG);
+    pub fn MQXEP(
+        Hconfig: MQHCONFIG,
+        ExitReason: MQLONG,
+        Function: MQLONG,
+        pEntryPoint: PMQFUNC,
+        pExitOpts: PMQXEPO,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
+    pub fn MQXCLWLN(
+        pExitParms: PMQWXP,
+        CurrentRecord: MQPTR,
+        NextOffset: MQLONG,
+        pNextRecord: PMQPTR,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
+    pub fn MQXCNVC(
+        Hconn: MQHCONN,
+        Options: MQLONG,
+        SourceCCSID: MQLONG,
+        SourceLength: MQLONG,
+        pSourceBuffer: PMQCHAR,
+        TargetCCSID: MQLONG,
+        TargetLength: MQLONG,
+        pTargetBuffer: PMQCHAR,
+        pDataLength: PMQLONG,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
+    pub fn MQXDX(
+        pDataConvExitParms: PMQDXP,
+        pMsgDesc: PMQMD,
+        InBufferLength: MQLONG,
+        pInBuffer: PMQVOID,
+        OutBufferLength: MQLONG,
+        pOutBuffer: PMQVOID,
+    );
+    pub fn MQACTIVE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQACTP_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQACTV_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQACT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQADOPT_CHECK_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQADOPT_TYPE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQADPCTX_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQAIT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQAPPL_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQAS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQAT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQAUTHENTICATE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQAUTHOPT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQAUTH_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQAUTOCLUS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQAUTO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQBACF_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQBALANCED_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQBALSTATE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQBL_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQBMHO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQBND_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQBNO_BALTYPE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQBNO_OPTIONS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQBNO_TIMEOUT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQBO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQBPLOCATION_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQBT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCACF_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCACH_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCADSD_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCAFTY_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCAMO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCAP_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCAUT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCA_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCBCF_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCBCT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCBDO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCBD_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCBO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCBT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCCSI_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCCT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCC_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCDC_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCEX_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCFACCESS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCFCONLOS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCFC_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCFOFFLD_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCFOP_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCFO_REFRESH_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCFO_REMOVE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCFR_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCFSTATUS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCFTYPE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCFT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCF_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCGWI_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCHAD_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCHIDS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCHK_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCHLA_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCHLD_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCHRR_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCHSH_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCHSR_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCHSSTATE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCHS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCHTAB_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCHT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCIH_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCIT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCLCT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCLROUTE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCLRS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCLRT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCLST_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCLT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCLWL_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCLXQ_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCMDI_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCMDL_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCMD_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCMHO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCNO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCODL_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCOMPRESS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCOPY_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCQT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCRC_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCSP_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCSRV_CONVERT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCSRV_DLQ_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCTES_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCTLO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQCUOWC_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQDCC_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQDC_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQDELO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQDHF_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQDISCONNECT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQDLV_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQDL_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQDMHO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQDMPO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQDNSWLM_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQDOPT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQDSB_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQDSE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQEC_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQEI_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQENC_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQEPH_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQET_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQEVO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQEVR_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQEXPI_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQEXTATTRS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQEXT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQFB_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQFC_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQFSENC_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQFS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQFUN_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQGACF_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQGMO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQGUR_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQHA_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQHB_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQHC_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQHM_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQHO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQHSTATE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQIACF_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQIACH_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQIAMO64_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQIAMO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQIAMO_MONITOR_DATATYPE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQIAMO_MONITOR_FLAGS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQIASY_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQIAV_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQIA_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQIDO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQIEPF_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQIGQPA_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQIGQ_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQIIH_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQIMGRCOV_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQIMMREASON_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQIMPO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQINBD_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQIND_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQIPADDR_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQIS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQIT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQKAI_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQKEY_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQLDAPC_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQLDAP_AUTHORMD_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQLDAP_NESTGRP_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQLOGTYPE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQLR_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQMASTER_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQMATCH_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQMCAS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQMCAT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQMCB_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQMCEV_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQMCP_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQMC_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQMDEF_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQMDS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQMEDIMGINTVL_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQMEDIMGLOGLN_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQMEDIMGSCHED_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQMF_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQMHBO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQMLP_ENCRYPTION_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQMLP_SIGN_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQMLP_TOLERATE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQMMBI_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQMODE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQMON_OVERRIDE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQMON_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQMON_AVAILABILITY_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQMO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQMT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQMULC_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQNC_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQNHABACKLOG_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQNHACONNACTV_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQNHAINSYNC_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQNHAROLE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQNPMS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQNPM_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQNSH_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQNT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQOL_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQOM_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQOO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQOPER_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQOPMODE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQOP_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQOT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQPAGECLAS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQPA_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQPD_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQPER_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQPL_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQPMO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQPMRF_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQPO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQPRI_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQPROP_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQPROTO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQPRT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQPSCLUS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQPSCT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQPSM_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQPSPROP_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQPSST_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQPS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQPUBO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQQA_BACKOUT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQQA_GET_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQQA_PUT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQQA_SHAREABLE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQQDT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQQFS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQQF_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQQMDT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQQMFAC_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQQMF_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQQMOPT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQQMSTA_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQQMT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQQO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQQSGD_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQQSGS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQQSIE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQQSOT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQQSO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQQSUM_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQQT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQRAR_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQRCCF_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQRCN_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQRCVTIME_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQRC_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQRDNS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQRD_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQREADA_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQRECAUTO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQRECORDING_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQREGO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQREORG_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQRFH_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQRL_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQRMHF_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQROUTE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQRO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQRP_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQRQ_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQRT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQRU_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQSCA_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQSCOPE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQSCO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQSCYC_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQSECCOMM_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQSECITEM_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQSECPROT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQSECSW_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQSECTYPE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQSELTYPE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQSEL_ALL_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQSEL_ANY_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQSMPO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQSO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQSPL_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQSP_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQSQQM_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQSRO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQSR_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQSSL_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQSTAT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQSTDBY_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQST_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQSUBTYPE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQSUB_DURABILITY_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQSUB_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQSUS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQSVC_CONTROL_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQSVC_STATUS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQSVC_TYPE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQSYNCPOINT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQSYSOBJ_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQSYSP_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQS_AVAIL_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQS_EXPANDST_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQS_OPENMODE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQS_STATUS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQTA_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQTA_PROXY_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQTA_PUB_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQTA_SUB_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQTCPKEEP_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQTCPSTACK_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQTC_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQTIME_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQTOPT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQTRAXSTR_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQTRIGGER_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQTSCOPE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQTT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQTYPE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQUCI_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQUIDSUPP_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQUNDELIVERED_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQUOWST_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQUOWT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQUSAGE_DS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQUSAGE_EXPAND_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQUSAGE_PS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQUSAGE_SMDS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQUSEDLQ_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQUSRC_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQUS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQVL_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQVS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQVU_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQWARN_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQWIH_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQWI_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQWS_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQWXP_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQXACT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQXCC_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQXC_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQXDR_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQXEPO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQXE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQXF_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQXPT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQXR2_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQXR_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQXT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQZAET_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQZAO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQZAT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQZCI_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQZID_AUTHORITY_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQZID_NAME_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQZID_USERID_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQZID_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQZIO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQZSE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQZSL_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQZTO_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQ_CERT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQ_MQTT_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub fn MQ_SUITE_STR(v: MQLONG) -> *mut ::std::os::raw::c_char;
+    pub static MQI_BY_VALUE_STR: [MQI_BY_VALUE_STR; 5242usize];
+    pub static MQI_BY_NAME_STR: [MQI_BY_NAME_STR; 5242usize];
+    pub fn mqAddBag(Bag: MQHBAG, Selector: MQLONG, ItemValue: MQHBAG, pCompCode: PMQLONG, pReason: PMQLONG);
+    pub fn mqAddByteString(
+        Bag: MQHBAG,
+        Selector: MQLONG,
+        BufferLength: MQLONG,
+        pBuffer: PMQBYTE,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
+    pub fn mqAddByteStringFilter(
+        Bag: MQHBAG,
+        Selector: MQLONG,
+        BufferLength: MQLONG,
+        pBuffer: PMQBYTE,
+        Operator: MQLONG,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
+    pub fn mqAddInquiry(Bag: MQHBAG, Selector: MQLONG, pCompCode: PMQLONG, pReason: PMQLONG);
+    pub fn mqAddInteger(Bag: MQHBAG, Selector: MQLONG, ItemValue: MQLONG, pCompCode: PMQLONG, pReason: PMQLONG);
+    pub fn mqAddInteger64(Bag: MQHBAG, Selector: MQLONG, ItemValue: MQINT64, pCompCode: PMQLONG, pReason: PMQLONG);
+    pub fn mqAddIntegerFilter(
+        Bag: MQHBAG,
+        Selector: MQLONG,
+        ItemValue: MQLONG,
+        Operator: MQLONG,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
+    pub fn mqAddString(
+        Bag: MQHBAG,
+        Selector: MQLONG,
+        BufferLength: MQLONG,
+        pBuffer: PMQCHAR,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
+    pub fn mqAddStringFilter(
+        Bag: MQHBAG,
+        Selector: MQLONG,
+        BufferLength: MQLONG,
+        pBuffer: PMQCHAR,
+        Operator: MQLONG,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
+    pub fn mqBagToBuffer(
+        OptionsBag: MQHBAG,
+        DataBag: MQHBAG,
+        BufferLength: MQLONG,
+        pBuffer: PMQVOID,
+        pDataLength: PMQLONG,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
+    pub fn mqBufferToBag(
+        OptionsBag: MQHBAG,
+        BufferLength: MQLONG,
+        pBuffer: PMQVOID,
+        DataBag: MQHBAG,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
+    pub fn mqClearBag(Bag: MQHBAG, pCompCode: PMQLONG, pReason: PMQLONG);
+    pub fn mqCountItems(Bag: MQHBAG, Selector: MQLONG, pItemCount: PMQLONG, pCompCode: PMQLONG, pReason: PMQLONG);
+    pub fn mqCreateBag(Options: MQLONG, pBag: PMQHBAG, pCompCode: PMQLONG, pReason: PMQLONG);
+    pub fn mqDeleteBag(pBag: PMQHBAG, pCompCode: PMQLONG, pReason: PMQLONG);
+    pub fn mqDeleteItem(Bag: MQHBAG, Selector: MQLONG, ItemIndex: MQLONG, pCompCode: PMQLONG, pReason: PMQLONG);
+    pub fn mqExecute(
+        Hconn: MQHCONN,
+        Command: MQLONG,
+        OptionsBag: MQHBAG,
+        AdminBag: MQHBAG,
+        ResponseBag: MQHBAG,
+        AdminQ: MQHOBJ,
+        ResponseQ: MQHOBJ,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
+    pub fn mqGetBag(
+        Hconn: MQHCONN,
+        Hobj: MQHOBJ,
+        pMsgDesc: PMQVOID,
+        pGetMsgOpts: PMQVOID,
+        Bag: MQHBAG,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
+    pub fn mqInquireBag(
+        Bag: MQHBAG,
+        Selector: MQLONG,
+        ItemIndex: MQLONG,
+        pItemValue: PMQHBAG,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
+    pub fn mqInquireByteString(
+        Bag: MQHBAG,
+        Selector: MQLONG,
+        ItemIndex: MQLONG,
+        BufferLength: MQLONG,
+        pBuffer: PMQBYTE,
+        pByteStringLength: PMQLONG,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
+    pub fn mqInquireByteStringFilter(
+        Bag: MQHBAG,
+        Selector: MQLONG,
+        ItemIndex: MQLONG,
+        BufferLength: MQLONG,
+        pBuffer: PMQBYTE,
+        pByteStringLength: PMQLONG,
+        pOperator: PMQLONG,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
+    pub fn mqInquireInteger(
+        Bag: MQHBAG,
+        Selector: MQLONG,
+        ItemIndex: MQLONG,
+        pItemValue: PMQLONG,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
+    pub fn mqInquireInteger64(
+        Bag: MQHBAG,
+        Selector: MQLONG,
+        ItemIndex: MQLONG,
+        pItemValue: PMQINT64,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
+    pub fn mqInquireIntegerFilter(
+        Bag: MQHBAG,
+        Selector: MQLONG,
+        ItemIndex: MQLONG,
+        pItemValue: PMQLONG,
+        pOperator: PMQLONG,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
+    pub fn mqInquireItemInfo(
+        Bag: MQHBAG,
+        Selector: MQLONG,
+        ItemIndex: MQLONG,
+        pOutSelector: PMQLONG,
+        pItemType: PMQLONG,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
+    pub fn mqInquireString(
+        Bag: MQHBAG,
+        Selector: MQLONG,
+        ItemIndex: MQLONG,
+        BufferLength: MQLONG,
+        pBuffer: PMQCHAR,
+        pStringLength: PMQLONG,
+        pCodedCharSetId: PMQLONG,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
+    pub fn mqInquireStringFilter(
+        Bag: MQHBAG,
+        Selector: MQLONG,
+        ItemIndex: MQLONG,
+        BufferLength: MQLONG,
+        pBuffer: PMQCHAR,
+        pStringLength: PMQLONG,
+        pCodedCharSetId: PMQLONG,
+        pOperator: PMQLONG,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
+    pub fn mqPad(pString: PMQCHAR, BufferLength: MQLONG, pBuffer: PMQCHAR, pCompCode: PMQLONG, pReason: PMQLONG);
+    pub fn mqPutBag(
+        Hconn: MQHCONN,
+        Hobj: MQHOBJ,
+        pMsgDesc: PMQVOID,
+        pPutMsgOpts: PMQVOID,
+        Bag: MQHBAG,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
+    pub fn mqSetByteString(
+        Bag: MQHBAG,
+        Selector: MQLONG,
+        ItemIndex: MQLONG,
+        BufferLength: MQLONG,
+        pBuffer: PMQBYTE,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
+    pub fn mqSetByteStringFilter(
+        Bag: MQHBAG,
+        Selector: MQLONG,
+        ItemIndex: MQLONG,
+        BufferLength: MQLONG,
+        pBuffer: PMQBYTE,
+        Operator: MQLONG,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
+    pub fn mqSetInteger(
+        Bag: MQHBAG,
+        Selector: MQLONG,
+        ItemIndex: MQLONG,
+        ItemValue: MQLONG,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
+    pub fn mqSetInteger64(
+        Bag: MQHBAG,
+        Selector: MQLONG,
+        ItemIndex: MQLONG,
+        ItemValue: MQINT64,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
+    pub fn mqSetIntegerFilter(
+        Bag: MQHBAG,
+        Selector: MQLONG,
+        ItemIndex: MQLONG,
+        ItemValue: MQLONG,
+        Operator: MQLONG,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
+    pub fn mqSetString(
+        Bag: MQHBAG,
+        Selector: MQLONG,
+        ItemIndex: MQLONG,
+        BufferLength: MQLONG,
+        pBuffer: PMQCHAR,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
+    pub fn mqSetStringFilter(
+        Bag: MQHBAG,
+        Selector: MQLONG,
+        ItemIndex: MQLONG,
+        BufferLength: MQLONG,
+        pBuffer: PMQCHAR,
+        Operator: MQLONG,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
+    pub fn mqTrim(BufferLength: MQLONG, pBuffer: PMQCHAR, pString: PMQCHAR, pCompCode: PMQLONG, pReason: PMQLONG);
+    pub fn mqTruncateBag(Bag: MQHBAG, ItemCount: MQLONG, pCompCode: PMQLONG, pReason: PMQLONG);
+    pub fn MQZEP(Hconfig: MQHCONFIG, Function: MQLONG, pEntryPoint: PMQFUNC, pCompCode: PMQLONG, pReason: PMQLONG);
+}
