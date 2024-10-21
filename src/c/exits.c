@@ -20,7 +20,9 @@ const MQWQR mqwqr_default = { MQWQR_DEFAULT };
 const MQWQR1 mqwqr1_default = { MQWQR1_DEFAULT };
 const MQWQR2 mqwqr2_default = { MQWQR2_DEFAULT };
 const MQWQR3 mqwqr3_default = { MQWQR3_DEFAULT };
+#ifdef MQWQR4_DEFAULT
 const MQWQR4 mqwqr4_default = { MQWQR4_DEFAULT };
+#endif
 const MQWXP mqwxp_default = { MQWXP_DEFAULT };
 const MQWXP1 mqwxp1_default = { MQWXP1_DEFAULT };
 const MQWXP2 mqwxp2_default = { MQWXP2_DEFAULT };
