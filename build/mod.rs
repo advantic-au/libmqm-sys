@@ -42,7 +42,7 @@ mod mqi_helpers {
     pub fn build_c(mq_inc_path: &PathBuf) -> Result<(), io::Error> {
         let sources = super::features::filter_features(SOURCE_FILES).collect::<Vec<_>>();
         for source in &sources {
-            println!("cargo::rerun-if-changed={source}")
+            println!("cargo:rerun-if-changed={source}")
         }
 
         cc::Build::new()
@@ -55,8 +55,19 @@ mod mqi_helpers {
             .map_err(|_| io::Error::new(io::ErrorKind::InvalidData, "Failed to compile c files"))
     }
 
+}
+
+mod support {
+    use std::path::PathBuf;
+
+    const C_CHECKS: &[(&str, &str)] = &[
+        ("mqi_mqwqr4", "./build/c/mqwqr4.c"),
+        ("mqi_mqbno", "./build/c/mqbno.c")
+    ];
+
     pub fn check_emit(cfg: &str, src: &str, mq_inc_path: &PathBuf) {
-        println!("cargo::rustc-check-cfg=cfg({cfg})");
+        println!("cargo:rustc-check-cfg=cfg({cfg})");
+        #[cfg(feature = "bindgen")]
         if cc::Build::new()
             .static_flag(false)
             .flag_if_supported("-nostartfiles")
@@ -69,8 +80,10 @@ mod mqi_helpers {
             .try_compile(cfg)
             .is_ok()
         {
-            println!("cargo::rustc-cfg={cfg}")
+            println!("cargo:rustc-cfg={cfg}")
         }
+        #[cfg(not(feature = "bindgen"))]
+        println!("cargo:rustc-cfg={cfg}")
     }
 }
 
@@ -124,17 +137,17 @@ fn main() -> Result<(), io::Error> {
     #[cfg(feature = "link_mqm")]
     {
         let mq_lib_path = mq_path::home_path().join(link_mqm::lib_path());
-        println!("cargo::rustc-link-search={}", mq_lib_path.display());
-        println!("cargo::rustc-link-lib=dylib={}", link_mqm::link_lib());
+        println!("cargo:rustc-link-search={}", mq_lib_path.display());
+        println!("cargo:rustc-link-lib=dylib={}", link_mqm::link_lib());
     }
 
+    let inc_path = &mq_path::mq_inc_path();
+
     #[cfg(feature = "mqi_helpers")]
-    {
-        let inc_path = &mq_path::mq_inc_path();
-        mqi_helpers::check_emit("mqi_mqwqr4", "./build/c/mqwqr4.c", inc_path);
-        mqi_helpers::check_emit("mqi_mqbno", "./build/c/mqbno.c", inc_path);
-        mqi_helpers::build_c(inc_path)?; // Build the c files
-    }
+    mqi_helpers::build_c(inc_path)?; // Build the c files
+
+    support::check_emit("mqi_mqwqr4", "./build/c/mqwqr4.c", inc_path);
+    support::check_emit("mqi_mqbno", "./build/c/mqbno.c", inc_path);
 
     #[cfg(feature = "bindgen")]
     {
