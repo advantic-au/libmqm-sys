@@ -30,7 +30,7 @@ mod features {
 
 #[cfg(feature = "mqi_helpers")]
 mod mqi_helpers {
-    use std::{io, panic::catch_unwind, path::PathBuf};
+    use std::{io, path::PathBuf};
 
     /// Source files that are built by cc to support the bindings
     const SOURCE_FILES: &[super::features::FeatureFilter<&str>] = &[
@@ -42,18 +42,35 @@ mod mqi_helpers {
     pub fn build_c(mq_inc_path: &PathBuf) -> Result<(), io::Error> {
         let sources = super::features::filter_features(SOURCE_FILES).collect::<Vec<_>>();
         for source in &sources {
-            println!("cargo:rerun-if-changed={source}")
+            println!("cargo::rerun-if-changed={source}")
         }
-        catch_unwind(|| {
-            cc::Build::new()
-                .static_flag(false)
-                .flag_if_supported("-nostartfiles")
-                .include(mq_inc_path)
-                .files(sources)
-                .warnings(true)
-                .compile("mq_functions")
-        })
-        .map_err(|_| io::Error::new(io::ErrorKind::InvalidData, "Failed to compile c files"))
+
+        cc::Build::new()
+            .static_flag(false)
+            .flag_if_supported("-nostartfiles")
+            .include(mq_inc_path)
+            .files(sources)
+            .warnings(true)
+            .try_compile("mqi_helpers")
+            .map_err(|_| io::Error::new(io::ErrorKind::InvalidData, "Failed to compile c files"))
+    }
+
+    pub fn check_emit(cfg: &str, src: &str, mq_inc_path: &PathBuf) {
+        println!("cargo::rustc-check-cfg=cfg({cfg})");
+        if cc::Build::new()
+            .static_flag(false)
+            .flag_if_supported("-nostartfiles")
+            .include(mq_inc_path)
+            .file(src)
+            .cargo_output(false)
+            .cargo_warnings(false)
+            .cargo_metadata(false)
+            .cargo_debug(false)
+            .try_compile(cfg)
+            .is_ok()
+        {
+            println!("cargo::rustc-cfg={cfg}")
+        }
     }
 }
 
@@ -107,12 +124,17 @@ fn main() -> Result<(), io::Error> {
     #[cfg(feature = "link_mqm")]
     {
         let mq_lib_path = mq_path::home_path().join(link_mqm::lib_path());
-        println!("cargo:rustc-link-search={}", mq_lib_path.display());
-        println!("cargo:rustc-link-lib=dylib={}", link_mqm::link_lib());
+        println!("cargo::rustc-link-search={}", mq_lib_path.display());
+        println!("cargo::rustc-link-lib=dylib={}", link_mqm::link_lib());
     }
 
     #[cfg(feature = "mqi_helpers")]
-    mqi_helpers::build_c(&mq_path::mq_inc_path())?; // Build the c files
+    {
+        let inc_path = &mq_path::mq_inc_path();
+        mqi_helpers::check_emit("mqi_mqwqr4", "./build/c/mqwqr4.c", inc_path);
+        mqi_helpers::check_emit("mqi_mqbno", "./build/c/mqbno.c", inc_path);
+        mqi_helpers::build_c(inc_path)?; // Build the c files
+    }
 
     #[cfg(feature = "bindgen")]
     {

@@ -23,8 +23,9 @@ const MQCD mqcd_client_conn_default = { MQCD_CLIENT_CONN_DEFAULT };
 const MQCD mqcd_default = { MQCD_DEFAULT };
 const MQCSP mqcsp_default = { MQCSP_DEFAULT };
 const MQSCO mqsco_default = { MQSCO_DEFAULT };
+#ifdef MQBNO_DEFAULT
 const MQBNO mqbno_default = { MQBNO_DEFAULT };
-
+#endif
 const MQAIR mqair_default = { MQAIR_DEFAULT };
 const MQBMHO mqbmho_default = { MQBMHO_DEFAULT };
 const MQCBD mqcbd_default = { MQCBD_DEFAULT };
