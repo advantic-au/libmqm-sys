@@ -57,11 +57,10 @@ mod mqi_helpers {
 }
 
 mod support {
-    use std::path::PathBuf;
-
     pub const CFG_CHECKS: &[(&str, &str)] = &[("mqi_mqwqr4", "./build/c/mqwqr4.c"), ("mqi_mqbno", "./build/c/mqbno.c")];
 
-    pub fn check_compile(cfg: &str, src: &str, mq_inc_path: &PathBuf) -> Result<(), cc::Error> {
+    #[cfg(feature = "bindgen")]
+    pub fn check_compile(cfg: &str, src: &str, mq_inc_path: &std::path::PathBuf) -> Result<(), cc::Error> {
         cc::Build::new()
             .static_flag(false)
             .flag_if_supported("-nostartfiles")
