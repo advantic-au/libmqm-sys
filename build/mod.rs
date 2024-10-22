@@ -54,21 +54,15 @@ mod mqi_helpers {
             .try_compile("mqi_helpers")
             .map_err(|_| io::Error::new(io::ErrorKind::InvalidData, "Failed to compile c files"))
     }
-
 }
 
 mod support {
     use std::path::PathBuf;
 
-    const C_CHECKS: &[(&str, &str)] = &[
-        ("mqi_mqwqr4", "./build/c/mqwqr4.c"),
-        ("mqi_mqbno", "./build/c/mqbno.c")
-    ];
+    pub const CFG_CHECKS: &[(&str, &str)] = &[("mqi_mqwqr4", "./build/c/mqwqr4.c"), ("mqi_mqbno", "./build/c/mqbno.c")];
 
-    pub fn check_emit(cfg: &str, src: &str, mq_inc_path: &PathBuf) {
-        println!("cargo:rustc-check-cfg=cfg({cfg})");
-        #[cfg(feature = "bindgen")]
-        if cc::Build::new()
+    pub fn check_compile(cfg: &str, src: &str, mq_inc_path: &PathBuf) -> Result<(), cc::Error> {
+        cc::Build::new()
             .static_flag(false)
             .flag_if_supported("-nostartfiles")
             .include(mq_inc_path)
@@ -78,12 +72,6 @@ mod support {
             .cargo_metadata(false)
             .cargo_debug(false)
             .try_compile(cfg)
-            .is_ok()
-        {
-            println!("cargo:rustc-cfg={cfg}")
-        }
-        #[cfg(not(feature = "bindgen"))]
-        println!("cargo:rustc-cfg={cfg}")
     }
 }
 
@@ -141,26 +129,41 @@ fn main() -> Result<(), io::Error> {
         println!("cargo:rustc-link-lib=dylib={}", link_mqm::link_lib());
     }
 
-    let inc_path = &mq_path::mq_inc_path();
-
     #[cfg(feature = "mqi_helpers")]
-    mqi_helpers::build_c(inc_path)?; // Build the c files
+    mqi_helpers::build_c(&mq_path::mq_inc_path())?; // Build the c files
 
-    support::check_emit("mqi_mqwqr4", "./build/c/mqwqr4.c", inc_path);
-    support::check_emit("mqi_mqbno", "./build/c/mqbno.c", inc_path);
+    for &(cfg, _) in support::CFG_CHECKS {
+        println!("cargo:rustc-check-cfg=cfg({cfg})");
+        #[cfg(not(feature = "bindgen"))]
+        println!("cargo:rustc-cfg={cfg}");
+    }
 
     #[cfg(feature = "bindgen")]
     {
         use regex_lite::Regex;
         use std::process::{Command, Stdio};
 
+        let inc_path = &mq_path::mq_inc_path();
+
+        let supported_cfg = support::CFG_CHECKS
+            .iter()
+            .flat_map(|&(cfg, src)| support::check_compile(cfg, src, inc_path).map(|_| cfg));
+
+        for cfg in supported_cfg {
+            println!("cargo:rustc-cfg={cfg}");
+        }
+
+        println!("{}", &mq_path::mq_inc_path().display());
+
         // Generate and write the bindings file
         let out_path =
             std::path::PathBuf::from(std::env::var("OUT_DIR").map_err(|e| io::Error::new(io::ErrorKind::InvalidInput, e))?); // Mandatory OUT_DIR
         let out_bindings = out_path.join("bindings.rs");
 
-        let dspmqver_output = String::from_utf8(Command::new(mq_path::dspmqver()).stdout(Stdio::piped()).output()?.stdout)
-            .map_err(|e| io::Error::new(io::ErrorKind::InvalidData, e))?;
+        let dspmqver_path = mq_path::dspmqver();
+        let dspmqver_raw = Command::new(&dspmqver_path).stdout(Stdio::piped()).output()?;
+        let dspmqver_output =
+            String::from_utf8(dspmqver_raw.stdout).map_err(|e| io::Error::new(io::ErrorKind::InvalidData, e))?;
 
         let mq_version = Regex::new(r"(?m)^\s*Version:\s+(?<version>.*?)\s*$")
             .expect("valid regex")
