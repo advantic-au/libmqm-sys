@@ -59,7 +59,7 @@ mod exits {
     mq_default!(lib::MQWQR1, mqwqr1_default);
     mq_default!(lib::MQWQR2, mqwqr2_default);
     mq_default!(lib::MQWQR3, mqwqr3_default);
-    #[cfg(mqi_mqwqr4)]
+    #[cfg(mqc_mqwqr4)]
     mq_default!(lib::MQWQR4, mqwqr4_default);
     mq_default!(lib::MQWXP, mqwxp_default);
     mq_default!(lib::MQWXP1, mqwxp1_default);
@@ -102,7 +102,7 @@ mod mqi {
     mq_default!(lib::MQCD, mqcd_default);
     mq_default!(lib::MQCSP, mqcsp_default);
     mq_default!(lib::MQSCO, mqsco_default);
-    #[cfg(mqi_mqbno)]
+    #[cfg(mqc_mqbno)]
     mq_default!(lib::MQBNO, mqbno_default);
     mq_default!(lib::MQAIR, mqair_default);
     mq_default!(lib::MQBMHO, mqbmho_default);

@@ -57,7 +57,71 @@ mod mqi_helpers {
 }
 
 mod support {
-    pub const CFG_CHECKS: &[(&str, &str)] = &[("mqi_mqwqr4", "./build/c/mqwqr4.c"), ("mqi_mqbno", "./build/c/mqbno.c")];
+    use regex_lite::Regex;
+
+    pub fn parse_version(version: &str) -> Option<u32> {
+        const VERSION_PATTERN: &str = r"(\d+)\.(\d+)\.(\d+)\.(\d+)";
+        let version_check = Regex::new(VERSION_PATTERN).expect("valid regex");
+
+        let (_, [a, b, c, d]) = version_check.captures(version).map(|captures| captures.extract())?;
+
+        Some(
+            (a.parse::<u32>().ok()? << 24)
+                | (b.parse::<u32>().ok()? << 16)
+                | (c.parse::<u32>().ok()? << 8)
+                | (d.parse::<u32>().ok()?),
+        )
+    }
+
+    pub fn parse_cfg_version((a, b, c, d): (u8, u8, u8, u8)) -> u32 {
+        (u32::from(a) << 24) | (u32::from(b) << 16) | (u32::from(c) << 8) | u32::from(d)
+    }
+
+    pub fn cfg_version_fmt((a, b, c, d): (u8, u8, u8, u8)) -> String {
+        format!("mqc_{a}_{b}_{c}_{d}")
+    }
+
+    pub const CFG_VERSIONS: &[(u8, u8, u8, u8)] = &[
+        (9, 2, 0, 0),
+        (9, 2, 0, 5),
+        (9, 2, 0, 6),
+        (9, 2, 0, 7),
+        (9, 2, 0, 10),
+        (9, 2, 0, 11),
+        (9, 2, 0, 15),
+        (9, 2, 0, 16),
+        (9, 2, 0, 20),
+        (9, 2, 0, 21),
+        (9, 2, 0, 22),
+        (9, 2, 0, 25),
+        (9, 2, 0, 26),
+        (9, 2, 0, 27),
+        (9, 3, 0, 0),
+        (9, 3, 0, 1),
+        (9, 3, 0, 2),
+        (9, 3, 0, 4),
+        (9, 3, 0, 5),
+        (9, 3, 0, 6),
+        (9, 3, 0, 10),
+        (9, 3, 0, 11),
+        (9, 3, 0, 15),
+        (9, 3, 0, 16),
+        (9, 3, 0, 17),
+        (9, 3, 0, 20),
+        (9, 3, 0, 21),
+        (9, 3, 1, 0),
+        (9, 3, 2, 0),
+        (9, 3, 2, 1),
+        (9, 3, 3, 0),
+        (9, 3, 3, 1),
+        (9, 3, 4, 0), // Auth token support 
+        (9, 3, 4, 1),
+        (9, 3, 5, 0),
+        (9, 3, 5, 1),
+        (9, 4, 0, 0),
+        (9, 4, 0, 5),
+    ];
+    pub const CFG_CHECKS: &[(&str, &str)] = &[("mqc_mqwqr4", "./build/c/mqwqr4.c"), ("mqc_mqbno", "./build/c/mqbno.c")];
 
     #[cfg(feature = "bindgen")]
     pub fn check_compile(cfg: &str, src: &str, mq_inc_path: &std::path::PathBuf) -> Result<(), cc::Error> {
@@ -131,6 +195,10 @@ fn main() -> Result<(), io::Error> {
     #[cfg(feature = "mqi_helpers")]
     mqi_helpers::build_c(&mq_path::mq_inc_path())?; // Build the c files
 
+    for &cfg in support::CFG_VERSIONS {
+        println!("cargo:rustc-check-cfg=cfg({})", support::cfg_version_fmt(cfg));
+    }
+
     for &(cfg, _) in support::CFG_CHECKS {
         println!("cargo:rustc-check-cfg=cfg({cfg})");
         #[cfg(not(feature = "bindgen"))]
@@ -152,8 +220,6 @@ fn main() -> Result<(), io::Error> {
             println!("cargo:rustc-cfg={cfg}");
         }
 
-        println!("{}", &mq_path::mq_inc_path().display());
-
         // Generate and write the bindings file
         let out_path =
             std::path::PathBuf::from(std::env::var("OUT_DIR").map_err(|e| io::Error::new(io::ErrorKind::InvalidInput, e))?); // Mandatory OUT_DIR
@@ -169,6 +235,15 @@ fn main() -> Result<(), io::Error> {
             .captures(&dspmqver_output)
             .map(|m| m["version"].to_owned())
             .ok_or_else(|| io::Error::new(io::ErrorKind::InvalidData, "could not extract version from dspmqver"))?;
+
+        if let Some(parse_mq_version) = support::parse_version(&mq_version) {
+            for version_cfg in support::CFG_VERSIONS
+                .iter()
+                .filter(|&cfg| support::parse_cfg_version(*cfg) <= parse_mq_version)
+            {
+                println!("cargo:rustc-cfg={}", support::cfg_version_fmt(*version_cfg));
+            }
+        }
 
         mqi_bindgen::generate_bindings(&mq_path::mq_inc_path(), &mq_version)
             .map_err(|e| io::Error::new(io::ErrorKind::InvalidData, e))?
