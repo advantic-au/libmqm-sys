@@ -1,4 +1,7 @@
-use std::io;
+use std::{
+    fs::File,
+    io::{self, BufWriter},
+};
 
 #[cfg(feature = "bindgen")]
 mod mqi_bindgen;
@@ -56,7 +59,7 @@ mod mqi_helpers {
     }
 }
 
-mod support {
+mod versions {
     use regex_lite::Regex;
 
     pub fn parse_version(version: &str) -> Option<u32> {
@@ -73,6 +76,22 @@ mod support {
         )
     }
 
+    pub fn generate_version(target: &mut impl std::io::Write, version: &str) -> std::io::Result<()> {
+        let version_int = parse_version(version)
+            .ok_or_else(|| std::io::Error::new(std::io::ErrorKind::InvalidData, format!("Invalid version: {}", version)))?;
+
+        writeln!(target, "pub const CLIENT_BUILD_VERSION: &str = \"{}\";", version)?;
+        writeln!(
+            target,
+            "pub(crate) const CLIENT_BUILD_VERSION_INT: u32 = {:#010x};",
+            version_int
+        )?;
+
+        Ok(())
+    }
+}
+
+mod support {
     pub fn parse_cfg_version((a, b, c, d): (u8, u8, u8, u8)) -> u32 {
         (u32::from(a) << 24) | (u32::from(b) << 16) | (u32::from(c) << 8) | u32::from(d)
     }
@@ -114,28 +133,14 @@ mod support {
         (9, 3, 2, 1),
         (9, 3, 3, 0),
         (9, 3, 3, 1),
-        (9, 3, 4, 0), // Auth token support 
+        (9, 3, 4, 0), // Auth token support
         (9, 3, 4, 1),
         (9, 3, 5, 0),
         (9, 3, 5, 1),
         (9, 4, 0, 0),
         (9, 4, 0, 5),
+        (9, 4, 1, 0)
     ];
-    pub const CFG_CHECKS: &[(&str, &str)] = &[("mqc_mqwqr4", "./build/c/mqwqr4.c"), ("mqc_mqbno", "./build/c/mqbno.c")];
-
-    #[cfg(feature = "bindgen")]
-    pub fn check_compile(cfg: &str, src: &str, mq_inc_path: &std::path::PathBuf) -> Result<(), cc::Error> {
-        cc::Build::new()
-            .static_flag(false)
-            .flag_if_supported("-nostartfiles")
-            .include(mq_inc_path)
-            .file(src)
-            .cargo_output(false)
-            .cargo_warnings(false)
-            .cargo_metadata(false)
-            .cargo_debug(false)
-            .try_compile(cfg)
-    }
 }
 
 #[cfg(feature = "link_mqm")]
@@ -195,35 +200,16 @@ fn main() -> Result<(), io::Error> {
     #[cfg(feature = "mqi_helpers")]
     mqi_helpers::build_c(&mq_path::mq_inc_path())?; // Build the c files
 
-    for &cfg in support::CFG_VERSIONS {
-        println!("cargo:rustc-check-cfg=cfg({})", support::cfg_version_fmt(cfg));
-    }
-
-    for &(cfg, _) in support::CFG_CHECKS {
-        println!("cargo:rustc-check-cfg=cfg({cfg})");
-        #[cfg(not(feature = "bindgen"))]
-        println!("cargo:rustc-cfg={cfg}");
-    }
-
     #[cfg(feature = "bindgen")]
     {
         use regex_lite::Regex;
         use std::process::{Command, Stdio};
 
-        let inc_path = &mq_path::mq_inc_path();
-
-        let supported_cfg = support::CFG_CHECKS
-            .iter()
-            .flat_map(|&(cfg, src)| support::check_compile(cfg, src, inc_path).map(|_| cfg));
-
-        for cfg in supported_cfg {
-            println!("cargo:rustc-cfg={cfg}");
-        }
-
         // Generate and write the bindings file
         let out_path =
             std::path::PathBuf::from(std::env::var("OUT_DIR").map_err(|e| io::Error::new(io::ErrorKind::InvalidInput, e))?); // Mandatory OUT_DIR
         let out_bindings = out_path.join("bindings.rs");
+        let out_version = out_path.join("version.rs");
 
         let dspmqver_path = mq_path::dspmqver();
         let dspmqver_raw = Command::new(&dspmqver_path).stdout(Stdio::piped()).output()?;
@@ -236,7 +222,11 @@ fn main() -> Result<(), io::Error> {
             .map(|m| m["version"].to_owned())
             .ok_or_else(|| io::Error::new(io::ErrorKind::InvalidData, "could not extract version from dspmqver"))?;
 
-        if let Some(parse_mq_version) = support::parse_version(&mq_version) {
+        let mut version_writer = BufWriter::new(File::create(&out_version)?);
+        versions::generate_version(&mut version_writer, &mq_version)?;
+        drop(version_writer);
+
+        if let Some(parse_mq_version) = versions::parse_version(&mq_version) {
             for version_cfg in support::CFG_VERSIONS
                 .iter()
                 .filter(|&cfg| support::parse_cfg_version(*cfg) <= parse_mq_version)
@@ -260,6 +250,11 @@ fn main() -> Result<(), io::Error> {
                     if env_consts::OS == "macos" { "any" } else { env_consts::ARCH },
                     env_consts::OS
                 )),
+            )?;
+
+            fs::copy(
+                out_version,
+                path::PathBuf::from("src/lib/pregen").join("version.rs")
             )?;
         }
     }
