@@ -56,21 +56,40 @@ mod mqi_helpers {
     }
 }
 
-mod support {
-    pub const CFG_CHECKS: &[(&str, &str)] = &[("mqi_mqwqr4", "./build/c/mqwqr4.c"), ("mqi_mqbno", "./build/c/mqbno.c")];
+#[cfg(feature = "bindgen")]
+mod versions {
+    use regex_lite::Regex;
 
-    #[cfg(feature = "bindgen")]
-    pub fn check_compile(cfg: &str, src: &str, mq_inc_path: &std::path::PathBuf) -> Result<(), cc::Error> {
-        cc::Build::new()
-            .static_flag(false)
-            .flag_if_supported("-nostartfiles")
-            .include(mq_inc_path)
-            .file(src)
-            .cargo_output(false)
-            .cargo_warnings(false)
-            .cargo_metadata(false)
-            .cargo_debug(false)
-            .try_compile(cfg)
+    fn ver_into_u32((a, b, c, d): (&str, &str, &str, &str)) -> Result<u32, std::num::ParseIntError> {
+        Ok((a.parse::<u32>()? << 24) | (b.parse::<u32>()? << 16) | (c.parse::<u32>()? << 8) | (d.parse::<u32>()?))
+    }
+
+    pub fn parse_mqc_feature(feature: &str) -> Option<u32> {
+        let mqc_regex = Regex::new(r"(?i)mqc_(\d+)_(\d+)_(\d+)_(\d+)").ok()?;
+        let (_, [a, b, c, d]) = mqc_regex.captures(feature).map(|captures| captures.extract())?;
+        ver_into_u32((a, b, c, d)).ok()
+    }
+
+    pub fn parse_version(version: &str) -> Option<u32> {
+        const VERSION_PATTERN: &str = r"(\d+)\.(\d+)\.(\d+)\.(\d+)";
+        let version_check = Regex::new(VERSION_PATTERN).expect("valid regex");
+
+        let (_, [a, b, c, d]) = version_check.captures(version).map(|captures| captures.extract())?;
+        ver_into_u32((a, b, c, d)).ok()
+    }
+
+    pub fn generate_version(target: &mut impl std::io::Write, version: &str) -> std::io::Result<()> {
+        let version_int = parse_version(version)
+            .ok_or_else(|| std::io::Error::new(std::io::ErrorKind::InvalidData, format!("Invalid version: {}", version)))?;
+
+        writeln!(target, "pub const CLIENT_BUILD_VERSION: &str = \"{}\";", version)?;
+        writeln!(
+            target,
+            "pub(crate) const CLIENT_BUILD_VERSION_INT: u32 = {:#010x};",
+            version_int
+        )?;
+
+        Ok(())
     }
 }
 
@@ -131,46 +150,56 @@ fn main() -> Result<(), io::Error> {
     #[cfg(feature = "mqi_helpers")]
     mqi_helpers::build_c(&mq_path::mq_inc_path())?; // Build the c files
 
-    for &(cfg, _) in support::CFG_CHECKS {
-        println!("cargo:rustc-check-cfg=cfg({cfg})");
-        #[cfg(not(feature = "bindgen"))]
-        println!("cargo:rustc-cfg={cfg}");
-    }
-
     #[cfg(feature = "bindgen")]
     {
         use regex_lite::Regex;
+        use std::fs::File;
         use std::process::{Command, Stdio};
-
-        let inc_path = &mq_path::mq_inc_path();
-
-        let supported_cfg = support::CFG_CHECKS
-            .iter()
-            .flat_map(|&(cfg, src)| support::check_compile(cfg, src, inc_path).map(|_| cfg));
-
-        for cfg in supported_cfg {
-            println!("cargo:rustc-cfg={cfg}");
-        }
-
-        println!("{}", &mq_path::mq_inc_path().display());
 
         // Generate and write the bindings file
         let out_path =
             std::path::PathBuf::from(std::env::var("OUT_DIR").map_err(|e| io::Error::new(io::ErrorKind::InvalidInput, e))?); // Mandatory OUT_DIR
         let out_bindings = out_path.join("bindings.rs");
+        let out_version = out_path.join("version.rs");
 
         let dspmqver_path = mq_path::dspmqver();
         let dspmqver_raw = Command::new(&dspmqver_path).stdout(Stdio::piped()).output()?;
         let dspmqver_output =
             String::from_utf8(dspmqver_raw.stdout).map_err(|e| io::Error::new(io::ErrorKind::InvalidData, e))?;
 
-        let mq_version = Regex::new(r"(?m)^\s*Version:\s+(?<version>.*?)\s*$")
+        let mqc_version = Regex::new(r"(?m)^\s*Version:\s+(?<version>.*?)\s*$")
             .expect("valid regex")
             .captures(&dspmqver_output)
             .map(|m| m["version"].to_owned())
             .ok_or_else(|| io::Error::new(io::ErrorKind::InvalidData, "could not extract version from dspmqver"))?;
 
-        mqi_bindgen::generate_bindings(&mq_path::mq_inc_path(), &mq_version)
+        let mqc_env = Regex::new(r"CARGO_FEATURE_(MQC_\d+_\d+_\d+_\d+)").expect("valid regex");
+        let min_mqc_version = std::env::vars()
+            .filter_map(|(name, _)| {
+                mqc_env.captures(&name).and_then(|captures| {
+                    captures.get(1).and_then(|matched| {
+                        let feature = matched.as_str().to_lowercase();
+                        versions::parse_mqc_feature(&feature).map(|ver| (ver, feature))
+                    })
+                })
+            })
+            .max_by_key(|(ver, _)| *ver);
+
+        if let Some(((min_mqc, feature), current_mqc)) = min_mqc_version.zip(versions::parse_version(&mqc_version)) {
+            if min_mqc > current_mqc {
+                panic!(
+                    "MQC version {} does not meet the minimum requirement for feature {}",
+                    &current_mqc, &feature
+                );
+            }
+        }
+
+        {
+            let mut version_writer = io::BufWriter::new(File::create(&out_version)?);
+            versions::generate_version(&mut version_writer, &mqc_version)?;
+        }
+
+        mqi_bindgen::generate_bindings(&mq_path::mq_inc_path(), &mqc_version)
             .map_err(|e| io::Error::new(io::ErrorKind::InvalidData, e))?
             .write_to_file(out_bindings.clone())?;
 
@@ -186,6 +215,8 @@ fn main() -> Result<(), io::Error> {
                     env_consts::OS
                 )),
             )?;
+
+            fs::copy(out_version, path::PathBuf::from("src/lib/pregen").join("version.rs"))?;
         }
     }
 
