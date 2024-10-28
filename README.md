@@ -40,7 +40,7 @@ Usage
 
     ```toml
     [dependencies]
-    libmqm-sys = "0.4.0"
+    libmqm-sys = "0.5.0"
     ```
 
 5. Use the crate in your source code:
