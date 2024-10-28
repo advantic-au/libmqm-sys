@@ -1,7 +1,7 @@
 [package]
 name = "libmqm-sys"
 version = "0.4.0"
-description = "Native bindings to the IBM® MQ Interface (MQI) and MQ Administration Interface (MQAI)"
+description = "IBM® MQ Interface (MQI) and MQ Administration Interface (MQAI) bindings"
 authors = [ "Warren Spits <warren@advantic.au>" ]
 repository = "https://github.com/advantic-au/libmqm-sys"
 license = "Apache-2.0"
@@ -10,7 +10,7 @@ keywords = [ "message-queue", "messaging" ]
 categories = [ "external-ffi-bindings", "asynchronous" ]
 
 edition = "2021"
-rust-version = "1.77" # Note: Also change the github workflow msrv job
+rust-version = "1.77" # Note: Also change the github workflow "minimum" action
 links = "mqm"
 build = "build/mod.rs"
 
