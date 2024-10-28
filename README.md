@@ -5,7 +5,7 @@ libmqm-sys
 [![Documentation](https://docs.rs/libmqm-sys/badge.svg)](https://docs.rs/libmqm-sys)
 ![License](https://img.shields.io/crates/l/libmqm-sys.svg)
 
-Native bindings to the IBM® MQ Interface (MQI) and MQ Administration Interface (MQAI)
+Bindings to the IBM® MQ Interface (MQI) and MQ Administration Interface (MQAI) libraries.
 
 You can use `libmqm-sys` to:
 
@@ -92,14 +92,14 @@ Feature flags
 | mqai              | Expose the MQAI functions |
 | pcf               | Generate the PCF structures |
 | exits             | Generate the exit structures |
+| mqc_*             | Enable features of a specific MQI library version eg `mqc_9_3_1_0` |
 
 Status
 ------
 
 The following needs further work:
 
-- Documentation.
-- Test and support older versions of MQI.
+- Documentation
 
 Contributions
 -------------

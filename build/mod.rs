@@ -189,7 +189,7 @@ fn main() -> Result<(), io::Error> {
             if min_mqc > current_mqc {
                 panic!(
                     "MQC version {} does not meet the minimum requirement for feature {}",
-                    &current_mqc, &feature
+                    &mqc_version, &feature
                 );
             }
         }
