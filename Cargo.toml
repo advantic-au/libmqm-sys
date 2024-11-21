@@ -43,7 +43,8 @@ mqc_9_2_0_22 = ["mqc_9_2_0_21"] # Minimum MQ client version 9.2.0.22
 mqc_9_2_0_25 = ["mqc_9_2_0_22"] # Minimum MQ client version 9.2.0.25
 mqc_9_2_0_26 = ["mqc_9_2_0_25"] # Minimum MQ client version 9.2.0.26
 mqc_9_2_0_27 = ["mqc_9_2_0_26"] # Minimum MQ client version 9.2.0.27
-mqc_9_3_0_0 = ["mqc_9_2_0_27"] # Minimum MQ client version 9.3.0.0
+mqc_9_2_0_28 = ["mqc_9_2_0_27"] # Minimum MQ client version 9.2.0.28
+mqc_9_3_0_0 = ["mqc_9_2_0_28"] # Minimum MQ client version 9.3.0.0
 mqc_9_3_0_1 = ["mqc_9_3_0_0"] # Minimum MQ client version 9.3.0.1
 mqc_9_3_0_2 = ["mqc_9_3_0_1"] # Minimum MQ client version 9.3.0.2
 mqc_9_3_0_4 = ["mqc_9_3_0_2"] # Minimum MQ client version 9.3.0.4
@@ -56,7 +57,8 @@ mqc_9_3_0_16 = ["mqc_9_3_0_15"] # Minimum MQ client version 9.3.0.16
 mqc_9_3_0_17 = ["mqc_9_3_0_16"] # Minimum MQ client version 9.3.0.17
 mqc_9_3_0_20 = ["mqc_9_3_0_17"] # Minimum MQ client version 9.3.0.20
 mqc_9_3_0_21 = ["mqc_9_3_0_20"] # Minimum MQ client version 9.3.0.21
-mqc_9_3_1_0 = ["mqc_9_3_0_21"] # Minimum MQ client version 9.3.1.0
+mqc_9_3_0_25 = ["mqc_9_3_0_21"] # Minimum MQ client version 9.3.0.25
+mqc_9_3_1_0 = ["mqc_9_3_0_25"] # Minimum MQ client version 9.3.1.0
 mqc_9_3_2_0 = ["mqc_9_3_1_0"] # Minimum MQ client version 9.3.2.0
 mqc_9_3_2_1 = ["mqc_9_3_2_0"] # Minimum MQ client version 9.3.2.1
 mqc_9_3_3_0 = ["mqc_9_3_2_1"] # Minimum MQ client version 9.3.3.0
@@ -67,7 +69,8 @@ mqc_9_3_5_0 = ["mqc_9_3_4_1"] # Minimum MQ client version 9.3.5.0
 mqc_9_3_5_1 = ["mqc_9_3_5_0"] # Minimum MQ client version 9.3.5.1
 mqc_9_4_0_0 = ["mqc_9_3_5_1"] # Minimum MQ client version 9.4.0.0
 mqc_9_4_0_5 = ["mqc_9_4_0_0"] # Minimum MQ client version 9.4.0.5
-mqc_9_4_1_0 = ["mqc_9_4_0_5"] # Minimum MQ client version 9.4.1.0
+mqc_9_4_0_6 = ["mqc_9_4_0_5"] # Minimum MQ client version 9.4.0.6
+mqc_9_4_1_0 = ["mqc_9_4_0_6"] # Minimum MQ client version 9.4.1.0
 
 [dependencies]
 dlopen2 = { version = "0.7.0", optional = true }
