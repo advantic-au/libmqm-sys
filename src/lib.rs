@@ -11,17 +11,21 @@
 #[cfg(feature = "bindgen")]
 pub mod lib {
     mod bindgen;
+    #[doc(inline)]
     pub use bindgen::*;
 }
 
 #[cfg(not(feature = "bindgen"))]
 pub mod lib {
     mod pregen;
+    #[doc(inline)]
     pub use pregen::*;
 }
 
-pub mod default;
-pub mod function;
+mod default;
+
+mod function;
+#[doc(inline)]
 pub use function::*;
 
 #[cfg(feature = "dlopen2")]
