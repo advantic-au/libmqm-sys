@@ -3,12 +3,12 @@
 
 /*!
  * Dynamic loading of the MQI library using dlopen2
- * 
+ *
  * Example
  * -------
- * 
+ *
  *  Dynamically load the `libmqm_r` library and issue an `MQCONN`
- * 
+ *
  * ```no_run
  *  use std::ptr::addr_of_mut;
  *  use dlopen2::wrapper::Container;
@@ -1609,20 +1609,19 @@ impl function::Mqai for MqmContainer {
 
 #[cfg(test)]
 mod tests {
-    use std::ptr::addr_of_mut;
     use dlopen2::wrapper::Container;
+    use std::ptr::addr_of_mut;
 
     use crate::lib;
 
     use super::{LoadMqm, MqWrapper, MqmContainer};
     #[test]
     fn mqdist_load_default() {
-        let _ = unsafe { MqmContainer::load_mqm_default() }.expect("MQM library to be loaded");        
+        let _ = unsafe { MqmContainer::load_mqm_default() }.expect("MQM library to be loaded");
     }
 
     #[test]
-    fn mqredist_load() -> Result<(), dlopen2::Error>{
-
+    fn mqredist_load() -> Result<(), dlopen2::Error> {
         // Dynamically load the libmqm_r library
         let mq: Container<MqWrapper> = unsafe { Container::load("libmqm_r") }?;
 

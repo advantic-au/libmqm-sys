@@ -3,9 +3,9 @@
  *
  * Example
  * -------
- * 
+ *
  *  Use the compile time linked MQ library and issue an `MQCONN`
- * 
+ *
  * ```no_run
  * use std::ptr::addr_of_mut;
  * use libmqm_sys::{lib, Mqi as _};
@@ -27,7 +27,7 @@
  *    );
  * }
  * ```
- * 
+ *
  */
 
 use crate::function;
