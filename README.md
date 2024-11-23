@@ -36,11 +36,10 @@ Usage
     MQ_HOME=/opt/mqm
     ```
 
-4. Add the following to your `Cargo.toml`
+4. Add the `libmqm-sys` crate to your project:
 
-    ```toml
-    [dependencies]
-    libmqm-sys = "0.5.0"
+    ```sh
+    cargo add libmqm-sys
     ```
 
 5. Use the crate in your source code:

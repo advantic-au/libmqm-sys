@@ -3,6 +3,10 @@ use crate::lib as mqsys;
 /// IBM® MQ Interface (MQI) function calls
 #[allow(clippy::missing_safety_doc, clippy::too_many_arguments, non_snake_case)]
 pub trait Mqi {
+    /// Connect with extended options to a queue manager
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqconnx-connect-queue-manager-extended)
     unsafe fn MQCONNX(
         &self,
         pQMgrName: mqsys::PMQCHAR,
@@ -11,6 +15,11 @@ pub trait Mqi {
         pCompCode: mqsys::PMQLONG,
         pReason: mqsys::PMQLONG,
     );
+
+    /// Connect to a queue manager
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqconn-connect-queue-manager)
     unsafe fn MQCONN(
         &self,
         pQMgrName: mqsys::PMQCHAR,
@@ -18,7 +27,17 @@ pub trait Mqi {
         pCompCode: mqsys::PMQLONG,
         pReason: mqsys::PMQLONG,
     );
+
+    /// Disconnect from a queue manager
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqdisc-disconnect-queue-manager)
     unsafe fn MQDISC(&self, pHconn: mqsys::PMQHCONN, pCompCode: mqsys::PMQLONG, pReason: mqsys::PMQLONG);
+
+    /// Opens a queue or topic for access
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqopen-open-object)
     unsafe fn MQOPEN(
         &self,
         Hconn: mqsys::MQHCONN,
@@ -28,6 +47,11 @@ pub trait Mqi {
         pCompCode: mqsys::PMQLONG,
         pReason: mqsys::PMQLONG,
     );
+
+    /// Put a single message on a queue (combines [`MQOPEN`](Mqi::MQOPEN), [`MQPUT`](Mqi::MQPUT), and [`MQCLOSE`](Mqi::MQCLOSE))
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqput1-put-one-message)
     unsafe fn MQPUT1(
         &self,
         Hconn: mqsys::MQHCONN,
@@ -39,6 +63,11 @@ pub trait Mqi {
         pCompCode: mqsys::PMQLONG,
         pReason: mqsys::PMQLONG,
     );
+
+    /// Close a queue or topic
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqclose-close-object)
     unsafe fn MQCLOSE(
         &self,
         Hconn: mqsys::MQHCONN,
@@ -47,7 +76,17 @@ pub trait Mqi {
         pCompCode: mqsys::PMQLONG,
         pReason: mqsys::PMQLONG,
     );
+
+    /// Commit changes
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqcmit-commit-changes)
     unsafe fn MQCMIT(&self, Hconn: mqsys::MQHCONN, pCompCode: mqsys::PMQLONG, pReason: mqsys::PMQLONG);
+
+    /// Get a message from a queue
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqget-get-message)
     unsafe fn MQGET(
         &self,
         Hconn: mqsys::MQHCONN,
@@ -60,6 +99,11 @@ pub trait Mqi {
         pCompCode: mqsys::PMQLONG,
         pReason: mqsys::PMQLONG,
     );
+
+    /// Put a message on a queue
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqput-put-message)
     unsafe fn MQPUT(
         &self,
         Hconn: mqsys::MQHCONN,
@@ -71,6 +115,11 @@ pub trait Mqi {
         pCompCode: mqsys::PMQLONG,
         pReason: mqsys::PMQLONG,
     );
+
+    /// Inquire about object attributes
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinq-inquire-object-attributes)
     unsafe fn MQINQ(
         &self,
         Hconn: mqsys::MQHCONN,
@@ -84,6 +133,11 @@ pub trait Mqi {
         pCompCode: mqsys::PMQLONG,
         pReason: mqsys::PMQLONG,
     );
+
+    /// Create a subscription to a topic
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqsub-register-subscription)
     unsafe fn MQSUB(
         &self,
         Hconn: mqsys::MQHCONN,
@@ -93,6 +147,11 @@ pub trait Mqi {
         pCompCode: mqsys::PMQLONG,
         pReason: mqsys::PMQLONG,
     );
+
+    /// Request a retained publication
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqsubrq-subscription-request)
     unsafe fn MQSUBRQ(
         &self,
         Hconn: mqsys::MQHCONN,
@@ -102,6 +161,11 @@ pub trait Mqi {
         pCompCode: mqsys::PMQLONG,
         pReason: mqsys::PMQLONG,
     );
+
+    /// Begin a unit of work
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqbegin-begin-unit-work)
     unsafe fn MQBEGIN(
         &self,
         Hconn: mqsys::MQHCONN,
@@ -109,7 +173,17 @@ pub trait Mqi {
         pCompCode: mqsys::PMQLONG,
         pReason: mqsys::PMQLONG,
     );
+
+    /// Back out changes
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqback-back-out-changes)
     unsafe fn MQBACK(&self, Hconn: mqsys::MQHCONN, pCompCode: mqsys::PMQLONG, pReason: mqsys::PMQLONG);
+
+    /// Create a message handle
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqcrtmh-create-message-handle)
     unsafe fn MQCRTMH(
         &self,
         Hconn: mqsys::MQHCONN,
@@ -118,6 +192,11 @@ pub trait Mqi {
         pCompCode: mqsys::PMQLONG,
         pReason: mqsys::PMQLONG,
     );
+
+    /// Delete a message handle and is the inverse of the [`MQCRTMH`](Mqi::MQCRTMH) call.
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqdltmh-delete-message-handle)
     unsafe fn MQDLTMH(
         &self,
         Hconn: mqsys::MQHCONN,
@@ -126,6 +205,11 @@ pub trait Mqi {
         pCompCode: mqsys::PMQLONG,
         pReason: mqsys::PMQLONG,
     );
+
+    /// Convert a message handle into a buffer and is the inverse of the MQBUFMH call
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqmhbuf-convert-message-handle-into-buffer)
     unsafe fn MQMHBUF(
         &self,
         Hconn: mqsys::MQHCONN,
@@ -139,6 +223,11 @@ pub trait Mqi {
         pCompCode: mqsys::PMQLONG,
         pReason: mqsys::PMQLONG,
     );
+
+    /// Convert a buffer into a message handle and is the inverse of the MQMHBUF call
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqbufmh-convert-buffer-into-message-handle)
     unsafe fn MQBUFMH(
         &self,
         Hconn: mqsys::MQHCONN,
@@ -151,6 +240,11 @@ pub trait Mqi {
         pCompCode: mqsys::PMQLONG,
         pReason: mqsys::PMQLONG,
     );
+
+    /// Manage callback
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqcb-manage-callback)
     unsafe fn MQCB(
         &self,
         Hconn: mqsys::MQHCONN,
@@ -162,6 +256,11 @@ pub trait Mqi {
         pCompCode: mqsys::PMQLONG,
         pReason: mqsys::PMQLONG,
     );
+
+    /// Perform controlling actions on callbacks and the object handles opened for a connection
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqctl-control-callbacks)
     unsafe fn MQCTL(
         &self,
         Hconn: mqsys::MQHCONN,
@@ -170,6 +269,11 @@ pub trait Mqi {
         pCompCode: mqsys::PMQLONG,
         pReason: mqsys::PMQLONG,
     );
+
+    /// Set object attributes
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqset-set-object-attributes)
     unsafe fn MQSET(
         &self,
         Hconn: mqsys::MQHCONN,
@@ -183,6 +287,11 @@ pub trait Mqi {
         pCompCode: mqsys::PMQLONG,
         pReason: mqsys::PMQLONG,
     );
+
+    /// Set or modify a property of a message handle
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqsetmp-set-message-property)
     unsafe fn MQSETMP(
         &self,
         Hconn: mqsys::MQHCONN,
@@ -196,6 +305,11 @@ pub trait Mqi {
         pCompCode: mqsys::PMQLONG,
         pReason: mqsys::PMQLONG,
     );
+
+    /// Retrieve status information
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqstat-retrieve-status-information)
     unsafe fn MQSTAT(
         &self,
         Hconn: mqsys::MQHCONN,
@@ -205,6 +319,10 @@ pub trait Mqi {
         pReason: mqsys::PMQLONG,
     );
 
+    /// Return the value of a property of a message
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinqmp-inquire-message-property)
     unsafe fn MQINQMP(
         &self,
         Hconn: mqsys::MQHCONN,
@@ -220,6 +338,10 @@ pub trait Mqi {
         pReason: mqsys::PMQLONG,
     );
 
+    /// Delete a property from a message handle and is the inverse of the [`MQSETMP`](Mqi::MQSETMP) call
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqdltmp-delete-message-property)
     unsafe fn MQDLTMP(
         &self,
         Hconn: mqsys::MQHCONN,
@@ -230,6 +352,10 @@ pub trait Mqi {
         pReason: mqsys::PMQLONG,
     );
 
+    /// Convert characters from one character set to another
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=exit-mqxcnvc-convert-characters)
     unsafe fn MQXCNVC(
         &self,
         Hconn: mqsys::MQHCONN,
