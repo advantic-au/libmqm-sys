@@ -3,7 +3,7 @@ use crate::lib as mqsys;
 /// IBM® MQ Interface (MQI) function calls
 #[allow(clippy::missing_safety_doc, clippy::too_many_arguments, non_snake_case)]
 pub trait Mqi {
-    /// Connects with extended options to a queue manager
+    /// Connect with extended options to a queue manager
     ///
     /// References
     /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqconnx-connect-queue-manager-extended)
@@ -16,7 +16,7 @@ pub trait Mqi {
         pReason: mqsys::PMQLONG,
     );
 
-    /// Connects an application to a queue manager
+    /// Connect to a queue manager
     ///
     /// References
     /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqconn-connect-queue-manager)
@@ -28,7 +28,7 @@ pub trait Mqi {
         pReason: mqsys::PMQLONG,
     );
 
-    /// Disconnects from a queue manager
+    /// Disconnect from a queue manager
     ///
     /// References
     /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqdisc-disconnect-queue-manager)
@@ -48,7 +48,7 @@ pub trait Mqi {
         pReason: mqsys::PMQLONG,
     );
 
-    /// Puts a single message on a queue (combines [`MQOPEN`], [`MQPUT`], and [`MQCLOSE`])
+    /// Put a single message on a queue (combines [`MQOPEN`](Mqi::MQOPEN), [`MQPUT`](Mqi::MQPUT), and [`MQCLOSE`](Mqi::MQCLOSE))
     ///
     /// References
     /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqput1-put-one-message)
@@ -64,7 +64,7 @@ pub trait Mqi {
         pReason: mqsys::PMQLONG,
     );
 
-    /// Closes a queue or topic
+    /// Close a queue or topic
     ///
     /// References
     /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqclose-close-object)
@@ -83,7 +83,7 @@ pub trait Mqi {
     /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqcmit-commit-changes)
     unsafe fn MQCMIT(&self, Hconn: mqsys::MQHCONN, pCompCode: mqsys::PMQLONG, pReason: mqsys::PMQLONG);
 
-    /// Gets a message from a queue
+    /// Get a message from a queue
     ///
     /// References
     /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqget-get-message)
@@ -100,7 +100,7 @@ pub trait Mqi {
         pReason: mqsys::PMQLONG,
     );
 
-    /// Puts a message on a queue
+    /// Put a message on a queue
     ///
     /// References
     /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqput-put-message)
@@ -193,7 +193,7 @@ pub trait Mqi {
         pReason: mqsys::PMQLONG,
     );
 
-    /// Delete a message handle and is the inverse of the [`MQCRTMH`] call.
+    /// Delete a message handle and is the inverse of the [`MQCRTMH`](Mqi::MQCRTMH) call.
     ///
     /// References
     /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqdltmh-delete-message-handle)
@@ -338,7 +338,7 @@ pub trait Mqi {
         pReason: mqsys::PMQLONG,
     );
 
-    /// Delete a property from a message handle and is the inverse of the [`MQSETMP`] call
+    /// Delete a property from a message handle and is the inverse of the [`MQSETMP`](Mqi::MQSETMP) call
     ///
     /// References
     /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqdltmp-delete-message-property)
@@ -352,7 +352,7 @@ pub trait Mqi {
         pReason: mqsys::PMQLONG,
     );
 
-    /// Converts characters from one character set to another
+    /// Convert characters from one character set to another
     ///
     /// References
     /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=exit-mqxcnvc-convert-characters)
