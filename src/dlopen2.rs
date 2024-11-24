@@ -573,6 +573,38 @@ pub struct MqWrapper {
     #[cfg(feature = "mqai")]
     mqTruncateBag:
         unsafe extern "C" fn(Bag: mqsys::MQHBAG, ItemCount: mqsys::MQLONG, pCompCode: mqsys::PMQLONG, pReason: mqsys::PMQLONG),
+
+    #[cfg(feature = "mqai")]
+    mqBagToBuffer: unsafe extern "C" fn(
+        OptionsBag: mqsys::MQHBAG,
+        DataBag: mqsys::MQHBAG,
+        BufferLength: mqsys::MQLONG,
+        pBuffer: mqsys::PMQVOID,
+        pDataLength: mqsys::PMQLONG,
+        pCompCode: mqsys::PMQLONG,
+        pReason: mqsys::PMQLONG,
+    ),
+
+    #[cfg(feature = "mqai")]
+    mqBufferToBag: unsafe extern "C" fn(
+        OptionsBag: mqsys::MQHBAG,
+        BufferLength: mqsys::MQLONG,
+        pBuffer: mqsys::PMQVOID,
+        DataBag: mqsys::MQHBAG,
+        pCompCode: mqsys::PMQLONG,
+        pReason: mqsys::PMQLONG,
+    ),
+
+    #[cfg(feature = "mqai")]
+    mqInquireItemInfo: unsafe extern "C" fn(
+        Bag: mqsys::MQHBAG,
+        Selector: mqsys::MQLONG,
+        ItemIndex: mqsys::MQLONG,
+        pOutSelector: mqsys::PMQLONG,
+        pItemType: mqsys::PMQLONG,
+        pCompCode: mqsys::PMQLONG,
+        pReason: mqsys::PMQLONG,
+    ),
 }
 
 impl function::Mqi for MqmContainer {
@@ -1603,6 +1635,59 @@ impl function::Mqai for MqmContainer {
     ) {
         unsafe {
             MqWrapper::mqTruncateBag(self, Bag, ItemCount, pCompCode, pReason);
+        }
+    }
+
+    unsafe fn mqBagToBuffer(
+        &self,
+        OptionsBag: mqsys::MQHBAG,
+        DataBag: mqsys::MQHBAG,
+        BufferLength: mqsys::MQLONG,
+        pBuffer: mqsys::PMQVOID,
+        pDataLength: mqsys::PMQLONG,
+        pCompCode: mqsys::PMQLONG,
+        pReason: mqsys::PMQLONG,
+    ) {
+        unsafe {
+            MqWrapper::mqBagToBuffer(
+                self,
+                OptionsBag,
+                DataBag,
+                BufferLength,
+                pBuffer,
+                pDataLength,
+                pCompCode,
+                pReason,
+            );
+        }
+    }
+
+    unsafe fn mqBufferToBag(
+        &self,
+        OptionsBag: mqsys::MQHBAG,
+        BufferLength: mqsys::MQLONG,
+        pBuffer: mqsys::PMQVOID,
+        DataBag: mqsys::MQHBAG,
+        pCompCode: mqsys::PMQLONG,
+        pReason: mqsys::PMQLONG,
+    ) {
+        unsafe {
+            MqWrapper::mqBufferToBag(self, OptionsBag, BufferLength, pBuffer, DataBag, pCompCode, pReason);
+        }
+    }
+
+    unsafe fn mqInquireItemInfo(
+        &self,
+        Bag: mqsys::MQHBAG,
+        Selector: mqsys::MQLONG,
+        ItemIndex: mqsys::MQLONG,
+        pOutSelector: mqsys::PMQLONG,
+        pItemType: mqsys::PMQLONG,
+        pCompCode: mqsys::PMQLONG,
+        pReason: mqsys::PMQLONG,
+    ) {
+        unsafe {
+            MqWrapper::mqInquireItemInfo(self, Bag, Selector, ItemIndex, pOutSelector, pItemType, pCompCode, pReason);
         }
     }
 }

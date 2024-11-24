@@ -996,4 +996,48 @@ impl function::Mqai for LinkedMq {
             lib::mqTruncateBag(Bag, ItemCount, pCompCode, pReason);
         }
     }
+
+    unsafe fn mqBagToBuffer(
+        &self,
+        OptionsBag: lib::MQHBAG,
+        DataBag: lib::MQHBAG,
+        BufferLength: lib::MQLONG,
+        pBuffer: lib::PMQVOID,
+        pDataLength: lib::PMQLONG,
+        pCompCode: lib::PMQLONG,
+        pReason: lib::PMQLONG,
+    ) {
+        unsafe {
+            lib::mqBagToBuffer(OptionsBag, DataBag, BufferLength, pBuffer, pDataLength, pCompCode, pReason);
+        }
+    }
+
+    unsafe fn mqBufferToBag(
+        &self,
+        OptionsBag: lib::MQHBAG,
+        BufferLength: lib::MQLONG,
+        pBuffer: lib::PMQVOID,
+        DataBag: lib::MQHBAG,
+        pCompCode: lib::PMQLONG,
+        pReason: lib::PMQLONG,
+    ) {
+        unsafe {
+            lib::mqBufferToBag(OptionsBag, BufferLength, pBuffer, DataBag, pCompCode, pReason);
+        }
+    }
+
+    unsafe fn mqInquireItemInfo(
+        &self,
+        Bag: lib::MQHBAG,
+        Selector: lib::MQLONG,
+        ItemIndex: lib::MQLONG,
+        pOutSelector: lib::PMQLONG,
+        pItemType: lib::PMQLONG,
+        pCompCode: lib::PMQLONG,
+        pReason: lib::PMQLONG,
+    ) {
+        unsafe {
+            lib::mqInquireItemInfo(Bag, Selector, ItemIndex, pOutSelector, pItemType, pCompCode, pReason);
+        }
+    }
 }
