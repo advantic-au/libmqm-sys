@@ -1,5 +1,18 @@
 [workspace]
-
-members = [
+resolver = "2"
+members = [ "libmqm-default",
     "libmqm-sys"
 ]
+
+[workspace.package]
+version = "0.5.0"
+authors = ["Warren Spits <warren@advantic.au>"]
+repository = "https://github.com/advantic-au/libmqm-sys"
+license = "Apache-2.0"
+readme = "README.md"
+edition = "2021"
+rust-version = "1.77"  # Note: Also change the github workflow "minimum" action
+
+[workspace.lints.rust]
+non_camel_case_types = "allow"
+non_snake_case = "allow"

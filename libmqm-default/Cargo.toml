@@ -1,0 +1,18 @@
+[package]
+name = "libmqm-default"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+license.workspace = true
+readme.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+build = "build/main.rs"
+
+[dependencies]
+
+[build-dependencies]
+libmqm-sys = { path = "../libmqm-sys" }
+
+[lints]
+workspace = true
