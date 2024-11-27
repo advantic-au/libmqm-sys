@@ -1,6 +1,9 @@
 use crate::lib as mqsys;
 
 /// IBM® MQ Interface (MQI) function calls
+///
+/// References
+/// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/9.4?topic=reference-function-calls)
 #[allow(clippy::missing_safety_doc, clippy::too_many_arguments, non_snake_case)]
 pub trait Mqi {
     /// Connect with extended options to a queue manager
@@ -373,9 +376,16 @@ pub trait Mqi {
 }
 
 /// IBM® MQ Administration Interface (MQAI) function calls
+///
+/// References
+/// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/9.4?topic=reference-mqai-calls)
 #[allow(clippy::missing_safety_doc, clippy::too_many_arguments, non_snake_case)]
 #[cfg(feature = "mqai")]
 pub trait Mqai {
+    /// Create a new bag
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/9.4?topic=calls-mqcreatebag)
     unsafe fn mqCreateBag(
         &self,
         Options: mqsys::MQLONG,
@@ -383,8 +393,23 @@ pub trait Mqai {
         pCompCode: mqsys::PMQLONG,
         pReason: mqsys::PMQLONG,
     );
+
+    /// Delete all user items from the bag, and resets system items to their initial values
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/9.4?topic=calls-mqclearbag)
     unsafe fn mqClearBag(&self, Bag: mqsys::MQHBAG, pCompCode: mqsys::PMQLONG, pReason: mqsys::PMQLONG);
+
+    /// Delete the specified bag
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/9.4?topic=calls-mqdeletebag)
     unsafe fn mqDeleteBag(&self, pBag: mqsys::PMQHBAG, pCompCode: mqsys::PMQLONG, pReason: mqsys::PMQLONG);
+
+    /// Remove a message from the specified queue and converts the message data into a data bag
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/9.4?topic=calls-mqgetbag)
     unsafe fn mqGetBag(
         &self,
         Hconn: mqsys::MQHCONN,
@@ -395,6 +420,11 @@ pub trait Mqai {
         pCompCode: mqsys::PMQLONG,
         pReason: mqsys::PMQLONG,
     );
+
+    /// Convert the contents of the specified bag into a PCF message and sends the message to the specified queue
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/9.4?topic=calls-mqputbag)
     unsafe fn mqPutBag(
         &self,
         Hconn: mqsys::MQHCONN,
@@ -405,6 +435,11 @@ pub trait Mqai {
         pCompCode: mqsys::PMQLONG,
         pReason: mqsys::PMQLONG,
     );
+
+    /// Reduce the number of user items in a user bag to the specified value, by deleting user items from the end of the bag
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/9.4?topic=calls-mqtruncatebag)
     unsafe fn mqTruncateBag(
         &self,
         Bag: mqsys::MQHBAG,
@@ -412,6 +447,11 @@ pub trait Mqai {
         pCompCode: mqsys::PMQLONG,
         pReason: mqsys::PMQLONG,
     );
+
+    /// Add a selector to an administration bag
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/9.4?topic=calls-mqaddinquiry)
     unsafe fn mqAddInquiry(
         &self,
         Bag: mqsys::MQHBAG,
@@ -419,6 +459,11 @@ pub trait Mqai {
         pCompCode: mqsys::PMQLONG,
         pReason: mqsys::PMQLONG,
     );
+
+    /// Remove one or more user items from a bag
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/9.4?topic=calls-mqdeleteitem)
     unsafe fn mqDeleteItem(
         &self,
         Bag: mqsys::MQHBAG,
@@ -427,6 +472,11 @@ pub trait Mqai {
         pCompCode: mqsys::PMQLONG,
         pReason: mqsys::PMQLONG,
     );
+
+    /// Add an integer item identified by a user selector to the end of a specified bag
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/9.4?topic=calls-mqaddinteger)
     unsafe fn mqAddInteger(
         &self,
         Bag: mqsys::MQHBAG,
@@ -435,6 +485,11 @@ pub trait Mqai {
         pCompCode: mqsys::PMQLONG,
         pReason: mqsys::PMQLONG,
     );
+
+    /// Add an integer filter identified by a user selector to the end of a specified bag
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/9.4?topic=calls-mqaddintegerfilter)
     unsafe fn mqAddIntegerFilter(
         &self,
         Bag: mqsys::MQHBAG,
@@ -444,6 +499,11 @@ pub trait Mqai {
         pCompCode: mqsys::PMQLONG,
         pReason: mqsys::PMQLONG,
     );
+
+    /// Add a 64-bit integer item identified by a user selector to the end of a specified bag
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/9.4?topic=calls-mqaddinteger64)
     unsafe fn mqAddInteger64(
         &self,
         Bag: mqsys::MQHBAG,
@@ -452,6 +512,11 @@ pub trait Mqai {
         pCompCode: mqsys::PMQLONG,
         pReason: mqsys::PMQLONG,
     );
+
+    /// Add a character data item identified by a user selector to the end of a specified bag
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/9.4?topic=calls-mqaddstring)
     unsafe fn mqAddString(
         &self,
         Bag: mqsys::MQHBAG,
@@ -461,6 +526,11 @@ pub trait Mqai {
         pCompCode: mqsys::PMQLONG,
         pReason: mqsys::PMQLONG,
     );
+
+    /// Add a string filter identified by a user selector to the end of a specified bag
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/9.4?topic=calls-mqaddstringfilter)
     unsafe fn mqAddStringFilter(
         &self,
         Bag: mqsys::MQHBAG,
@@ -471,6 +541,11 @@ pub trait Mqai {
         pCompCode: mqsys::PMQLONG,
         pReason: mqsys::PMQLONG,
     );
+
+    /// Add a byte string identified by a user selector to the end of a specified bag
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/9.4?topic=calls-mqaddbytestring)
     unsafe fn mqAddByteString(
         &self,
         Bag: mqsys::MQHBAG,
@@ -480,6 +555,11 @@ pub trait Mqai {
         pCompCode: mqsys::PMQLONG,
         pReason: mqsys::PMQLONG,
     );
+
+    /// Add a byte string filter identified by a user selector to the end of a specified bag
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/9.4?topic=calls-mqaddbytestringfilter)
     unsafe fn mqAddByteStringFilter(
         &self,
         Bag: mqsys::MQHBAG,
@@ -490,6 +570,11 @@ pub trait Mqai {
         pCompCode: mqsys::PMQLONG,
         pReason: mqsys::PMQLONG,
     );
+
+    /// Either modify an integer item that is already present in the bag, or delete all existing occurrences of the specified selector and adds a new occurrence at the end of the bag
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/9.4?topic=calls-mqsetinteger)
     unsafe fn mqSetInteger(
         &self,
         Bag: mqsys::MQHBAG,
@@ -499,6 +584,11 @@ pub trait Mqai {
         pCompCode: mqsys::PMQLONG,
         pReason: mqsys::PMQLONG,
     );
+
+    /// Either modify an integer filter item that is already present in the bag, or delete all existing occurrences of the specified selector and adds a new occurrence at the end of the bag
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/9.4?topic=calls-mqsetintegerfilter)
     unsafe fn mqSetIntegerFilter(
         &self,
         Bag: mqsys::MQHBAG,
@@ -509,6 +599,11 @@ pub trait Mqai {
         pCompCode: mqsys::PMQLONG,
         pReason: mqsys::PMQLONG,
     );
+
+    /// Either modify a 64-bit integer item that is already present in the bag, or delete all existing occurrences of the specified selector and adds a new occurrence at the end of the bag
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/9.4?topic=calls-mqsetinteger64)
     unsafe fn mqSetInteger64(
         &self,
         Bag: mqsys::MQHBAG,
@@ -518,6 +613,11 @@ pub trait Mqai {
         pCompCode: mqsys::PMQLONG,
         pReason: mqsys::PMQLONG,
     );
+
+    /// Nest a bag in another bag
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/9.4?topic=calls-mqaddbag)
     unsafe fn mqAddBag(
         &self,
         Bag: mqsys::MQHBAG,
@@ -526,6 +626,11 @@ pub trait Mqai {
         pCompCode: mqsys::PMQLONG,
         pReason: mqsys::PMQLONG,
     );
+
+    /// Either modify a character data item that is already present in the bag, or delete all existing occurrences of the specified selector and adds a new occurrence at the end of the bag
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/9.4?topic=calls-mqsetstring)
     unsafe fn mqSetString(
         &self,
         Bag: mqsys::MQHBAG,
@@ -536,6 +641,11 @@ pub trait Mqai {
         pCompCode: mqsys::PMQLONG,
         pReason: mqsys::PMQLONG,
     );
+
+    /// Either modify a string filter item that is already present in the bag, or delete all existing occurrences of the specified selector and adds a new occurrence at the end of the bag
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/9.4?topic=calls-mqsetstringfilter)
     unsafe fn mqSetStringFilter(
         &self,
         Bag: mqsys::MQHBAG,
@@ -547,6 +657,11 @@ pub trait Mqai {
         pCompCode: mqsys::PMQLONG,
         pReason: mqsys::PMQLONG,
     );
+
+    /// Either modify a byte string data item that is already present in the bag, or delete all existing occurrences of the specified selector and adds a new occurrence at the end of the bag
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/9.4?topic=calls-mqsetbytestring)
     unsafe fn mqSetByteString(
         &self,
         Bag: mqsys::MQHBAG,
@@ -557,6 +672,11 @@ pub trait Mqai {
         pCompCode: mqsys::PMQLONG,
         pReason: mqsys::PMQLONG,
     );
+
+    /// Either modify a byte string filter item that is already present in the bag, or delete all existing occurrences of the specified selector and adds a new occurrence at the end of the bag
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/9.4?topic=calls-mqsetbytestringfilter)
     unsafe fn mqSetByteStringFilter(
         &self,
         Bag: mqsys::MQHBAG,
@@ -568,6 +688,11 @@ pub trait Mqai {
         pCompCode: mqsys::PMQLONG,
         pReason: mqsys::PMQLONG,
     );
+
+    /// Request the value of an integer data item that is present in the bag
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/9.4?topic=calls-mqinquireinteger)
     unsafe fn mqInquireInteger(
         &self,
         Bag: mqsys::MQHBAG,
@@ -577,6 +702,11 @@ pub trait Mqai {
         pCompCode: mqsys::PMQLONG,
         pReason: mqsys::PMQLONG,
     );
+
+    /// Request the value and operator of an integer filter item that is present in the bag
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/9.4?topic=calls-mqinquireintegerfilter)
     unsafe fn mqInquireIntegerFilter(
         &self,
         Bag: mqsys::MQHBAG,
@@ -587,6 +717,11 @@ pub trait Mqai {
         pCompCode: mqsys::PMQLONG,
         pReason: mqsys::PMQLONG,
     );
+
+    /// Request the value of a 64-bit integer data item that is present in the bag
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/9.4?topic=calls-mqinquireinteger64)
     unsafe fn mqInquireInteger64(
         &self,
         Bag: mqsys::MQHBAG,
@@ -596,6 +731,11 @@ pub trait Mqai {
         pCompCode: mqsys::PMQLONG,
         pReason: mqsys::PMQLONG,
     );
+
+    /// Requests the value of a byte string data item that is present in the bag
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/9.4?topic=calls-mqinquirebytestring)
     unsafe fn mqInquireByteString(
         &self,
         Bag: mqsys::MQHBAG,
@@ -607,6 +747,11 @@ pub trait Mqai {
         pCompCode: mqsys::PMQLONG,
         pReason: mqsys::PMQLONG,
     );
+
+    /// Request the value of a character data item that is present in the bag
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/9.4?topic=calls-mqinquirestring)
     unsafe fn mqInquireString(
         &self,
         Bag: mqsys::MQHBAG,
@@ -619,6 +764,11 @@ pub trait Mqai {
         pCompCode: mqsys::PMQLONG,
         pReason: mqsys::PMQLONG,
     );
+
+    /// Request the value and operator of a string filter item that is present in the bag
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/9.4?topic=calls-mqinquirestringfilter)
     unsafe fn mqInquireStringFilter(
         &self,
         Bag: mqsys::MQHBAG,
@@ -632,6 +782,11 @@ pub trait Mqai {
         pCompCode: mqsys::PMQLONG,
         pReason: mqsys::PMQLONG,
     );
+
+    /// Request the value and operator of a byte string filter item that is present in the bag
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/9.4?topic=calls-mqinquirebytestringfilter)
     unsafe fn mqInquireByteStringFilter(
         &self,
         Bag: mqsys::MQHBAG,
@@ -644,6 +799,11 @@ pub trait Mqai {
         pCompCode: mqsys::PMQLONG,
         pReason: mqsys::PMQLONG,
     );
+
+    /// Inquire the value of a bag handle that is present in the bag. The data item can be a user item or a system item
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/9.4?topic=calls-mqinquirebag)
     unsafe fn mqInquireBag(
         &self,
         Bag: mqsys::MQHBAG,
@@ -653,6 +813,11 @@ pub trait Mqai {
         pCompCode: mqsys::PMQLONG,
         pReason: mqsys::PMQLONG,
     );
+
+    /// Return the number of occurrences of user items, system items, or both, that are stored in a bag with the same specific selector
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/9.4?topic=calls-mqcountitems)
     unsafe fn mqCountItems(
         &self,
         Bag: mqsys::MQHBAG,
@@ -661,6 +826,10 @@ pub trait Mqai {
         pCompCode: mqsys::PMQLONG,
         pReason: mqsys::PMQLONG,
     );
+
+    /// Send an administration command message and wait for the reply (if expected)
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/9.4?topic=calls-mqexecute)
     unsafe fn mqExecute(
         &self,
         Hconn: mqsys::MQHCONN,
@@ -670,6 +839,50 @@ pub trait Mqai {
         ResponseBag: mqsys::MQHBAG,
         AdminQ: mqsys::MQHOBJ,
         ResponseQ: mqsys::MQHOBJ,
+        pCompCode: mqsys::PMQLONG,
+        pReason: mqsys::PMQLONG,
+    );
+
+    /// Convert the bag into a PCF message in the supplied buffer
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/9.4?topic=calls-mqbagtobuffer)
+    unsafe fn mqBagToBuffer(
+        &self,
+        OptionsBag: mqsys::MQHBAG,
+        DataBag: mqsys::MQHBAG,
+        BufferLength: mqsys::MQLONG,
+        pBuffer: mqsys::PMQVOID,
+        pDataLength: mqsys::PMQLONG,
+        pCompCode: mqsys::PMQLONG,
+        pReason: mqsys::PMQLONG,
+    );
+
+    /// Convert the supplied buffer into bag form
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/9.4?topic=calls-mqbuffertobag)
+    unsafe fn mqBufferToBag(
+        &self,
+        OptionsBag: mqsys::MQHBAG,
+        BufferLength: mqsys::MQLONG,
+        pBuffer: mqsys::PMQVOID,
+        DataBag: mqsys::MQHBAG,
+        pCompCode: mqsys::PMQLONG,
+        pReason: mqsys::PMQLONG,
+    );
+
+    /// Return information about a specified item in a bag
+    ///
+    /// References
+    /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/9.4?topic=calls-mqinquireiteminfo)
+    unsafe fn mqInquireItemInfo(
+        &self,
+        Bag: mqsys::MQHBAG,
+        Selector: mqsys::MQLONG,
+        ItemIndex: mqsys::MQLONG,
+        pOutSelector: mqsys::PMQLONG,
+        pItemType: mqsys::PMQLONG,
         pCompCode: mqsys::PMQLONG,
         pReason: mqsys::PMQLONG,
     );
