@@ -16,3 +16,12 @@ rust-version = "1.77"  # Note: Also change the github workflow "minimum" action
 [workspace.lints.rust]
 non_camel_case_types = "allow"
 non_snake_case = "allow"
+unsafe_op_in_unsafe_fn = "warn"
+
+[workspace.lints.clippy]
+all = "deny"
+nursery = "warn"
+pedantic = "warn"
+unwrap_used = "warn"
+unused_async = "warn"
+similar_names = "allow"
