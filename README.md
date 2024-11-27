@@ -52,30 +52,25 @@ Example
 -------
 
 ```rust
-#[cfg(test)]
-mod test {
-    use std::ptr::addr_of_mut;
-    use libmqm_sys::lib;
+use std::ptr::addr_of_mut;
+use libmqm_sys::lib;
 
-    #[test]
-    fn connect() {
-        unsafe {
-            let mut hconn = lib::MQHC_DEF_HCONN;
-            let mut comp_code = lib::MQCC_UNKNOWN;
-            let mut reason = lib::MQRC_NONE;
-            let mut qmgr: [i8; 48] = [b' '; 48]; // All spaces
-            lib::MQCONN(
-                addr_of_mut!(qmgr).cast(),
-                addr_of_mut!(hconn),
-                addr_of_mut!(comp_code),
-                addr_of_mut!(reason),
-            );
-            assert_eq!(reason, lib::MQRC_NONE, "MQRC");
-            assert_eq!(comp_code, lib::MQCC_OK, "MQCC");
-            lib::MQDISC(addr_of_mut!(hconn), addr_of_mut!(comp_code), addr_of_mut!(reason));
-        };
-    }
-}
+let mut hconn = lib::MQHC_DEF_HCONN;
+let mut comp_code = lib::MQCC_UNKNOWN;
+let mut reason = lib::MQRC_NONE;
+let mut qmgr: [lib::MQCHAR; 48] = [32; 48]; // All spaces = default qmgr
+
+unsafe {
+    lib::MQCONN(
+        addr_of_mut!(qmgr).cast(),
+        addr_of_mut!(hconn),
+        addr_of_mut!(comp_code),
+        addr_of_mut!(reason),
+    );
+    assert_eq!(reason, lib::MQRC_NONE, "MQRC");
+    assert_eq!(comp_code, lib::MQCC_OK, "MQCC");
+    lib::MQDISC(addr_of_mut!(hconn), addr_of_mut!(comp_code), addr_of_mut!(reason));
+};
 ```
 
 For further examples of using the API, refer to the [MQI crate usage](https://github.com/advantic-au/mqi/blob/develop/src/core/mqi_verbs.rs).
