@@ -12,7 +12,7 @@ build = "build/main.rs"
 [dependencies]
 
 [build-dependencies]
-libmqm-sys = { path = "../libmqm-sys", default-features = false }
+libmqm-sys = { path = "../libmqm-sys", default-features = false, features = ["mqi_helpers" ] }
 
 [lints]
 workspace = true
