@@ -1699,7 +1699,8 @@ mod tests {
 
     use crate::lib;
 
-    use super::{LoadMqm, MqWrapper, MqmContainer};
+    use super::*;
+
     #[test]
     fn mqdist_load_default() {
         let _ = unsafe { MqmContainer::load_mqm_default() }.expect("MQM library to be loaded");

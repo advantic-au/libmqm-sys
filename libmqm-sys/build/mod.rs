@@ -197,7 +197,7 @@ fn main() -> Result<(), io::Error> {
 
         mqi_bindgen::generate_bindings(&mq_path::mq_inc_path(), &mqc_version)
             .map_err(|e| io::Error::new(io::ErrorKind::InvalidData, e))?
-            .write_to_file(out_bindings.clone())?;
+            .write_to_file(&out_bindings)?;
 
         #[cfg(feature = "pregen")]
         {
