@@ -18,10 +18,10 @@ build = "build/mod.rs"
 workspace = true
 
 [features]
-default = ["link", "mqi_helpers", "bindgen", "mqc_9_2_0_0"]
+default = ["link", "mqi_helpers", "bindgen", "versiongen", "mqc_9_2_0_0"]
 
 ## Generate the bindings and save them in the src folder
-pregen = ["pcf", "exits", "mqai", "bindgen", "mqc_9_4_1_0"]
+pregen = ["pcf", "exits", "mqai", "bindgen", "versiongen", "mqc_9_4_1_0"]
 
 ## Enable runtime loading of the MQI library using [`dlopen2`](dlopen2)
 dlopen2 = ["dep:dlopen2", "dep:libc"]
@@ -46,7 +46,10 @@ mqai = []
 docsrs = ["link_api", "pcf", "exits", "mqai", "dlopen2", "mqc_9_4_1_0"]
 
 ## Use [`bindgen`](https://docs.rs/bindgen/latest/bindgen/) to generate bindings
-bindgen = ["dep:bindgen"]
+bindgen = ["dep:bindgen", "versiongen"]
+
+## Generate version file from MQC library
+versiongen = [] 
 
 ## Minimum MQ client version 9.2.0.0
 mqc_9_2_0_0 = []

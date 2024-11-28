@@ -5,6 +5,7 @@ use std::{
 };
 
 use libmqm_sys::lib;
+use libmqm_sys::version;
 
 fn const_default<T>(write: &mut impl Write, const_name: &str, type_name: &str, value: &T) -> Result<(), io::Error> {
     let s = slice::from_ref(value);
@@ -40,6 +41,8 @@ fn main() -> Result<(), io::Error> {
     let defaults_path = out_path.join("defaults.rs");
 
     let mut w = io::BufWriter::new(File::create(&defaults_path)?);
+
+    writeln!(&mut w, "/* Generated with MQ client version {} */", version::CLIENT_BUILD_VERSION)?;
 
     const_default(&mut w, "MQMD_DEFAULT", "libmqm_sys::lib::MQMD", &lib::MQMD::default())?;
     const_default(&mut w, "MQMDE_DEFAULT", "libmqm_sys::lib::MQMDE", &lib::MQMDE::default())?;
@@ -97,6 +100,7 @@ fn main() -> Result<(), io::Error> {
 
     #[cfg(feature = "pcf")]
     {
+        writeln!(&mut w, "/* feature = \"pcf\" */")?;
         const_default(&mut w, "MQCFH_DEFAULT", "libmqm_sys::lib::MQCFH", &lib::MQCFH::default())?;
         const_default(&mut w, "MQCFBF_DEFAULT", "libmqm_sys::lib::MQCFBF", &lib::MQCFBF::default())?;
         const_default(&mut w, "MQCFBS_DEFAULT", "libmqm_sys::lib::MQCFBS", &lib::MQCFBS::default())?;
@@ -129,6 +133,7 @@ fn main() -> Result<(), io::Error> {
 
     #[cfg(feature = "exits")]
     {
+        writeln!(&mut w, "/* feature = \"exits\" */")?;
         const_default(&mut w, "MQACH_DEFAULT", "libmqm_sys::lib::MQACH", &lib::MQACH::default())?;
         const_default(&mut w, "MQAXC_DEFAULT", "libmqm_sys::lib::MQAXC", &lib::MQAXC::default())?;
         const_default(&mut w, "MQAXP_DEFAULT", "libmqm_sys::lib::MQAXP", &lib::MQAXP::default())?;

@@ -80,10 +80,7 @@ mod versions {
             .ok_or_else(|| std::io::Error::new(std::io::ErrorKind::InvalidData, format!("Invalid version: {version}")))?;
 
         writeln!(target, "pub const CLIENT_BUILD_VERSION: &str = \"{version}\";")?;
-        writeln!(
-            target,
-            "pub(crate) const CLIENT_BUILD_VERSION_INT: u32 = {version_int:#010x};"
-        )?;
+        writeln!(target, "pub const CLIENT_BUILD_VERSION_INT: u32 = {version_int:#010x};")?;
 
         Ok(())
     }
@@ -146,30 +143,27 @@ fn main() -> Result<(), io::Error> {
     #[cfg(feature = "mqi_helpers")]
     mqi_helpers::build_c(&mq_path::mq_inc_path())?; // Build the c files
 
-    #[cfg(feature = "bindgen")]
+    #[cfg(feature = "versiongen")]
     {
-        use regex_lite::Regex;
-        use std::fs::File;
-        use std::process::{Command, Stdio};
-
-        // Generate and write the bindings file
         let out_path =
             std::path::PathBuf::from(std::env::var("OUT_DIR").map_err(|e| io::Error::new(io::ErrorKind::InvalidInput, e))?); // Mandatory OUT_DIR
-        let out_bindings = out_path.join("bindings.rs");
+
         let out_version = out_path.join("version.rs");
 
         let dspmqver_path = mq_path::dspmqver();
-        let dspmqver_raw = Command::new(&dspmqver_path).stdout(Stdio::piped()).output()?;
+        let dspmqver_raw = std::process::Command::new(&dspmqver_path)
+            .stdout(std::process::Stdio::piped())
+            .output()?;
         let dspmqver_output =
             String::from_utf8(dspmqver_raw.stdout).map_err(|e| io::Error::new(io::ErrorKind::InvalidData, e))?;
 
-        let mqc_version = Regex::new(r"(?m)^\s*Version:\s+(?<version>.*?)\s*$")
+        let mqc_version = regex_lite::Regex::new(r"(?m)^\s*Version:\s+(?<version>.*?)\s*$")
             .expect("valid regex")
             .captures(&dspmqver_output)
             .map(|m| m["version"].to_owned())
             .ok_or_else(|| io::Error::new(io::ErrorKind::InvalidData, "could not extract version from dspmqver"))?;
 
-        let mqc_env = Regex::new(r"CARGO_FEATURE_(MQC_\d+_\d+_\d+_\d+)").expect("valid regex");
+        let mqc_env = regex_lite::Regex::new(r"CARGO_FEATURE_(MQC_\d+_\d+_\d+_\d+)").expect("valid regex");
         let min_mqc_version = std::env::vars()
             .filter_map(|(name, _)| {
                 mqc_env.captures(&name).and_then(|captures| {
@@ -190,29 +184,35 @@ fn main() -> Result<(), io::Error> {
             );
         }
 
-        {
-            let mut version_writer = io::BufWriter::new(File::create(&out_version)?);
-            versions::generate_version(&mut version_writer, &mqc_version)?;
-        }
-
-        mqi_bindgen::generate_bindings(&mq_path::mq_inc_path(), &mqc_version)
-            .map_err(|e| io::Error::new(io::ErrorKind::InvalidData, e))?
-            .write_to_file(&out_bindings)?;
+        let mut version_writer = io::BufWriter::new(std::fs::File::create(&out_version)?);
+        versions::generate_version(&mut version_writer, &mqc_version)?;
+        drop(version_writer);
 
         #[cfg(feature = "pregen")]
+        std::fs::copy(out_version, std::path::PathBuf::from("src/version").join("pregen.rs"))?;
+
+        #[cfg(feature = "bindgen")]
         {
-            use std::{env::consts as env_consts, fs, path};
+            let out_bindings = out_path.join("bindings.rs");
 
-            fs::copy(
-                out_bindings,
-                path::PathBuf::from("./src/lib/pregen").join(format!(
-                    "{}-{}-bindings.rs",
-                    if env_consts::OS == "macos" { "any" } else { env_consts::ARCH },
-                    env_consts::OS
-                )),
-            )?;
+            // Generate and write the bindings file
+            mqi_bindgen::generate_bindings(&mq_path::mq_inc_path(), &mqc_version)
+                .map_err(|e| io::Error::new(io::ErrorKind::InvalidData, e))?
+                .write_to_file(&out_bindings)?;
 
-            fs::copy(out_version, path::PathBuf::from("src/lib/pregen").join("version.rs"))?;
+            #[cfg(feature = "pregen")]
+            {
+                use std::{env::consts, fs, path};
+
+                fs::copy(
+                    out_bindings,
+                    path::PathBuf::from("./src/lib/pregen").join(format!(
+                        "{}-{}-bindings.rs",
+                        if consts::OS == "macos" { "any" } else { consts::ARCH },
+                        consts::OS
+                    )),
+                )?;
+            }
         }
     }
 

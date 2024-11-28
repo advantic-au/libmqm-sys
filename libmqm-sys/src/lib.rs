@@ -101,6 +101,20 @@ pub mod lib {
     pub use pregen::*;
 }
 
+#[cfg(not(feature = "versiongen"))]
+#[allow(clippy::unreadable_literal)]
+pub mod version {
+    mod pregen;
+    #[doc(inline)]
+    pub use pregen::*;
+}
+
+#[cfg(feature = "versiongen")]
+#[allow(clippy::unreadable_literal)]
+pub mod version {
+    include!(concat!(env!("OUT_DIR"), "/version.rs"));
+}
+
 mod default;
 
 mod function;
