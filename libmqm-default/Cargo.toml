@@ -10,9 +10,19 @@ rust-version.workspace = true
 build = "build/main.rs"
 
 [dependencies]
+libmqm-sys = { path = "../libmqm-sys", default-features = false }
 
 [build-dependencies]
-libmqm-sys = { path = "../libmqm-sys", default-features = false, features = ["mqi_helpers" ] }
+libmqm-sys = { path = "../libmqm-sys", default-features = false, features = [
+    "mqi_helpers",
+] }
 
 [lints]
 workspace = true
+
+[features]
+pcf = ["libmqm-sys/pcf"]     # Enable the PCF API
+exits = ["libmqm-sys/exits"] # Enable the Exits API
+
+mqc_9_3_0_0 = ["libmqm-sys/mqc_9_3_0_0"]
+mqc_9_3_1_0 = ["mqc_9_3_0_0", "libmqm-sys/mqc_9_3_1_0"]

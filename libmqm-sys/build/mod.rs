@@ -20,11 +20,8 @@ mod features {
     ) -> impl Iterator<Item = &'a T> {
         features
             .into_iter()
-            .filter(|&(.., feature)| match feature {
-                Some(names) => names.iter().copied().any(feature_enabled), // At least one feature must match
-                None => true,                                              // None means always include
-            })
-            .flat_map(|&(x, ..)| x)
+            .filter(|(.., feature)| feature.map_or(true, |names| names.iter().copied().any(feature_enabled)))
+            .flat_map(|(x, ..)| *x)
     }
 }
 
@@ -42,7 +39,7 @@ mod mqi_helpers {
     pub fn build_c(mq_inc_path: &PathBuf) -> Result<(), io::Error> {
         let sources = super::features::filter_features(SOURCE_FILES).collect::<Vec<_>>();
         for source in &sources {
-            println!("cargo:rerun-if-changed={source}")
+            println!("cargo:rerun-if-changed={source}");
         }
 
         cc::Build::new()
@@ -66,27 +63,26 @@ mod versions {
 
     pub fn parse_mqc_feature(feature: &str) -> Option<u32> {
         let mqc_regex = Regex::new(r"(?i)mqc_(\d+)_(\d+)_(\d+)_(\d+)").ok()?;
-        let (_, [a, b, c, d]) = mqc_regex.captures(feature).map(|captures| captures.extract())?;
-        ver_into_u32((a, b, c, d)).ok()
+        let (_, version) = mqc_regex.captures(feature).map(|captures| captures.extract())?;
+        ver_into_u32(version.into()).ok()
     }
 
     pub fn parse_version(version: &str) -> Option<u32> {
         const VERSION_PATTERN: &str = r"(\d+)\.(\d+)\.(\d+)\.(\d+)";
         let version_check = Regex::new(VERSION_PATTERN).expect("valid regex");
 
-        let (_, [a, b, c, d]) = version_check.captures(version).map(|captures| captures.extract())?;
-        ver_into_u32((a, b, c, d)).ok()
+        let (_, version) = version_check.captures(version).map(|captures| captures.extract())?;
+        ver_into_u32(version.into()).ok()
     }
 
     pub fn generate_version(target: &mut impl std::io::Write, version: &str) -> std::io::Result<()> {
         let version_int = parse_version(version)
-            .ok_or_else(|| std::io::Error::new(std::io::ErrorKind::InvalidData, format!("Invalid version: {}", version)))?;
+            .ok_or_else(|| std::io::Error::new(std::io::ErrorKind::InvalidData, format!("Invalid version: {version}")))?;
 
-        writeln!(target, "pub const CLIENT_BUILD_VERSION: &str = \"{}\";", version)?;
+        writeln!(target, "pub const CLIENT_BUILD_VERSION: &str = \"{version}\";")?;
         writeln!(
             target,
-            "pub(crate) const CLIENT_BUILD_VERSION_INT: u32 = {:#010x};",
-            version_int
+            "pub(crate) const CLIENT_BUILD_VERSION_INT: u32 = {version_int:#010x};"
         )?;
 
         Ok(())
@@ -186,12 +182,12 @@ fn main() -> Result<(), io::Error> {
             .max_by_key(|(ver, _)| *ver);
 
         if let Some(((min_mqc, feature), current_mqc)) = min_mqc_version.zip(versions::parse_version(&mqc_version)) {
-            if min_mqc > current_mqc {
-                panic!(
-                    "MQC version {} does not meet the minimum requirement for feature {}",
-                    &mqc_version, &feature
-                );
-            }
+            assert!(
+                min_mqc <= current_mqc,
+                "MQC version {} does not meet the minimum requirement for feature {}",
+                &mqc_version,
+                &feature
+            );
         }
 
         {
