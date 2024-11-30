@@ -42,7 +42,11 @@ fn main() -> Result<(), io::Error> {
 
     let mut w = io::BufWriter::new(File::create(&defaults_path)?);
 
-    writeln!(&mut w, "/* Generated with MQ client version {} */", version::CLIENT_BUILD_VERSION)?;
+    writeln!(
+        &mut w,
+        "/* Generated with MQ client version {} */",
+        version::CLIENT_BUILD_VERSION
+    )?;
 
     const_default(&mut w, "MQMD_DEFAULT", "libmqm_sys::lib::MQMD", &lib::MQMD::default())?;
     const_default(&mut w, "MQMDE_DEFAULT", "libmqm_sys::lib::MQMDE", &lib::MQMDE::default())?;
