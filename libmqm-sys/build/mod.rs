@@ -132,7 +132,6 @@ fn dspmqver() -> std::path::PathBuf {
     )
 }
 
-
 fn main() -> Result<(), io::Error> {
     println!("cargo:rerun-if-env-changed=MQ_HOME");
 
