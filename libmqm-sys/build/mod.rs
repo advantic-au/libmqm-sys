@@ -120,15 +120,18 @@ mod mq_path {
     pub fn mq_inc_path() -> PathBuf {
         home_path().join(inc_sub_path())
     }
-
-    pub fn dspmqver() -> PathBuf {
-        home_path().join(
-            env::var("CARGO_CFG_WINDOWS")
-                .map(|_| "bin64/dspmqver.exe")
-                .unwrap_or("bin/dspmqver"),
-        )
-    }
 }
+
+#[cfg(feature = "versiongen")]
+#[must_use]
+fn dspmqver() -> std::path::PathBuf {
+    mq_path::home_path().join(
+        std::env::var("CARGO_CFG_WINDOWS")
+            .map(|_| "bin64/dspmqver.exe")
+            .unwrap_or("bin/dspmqver"),
+    )
+}
+
 
 fn main() -> Result<(), io::Error> {
     println!("cargo:rerun-if-env-changed=MQ_HOME");
@@ -150,7 +153,7 @@ fn main() -> Result<(), io::Error> {
 
         let out_version = out_path.join("version.rs");
 
-        let dspmqver_path = mq_path::dspmqver();
+        let dspmqver_path = dspmqver();
         let dspmqver_raw = std::process::Command::new(&dspmqver_path)
             .stdout(std::process::Stdio::piped())
             .output()?;
