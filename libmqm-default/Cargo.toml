@@ -24,5 +24,16 @@ workspace = true
 pcf = ["libmqm-sys/pcf"]     # Enable the PCF API
 exits = ["libmqm-sys/exits"] # Enable the Exits API
 
+docsrs = [
+    "libmqm-sys/docsrs", # Ensure libmqm-sys uses built in docsrs mode
+    "pcf",
+    "exits",
+    "mqc_9_3_1_0",       # Latest MQ version that affects included defaults
+]
+
 mqc_9_3_0_0 = ["libmqm-sys/mqc_9_3_0_0"]
 mqc_9_3_1_0 = ["mqc_9_3_0_0", "libmqm-sys/mqc_9_3_1_0"]
+
+[package.metadata.docs.rs]
+features = ["docsrs"]
+no-default-features = true
