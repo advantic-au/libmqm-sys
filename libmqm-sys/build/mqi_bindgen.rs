@@ -22,6 +22,7 @@ const HEADER_FILES: &[FeatureFilter<&str>] = &[
 /// Functions that have bindings generated
 const FUNCTIONS: &[FeatureFilter<&str>] = &[(&["MQ.+"], None), (&["mq.+"], Some(&["mqai"]))];
 
+// Note: Any additions to TYPES should be matched in the libmqm-default build script
 /// Structures that have bindings generated
 const TYPES: &[FeatureFilter<&str>] = &[
     (
@@ -104,8 +105,8 @@ impl ParseCallbacks for MQCTypeChooser {
         let Self(chooser) = self;
         chooser
             .iter()
-            .find(|&(matchers, ..)| matchers.iter().any(|r| r.is_match(name)))
-            .map(|&(.., int_kind)| int_kind)
+            .find(|(matchers, ..)| matchers.iter().any(|r| r.is_match(name)))
+            .map(|(.., int_kind)| *int_kind)
     }
 }
 
@@ -113,13 +114,13 @@ pub fn generate_bindings(mq_inc_path: &Path, mq_version: &str) -> Result<bindgen
     let chooser = MQCTypeChooser(
         DEF_CONST
             .iter()
-            .map(|&(re_list, kind)| {
+            .map(|(re_list, kind)| {
                 (
                     re_list
                         .iter()
                         .map(|re| Regex::new(re).expect("\"{re}\" to be valid"))
                         .collect(),
-                    kind,
+                    *kind,
                 )
             })
             .collect(),
@@ -134,7 +135,7 @@ pub fn generate_bindings(mq_inc_path: &Path, mq_version: &str) -> Result<bindgen
         .rust_target(bindgen::RustTarget::Stable_1_77)
         .clang_arg(format!("-I{}", mq_inc_path.display()))
         .clang_arg(format!("-I{}", ccsid_inc_path.display()))
-        .raw_line(format!("/* Generated with MQ client version {} */", mq_version))
+        .raw_line(format!("/* Generated with MQ client version {mq_version} */"))
         .sort_semantically(true)
         .merge_extern_blocks(true)
         .generate_cstr(true)

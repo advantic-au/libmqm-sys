@@ -67,6 +67,7 @@ mod exits {
     mq_default!(lib::MQWXP3, mqwxp3_default);
     mq_default!(lib::MQWXP4, mqwxp4_default);
     mq_default!(lib::MQXEPO, mqxepo_default);
+    mq_default!(lib::MQIEP, mqiep_default);
 }
 
 mod mqi {
