@@ -135,4 +135,5 @@ jobs:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@nightly # Required for cargo-docs-rs
       - uses: dtolnay/install@cargo-docs-rs
-      - run: cargo docs-rs
+      - run: cargo docs-rs -p libmqm-sys
+      - run: cargo docs-rs -p libmqm-default
