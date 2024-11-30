@@ -3,7 +3,7 @@ use std::path::Path;
 use bindgen::callbacks::{IntKind, ParseCallbacks};
 use regex_lite::Regex;
 
-use super::features::{filter_features, FeatureFilter};
+use super::features::{filtered, FeatureFilter};
 
 /// Header files that bindgen uses to generate bindings
 const HEADER_FILES: &[FeatureFilter<&str>] = &[
@@ -149,17 +149,17 @@ pub fn generate_bindings(mq_inc_path: &Path, mq_version: &str) -> Result<bindgen
         .header("ccsid.h");
 
     // Choose the IBM MQI c headers
-    let builder = filter_features(HEADER_FILES)
+    let builder = filtered(HEADER_FILES)
         // Add all the header files
         .fold(builder, |builder, header| {
             builder.header(mq_inc_path.join(header).to_str().expect("\"{header}\" is not valid"))
         });
 
     // Choose the types
-    let builder = filter_features(TYPES).fold(builder, |builder, &struc| builder.allowlist_type(struc));
+    let builder = filtered(TYPES).fold(builder, |builder, &struc| builder.allowlist_type(struc));
 
     // Choose the functions
-    let builder = filter_features(FUNCTIONS).fold(builder, |builder, &func| builder.allowlist_function(func));
+    let builder = filtered(FUNCTIONS).fold(builder, |builder, &func| builder.allowlist_function(func));
 
     // Generate the bindings file
     builder.generate()
