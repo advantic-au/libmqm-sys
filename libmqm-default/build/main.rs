@@ -173,7 +173,18 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     drop(defaults_pretty_write);
 
     #[cfg(feature = "pregen")]
-    std::fs::copy(defaults_path, std::path::PathBuf::from("src").join("pregen.rs"))?;
+    {
+        use std::{env::consts, fs, path};
+
+        fs::copy(
+            defaults_path,
+            path::PathBuf::from("src").join(format!(
+                "{}-{}-pregen.rs",
+                if consts::OS == "macos" { "any" } else { consts::ARCH },
+                consts::OS
+            )),
+        )?;
+    }
 
     Ok(())
 }
