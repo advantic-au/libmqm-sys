@@ -40,5 +40,6 @@ jobs:
       - name: Modify pull request with refreshed pregen files
         shell: bash
         run: |
+          git add 
           git commit -am 'pregen: MQ client ${{ matrix.build.mq-version }} ${{ runner.os }}' || true
           git push
