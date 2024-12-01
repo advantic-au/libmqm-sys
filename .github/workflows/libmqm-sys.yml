@@ -75,7 +75,9 @@ jobs:
         env:
           MQ_HOME: ${{ steps.mq-client.outputs.client-install-path }}
       - name: Check for pregen changes
-        run: git diff --stat --exit-code libmqm-sys/src libmqm-default/src
+        run: |
+          git add -N libmqm-sys/src libmqm-default/src
+          git diff --stat --exit-code libmqm-sys/src libmqm-default/src
 
   rustfmt_clippy:
     runs-on: ubuntu-latest
