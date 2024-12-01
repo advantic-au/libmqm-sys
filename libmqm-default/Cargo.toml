@@ -23,7 +23,7 @@ workspace = true
 [features]
 default = ["defaultgen"]
 pregen = ["defaultgen", "pcf", "exits", "mqc_9_3_1_0", "libmqm-sys/mqc_9_4_1_0"]
-defaultgen = ["libmqm-sys/mqi_helpers", "dep:prettyplease"]
+defaultgen = ["libmqm-sys/mqi_helpers", "libmqm-sys/bindgen", "dep:prettyplease"]
 
 pcf = ["libmqm-sys/pcf"]     # Enable the PCF API
 exits = ["libmqm-sys/exits"] # Enable the Exits API
