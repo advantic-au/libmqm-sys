@@ -126,15 +126,12 @@ pub fn generate_bindings(mq_inc_path: &Path, mq_version: &str) -> Result<bindgen
             .collect(),
     );
 
-    let ccsid_inc_path = Path::new("src/c");
-
     // The bindgen::Builder is the main entry point
     // to bindgen, and lets you build up options for
     // the resulting bindings.
     let builder = bindgen::builder()
         .rust_target(bindgen::RustTarget::Stable_1_77)
         .clang_arg(format!("-I{}", mq_inc_path.display()))
-        .clang_arg(format!("-I{}", ccsid_inc_path.display()))
         .raw_line(format!("/* Generated with MQ client version {mq_version} */"))
         .sort_semantically(true)
         .merge_extern_blocks(true)
@@ -146,7 +143,7 @@ pub fn generate_bindings(mq_inc_path: &Path, mq_version: &str) -> Result<bindgen
         .parse_callbacks(Box::new(chooser))
         // Allow all constants
         .allowlist_var(".*")
-        .header("ccsid.h");
+        .header("src/c/ccsid.h");
 
     // Choose the IBM MQI c headers
     let builder = filtered(HEADER_FILES)
