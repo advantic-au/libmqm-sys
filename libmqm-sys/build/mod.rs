@@ -39,6 +39,7 @@ mod mqi_helpers {
         for source in &sources {
             println!("cargo:rerun-if-changed={source}");
         }
+        println!("cargo:rerun-if-changed={}", mq_inc_path.display());
 
         cc::Build::new()
             .static_flag(false)
