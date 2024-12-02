@@ -43,7 +43,7 @@ jobs:
         with:
           shared-key: "build"
       - name: Test
-        run: cargo test --features ${{ matrix.version.feature }},pcf,exits,mqai --all-targets
+        run: cargo test --features ${{ matrix.version.feature }},pcf,exits,mqai,dlopen2
         env:
           MQ_HOME: ${{ steps.mq-client.outputs.client-install-path }}
 
