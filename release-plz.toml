@@ -11,4 +11,3 @@ changelog_include = ["libmqm-default"]
 name = "libmqm-default"
 git_tag_enable = false
 changelog_update = false
-
