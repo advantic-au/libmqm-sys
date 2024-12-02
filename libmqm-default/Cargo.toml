@@ -1,5 +1,8 @@
 [package]
 name = "libmqm-default"
+description = "IBM® MQ Interface (MQI) and MQ Administration Interface (MQAI) structure defaults"
+keywords = ["message-queue", "messaging"]
+categories = ["external-ffi-bindings", "asynchronous"]
 version.workspace = true
 authors.workspace = true
 repository.workspace = true

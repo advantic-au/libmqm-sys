@@ -1,4 +1,8 @@
-#![cfg_attr(any(), rustfmt::skip)]
+/*!
+
+Default structures for the IBM® MQ Interface (MQI) and MQ Administration Interface (MQAI) libraries.
+
+*/
 
 #[cfg(feature = "defaultgen")]
 #[rustfmt::skip]
