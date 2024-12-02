@@ -1,0 +1,11 @@
+[workspace]
+changelog_update = false
+
+[[package]]
+name = "libmqm_sys"
+changelog_update = true
+changelog_path = "CHANGELOG.md"
+changelog_include = [ "libmqm_default" ]
+
+[[package]]
+name = "libmqm_default"
