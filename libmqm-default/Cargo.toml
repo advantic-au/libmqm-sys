@@ -13,16 +13,31 @@ build = "build/main.rs"
 libmqm-sys = { path = "../libmqm-sys", default-features = false }
 
 [build-dependencies]
-libmqm-sys = { path = "../libmqm-sys", default-features = false, features = [
-    "mqi_helpers",
-] }
+libmqm-sys = { path = "../libmqm-sys", default-features = false }
+prettyplease = { version="0.2.25", optional = true }
+syn = { version = "2.0.90", default-features = false, features = ["full", "parsing"]}
 
 [lints]
 workspace = true
 
 [features]
+default = ["defaultgen"]
+pregen = ["defaultgen", "pcf", "exits", "mqc_9_3_1_0", "libmqm-sys/mqc_9_4_1_0"]
+defaultgen = ["libmqm-sys/mqi_helpers", "libmqm-sys/bindgen", "dep:prettyplease"]
+
 pcf = ["libmqm-sys/pcf"]     # Enable the PCF API
 exits = ["libmqm-sys/exits"] # Enable the Exits API
 
+docsrs = [
+    "libmqm-sys/docsrs", # Ensure libmqm-sys uses built in docsrs mode
+    "pcf",
+    "exits",
+    "mqc_9_3_1_0",       # Latest MQ version that affects included defaults
+]
+
 mqc_9_3_0_0 = ["libmqm-sys/mqc_9_3_0_0"]
 mqc_9_3_1_0 = ["mqc_9_3_0_0", "libmqm-sys/mqc_9_3_1_0"]
+
+[package.metadata.docs.rs]
+features = ["docsrs"]
+no-default-features = true

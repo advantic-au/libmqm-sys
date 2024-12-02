@@ -10,17 +10,15 @@ mod features {
     // Feature filter to bring consistency in managing lists that are filterable by enabled features
     pub type FeatureFilter<'a, T> = (&'a [T], Option<&'a [&'a str]>);
 
-    fn feature_enabled(name: &str) -> bool {
+    fn is_enabled(name: &str) -> bool {
         env::var("CARGO_FEATURE_".to_string() + name.to_uppercase().as_str()).is_ok()
     }
 
     /// Filter iterator by selected build feature
-    pub fn filter_features<'a, T: 'a>(
-        features: impl IntoIterator<Item = &'a FeatureFilter<'a, T>>,
-    ) -> impl Iterator<Item = &'a T> {
+    pub fn filtered<'a, T: 'a>(features: impl IntoIterator<Item = &'a FeatureFilter<'a, T>>) -> impl Iterator<Item = &'a T> {
         features
             .into_iter()
-            .filter(|(.., feature)| feature.map_or(true, |names| names.iter().copied().any(feature_enabled)))
+            .filter(|(.., feature)| feature.map_or(true, |names| names.iter().copied().any(is_enabled)))
             .flat_map(|(x, ..)| *x)
     }
 }
@@ -37,10 +35,11 @@ mod mqi_helpers {
     ];
 
     pub fn build_c(mq_inc_path: &PathBuf) -> Result<(), io::Error> {
-        let sources = super::features::filter_features(SOURCE_FILES).collect::<Vec<_>>();
+        let sources = super::features::filtered(SOURCE_FILES).collect::<Vec<_>>();
         for source in &sources {
             println!("cargo:rerun-if-changed={source}");
         }
+        println!("cargo:rerun-if-changed={}", mq_inc_path.display());
 
         cc::Build::new()
             .static_flag(false)
@@ -120,14 +119,16 @@ mod mq_path {
     pub fn mq_inc_path() -> PathBuf {
         home_path().join(inc_sub_path())
     }
+}
 
-    pub fn dspmqver() -> PathBuf {
-        home_path().join(
-            env::var("CARGO_CFG_WINDOWS")
-                .map(|_| "bin64/dspmqver.exe")
-                .unwrap_or("bin/dspmqver"),
-        )
-    }
+#[cfg(feature = "versiongen")]
+#[must_use]
+fn dspmqver() -> std::path::PathBuf {
+    mq_path::home_path().join(
+        std::env::var("CARGO_CFG_WINDOWS")
+            .map(|_| "bin64/dspmqver.exe")
+            .unwrap_or("bin/dspmqver"),
+    )
 }
 
 fn main() -> Result<(), io::Error> {
@@ -150,7 +151,7 @@ fn main() -> Result<(), io::Error> {
 
         let out_version = out_path.join("version.rs");
 
-        let dspmqver_path = mq_path::dspmqver();
+        let dspmqver_path = dspmqver();
         let dspmqver_raw = std::process::Command::new(&dspmqver_path)
             .stdout(std::process::Stdio::piped())
             .output()?;

@@ -3,7 +3,7 @@ use std::path::Path;
 use bindgen::callbacks::{IntKind, ParseCallbacks};
 use regex_lite::Regex;
 
-use super::features::{filter_features, FeatureFilter};
+use super::features::{filtered, FeatureFilter};
 
 /// Header files that bindgen uses to generate bindings
 const HEADER_FILES: &[FeatureFilter<&str>] = &[
@@ -126,15 +126,12 @@ pub fn generate_bindings(mq_inc_path: &Path, mq_version: &str) -> Result<bindgen
             .collect(),
     );
 
-    let ccsid_inc_path = Path::new("src/c");
-
     // The bindgen::Builder is the main entry point
     // to bindgen, and lets you build up options for
     // the resulting bindings.
     let builder = bindgen::builder()
         .rust_target(bindgen::RustTarget::Stable_1_77)
         .clang_arg(format!("-I{}", mq_inc_path.display()))
-        .clang_arg(format!("-I{}", ccsid_inc_path.display()))
         .raw_line(format!("/* Generated with MQ client version {mq_version} */"))
         .sort_semantically(true)
         .merge_extern_blocks(true)
@@ -146,20 +143,20 @@ pub fn generate_bindings(mq_inc_path: &Path, mq_version: &str) -> Result<bindgen
         .parse_callbacks(Box::new(chooser))
         // Allow all constants
         .allowlist_var(".*")
-        .header("ccsid.h");
+        .header("src/c/ccsid.h");
 
     // Choose the IBM MQI c headers
-    let builder = filter_features(HEADER_FILES)
+    let builder = filtered(HEADER_FILES)
         // Add all the header files
         .fold(builder, |builder, header| {
             builder.header(mq_inc_path.join(header).to_str().expect("\"{header}\" is not valid"))
         });
 
     // Choose the types
-    let builder = filter_features(TYPES).fold(builder, |builder, &struc| builder.allowlist_type(struc));
+    let builder = filtered(TYPES).fold(builder, |builder, &struc| builder.allowlist_type(struc));
 
     // Choose the functions
-    let builder = filter_features(FUNCTIONS).fold(builder, |builder, &func| builder.allowlist_function(func));
+    let builder = filtered(FUNCTIONS).fold(builder, |builder, &func| builder.allowlist_function(func));
 
     // Generate the bindings file
     builder.generate()
