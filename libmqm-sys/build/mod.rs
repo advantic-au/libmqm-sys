@@ -131,6 +131,7 @@ fn dspmqver() -> std::path::PathBuf {
     )
 }
 
+#[allow(clippy::unnecessary_wraps)]
 fn main() -> Result<(), io::Error> {
     println!("cargo:rerun-if-env-changed=MQ_HOME");
 
