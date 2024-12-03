@@ -43,7 +43,7 @@ jobs:
         with:
           shared-key: "build"
       - name: Test
-        run: cargo test --features ${{ matrix.version.feature }},pcf,exits,mqai --all-targets
+        run: cargo test --features ${{ matrix.version.feature }},pcf,exits,mqai,dlopen2
         env:
           MQ_HOME: ${{ steps.mq-client.outputs.client-install-path }}
 
@@ -70,54 +70,64 @@ jobs:
       - uses: Swatinem/rust-cache@v2
         with:
           shared-key: "build"
-      - name: Run build and refresh pregenerated content
+      - name: Refresh pregenerated content
         run: cargo build --no-default-features --features pregen
         env:
           MQ_HOME: ${{ steps.mq-client.outputs.client-install-path }}
-      - name: Check for pregen changes
+      - name: Detect pregenerated changes
         run: |
           git add -N libmqm-sys/src libmqm-default/src
           git diff --stat --exit-code libmqm-sys/src libmqm-default/src
-
-  rustfmt_clippy:
+  
+  rustfmt:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
+      - name: Install stable
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt
+      - name: Lint with rustfmt
+        run: cargo fmt -- --check
+        
+  clippy:
+    strategy:
+      fail-fast: false
+      matrix:
+        features:
+          - 
+          - --no-default-features
+          - --all-features
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
       - uses: advantic-au/action-mq-client@stable
         id: mq-client
         with:
           client-version: ${{ env.MQ_VERSION_LATEST }}
-
       - name: Install stable
         uses: dtolnay/rust-toolchain@stable
         with:
-          components: rustfmt, clippy
-      
+          components: clippy
       - uses: Swatinem/rust-cache@v2
         with:
           shared-key: "build"
-      - name: Run rustfmt
-        run: cargo fmt -- --check
-
-      - name: Run clippy
+      - name: Lint with clippy 
         uses: auguwu/clippy-action@1.4.0
         env:
           MQ_HOME: ${{ steps.mq-client.outputs.client-install-path }}
         with:
-          check-args: --tests --all-features
+          check-args: --tests ${{ matrix.features }}
           token: ${{secrets.GITHUB_TOKEN}}
 
   minimum:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - uses: advantic-au/action-mq-client@stable
         id: mq-client
         with:
           client-version: ${{ env.MQ_VERSION_LATEST }}
-
       # Re-resolve Cargo.lock with minimal versions
       - uses: dtolnay/rust-toolchain@nightly # -Z option only available on nightly
       - run: cargo generate-lockfile -Z minimal-versions
@@ -125,7 +135,8 @@ jobs:
       - uses: dtolnay/rust-toolchain@master
         with:
           toolchain: 1.77
-      - run: cargo check --locked --all-features
+      - name: Check code
+        run: cargo check --locked --all-features
         env:
           MQ_HOME: ${{ steps.mq-client.outputs.client-install-path }}
 

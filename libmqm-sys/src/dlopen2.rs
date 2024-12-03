@@ -1708,8 +1708,8 @@ mod tests {
 
     #[test]
     fn mqredist_load() -> Result<(), dlopen2::Error> {
-        // Dynamically load the libmqm_r library
-        let mq: Container<MqWrapper> = unsafe { Container::load("libmqm_r") }?;
+        // Dynamically load the mqm library
+        let mq: Container<MqWrapper> = unsafe { Container::load(MQM_LIB) }?;
 
         let mut hconn = lib::MQHC_DEF_HCONN;
         let mut comp_code = lib::MQCC_UNKNOWN;
