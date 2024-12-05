@@ -34,7 +34,7 @@ jobs:
             feature: mqc_9_3_4_1
           - client-version: 9.4.1.0
             feature: mqc_9_4_1_0
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - uses: advantic-au/action-mq-client@stable
@@ -58,7 +58,7 @@ jobs:
         build:
           - os: windows-latest
             mq-version: 9.4.1.0
-          - os: ubuntu-latest
+          - os: ubuntu-24.04
             mq-version: 9.4.1.0
           - os: macos-latest
             mq-version: 9.4.1.0
@@ -84,7 +84,7 @@ jobs:
           git diff --stat --exit-code libmqm-sys/src libmqm-default/src
   
   rustfmt:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - name: Install stable
@@ -102,7 +102,7 @@ jobs:
           - ""
           - "--no-default-features"
           - "--all-features"
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - uses: advantic-au/action-mq-client@stable
@@ -125,7 +125,7 @@ jobs:
           token: ${{secrets.GITHUB_TOKEN}}
 
   minimum:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - uses: advantic-au/action-mq-client@stable
@@ -145,7 +145,7 @@ jobs:
           MQ_HOME: ${{ steps.mq-client.outputs.client-install-path }}
 
   docs:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     env:
       RUSTDOCFLAGS: -Dwarnings
     steps:
