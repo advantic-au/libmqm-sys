@@ -1,4 +1,4 @@
-name: libmqm-sys
+name: Continuous Integration
 
 on:
   workflow_dispatch:
@@ -12,9 +12,6 @@ on:
 env:
   MQ_VERSION_LATEST: 9.4.1.0
   RUSTFLAGS: -Dwarnings
-
-permissions:
-    checks: write # For the clippy action
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -34,9 +31,11 @@ jobs:
             feature: mqc_9_3_4_1
           - client-version: 9.4.1.0
             feature: mqc_9_4_1_0
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       - uses: advantic-au/action-mq-client@stable
         id: mq-client
         with:
@@ -58,13 +57,15 @@ jobs:
         build:
           - os: windows-latest
             mq-version: 9.4.1.0
-          - os: ubuntu-latest
+          - os: ubuntu-24.04
             mq-version: 9.4.1.0
           - os: macos-latest
             mq-version: 9.4.1.0
     runs-on: ${{ matrix.build.os }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       - uses: advantic-au/action-mq-client@stable
         id: mq-client
         with:
@@ -84,12 +85,15 @@ jobs:
           git diff --stat --exit-code libmqm-sys/src libmqm-default/src
   
   rustfmt:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
-      - name: Install stable
-        uses: dtolnay/rust-toolchain@stable
         with:
+          persist-credentials: false
+      - name: Install stable
+        uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: stable
           components: rustfmt
       - name: Lint with rustfmt
         run: cargo fmt -- --check
@@ -102,16 +106,21 @@ jobs:
           - ""
           - "--no-default-features"
           - "--all-features"
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    permissions:
+      checks: write # For the clippy action
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       - uses: advantic-au/action-mq-client@stable
         id: mq-client
         with:
           client-version: ${{ env.MQ_VERSION_LATEST }}
       - name: Install stable
-        uses: dtolnay/rust-toolchain@stable
+        uses: dtolnay/rust-toolchain@master
         with:
+          toolchain: stable
           components: clippy
       - uses: Swatinem/rust-cache@v2
         with:
@@ -125,9 +134,11 @@ jobs:
           token: ${{secrets.GITHUB_TOKEN}}
 
   minimum:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       - uses: advantic-au/action-mq-client@stable
         id: mq-client
         with:
@@ -145,12 +156,18 @@ jobs:
           MQ_HOME: ${{ steps.mq-client.outputs.client-install-path }}
 
   docs:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     env:
       RUSTDOCFLAGS: -Dwarnings
     steps:
       - uses: actions/checkout@v4
-      - uses: dtolnay/rust-toolchain@nightly # Required for cargo-docs-rs
-      - uses: dtolnay/install@cargo-docs-rs
+        with:
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: nightly
+      - uses: taiki-e/install-action@8c39981484df4e7ba41af8e8e078ac546d5e1b11 # v2.46.8
+        with:
+          tool: cargo-docs-rs
       - run: cargo docs-rs -p libmqm-sys --target x86_64-unknown-linux-gnu
       - run: cargo docs-rs -p libmqm-default --target x86_64-unknown-linux-gnu

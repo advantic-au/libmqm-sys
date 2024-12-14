@@ -20,6 +20,7 @@ jobs:
       # Checkout the pull request branch
       - uses: actions/checkout@v4
         with:
+          persist-credentials: true
           token: ${{ secrets.SCD }}
           repository: ${{ github.event.client_payload.pull_request.head.repo.full_name }}
           ref: ${{ github.event.client_payload.pull_request.head.ref }}
