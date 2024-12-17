@@ -42,7 +42,8 @@ mod mqi_helpers {
         println!("cargo:rerun-if-changed={}", mq_inc_path.display());
 
         let mut cc = cc::Build::new();
-        cc.static_flag(false)
+        cc.compiler("clang")
+            .static_flag(false)
             .flag_if_supported("-nostartfiles")
             .include(mq_inc_path)
             .files(sources)
