@@ -191,7 +191,18 @@ fn main() -> Result<(), io::Error> {
         drop(version_writer);
 
         #[cfg(feature = "pregen")]
-        std::fs::copy(out_version, std::path::PathBuf::from("src/version").join("pregen.rs"))?;
+        {
+            use std::{env::consts, fs, path};
+
+            fs::copy(
+                out_version,
+                path::PathBuf::from("src/version/pregen").join(format!(
+                    "{}-{}-version.rs",
+                    if consts::OS == "macos" { "any" } else { consts::ARCH },
+                    consts::OS
+                )),
+            )?;
+        }
 
         #[cfg(feature = "bindgen")]
         {
