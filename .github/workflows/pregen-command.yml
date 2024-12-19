@@ -8,14 +8,8 @@ jobs:
       fail-fast: false
       max-parallel: 1
       matrix:
-        build:
-          - os: windows-latest
-            mq-version: 9.4.1.1
-          - os: ubuntu-latest
-            mq-version: 9.4.1.1
-          - os: macos-latest
-            mq-version: 9.4.1.0
-    runs-on: ${{ matrix.build.os }}
+        os: [windows-latest, ubunut-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
     steps:
       # Checkout the pull request branch
       - uses: actions/checkout@v4
@@ -27,8 +21,8 @@ jobs:
       - uses: advantic-au/action-mq-client@stable
         id: mq-client
         with:
-          client-version: ${{ matrix.build.mq-version }}
-      - name: Install stable
+          client-version: latest
+      - name: Install stable rust
         uses: dtolnay/rust-toolchain@stable
       - uses: Swatinem/rust-cache@v2
         with:
@@ -42,5 +36,5 @@ jobs:
         shell: bash
         run: |
           git add libmqm-sys/src libmqm-default/src
-          git commit -m 'pregen: MQ client ${{ matrix.build.mq-version }} ${{ runner.os }}' || true
+          git commit -m 'chore: MQ client ${{ steps.mq-client.outputs.client-version }} ${{ runner.os }}' || true
           git push
