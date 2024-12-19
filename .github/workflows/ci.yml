@@ -10,7 +10,6 @@ on:
       - develop
 
 env:
-  MQ_VERSION_LATEST: 9.4.1.1
   RUSTFLAGS: -Dwarnings
 
 concurrency:
@@ -54,14 +53,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        build:
-          - os: windows-latest
-            mq-version: 9.4.1.1
-          - os: ubuntu-latest
-            mq-version: 9.4.1.1
-          - os: macos-latest
-            mq-version: 9.4.1.0
-    runs-on: ${{ matrix.build.os }}
+        os: [ windows-latest, ubuntu-latest, macos-latest ]
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -69,7 +62,7 @@ jobs:
       - uses: advantic-au/action-mq-client@stable
         id: mq-client
         with:
-          client-version: ${{ matrix.build.mq-version }}
+          client-version: latest
       - name: Install stable
         uses: dtolnay/rust-toolchain@stable
       - uses: Swatinem/rust-cache@v2
@@ -116,7 +109,7 @@ jobs:
       - uses: advantic-au/action-mq-client@stable
         id: mq-client
         with:
-          client-version: ${{ env.MQ_VERSION_LATEST }}
+          client-version: latest
       - name: Install stable
         uses: dtolnay/rust-toolchain@master
         with:
@@ -142,7 +135,7 @@ jobs:
       - uses: advantic-au/action-mq-client@stable
         id: mq-client
         with:
-          client-version: ${{ env.MQ_VERSION_LATEST }}
+          client-version: latest
       # Re-resolve Cargo.lock with minimal versions
       - uses: dtolnay/rust-toolchain@nightly # -Z option only available on nightly
       - run: cargo generate-lockfile -Z minimal-versions
