@@ -1,6 +1,6 @@
 #[cfg(feature = "defaultgen")]
 #[rustfmt::skip]
-mod defaults {
+mod definitions {
     include!(concat!(env!("OUT_DIR"), "/defaults.rs"));
 }
 
@@ -9,7 +9,7 @@ mod defaults {
 #[cfg_attr(all(target_os = "linux", target_arch = "x86_64"), path = "x86_64-linux-defaults.rs")]
 #[cfg_attr(target_os = "macos", path = "any-macos-defaults.rs")]
 #[rustfmt::skip]
-mod defaults;
+mod definitions;
 
 #[doc(inline)]
-pub use defaults::*;
+pub use definitions::*;

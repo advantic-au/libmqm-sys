@@ -28,7 +28,7 @@ workspace = true
 
 [features]
 default = ["defaultgen"]
-pregen = ["defaultgen", "pcf", "exits", "mqc_9_3_1_0", "libmqm-sys/mqc_9_4_1_1"]
+pregen = ["defaultgen", "pcf", "exits", "mqc_9_3_1_0", "libmqm-sys/mqc_latest"]
 defaultgen = [
     "libmqm-sys/mqi_helpers",
     "libmqm-sys/bindgen",
