@@ -82,7 +82,7 @@ unsafe {
 
 /*!
  *
- * Minimum MQ client can be set using features from `mqc_9_2_0_0` to `mqc_9_4_1_0`
+ * Minimum MQ client can be set using features from `mqc_9_2_0_0` to `mqc_9_4_1_1`
 */
 
 #[cfg(feature = "bindgen")]

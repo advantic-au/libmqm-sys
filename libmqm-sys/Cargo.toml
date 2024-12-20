@@ -21,7 +21,7 @@ workspace = true
 default = ["link", "mqi_helpers", "bindgen", "versiongen", "mqc_9_2_0_0"]
 
 ## Generate the bindings and save them in the src folder
-pregen = ["pcf", "exits", "mqai", "bindgen", "versiongen", "mqc_9_4_1_0"]
+pregen = ["pcf", "exits", "mqai", "bindgen", "versiongen", "mqc_latest"]
 
 ## Enable runtime loading of the MQI library using [`dlopen2`](dlopen2)
 dlopen2 = ["dep:dlopen2", "dep:libc"]
@@ -43,7 +43,7 @@ exits = []
 ## Enable structures and constants for MQAI
 mqai = []
 
-docsrs = ["link_api", "pcf", "exits", "mqai", "dlopen2", "mqc_9_4_1_0"]
+docsrs = ["link_api", "pcf", "exits", "mqai", "dlopen2", "mqc_latest"]
 
 ## Use [`bindgen`](https://docs.rs/bindgen/latest/bindgen/) to generate bindings
 bindgen = ["dep:bindgen", "versiongen"]
@@ -99,6 +99,9 @@ mqc_9_4_0_7 = ["mqc_9_4_0_6"]   # Minimum MQ client version 9.4.0.7
 mqc_9_4_1_0 = ["mqc_9_4_0_7"]   # Minimum MQ client version 9.4.1.0
 ## Minimum MQ client version 9.4.1.1
 mqc_9_4_1_1 = ["mqc_9_4_1_0"]
+
+## Minimum MQ client version to the latest released
+mqc_latest = ["mqc_9_4_1_0"] # Set to 9.4.1.0 (not 9.4.1.1) due to macOS latest
 
 [dependencies]
 dlopen2 = { version = "0.7.0", optional = true }

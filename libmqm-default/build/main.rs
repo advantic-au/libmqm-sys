@@ -178,8 +178,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
         fs::copy(
             defaults_path,
-            path::PathBuf::from("src").join(format!(
-                "{}-{}-pregen.rs",
+            path::PathBuf::from("src/pregen").join(format!(
+                "{}-{}-defaults.rs",
                 if consts::OS == "macos" { "any" } else { consts::ARCH },
                 consts::OS
             )),
