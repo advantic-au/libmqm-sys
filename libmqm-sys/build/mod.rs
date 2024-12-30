@@ -41,13 +41,19 @@ mod mqi_helpers {
         }
         println!("cargo:rerun-if-changed={}", mq_inc_path.display());
 
-        cc::Build::new()
+        let mut cc = cc::Build::new();
+        cc
             .static_flag(false)
             .flag_if_supported("-nostartfiles")
             .include(mq_inc_path)
             .files(sources)
-            .warnings(true)
-            .try_compile("mqi_helpers")
+            .warnings(true);
+
+        #[cfg(debug_assertions)]
+        cc.flag_if_supported("-fsanitize=address")
+            .flag_if_supported("-fno-omit-frame-pointer");
+
+        cc.try_compile("mqi_helpers")
             .map_err(|_| io::Error::new(io::ErrorKind::InvalidData, "Failed to compile c files"))
     }
 }
