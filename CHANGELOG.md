@@ -9,19 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.7.0](https://github.com/advantic-au/libmqm-sys/compare/v0.6.0...v0.7.0) - 2025-03-26
 
-### Fixed
-
-- pregen command commit comment and pretty please minimum version
-
 ### Other
 
 - IBM MQ client 9.4.2 ([#60](https://github.com/advantic-au/libmqm-sys/pull/60))
-- default pregen fixes ([#45](https://github.com/advantic-au/libmqm-sys/pull/45))
-- MQ client 9.4.1.1 Linux
-- MQ client 9.4.1.1 Windows
-- MQ client 9.4.1.0 macOS
-- MQ client 9.4.1.0 Linux
-- MQ client 9.4.1.0 Windows
+
 - MQC 9.4.1.1
 
 ## [0.6.0](https://github.com/advantic-au/libmqm-sys/compare/v0.5.0...v0.6.0) - 2024-12-03
