@@ -36,7 +36,7 @@ jobs:
         shell: bash
         run: |
           git add libmqm-sys/src libmqm-default/src
-          git commit -m "chore: MQ client ${MQ_CLIENT_VERSION}} ${{ runner.os }}"" || true
+          git commit -m "chore: MQ client ${MQ_CLIENT_VERSION}} ${{ runner.os }}" || true
           git push
         env:
           MQ_CLIENT_VERSION: ${{ steps.mq-client.outputs.client-version }}
