@@ -118,7 +118,7 @@ pub fn generate_bindings(mq_inc_path: &Path, mq_version: &str) -> Result<bindgen
                 (
                     re_list
                         .iter()
-                        .map(|re| Regex::new(re).expect("\"{re}\" to be valid"))
+                        .map(|re| Regex::new(re).expect("regular expression to be valid"))
                         .collect(),
                     *kind,
                 )
@@ -149,7 +149,7 @@ pub fn generate_bindings(mq_inc_path: &Path, mq_version: &str) -> Result<bindgen
     let builder = filtered(HEADER_FILES)
         // Add all the header files
         .fold(builder, |builder, header| {
-            builder.header(mq_inc_path.join(header).to_str().expect("\"{header}\" is not valid"))
+            builder.header(mq_inc_path.join(header).to_str().expect("header to be valid"))
         });
 
     // Choose the types
