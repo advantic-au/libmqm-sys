@@ -2,6 +2,9 @@ name: pregen-command
 on:
   repository_dispatch:
     types: [pregen-command]
+
+permissions: {}
+
 jobs:
   bindgen_pregen:
     strategy:
@@ -10,6 +13,8 @@ jobs:
       matrix:
         os: [windows-latest, ubuntu-latest, macos-latest]
     runs-on: ${{ matrix.os }}
+    permissions:
+      contents: write
     steps:
       # Checkout the pull request branch
       - uses: actions/checkout@v4
@@ -36,7 +41,7 @@ jobs:
         shell: bash
         run: |
           git add libmqm-sys/src libmqm-default/src
-          git commit -m "chore: MQ client ${{MQ_CLIENT_VERSION}} ${{ runner.os }}" || true
+          git commit -m "chore: MQ client ${MQ_CLIENT_VERSION} ${{ runner.os }}" || true
           git push
         env:
           MQ_CLIENT_VERSION: ${{ steps.mq-client.outputs.client-version }}
