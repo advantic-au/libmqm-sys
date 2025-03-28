@@ -7,6 +7,8 @@ on:
     paths: ["**/build/**", "**/pregen/**"]
   schedule: [cron: "40 4 * * 2"]
 
+permissions: {}
+
 jobs:
   pregen:
     strategy:

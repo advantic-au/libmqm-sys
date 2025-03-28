@@ -3,6 +3,8 @@ on:
   issue_comment:
     types: [created]
 
+permissions: {}
+
 jobs:
   slash_command_dispatch:
     runs-on: ubuntu-24.04
