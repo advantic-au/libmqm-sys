@@ -1,6 +1,6 @@
 use libmqm_sys::lib as sys;
 
-use super::{value::impl_default_value, mask::define_mask, value::define_value, mapping};
+use super::{mapping, mask::define_mask, value::define_value, value::impl_default_value};
 
 define_mask!(pub MQOO, mapping::MQOO_CONST, "Options mask to control the action of `MQOPEN`");
 define_mask!(pub MQCO, mapping::MQCO_CONST, "Options mask to control the action of `MQCLOSE`");

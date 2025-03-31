@@ -1,7 +1,5 @@
-use libmqm_sys::lib as sys;
-
-pub mod mapping;
 pub mod lookup;
+pub mod mapping;
 
 pub(crate) mod mask;
 pub(crate) mod value;

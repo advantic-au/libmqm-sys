@@ -1,7 +1,12 @@
-use crate::{mapping, lookup::{ConstLookup, ConstantItem}};
+use crate::{
+    lookup::{ConstLookup, ConstantItem},
+    mapping,
+};
 
-use crate::{value::define_value, mask::define_mask};
-use crate::{value::impl_default_value, sys};
+use crate::value::impl_default_value;
+use crate::{mask::define_mask, value::define_value};
+
+use libmqm_sys::lib as sys;
 
 define_value!(pub MQIND, mapping::MQIND_CONST, "Special Index Values");
 define_value!(pub MQQT, mapping::MQQT_CONST, "Queue Types and Extended Queue Types");
