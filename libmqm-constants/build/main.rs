@@ -1,4 +1,7 @@
-use std::env;
+use std::{env, io};
+
+use constants::generate;
+use libmqm_sys::lib as mqsys;
 
 #[cfg(feature = "generate")]
 mod constants {
@@ -14,7 +17,55 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     {
         use std::io::Write as _;
         let mut constants_write = std::io::BufWriter::new(Vec::new());
-        constants::generate::generate_constants(&mut constants_write)?;
+        constants::generate::generate_constants(|prefix_constants| {
+            // Pick a lookup type based on the size of the constants for a prefix
+            // TODO: Determine best ranges for performance
+            for (prefix, (primary, ref extra)) in prefix_constants {
+                let extra_array = generate::as_array(extra);
+                write!(constants_write, "pub const {prefix}CONST: ")?;
+                match primary.len() {
+                    0..=63 => {
+                        // Linear search array
+                        writeln!(
+                            constants_write,
+                            "LinearSource = ConstSource(&{}, &{extra_array});",
+                            generate::as_array(primary),
+                        )?;
+                    }
+                    64..=255 => {
+                        // Binary search array
+                        writeln!(
+                            constants_write,
+                            "BinarySearchSource = ConstSource(BinarySearch(&{}), &{extra_array});",
+                            generate::as_array(primary),
+                        )?;
+                    }
+                    _ => {
+                        // Perfect hash used for larger constant lists
+                        writeln!(
+                            constants_write,
+                            "PhfSource = ConstSource(&{}, &{extra_array});",
+                            generate::as_phf(primary),
+                        )?;
+                    }
+                }
+            }
+            Ok::<(), io::Error>(())
+        })?;
+
+        let by_name_mqi = unsafe { &mqsys::MQI_BY_NAME_STR };
+        let by_name = generate::by_name(by_name_mqi);    
+
+        // Full MQI_BY_STRING
+        let mut mqi_by_string = phf_codegen::Map::<&str>::new();
+        for (name, value) in by_name {
+            mqi_by_string.entry(name, &value.to_string());
+        }
+        writeln!(
+            constants_write,
+            "pub(crate) const MQI_BY_STRING: ::phf::Map<&'static str, ::libmqm_sys::lib::MQLONG> = {};",
+            mqi_by_string.build()
+        )?;
 
         let constants_str = String::from_utf8(constants_write.into_inner()?)?;
         let constants_syn = syn::parse_file(&constants_str)?;
