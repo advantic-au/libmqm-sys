@@ -6,12 +6,12 @@ on:
 permissions: {}
 
 jobs:
-  bindgen_pregen:
+  pregen:
     strategy:
       fail-fast: false
       max-parallel: 1
       matrix:
-        os: [windows-latest, ubuntu-latest, macos-latest]
+        os: [windows-latest, ubuntu-24.04, macos-latest]
     runs-on: ${{ matrix.os }}
     permissions:
       contents: write
@@ -32,7 +32,7 @@ jobs:
       - uses: Swatinem/rust-cache@v2
         with:
           shared-key: "build"
-      - name: Run build and refresh bindings
+      - name: Run build and refresh generated source code
         run: cargo build --no-default-features --features pregen
         env:
           MQ_HOME: ${{ steps.mq-client.outputs.client-install-path }}
@@ -40,7 +40,7 @@ jobs:
       - name: Modify pull request with refreshed pregen files
         shell: bash
         run: |
-          git add libmqm-sys/src libmqm-default/src
+          git add libmqm-sys/src libmqm-default/src libmqm-constants/src
           git commit -m "chore: MQ client ${MQ_CLIENT_VERSION} ${{ runner.os }}" || true
           git push
         env:
