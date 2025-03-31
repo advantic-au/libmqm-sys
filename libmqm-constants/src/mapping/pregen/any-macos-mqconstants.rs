@@ -3329,11 +3329,11 @@ pub const MQNHACONNACTV_CONST: LinearSource = ConstSource(
     &[(0, "MQNHACONNACTV_NO"), (1, "MQNHACONNACTV_YES")],
     &[],
 );
-pub const MQNHACONNGRPCONST: LinearSource = ConstSource(
+pub const MQNHACONNGRP_CONST: LinearSource = ConstSource(
     &[(0, "MQNHACONNGRP_NO"), (1, "MQNHACONNGRP_YES"), (2, "MQNHACONNGRP_SUSPENDED")],
     &[],
 );
-pub const MQNHAGRPROLECONST: LinearSource = ConstSource(
+pub const MQNHAGRPROLE_CONST: LinearSource = ConstSource(
     &[
         (0, "MQNHAGRPROLE_UNKNOWN"),
         (1, "MQNHAGRPROLE_NOT_CONFIGURED"),
@@ -3357,7 +3357,7 @@ pub const MQNHAROLE_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQNHASTATUSCONST: LinearSource = ConstSource(
+pub const MQNHASTATUS_CONST: LinearSource = ConstSource(
     &[
         (0, "MQNHASTATUS_UNKNOWN"),
         (1, "MQNHASTATUS_NORMAL"),
@@ -3370,7 +3370,7 @@ pub const MQNHASTATUSCONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQNHATYPECONST: LinearSource = ConstSource(
+pub const MQNHATYPE_CONST: LinearSource = ConstSource(
     &[(-1, "MQNHATYPE_ALL"), (0, "MQNHATYPE_INSTANCE"), (1, "MQNHATYPE_GROUP")],
     &[],
 );
