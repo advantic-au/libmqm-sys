@@ -5,6 +5,7 @@ on:
   pull_request:
     branches:
       - develop
+  schedule: [cron: "40 4 * * 2"]
 
 env:
   RUSTFLAGS: -Dwarnings
@@ -136,3 +137,46 @@ jobs:
           tool: cargo-docs-rs
       - run: cargo docs-rs -p libmqm-sys --target x86_64-unknown-linux-gnu
       - run: cargo docs-rs -p libmqm-default --target x86_64-unknown-linux-gnu
+  pregen:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-24.04, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Install MQ client
+        uses: advantic-au/action-mq-client@stable
+        id: mq-client
+        with:
+          client-version: latest
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+        with:
+          shared-key: "build"
+      - name: Refresh pregenerated content
+        run: cargo build --no-default-features --features pregen
+        env:
+          MQ_HOME: ${{ steps.mq-client.outputs.client-install-path }}
+      - name: Detect pregenerated changes
+        run: |
+          git add -N libmqm-sys/src libmqm-default/src libmqm-constants/src
+          git diff --stat --exit-code libmqm-sys/src libmqm-default/src libmqm-constants/src
+  pregen_outcome:
+    if: ${{ always() }}
+    runs-on: ubuntu-24.04
+    name: Pregen outcome
+    needs: [pregen]
+    steps:
+      - run: |
+          result="${NEEDS_RESULT}"
+          if [[ $result == "success" || $result == "skipped" ]]; then
+            exit 0
+          else
+            exit 1
+          fi
+        env:
+          NEEDS_RESULT: ${{ needs.pregen.result }}
