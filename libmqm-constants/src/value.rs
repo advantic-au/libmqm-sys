@@ -1,4 +1,4 @@
-#![allow(clippy::allow_attributes, reason = "Macro include 'allow' for generation purposes")]
+#![allow(clippy::allow_attributes)] // reason = "Macro include 'allow' for generation purposes"
 
 use std::borrow::Cow;
 

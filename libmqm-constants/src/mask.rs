@@ -1,4 +1,4 @@
-#![allow(clippy::allow_attributes, reason = "Macro include 'allow' for generation purposes")]
+#![allow(clippy::allow_attributes)] // reason = "Macro include 'allow' for generation purposes"
 
 use std::borrow::Cow;
 
@@ -48,7 +48,7 @@ macro_rules! define_mask {
         }
 
         impl $i {
-            pub fn masked_list(&self) -> (impl Iterator<Item = $crate::lookup::ConstantItem<'static>> + use<>, libmqm_sys::lib::MQLONG) {
+            pub fn masked_list(&self) -> (impl Iterator<Item = $crate::lookup::ConstantItem<'static>>, libmqm_sys::lib::MQLONG) {
                 let &Self(val) = self;
                 $crate::mask::masked_list(val, Self::const_lookup().all())
             }
