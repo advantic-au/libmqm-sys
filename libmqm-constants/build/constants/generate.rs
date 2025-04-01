@@ -52,8 +52,8 @@ pub fn as_phf(by_value: &[(mqsys::MQLONG, &str)]) -> String {
 }
 
 pub fn generate_constants<F, E>(f: F) -> Result<(), E>
-  where
-    F: FnOnce(&[(&str, (&[(i32, &str)], Vec<(i32, &str)>)) ]) -> Result<(), E>
+where
+    F: FnOnce(&[((&str, &str), (&[(i32, &str)], Vec<(i32, &str)>))]) -> Result<(), E>,
 {
     let by_value_mqi = unsafe { &mqsys::MQI_BY_VALUE_STR };
     let by_value = by_value(by_value_mqi);
@@ -62,19 +62,23 @@ pub fn generate_constants<F, E>(f: F) -> Result<(), E>
     // the _STR c functions and CONSTANTS which was derived from
     // the header file
     let primary_constants = list::all_constants()
-        .map(|(prefix, check)| {
+        .map(|(prefix, new_type, check)| {
             let mut by_value_set: Vec<_> = by_value
                 .iter()
                 .copied()
                 .filter(|(value, name)| unsafe { str::from_utf8_unchecked(check(*value).to_bytes()) == *name })
                 .collect();
             by_value_set.sort_by_key(|(k, ..)| *k);
-            (prefix, by_value_set)
+            ((prefix, new_type), by_value_set)
         })
         .chain(list::PREFIX_CONSTANTS.iter().map(|prefix| {
             (
                 *prefix,
-                by_value.iter().copied().filter(|(_, name)| name.starts_with(prefix)).collect(),
+                by_value
+                    .iter()
+                    .copied()
+                    .filter(|(_, name)| name.starts_with(prefix.0))
+                    .collect(),
             )
         }))
         .collect::<HashMap<_, _>>();
@@ -117,7 +121,7 @@ pub fn generate_constants<F, E>(f: F) -> Result<(), E>
             let similar: HashSet<_> = primary_constants
                 .iter()
                 .filter_map(|(&other_prefix, ..)| {
-                    (*prefix != other_prefix && other_prefix.starts_with(prefix)).then_some(other_prefix)
+                    (*prefix != other_prefix && other_prefix.0.starts_with(prefix.0)).then_some(other_prefix)
                 })
                 .collect();
             // 'extra' are the constants that were _not_ yielded from the _STR c functions
@@ -125,7 +129,7 @@ pub fn generate_constants<F, E>(f: F) -> Result<(), E>
             let extra: Vec<_> = unassigned_constants
                 .iter()
                 .filter(|(.., name)| {
-                    name.starts_with(prefix) && !similar.iter().any(|other_prefix| name.starts_with(other_prefix))
+                    name.starts_with(prefix.0) && !similar.iter().any(|other_prefix| name.starts_with(other_prefix.0))
                 })
                 .copied()
                 .collect();

@@ -16,18 +16,42 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     #[cfg(feature = "generate")]
     {
         use std::io::Write as _;
-        let mut constants_write = std::io::BufWriter::new(Vec::new());
+
+        let mut mapping_write: io::BufWriter<Vec<u8>> = std::io::BufWriter::new(Vec::new());
+        let mut new_type_mods_write: io::BufWriter<Vec<u8>> = std::io::BufWriter::new(Vec::new());
         constants::generate::generate_constants(|prefix_constants| {
+
+            let mut new_type_write: io::BufWriter<Vec<u8>> = std::io::BufWriter::new(Vec::new());
+            let mut constant_write: io::BufWriter<Vec<u8>> = std::io::BufWriter::new(Vec::new());
+            for ((_, new_type), (primary, extra)) in prefix_constants {
+                writeln!(new_type_write, "pub ${new_type}(pub mqsys::MQLONG);")?;
+                for (_, constant) in primary.iter().chain(extra) {
+                    writeln!(constant_write, "const ${constant}: types::${new_type} = types::${new_type}(mqsys::${constant});")?;
+                }
+            }
+            write!(new_type_mods_write, "
+                pub mod types {{
+                    use libmqm_sys::lib as mqsys;
+                    {}
+                }}
+            ", String::from_utf8_lossy(&new_type_write.into_inner()?))?;
+            write!(new_type_mods_write, "
+                pub mod constants {{
+                    use super::types;
+                    {}
+                }}
+            ", String::from_utf8_lossy(&constant_write.into_inner()?))?;
+
             // Pick a lookup type based on the size of the constants for a prefix
             // TODO: Determine best ranges for performance
-            for (prefix, (primary, ref extra)) in prefix_constants {
+            for ((prefix, _), (primary, extra)) in prefix_constants {
                 let extra_array = generate::as_array(extra);
-                write!(constants_write, "pub const {prefix}CONST: ")?;
+                write!(mapping_write, "pub const {prefix}CONST: ")?;
                 match primary.len() {
                     0..=63 => {
                         // Linear search array
                         writeln!(
-                            constants_write,
+                            mapping_write,
                             "LinearSource = ConstSource(&{}, &{extra_array});",
                             generate::as_array(primary),
                         )?;
@@ -35,7 +59,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                     64..=255 => {
                         // Binary search array
                         writeln!(
-                            constants_write,
+                            mapping_write,
                             "BinarySearchSource = ConstSource(BinarySearch(&{}), &{extra_array});",
                             generate::as_array(primary),
                         )?;
@@ -43,7 +67,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                     _ => {
                         // Perfect hash used for larger constant lists
                         writeln!(
-                            constants_write,
+                            mapping_write,
                             "PhfSource = ConstSource(&{}, &{extra_array});",
                             generate::as_phf(primary),
                         )?;
@@ -54,7 +78,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         })?;
 
         let by_name_mqi = unsafe { &mqsys::MQI_BY_NAME_STR };
-        let by_name = generate::by_name(by_name_mqi);    
+        let by_name = generate::by_name(by_name_mqi);
 
         // Full MQI_BY_STRING
         let mut mqi_by_string = phf_codegen::Map::<&str>::new();
@@ -62,23 +86,23 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             mqi_by_string.entry(name, &value.to_string());
         }
         writeln!(
-            constants_write,
+            mapping_write,
             "pub(crate) const MQI_BY_STRING: ::phf::Map<&'static str, ::libmqm_sys::lib::MQLONG> = {};",
             mqi_by_string.build()
         )?;
 
-        let constants_str = String::from_utf8(constants_write.into_inner()?)?;
-        let constants_syn = syn::parse_file(&constants_str)?;
-        let constants_pretty = prettyplease::unparse(&constants_syn);
-        let constants_file = std::fs::File::create(&path)?;
-        let mut constants_pretty_write = std::io::BufWriter::new(constants_file);
+        let mapping_str = String::from_utf8(mapping_write.into_inner()?)?;
+        let mapping_syn = syn::parse_file(&mapping_str)?;
+        let mapping_pretty = prettyplease::unparse(&mapping_syn);
+        let mapping_file = std::fs::File::create(&path)?;
+        let mut mapping_pretty_write = std::io::BufWriter::new(mapping_file);
 
         writeln!(
-            &mut constants_pretty_write,
+            &mut mapping_pretty_write,
             "/* Generated with MQ client version {} */",
             libmqm_sys::version::CLIENT_BUILD_VERSION
         )?;
-        constants_pretty_write.write_all(constants_pretty.as_bytes())?;
+        mapping_pretty_write.write_all(mapping_pretty.as_bytes())?;
     }
 
     #[cfg(feature = "pregen")]
