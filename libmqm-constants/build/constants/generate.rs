@@ -53,7 +53,7 @@ pub fn as_phf(by_value: &[(mqsys::MQLONG, &str)]) -> String {
 
 pub fn generate_constants<F, E>(f: F) -> Result<(), E>
 where
-    F: FnOnce(&[((&str, &str), (&[(i32, &str)], Vec<(i32, &str)>))]) -> Result<(), E>,
+    F: FnOnce(&[((&str, &str, &str), (&[(i32, &str)], Vec<(i32, &str)>))]) -> Result<(), E>,
 {
     let by_value_mqi = unsafe { &mqsys::MQI_BY_VALUE_STR };
     let by_value = by_value(by_value_mqi);
@@ -62,14 +62,14 @@ where
     // the _STR c functions and CONSTANTS which was derived from
     // the header file
     let primary_constants = list::all_constants()
-        .map(|(prefix, new_type, check)| {
+        .map(|(prefix, new_type, check, orig_type)| {
             let mut by_value_set: Vec<_> = by_value
                 .iter()
                 .copied()
                 .filter(|(value, name)| unsafe { str::from_utf8_unchecked(check(*value).to_bytes()) == *name })
                 .collect();
             by_value_set.sort_by_key(|(k, ..)| *k);
-            ((prefix, new_type), by_value_set)
+            ((prefix, new_type, orig_type), by_value_set)
         })
         .chain(list::PREFIX_CONSTANTS.iter().map(|prefix| {
             (

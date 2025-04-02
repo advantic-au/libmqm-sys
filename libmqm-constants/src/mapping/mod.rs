@@ -9,8 +9,13 @@ use crate::lookup::{BinarySearchSource, ConstSource, PhfSource};
 mod generated {
     use crate::lookup::*;
 
-    // This file is generated during the build process
-    include!(concat!(env!("OUT_DIR"), "/mqconstants.rs"));
+    mod mapping {
+        // This file is generated during the build process
+        include!(concat!(env!("OUT_DIR"), "/mapping.rs"));
+    }
+
+    include!(concat!(env!("OUT_DIR"), "/new_types.rs"));
+
 }
 
 #[cfg(not(feature = "generate"))]

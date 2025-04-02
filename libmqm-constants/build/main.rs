@@ -1,7 +1,3 @@
-use std::{env, io};
-
-use constants::generate;
-use libmqm_sys::lib as mqsys;
 
 #[cfg(feature = "generate")]
 mod constants {
@@ -9,42 +5,55 @@ mod constants {
     mod list;
 }
 
-#[allow(clippy::unnecessary_wraps)] // reason = "when no features are enabled"
+#[allow(clippy::unnecessary_wraps, clippy::too_many_lines)] // reason = "when no features are enabled"
 fn main() -> Result<(), Box<dyn std::error::Error>> {
-    #[allow(unused_variables)] // reason = "when constantgen and pregen are not enabled"
-    let path = std::path::Path::new(&env::var("OUT_DIR").expect("OUT_DIR is mandatory for builds")).join("mqconstants.rs");
     #[cfg(feature = "generate")]
     {
+        use std::io;
         use std::io::Write as _;
+        use constants::generate;
+        use libmqm_sys::lib as mqsys;
 
         let mut mapping_write: io::BufWriter<Vec<u8>> = std::io::BufWriter::new(Vec::new());
         let mut new_type_mods_write: io::BufWriter<Vec<u8>> = std::io::BufWriter::new(Vec::new());
-        constants::generate::generate_constants(|prefix_constants| {
-
+        generate::generate_constants(|prefix_constants| {
             let mut new_type_write: io::BufWriter<Vec<u8>> = std::io::BufWriter::new(Vec::new());
             let mut constant_write: io::BufWriter<Vec<u8>> = std::io::BufWriter::new(Vec::new());
-            for ((_, new_type), (primary, extra)) in prefix_constants {
-                writeln!(new_type_write, "pub ${new_type}(pub mqsys::MQLONG);")?;
+            for ((_, new_type, orig_type), (primary, extra)) in prefix_constants {
+                writeln!(new_type_write, "pub struct {new_type}(pub mqsys::{orig_type});")?;
                 for (_, constant) in primary.iter().chain(extra) {
-                    writeln!(constant_write, "const ${constant}: types::${new_type} = types::${new_type}(mqsys::${constant});")?;
+                    writeln!(
+                        constant_write,
+                        "const {constant}: types::{new_type} = types::{new_type}(mqsys::{constant});"
+                    )?;
                 }
             }
-            write!(new_type_mods_write, "
+            write!(
+                new_type_mods_write,
+                "
                 pub mod types {{
-                    use libmqm_sys::lib as mqsys;
+                    use ::libmqm_sys::lib as mqsys;
                     {}
                 }}
-            ", String::from_utf8_lossy(&new_type_write.into_inner()?))?;
-            write!(new_type_mods_write, "
+            ",
+                String::from_utf8_lossy(&new_type_write.into_inner()?)
+            )?;
+            write!(
+                new_type_mods_write,
+                "
                 pub mod constants {{
                     use super::types;
+                    use ::libmqm_sys::lib as mqsys;
                     {}
                 }}
-            ", String::from_utf8_lossy(&constant_write.into_inner()?))?;
+            ",
+                String::from_utf8_lossy(&constant_write.into_inner()?)
+            )?;
 
+            writeln!(mapping_write, "use crate::lookup::*;")?;
             // Pick a lookup type based on the size of the constants for a prefix
             // TODO: Determine best ranges for performance
-            for ((prefix, _), (primary, extra)) in prefix_constants {
+            for ((prefix, ..), (primary, extra)) in prefix_constants {
                 let extra_array = generate::as_array(extra);
                 write!(mapping_write, "pub const {prefix}CONST: ")?;
                 match primary.len() {
@@ -91,33 +100,41 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             mqi_by_string.build()
         )?;
 
-        let mapping_str = String::from_utf8(mapping_write.into_inner()?)?;
-        let mapping_syn = syn::parse_file(&mapping_str)?;
-        let mapping_pretty = prettyplease::unparse(&mapping_syn);
-        let mapping_file = std::fs::File::create(&path)?;
-        let mut mapping_pretty_write = std::io::BufWriter::new(mapping_file);
-
-        writeln!(
-            &mut mapping_pretty_write,
-            "/* Generated with MQ client version {} */",
-            libmqm_sys::version::CLIENT_BUILD_VERSION
-        )?;
-        mapping_pretty_write.write_all(mapping_pretty.as_bytes())?;
+        let outdir = std::env::var("OUT_DIR").expect("OUT_DIR is mandatory for builds");
+        let outdir_path = std::path::Path::new(&outdir);
+        for (filename, buffer) in [("mapping.rs", mapping_write), ("new_types.rs", new_type_mods_write)] {
+        
+            let gen_str = String::from_utf8(buffer.into_inner()?)?;
+            let gen_syn = syn::parse_file(&gen_str)?;
+            let gen_pretty = prettyplease::unparse(&gen_syn);
+            let gen_path = outdir_path.join(filename);
+            {
+                let gen_file = std::fs::File::create(&gen_path)?;
+                let mut gen_pretty_write = std::io::BufWriter::new(gen_file);
+                writeln!(
+                    &mut gen_pretty_write,
+                    "/* Generated with MQ client version {} */",
+                    libmqm_sys::version::CLIENT_BUILD_VERSION
+                )?;
+                gen_pretty_write.write_all(gen_pretty.as_bytes())?;
+            }
+            #[cfg(feature = "pregen")]
+            {
+                use std::{env::consts as env_consts, fs, path};
+        
+                fs::copy(
+                    &gen_path,
+                    path::PathBuf::from("./src/pregen").join(format!(
+                        "{}-{}-{}",
+                        if env_consts::OS == "macos" { "any" } else { env_consts::ARCH },
+                        env_consts::OS,
+                        filename
+                    )),
+                )?;
+            }
+        }
     }
 
-    #[cfg(feature = "pregen")]
-    {
-        use std::{env::consts as env_consts, fs, path};
-
-        fs::copy(
-            &path,
-            path::PathBuf::from("./src/mapping/pregen").join(format!(
-                "{}-{}-mqconstants.rs",
-                if env_consts::OS == "macos" { "any" } else { env_consts::ARCH },
-                env_consts::OS
-            )),
-        )?;
-    }
 
     Ok(())
 }

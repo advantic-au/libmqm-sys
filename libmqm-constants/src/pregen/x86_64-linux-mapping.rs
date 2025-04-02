@@ -1,4 +1,5 @@
 /* Generated with MQ client version 9.4.2.0 */
+use crate::lookup::*;
 pub const MQACTIVE_CONST: LinearSource = ConstSource(
     &[(0, "MQACTIVE_NO"), (1, "MQACTIVE_YES")],
     &[],
@@ -126,7 +127,7 @@ pub const MQAT_CONST: LinearSource = ConstSource(
         (2, "MQAT_MVS"),
         (2, "MQAT_OS390"),
         (6, "MQAT_AIX"),
-        (11, "MQAT_DEFAULT"),
+        (6, "MQAT_DEFAULT"),
         (13, "MQAT_GUARDIAN"),
         (26, "MQAT_BROKER"),
     ],
@@ -9976,7 +9977,7 @@ pub(crate) const MQI_BY_STRING: ::phf::Map<&'static str, ::libmqm_sys::lib::MQLO
         ("MQCBC_CURRENT_VERSION", 2),
         ("MQIA_SUB_CONFIGURATION_EVENT", 242),
         ("MQRC_Q_MGR_QUIESCING", 2161),
-        ("MQ_MCA_USER_ID_LENGTH", 64),
+        ("MQ_MCA_USER_ID_LENGTH", 12),
         ("MQTYPE_INT8", 16),
         ("MQRC_CNO_ERROR", 2139),
         ("MQCMDL_LEVEL_931", 931),
@@ -10184,7 +10185,7 @@ pub(crate) const MQI_BY_STRING: ::phf::Map<&'static str, ::libmqm_sys::lib::MQLO
         ("MQPROTO_MQTTV311", 4),
         ("MQREGO_LOCKED", 2097152),
         ("MQ_SSL_SHORT_PEER_NAME_LENGTH", 256),
-        ("MQAT_DEFAULT", 11),
+        ("MQAT_DEFAULT", 6),
         ("MQMD2_LENGTH_1", 324),
         ("MQCMD_CREATE_SERVICE", 151),
         ("MQCA_TOPIC_DESC", 2093),

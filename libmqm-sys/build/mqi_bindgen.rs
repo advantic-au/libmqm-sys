@@ -54,14 +54,14 @@ const TYPES: &[FeatureFilter<&str>] = &[
 /// Rules sequentually applied to constants to determine target rust type
 pub const DEF_CONST: &[(&[&str], IntKind)] = &[
     (
-        &["^MQ.*_ERROR$", "^MQIA_.+"],
+        &["^MQ.*_ERROR$", "^MQIA_.+", "^MQRC_.+"],
         IntKind::Custom {
             name: "MQLONG",
             is_signed: true,
         },
     ),
     (
-        &[".+_LENGTH(_.)?", ".+_LEN$"], // All lengths should be usize
+        &[".+_CURRENT_LENGTH$", ".+_STRUC.*_LENGTH", ".+_LENGTH_[0-9]+$", "^MQ_.+_LEN(GTH)?$"], // All lengths should be usize
         IntKind::Custom {
             name: "usize",
             is_signed: false,
@@ -88,9 +88,8 @@ pub const DEF_CONST: &[(&[&str], IntKind)] = &[
             is_signed: true,
         },
     ),
-    (&["^MQ.+_MASK$"], IntKind::U32), // _MASKS's are frequently defined outside of the i32 range
     (
-        &["^MQ_?[A-Z]{2,12}_.+"], // All remaining constants should be MQLONG
+        &["^MQ_?[A-Z0-9]{2,12}_.+"], // All remaining constants should be MQLONG
         IntKind::Custom {
             name: "MQLONG",
             is_signed: true,
