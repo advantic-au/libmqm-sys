@@ -89,7 +89,7 @@ pub const DEF_CONST: &[(&[&str], IntKind)] = &[
         },
     ),
     (
-        &["^MQ_?[A-Z0-9]{2,12}_.+"], // All remaining constants should be MQLONG
+        &["^MQ_?[A-Z0-9]{1,12}_.+"], // All remaining constants should be MQLONG
         IntKind::Custom {
             name: "MQLONG",
             is_signed: true,

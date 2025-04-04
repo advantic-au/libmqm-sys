@@ -14,13 +14,21 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         use constants::generate;
         use libmqm_sys::lib as mqsys;
 
-        let mut mapping_write: io::BufWriter<Vec<u8>> = std::io::BufWriter::new(Vec::new());
-        let mut new_type_mods_write: io::BufWriter<Vec<u8>> = std::io::BufWriter::new(Vec::new());
+        let mut mapping_write: Vec<u8> = Vec::new();
+        let mut new_type_mods_write: Vec<u8> = Vec::new();
         generate::generate_constants(|prefix_constants| {
-            let mut new_type_write: io::BufWriter<Vec<u8>> = std::io::BufWriter::new(Vec::new());
-            let mut constant_write: io::BufWriter<Vec<u8>> = std::io::BufWriter::new(Vec::new());
-            for ((_, new_type, orig_type), (primary, extra)) in prefix_constants {
-                writeln!(new_type_write, "pub struct {new_type}(pub mqsys::{orig_type});")?;
+            let mut new_type_write: Vec<u8> = Vec::new();
+            let mut constant_write: Vec<u8> = Vec::new();
+            for (_, (new_type, orig_type, doc, primary, extra)) in prefix_constants {
+                if let Some(new_type_doc) = doc {
+                    for doc_line in new_type_doc.trim().split('\n') {
+                        writeln!(new_type_write, "/// {doc_line}")?;
+                    }
+                }
+                writeln!(new_type_write, "
+                    #[derive(Clone, Copy, PartialEq, Eq, Hash, derive_more::From)]
+                    pub struct {new_type}(pub mqsys::{orig_type});
+                ")?;
                 for (_, constant) in primary.iter().chain(extra) {
                     writeln!(
                         constant_write,
@@ -36,7 +44,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                     {}
                 }}
             ",
-                String::from_utf8_lossy(&new_type_write.into_inner()?)
+                String::from_utf8_lossy(&new_type_write)
             )?;
             write!(
                 new_type_mods_write,
@@ -47,13 +55,13 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                     {}
                 }}
             ",
-                String::from_utf8_lossy(&constant_write.into_inner()?)
+                String::from_utf8_lossy(&constant_write)
             )?;
 
             writeln!(mapping_write, "use crate::lookup::*;")?;
             // Pick a lookup type based on the size of the constants for a prefix
             // TODO: Determine best ranges for performance
-            for ((prefix, ..), (primary, extra)) in prefix_constants {
+            for (prefix, (.., primary, extra)) in prefix_constants {
                 let extra_array = generate::as_array(extra);
                 write!(mapping_write, "pub const {prefix}CONST: ")?;
                 match primary.len() {
@@ -104,7 +112,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         let outdir_path = std::path::Path::new(&outdir);
         for (filename, buffer) in [("mapping.rs", mapping_write), ("new_types.rs", new_type_mods_write)] {
         
-            let gen_str = String::from_utf8(buffer.into_inner()?)?;
+            let gen_str = String::from_utf8(buffer)?;
             let gen_syn = syn::parse_file(&gen_str)?;
             let gen_pretty = prettyplease::unparse(&gen_syn);
             let gen_path = outdir_path.join(filename);

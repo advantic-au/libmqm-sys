@@ -53,7 +53,7 @@ pub fn as_phf(by_value: &[(mqsys::MQLONG, &str)]) -> String {
 
 pub fn generate_constants<F, E>(f: F) -> Result<(), E>
 where
-    F: FnOnce(&[((&str, &str, &str), (&[(i32, &str)], Vec<(i32, &str)>))]) -> Result<(), E>,
+    F: FnOnce(&[(&str, (&str, &str, Option<&str>, &[(i32, &str)], Vec<(i32, &str)>))]) -> Result<(), E>,
 {
     let by_value_mqi = unsafe { &mqsys::MQI_BY_VALUE_STR };
     let by_value = by_value(by_value_mqi);
@@ -62,23 +62,24 @@ where
     // the _STR c functions and CONSTANTS which was derived from
     // the header file
     let primary_constants = list::all_constants()
-        .map(|(prefix, new_type, check, orig_type)| {
+        .map(|(prefix, new_type, check, orig_type, doc)| {
             let mut by_value_set: Vec<_> = by_value
                 .iter()
                 .copied()
                 .filter(|(value, name)| unsafe { str::from_utf8_unchecked(check(*value).to_bytes()) == *name })
                 .collect();
             by_value_set.sort_by_key(|(k, ..)| *k);
-            ((prefix, new_type, orig_type), by_value_set)
+            (prefix, (new_type, orig_type, doc, by_value_set))
         })
-        .chain(list::PREFIX_CONSTANTS.iter().map(|prefix| {
+        .chain(list::PREFIX_CONSTANTS.iter().map(|(prefix, new_type, orig_type)| {
             (
                 *prefix,
+                (*new_type, *orig_type, None,
                 by_value
                     .iter()
                     .copied()
-                    .filter(|(_, name)| name.starts_with(prefix.0))
-                    .collect(),
+                    .filter(|(_, name)| name.starts_with(prefix))
+                    .collect())
             )
         }))
         .collect::<HashMap<_, _>>();
@@ -86,7 +87,7 @@ where
     // Collect a list of constants that are assigned to a prefix
     let primary_set = primary_constants
         .values()
-        .flatten()
+        .flat_map(|(.., v)| v)
         .map(|(.., name)| *name)
         .collect::<HashSet<_>>();
 
@@ -115,13 +116,13 @@ where
     // Create a map of primary and extra constants
     let mut prefix_constants = primary_constants
         .iter()
-        .map(|(prefix, primary)| {
+        .map(|(prefix, (new_type, orig_type, doc, .., primary))| {
             // Similar prefixes ie prefixes that start with another prefix.
             // This need to be excluded from the "extra" list
             let similar: HashSet<_> = primary_constants
                 .iter()
                 .filter_map(|(&other_prefix, ..)| {
-                    (*prefix != other_prefix && other_prefix.0.starts_with(prefix.0)).then_some(other_prefix)
+                    (*prefix != other_prefix && other_prefix.starts_with(prefix)).then_some(other_prefix)
                 })
                 .collect();
             // 'extra' are the constants that were _not_ yielded from the _STR c functions
@@ -129,11 +130,11 @@ where
             let extra: Vec<_> = unassigned_constants
                 .iter()
                 .filter(|(.., name)| {
-                    name.starts_with(prefix.0) && !similar.iter().any(|other_prefix| name.starts_with(other_prefix.0))
+                    name.starts_with(prefix) && !similar.iter().any(|other_prefix| name.starts_with(other_prefix))
                 })
                 .copied()
                 .collect();
-            (*prefix, (&**primary, extra))
+            (*prefix, (*new_type, *orig_type, *doc, &**primary, extra))
         })
         .collect::<Vec<_>>();
 
