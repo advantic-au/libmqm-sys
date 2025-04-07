@@ -15,67 +15,83 @@ macro_rules! impl_default_value {
 }
 pub(crate) use impl_default_value;
 
-macro_rules! define_value {
-    ($vis:vis $i:ident, $source:path) => {
-        define_value!($vis $i, $source, "");
+macro_rules! define_new_type {
+    ($vis:vis $name:ident, $type:ty, $mapping:path) => {
+        define_new_type!($vis $name, $type, $mapping, "");
     };
-    ($vis:vis $i:ident, $source:path, $lit:literal) => {
-        #[allow(unused_imports)]
-        use $crate::lookup::{HasConstLookup as _, ConstLookup as _, HasMqNames as _};
-
-        #[allow(clippy::empty_docs,non_camel_case_types)]
-        #[doc = $lit]
-        #[derive(Clone, Copy, PartialEq, Eq, Hash, derive_more::From)]
+    ($vis:vis $name:ident, $type:ty, $mapping:path, $doc:literal) => {
         #[repr(transparent)]
-        $vis struct $i(pub libmqm_sys::lib::MQLONG);
+        #[derive(
+            Clone,
+            Copy,
+            PartialEq,
+            Eq,
+            Hash,
+            ::derive_more::From,
+        )]
+        #[allow(clippy::empty_docs,non_camel_case_types)]
+        #[doc = $doc]
+        $vis struct $name(pub $type);
 
-        #[allow(dead_code)]
-        impl $i {
-            #[must_use]
-            pub const fn value(&self) -> libmqm_sys::lib::MQLONG {
-                self.0
+        impl PartialEq<$type> for $name {
+            fn eq(&self, other: &$type) -> bool {
+                self.0 == *other
             }
         }
 
-        impl $crate::lookup::HasConstLookup for $i {
+        impl $crate::lookup::HasConstLookup for $name {
             fn const_lookup<'a>() -> &'a (impl $crate::lookup::ConstLookup + 'static) {
-                &$source
+                &$mapping
             }
         }
 
-        impl std::str::FromStr for $i {
-            type Err = <libmqm_sys::lib::MQLONG as std::str::FromStr>::Err;
+    };
+}
+pub(crate) use define_new_type;
+
+macro_rules! impl_value {
+    ($new_type:path) => {
+        impl_value!($new_type, ::libmqm_sys::lib::MQLONG);
+    };
+    ($new_type:path, $orig_type:ty) => {
+        #[allow(unused_imports)]
+        use $crate::lookup::{ConstLookup as _, HasConstLookup as _, HasMqNames as _};
+
+        impl std::str::FromStr for $new_type {
+            type Err = <$orig_type as std::str::FromStr>::Err;
 
             fn from_str(name: &str) -> Result<Self, Self::Err> {
-                Ok(Self(
-                    Self::const_lookup().by_name(name).map_or_else(|| std::str::FromStr::from_str(name), Ok)?,
+                Ok($new_type(
+                    Self::const_lookup()
+                        .by_name(name)
+                        .map_or_else(|| std::str::FromStr::from_str(name), Ok)?,
                 ))
             }
         }
 
-        impl $crate::lookup::MqConstant for $i {
-            fn mq_value(&self) -> libmqm_sys::lib::MQLONG {
-                let Self(value) = self;
+        impl $crate::lookup::MqConstant for $new_type {
+            fn mq_value(&self) -> $orig_type {
+                let $new_type(value) = self;
                 *value
             }
         }
 
-        impl std::fmt::Display for $i {
+        impl std::fmt::Display for $new_type {
             fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
-                let Self(attribute) = self;
+                let $new_type(attribute) = self;
                 $crate::value::value_display(*attribute, self.mq_primary_name(), f)
             }
         }
 
-        impl std::fmt::Debug for $i {
+        impl std::fmt::Debug for $new_type {
             fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
-                let Self(attribute) = self;
+                let $new_type(attribute) = self;
                 $crate::value::value_debug(stringify!($i), *attribute, self.mq_names(), f)
             }
         }
     };
 }
-pub(crate) use define_value;
+pub(crate) use impl_value;
 
 pub fn value_display(value: MQLONG, primary_name: Option<&str>, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     let code = primary_name.map_or_else(|| Cow::from(value.to_string()), Cow::from);
@@ -104,10 +120,12 @@ mod test {
     use std::{error::Error, str::FromStr};
 
     use crate::lookup::{ConstantItem, HasMqNames as _};
+    use libmqm_sys::lib as sys;
 
     const LOOKUP: &[ConstantItem] = &[(0, "ZERO"), (0, "ZERO_ALIAS"), (1, "ONE"), (1, "ONE_ALIAS")];
 
-    define_value!(pub X, LOOKUP);
+    define_new_type!(pub X, sys::MQLONG, LOOKUP);
+    impl_value!(X);
 
     #[test]
     fn from_str() -> Result<(), Box<dyn Error>> {

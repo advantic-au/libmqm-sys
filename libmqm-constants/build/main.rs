@@ -1,4 +1,3 @@
-
 #[cfg(feature = "generate")]
 mod constants {
     pub mod generate;
@@ -9,30 +8,26 @@ mod constants {
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     #[cfg(feature = "generate")]
     {
-        use std::io;
-        use std::io::Write as _;
         use constants::generate;
         use libmqm_sys::lib as mqsys;
+        use std::io;
+        use std::io::Write as _;
 
         let mut mapping_write: Vec<u8> = Vec::new();
         let mut new_type_mods_write: Vec<u8> = Vec::new();
         generate::generate_constants(|prefix_constants| {
             let mut new_type_write: Vec<u8> = Vec::new();
             let mut constant_write: Vec<u8> = Vec::new();
-            for (_, (new_type, orig_type, doc, primary, extra)) in prefix_constants {
-                if let Some(new_type_doc) = doc {
-                    for doc_line in new_type_doc.trim().split('\n') {
-                        writeln!(new_type_write, "/// {doc_line}")?;
-                    }
-                }
-                writeln!(new_type_write, "
-                    #[derive(Clone, Copy, PartialEq, Eq, Hash, derive_more::From)]
-                    pub struct {new_type}(pub mqsys::{orig_type});
-                ")?;
+            for (prefix, (new_type, orig_type, doc, primary, extra)) in prefix_constants {
+                writeln!(
+                    new_type_write,
+                    "define_new_type!(pub {new_type}, mqsys::{orig_type}, crate::mapping::{prefix}CONST{});",
+                    doc.map_or(String::new(), |doc_lines| format!(", \"{doc_lines}\""))
+                )?;
                 for (_, constant) in primary.iter().chain(extra) {
                     writeln!(
                         constant_write,
-                        "const {constant}: types::{new_type} = types::{new_type}(mqsys::{constant});"
+                        "pub const {constant}: types::{new_type} = types::{new_type}(mqsys::{constant});"
                     )?;
                 }
             }
@@ -41,6 +36,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 "
                 pub mod types {{
                     use ::libmqm_sys::lib as mqsys;
+                    use crate::value::define_new_type;
                     {}
                 }}
             ",
@@ -50,7 +46,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 new_type_mods_write,
                 "
                 pub mod constants {{
-                    use super::types;
+                    use crate::types;
                     use ::libmqm_sys::lib as mqsys;
                     {}
                 }}
@@ -111,7 +107,6 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         let outdir = std::env::var("OUT_DIR").expect("OUT_DIR is mandatory for builds");
         let outdir_path = std::path::Path::new(&outdir);
         for (filename, buffer) in [("mapping.rs", mapping_write), ("new_types.rs", new_type_mods_write)] {
-        
             let gen_str = String::from_utf8(buffer)?;
             let gen_syn = syn::parse_file(&gen_str)?;
             let gen_pretty = prettyplease::unparse(&gen_syn);
@@ -129,7 +124,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             #[cfg(feature = "pregen")]
             {
                 use std::{env::consts as env_consts, fs, path};
-        
+
                 fs::copy(
                     &gen_path,
                     path::PathBuf::from("./src/pregen").join(format!(
@@ -142,7 +137,6 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             }
         }
     }
-
 
     Ok(())
 }

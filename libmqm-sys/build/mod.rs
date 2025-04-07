@@ -1,4 +1,7 @@
-use std::{fs::File, io::{self, BufWriter, Write}};
+use std::{
+    fs::File,
+    io::{self, BufWriter, Write},
+};
 
 use regex_lite::{Captures, Regex};
 
@@ -223,8 +226,7 @@ fn main() -> Result<(), io::Error> {
                     #[allow(clippy::cast_possible_wrap)]
                     let wrapped = i as i32;
                     format!("{}{};", &caps[1], wrapped)
-                }
-                else {
+                } else {
                     caps[0].to_string()
                 }
             });
@@ -232,7 +234,6 @@ fn main() -> Result<(), io::Error> {
                 let mut out_file = BufWriter::new(File::create(&out_bindings)?);
                 out_file.write_all(bindings_str.as_bytes())?;
             }
-            
 
             #[cfg(feature = "pregen")]
             {

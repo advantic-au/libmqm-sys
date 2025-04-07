@@ -3,21 +3,21 @@ use crate::{
     mapping,
 };
 
-use crate::value::impl_default_value;
-use crate::{mask::define_mask, value::define_value};
-
 use libmqm_sys::lib as sys;
 
-define_value!(pub MQIND, mapping::MQIND_CONST, "Special Index Values");
-define_value!(pub MQQT, mapping::MQQT_CONST, "Queue Types and Extended Queue Types");
-define_value!(pub MQAT, mapping::MQAT_CONST, "Put Application Types");
-define_value!(pub MQCMD, mapping::MQCMD_CONST, "Command Codes");
-impl_default_value!(MQCMD, sys::MQCMD_NONE);
-define_value!(pub MQCFOP, mapping::MQCFOP_CONST, "Command format Filter Operators");
-define_value!(pub MqaiSelector, MqaiSelectorLookup, "Selectors including `MQIA`, `MQCA`, `MQIACF`, `MQCACF`, `MQIACH`, `MQCACH`, `QIASY` and `MQHA`");
-impl_default_value!(MQIND, sys::MQIND_NONE);
-define_mask!(pub MQCBO, mapping::MQCBO_CONST, "Create-Bag options mask for `mqCreateBag`");
-define_value!(pub MQITEM, mapping::MQITEM_CONST, "Item Type for `mqInquireItemInfo`");
+use super::value::impl_default_value;
+use super::{mask::impl_mask, types, value::impl_value};
+
+impl_value!(types::MQIND);
+impl_value!(types::MQQT);
+impl_value!(types::MQAT);
+impl_value!(types::MQCMD);
+impl_default_value!(types::MQCMD, sys::MQCMD_NONE);
+impl_value!(types::MQCFOP);
+impl_value!(types::MqaiSelector);
+impl_default_value!(types::MQIND, sys::MQIND_NONE);
+impl_mask!(types::MQCBO);
+impl_value!(types::MQITEM);
 
 /*
 
@@ -28,8 +28,7 @@ It would be more efficient to generate one large set as part of the build proces
 
 */
 
-struct MqaiSelectorLookup;
-impl ConstLookup for MqaiSelectorLookup {
+impl ConstLookup for crate::mapping::MqaiSelectorLookup {
     fn by_value(&self, value: sys::MQLONG) -> impl Iterator<Item = &str> {
         mapping::MQIA_CONST
             .by_value(value)

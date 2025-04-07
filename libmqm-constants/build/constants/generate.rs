@@ -61,25 +61,33 @@ where
     // Gather the list of constants for each prefix by using
     // the _STR c functions and CONSTANTS which was derived from
     // the header file
-    let primary_constants = list::all_constants()
+    let primary_constants = list::CONSTANTS
+        .iter()
+        .copied()
         .map(|(prefix, new_type, check, orig_type, doc)| {
             let mut by_value_set: Vec<_> = by_value
                 .iter()
                 .copied()
-                .filter(|(value, name)| unsafe { str::from_utf8_unchecked(check(*value).to_bytes()) == *name })
+                .filter(|(value, name)| unsafe {
+                    str::from_utf8_unchecked(std::ffi::CStr::from_ptr(check(*value)).to_bytes()) == *name
+                })
                 .collect();
             by_value_set.sort_by_key(|(k, ..)| *k);
             (prefix, (new_type, orig_type, doc, by_value_set))
         })
-        .chain(list::PREFIX_CONSTANTS.iter().map(|(prefix, new_type, orig_type)| {
+        .chain(list::PREFIX_CONSTANTS.iter().map(|(prefix, new_type, orig_type, doc)| {
             (
                 *prefix,
-                (*new_type, *orig_type, None,
-                by_value
-                    .iter()
-                    .copied()
-                    .filter(|(_, name)| name.starts_with(prefix))
-                    .collect())
+                (
+                    *new_type,
+                    *orig_type,
+                    *doc,
+                    by_value
+                        .iter()
+                        .copied()
+                        .filter(|(_, name)| name.starts_with(prefix))
+                        .collect(),
+                ),
             )
         }))
         .collect::<HashMap<_, _>>();

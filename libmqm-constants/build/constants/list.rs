@@ -2,37 +2,16 @@ use libmqm_sys::lib as mqsys;
 use std::str;
 
 pub type MqCStrFnExtern = unsafe extern "C" fn(mqsys::MQLONG) -> *mut std::os::raw::c_char;
-pub type MqCStrFn = Box<dyn Fn(mqsys::MQLONG) -> &'static std::ffi::CStr>;
 pub type ConstantEntry<'a> = (
     &'a str,         /* name */
     &'a str,         /* new type */
     MqCStrFnExtern,  /* MQI _STR function */
     &'a str,         /* original type */
-    Option<&'a str>, /* doc */ 
+    Option<&'a str>, /* doc */
 );
 
-pub type ConstantEntryBox<'a> = (
-    &'a str,         /* name */
-    &'a str,         /* new type */
-    MqCStrFn,        /* MQI _STR function */
-    &'a str,         /* original type */
-    Option<&'a str>, /* doc */ 
-);
-
-fn as_cstr_fn(extern_fn: MqCStrFnExtern) -> MqCStrFn {
-    Box::from(move |value| unsafe { std::ffi::CStr::from_ptr(extern_fn(value)) })
-}
-
-pub fn all_constants() -> impl std::iter::Iterator<
-    Item = ConstantEntryBox<'static>,
-> {
-    CONSTANTS
-        .iter()
-        .copied()
-        .map(|(prefix, new_type, extern_fn, orig_type, doc)| (prefix, new_type, as_cstr_fn(extern_fn), orig_type, doc))
-}
-
-pub const PREFIX_CONSTANTS: &[(&str, &str, &str)] = &[("MQITEM_", "MQITEM", "MQLONG")];
+pub const PREFIX_CONSTANTS: &[(&str, &str, &str, Option<&str>)] =
+    &[("MQITEM_", "MQITEM", "MQLONG", Some("Item Type for `mqInquireItemInfo`"))];
 pub const CONSTANTS: &[ConstantEntry] = &[
     ("MQACTIVE_", "MQACTIVE", mqsys::MQACTIVE_STR, "MQLONG", None),
     ("MQACTP_", "MQACTP", mqsys::MQACTP_STR, "MQLONG", None),
@@ -45,7 +24,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     ("MQAPPL_", "MQAPPL", mqsys::MQAPPL_STR, "MQLONG", None),
     #[cfg(feature = "mqc_9_3_2_0")]
     ("MQAS_", "MQAS", mqsys::MQAS_STR, "MQLONG", None),
-    ("MQAT_", "MQAT", mqsys::MQAT_STR, "MQLONG", None),
+    ("MQAT_", "MQAT", mqsys::MQAT_STR, "MQLONG", Some("Put Application Types")),
     ("MQAUTHENTICATE_", "MQAUTHENTICATE", mqsys::MQAUTHENTICATE_STR, "MQLONG", None),
     ("MQAUTHOPT_", "MQAUTHOPT", mqsys::MQAUTHOPT_STR, "MQLONG", None),
     ("MQAUTH_", "MQAUTH", mqsys::MQAUTH_STR, "MQLONG", None),
@@ -56,7 +35,13 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     ("MQBALANCED_", "MQBALANCED", mqsys::MQBALANCED_STR, "MQLONG", None),
     ("MQBALSTATE_", "MQBALSTATE", mqsys::MQBALSTATE_STR, "MQLONG", None),
     ("MQBL_", "MQBL", mqsys::MQBL_STR, "MQLONG", None),
-    ("MQBMHO_", "MQBMHO", mqsys::MQBMHO_STR, "MQLONG", None),
+    (
+        "MQBMHO_",
+        "MQBMHO",
+        mqsys::MQBMHO_STR,
+        "MQLONG",
+        Some("Options mask to control the action of `MQBUFMH`"),
+    ),
     ("MQBND_", "MQBND", mqsys::MQBND_STR, "MQLONG", None),
     #[cfg(feature = "mqc_9_3_0_0")]
     ("MQBNO_BALTYPE_", "MQBNO_BALTYPE", mqsys::MQBNO_BALTYPE_STR, "MQLONG", None),
@@ -64,7 +49,13 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     ("MQBNO_OPTIONS_", "MQBNO_OPTIONS", mqsys::MQBNO_OPTIONS_STR, "MQLONG", None),
     #[cfg(feature = "mqc_9_3_0_0")]
     ("MQBNO_TIMEOUT_", "MQBNO_TIMEOUT", mqsys::MQBNO_TIMEOUT_STR, "MQLONG", None),
-    ("MQBO_", "MQBO", mqsys::MQBO_STR, "MQLONG", Some("Options mask to control the action of `MQBEGIN`")),
+    (
+        "MQBO_",
+        "MQBO",
+        mqsys::MQBO_STR,
+        "MQLONG",
+        Some("Options mask to control the action of `MQBEGIN`"),
+    ),
     ("MQBPLOCATION_", "MQBPLOCATION", mqsys::MQBPLOCATION_STR, "MQLONG", None),
     ("MQBT_", "MQBT", mqsys::MQBT_STR, "MQLONG", None),
     ("MQCACF_", "MQCACF", mqsys::MQCACF_STR, "MQLONG", None),
@@ -75,15 +66,45 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     ("MQCAP_", "MQCAP", mqsys::MQCAP_STR, "MQLONG", None),
     ("MQCAUT_", "MQCAUT", mqsys::MQCAUT_STR, "MQLONG", None),
     ("MQCA_", "MQCA", mqsys::MQCA_STR, "MQLONG", None),
-    ("MQCBCF_", "MQCBCF", mqsys::MQCBCF_STR, "MQLONG", None),
-    ("MQCBCT_", "MQCBCT", mqsys::MQCBCT_STR, "MQLONG", None),
-    ("MQCBDO_", "MQCBDO", mqsys::MQCBDO_STR, "MQLONG", None),
+    (
+        "MQCBCF_",
+        "MQCBCF",
+        mqsys::MQCBCF_STR,
+        "MQLONG",
+        Some("Flags containing information about the callback consumer"),
+    ),
+    (
+        "MQCBCT_",
+        "MQCBCT",
+        mqsys::MQCBCT_STR,
+        "MQLONG",
+        Some("Callback control and message delivery call types"),
+    ),
+    (
+        "MQCBDO_",
+        "MQCBDO",
+        mqsys::MQCBDO_STR,
+        "MQLONG",
+        Some("Options mask to control the action of `MQCB`"),
+    ),
     ("MQCBD_", "MQCBD", mqsys::MQCBD_STR, "MQLONG", None),
-    ("MQCBO_", "MQCBO", mqsys::MQCBO_STR, "MQLONG", None),
+    (
+        "MQCBO_",
+        "MQCBO",
+        mqsys::MQCBO_STR,
+        "MQLONG",
+        Some("Create-Bag options mask for `mqCreateBag`"),
+    ),
     ("MQCBT_", "MQCBT", mqsys::MQCBT_STR, "MQLONG", None),
     ("MQCCSI_", "MQCCSI", mqsys::MQCCSI_STR, "MQLONG", None),
     ("MQCCT_", "MQCCT", mqsys::MQCCT_STR, "MQLONG", None),
-    ("MQCC_", "MQCC", mqsys::MQCC_STR, "MQLONG", None),
+    (
+        "MQCC_",
+        "MQCC",
+        mqsys::MQCC_STR,
+        "MQLONG",
+        Some("Completion Code from an MQ function call"),
+    ),
     ("MQCDC_", "MQCDC", mqsys::MQCDC_STR, "MQLONG", None),
     #[cfg(feature = "mqc_9_3_1_0")]
     ("MQCEX_", "MQCEX", mqsys::MQCEX_STR, "MQLONG", None),
@@ -92,7 +113,13 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     #[cfg(feature = "mqc_9_3_2_0")]
     ("MQCFC_", "MQCFC", mqsys::MQCFC_STR, "MQLONG", None),
     ("MQCFOFFLD_", "MQCFOFFLD", mqsys::MQCFOFFLD_STR, "MQLONG", None),
-    ("MQCFOP_", "MQCFOP", mqsys::MQCFOP_STR, "MQLONG", None),
+    (
+        "MQCFOP_",
+        "MQCFOP",
+        mqsys::MQCFOP_STR,
+        "MQLONG",
+        Some("Command format Filter Operators"),
+    ),
     ("MQCFO_REFRESH_", "MQCFO_REFRESH", mqsys::MQCFO_REFRESH_STR, "MQLONG", None),
     ("MQCFO_REMOVE_", "MQCFO_REMOVE", mqsys::MQCFO_REMOVE_STR, "MQLONG", None),
     ("MQCFR_", "MQCFR", mqsys::MQCFR_STR, "MQLONG", None),
@@ -125,23 +152,53 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     ("MQCLXQ_", "MQCLXQ", mqsys::MQCLXQ_STR, "MQLONG", None),
     ("MQCMDI_", "MQCMDI", mqsys::MQCMDI_STR, "MQLONG", None),
     ("MQCMDL_", "MQCMDL", mqsys::MQCMDL_STR, "MQLONG", None),
-    ("MQCMD_", "MQCMD", mqsys::MQCMD_STR, "MQLONG", None),
-    ("MQCMHO_", "MQCMHO", mqsys::MQCMHO_STR, "MQLONG", None),
-    ("MQCNO_", "MQCNO", mqsys::MQCNO_STR, "MQLONG", None),
+    ("MQCMD_", "MQCMD", mqsys::MQCMD_STR, "MQLONG", Some("Command Codes")),
+    (
+        "MQCMHO_",
+        "MQCMHO",
+        mqsys::MQCMHO_STR,
+        "MQLONG",
+        Some("Create message handle options for `MQCRTMH`"),
+    ),
+    (
+        "MQCNO_",
+        "MQCNO",
+        mqsys::MQCNO_STR,
+        "MQLONG",
+        Some("Options mask that control the action of `MQCONNX`"),
+    ),
     ("MQCODL_", "MQCODL", mqsys::MQCODL_STR, "MQLONG", None),
     ("MQCOMPRESS_", "MQCOMPRESS", mqsys::MQCOMPRESS_STR, "MQLONG", None),
-    ("MQCOPY_", "MQCOPY", mqsys::MQCOPY_STR, "MQLONG", None),
-    ("MQCO_", "MQCO", mqsys::MQCO_STR, "MQLONG", Some("Options mask to control the action of `MQCLOSE`")),
+    (
+        "MQCOPY_",
+        "MQCOPY",
+        mqsys::MQCOPY_STR,
+        "MQLONG",
+        Some("Property copy options mask"),
+    ),
+    (
+        "MQCO_",
+        "MQCO",
+        mqsys::MQCO_STR,
+        "MQLONG",
+        Some("Options mask to control the action of `MQCLOSE`"),
+    ),
     ("MQCQT_", "MQCQT", mqsys::MQCQT_STR, "MQLONG", None),
     ("MQCRC_", "MQCRC", mqsys::MQCRC_STR, "MQLONG", None),
     ("MQCSP_", "MQCSP", mqsys::MQCSP_STR, "MQLONG", None),
     ("MQCSRV_CONVERT_", "MQCSRV_CONVERT", mqsys::MQCSRV_CONVERT_STR, "MQLONG", None),
     ("MQCSRV_DLQ_", "MQCSRV_DLQ", mqsys::MQCSRV_DLQ_STR, "MQLONG", None),
-    ("MQCS_", "MQCS", mqsys::MQCS_STR, "MQLONG", None),
+    ("MQCS_", "MQCS", mqsys::MQCS_STR, "MQLONG", Some("Callback consumer state")),
     ("MQCTES_", "MQCTES", mqsys::MQCTES_STR, "MQLONG", None),
     ("MQCTLO_", "MQCTLO", mqsys::MQCTLO_STR, "MQLONG", None),
     ("MQCUOWC_", "MQCUOWC", mqsys::MQCUOWC_STR, "MQLONG", None),
-    ("MQDCC_", "MQDCC", mqsys::MQDCC_STR, "MQLONG", None),
+    (
+        "MQDCC_",
+        "MQDCC",
+        mqsys::MQDCC_STR,
+        "MQLONG",
+        Some("Options mask that control the action of `MQXCNVC`"),
+    ),
     ("MQDC_", "MQDC", mqsys::MQDC_STR, "MQLONG", None),
     ("MQDELO_", "MQDELO", mqsys::MQDELO_STR, "MQLONG", None),
     ("MQDHF_", "MQDHF", mqsys::MQDHF_STR, "MQLONG", None),
@@ -149,14 +206,26 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     ("MQDLV_", "MQDLV", mqsys::MQDLV_STR, "MQLONG", None),
     ("MQDL_", "MQDL", mqsys::MQDL_STR, "MQLONG", None),
     ("MQDMHO_", "MQDMHO", mqsys::MQDMHO_STR, "MQLONG", None),
-    ("MQDMPO_", "MQDMPO", mqsys::MQDMPO_STR, "MQLONG", None),
+    (
+        "MQDMPO_",
+        "MQDMPO",
+        mqsys::MQDMPO_STR,
+        "MQLONG",
+        Some("Delete message property options"),
+    ),
     ("MQDNSWLM_", "MQDNSWLM", mqsys::MQDNSWLM_STR, "MQLONG", None),
     ("MQDOPT_", "MQDOPT", mqsys::MQDOPT_STR, "MQLONG", None),
     ("MQDSB_", "MQDSB", mqsys::MQDSB_STR, "MQLONG", None),
     ("MQDSE_", "MQDSE", mqsys::MQDSE_STR, "MQLONG", None),
     ("MQEC_", "MQEC", mqsys::MQEC_STR, "MQLONG", None),
     ("MQEI_", "MQEI", mqsys::MQEI_STR, "MQLONG", None),
-    ("MQENC_", "MQENC", mqsys::MQENC_STR, "MQLONG", None),
+    (
+        "MQENC_",
+        "MQENC",
+        mqsys::MQENC_STR,
+        "MQLONG",
+        Some("Mask describing data encoding"),
+    ),
     ("MQEPH_", "MQEPH", mqsys::MQEPH_STR, "MQLONG", None),
     ("MQET_", "MQET", mqsys::MQET_STR, "MQLONG", None),
     ("MQEVO_", "MQEVO", mqsys::MQEVO_STR, "MQLONG", None),
@@ -172,7 +241,13 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     ("MQFS_", "MQFS", mqsys::MQFS_STR, "MQLONG", None),
     ("MQFUN_", "MQFUN", mqsys::MQFUN_STR, "MQLONG", None),
     ("MQGACF_", "MQGACF", mqsys::MQGACF_STR, "MQLONG", None),
-    ("MQGMO_", "MQGMO", mqsys::MQGMO_STR, "MQLONG", None),
+    (
+        "MQGMO_",
+        "MQGMO",
+        mqsys::MQGMO_STR,
+        "MQLONG",
+        Some("Options mask to control the action of `MQGET`"),
+    ),
     ("MQGUR_", "MQGUR", mqsys::MQGUR_STR, "MQLONG", None),
     ("MQHA_", "MQHA", mqsys::MQHA_STR, "MQLONG", None),
     ("MQHB_", "MQHB", mqsys::MQHB_STR, "MQLONG", None),
@@ -190,7 +265,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
         "MQIAMO_MONITOR_DATATYPE",
         mqsys::MQIAMO_MONITOR_DATATYPE_STR,
         "MQLONG",
-        None
+        None,
     ),
     #[cfg(feature = "mqc_9_3_2_0")]
     (
@@ -198,7 +273,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
         "MQIAMO_MONITOR_FLAGS",
         mqsys::MQIAMO_MONITOR_FLAGS_STR,
         "MQLONG",
-        None
+        None,
     ),
     ("MQIASY_", "MQIASY", mqsys::MQIASY_STR, "MQLONG", None),
     ("MQIAV_", "MQIAV", mqsys::MQIAV_STR, "MQLONG", None),
@@ -210,7 +285,13 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     ("MQIIH_", "MQIIH", mqsys::MQIIH_STR, "MQLONG", None),
     ("MQIMGRCOV_", "MQIMGRCOV", mqsys::MQIMGRCOV_STR, "MQLONG", None),
     ("MQIMMREASON_", "MQIMMREASON", mqsys::MQIMMREASON_STR, "MQLONG", None),
-    ("MQIMPO_", "MQIMPO", mqsys::MQIMPO_STR, "MQLONG", None),
+    (
+        "MQIMPO_",
+        "MQIMPO",
+        mqsys::MQIMPO_STR,
+        "MQLONG",
+        Some("Options mask to control the action of `MQINQMP`"),
+    ),
     ("MQINBD_", "MQINBD", mqsys::MQINBD_STR, "MQLONG", None),
     ("MQIND_", "MQIND", mqsys::MQIND_STR, "MQLONG", Some("Special Index Values")),
     ("MQIPADDR_", "MQIPADDR", mqsys::MQIPADDR_STR, "MQLONG", None),
@@ -219,7 +300,13 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     ("MQKAI_", "MQKAI", mqsys::MQKAI_STR, "MQLONG", None),
     ("MQKEY_", "MQKEY", mqsys::MQKEY_STR, "MQLONG", None),
     ("MQLDAPC_", "MQLDAPC", mqsys::MQLDAPC_STR, "MQLONG", None),
-    ("MQLDAP_AUTHORMD_", "MQLDAP_AUTHORMD", mqsys::MQLDAP_AUTHORMD_STR, "MQLONG", None),
+    (
+        "MQLDAP_AUTHORMD_",
+        "MQLDAP_AUTHORMD",
+        mqsys::MQLDAP_AUTHORMD_STR,
+        "MQLONG",
+        None,
+    ),
     ("MQLDAP_NESTGRP_", "MQLDAP_NESTGRP", mqsys::MQLDAP_NESTGRP_STR, "MQLONG", None),
     #[cfg(feature = "mqc_9_3_2_0")]
     ("MQLOGTYPE_", "MQLOGTYPE", mqsys::MQLOGTYPE_STR, "MQLONG", None),
@@ -238,8 +325,20 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     ("MQMEDIMGLOGLN_", "MQMEDIMGLOGLN", mqsys::MQMEDIMGLOGLN_STR, "MQLONG", None),
     ("MQMEDIMGSCHED_", "MQMEDIMGSCHED", mqsys::MQMEDIMGSCHED_STR, "MQLONG", None),
     ("MQMF_", "MQMF", mqsys::MQMF_STR, "MQLONG", None),
-    ("MQMHBO_", "MQMHBO", mqsys::MQMHBO_STR, "MQLONG", None),
-    ("MQMLP_ENCRYPTION_", "MQMLP_ENCRYPTION", mqsys::MQMLP_ENCRYPTION_STR, "MQLONG", None),
+    (
+        "MQMHBO_",
+        "MQMHBO",
+        mqsys::MQMHBO_STR,
+        "MQLONG",
+        Some("Options mask to control the action of `MQMHBUF`"),
+    ),
+    (
+        "MQMLP_ENCRYPTION_",
+        "MQMLP_ENCRYPTION",
+        mqsys::MQMLP_ENCRYPTION_STR,
+        "MQLONG",
+        None,
+    ),
     ("MQMLP_SIGN_", "MQMLP_SIGN", mqsys::MQMLP_SIGN_STR, "MQLONG", None),
     ("MQMLP_TOLERATE_", "MQMLP_TOLERATE", mqsys::MQMLP_TOLERATE_STR, "MQLONG", None),
     ("MQMMBI_", "MQMMBI", mqsys::MQMMBI_STR, "MQLONG", None),
@@ -248,7 +347,13 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     ("MQMON_OVERRIDE_", "MQMON_OVERRIDE", mqsys::MQMON_OVERRIDE_STR, "MQLONG", None),
     ("MQMON_", "MQMON", mqsys::MQMON_STR, "MQLONG", None),
     #[cfg(feature = "mqc_9_3_2_0")]
-    ("MQMON_AVAILABILITY_", "MQMON_AVAILABILITY", mqsys::MQMON_AVAILABILITY_STR, "MQLONG", None),
+    (
+        "MQMON_AVAILABILITY_",
+        "MQMON_AVAILABILITY",
+        mqsys::MQMON_AVAILABILITY_STR,
+        "MQLONG",
+        None,
+    ),
     ("MQMO_", "MQMO", mqsys::MQMO_STR, "MQLONG", None),
     ("MQMT_", "MQMT", mqsys::MQMT_STR, "MQLONG", None),
     ("MQMULC_", "MQMULC", mqsys::MQMULC_STR, "MQLONG", None),
@@ -267,17 +372,47 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     ("MQNT_", "MQNT", mqsys::MQNT_STR, "MQLONG", None),
     ("MQOL_", "MQOL", mqsys::MQOL_STR, "MQLONG", None),
     ("MQOM_", "MQOM", mqsys::MQOM_STR, "MQLONG", None),
-    ("MQOO_", "MQOO", mqsys::MQOO_STR, "MQLONG", Some("Options mask to control the action of `MQOPEN`")),
+    (
+        "MQOO_",
+        "MQOO",
+        mqsys::MQOO_STR,
+        "MQLONG",
+        Some("Options mask to control the action of `MQOPEN`"),
+    ),
     ("MQOPER_", "MQOPER", mqsys::MQOPER_STR, "MQLONG", None),
     ("MQOPMODE_", "MQOPMODE", mqsys::MQOPMODE_STR, "MQLONG", None),
-    ("MQOP_", "MQOP", mqsys::MQOP_STR, "MQLONG", None),
-    ("MQOT_", "MQOT", mqsys::MQOT_STR, "MQLONG", None),
+    (
+        "MQOP_",
+        "MQOP",
+        mqsys::MQOP_STR,
+        "MQLONG",
+        Some("Operation codes for `MQCTL` and `MQCB`"),
+    ),
+    (
+        "MQOT_",
+        "MQOT",
+        mqsys::MQOT_STR,
+        "MQLONG",
+        Some("Object Types and Extended Object Types"),
+    ),
     ("MQPAGECLAS_", "MQPAGECLAS", mqsys::MQPAGECLAS_STR, "MQLONG", None),
     ("MQPA_", "MQPA", mqsys::MQPA_STR, "MQLONG", None),
-    ("MQPD_", "MQPD", mqsys::MQPD_STR, "MQLONG", None),
+    (
+        "MQPD_",
+        "MQPD",
+        mqsys::MQPD_STR,
+        "MQLONG",
+        Some("Property descriptor, support and context"),
+    ),
     ("MQPER_", "MQPER", mqsys::MQPER_STR, "MQLONG", None),
     ("MQPL_", "MQPL", mqsys::MQPL_STR, "MQLONG", None),
-    ("MQPMO_", "MQPMO", mqsys::MQPMO_STR, "MQLONG", None),
+    (
+        "MQPMO_",
+        "MQPMO",
+        mqsys::MQPMO_STR,
+        "MQLONG",
+        Some("Options mask to control the action of `MQPUT` and `MQPUT1`"),
+    ),
     ("MQPMRF_", "MQPMRF", mqsys::MQPMRF_STR, "MQLONG", None),
     ("MQPO_", "MQPO", mqsys::MQPO_STR, "MQLONG", None),
     ("MQPRI_", "MQPRI", mqsys::MQPRI_STR, "MQLONG", None),
@@ -312,14 +447,26 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     ("MQQSOT_", "MQQSOT", mqsys::MQQSOT_STR, "MQLONG", None),
     ("MQQSO_", "MQQSO", mqsys::MQQSO_STR, "MQLONG", None),
     ("MQQSUM_", "MQQSUM", mqsys::MQQSUM_STR, "MQLONG", None),
-    ("MQQT_", "MQQT", mqsys::MQQT_STR, "MQLONG", None),
+    (
+        "MQQT_",
+        "MQQT",
+        mqsys::MQQT_STR,
+        "MQLONG",
+        Some("Queue Types and Extended Queue Types"),
+    ),
     ("MQRAR_", "MQRAR", mqsys::MQRAR_STR, "MQLONG", None),
     ("MQRCCF_", "MQRCCF", mqsys::MQRCCF_STR, "MQLONG", None),
     ("MQRCN_", "MQRCN", mqsys::MQRCN_STR, "MQLONG", None),
     ("MQRCVTIME_", "MQRCVTIME", mqsys::MQRCVTIME_STR, "MQLONG", None),
-    ("MQRC_", "MQRC", mqsys::MQRC_STR, "MQLONG", None),
+    (
+        "MQRC_",
+        "MQRC",
+        mqsys::MQRC_STR,
+        "MQLONG",
+        Some("Reason Code from an MQ function call"),
+    ),
     ("MQRDNS_", "MQRDNS", mqsys::MQRDNS_STR, "MQLONG", None),
-    ("MQRD_", "MQRD", mqsys::MQRD_STR, "MQLONG", None),
+    ("MQRD_", "MQRD", mqsys::MQRD_STR, "MQLONG", Some("Reconnect delay")),
     ("MQREADA_", "MQREADA", mqsys::MQREADA_STR, "MQLONG", None),
     ("MQRECAUTO_", "MQRECAUTO", mqsys::MQRECAUTO_STR, "MQLONG", None),
     ("MQRECORDING_", "MQRECORDING", mqsys::MQRECORDING_STR, "MQLONG", None),
@@ -347,21 +494,57 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     ("MQSELTYPE_", "MQSELTYPE", mqsys::MQSELTYPE_STR, "MQLONG", None),
     ("MQSEL_ALL_", "MQSEL_ALL", mqsys::MQSEL_ALL_STR, "MQLONG", None),
     ("MQSEL_ANY_", "MQSEL_ANY", mqsys::MQSEL_ANY_STR, "MQLONG", None),
-    ("MQSMPO_", "MQSMPO", mqsys::MQSMPO_STR, "MQLONG", None),
-    ("MQSO_", "MQSO", mqsys::MQSO_STR, "MQLONG", Some("Options mask to control the action of `MQSUB`")),
+    (
+        "MQSMPO_",
+        "MQSMPO",
+        mqsys::MQSMPO_STR,
+        "MQLONG",
+        Some("Set message property options"),
+    ),
+    (
+        "MQSO_",
+        "MQSO",
+        mqsys::MQSO_STR,
+        "MQLONG",
+        Some("Options mask to control the action of `MQSUB`"),
+    ),
     ("MQSPL_", "MQSPL", mqsys::MQSPL_STR, "MQLONG", None),
     ("MQSP_", "MQSP", mqsys::MQSP_STR, "MQLONG", None),
     ("MQSQQM_", "MQSQQM", mqsys::MQSQQM_STR, "MQLONG", None),
-    ("MQSRO_", "MQSRO", mqsys::MQSRO_STR, "MQLONG", None),
-    ("MQSR_", "MQSR", mqsys::MQSR_STR, "MQLONG", None),
+    (
+        "MQSRO_",
+        "MQSRO",
+        mqsys::MQSRO_STR,
+        "MQLONG",
+        Some("Options mask that control the action of `MQSUBRQ`"),
+    ),
+    (
+        "MQSR_",
+        "MQSR",
+        mqsys::MQSR_STR,
+        "MQLONG",
+        Some("Value describing action for `MQSUBRQ`"),
+    ),
     ("MQSSL_", "MQSSL", mqsys::MQSSL_STR, "MQLONG", None),
-    ("MQSTAT_", "MQSTAT", mqsys::MQSTAT_STR, "MQLONG", None),
+    (
+        "MQSTAT_",
+        "MQSTAT",
+        mqsys::MQSTAT_STR,
+        "MQLONG",
+        Some("Value describing the MQSTAT outcome"),
+    ),
     ("MQSTDBY_", "MQSTDBY", mqsys::MQSTDBY_STR, "MQLONG", None),
     #[cfg(feature = "mqc_9_3_0_0")]
     ("MQST_", "MQST", mqsys::MQST_STR, "MQLONG", None),
     ("MQSUBTYPE_", "MQSUBTYPE", mqsys::MQSUBTYPE_STR, "MQLONG", None),
     #[cfg(feature = "mqc_9_3_2_0")]
-    ("MQSUB_DURABILITY_", "MQSUB_DURABILITY", mqsys::MQSUB_DURABILITY_STR, "MQLONG", None),
+    (
+        "MQSUB_DURABILITY_",
+        "MQSUB_DURABILITY",
+        mqsys::MQSUB_DURABILITY_STR,
+        "MQLONG",
+        None,
+    ),
     ("MQSUB_", "MQSUB", mqsys::MQSUB_STR, "MQLONG", None),
     ("MQSUS_", "MQSUS", mqsys::MQSUS_STR, "MQLONG", None),
     ("MQSVC_CONTROL_", "MQSVC_CONTROL", mqsys::MQSVC_CONTROL_STR, "MQLONG", None),
@@ -387,7 +570,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     ("MQTRIGGER_", "MQTRIGGER", mqsys::MQTRIGGER_STR, "MQLONG", None),
     ("MQTSCOPE_", "MQTSCOPE", mqsys::MQTSCOPE_STR, "MQLONG", None),
     ("MQTT_", "MQTT", mqsys::MQTT_STR, "MQLONG", None),
-    ("MQTYPE_", "MQTYPE", mqsys::MQTYPE_STR, "MQLONG", None),
+    ("MQTYPE_", "MQTYPE", mqsys::MQTYPE_STR, "MQLONG", Some("Property data types")),
     ("MQUCI_", "MQUCI", mqsys::MQUCI_STR, "MQLONG", None),
     ("MQUIDSUPP_", "MQUIDSUPP", mqsys::MQUIDSUPP_STR, "MQLONG", None),
     ("MQUNDELIVERED_", "MQUNDELIVERED", mqsys::MQUNDELIVERED_STR, "MQLONG", None),
@@ -424,7 +607,13 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     ("MQZAT_", "MQZAT", mqsys::MQZAT_STR, "MQLONG", None),
     ("MQZCI_", "MQZCI", mqsys::MQZCI_STR, "MQLONG", None),
     #[cfg(feature = "mqc_9_3_2_0")]
-    ("MQZID_AUTHORITY_", "MQZID_AUTHORITY", mqsys::MQZID_AUTHORITY_STR, "MQLONG", None),
+    (
+        "MQZID_AUTHORITY_",
+        "MQZID_AUTHORITY",
+        mqsys::MQZID_AUTHORITY_STR,
+        "MQLONG",
+        None,
+    ),
     #[cfg(feature = "mqc_9_3_2_0")]
     ("MQZID_NAME_", "MQZID_NAME", mqsys::MQZID_NAME_STR, "MQLONG", None),
     #[cfg(feature = "mqc_9_3_2_0")]
@@ -439,9 +628,21 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     ("MQ_MQTT_", "MQ_MQTT", mqsys::MQ_MQTT_STR, "MQLONG", None),
     ("MQ_SUITE_", "MQ_SUITE", mqsys::MQ_SUITE_STR, "MQLONG", None),
     #[cfg(feature = "mqc_9_4_1_0")]
-    ("MQ_HTTPSCERTREV_", "MQ_HTTPSCERTREV", mqsys::MQ_HTTPSCERTREV_STR, "MQLONG", None),
+    (
+        "MQ_HTTPSCERTREV_",
+        "MQ_HTTPSCERTREV",
+        mqsys::MQ_HTTPSCERTREV_STR,
+        "MQLONG",
+        Some("Level of certificate revocation check that is required for HTTPS connections"),
+    ),
     #[cfg(feature = "mqc_9_4_1_0")]
-    ("MQ_HTTPSCERTVAL_", "MQ_HTTPSCERTVAL", mqsys::MQ_HTTPSCERTVAL_STR, "MQLONG", None),
+    (
+        "MQ_HTTPSCERTVAL_",
+        "MQ_HTTPSCERTVAL",
+        mqsys::MQ_HTTPSCERTVAL_STR,
+        "MQLONG",
+        Some("Level of certificate validation that is required for HTTPS connections"),
+    ),
     #[cfg(feature = "mqc_9_4_2_0")]
     ("MQNHACONNGRP_", "MQNHACONNGRP", mqsys::MQNHACONNGRP_STR, "MQLONG", None),
     #[cfg(feature = "mqc_9_4_2_0")]

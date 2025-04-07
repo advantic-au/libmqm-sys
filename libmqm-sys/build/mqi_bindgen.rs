@@ -61,7 +61,12 @@ pub const DEF_CONST: &[(&[&str], IntKind)] = &[
         },
     ),
     (
-        &[".+_CURRENT_LENGTH$", ".+_STRUC.*_LENGTH", ".+_LENGTH_[0-9]+$", "^MQ_.+_LEN(GTH)?$"], // All lengths should be usize
+        &[
+            ".+_CURRENT_LENGTH$",
+            ".+_STRUC.*_LENGTH",
+            ".+_LENGTH_[0-9]+$",
+            "^MQ_.+_LEN(GTH)?$",
+        ], // All lengths should be usize
         IntKind::Custom {
             name: "usize",
             is_signed: false,

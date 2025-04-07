@@ -1,17 +1,5 @@
 use libmqm_sys::lib::MQLONG;
 
-/// Implements `HasConstLookup` using the provided `ConstSource` static instance
-#[macro_export]
-macro_rules! impl_constant_lookup {
-    ($t:ty, $source:path) => {
-        impl $crate::lookup::HasConstLookup for $t {
-            fn const_lookup<'a>() -> &'a (impl $crate::lookup::ConstLookup + 'static) {
-                &$source
-            }
-        }
-    };
-}
-
 use crate::mapping;
 
 pub trait MqConstant {

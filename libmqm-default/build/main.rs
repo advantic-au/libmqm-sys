@@ -156,10 +156,10 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         std::path::PathBuf::from(std::env::var("OUT_DIR").map_err(|e| io::Error::new(io::ErrorKind::InvalidInput, e))?); // Mandatory OUT_DIR
     let defaults_path = out_path.join("defaults.rs");
 
-    let mut defaults_write = io::BufWriter::new(Vec::new());
+    let mut defaults_write = Vec::new();
     generate_defaults(&mut defaults_write)?;
 
-    let defaults_str = String::from_utf8(defaults_write.into_inner()?)?;
+    let defaults_str = String::from_utf8(defaults_write)?;
     let defaults_syn = syn::parse_file(&defaults_str)?;
     let defaults_pretty = prettyplease::unparse(&defaults_syn);
     let defaults_file = std::fs::File::create(&defaults_path)?;

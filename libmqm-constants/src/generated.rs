@@ -4,7 +4,7 @@
 #![allow(clippy::nursery)]
 
 #[cfg(feature = "generate")]
-mod gen {
+mod c {
     pub mod mapping {
         // This file is generated during the build process
         include!(concat!(env!("OUT_DIR"), "/mapping.rs"));
@@ -13,27 +13,52 @@ mod gen {
 }
 
 #[cfg(all(not(feature = "generate"), target_os = "windows", target_arch = "x86_64"))]
-mod gen {
-
+mod c {
     mod mapping {
         include!("../pregen/x86_64-windows-mapping.rs");
     }
     include!("../pregen/x86_64-windows-new_types.rs");
 }
 
-pub use gen::mapping;
-pub use gen::constants;
-pub use gen::types;
-
-pub(crate) mod agg_mapping {
-    use crate::lookup::{BinarySearchSource, ConstSource, PhfSource};
-    use super::mapping;
-
-    type MqxaSource<'a> = ConstSource<BinarySearchSource<'a>, BinarySearchSource<'a>>;    
-    /// Selectors for MQIA and MQCA combined
-    pub const MQXA_FULL_CONST: MqxaSource = ConstSource(mapping::MQIA_CONST, mapping::MQCA_CONST);
-
-    /// Combined MQRCCF and MQRC range
-    pub const MQRC_FULL_CONST: ConstSource<PhfSource, PhfSource> = ConstSource(mapping::MQRC_CONST, mapping::MQRCCF_CONST);
+#[cfg(all(not(feature = "generate"), target_os = "linux", target_arch = "x86_64"))]
+mod c {
+    mod mapping {
+        include!("../pregen/x86_64-linux-mapping.rs");
+    }
+    include!("../pregen/x86_64-linux-new_types.rs");
 }
 
+#[cfg(all(not(feature = "generate"), target_os = "macos"))]
+mod c {
+    mod mapping {
+        include!("../pregen/any-macos-mapping.rs");
+    }
+    include!("../pregen/any-macos-new_types.rs");
+}
+
+pub use c::constants;
+
+pub mod mapping {
+    pub use super::c::mapping::*;
+
+    use crate::lookup::{BinarySearchSource, ConstSource, PhfSource};
+
+    type MqxaSource<'a> = ConstSource<BinarySearchSource<'a>, BinarySearchSource<'a>>;
+
+    pub const MQXA_CONST: MqxaSource = ConstSource(MQIA_CONST, MQCA_CONST);
+    pub const MQRC_FULL_CONST: ConstSource<PhfSource, PhfSource> = ConstSource(MQRC_CONST, MQRCCF_CONST);
+    pub struct MqaiSelectorLookup;
+}
+
+pub mod types {
+    use crate::value::define_new_type;
+    use ::libmqm_sys::lib as sys;
+
+    pub use super::c::types::*;
+
+    define_new_type!(pub MQXA, sys::MQLONG, super::mapping::MQXA_CONST, "Selectors for MQIA and MQCA");
+    define_new_type!(pub MQRC, sys::MQLONG, super::mapping::MQRC_FULL_CONST, "Reason Code from an MQ function call");
+
+    #[cfg(feature = "mqai")]
+    define_new_type!(pub MqaiSelector, sys::MQLONG, super::mapping::MqaiSelectorLookup);
+}
