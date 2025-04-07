@@ -219,7 +219,7 @@ fn main() -> Result<(), io::Error> {
                 .map_err(|e| io::Error::new(io::ErrorKind::InvalidData, e))?
                 .write(Box::new(&mut bindings_buf))?;
             let bindings_str = String::from_utf8_lossy(&bindings_buf);
-            let mqlong_replace = Regex::new("(: MQLONG = )(\\d+);").unwrap();
+            let mqlong_replace = Regex::new(r"(:\s*MQLONG\s*=\s*)(\d+)\s*;").unwrap();
             let bindings_str = mqlong_replace.replace_all(&bindings_str, |caps: &Captures| {
                 if caps[2].parse::<i32>().is_err() {
                     let i = caps[2].parse::<u32>().unwrap();
