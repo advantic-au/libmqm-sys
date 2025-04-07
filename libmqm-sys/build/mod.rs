@@ -1,9 +1,4 @@
-use std::{
-    fs::File,
-    io::{self, BufWriter, Write},
-};
-
-use regex_lite::{Captures, Regex};
+use std::io;
 
 #[cfg(feature = "bindgen")]
 mod mqi_bindgen;
@@ -219,8 +214,8 @@ fn main() -> Result<(), io::Error> {
                 .map_err(|e| io::Error::new(io::ErrorKind::InvalidData, e))?
                 .write(Box::new(&mut bindings_buf))?;
             let bindings_str = String::from_utf8_lossy(&bindings_buf);
-            let mqlong_replace = Regex::new(r"(:\s*MQLONG\s*=\s*)(\d+)\s*;").unwrap();
-            let bindings_str = mqlong_replace.replace_all(&bindings_str, |caps: &Captures| {
+            let mqlong_replace = regex_lite::Regex::new(r"(:\s*MQLONG\s*=\s*)(\d+)\s*;").unwrap();
+            let bindings_str = mqlong_replace.replace_all(&bindings_str, |caps: &regex_lite::Captures| {
                 if caps[2].parse::<i32>().is_err() {
                     let i = caps[2].parse::<u32>().unwrap();
                     #[allow(clippy::cast_possible_wrap)]
@@ -231,7 +226,8 @@ fn main() -> Result<(), io::Error> {
                 }
             });
             {
-                let mut out_file = BufWriter::new(File::create(&out_bindings)?);
+                use io::Write as _;
+                let mut out_file = io::BufWriter::new(std::fs::File::create(&out_bindings)?);
                 out_file.write_all(bindings_str.as_bytes())?;
             }
 

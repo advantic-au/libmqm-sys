@@ -15,25 +15,25 @@ mod c {
 #[cfg(all(not(feature = "generate"), target_os = "windows", target_arch = "x86_64"))]
 mod c {
     mod mapping {
-        include!("../pregen/x86_64-windows-mapping.rs");
+        include!("pregen/x86_64-windows-mapping.rs");
     }
-    include!("../pregen/x86_64-windows-new_types.rs");
+    include!("pregen/x86_64-windows-new_types.rs");
 }
 
 #[cfg(all(not(feature = "generate"), target_os = "linux", target_arch = "x86_64"))]
 mod c {
     mod mapping {
-        include!("../pregen/x86_64-linux-mapping.rs");
+        include!("pregen/x86_64-linux-mapping.rs");
     }
-    include!("../pregen/x86_64-linux-new_types.rs");
+    include!("pregen/x86_64-linux-new_types.rs");
 }
 
 #[cfg(all(not(feature = "generate"), target_os = "macos"))]
 mod c {
     mod mapping {
-        include!("../pregen/any-macos-mapping.rs");
+        include!("pregen/any-macos-mapping.rs");
     }
-    include!("../pregen/any-macos-new_types.rs");
+    include!("pregen/any-macos-new_types.rs");
 }
 
 pub use c::constants;
