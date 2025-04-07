@@ -24,10 +24,10 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                     "define_new_type!(pub {new_type}, mqsys::{orig_type}, crate::mapping::{prefix}CONST{});",
                     doc.map_or(String::new(), |doc_lines| format!(", \"{doc_lines}\""))
                 )?;
-                for (_, constant) in primary.iter().chain(extra) {
+                for (value, constant) in primary.iter().chain(extra) {
                     writeln!(
                         constant_write,
-                        "pub const {constant}: types::{new_type} = types::{new_type}(mqsys::{constant});"
+                        "pub const {constant}: types::{new_type} = types::{new_type}({value});"
                     )?;
                 }
             }
