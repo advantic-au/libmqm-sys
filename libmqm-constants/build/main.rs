@@ -47,7 +47,6 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 "
                 pub mod constants {{
                     use crate::types;
-                    use ::libmqm_sys::lib as mqsys;
                     {}
                 }}
             ",
