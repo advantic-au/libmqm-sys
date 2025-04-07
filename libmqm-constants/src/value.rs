@@ -86,7 +86,7 @@ macro_rules! impl_value {
         impl std::fmt::Debug for $new_type {
             fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
                 let $new_type(attribute) = self;
-                $crate::value::value_debug(stringify!($i), *attribute, self.mq_names(), f)
+                $crate::value::value_debug(stringify!($new_type), *attribute, self.mq_names(), f)
             }
         }
     };

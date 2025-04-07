@@ -108,7 +108,7 @@ macro_rules! impl_mask {
 
         impl std::fmt::Debug for $name {
             fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
-                $crate::mask::mask_debug(stringify!($i), self.0, Self::const_lookup(), f)
+                $crate::mask::mask_debug(stringify!($name), self.0, Self::const_lookup(), f)
             }
         }
     };
