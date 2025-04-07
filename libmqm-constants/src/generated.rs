@@ -45,8 +45,8 @@ pub mod mapping {
 
     type MqxaSource<'a> = ConstSource<BinarySearchSource<'a>, BinarySearchSource<'a>>;
 
-    pub const MQXA_CONST: MqxaSource = ConstSource(MQIA_CONST, MQCA_CONST);
-    pub const MQRC_FULL_CONST: ConstSource<PhfSource, PhfSource> = ConstSource(MQRC_CONST, MQRCCF_CONST);
+    pub const MQXA_MAPSTR: MqxaSource = ConstSource(MQIA_MAPSTR, MQCA_MAPSTR);
+    pub const MQRC_FULL_MAPSTR: ConstSource<PhfSource, PhfSource> = ConstSource(MQRC_MAPSTR, MQRCCF_MAPSTR);
     pub struct MqaiSelectorLookup;
 }
 
@@ -56,8 +56,8 @@ pub mod types {
 
     pub use super::c::types::*;
 
-    define_new_type!(pub MQXA, sys::MQLONG, super::mapping::MQXA_CONST, "Selectors for MQIA and MQCA");
-    define_new_type!(pub MQRC, sys::MQLONG, super::mapping::MQRC_FULL_CONST, "Reason Code from an MQ function call");
+    define_new_type!(pub MQXA, sys::MQLONG, super::mapping::MQXA_MAPSTR, "Selectors for MQIA and MQCA");
+    define_new_type!(pub MQRC, sys::MQLONG, super::mapping::MQRC_FULL_MAPSTR, "Reason Code from an MQ function call");
 
     #[cfg(feature = "mqai")]
     define_new_type!(pub MqaiSelector, sys::MQLONG, super::mapping::MqaiSelectorLookup);

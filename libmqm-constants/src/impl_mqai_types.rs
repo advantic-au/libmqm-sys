@@ -30,38 +30,38 @@ It would be more efficient to generate one large set as part of the build proces
 
 impl ConstLookup for crate::mapping::MqaiSelectorLookup {
     fn by_value(&self, value: sys::MQLONG) -> impl Iterator<Item = &str> {
-        mapping::MQIA_CONST
+        mapping::MQIA_MAPSTR
             .by_value(value)
-            .chain(mapping::MQCA_CONST.by_value(value))
-            .chain(mapping::MQIACF_CONST.by_value(value))
-            .chain(mapping::MQCACF_CONST.by_value(value))
-            .chain(mapping::MQIACH_CONST.by_value(value))
-            .chain(mapping::MQCACH_CONST.by_value(value))
-            .chain(mapping::MQIASY_CONST.by_value(value))
-            .chain(mapping::MQHA_CONST.by_value(value))
+            .chain(mapping::MQCA_MAPSTR.by_value(value))
+            .chain(mapping::MQIACF_MAPSTR.by_value(value))
+            .chain(mapping::MQCACF_MAPSTR.by_value(value))
+            .chain(mapping::MQIACH_MAPSTR.by_value(value))
+            .chain(mapping::MQCACH_MAPSTR.by_value(value))
+            .chain(mapping::MQIASY_MAPSTR.by_value(value))
+            .chain(mapping::MQHA_MAPSTR.by_value(value))
     }
 
     fn by_name(&self, name: &str) -> Option<sys::MQLONG> {
-        mapping::MQIA_CONST
+        mapping::MQIA_MAPSTR
             .by_name(name)
-            .or_else(|| mapping::MQCA_CONST.by_name(name))
-            .or_else(|| mapping::MQIACF_CONST.by_name(name))
-            .or_else(|| mapping::MQCACF_CONST.by_name(name))
-            .or_else(|| mapping::MQIACH_CONST.by_name(name))
-            .or_else(|| mapping::MQCACH_CONST.by_name(name))
-            .or_else(|| mapping::MQIASY_CONST.by_name(name))
-            .or_else(|| mapping::MQHA_CONST.by_name(name))
+            .or_else(|| mapping::MQCA_MAPSTR.by_name(name))
+            .or_else(|| mapping::MQIACF_MAPSTR.by_name(name))
+            .or_else(|| mapping::MQCACF_MAPSTR.by_name(name))
+            .or_else(|| mapping::MQIACH_MAPSTR.by_name(name))
+            .or_else(|| mapping::MQCACH_MAPSTR.by_name(name))
+            .or_else(|| mapping::MQIASY_MAPSTR.by_name(name))
+            .or_else(|| mapping::MQHA_MAPSTR.by_name(name))
     }
 
     fn all(&self) -> impl Iterator<Item = ConstantItem> {
-        mapping::MQIA_CONST
+        mapping::MQIA_MAPSTR
             .all()
-            .chain(mapping::MQCA_CONST.all())
-            .chain(mapping::MQIACF_CONST.all())
-            .chain(mapping::MQCACF_CONST.all())
-            .chain(mapping::MQIACH_CONST.all())
-            .chain(mapping::MQCACH_CONST.all())
-            .chain(mapping::MQIASY_CONST.all())
-            .chain(mapping::MQHA_CONST.all())
+            .chain(mapping::MQCA_MAPSTR.all())
+            .chain(mapping::MQIACF_MAPSTR.all())
+            .chain(mapping::MQCACF_MAPSTR.all())
+            .chain(mapping::MQIACH_MAPSTR.all())
+            .chain(mapping::MQCACH_MAPSTR.all())
+            .chain(mapping::MQIASY_MAPSTR.all())
+            .chain(mapping::MQHA_MAPSTR.all())
     }
 }

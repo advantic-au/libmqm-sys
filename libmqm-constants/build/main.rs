@@ -21,7 +21,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             for (prefix, (new_type, orig_type, doc, primary, extra)) in prefix_constants {
                 writeln!(
                     new_type_write,
-                    "define_new_type!(pub {new_type}, mqsys::{orig_type}, crate::mapping::{prefix}CONST{});",
+                    "define_new_type!(pub {new_type}, mqsys::{orig_type}, crate::mapping::{prefix}MAPSTR{});",
                     doc.map_or(String::new(), |doc_lines| format!(", \"{doc_lines}\""))
                 )?;
                 for (value, constant) in primary.iter().chain(extra) {
@@ -58,7 +58,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             // TODO: Determine best ranges for performance
             for (prefix, (.., primary, extra)) in prefix_constants {
                 let extra_array = generate::as_array(extra);
-                write!(mapping_write, "pub const {prefix}CONST: ")?;
+                write!(mapping_write, "pub const {prefix}MAPSTR: ")?;
                 match primary.len() {
                     0..=63 => {
                         // Linear search array
