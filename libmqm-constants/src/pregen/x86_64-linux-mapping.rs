@@ -1779,28 +1779,6 @@ pub const MQFC_CONST: LinearSource = ConstSource(
     &[(0, "MQFC_NO"), (1, "MQFC_YES")],
     &[],
 );
-pub const MQFIELD_WQR_CONST: LinearSource = ConstSource(
-    &[
-        (8000, "MQFIELD_WQR_StrucId"),
-        (8001, "MQFIELD_WQR_Version"),
-        (8002, "MQFIELD_WQR_StrucLength"),
-        (8003, "MQFIELD_WQR_QFlags"),
-        (8004, "MQFIELD_WQR_QName"),
-        (8005, "MQFIELD_WQR_QMgrIdentifier"),
-        (8006, "MQFIELD_WQR_ClusterRecOffset"),
-        (8007, "MQFIELD_WQR_QType"),
-        (8008, "MQFIELD_WQR_QDesc"),
-        (8009, "MQFIELD_WQR_DefBind"),
-        (8010, "MQFIELD_WQR_DefPersistence"),
-        (8011, "MQFIELD_WQR_DefPriority"),
-        (8012, "MQFIELD_WQR_InhibitPut"),
-        (8013, "MQFIELD_WQR_CLWLQueuePriority"),
-        (8014, "MQFIELD_WQR_CLWLQueueRank"),
-        (8015, "MQFIELD_WQR_DefPutResponse"),
-        (8016, "MQFIELD_WQR_CapExpiry"),
-    ],
-    &[],
-);
 pub const MQFSENC_CONST: LinearSource = ConstSource(
     &[(0, "MQFSENC_NO"), (1, "MQFSENC_YES"), (2, "MQFSENC_UNKNOWN")],
     &[],
@@ -5599,26 +5577,6 @@ pub const MQXCC_CONST: LinearSource = ConstSource(
         (-2, "MQXCC_SKIP_FUNCTION"),
         (-1, "MQXCC_SUPPRESS_FUNCTION"),
         (0, "MQXCC_OK"),
-    ],
-    &[],
-);
-pub const MQXC_CONST: LinearSource = ConstSource(
-    &[
-        (1, "MQXC_MQOPEN"),
-        (2, "MQXC_MQCLOSE"),
-        (3, "MQXC_MQGET"),
-        (4, "MQXC_MQPUT"),
-        (5, "MQXC_MQPUT1"),
-        (6, "MQXC_MQINQ"),
-        (8, "MQXC_MQSET"),
-        (9, "MQXC_MQBACK"),
-        (10, "MQXC_MQCMIT"),
-        (42, "MQXC_MQSUB"),
-        (43, "MQXC_MQSUBRQ"),
-        (44, "MQXC_MQCB"),
-        (45, "MQXC_MQCTL"),
-        (46, "MQXC_MQSTAT"),
-        (48, "MQXC_CALLBACK"),
     ],
     &[],
 );
