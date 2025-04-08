@@ -94,6 +94,7 @@ phf = { default-features = false, version = "0.11" }
 derive_more = { version = "2.0.1", features = [ "from", "add", "add_assign" ]}
 
 [build-dependencies]
+regex-lite = "0.1.6"
 libmqm-sys = { version = "0.7.0", default-features = false, path = "../libmqm-sys" }
 phf_codegen = { version = "0.11.2", optional = true }
 prettyplease = { version = "0.2.31", optional = true }

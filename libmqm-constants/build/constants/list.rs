@@ -11,7 +11,11 @@ pub type ConstantEntry<'a> = (
 );
 
 pub const PREFIX_CONSTANTS: &[(&str, &str, &str, Option<&str>)] =
-    &[("MQITEM_", "MQITEM", "MQLONG", Some("Item Type for `mqInquireItemInfo`"))];
+    &[
+        ("MQITEM_", "MQITEM", "MQLONG", Some("Item Type for `mqInquireItemInfo`")),
+        ("MQXC_", "MQXC", "MQLONG", Some("Exit commands")),
+        ("MQFIELD_WQR_", "MQFIELD_WQR", "MQLONG", None)
+    ];
 pub const CONSTANTS: &[ConstantEntry] = &[
     ("MQACTIVE_", "MQACTIVE", mqsys::MQACTIVE_STR, "MQLONG", None),
     ("MQACTP_", "MQACTP", mqsys::MQACTP_STR, "MQLONG", None),

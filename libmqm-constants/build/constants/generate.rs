@@ -5,8 +5,22 @@ use std::ffi::CStr;
 use std::str;
 
 use libmqm_sys::lib as mqsys;
+
+const CONST_IGNORE: &[&str] = &[
+    r".+_CURRENT_LENGTH.*",
+    r".+_STRUC.*_LENGTH.*",
+    r".+_LENGTH_\d+.*",
+    r".+_VERSION_\d+.*",
+    r".+_CURRENT_VERSION.*",
+    r"^MQ_.+_LEN(GTH)?.*",
+];
+
+pub fn const_ignore_regex() -> impl Iterator<Item = regex_lite::Regex> {
+    CONST_IGNORE.iter().map(|r| regex_lite::Regex::new(r).expect("regex should compile"))
+}
+
 // Load the `MQI_BY_NAME_STR` into a Vec
-pub fn by_name(by_name_mqi: &[mqsys::MQI_BY_NAME_STR]) -> Vec<(&str, i32)> {
+pub fn by_name(by_name_mqi: &[mqsys::MQI_BY_NAME_STR]) -> impl Iterator<Item = (&str, i32)> {
     by_name_mqi
         .iter()
         .map(|entry| {
@@ -16,11 +30,10 @@ pub fn by_name(by_name_mqi: &[mqsys::MQI_BY_NAME_STR]) -> Vec<(&str, i32)> {
             )
         })
         .filter(|(name, ..)| !name.is_empty())
-        .collect()
 }
 
 /// Load the `MQI_BY_VALUE_STR` into a Vec
-fn by_value(by_value_mqi: &[mqsys::MQI_BY_VALUE_STR]) -> Vec<(i32, &str)> {
+fn by_value(by_value_mqi: &[mqsys::MQI_BY_VALUE_STR]) -> impl Iterator<Item = (i32, &str)> {
     by_value_mqi
         .iter()
         .map(|entry| {
@@ -29,7 +42,6 @@ fn by_value(by_value_mqi: &[mqsys::MQI_BY_VALUE_STR]) -> Vec<(i32, &str)> {
             })
         })
         .filter(|(.., name)| !name.is_empty())
-        .collect()
 }
 
 pub fn as_array(by_value: &[(mqsys::MQLONG, &str)]) -> String {
@@ -56,7 +68,7 @@ where
     F: FnOnce(&[(&str, (&str, &str, Option<&str>, &[(i32, &str)], Vec<(i32, &str)>))]) -> Result<(), E>,
 {
     let by_value_mqi = unsafe { &mqsys::MQI_BY_VALUE_STR };
-    let by_value = by_value(by_value_mqi);
+    let by_value: Vec<_> = by_value(by_value_mqi).collect();
 
     // Gather the list of constants for each prefix by using
     // the _STR c functions and CONSTANTS which was derived from
@@ -99,6 +111,8 @@ where
         .map(|(.., name)| *name)
         .collect::<HashSet<_>>();
 
+    let unassigned_filter: Vec<_> = const_ignore_regex().collect();
+
     // List of unassigned constants
     let unassigned_constants = by_value
         .iter()
@@ -107,19 +121,9 @@ where
         .filter(|(.., name)| {
             // Ignore some constants that are used for MQI structures
             // and ranges
-            !name.contains("_LENGTH")
-                && !name.contains("_VERSION")
-                && !name.ends_with("_LAST")
-                && !name.ends_with("_FIRST")
-                && !name.ends_with("_LAST_USED")
+            !unassigned_filter.iter().any(|r| r.is_match(name))
         })
         .collect::<Vec<_>>();
-
-    // Show the unassigned constants without a _str function
-    // dbg!(unassigned_constants.iter().filter(|(_, name)| {
-    //     !all_constants().any(|(prefix, _)| name.starts_with(prefix))
-    // }).collect::<Vec<_>>());
-    // panic!();
 
     // Create a map of primary and extra constants
     let mut prefix_constants = primary_constants
