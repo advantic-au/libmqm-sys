@@ -6,7 +6,7 @@ use crate::{
 use libmqm_sys::lib as sys;
 
 use super::value::impl_default_value;
-use super::{mask::impl_mask, types, value::impl_value};
+use super::{bitflags::impl_bitflags, types, value::impl_value};
 
 impl_value!(types::MQIND);
 impl_value!(types::MQQT);
@@ -16,7 +16,7 @@ impl_default_value!(types::MQCMD, sys::MQCMD_NONE);
 impl_value!(types::MQCFOP);
 impl_value!(types::MqaiSelector);
 impl_default_value!(types::MQIND, sys::MQIND_NONE);
-impl_mask!(types::MQCBO);
+impl_bitflags!(types::MQCBO);
 impl_value!(types::MQITEM);
 
 /*

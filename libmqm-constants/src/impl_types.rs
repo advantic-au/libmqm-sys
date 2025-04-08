@@ -1,15 +1,15 @@
 use libmqm_sys::lib as sys;
 
 use super::value::impl_default_value;
-use super::{mask::impl_mask, types, value::impl_value};
+use super::{bitflags::impl_bitflags, types, value::impl_value};
 
-impl_mask!(types::MQOO);
-impl_mask!(types::MQCO);
+impl_bitflags!(types::MQOO);
+impl_bitflags!(types::MQCO);
 impl_default_value!(types::MQCO, sys::MQCO_NONE);
-impl_mask!(types::MQBO);
+impl_bitflags!(types::MQBO);
 impl_default_value!(types::MQBO, sys::MQBO_NONE);
-impl_mask!(types::MQSO);
-impl_mask!(types::MQOP);
+impl_bitflags!(types::MQSO);
+impl_bitflags!(types::MQOP);
 
 impl_value!(types::MQCBCT);
 impl_value!(types::MQCBCF);
@@ -17,15 +17,15 @@ impl_value!(types::MQCS);
 impl_value!(types::MQRD);
 impl_value!(types::MQSR);
 
-impl_mask!(types::MQSRO);
+impl_bitflags!(types::MQSRO);
 impl_default_value!(types::MQSRO, sys::MQSRO_NONE);
 impl_value!(types::MQTYPE);
 impl_default_value!(types::MQTYPE, sys::MQTYPE_AS_SET);
-impl_mask!(types::MQENC);
+impl_bitflags!(types::MQENC);
 impl_default_value!(types::MQENC, sys::MQENC_NATIVE);
-impl_mask!(types::MQGMO);
+impl_bitflags!(types::MQGMO);
 impl_default_value!(types::MQGMO, sys::MQGMO_NONE);
-impl_mask!(types::MQPMO);
+impl_bitflags!(types::MQPMO);
 impl_default_value!(types::MQPMO, sys::MQPMO_NONE);
 impl_value!(types::MQSTAT);
 impl_value!(types::MQCMHO);
@@ -35,19 +35,19 @@ impl_default_value!(types::MQSMPO, sys::MQSMPO_SET_FIRST);
 impl_value!(types::MQDMPO);
 impl_default_value!(types::MQDMPO, sys::MQDMPO_DEL_FIRST);
 impl_value!(types::MQXA);
-impl_mask!(types::MQCBDO);
-impl_mask!(types::MQIMPO);
-impl_mask!(types::MQMHBO);
-impl_mask!(types::MQBMHO);
+impl_bitflags!(types::MQCBDO);
+impl_bitflags!(types::MQIMPO);
+impl_bitflags!(types::MQMHBO);
+impl_bitflags!(types::MQBMHO);
 impl_default_value!(types::MQIMPO, sys::MQIMPO_NONE);
 impl_value!(types::MQPD);
-impl_mask!(types::MQCOPY);
+impl_bitflags!(types::MQCOPY);
 impl_value!(types::MQRC);
 impl_value!(types::MQCC);
-impl_mask!(types::MQDCC);
+impl_bitflags!(types::MQDCC);
 impl_default_value!(types::MQDCC, sys::MQDCC_NONE);
 
-impl_mask!(types::MQCNO);
+impl_bitflags!(types::MQCNO);
 impl_value!(types::MQXPT);
 
 impl_value!(types::MQOT);
