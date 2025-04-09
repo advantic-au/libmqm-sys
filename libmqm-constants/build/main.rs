@@ -51,7 +51,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 writeln!(
                     new_type_write,
                     "define_new_type!(pub {new_type}, mqsys::{orig_type}, crate::mapping::{prefix}MAPSTR{});",
-                    doc.map_or(String::new(), |doc_lines| format!(", \"{doc_lines}\""))
+                    doc.map_or(String::new(), |doc_lines| format!(", r###\"{doc_lines}\"###"))
                 )?;
                 for (value, constant) in primary.iter().chain(extra) {
                     writeln!(

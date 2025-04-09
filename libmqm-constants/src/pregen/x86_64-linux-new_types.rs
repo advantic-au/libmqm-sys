@@ -29,7 +29,8 @@ pub mod types {
     define_new_type!(pub MQAPPL, mqsys::MQLONG, crate ::mapping::MQAPPL_MAPSTR);
     define_new_type!(pub MQAS, mqsys::MQLONG, crate ::mapping::MQAS_MAPSTR);
     define_new_type!(
-        pub MQAT, mqsys::MQLONG, crate ::mapping::MQAT_MAPSTR, "Put Application Types"
+        pub MQAT, mqsys::MQLONG, crate ::mapping::MQAT_MAPSTR,
+        r###"Put Application Types"###
     );
     define_new_type!(
         pub MQAUTHENTICATE, mqsys::MQLONG, crate ::mapping::MQAUTHENTICATE_MAPSTR
@@ -44,7 +45,7 @@ pub mod types {
     define_new_type!(pub MQBL, mqsys::MQLONG, crate ::mapping::MQBL_MAPSTR);
     define_new_type!(
         pub MQBMHO, mqsys::MQLONG, crate ::mapping::MQBMHO_MAPSTR,
-        "Options mask to control the action of `MQBUFMH`"
+        r###"Options mask to control the action of `MQBUFMH`"###
     );
     define_new_type!(pub MQBND, mqsys::MQLONG, crate ::mapping::MQBND_MAPSTR);
     define_new_type!(
@@ -58,7 +59,7 @@ pub mod types {
     );
     define_new_type!(
         pub MQBO, mqsys::MQLONG, crate ::mapping::MQBO_MAPSTR,
-        "Options mask to control the action of `MQBEGIN`"
+        r###"Options mask to control the action of `MQBEGIN`"###
     );
     define_new_type!(
         pub MQBPLOCATION, mqsys::MQLONG, crate ::mapping::MQBPLOCATION_MAPSTR
@@ -74,27 +75,27 @@ pub mod types {
     define_new_type!(pub MQCA, mqsys::MQLONG, crate ::mapping::MQCA_MAPSTR);
     define_new_type!(
         pub MQCBCF, mqsys::MQLONG, crate ::mapping::MQCBCF_MAPSTR,
-        "Flags containing information about the callback consumer"
+        r###"Flags containing information about the callback consumer"###
     );
     define_new_type!(
         pub MQCBCT, mqsys::MQLONG, crate ::mapping::MQCBCT_MAPSTR,
-        "Callback control and message delivery call types"
+        r###"Callback control and message delivery call types"###
     );
     define_new_type!(
         pub MQCBDO, mqsys::MQLONG, crate ::mapping::MQCBDO_MAPSTR,
-        "Options mask to control the action of `MQCB`"
+        r###"Options mask to control the action of `MQCB`"###
     );
     define_new_type!(pub MQCBD, mqsys::MQLONG, crate ::mapping::MQCBD_MAPSTR);
     define_new_type!(
         pub MQCBO, mqsys::MQLONG, crate ::mapping::MQCBO_MAPSTR,
-        "Create-Bag options mask for `mqCreateBag`"
+        r###"Create-Bag options mask for `mqCreateBag`"###
     );
     define_new_type!(pub MQCBT, mqsys::MQLONG, crate ::mapping::MQCBT_MAPSTR);
     define_new_type!(pub MQCCSI, mqsys::MQLONG, crate ::mapping::MQCCSI_MAPSTR);
     define_new_type!(pub MQCCT, mqsys::MQLONG, crate ::mapping::MQCCT_MAPSTR);
     define_new_type!(
         pub MQCC, mqsys::MQLONG, crate ::mapping::MQCC_MAPSTR,
-        "Completion Code from an MQ function call"
+        r###"Completion Code from an MQ function call"###
     );
     define_new_type!(pub MQCDC, mqsys::MQLONG, crate ::mapping::MQCDC_MAPSTR);
     define_new_type!(pub MQCEX, mqsys::MQLONG, crate ::mapping::MQCEX_MAPSTR);
@@ -104,7 +105,7 @@ pub mod types {
     define_new_type!(pub MQCFOFFLD, mqsys::MQLONG, crate ::mapping::MQCFOFFLD_MAPSTR);
     define_new_type!(
         pub MQCFOP, mqsys::MQLONG, crate ::mapping::MQCFOP_MAPSTR,
-        "Command format Filter Operators"
+        r###"Command format Filter Operators"###
     );
     define_new_type!(
         pub MQCFO_REFRESH, mqsys::MQLONG, crate ::mapping::MQCFO_REFRESH_MAPSTR
@@ -143,25 +144,25 @@ pub mod types {
     define_new_type!(pub MQCMDI, mqsys::MQLONG, crate ::mapping::MQCMDI_MAPSTR);
     define_new_type!(pub MQCMDL, mqsys::MQLONG, crate ::mapping::MQCMDL_MAPSTR);
     define_new_type!(
-        pub MQCMD, mqsys::MQLONG, crate ::mapping::MQCMD_MAPSTR, "Command Codes"
+        pub MQCMD, mqsys::MQLONG, crate ::mapping::MQCMD_MAPSTR, r###"Command Codes"###
     );
     define_new_type!(
         pub MQCMHO, mqsys::MQLONG, crate ::mapping::MQCMHO_MAPSTR,
-        "Create message handle options for `MQCRTMH`"
+        r###"Create message handle options for `MQCRTMH`"###
     );
     define_new_type!(
         pub MQCNO, mqsys::MQLONG, crate ::mapping::MQCNO_MAPSTR,
-        "Options mask that control the action of `MQCONNX`"
+        r###"Options mask that control the action of `MQCONNX`"###
     );
     define_new_type!(pub MQCODL, mqsys::MQLONG, crate ::mapping::MQCODL_MAPSTR);
     define_new_type!(pub MQCOMPRESS, mqsys::MQLONG, crate ::mapping::MQCOMPRESS_MAPSTR);
     define_new_type!(
         pub MQCOPY, mqsys::MQLONG, crate ::mapping::MQCOPY_MAPSTR,
-        "Property copy options mask"
+        r###"Property copy options mask"###
     );
     define_new_type!(
         pub MQCO, mqsys::MQLONG, crate ::mapping::MQCO_MAPSTR,
-        "Options mask to control the action of `MQCLOSE`"
+        r###"Options mask to control the action of `MQCLOSE`"###
     );
     define_new_type!(pub MQCQT, mqsys::MQLONG, crate ::mapping::MQCQT_MAPSTR);
     define_new_type!(pub MQCRC, mqsys::MQLONG, crate ::mapping::MQCRC_MAPSTR);
@@ -171,14 +172,15 @@ pub mod types {
     );
     define_new_type!(pub MQCSRV_DLQ, mqsys::MQLONG, crate ::mapping::MQCSRV_DLQ_MAPSTR);
     define_new_type!(
-        pub MQCS, mqsys::MQLONG, crate ::mapping::MQCS_MAPSTR, "Callback consumer state"
+        pub MQCS, mqsys::MQLONG, crate ::mapping::MQCS_MAPSTR,
+        r###"Callback consumer state"###
     );
     define_new_type!(pub MQCTES, mqsys::MQLONG, crate ::mapping::MQCTES_MAPSTR);
     define_new_type!(pub MQCTLO, mqsys::MQLONG, crate ::mapping::MQCTLO_MAPSTR);
     define_new_type!(pub MQCUOWC, mqsys::MQLONG, crate ::mapping::MQCUOWC_MAPSTR);
     define_new_type!(
         pub MQDCC, mqsys::MQLONG, crate ::mapping::MQDCC_MAPSTR,
-        "Options mask that control the action of `MQXCNVC`"
+        r###"Options mask that control the action of `MQXCNVC`"###
     );
     define_new_type!(pub MQDC, mqsys::MQLONG, crate ::mapping::MQDC_MAPSTR);
     define_new_type!(pub MQDELO, mqsys::MQLONG, crate ::mapping::MQDELO_MAPSTR);
@@ -191,7 +193,7 @@ pub mod types {
     define_new_type!(pub MQDMHO, mqsys::MQLONG, crate ::mapping::MQDMHO_MAPSTR);
     define_new_type!(
         pub MQDMPO, mqsys::MQLONG, crate ::mapping::MQDMPO_MAPSTR,
-        "Delete message property options"
+        r###"Delete message property options"###
     );
     define_new_type!(pub MQDNSWLM, mqsys::MQLONG, crate ::mapping::MQDNSWLM_MAPSTR);
     define_new_type!(pub MQDOPT, mqsys::MQLONG, crate ::mapping::MQDOPT_MAPSTR);
@@ -201,7 +203,7 @@ pub mod types {
     define_new_type!(pub MQEI, mqsys::MQLONG, crate ::mapping::MQEI_MAPSTR);
     define_new_type!(
         pub MQENC, mqsys::MQLONG, crate ::mapping::MQENC_MAPSTR,
-        "Mask describing data encoding"
+        r###"Mask describing data encoding"###
     );
     define_new_type!(pub MQEPH, mqsys::MQLONG, crate ::mapping::MQEPH_MAPSTR);
     define_new_type!(pub MQET, mqsys::MQLONG, crate ::mapping::MQET_MAPSTR);
@@ -221,7 +223,7 @@ pub mod types {
     define_new_type!(pub MQGACF, mqsys::MQLONG, crate ::mapping::MQGACF_MAPSTR);
     define_new_type!(
         pub MQGMO, mqsys::MQLONG, crate ::mapping::MQGMO_MAPSTR,
-        "Options mask to control the action of `MQGET`"
+        r###"Options mask to control the action of `MQGET`"###
     );
     define_new_type!(pub MQGUR, mqsys::MQLONG, crate ::mapping::MQGUR_MAPSTR);
     define_new_type!(pub MQHA, mqsys::MQLONG, crate ::mapping::MQHA_MAPSTR);
@@ -256,17 +258,18 @@ pub mod types {
     );
     define_new_type!(
         pub MQIMPO, mqsys::MQLONG, crate ::mapping::MQIMPO_MAPSTR,
-        "Options mask to control the action of `MQINQMP`"
+        r###"Options mask to control the action of `MQINQMP`"###
     );
     define_new_type!(pub MQINBD, mqsys::MQLONG, crate ::mapping::MQINBD_MAPSTR);
     define_new_type!(
-        pub MQIND, mqsys::MQLONG, crate ::mapping::MQIND_MAPSTR, "Special Index Values"
+        pub MQIND, mqsys::MQLONG, crate ::mapping::MQIND_MAPSTR,
+        r###"Special Index Values"###
     );
     define_new_type!(pub MQIPADDR, mqsys::MQLONG, crate ::mapping::MQIPADDR_MAPSTR);
     define_new_type!(pub MQIS, mqsys::MQLONG, crate ::mapping::MQIS_MAPSTR);
     define_new_type!(
         pub MQITEM, mqsys::MQLONG, crate ::mapping::MQITEM_MAPSTR,
-        "Item Type for `mqInquireItemInfo`"
+        r###"Item Type for `mqInquireItemInfo`"###
     );
     define_new_type!(pub MQIT, mqsys::MQLONG, crate ::mapping::MQIT_MAPSTR);
     define_new_type!(pub MQKAI, mqsys::MQLONG, crate ::mapping::MQKAI_MAPSTR);
@@ -302,7 +305,7 @@ pub mod types {
     define_new_type!(pub MQMF, mqsys::MQLONG, crate ::mapping::MQMF_MAPSTR);
     define_new_type!(
         pub MQMHBO, mqsys::MQLONG, crate ::mapping::MQMHBO_MAPSTR,
-        "Options mask to control the action of `MQMHBUF`"
+        r###"Options mask to control the action of `MQMHBUF`"###
     );
     define_new_type!(
         pub MQMLP_ENCRYPTION, mqsys::MQLONG, crate ::mapping::MQMLP_ENCRYPTION_MAPSTR
@@ -352,29 +355,29 @@ pub mod types {
     define_new_type!(pub MQOM, mqsys::MQLONG, crate ::mapping::MQOM_MAPSTR);
     define_new_type!(
         pub MQOO, mqsys::MQLONG, crate ::mapping::MQOO_MAPSTR,
-        "Options mask to control the action of `MQOPEN`"
+        r###"Options mask to control the action of `MQOPEN`"###
     );
     define_new_type!(pub MQOPER, mqsys::MQLONG, crate ::mapping::MQOPER_MAPSTR);
     define_new_type!(pub MQOPMODE, mqsys::MQLONG, crate ::mapping::MQOPMODE_MAPSTR);
     define_new_type!(
         pub MQOP, mqsys::MQLONG, crate ::mapping::MQOP_MAPSTR,
-        "Operation codes for `MQCTL` and `MQCB`"
+        r###"Operation codes for `MQCTL` and `MQCB`"###
     );
     define_new_type!(
         pub MQOT, mqsys::MQLONG, crate ::mapping::MQOT_MAPSTR,
-        "Object Types and Extended Object Types"
+        r###"Object Types and Extended Object Types"###
     );
     define_new_type!(pub MQPAGECLAS, mqsys::MQLONG, crate ::mapping::MQPAGECLAS_MAPSTR);
     define_new_type!(pub MQPA, mqsys::MQLONG, crate ::mapping::MQPA_MAPSTR);
     define_new_type!(
         pub MQPD, mqsys::MQLONG, crate ::mapping::MQPD_MAPSTR,
-        "Property descriptor, support and context"
+        r###"Property descriptor, support and context"###
     );
     define_new_type!(pub MQPER, mqsys::MQLONG, crate ::mapping::MQPER_MAPSTR);
     define_new_type!(pub MQPL, mqsys::MQLONG, crate ::mapping::MQPL_MAPSTR);
     define_new_type!(
         pub MQPMO, mqsys::MQLONG, crate ::mapping::MQPMO_MAPSTR,
-        "Options mask to control the action of `MQPUT` and `MQPUT1`"
+        r###"Options mask to control the action of `MQPUT` and `MQPUT1`"###
     );
     define_new_type!(pub MQPMRF, mqsys::MQLONG, crate ::mapping::MQPMRF_MAPSTR);
     define_new_type!(pub MQPO, mqsys::MQLONG, crate ::mapping::MQPO_MAPSTR);
@@ -415,7 +418,7 @@ pub mod types {
     define_new_type!(pub MQQSUM, mqsys::MQLONG, crate ::mapping::MQQSUM_MAPSTR);
     define_new_type!(
         pub MQQT, mqsys::MQLONG, crate ::mapping::MQQT_MAPSTR,
-        "Queue Types and Extended Queue Types"
+        r###"Queue Types and Extended Queue Types"###
     );
     define_new_type!(pub MQRAR, mqsys::MQLONG, crate ::mapping::MQRAR_MAPSTR);
     define_new_type!(pub MQRCCF, mqsys::MQLONG, crate ::mapping::MQRCCF_MAPSTR);
@@ -423,11 +426,11 @@ pub mod types {
     define_new_type!(pub MQRCVTIME, mqsys::MQLONG, crate ::mapping::MQRCVTIME_MAPSTR);
     define_new_type!(
         pub MQRC, mqsys::MQLONG, crate ::mapping::MQRC_MAPSTR,
-        "Reason Code from an MQ function call"
+        r###"Reason Code from an MQ function call"###
     );
     define_new_type!(pub MQRDNS, mqsys::MQLONG, crate ::mapping::MQRDNS_MAPSTR);
     define_new_type!(
-        pub MQRD, mqsys::MQLONG, crate ::mapping::MQRD_MAPSTR, "Reconnect delay"
+        pub MQRD, mqsys::MQLONG, crate ::mapping::MQRD_MAPSTR, r###"Reconnect delay"###
     );
     define_new_type!(pub MQREADA, mqsys::MQLONG, crate ::mapping::MQREADA_MAPSTR);
     define_new_type!(pub MQRECAUTO, mqsys::MQLONG, crate ::mapping::MQRECAUTO_MAPSTR);
@@ -459,27 +462,27 @@ pub mod types {
     define_new_type!(pub MQSEL_ANY, mqsys::MQLONG, crate ::mapping::MQSEL_ANY_MAPSTR);
     define_new_type!(
         pub MQSMPO, mqsys::MQLONG, crate ::mapping::MQSMPO_MAPSTR,
-        "Set message property options"
+        r###"Set message property options"###
     );
     define_new_type!(
         pub MQSO, mqsys::MQLONG, crate ::mapping::MQSO_MAPSTR,
-        "Options mask to control the action of `MQSUB`"
+        r###"Options mask to control the action of `MQSUB`"###
     );
     define_new_type!(pub MQSPL, mqsys::MQLONG, crate ::mapping::MQSPL_MAPSTR);
     define_new_type!(pub MQSP, mqsys::MQLONG, crate ::mapping::MQSP_MAPSTR);
     define_new_type!(pub MQSQQM, mqsys::MQLONG, crate ::mapping::MQSQQM_MAPSTR);
     define_new_type!(
         pub MQSRO, mqsys::MQLONG, crate ::mapping::MQSRO_MAPSTR,
-        "Options mask that control the action of `MQSUBRQ`"
+        r###"Options mask that control the action of `MQSUBRQ`"###
     );
     define_new_type!(
         pub MQSR, mqsys::MQLONG, crate ::mapping::MQSR_MAPSTR,
-        "Value describing action for `MQSUBRQ`"
+        r###"Value describing action for `MQSUBRQ`"###
     );
     define_new_type!(pub MQSSL, mqsys::MQLONG, crate ::mapping::MQSSL_MAPSTR);
     define_new_type!(
         pub MQSTAT, mqsys::MQLONG, crate ::mapping::MQSTAT_MAPSTR,
-        "Value describing the MQSTAT outcome"
+        r###"Value describing the MQSTAT outcome"###
     );
     define_new_type!(pub MQSTDBY, mqsys::MQLONG, crate ::mapping::MQSTDBY_MAPSTR);
     define_new_type!(pub MQST, mqsys::MQLONG, crate ::mapping::MQST_MAPSTR);
@@ -523,7 +526,8 @@ pub mod types {
     define_new_type!(pub MQTSCOPE, mqsys::MQLONG, crate ::mapping::MQTSCOPE_MAPSTR);
     define_new_type!(pub MQTT, mqsys::MQLONG, crate ::mapping::MQTT_MAPSTR);
     define_new_type!(
-        pub MQTYPE, mqsys::MQLONG, crate ::mapping::MQTYPE_MAPSTR, "Property data types"
+        pub MQTYPE, mqsys::MQLONG, crate ::mapping::MQTYPE_MAPSTR,
+        r###"Property data types"###
     );
     define_new_type!(pub MQUCI, mqsys::MQLONG, crate ::mapping::MQUCI_MAPSTR);
     define_new_type!(pub MQUIDSUPP, mqsys::MQLONG, crate ::mapping::MQUIDSUPP_MAPSTR);
@@ -554,7 +558,7 @@ pub mod types {
     define_new_type!(pub MQXACT, mqsys::MQLONG, crate ::mapping::MQXACT_MAPSTR);
     define_new_type!(pub MQXCC, mqsys::MQLONG, crate ::mapping::MQXCC_MAPSTR);
     define_new_type!(
-        pub MQXC, mqsys::MQLONG, crate ::mapping::MQXC_MAPSTR, "Exit commands"
+        pub MQXC, mqsys::MQLONG, crate ::mapping::MQXC_MAPSTR, r###"Exit commands"###
     );
     define_new_type!(pub MQXDR, mqsys::MQLONG, crate ::mapping::MQXDR_MAPSTR);
     define_new_type!(pub MQXEPO, mqsys::MQLONG, crate ::mapping::MQXEPO_MAPSTR);
@@ -583,11 +587,11 @@ pub mod types {
     define_new_type!(pub MQ_CERT, mqsys::MQLONG, crate ::mapping::MQ_CERT_MAPSTR);
     define_new_type!(
         pub MQ_HTTPSCERTREV, mqsys::MQLONG, crate ::mapping::MQ_HTTPSCERTREV_MAPSTR,
-        "Level of certificate revocation check that is required for HTTPS connections"
+        r###"Level of certificate revocation check that is required for HTTPS connections"###
     );
     define_new_type!(
         pub MQ_HTTPSCERTVAL, mqsys::MQLONG, crate ::mapping::MQ_HTTPSCERTVAL_MAPSTR,
-        "Level of certificate validation that is required for HTTPS connections"
+        r###"Level of certificate validation that is required for HTTPS connections"###
     );
     define_new_type!(pub MQ_MQTT, mqsys::MQLONG, crate ::mapping::MQ_MQTT_MAPSTR);
     define_new_type!(pub MQ_SUITE, mqsys::MQLONG, crate ::mapping::MQ_SUITE_MAPSTR);
