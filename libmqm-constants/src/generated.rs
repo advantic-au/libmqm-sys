@@ -36,7 +36,21 @@ mod c {
     include!("pregen/any-macos-new_types.rs");
 }
 
-pub use c::constants;
+pub mod constants {
+    pub use super::c::constants::*;
+
+    use super::types;
+    use libmqm_sys::lib as sys;
+
+    pub const MQBA_FIRST: types::Selector = types::Selector(sys::MQBA_FIRST);
+    pub const MQBA_LAST: types::Selector = types::Selector(sys::MQBA_LAST);
+    pub const MQGA_FIRST: types::Selector = types::Selector(sys::MQGA_FIRST);
+    pub const MQGA_LAST: types::Selector = types::Selector(sys::MQGA_LAST);
+    pub const MQOA_FIRST: types::Selector = types::Selector(sys::MQOA_FIRST);
+    pub const MQOA_LAST: types::Selector = types::Selector(sys::MQOA_LAST);
+    pub const MQUA_FIRST: types::Selector = types::Selector(sys::MQUA_FIRST);
+    pub const MQUA_LAST: types::Selector = types::Selector(sys::MQUA_LAST);
+}
 
 pub mod mapping {
     pub use super::c::mapping::*;
@@ -47,7 +61,9 @@ pub mod mapping {
 
     pub const MQXA_MAPSTR: MqxaSource = ConstSource(MQIA_MAPSTR, MQCA_MAPSTR);
     pub const MQRC_FULL_MAPSTR: ConstSource<PhfSource, PhfSource> = ConstSource(MQRC_MAPSTR, MQRCCF_MAPSTR);
-    pub struct MqaiSelectorLookup;
+
+    #[cfg(feature = "mqai")]
+    pub struct SelectorLookup;
 }
 
 pub mod types {
@@ -60,5 +76,5 @@ pub mod types {
     define_new_type!(pub MQRC, sys::MQLONG, super::mapping::MQRC_FULL_MAPSTR, "Reason Code from an MQ function call");
 
     #[cfg(feature = "mqai")]
-    define_new_type!(pub MqaiSelector, sys::MQLONG, super::mapping::MqaiSelectorLookup);
+    define_new_type!(pub Selector, sys::MQLONG, super::mapping::SelectorLookup);
 }

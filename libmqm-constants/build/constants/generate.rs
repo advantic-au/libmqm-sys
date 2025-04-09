@@ -16,7 +16,9 @@ const CONST_IGNORE: &[&str] = &[
 ];
 
 pub fn const_ignore_regex() -> impl Iterator<Item = regex_lite::Regex> {
-    CONST_IGNORE.iter().map(|r| regex_lite::Regex::new(r).expect("regex should compile"))
+    CONST_IGNORE
+        .iter()
+        .map(|r| regex_lite::Regex::new(r).expect("regex should compile"))
 }
 
 // Load the `MQI_BY_NAME_STR` into a Vec

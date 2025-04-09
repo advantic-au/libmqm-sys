@@ -89,6 +89,24 @@ macro_rules! impl_value {
                 $crate::value::value_debug(stringify!($new_type), *attribute, self.mq_names(), f)
             }
         }
+
+        impl PartialOrd for $new_type {
+            fn partial_cmp(&self, other: &Self) -> Option<std::cmp::Ordering> {
+                Some(self.cmp(other))
+            }
+        }
+
+        impl Ord for $new_type {
+            fn cmp(&self, other: &Self) -> std::cmp::Ordering {
+                self.0.cmp(&other.0)
+            }
+        }
+
+        impl PartialOrd<$orig_type> for $new_type {
+            fn partial_cmp(&self, other: &$orig_type) -> Option<std::cmp::Ordering> {
+                Some(self.0.cmp(other))
+            }
+        }
     };
 }
 pub(crate) use impl_value;
