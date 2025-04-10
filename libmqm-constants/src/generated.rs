@@ -104,5 +104,5 @@ pub mod types {
     define_new_type!(pub MQRC, sys::MQLONG, super::mapping::MQRC_FULL_MAPSTR, "Reason Code from an MQ function call");
 
     #[cfg(feature = "mqai")]
-    define_new_type!(pub Selector, sys::MQLONG, super::mapping::SelectorLookup);
+    define_new_type!(pub Selector, sys::MQLONG, super::mapping::SelectorLookup, "All Selectors including [`MQIA`], [`MQCA`], [`MQIACF`], [`MQCACF`], [`MQIACH`], [`MQCACH`], [`MQIASY`] and [`MQHA`]");
 }

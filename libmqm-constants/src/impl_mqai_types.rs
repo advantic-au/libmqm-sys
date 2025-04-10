@@ -39,6 +39,7 @@ impl_value!(types::Selector);
 impl_partialcmp_value!(
     types::Selector,
     [
+        types::MQIA,
         types::MQCA,
         types::MQIACF,
         types::MQCACF,
@@ -48,6 +49,7 @@ impl_partialcmp_value!(
         types::MQHA
     ]
 );
+impl_partialcmp_value!(types::MQIA, types::Selector);
 impl_partialcmp_value!(types::MQCA, types::Selector);
 impl_partialcmp_value!(types::MQIACF, types::Selector);
 impl_partialcmp_value!(types::MQCACF, types::Selector);
