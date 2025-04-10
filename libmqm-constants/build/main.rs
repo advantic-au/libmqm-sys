@@ -10,9 +10,9 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     {
         use constants::generate;
         use libmqm_sys::lib as mqsys;
+        use std::collections::HashSet;
         use std::io;
         use std::io::Write as _;
-        use std::collections::HashSet;
 
         let by_name_mqi = unsafe { &mqsys::MQI_BY_NAME_STR };
 
