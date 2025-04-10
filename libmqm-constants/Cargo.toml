@@ -27,7 +27,8 @@ generate = [
     "runnable",
     "dep:prettyplease",
     "dep:syn",
-    "dep:phf_codegen"
+    "dep:phf_codegen",
+    "dep:regex_lite"
 ]
 
 ## Generate the constants and save them in the src folder
@@ -94,7 +95,7 @@ phf = { default-features = false, version = "0.11" }
 derive_more = { version = "2.0.1", features = [ "from", "add", "add_assign" ]}
 
 [build-dependencies]
-regex-lite = "0.1.6"
+regex-lite = { version = "0.1.6", optional = true }
 libmqm-sys = { version = "0.7.0", default-features = false, path = "../libmqm-sys" }
 phf_codegen = { version = "0.11.2", optional = true }
 prettyplease = { version = "0.2.31", optional = true }
