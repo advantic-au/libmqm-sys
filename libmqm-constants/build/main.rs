@@ -52,10 +52,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 )?;
                 for (value, constant, doc) in primary.iter().chain(extra) {
                     if let Some(doc_lines) = doc {
-                        writeln!(
-                            constant_write,
-                            "#[doc = r###\"{doc_lines}\"###]",
-                        )?;
+                        writeln!(constant_write, "#[doc = r###\"{doc_lines}\"###]",)?;
                     }
                     writeln!(
                         constant_write,
