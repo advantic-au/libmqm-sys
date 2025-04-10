@@ -28,7 +28,7 @@ generate = [
     "dep:prettyplease",
     "dep:syn",
     "dep:phf_codegen",
-    "dep:regex_lite"
+    "dep:regex-lite"
 ]
 
 ## Generate the constants and save them in the src folder
