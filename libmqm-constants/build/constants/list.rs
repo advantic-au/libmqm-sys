@@ -12,7 +12,6 @@ pub type ConstantEntry<'a> = (
 
 pub const PREFIX_CONSTANTS: &[(&str, &str, &str, Option<&str>)] = &[
     ("MQITEM_", "MQITEM", "MQLONG", Some("Item Type for `mqInquireItemInfo`")),
-    ("MQXC_", "MQXC", "MQLONG", Some("Exit commands")),
     ("MQFIELD_WQR_", "MQFIELD_WQR", "MQLONG", None),
 ];
 pub const CONSTANTS: &[ConstantEntry] = &[
@@ -596,12 +595,12 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     ("MQWXP_", "MQWXP", mqsys::MQWXP_STR, "MQLONG", None),
     ("MQXACT_", "MQXACT", mqsys::MQXACT_STR, "MQLONG", None),
     ("MQXCC_", "MQXCC", mqsys::MQXCC_STR, "MQLONG", None),
-    // ("MQXC_", "MQXC", mqsys::MQXC_STR, "MQLONG", None),
+    ("MQXC_", "MQXC", mqsys::MQXC_STR, "MQLONG", Some("Exit Commands")),
     ("MQXDR_", "MQXDR", mqsys::MQXDR_STR, "MQLONG", None),
     ("MQXEPO_", "MQXEPO", mqsys::MQXEPO_STR, "MQLONG", None),
     ("MQXE_", "MQXE", mqsys::MQXE_STR, "MQLONG", None),
     ("MQXF_", "MQXF", mqsys::MQXF_STR, "MQLONG", None),
-    ("MQXPT_", "MQXPT", mqsys::MQXPT_STR, "MQLONG", None),
+    ("MQXPT_", "MQXPT", mqsys::MQXPT_STR, "MQLONG", Some("Transport Types")),
     ("MQXR2_", "MQXR2", mqsys::MQXR2_STR, "MQLONG", None),
     ("MQXR_", "MQXR", mqsys::MQXR_STR, "MQLONG", None),
     ("MQXT_", "MQXT", mqsys::MQXT_STR, "MQLONG", None),
@@ -654,4 +653,8 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     ("MQNHASTATUS_", "MQNHASTATUS", mqsys::MQNHASTATUS_STR, "MQLONG", None),
     #[cfg(feature = "mqc_9_4_2_0")]
     ("MQNHATYPE_", "MQNHATYPE", mqsys::MQNHATYPE_STR, "MQLONG", None),
+];
+
+pub const CONSTANTS_DOC: &[(&str, &str)] = &[
+    ("MQCNO_STANDARD_BINDING", "The application and the local-queue-manager agent (the component that manages queuing operations) run in separate units of execution")
 ];

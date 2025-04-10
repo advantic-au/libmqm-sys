@@ -23,7 +23,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             let unassigned_filter: Vec<_> = generate::const_ignore_regex().collect();
             let const_set: HashSet<_> = prefix_constants
                 .iter()
-                .flat_map(|(.., (.., primary, extra))| primary.iter().chain(extra).map(|(_, constant)| *constant))
+                .flat_map(|(.., (.., primary, extra))| primary.iter().chain(extra).map(|(_, constant, _)| *constant))
                 .collect();
 
             let const_all: HashSet<_> = generate::by_name(by_name_mqi)
@@ -50,7 +50,13 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                     "define_new_type!(pub {new_type}, mqsys::{orig_type}, crate::mapping::{prefix}MAPSTR{});",
                     doc.map_or(String::new(), |doc_lines| format!(", r###\"{doc_lines}\"###"))
                 )?;
-                for (value, constant) in primary.iter().chain(extra) {
+                for (value, constant, doc) in primary.iter().chain(extra) {
+                    if let Some(doc_lines) = doc {
+                        writeln!(
+                            constant_write,
+                            "#[doc = r###\"{doc_lines}\"###]",
+                        )?;
+                    }
                     writeln!(
                         constant_write,
                         "pub const {constant}: types::{new_type} = types::{new_type}({value});"

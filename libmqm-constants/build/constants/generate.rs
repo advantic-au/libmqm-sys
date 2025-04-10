@@ -46,20 +46,20 @@ fn by_value(by_value_mqi: &[mqsys::MQI_BY_VALUE_STR]) -> impl Iterator<Item = (i
         .filter(|(.., name)| !name.is_empty())
 }
 
-pub fn as_array(by_value: &[(mqsys::MQLONG, &str)]) -> String {
+pub fn as_array(by_value: &[(mqsys::MQLONG, &str, Option<&str>)]) -> String {
     use std::fmt::Write as _;
     let mut result = String::new();
     result.push('[');
-    for (value, name) in by_value {
+    for (value, name, _) in by_value {
         let _ = write!(result, "({value},\"{name}\"),");
     }
     result.push(']');
     result
 }
 
-pub fn as_phf(by_value: &[(mqsys::MQLONG, &str)]) -> String {
+pub fn as_phf(by_value: &[(mqsys::MQLONG, &str, Option<&str>)]) -> String {
     let mut phf_set = phf_codegen::Map::new();
-    for (value, name) in by_value {
+    for (value, name, _) in by_value {
         phf_set.entry(*value, &format!("\"{name}\""));
     }
     phf_set.build().to_string()
@@ -67,10 +67,23 @@ pub fn as_phf(by_value: &[(mqsys::MQLONG, &str)]) -> String {
 
 pub fn generate_constants<F, E>(f: F) -> Result<(), E>
 where
-    F: FnOnce(&[(&str, (&str, &str, Option<&str>, &[(i32, &str)], Vec<(i32, &str)>))]) -> Result<(), E>,
+    F: FnOnce(
+        &[(
+            &str,
+            (
+                &str,
+                &str,
+                Option<&str>,
+                &[(i32, &str, Option<&str>)],
+                Vec<(i32, &str, Option<&str>)>,
+            ),
+        )],
+    ) -> Result<(), E>,
 {
     let by_value_mqi = unsafe { &mqsys::MQI_BY_VALUE_STR };
     let by_value: Vec<_> = by_value(by_value_mqi).collect();
+
+    let doc_map = list::CONSTANTS_DOC.iter().copied().collect::<HashMap<_, _>>();
 
     // Gather the list of constants for each prefix by using
     // the _STR c functions and CONSTANTS which was derived from
@@ -85,6 +98,7 @@ where
                 .filter(|(value, name)| unsafe {
                     str::from_utf8_unchecked(std::ffi::CStr::from_ptr(check(*value)).to_bytes()) == *name
                 })
+                .map(|(v, n)| (v, n, doc_map.get(n).copied()))
                 .collect();
             by_value_set.sort_by_key(|(k, ..)| *k);
             (prefix, (new_type, orig_type, doc, by_value_set))
@@ -100,6 +114,7 @@ where
                         .iter()
                         .copied()
                         .filter(|(_, name)| name.starts_with(prefix))
+                        .map(|(v, n)| (v, n, doc_map.get(n).copied()))
                         .collect(),
                 ),
             )
@@ -110,7 +125,7 @@ where
     let primary_set = primary_constants
         .values()
         .flat_map(|(.., v)| v)
-        .map(|(.., name)| *name)
+        .map(|(.., name, _)| *name)
         .collect::<HashSet<_>>();
 
     let unassigned_filter: Vec<_> = const_ignore_regex().collect();
@@ -146,7 +161,7 @@ where
                 .filter(|(.., name)| {
                     name.starts_with(prefix) && !similar.iter().any(|other_prefix| name.starts_with(other_prefix))
                 })
-                .copied()
+                .map(|(v, n)| (*v, *n, doc_map.get(*n).copied()))
                 .collect();
             (*prefix, (*new_type, *orig_type, *doc, &**primary, extra))
         })
