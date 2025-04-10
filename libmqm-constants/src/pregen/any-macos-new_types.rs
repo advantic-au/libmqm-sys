@@ -558,13 +558,15 @@ pub mod types {
     define_new_type!(pub MQXACT, mqsys::MQLONG, crate ::mapping::MQXACT_MAPSTR);
     define_new_type!(pub MQXCC, mqsys::MQLONG, crate ::mapping::MQXCC_MAPSTR);
     define_new_type!(
-        pub MQXC, mqsys::MQLONG, crate ::mapping::MQXC_MAPSTR, r###"Exit commands"###
+        pub MQXC, mqsys::MQLONG, crate ::mapping::MQXC_MAPSTR, r###"Exit Commands"###
     );
     define_new_type!(pub MQXDR, mqsys::MQLONG, crate ::mapping::MQXDR_MAPSTR);
     define_new_type!(pub MQXEPO, mqsys::MQLONG, crate ::mapping::MQXEPO_MAPSTR);
     define_new_type!(pub MQXE, mqsys::MQLONG, crate ::mapping::MQXE_MAPSTR);
     define_new_type!(pub MQXF, mqsys::MQLONG, crate ::mapping::MQXF_MAPSTR);
-    define_new_type!(pub MQXPT, mqsys::MQLONG, crate ::mapping::MQXPT_MAPSTR);
+    define_new_type!(
+        pub MQXPT, mqsys::MQLONG, crate ::mapping::MQXPT_MAPSTR, r###"Transport Types"###
+    );
     define_new_type!(pub MQXR2, mqsys::MQLONG, crate ::mapping::MQXR2_MAPSTR);
     define_new_type!(pub MQXR, mqsys::MQLONG, crate ::mapping::MQXR_MAPSTR);
     define_new_type!(pub MQXT, mqsys::MQLONG, crate ::mapping::MQXT_MAPSTR);
@@ -1775,6 +1777,7 @@ pub mod constants {
     pub const MQCNO_ACTIVITY_TRACE_ENABLED: types::MQCNO = types::MQCNO(134217728);
     pub const MQCNO_ACTIVITY_TRACE_DISABLED: types::MQCNO = types::MQCNO(268435456);
     pub const MQCNO_RECONNECT_AS_DEF: types::MQCNO = types::MQCNO(0);
+    ///The application and the local-queue-manager agent (the component that manages queuing operations) run in separate units of execution
     pub const MQCNO_STANDARD_BINDING: types::MQCNO = types::MQCNO(0);
     pub const MQCODL_AS_INPUT: types::MQCODL = types::MQCODL(-1);
     pub const MQCOMPRESS_NOT_AVAILABLE: types::MQCOMPRESS = types::MQCOMPRESS(-1);
