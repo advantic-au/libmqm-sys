@@ -1,10 +1,10 @@
 /* Generated with MQ client version 9.4.2.0 */
 use crate::lookup::*;
-pub const MQACTIVE_CONST: LinearSource = ConstSource(
+pub const MQACTIVE_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQACTIVE_NO"), (1, "MQACTIVE_YES")],
     &[],
 );
-pub const MQACTP_CONST: LinearSource = ConstSource(
+pub const MQACTP_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQACTP_NEW"),
         (1, "MQACTP_FORWARD"),
@@ -13,11 +13,11 @@ pub const MQACTP_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQACTV_CONST: LinearSource = ConstSource(
+pub const MQACTV_MAPSTR: LinearSource = ConstSource(
     &[(1, "MQACTV_DETAIL_LOW"), (2, "MQACTV_DETAIL_MEDIUM"), (3, "MQACTV_DETAIL_HIGH")],
     &[],
 );
-pub const MQACT_CONST: LinearSource = ConstSource(
+pub const MQACT_MAPSTR: LinearSource = ConstSource(
     &[
         (1, "MQACT_FORCE_REMOVE"),
         (2, "MQACT_ADVANCE_LOG"),
@@ -33,7 +33,7 @@ pub const MQACT_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQADOPT_CHECK_CONST: LinearSource = ConstSource(
+pub const MQADOPT_CHECK_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQADOPT_CHECK_NONE"),
         (1, "MQADOPT_CHECK_ALL"),
@@ -43,7 +43,7 @@ pub const MQADOPT_CHECK_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQADOPT_TYPE_CONST: LinearSource = ConstSource(
+pub const MQADOPT_TYPE_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQADOPT_TYPE_NO"),
         (1, "MQADOPT_TYPE_ALL"),
@@ -54,11 +54,11 @@ pub const MQADOPT_TYPE_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQADPCTX_CONST: LinearSource = ConstSource(
+pub const MQADPCTX_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQADPCTX_NO"), (1, "MQADPCTX_YES")],
     &[],
 );
-pub const MQAIT_CONST: LinearSource = ConstSource(
+pub const MQAIT_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQAIT_ALL"),
         (1, "MQAIT_CRL_LDAP"),
@@ -68,11 +68,11 @@ pub const MQAIT_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQAPPL_CONST: LinearSource = ConstSource(
+pub const MQAPPL_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQAPPL_IMMOVABLE"), (1, "MQAPPL_MOVABLE")],
     &[],
 );
-pub const MQAS_CONST: LinearSource = ConstSource(
+pub const MQAS_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQAS_NONE"),
         (1, "MQAS_STARTED"),
@@ -85,7 +85,7 @@ pub const MQAS_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQAT_CONST: LinearSource = ConstSource(
+pub const MQAT_MAPSTR: LinearSource = ConstSource(
     &[
         (-1, "MQAT_UNKNOWN"),
         (0, "MQAT_NO_CONTEXT"),
@@ -130,13 +130,15 @@ pub const MQAT_CONST: LinearSource = ConstSource(
         (6, "MQAT_DEFAULT"),
         (13, "MQAT_GUARDIAN"),
         (26, "MQAT_BROKER"),
+        (65536, "MQAT_USER_FIRST"),
+        (999999999, "MQAT_USER_LAST"),
     ],
 );
-pub const MQAUTHENTICATE_CONST: LinearSource = ConstSource(
+pub const MQAUTHENTICATE_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQAUTHENTICATE_OS"), (1, "MQAUTHENTICATE_PAM")],
     &[],
 );
-pub const MQAUTHOPT_CONST: LinearSource = ConstSource(
+pub const MQAUTHOPT_MAPSTR: LinearSource = ConstSource(
     &[
         (1, "MQAUTHOPT_ENTITY_EXPLICIT"),
         (2, "MQAUTHOPT_ENTITY_SET"),
@@ -148,7 +150,7 @@ pub const MQAUTHOPT_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQAUTH_CONST: LinearSource = ConstSource(
+pub const MQAUTH_MAPSTR: LinearSource = ConstSource(
     &[
         (-3, "MQAUTH_ALL_MQI"),
         (-2, "MQAUTH_ALL_ADMIN"),
@@ -179,15 +181,15 @@ pub const MQAUTH_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQAUTOCLUS_CONST: LinearSource = ConstSource(
+pub const MQAUTOCLUS_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQAUTOCLUS_TYPE_NONE"), (1, "MQAUTOCLUS_TYPE_UNIFORM")],
     &[],
 );
-pub const MQAUTO_CONST: LinearSource = ConstSource(
+pub const MQAUTO_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQAUTO_START_NO"), (1, "MQAUTO_START_YES")],
     &[],
 );
-pub const MQBACF_CONST: LinearSource = ConstSource(
+pub const MQBACF_MAPSTR: LinearSource = ConstSource(
     &[
         (7001, "MQBACF_EVENT_ACCOUNTING_TOKEN"),
         (7002, "MQBACF_EVENT_SECURITY_ID"),
@@ -227,9 +229,9 @@ pub const MQBACF_CONST: LinearSource = ConstSource(
         (7038, "MQBACF_CONN_TAG"),
         (7039, "MQBACF_MQBNO_STRUCT"),
     ],
-    &[],
+    &[(7001, "MQBACF_FIRST"), (7039, "MQBACF_LAST_USED")],
 );
-pub const MQBALANCED_CONST: LinearSource = ConstSource(
+pub const MQBALANCED_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQBALANCED_NO"),
         (1, "MQBALANCED_YES"),
@@ -238,7 +240,7 @@ pub const MQBALANCED_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQBALSTATE_CONST: LinearSource = ConstSource(
+pub const MQBALSTATE_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQBALSTATE_NOT_APPLICABLE"),
         (1, "MQBALSTATE_LOW"),
@@ -248,12 +250,12 @@ pub const MQBALSTATE_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQBL_CONST: LinearSource = ConstSource(&[(-1, "MQBL_NULL_TERMINATED")], &[]);
-pub const MQBMHO_CONST: LinearSource = ConstSource(
+pub const MQBL_MAPSTR: LinearSource = ConstSource(&[(-1, "MQBL_NULL_TERMINATED")], &[]);
+pub const MQBMHO_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQBMHO_NONE"), (1, "MQBMHO_DELETE_PROPERTIES")],
     &[],
 );
-pub const MQBND_CONST: LinearSource = ConstSource(
+pub const MQBND_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQBND_BIND_ON_OPEN"),
         (1, "MQBND_BIND_NOT_FIXED"),
@@ -261,7 +263,7 @@ pub const MQBND_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQBNO_BALTYPE_CONST: LinearSource = ConstSource(
+pub const MQBNO_BALTYPE_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQBNO_BALTYPE_SIMPLE"),
         (1, "MQBNO_BALTYPE_REQREP"),
@@ -269,11 +271,11 @@ pub const MQBNO_BALTYPE_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQBNO_OPTIONS_CONST: LinearSource = ConstSource(
+pub const MQBNO_OPTIONS_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQBNO_OPTIONS_NONE"), (1, "MQBNO_OPTIONS_IGNORE_TRANS")],
     &[],
 );
-pub const MQBNO_TIMEOUT_CONST: LinearSource = ConstSource(
+pub const MQBNO_TIMEOUT_MAPSTR: LinearSource = ConstSource(
     &[
         (-2, "MQBNO_TIMEOUT_NEVER"),
         (-1, "MQBNO_TIMEOUT_AS_DEFAULT"),
@@ -281,8 +283,8 @@ pub const MQBNO_TIMEOUT_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQBO_CONST: LinearSource = ConstSource(&[(0, "MQBO_NONE")], &[]);
-pub const MQBPLOCATION_CONST: LinearSource = ConstSource(
+pub const MQBO_MAPSTR: LinearSource = ConstSource(&[(0, "MQBO_NONE")], &[]);
+pub const MQBPLOCATION_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQBPLOCATION_BELOW"),
         (1, "MQBPLOCATION_ABOVE"),
@@ -291,8 +293,8 @@ pub const MQBPLOCATION_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQBT_CONST: LinearSource = ConstSource(&[(1, "MQBT_OTMA")], &[]);
-pub const MQCACF_CONST: BinarySearchSource = ConstSource(
+pub const MQBT_MAPSTR: LinearSource = ConstSource(&[(1, "MQBT_OTMA")], &[]);
+pub const MQCACF_MAPSTR: BinarySearchSource = ConstSource(
     BinarySearch(
         &[
             (3001, "MQCACF_FROM_Q_NAME"),
@@ -520,9 +522,9 @@ pub const MQCACF_CONST: BinarySearchSource = ConstSource(
             (3231, "MQCACF_NHA_SYNC_ISOTIME"),
         ],
     ),
-    &[],
+    &[(3001, "MQCACF_FIRST"), (3231, "MQCACF_LAST_USED")],
 );
-pub const MQCACH_CONST: LinearSource = ConstSource(
+pub const MQCACH_MAPSTR: LinearSource = ConstSource(
     &[
         (3501, "MQCACH_CHANNEL_NAME"),
         (3502, "MQCACH_DESC"),
@@ -586,9 +588,9 @@ pub const MQCACH_CONST: LinearSource = ConstSource(
         (3572, "MQCACH_TEMPORARY_MODEL_Q"),
         (3573, "MQCACH_TEMPORARY_Q_PREFIX"),
     ],
-    &[],
+    &[(3501, "MQCACH_FIRST"), (3573, "MQCACH_LAST_USED")],
 );
-pub const MQCADSD_CONST: LinearSource = ConstSource(
+pub const MQCADSD_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQCADSD_NONE"),
         (1, "MQCADSD_SEND"),
@@ -597,11 +599,11 @@ pub const MQCADSD_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQCAFTY_CONST: LinearSource = ConstSource(
+pub const MQCAFTY_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQCAFTY_NONE"), (1, "MQCAFTY_PREFERRED")],
     &[],
 );
-pub const MQCAMO_CONST: LinearSource = ConstSource(
+pub const MQCAMO_MAPSTR: LinearSource = ConstSource(
     &[
         (2701, "MQCAMO_CLOSE_DATE"),
         (2702, "MQCAMO_CLOSE_TIME"),
@@ -619,13 +621,13 @@ pub const MQCAMO_CONST: LinearSource = ConstSource(
         (2714, "MQCAMO_MONITOR_TYPE"),
         (2715, "MQCAMO_MONITOR_DESC"),
     ],
-    &[],
+    &[(2701, "MQCAMO_FIRST"), (2715, "MQCAMO_LAST_USED")],
 );
-pub const MQCAP_CONST: LinearSource = ConstSource(
+pub const MQCAP_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQCAP_NOT_SUPPORTED"), (1, "MQCAP_SUPPORTED"), (2, "MQCAP_EXPIRED")],
     &[],
 );
-pub const MQCAUT_CONST: LinearSource = ConstSource(
+pub const MQCAUT_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQCAUT_ALL"),
         (1, "MQCAUT_BLOCKUSER"),
@@ -637,7 +639,7 @@ pub const MQCAUT_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQCA_CONST: BinarySearchSource = ConstSource(
+pub const MQCA_MAPSTR: BinarySearchSource = ConstSource(
     BinarySearch(
         &[
             (2001, "MQCA_APPL_ID"),
@@ -768,13 +770,18 @@ pub const MQCA_CONST: BinarySearchSource = ConstSource(
             (4000, "MQCA_USER_LIST"),
         ],
     ),
-    &[(2002, "MQCA_BASE_Q_NAME")],
+    &[
+        (2001, "MQCA_FIRST"),
+        (2002, "MQCA_BASE_Q_NAME"),
+        (2138, "MQCA_LAST_USED"),
+        (4000, "MQCA_LAST"),
+    ],
 );
-pub const MQCBCF_CONST: LinearSource = ConstSource(
+pub const MQCBCF_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQCBCF_NONE"), (1, "MQCBCF_READA_BUFFER_EMPTY")],
     &[],
 );
-pub const MQCBCT_CONST: LinearSource = ConstSource(
+pub const MQCBCT_MAPSTR: LinearSource = ConstSource(
     &[
         (1, "MQCBCT_START_CALL"),
         (2, "MQCBCT_STOP_CALL"),
@@ -787,7 +794,7 @@ pub const MQCBCT_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQCBDO_CONST: LinearSource = ConstSource(
+pub const MQCBDO_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQCBDO_NONE"),
         (1, "MQCBDO_START_CALL"),
@@ -800,8 +807,11 @@ pub const MQCBDO_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQCBD_CONST: LinearSource = ConstSource(&[(-1, "MQCBD_FULL_MSG_LENGTH")], &[]);
-pub const MQCBO_CONST: LinearSource = ConstSource(
+pub const MQCBD_MAPSTR: LinearSource = ConstSource(
+    &[(-1, "MQCBD_FULL_MSG_LENGTH")],
+    &[],
+);
+pub const MQCBO_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQCBO_NONE"),
         (1, "MQCBO_ADMIN_BAG"),
@@ -819,11 +829,11 @@ pub const MQCBO_CONST: LinearSource = ConstSource(
         (0, "MQCBO_USER_BAG"),
     ],
 );
-pub const MQCBT_CONST: LinearSource = ConstSource(
+pub const MQCBT_MAPSTR: LinearSource = ConstSource(
     &[(1, "MQCBT_MESSAGE_CONSUMER"), (2, "MQCBT_EVENT_HANDLER")],
     &[],
 );
-pub const MQCCSI_CONST: LinearSource = ConstSource(
+pub const MQCCSI_MAPSTR: LinearSource = ConstSource(
     &[
         (-4, "MQCCSI_AS_PUBLISHED"),
         (-3, "MQCCSI_APPL"),
@@ -833,23 +843,23 @@ pub const MQCCSI_CONST: LinearSource = ConstSource(
     ],
     &[(0, "MQCCSI_Q_MGR"), (0, "MQCCSI_UNDEFINED")],
 );
-pub const MQCCT_CONST: LinearSource = ConstSource(
+pub const MQCCT_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQCCT_NO"), (1, "MQCCT_YES")],
     &[],
 );
-pub const MQCC_CONST: LinearSource = ConstSource(
+pub const MQCC_MAPSTR: LinearSource = ConstSource(
     &[(-1, "MQCC_UNKNOWN"), (0, "MQCC_OK"), (1, "MQCC_WARNING"), (2, "MQCC_FAILED")],
     &[],
 );
-pub const MQCDC_CONST: LinearSource = ConstSource(
+pub const MQCDC_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQCDC_NO_SENDER_CONVERSION"), (1, "MQCDC_SENDER_CONVERSION")],
     &[],
 );
-pub const MQCEX_CONST: LinearSource = ConstSource(
+pub const MQCEX_MAPSTR: LinearSource = ConstSource(
     &[(-2, "MQCEX_AS_PARENT"), (-1, "MQCEX_NOLIMIT")],
     &[],
 );
-pub const MQCFACCESS_CONST: LinearSource = ConstSource(
+pub const MQCFACCESS_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQCFACCESS_ENABLED"),
         (1, "MQCFACCESS_SUSPENDED"),
@@ -857,15 +867,15 @@ pub const MQCFACCESS_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQCFCONLOS_CONST: LinearSource = ConstSource(
+pub const MQCFCONLOS_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQCFCONLOS_TERMINATE"), (1, "MQCFCONLOS_TOLERATE"), (2, "MQCFCONLOS_ASQMGR")],
     &[],
 );
-pub const MQCFC_CONST: LinearSource = ConstSource(
+pub const MQCFC_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQCFC_NOT_LAST"), (1, "MQCFC_LAST")],
     &[],
 );
-pub const MQCFOFFLD_CONST: LinearSource = ConstSource(
+pub const MQCFOFFLD_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQCFOFFLD_NONE"),
         (1, "MQCFOFFLD_SMDS"),
@@ -874,7 +884,7 @@ pub const MQCFOFFLD_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQCFOP_CONST: LinearSource = ConstSource(
+pub const MQCFOP_MAPSTR: LinearSource = ConstSource(
     &[
         (1, "MQCFOP_LESS"),
         (2, "MQCFOP_EQUAL"),
@@ -891,19 +901,19 @@ pub const MQCFOP_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQCFO_REFRESH_CONST: LinearSource = ConstSource(
+pub const MQCFO_REFRESH_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQCFO_REFRESH_REPOSITORY_NO"), (1, "MQCFO_REFRESH_REPOSITORY_YES")],
     &[],
 );
-pub const MQCFO_REMOVE_CONST: LinearSource = ConstSource(
+pub const MQCFO_REMOVE_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQCFO_REMOVE_QUEUES_NO"), (1, "MQCFO_REMOVE_QUEUES_YES")],
     &[],
 );
-pub const MQCFR_CONST: LinearSource = ConstSource(
+pub const MQCFR_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQCFR_NO"), (1, "MQCFR_YES")],
     &[],
 );
-pub const MQCFSTATUS_CONST: LinearSource = ConstSource(
+pub const MQCFSTATUS_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQCFSTATUS_NOT_FOUND"),
         (1, "MQCFSTATUS_ACTIVE"),
@@ -924,11 +934,11 @@ pub const MQCFSTATUS_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQCFTYPE_CONST: LinearSource = ConstSource(
+pub const MQCFTYPE_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQCFTYPE_APPL"), (1, "MQCFTYPE_ADMIN")],
     &[],
 );
-pub const MQCFT_CONST: LinearSource = ConstSource(
+pub const MQCFT_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQCFT_NONE"),
         (1, "MQCFT_COMMAND"),
@@ -959,20 +969,20 @@ pub const MQCFT_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQCF_CONST: LinearSource = ConstSource(
+pub const MQCF_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQCF_NONE"), (1, "MQCF_DIST_LISTS")],
     &[],
 );
-pub const MQCGWI_CONST: LinearSource = ConstSource(&[(-2, "MQCGWI_DEFAULT")], &[]);
-pub const MQCHAD_CONST: LinearSource = ConstSource(
+pub const MQCGWI_MAPSTR: LinearSource = ConstSource(&[(-2, "MQCGWI_DEFAULT")], &[]);
+pub const MQCHAD_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQCHAD_DISABLED"), (1, "MQCHAD_ENABLED")],
     &[],
 );
-pub const MQCHIDS_CONST: LinearSource = ConstSource(
+pub const MQCHIDS_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQCHIDS_NOT_INDOUBT"), (1, "MQCHIDS_INDOUBT")],
     &[],
 );
-pub const MQCHK_CONST: LinearSource = ConstSource(
+pub const MQCHK_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQCHK_OPTIONAL"),
         (1, "MQCHK_NONE"),
@@ -982,11 +992,11 @@ pub const MQCHK_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQCHLA_CONST: LinearSource = ConstSource(
+pub const MQCHLA_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQCHLA_DISABLED"), (1, "MQCHLA_ENABLED")],
     &[],
 );
-pub const MQCHLD_CONST: LinearSource = ConstSource(
+pub const MQCHLD_MAPSTR: LinearSource = ConstSource(
     &[
         (-1, "MQCHLD_ALL"),
         (1, "MQCHLD_DEFAULT"),
@@ -996,19 +1006,19 @@ pub const MQCHLD_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQCHRR_CONST: LinearSource = ConstSource(
+pub const MQCHRR_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQCHRR_RESET_NOT_REQUESTED")],
     &[],
 );
-pub const MQCHSH_CONST: LinearSource = ConstSource(
+pub const MQCHSH_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQCHSH_RESTART_NO"), (1, "MQCHSH_RESTART_YES")],
     &[],
 );
-pub const MQCHSR_CONST: LinearSource = ConstSource(
+pub const MQCHSR_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQCHSR_STOP_NOT_REQUESTED"), (1, "MQCHSR_STOP_REQUESTED")],
     &[],
 );
-pub const MQCHSSTATE_CONST: LinearSource = ConstSource(
+pub const MQCHSSTATE_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQCHSSTATE_OTHER"),
         (100, "MQCHSSTATE_END_OF_BATCH"),
@@ -1033,7 +1043,7 @@ pub const MQCHSSTATE_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQCHS_CONST: LinearSource = ConstSource(
+pub const MQCHS_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQCHS_INACTIVE"),
         (1, "MQCHS_BINDING"),
@@ -1050,11 +1060,11 @@ pub const MQCHS_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQCHTAB_CONST: LinearSource = ConstSource(
+pub const MQCHTAB_MAPSTR: LinearSource = ConstSource(
     &[(1, "MQCHTAB_Q_MGR"), (2, "MQCHTAB_CLNTCONN")],
     &[],
 );
-pub const MQCHT_CONST: LinearSource = ConstSource(
+pub const MQCHT_MAPSTR: LinearSource = ConstSource(
     &[
         (1, "MQCHT_SENDER"),
         (2, "MQCHT_SERVER"),
@@ -1070,7 +1080,7 @@ pub const MQCHT_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQCIH_CONST: LinearSource = ConstSource(
+pub const MQCIH_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQCIH_NONE"),
         (1, "MQCIH_PASS_EXPIRATION"),
@@ -1083,21 +1093,21 @@ pub const MQCIH_CONST: LinearSource = ConstSource(
         (0, "MQCIH_UNLIMITED_EXPIRATION"),
     ],
 );
-pub const MQCIT_CONST: LinearSource = ConstSource(&[(1, "MQCIT_MULTICAST")], &[]);
-pub const MQCLCT_CONST: LinearSource = ConstSource(
+pub const MQCIT_MAPSTR: LinearSource = ConstSource(&[(1, "MQCIT_MULTICAST")], &[]);
+pub const MQCLCT_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQCLCT_STATIC"), (1, "MQCLCT_DYNAMIC")],
     &[],
 );
-pub const MQCLROUTE_CONST: LinearSource = ConstSource(
+pub const MQCLROUTE_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQCLROUTE_DIRECT"), (1, "MQCLROUTE_TOPIC_HOST"), (2, "MQCLROUTE_NONE")],
     &[],
 );
-pub const MQCLRS_CONST: LinearSource = ConstSource(
+pub const MQCLRS_MAPSTR: LinearSource = ConstSource(
     &[(1, "MQCLRS_LOCAL"), (2, "MQCLRS_GLOBAL")],
     &[],
 );
-pub const MQCLRT_CONST: LinearSource = ConstSource(&[(1, "MQCLRT_RETAINED")], &[]);
-pub const MQCLST_CONST: LinearSource = ConstSource(
+pub const MQCLRT_MAPSTR: LinearSource = ConstSource(&[(1, "MQCLRT_RETAINED")], &[]);
+pub const MQCLST_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQCLST_ACTIVE"),
         (1, "MQCLST_PENDING"),
@@ -1106,19 +1116,19 @@ pub const MQCLST_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQCLT_CONST: LinearSource = ConstSource(
+pub const MQCLT_MAPSTR: LinearSource = ConstSource(
     &[(1, "MQCLT_PROGRAM"), (2, "MQCLT_TRANSACTION")],
     &[],
 );
-pub const MQCLWL_CONST: LinearSource = ConstSource(
+pub const MQCLWL_MAPSTR: LinearSource = ConstSource(
     &[(-3, "MQCLWL_USEQ_AS_Q_MGR"), (0, "MQCLWL_USEQ_LOCAL"), (1, "MQCLWL_USEQ_ANY")],
     &[],
 );
-pub const MQCLXQ_CONST: LinearSource = ConstSource(
+pub const MQCLXQ_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQCLXQ_SCTQ"), (1, "MQCLXQ_CHANNEL")],
     &[],
 );
-pub const MQCMDI_CONST: LinearSource = ConstSource(
+pub const MQCMDI_MAPSTR: LinearSource = ConstSource(
     &[
         (1, "MQCMDI_CMDSCOPE_ACCEPTED"),
         (2, "MQCMDI_CMDSCOPE_GENERATED"),
@@ -1141,7 +1151,7 @@ pub const MQCMDI_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQCMDL_CONST: LinearSource = ConstSource(
+pub const MQCMDL_MAPSTR: LinearSource = ConstSource(
     &[
         (100, "MQCMDL_LEVEL_1"),
         (101, "MQCMDL_LEVEL_101"),
@@ -1201,7 +1211,7 @@ pub const MQCMDL_CONST: LinearSource = ConstSource(
     ],
     &[(942, "MQCMDL_CURRENT_LEVEL")],
 );
-pub const MQCMD_CONST: BinarySearchSource = ConstSource(
+pub const MQCMD_MAPSTR: BinarySearchSource = ConstSource(
     BinarySearch(
         &[
             (0, "MQCMD_NONE"),
@@ -1403,11 +1413,11 @@ pub const MQCMD_CONST: BinarySearchSource = ConstSource(
     ),
     &[(208, "MQCMD_SET_PROT_POLICY")],
 );
-pub const MQCMHO_CONST: LinearSource = ConstSource(
+pub const MQCMHO_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQCMHO_NONE"), (1, "MQCMHO_NO_VALIDATION"), (2, "MQCMHO_VALIDATE")],
     &[(0, "MQCMHO_DEFAULT_VALIDATION")],
 );
-pub const MQCNO_CONST: LinearSource = ConstSource(
+pub const MQCNO_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQCNO_NONE"),
         (1, "MQCNO_FASTPATH_BINDING"),
@@ -1439,8 +1449,8 @@ pub const MQCNO_CONST: LinearSource = ConstSource(
     ],
     &[(0, "MQCNO_RECONNECT_AS_DEF"), (0, "MQCNO_STANDARD_BINDING")],
 );
-pub const MQCODL_CONST: LinearSource = ConstSource(&[(-1, "MQCODL_AS_INPUT")], &[]);
-pub const MQCOMPRESS_CONST: LinearSource = ConstSource(
+pub const MQCODL_MAPSTR: LinearSource = ConstSource(&[(-1, "MQCODL_AS_INPUT")], &[]);
+pub const MQCOMPRESS_MAPSTR: LinearSource = ConstSource(
     &[
         (-1, "MQCOMPRESS_NOT_AVAILABLE"),
         (0, "MQCOMPRESS_NONE"),
@@ -1454,7 +1464,7 @@ pub const MQCOMPRESS_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQCOPY_CONST: LinearSource = ConstSource(
+pub const MQCOPY_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQCOPY_NONE"),
         (1, "MQCOPY_ALL"),
@@ -1466,7 +1476,7 @@ pub const MQCOPY_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQCO_CONST: LinearSource = ConstSource(
+pub const MQCO_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQCO_NONE"),
         (1, "MQCO_DELETE"),
@@ -1477,7 +1487,7 @@ pub const MQCO_CONST: LinearSource = ConstSource(
     ],
     &[(0, "MQCO_IMMEDIATE")],
 );
-pub const MQCQT_CONST: LinearSource = ConstSource(
+pub const MQCQT_MAPSTR: LinearSource = ConstSource(
     &[
         (1, "MQCQT_LOCAL_Q"),
         (2, "MQCQT_ALIAS_Q"),
@@ -1486,7 +1496,7 @@ pub const MQCQT_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQCRC_CONST: LinearSource = ConstSource(
+pub const MQCRC_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQCRC_OK"),
         (1, "MQCRC_CICS_EXEC_ERROR"),
@@ -1501,7 +1511,7 @@ pub const MQCRC_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQCSP_CONST: LinearSource = ConstSource(
+pub const MQCSP_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQCSP_AUTH_NONE"),
         (1, "MQCSP_AUTH_USER_ID_AND_PWD"),
@@ -1509,15 +1519,15 @@ pub const MQCSP_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQCSRV_CONVERT_CONST: LinearSource = ConstSource(
+pub const MQCSRV_CONVERT_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQCSRV_CONVERT_NO"), (1, "MQCSRV_CONVERT_YES")],
     &[],
 );
-pub const MQCSRV_DLQ_CONST: LinearSource = ConstSource(
+pub const MQCSRV_DLQ_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQCSRV_DLQ_NO"), (1, "MQCSRV_DLQ_YES")],
     &[],
 );
-pub const MQCS_CONST: LinearSource = ConstSource(
+pub const MQCS_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQCS_NONE"),
         (1, "MQCS_SUSPENDED_TEMPORARY"),
@@ -1527,7 +1537,7 @@ pub const MQCS_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQCTES_CONST: LinearSource = ConstSource(
+pub const MQCTES_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQCTES_NOSYNC"),
         (256, "MQCTES_COMMIT"),
@@ -1536,7 +1546,7 @@ pub const MQCTES_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQCTLO_CONST: LinearSource = ConstSource(
+pub const MQCTLO_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQCTLO_NONE"),
         (1, "MQCTLO_THREAD_AFFINITY"),
@@ -1544,7 +1554,7 @@ pub const MQCTLO_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQCUOWC_CONST: LinearSource = ConstSource(
+pub const MQCUOWC_MAPSTR: LinearSource = ConstSource(
     &[
         (16, "MQCUOWC_MIDDLE"),
         (256, "MQCUOWC_COMMIT"),
@@ -1552,9 +1562,9 @@ pub const MQCUOWC_CONST: LinearSource = ConstSource(
         (4352, "MQCUOWC_BACKOUT"),
         (65536, "MQCUOWC_CONTINUE"),
     ],
-    &[],
+    &[(17, "MQCUOWC_FIRST"), (272, "MQCUOWC_LAST")],
 );
-pub const MQDCC_CONST: LinearSource = ConstSource(
+pub const MQDCC_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQDCC_NONE"),
         (1, "MQDCC_DEFAULT_CONVERSION"),
@@ -1576,19 +1586,19 @@ pub const MQDCC_CONST: LinearSource = ConstSource(
         (512, "MQDCC_TARGET_ENC_NATIVE"),
     ],
 );
-pub const MQDC_CONST: LinearSource = ConstSource(
+pub const MQDC_MAPSTR: LinearSource = ConstSource(
     &[(1, "MQDC_MANAGED"), (2, "MQDC_PROVIDED")],
     &[],
 );
-pub const MQDELO_CONST: LinearSource = ConstSource(
+pub const MQDELO_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQDELO_NONE"), (4, "MQDELO_LOCAL")],
     &[],
 );
-pub const MQDHF_CONST: LinearSource = ConstSource(
+pub const MQDHF_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQDHF_NONE"), (1, "MQDHF_NEW_MSG_IDS")],
     &[],
 );
-pub const MQDISCONNECT_CONST: LinearSource = ConstSource(
+pub const MQDISCONNECT_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQDISCONNECT_NORMAL"),
         (1, "MQDISCONNECT_IMPLICIT"),
@@ -1596,7 +1606,7 @@ pub const MQDISCONNECT_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQDLV_CONST: LinearSource = ConstSource(
+pub const MQDLV_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQDLV_AS_PARENT"),
         (1, "MQDLV_ALL"),
@@ -1605,24 +1615,24 @@ pub const MQDLV_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQDL_CONST: LinearSource = ConstSource(
+pub const MQDL_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQDL_NOT_SUPPORTED"), (1, "MQDL_SUPPORTED")],
     &[],
 );
-pub const MQDMHO_CONST: LinearSource = ConstSource(&[(0, "MQDMHO_NONE")], &[]);
-pub const MQDMPO_CONST: LinearSource = ConstSource(
+pub const MQDMHO_MAPSTR: LinearSource = ConstSource(&[(0, "MQDMHO_NONE")], &[]);
+pub const MQDMPO_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQDMPO_NONE"), (1, "MQDMPO_DEL_PROP_UNDER_CURSOR")],
-    &[],
+    &[(0, "MQDMPO_DEL_FIRST")],
 );
-pub const MQDNSWLM_CONST: LinearSource = ConstSource(
+pub const MQDNSWLM_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQDNSWLM_NO"), (1, "MQDNSWLM_YES")],
     &[],
 );
-pub const MQDOPT_CONST: LinearSource = ConstSource(
+pub const MQDOPT_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQDOPT_RESOLVED"), (1, "MQDOPT_DEFINED")],
     &[],
 );
-pub const MQDSB_CONST: LinearSource = ConstSource(
+pub const MQDSB_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQDSB_DEFAULT"),
         (1, "MQDSB_8K"),
@@ -1636,11 +1646,11 @@ pub const MQDSB_CONST: LinearSource = ConstSource(
     ],
     &[(8, "MQDSB_1024K")],
 );
-pub const MQDSE_CONST: LinearSource = ConstSource(
+pub const MQDSE_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQDSE_DEFAULT"), (1, "MQDSE_YES"), (2, "MQDSE_NO")],
     &[],
 );
-pub const MQEC_CONST: LinearSource = ConstSource(
+pub const MQEC_MAPSTR: LinearSource = ConstSource(
     &[
         (2, "MQEC_MSG_ARRIVED"),
         (3, "MQEC_WAIT_INTERVAL_EXPIRED"),
@@ -1650,8 +1660,8 @@ pub const MQEC_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQEI_CONST: LinearSource = ConstSource(&[(-1, "MQEI_UNLIMITED")], &[]);
-pub const MQENC_CONST: LinearSource = ConstSource(
+pub const MQEI_MAPSTR: LinearSource = ConstSource(&[(-1, "MQEI_UNLIMITED")], &[]);
+pub const MQENC_MAPSTR: LinearSource = ConstSource(
     &[
         (-4096, "MQENC_RESERVED_MASK"),
         (-1, "MQENC_AS_PUBLISHED"),
@@ -1678,12 +1688,12 @@ pub const MQENC_CONST: LinearSource = ConstSource(
         (546, "MQENC_NATIVE"),
     ],
 );
-pub const MQEPH_CONST: LinearSource = ConstSource(
+pub const MQEPH_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQEPH_NONE"), (1, "MQEPH_CCSID_EMBEDDED")],
     &[],
 );
-pub const MQET_CONST: LinearSource = ConstSource(&[(1, "MQET_MQSC")], &[]);
-pub const MQEVO_CONST: LinearSource = ConstSource(
+pub const MQET_MAPSTR: LinearSource = ConstSource(&[(1, "MQET_MQSC")], &[]);
+pub const MQEVO_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQEVO_OTHER"),
         (1, "MQEVO_CONSOLE"),
@@ -1697,7 +1707,7 @@ pub const MQEVO_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQEVR_CONST: LinearSource = ConstSource(
+pub const MQEVR_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQEVR_DISABLED"),
         (1, "MQEVR_ENABLED"),
@@ -1709,16 +1719,16 @@ pub const MQEVR_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQEXPI_CONST: LinearSource = ConstSource(&[(0, "MQEXPI_OFF")], &[]);
-pub const MQEXTATTRS_CONST: LinearSource = ConstSource(
+pub const MQEXPI_MAPSTR: LinearSource = ConstSource(&[(0, "MQEXPI_OFF")], &[]);
+pub const MQEXTATTRS_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQEXTATTRS_ALL"), (1, "MQEXTATTRS_NONDEF")],
     &[],
 );
-pub const MQEXT_CONST: LinearSource = ConstSource(
+pub const MQEXT_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQEXT_ALL"), (1, "MQEXT_OBJECT"), (2, "MQEXT_AUTHORITY")],
     &[],
 );
-pub const MQFB_CONST: LinearSource = ConstSource(
+pub const MQFB_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQFB_NONE"),
         (256, "MQFB_QUIT"),
@@ -1773,18 +1783,49 @@ pub const MQFB_CONST: LinearSource = ConstSource(
         (504, "MQFB_SELECTOR_MISMATCH"),
         (505, "MQFB_NOT_A_GROUPUR_MSG"),
     ],
-    &[],
+    &[
+        (1, "MQFB_SYSTEM_FIRST"),
+        (301, "MQFB_IMS_FIRST"),
+        (399, "MQFB_IMS_LAST"),
+        (600, "MQFB_IMS_NACK_1A_REASON_FIRST"),
+        (855, "MQFB_IMS_NACK_1A_REASON_LAST"),
+        (65535, "MQFB_SYSTEM_LAST"),
+        (65536, "MQFB_APPL_FIRST"),
+        (999999999, "MQFB_APPL_LAST"),
+    ],
 );
-pub const MQFC_CONST: LinearSource = ConstSource(
+pub const MQFC_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQFC_NO"), (1, "MQFC_YES")],
     &[],
 );
-pub const MQFSENC_CONST: LinearSource = ConstSource(
+pub const MQFIELD_WQR_MAPSTR: LinearSource = ConstSource(
+    &[
+        (8000, "MQFIELD_WQR_StrucId"),
+        (8001, "MQFIELD_WQR_Version"),
+        (8002, "MQFIELD_WQR_StrucLength"),
+        (8003, "MQFIELD_WQR_QFlags"),
+        (8004, "MQFIELD_WQR_QName"),
+        (8005, "MQFIELD_WQR_QMgrIdentifier"),
+        (8006, "MQFIELD_WQR_ClusterRecOffset"),
+        (8007, "MQFIELD_WQR_QType"),
+        (8008, "MQFIELD_WQR_QDesc"),
+        (8009, "MQFIELD_WQR_DefBind"),
+        (8010, "MQFIELD_WQR_DefPersistence"),
+        (8011, "MQFIELD_WQR_DefPriority"),
+        (8012, "MQFIELD_WQR_InhibitPut"),
+        (8013, "MQFIELD_WQR_CLWLQueuePriority"),
+        (8014, "MQFIELD_WQR_CLWLQueueRank"),
+        (8015, "MQFIELD_WQR_DefPutResponse"),
+        (8016, "MQFIELD_WQR_CapExpiry"),
+    ],
+    &[],
+);
+pub const MQFSENC_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQFSENC_NO"), (1, "MQFSENC_YES"), (2, "MQFSENC_UNKNOWN")],
     &[],
 );
-pub const MQFS_CONST: LinearSource = ConstSource(&[(-1, "MQFS_SHARED")], &[]);
-pub const MQFUN_CONST: LinearSource = ConstSource(
+pub const MQFS_MAPSTR: LinearSource = ConstSource(&[(-1, "MQFS_SHARED")], &[]);
+pub const MQFUN_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQFUN_TYPE_UNKNOWN"),
         (1, "MQFUN_TYPE_JVM"),
@@ -1795,7 +1836,7 @@ pub const MQFUN_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQGACF_CONST: LinearSource = ConstSource(
+pub const MQGACF_MAPSTR: LinearSource = ConstSource(
     &[
         (8001, "MQGACF_COMMAND_CONTEXT"),
         (8002, "MQGACF_COMMAND_DATA"),
@@ -1819,9 +1860,9 @@ pub const MQGACF_CONST: LinearSource = ConstSource(
         (8020, "MQGACF_ALL_APPLS"),
         (8021, "MQGACF_APPL_BALANCE"),
     ],
-    &[],
+    &[(8001, "MQGACF_FIRST"), (8021, "MQGACF_LAST_USED")],
 );
-pub const MQGMO_CONST: LinearSource = ConstSource(
+pub const MQGMO_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQGMO_NONE"),
         (1, "MQGMO_WAIT"),
@@ -1857,16 +1898,19 @@ pub const MQGMO_CONST: LinearSource = ConstSource(
     ],
     &[(0, "MQGMO_NO_WAIT"), (0, "MQGMO_PROPERTIES_AS_Q_DEF")],
 );
-pub const MQGUR_CONST: LinearSource = ConstSource(
+pub const MQGUR_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQGUR_DISABLED"), (1, "MQGUR_ENABLED")],
     &[],
 );
-pub const MQHA_CONST: LinearSource = ConstSource(&[(4001, "MQHA_BAG_HANDLE")], &[]);
-pub const MQHB_CONST: LinearSource = ConstSource(
+pub const MQHA_MAPSTR: LinearSource = ConstSource(
+    &[(4001, "MQHA_BAG_HANDLE")],
+    &[(4001, "MQHA_FIRST"), (4001, "MQHA_LAST_USED"), (6000, "MQHA_LAST")],
+);
+pub const MQHB_MAPSTR: LinearSource = ConstSource(
     &[(-2, "MQHB_NONE"), (-1, "MQHB_UNUSABLE_HBAG")],
     &[],
 );
-pub const MQHC_CONST: LinearSource = ConstSource(
+pub const MQHC_MAPSTR: LinearSource = ConstSource(
     &[
         (-3, "MQHC_UNASSOCIATED_HCONN"),
         (-1, "MQHC_UNUSABLE_HCONN"),
@@ -1874,19 +1918,19 @@ pub const MQHC_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQHM_CONST: LinearSource = ConstSource(
+pub const MQHM_MAPSTR: LinearSource = ConstSource(
     &[(-1, "MQHM_UNUSABLE_HMSG"), (0, "MQHM_NONE")],
     &[],
 );
-pub const MQHO_CONST: LinearSource = ConstSource(
+pub const MQHO_MAPSTR: LinearSource = ConstSource(
     &[(-1, "MQHO_UNUSABLE_HOBJ"), (0, "MQHO_NONE")],
     &[],
 );
-pub const MQHSTATE_CONST: LinearSource = ConstSource(
+pub const MQHSTATE_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQHSTATE_INACTIVE"), (1, "MQHSTATE_ACTIVE")],
     &[],
 );
-pub const MQIACF_CONST: PhfSource = ConstSource(
+pub const MQIACF_MAPSTR: PhfSource = ConstSource(
     &::phf::Map {
         key: 12913932095322966823,
         disps: &[
@@ -2383,12 +2427,14 @@ pub const MQIACF_CONST: PhfSource = ConstSource(
         ],
     },
     &[
+        (1001, "MQIACF_FIRST"),
         (1008, "MQIACF_MODE"),
         (1013, "MQIACF_ERROR_IDENTIFIER"),
         (1199, "MQIACF_SYSP_SMF_STAT_TIME_MINS"),
+        (1477, "MQIACF_LAST_USED"),
     ],
 );
-pub const MQIACH_CONST: BinarySearchSource = ConstSource(
+pub const MQIACH_MAPSTR: BinarySearchSource = ConstSource(
     BinarySearch(
         &[
             (1501, "MQIACH_XMIT_PROTOCOL_TYPE"),
@@ -2520,14 +2566,16 @@ pub const MQIACH_CONST: BinarySearchSource = ConstSource(
         ],
     ),
     &[
+        (1501, "MQIACH_FIRST"),
         (1529, "MQIACH_LAST_SEQUENCE_NUMBER"),
         (1532, "MQIACH_CURRENT_SEQUENCE_NUMBER"),
         (1536, "MQIACH_BYTES_RECEIVED"),
         (1539, "MQIACH_BUFFERS_RECEIVED"),
         (1634, "MQIACH_MSGS_RECEIVED"),
+        (1646, "MQIACH_LAST_USED"),
     ],
 );
-pub const MQIAMO64_CONST: LinearSource = ConstSource(
+pub const MQIAMO64_MAPSTR: LinearSource = ConstSource(
     &[
         (703, "MQIAMO64_AVG_Q_TIME"),
         (741, "MQIAMO64_Q_TIME_AVG"),
@@ -2545,7 +2593,7 @@ pub const MQIAMO64_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQIAMO_CONST: BinarySearchSource = ConstSource(
+pub const MQIAMO_MAPSTR: BinarySearchSource = ConstSource(
     BinarySearch(
         &[
             (702, "MQIAMO_AVG_BATCH_SIZE"),
@@ -2680,9 +2728,9 @@ pub const MQIAMO_CONST: BinarySearchSource = ConstSource(
             (843, "MQIAMO_MONITOR_FLAGS"),
         ],
     ),
-    &[],
+    &[(701, "MQIAMO_FIRST"), (845, "MQIAMO_LAST_USED")],
 );
-pub const MQIAMO_MONITOR_DATATYPE_CONST: LinearSource = ConstSource(
+pub const MQIAMO_MONITOR_DATATYPE_MAPSTR: LinearSource = ConstSource(
     &[
         (1, "MQIAMO_MONITOR_UNIT"),
         (2, "MQIAMO_MONITOR_DELTA"),
@@ -2696,11 +2744,11 @@ pub const MQIAMO_MONITOR_DATATYPE_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQIAMO_MONITOR_FLAGS_CONST: LinearSource = ConstSource(
+pub const MQIAMO_MONITOR_FLAGS_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQIAMO_MONITOR_FLAGS_NONE"), (1, "MQIAMO_MONITOR_FLAGS_OBJNAME")],
     &[],
 );
-pub const MQIASY_CONST: LinearSource = ConstSource(
+pub const MQIASY_MAPSTR: LinearSource = ConstSource(
     &[
         (-9, "MQIASY_VERSION"),
         (-8, "MQIASY_BAG_OPTIONS"),
@@ -2712,13 +2760,13 @@ pub const MQIASY_CONST: LinearSource = ConstSource(
         (-2, "MQIASY_TYPE"),
         (-1, "MQIASY_CODED_CHAR_SET_ID"),
     ],
-    &[],
+    &[(-2000, "MQIASY_LAST"), (-9, "MQIASY_LAST_USED"), (-1, "MQIASY_FIRST")],
 );
-pub const MQIAV_CONST: LinearSource = ConstSource(
+pub const MQIAV_MAPSTR: LinearSource = ConstSource(
     &[(-2, "MQIAV_UNDEFINED"), (-1, "MQIAV_NOT_APPLICABLE")],
     &[],
 );
-pub const MQIA_CONST: BinarySearchSource = ConstSource(
+pub const MQIA_MAPSTR: BinarySearchSource = ConstSource(
     BinarySearch(
         &[
             (1, "MQIA_APPL_TYPE"),
@@ -2967,17 +3015,17 @@ pub const MQIA_CONST: BinarySearchSource = ConstSource(
             (2000, "MQIA_USER_LIST"),
         ],
     ),
-    &[],
+    &[(1, "MQIA_FIRST"), (276, "MQIA_LAST_USED"), (2000, "MQIA_LAST")],
 );
-pub const MQIDO_CONST: LinearSource = ConstSource(
+pub const MQIDO_MAPSTR: LinearSource = ConstSource(
     &[(1, "MQIDO_COMMIT"), (2, "MQIDO_BACKOUT")],
     &[],
 );
-pub const MQIEPF_CONST: LinearSource = ConstSource(
+pub const MQIEPF_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQIEPF_NONE"), (1, "MQIEPF_THREADED_LIBRARY"), (2, "MQIEPF_LOCAL_LIBRARY")],
     &[(0, "MQIEPF_CLIENT_LIBRARY"), (0, "MQIEPF_NON_THREADED_LIBRARY")],
 );
-pub const MQIGQPA_CONST: LinearSource = ConstSource(
+pub const MQIGQPA_MAPSTR: LinearSource = ConstSource(
     &[
         (1, "MQIGQPA_DEFAULT"),
         (2, "MQIGQPA_CONTEXT"),
@@ -2986,11 +3034,11 @@ pub const MQIGQPA_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQIGQ_CONST: LinearSource = ConstSource(
+pub const MQIGQ_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQIGQ_DISABLED"), (1, "MQIGQ_ENABLED")],
     &[],
 );
-pub const MQIIH_CONST: LinearSource = ConstSource(
+pub const MQIIH_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQIIH_NONE"),
         (1, "MQIIH_PASS_EXPIRATION"),
@@ -3000,11 +3048,11 @@ pub const MQIIH_CONST: LinearSource = ConstSource(
     ],
     &[(0, "MQIIH_UNLIMITED_EXPIRATION")],
 );
-pub const MQIMGRCOV_CONST: LinearSource = ConstSource(
+pub const MQIMGRCOV_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQIMGRCOV_NO"), (1, "MQIMGRCOV_YES"), (2, "MQIMGRCOV_AS_Q_MGR")],
     &[],
 );
-pub const MQIMMREASON_CONST: LinearSource = ConstSource(
+pub const MQIMMREASON_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQIMMREASON_NONE"),
         (1, "MQIMMREASON_NOT_CLIENT"),
@@ -3017,7 +3065,7 @@ pub const MQIMMREASON_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQIMPO_CONST: LinearSource = ConstSource(
+pub const MQIMPO_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQIMPO_NONE"),
         (2, "MQIMPO_CONVERT_TYPE"),
@@ -3026,25 +3074,25 @@ pub const MQIMPO_CONST: LinearSource = ConstSource(
         (16, "MQIMPO_INQ_PROP_UNDER_CURSOR"),
         (32, "MQIMPO_CONVERT_VALUE"),
     ],
-    &[],
+    &[(0, "MQIMPO_INQ_FIRST")],
 );
-pub const MQINBD_CONST: LinearSource = ConstSource(
+pub const MQINBD_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQINBD_Q_MGR"), (3, "MQINBD_GROUP")],
     &[],
 );
-pub const MQIND_CONST: LinearSource = ConstSource(
+pub const MQIND_MAPSTR: LinearSource = ConstSource(
     &[(-2, "MQIND_ALL"), (-1, "MQIND_NONE")],
     &[],
 );
-pub const MQIPADDR_CONST: LinearSource = ConstSource(
+pub const MQIPADDR_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQIPADDR_IPV4"), (1, "MQIPADDR_IPV6")],
     &[],
 );
-pub const MQIS_CONST: LinearSource = ConstSource(
+pub const MQIS_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQIS_NO"), (1, "MQIS_YES")],
     &[],
 );
-pub const MQITEM_CONST: LinearSource = ConstSource(
+pub const MQITEM_MAPSTR: LinearSource = ConstSource(
     &[
         (1, "MQITEM_INTEGER"),
         (2, "MQITEM_STRING"),
@@ -3057,7 +3105,7 @@ pub const MQITEM_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQIT_CONST: LinearSource = ConstSource(
+pub const MQIT_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQIT_NONE"),
         (1, "MQIT_MSG_ID"),
@@ -3067,16 +3115,16 @@ pub const MQIT_CONST: LinearSource = ConstSource(
     ],
     &[(1, "MQIT_INTEGER"), (2, "MQIT_STRING"), (3, "MQIT_BAG")],
 );
-pub const MQKAI_CONST: LinearSource = ConstSource(&[(-1, "MQKAI_AUTO")], &[]);
-pub const MQKEY_CONST: LinearSource = ConstSource(
+pub const MQKAI_MAPSTR: LinearSource = ConstSource(&[(-1, "MQKAI_AUTO")], &[]);
+pub const MQKEY_MAPSTR: LinearSource = ConstSource(
     &[(-1, "MQKEY_REUSE_UNLIMITED"), (0, "MQKEY_REUSE_DISABLED")],
     &[],
 );
-pub const MQLDAPC_CONST: LinearSource = ConstSource(
+pub const MQLDAPC_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQLDAPC_INACTIVE"), (1, "MQLDAPC_CONNECTED"), (2, "MQLDAPC_ERROR")],
     &[],
 );
-pub const MQLDAP_AUTHORMD_CONST: LinearSource = ConstSource(
+pub const MQLDAP_AUTHORMD_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQLDAP_AUTHORMD_OS"),
         (1, "MQLDAP_AUTHORMD_SEARCHGRP"),
@@ -3085,23 +3133,23 @@ pub const MQLDAP_AUTHORMD_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQLDAP_NESTGRP_CONST: LinearSource = ConstSource(
+pub const MQLDAP_NESTGRP_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQLDAP_NESTGRP_NO"), (1, "MQLDAP_NESTGRP_YES")],
     &[],
 );
-pub const MQLOGTYPE_CONST: LinearSource = ConstSource(
+pub const MQLOGTYPE_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQLOGTYPE_CIRCULAR"), (1, "MQLOGTYPE_LINEAR"), (2, "MQLOGTYPE_REPLICATED")],
     &[],
 );
-pub const MQLR_CONST: LinearSource = ConstSource(
+pub const MQLR_MAPSTR: LinearSource = ConstSource(
     &[(-2, "MQLR_MAX"), (-1, "MQLR_AUTO"), (1, "MQLR_ONE")],
     &[],
 );
-pub const MQMASTER_CONST: LinearSource = ConstSource(
+pub const MQMASTER_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQMASTER_NO"), (1, "MQMASTER_YES")],
     &[],
 );
-pub const MQMATCH_CONST: LinearSource = ConstSource(
+pub const MQMATCH_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQMATCH_GENERIC"),
         (1, "MQMATCH_RUNCHECK"),
@@ -3110,19 +3158,19 @@ pub const MQMATCH_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQMCAS_CONST: LinearSource = ConstSource(
+pub const MQMCAS_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQMCAS_STOPPED"), (3, "MQMCAS_RUNNING")],
     &[],
 );
-pub const MQMCAT_CONST: LinearSource = ConstSource(
+pub const MQMCAT_MAPSTR: LinearSource = ConstSource(
     &[(1, "MQMCAT_PROCESS"), (2, "MQMCAT_THREAD")],
     &[],
 );
-pub const MQMCB_CONST: LinearSource = ConstSource(
+pub const MQMCB_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQMCB_DISABLED"), (1, "MQMCB_ENABLED")],
     &[],
 );
-pub const MQMCEV_CONST: LinearSource = ConstSource(
+pub const MQMCEV_MAPSTR: LinearSource = ConstSource(
     &[
         (1, "MQMCEV_PACKET_LOSS"),
         (2, "MQMCEV_HEARTBEAT_TIMEOUT"),
@@ -3159,7 +3207,7 @@ pub const MQMCEV_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQMCP_CONST: LinearSource = ConstSource(
+pub const MQMCP_MAPSTR: LinearSource = ConstSource(
     &[
         (-2, "MQMCP_COMPAT"),
         (-1, "MQMCP_ALL"),
@@ -3169,7 +3217,7 @@ pub const MQMCP_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQMC_CONST: LinearSource = ConstSource(
+pub const MQMC_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQMC_AS_PARENT"),
         (1, "MQMC_ENABLED"),
@@ -3178,24 +3226,24 @@ pub const MQMC_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQMDEF_CONST: LinearSource = ConstSource(&[(0, "MQMDEF_NONE")], &[]);
-pub const MQMDS_CONST: LinearSource = ConstSource(
+pub const MQMDEF_MAPSTR: LinearSource = ConstSource(&[(0, "MQMDEF_NONE")], &[]);
+pub const MQMDS_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQMDS_PRIORITY"), (1, "MQMDS_FIFO")],
     &[],
 );
-pub const MQMEDIMGINTVL_CONST: LinearSource = ConstSource(
+pub const MQMEDIMGINTVL_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQMEDIMGINTVL_OFF")],
     &[],
 );
-pub const MQMEDIMGLOGLN_CONST: LinearSource = ConstSource(
+pub const MQMEDIMGLOGLN_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQMEDIMGLOGLN_OFF")],
     &[],
 );
-pub const MQMEDIMGSCHED_CONST: LinearSource = ConstSource(
+pub const MQMEDIMGSCHED_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQMEDIMGSCHED_MANUAL"), (1, "MQMEDIMGSCHED_AUTO")],
     &[],
 );
-pub const MQMF_CONST: LinearSource = ConstSource(
+pub const MQMF_MAPSTR: LinearSource = ConstSource(
     &[
         (-1048576, "MQMF_ACCEPT_UNSUP_MASK"),
         (0, "MQMF_NONE"),
@@ -3209,7 +3257,7 @@ pub const MQMF_CONST: LinearSource = ConstSource(
     ],
     &[(0, "MQMF_SEGMENTATION_INHIBITED")],
 );
-pub const MQMHBO_CONST: LinearSource = ConstSource(
+pub const MQMHBO_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQMHBO_NONE"),
         (1, "MQMHBO_PROPERTIES_IN_MQRFH2"),
@@ -3217,7 +3265,7 @@ pub const MQMHBO_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQMLP_ENCRYPTION_CONST: LinearSource = ConstSource(
+pub const MQMLP_ENCRYPTION_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQMLP_ENCRYPTION_ALG_NONE"),
         (1, "MQMLP_ENCRYPTION_ALG_RC2"),
@@ -3228,7 +3276,7 @@ pub const MQMLP_ENCRYPTION_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQMLP_SIGN_CONST: LinearSource = ConstSource(
+pub const MQMLP_SIGN_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQMLP_SIGN_ALG_NONE"),
         (1, "MQMLP_SIGN_ALG_MD5"),
@@ -3240,16 +3288,16 @@ pub const MQMLP_SIGN_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQMLP_TOLERATE_CONST: LinearSource = ConstSource(
+pub const MQMLP_TOLERATE_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQMLP_TOLERATE_UNPROTECTED_NO"), (1, "MQMLP_TOLERATE_UNPROTECTED_YES")],
     &[],
 );
-pub const MQMMBI_CONST: LinearSource = ConstSource(&[(-1, "MQMMBI_UNLIMITED")], &[]);
-pub const MQMODE_CONST: LinearSource = ConstSource(
+pub const MQMMBI_MAPSTR: LinearSource = ConstSource(&[(-1, "MQMMBI_UNLIMITED")], &[]);
+pub const MQMODE_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQMODE_FORCE"), (1, "MQMODE_QUIESCE"), (2, "MQMODE_TERMINATE")],
     &[],
 );
-pub const MQMON_CONST: LinearSource = ConstSource(
+pub const MQMON_MAPSTR: LinearSource = ConstSource(
     &[
         (-3, "MQMON_Q_MGR"),
         (-1, "MQMON_NONE"),
@@ -3261,15 +3309,15 @@ pub const MQMON_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQMON_AVAILABILITY_CONST: LinearSource = ConstSource(
+pub const MQMON_AVAILABILITY_MAPSTR: LinearSource = ConstSource(
     &[(-1, "MQMON_NOT_AVAILABLE")],
     &[],
 );
-pub const MQMON_OVERRIDE_CONST: LinearSource = ConstSource(
+pub const MQMON_OVERRIDE_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQMON_DISABLED"), (1, "MQMON_ENABLED")],
     &[],
 );
-pub const MQMO_CONST: LinearSource = ConstSource(
+pub const MQMO_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQMO_NONE"),
         (1, "MQMO_MATCH_MSG_ID"),
@@ -3281,7 +3329,7 @@ pub const MQMO_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQMT_CONST: LinearSource = ConstSource(
+pub const MQMT_MAPSTR: LinearSource = ConstSource(
     &[
         (1, "MQMT_REQUEST"),
         (2, "MQMT_REPLY"),
@@ -3290,29 +3338,34 @@ pub const MQMT_CONST: LinearSource = ConstSource(
         (112, "MQMT_MQE_FIELDS_FROM_MQE"),
         (113, "MQMT_MQE_FIELDS"),
     ],
-    &[],
+    &[
+        (1, "MQMT_SYSTEM_FIRST"),
+        (65535, "MQMT_SYSTEM_LAST"),
+        (65536, "MQMT_APPL_FIRST"),
+        (999999999, "MQMT_APPL_LAST"),
+    ],
 );
-pub const MQMULC_CONST: LinearSource = ConstSource(
+pub const MQMULC_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQMULC_STANDARD"), (1, "MQMULC_REFINED")],
     &[],
 );
-pub const MQNC_CONST: LinearSource = ConstSource(
+pub const MQNC_MAPSTR: LinearSource = ConstSource(
     &[(256, "MQNC_MAX_NAMELIST_NAME_COUNT")],
     &[],
 );
-pub const MQNHABACKLOG_CONST: LinearSource = ConstSource(
+pub const MQNHABACKLOG_MAPSTR: LinearSource = ConstSource(
     &[(-1, "MQNHABACKLOG_UNKNOWN")],
     &[],
 );
-pub const MQNHACONNACTV_CONST: LinearSource = ConstSource(
+pub const MQNHACONNACTV_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQNHACONNACTV_NO"), (1, "MQNHACONNACTV_YES")],
     &[],
 );
-pub const MQNHACONNGRP_CONST: LinearSource = ConstSource(
+pub const MQNHACONNGRP_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQNHACONNGRP_NO"), (1, "MQNHACONNGRP_YES"), (2, "MQNHACONNGRP_SUSPENDED")],
     &[],
 );
-pub const MQNHAGRPROLE_CONST: LinearSource = ConstSource(
+pub const MQNHAGRPROLE_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQNHAGRPROLE_UNKNOWN"),
         (1, "MQNHAGRPROLE_NOT_CONFIGURED"),
@@ -3323,11 +3376,11 @@ pub const MQNHAGRPROLE_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQNHAINSYNC_CONST: LinearSource = ConstSource(
+pub const MQNHAINSYNC_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQNHAINSYNC_NO"), (1, "MQNHAINSYNC_YES")],
     &[],
 );
-pub const MQNHAROLE_CONST: LinearSource = ConstSource(
+pub const MQNHAROLE_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQNHAROLE_UNKNOWN"),
         (1, "MQNHAROLE_ACTIVE"),
@@ -3336,7 +3389,7 @@ pub const MQNHAROLE_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQNHASTATUS_CONST: LinearSource = ConstSource(
+pub const MQNHASTATUS_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQNHASTATUS_UNKNOWN"),
         (1, "MQNHASTATUS_NORMAL"),
@@ -3349,23 +3402,23 @@ pub const MQNHASTATUS_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQNHATYPE_CONST: LinearSource = ConstSource(
+pub const MQNHATYPE_MAPSTR: LinearSource = ConstSource(
     &[(-1, "MQNHATYPE_ALL"), (0, "MQNHATYPE_INSTANCE"), (1, "MQNHATYPE_GROUP")],
     &[],
 );
-pub const MQNPMS_CONST: LinearSource = ConstSource(
+pub const MQNPMS_MAPSTR: LinearSource = ConstSource(
     &[(1, "MQNPMS_NORMAL"), (2, "MQNPMS_FAST")],
     &[],
 );
-pub const MQNPM_CONST: LinearSource = ConstSource(
+pub const MQNPM_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQNPM_CLASS_NORMAL"), (10, "MQNPM_CLASS_HIGH")],
     &[],
 );
-pub const MQNSH_CONST: LinearSource = ConstSource(
+pub const MQNSH_MAPSTR: LinearSource = ConstSource(
     &[(-1, "MQNSH_ALL"), (0, "MQNSH_NONE")],
     &[],
 );
-pub const MQNT_CONST: LinearSource = ConstSource(
+pub const MQNT_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQNT_NONE"),
         (1, "MQNT_Q"),
@@ -3375,12 +3428,12 @@ pub const MQNT_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQOL_CONST: LinearSource = ConstSource(&[(-1, "MQOL_UNDEFINED")], &[]);
-pub const MQOM_CONST: LinearSource = ConstSource(
+pub const MQOL_MAPSTR: LinearSource = ConstSource(&[(-1, "MQOL_UNDEFINED")], &[]);
+pub const MQOM_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQOM_NO"), (1, "MQOM_YES")],
     &[],
 );
-pub const MQOO_CONST: LinearSource = ConstSource(
+pub const MQOO_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQOO_READ_AHEAD_AS_Q_DEF"),
         (1, "MQOO_INPUT_AS_Q_DEF"),
@@ -3409,7 +3462,7 @@ pub const MQOO_CONST: LinearSource = ConstSource(
     ],
     &[(0, "MQOO_BIND_AS_Q_DEF"), (262144, "MQOO_RESOLVE_LOCAL_TOPIC")],
 );
-pub const MQOPER_CONST: LinearSource = ConstSource(
+pub const MQOPER_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQOPER_UNKNOWN"),
         (1, "MQOPER_BROWSE"),
@@ -3425,13 +3478,18 @@ pub const MQOPER_CONST: LinearSource = ConstSource(
         (11, "MQOPER_EXCLUDED_PUBLISH"),
         (12, "MQOPER_DISCARDED_PUBLISH"),
     ],
-    &[],
+    &[
+        (0, "MQOPER_SYSTEM_FIRST"),
+        (65535, "MQOPER_SYSTEM_LAST"),
+        (65536, "MQOPER_APPL_FIRST"),
+        (999999999, "MQOPER_APPL_LAST"),
+    ],
 );
-pub const MQOPMODE_CONST: LinearSource = ConstSource(
+pub const MQOPMODE_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQOPMODE_COMPAT"), (1, "MQOPMODE_NEW_FUNCTION")],
     &[],
 );
-pub const MQOP_CONST: LinearSource = ConstSource(
+pub const MQOP_MAPSTR: LinearSource = ConstSource(
     &[
         (1, "MQOP_START"),
         (2, "MQOP_START_WAIT"),
@@ -3443,7 +3501,7 @@ pub const MQOP_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQOT_CONST: LinearSource = ConstSource(
+pub const MQOT_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQOT_NONE"),
         (1, "MQOT_Q"),
@@ -3482,11 +3540,11 @@ pub const MQOT_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQPAGECLAS_CONST: LinearSource = ConstSource(
+pub const MQPAGECLAS_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQPAGECLAS_4KB"), (1, "MQPAGECLAS_FIXED4KB")],
     &[],
 );
-pub const MQPA_CONST: LinearSource = ConstSource(
+pub const MQPA_MAPSTR: LinearSource = ConstSource(
     &[
         (1, "MQPA_DEFAULT"),
         (2, "MQPA_CONTEXT"),
@@ -3495,7 +3553,7 @@ pub const MQPA_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQPD_CONST: LinearSource = ConstSource(
+pub const MQPD_MAPSTR: LinearSource = ConstSource(
     &[
         (-1048576, "MQPD_REJECT_UNSUP_MASK"),
         (0, "MQPD_NONE"),
@@ -3507,7 +3565,7 @@ pub const MQPD_CONST: LinearSource = ConstSource(
     ],
     &[(0, "MQPD_NO_CONTEXT"), (1, "MQPD_USER_CONTEXT")],
 );
-pub const MQPER_CONST: LinearSource = ConstSource(
+pub const MQPER_MAPSTR: LinearSource = ConstSource(
     &[
         (-1, "MQPER_PERSISTENCE_AS_PARENT"),
         (0, "MQPER_NOT_PERSISTENT"),
@@ -3516,7 +3574,7 @@ pub const MQPER_CONST: LinearSource = ConstSource(
     ],
     &[(2, "MQPER_PERSISTENCE_AS_TOPIC_DEF")],
 );
-pub const MQPL_CONST: LinearSource = ConstSource(
+pub const MQPL_MAPSTR: LinearSource = ConstSource(
     &[
         (1, "MQPL_ZOS"),
         (2, "MQPL_OS2"),
@@ -3534,7 +3592,7 @@ pub const MQPL_CONST: LinearSource = ConstSource(
     ],
     &[(1, "MQPL_MVS"), (1, "MQPL_OS390"), (3, "MQPL_AIX"), (13, "MQPL_NSS")],
 );
-pub const MQPMO_CONST: LinearSource = ConstSource(
+pub const MQPMO_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQPMO_NONE"),
         (2, "MQPMO_SYNCPOINT"),
@@ -3566,7 +3624,7 @@ pub const MQPMO_CONST: LinearSource = ConstSource(
         (2097152, "MQPMO_PUB_OPTIONS_MASK"),
     ],
 );
-pub const MQPMRF_CONST: LinearSource = ConstSource(
+pub const MQPMRF_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQPMRF_NONE"),
         (1, "MQPMRF_MSG_ID"),
@@ -3577,11 +3635,11 @@ pub const MQPMRF_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQPO_CONST: LinearSource = ConstSource(
+pub const MQPO_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQPO_NO"), (1, "MQPO_YES")],
     &[],
 );
-pub const MQPRI_CONST: LinearSource = ConstSource(
+pub const MQPRI_MAPSTR: LinearSource = ConstSource(
     &[
         (-3, "MQPRI_PRIORITY_AS_PUBLISHED"),
         (-2, "MQPRI_PRIORITY_AS_PARENT"),
@@ -3589,7 +3647,7 @@ pub const MQPRI_CONST: LinearSource = ConstSource(
     ],
     &[(-1, "MQPRI_PRIORITY_AS_TOPIC_DEF")],
 );
-pub const MQPROP_CONST: LinearSource = ConstSource(
+pub const MQPROP_MAPSTR: LinearSource = ConstSource(
     &[
         (-1, "MQPROP_UNRESTRICTED_LENGTH"),
         (0, "MQPROP_COMPATIBILITY"),
@@ -3600,7 +3658,7 @@ pub const MQPROP_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQPROTO_CONST: LinearSource = ConstSource(
+pub const MQPROTO_MAPSTR: LinearSource = ConstSource(
     &[
         (1, "MQPROTO_MQTTV3"),
         (2, "MQPROTO_HTTP"),
@@ -3609,7 +3667,7 @@ pub const MQPROTO_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQPRT_CONST: LinearSource = ConstSource(
+pub const MQPRT_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQPRT_RESPONSE_AS_PARENT"),
         (1, "MQPRT_SYNC_RESPONSE"),
@@ -3617,16 +3675,16 @@ pub const MQPRT_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQPSCLUS_CONST: LinearSource = ConstSource(
+pub const MQPSCLUS_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQPSCLUS_DISABLED"), (1, "MQPSCLUS_ENABLED")],
     &[],
 );
-pub const MQPSCT_CONST: LinearSource = ConstSource(&[(-1, "MQPSCT_NONE")], &[]);
-pub const MQPSM_CONST: LinearSource = ConstSource(
+pub const MQPSCT_MAPSTR: LinearSource = ConstSource(&[(-1, "MQPSCT_NONE")], &[]);
+pub const MQPSM_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQPSM_DISABLED"), (1, "MQPSM_COMPAT"), (2, "MQPSM_ENABLED")],
     &[],
 );
-pub const MQPSPROP_CONST: LinearSource = ConstSource(
+pub const MQPSPROP_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQPSPROP_NONE"),
         (1, "MQPSPROP_COMPAT"),
@@ -3635,11 +3693,11 @@ pub const MQPSPROP_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQPSST_CONST: LinearSource = ConstSource(
+pub const MQPSST_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQPSST_ALL"), (1, "MQPSST_LOCAL"), (2, "MQPSST_PARENT"), (3, "MQPSST_CHILD")],
     &[],
 );
-pub const MQPS_CONST: LinearSource = ConstSource(
+pub const MQPS_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQPS_STATUS_INACTIVE"),
         (1, "MQPS_STATUS_STARTING"),
@@ -3651,7 +3709,7 @@ pub const MQPS_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQPUBO_CONST: LinearSource = ConstSource(
+pub const MQPUBO_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQPUBO_NONE"),
         (1, "MQPUBO_CORREL_ID_AS_IDENTITY"),
@@ -3662,23 +3720,23 @@ pub const MQPUBO_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQQA_BACKOUT_CONST: LinearSource = ConstSource(
+pub const MQQA_BACKOUT_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQQA_BACKOUT_NOT_HARDENED"), (1, "MQQA_BACKOUT_HARDENED")],
     &[],
 );
-pub const MQQA_GET_CONST: LinearSource = ConstSource(
+pub const MQQA_GET_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQQA_GET_ALLOWED"), (1, "MQQA_GET_INHIBITED")],
     &[],
 );
-pub const MQQA_PUT_CONST: LinearSource = ConstSource(
+pub const MQQA_PUT_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQQA_PUT_ALLOWED"), (1, "MQQA_PUT_INHIBITED")],
     &[],
 );
-pub const MQQA_SHAREABLE_CONST: LinearSource = ConstSource(
+pub const MQQA_SHAREABLE_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQQA_NOT_SHAREABLE"), (1, "MQQA_SHAREABLE")],
     &[],
 );
-pub const MQQDT_CONST: LinearSource = ConstSource(
+pub const MQQDT_MAPSTR: LinearSource = ConstSource(
     &[
         (1, "MQQDT_PREDEFINED"),
         (2, "MQQDT_PERMANENT_DYNAMIC"),
@@ -3687,12 +3745,12 @@ pub const MQQDT_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQQFS_CONST: LinearSource = ConstSource(&[(-1, "MQQFS_DEFAULT")], &[]);
-pub const MQQF_CONST: LinearSource = ConstSource(
+pub const MQQFS_MAPSTR: LinearSource = ConstSource(&[(-1, "MQQFS_DEFAULT")], &[]);
+pub const MQQF_MAPSTR: LinearSource = ConstSource(
     &[(1, "MQQF_LOCAL_Q"), (64, "MQQF_CLWL_USEQ_ANY"), (128, "MQQF_CLWL_USEQ_LOCAL")],
     &[],
 );
-pub const MQQMDT_CONST: LinearSource = ConstSource(
+pub const MQQMDT_MAPSTR: LinearSource = ConstSource(
     &[
         (1, "MQQMDT_EXPLICIT_CLUSTER_SENDER"),
         (2, "MQQMDT_AUTO_CLUSTER_SENDER"),
@@ -3701,11 +3759,11 @@ pub const MQQMDT_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQQMFAC_CONST: LinearSource = ConstSource(
+pub const MQQMFAC_MAPSTR: LinearSource = ConstSource(
     &[(1, "MQQMFAC_IMS_BRIDGE"), (2, "MQQMFAC_DB2")],
     &[],
 );
-pub const MQQMF_CONST: LinearSource = ConstSource(
+pub const MQQMF_MAPSTR: LinearSource = ConstSource(
     &[
         (2, "MQQMF_REPOSITORY_Q_MGR"),
         (8, "MQQMF_CLUSSDR_USER_DEFINED"),
@@ -3714,11 +3772,11 @@ pub const MQQMF_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQQMOPT_CONST: LinearSource = ConstSource(
+pub const MQQMOPT_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQQMOPT_DISABLED"), (1, "MQQMOPT_ENABLED"), (2, "MQQMOPT_REPLY")],
     &[],
 );
-pub const MQQMSTA_CONST: LinearSource = ConstSource(
+pub const MQQMSTA_MAPSTR: LinearSource = ConstSource(
     &[
         (1, "MQQMSTA_STARTING"),
         (2, "MQQMSTA_RUNNING"),
@@ -3727,15 +3785,15 @@ pub const MQQMSTA_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQQMT_CONST: LinearSource = ConstSource(
+pub const MQQMT_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQQMT_NORMAL"), (1, "MQQMT_REPOSITORY")],
     &[],
 );
-pub const MQQO_CONST: LinearSource = ConstSource(
+pub const MQQO_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQQO_NO"), (1, "MQQO_YES")],
     &[],
 );
-pub const MQQSGD_CONST: LinearSource = ConstSource(
+pub const MQQSGD_MAPSTR: LinearSource = ConstSource(
     &[
         (-1, "MQQSGD_ALL"),
         (0, "MQQSGD_Q_MGR"),
@@ -3747,7 +3805,7 @@ pub const MQQSGD_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQQSGS_CONST: LinearSource = ConstSource(
+pub const MQQSGS_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQQSGS_UNKNOWN"),
         (1, "MQQSGS_CREATED"),
@@ -3758,23 +3816,23 @@ pub const MQQSGS_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQQSIE_CONST: LinearSource = ConstSource(
+pub const MQQSIE_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQQSIE_NONE"), (1, "MQQSIE_HIGH"), (2, "MQQSIE_OK")],
     &[],
 );
-pub const MQQSOT_CONST: LinearSource = ConstSource(
+pub const MQQSOT_MAPSTR: LinearSource = ConstSource(
     &[(1, "MQQSOT_ALL"), (2, "MQQSOT_INPUT"), (3, "MQQSOT_OUTPUT")],
     &[],
 );
-pub const MQQSO_CONST: LinearSource = ConstSource(
+pub const MQQSO_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQQSO_NO"), (1, "MQQSO_YES"), (2, "MQQSO_EXCLUSIVE")],
     &[(1, "MQQSO_SHARED")],
 );
-pub const MQQSUM_CONST: LinearSource = ConstSource(
+pub const MQQSUM_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQQSUM_NO"), (1, "MQQSUM_YES")],
     &[],
 );
-pub const MQQT_CONST: LinearSource = ConstSource(
+pub const MQQT_MAPSTR: LinearSource = ConstSource(
     &[
         (1, "MQQT_LOCAL"),
         (2, "MQQT_MODEL"),
@@ -3785,11 +3843,11 @@ pub const MQQT_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQRAR_CONST: LinearSource = ConstSource(
+pub const MQRAR_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQRAR_NO"), (1, "MQRAR_YES")],
     &[],
 );
-pub const MQRCCF_CONST: PhfSource = ConstSource(
+pub const MQRCCF_MAPSTR: PhfSource = ConstSource(
     &::phf::Map {
         key: 12913932095322966823,
         disps: &[
@@ -4235,15 +4293,15 @@ pub const MQRCCF_CONST: PhfSource = ConstSource(
     },
     &[(3029, "MQRCCF_MODE_VALUE_ERROR"), (3345, "MQRCCF_IPADDR_ERROR")],
 );
-pub const MQRCN_CONST: LinearSource = ConstSource(
+pub const MQRCN_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQRCN_NO"), (1, "MQRCN_YES"), (2, "MQRCN_Q_MGR"), (3, "MQRCN_DISABLED")],
     &[],
 );
-pub const MQRCVTIME_CONST: LinearSource = ConstSource(
+pub const MQRCVTIME_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQRCVTIME_MULTIPLY"), (1, "MQRCVTIME_ADD"), (2, "MQRCVTIME_EQUAL")],
     &[],
 );
-pub const MQRC_CONST: PhfSource = ConstSource(
+pub const MQRC_MAPSTR: PhfSource = ConstSource(
     &::phf::Map {
         key: 12913932095322966823,
         disps: &[
@@ -4933,17 +4991,17 @@ pub const MQRC_CONST: PhfSource = ConstSource(
             (2458, "MQRC_READ_AHEAD_MSGS"),
         ],
     },
-    &[],
+    &[(900, "MQRC_APPL_FIRST"), (999, "MQRC_APPL_LAST")],
 );
-pub const MQRDNS_CONST: LinearSource = ConstSource(
+pub const MQRDNS_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQRDNS_ENABLED"), (1, "MQRDNS_DISABLED")],
     &[],
 );
-pub const MQRD_CONST: LinearSource = ConstSource(
+pub const MQRD_MAPSTR: LinearSource = ConstSource(
     &[(-1, "MQRD_NO_RECONNECT"), (0, "MQRD_NO_DELAY")],
     &[],
 );
-pub const MQREADA_CONST: LinearSource = ConstSource(
+pub const MQREADA_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQREADA_NO"),
         (1, "MQREADA_YES"),
@@ -4953,15 +5011,15 @@ pub const MQREADA_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQRECAUTO_CONST: LinearSource = ConstSource(
+pub const MQRECAUTO_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQRECAUTO_NO"), (1, "MQRECAUTO_YES")],
     &[],
 );
-pub const MQRECORDING_CONST: LinearSource = ConstSource(
+pub const MQRECORDING_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQRECORDING_DISABLED"), (1, "MQRECORDING_Q"), (2, "MQRECORDING_MSG")],
     &[],
 );
-pub const MQREGO_CONST: LinearSource = ConstSource(
+pub const MQREGO_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQREGO_NONE"),
         (1, "MQREGO_CORREL_ID_AS_IDENTITY"),
@@ -4989,20 +5047,20 @@ pub const MQREGO_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQREORG_CONST: LinearSource = ConstSource(
+pub const MQREORG_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQREORG_DISABLED"), (1, "MQREORG_ENABLED")],
     &[],
 );
-pub const MQRFH_CONST: LinearSource = ConstSource(
+pub const MQRFH_MAPSTR: LinearSource = ConstSource(
     &[(-65536, "MQRFH_FLAGS_RESTRICTED_MASK"), (0, "MQRFH_NONE")],
     &[(0, "MQRFH_NO_FLAGS")],
 );
-pub const MQRL_CONST: LinearSource = ConstSource(&[(-1, "MQRL_UNDEFINED")], &[]);
-pub const MQRMHF_CONST: LinearSource = ConstSource(
+pub const MQRL_MAPSTR: LinearSource = ConstSource(&[(-1, "MQRL_UNDEFINED")], &[]);
+pub const MQRMHF_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQRMHF_NOT_LAST"), (1, "MQRMHF_LAST")],
     &[],
 );
-pub const MQROUTE_CONST: LinearSource = ConstSource(
+pub const MQROUTE_MAPSTR: LinearSource = ConstSource(
     &[
         (-65536, "MQROUTE_DELIVER_REJ_UNSUP_MASK"),
         (0, "MQROUTE_UNLIMITED_ACTIVITIES"),
@@ -5019,7 +5077,7 @@ pub const MQROUTE_CONST: LinearSource = ConstSource(
     ],
     &[(-65536, "MQROUTE_FORWARD_REJ_UNSUP_MASK")],
 );
-pub const MQRO_CONST: LinearSource = ConstSource(
+pub const MQRO_MAPSTR: LinearSource = ConstSource(
     &[
         (-270532353, "MQRO_ACCEPT_UNSUP_MASK"),
         (0, "MQRO_NONE"),
@@ -5051,11 +5109,11 @@ pub const MQRO_CONST: LinearSource = ConstSource(
         (0, "MQRO_NEW_MSG_ID"),
     ],
 );
-pub const MQRP_CONST: LinearSource = ConstSource(
+pub const MQRP_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQRP_NO"), (1, "MQRP_YES")],
     &[],
 );
-pub const MQRQ_CONST: LinearSource = ConstSource(
+pub const MQRQ_MAPSTR: LinearSource = ConstSource(
     &[
         (1, "MQRQ_CONN_NOT_AUTHORIZED"),
         (2, "MQRQ_OPEN_NOT_AUTHORIZED"),
@@ -5093,7 +5151,7 @@ pub const MQRQ_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQRT_CONST: LinearSource = ConstSource(
+pub const MQRT_MAPSTR: LinearSource = ConstSource(
     &[
         (1, "MQRT_CONFIGURATION"),
         (2, "MQRT_EXPIRY"),
@@ -5103,31 +5161,31 @@ pub const MQRT_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQRU_CONST: LinearSource = ConstSource(
+pub const MQRU_MAPSTR: LinearSource = ConstSource(
     &[(1, "MQRU_PUBLISH_ON_REQUEST"), (2, "MQRU_PUBLISH_ALL")],
     &[],
 );
-pub const MQSCA_CONST: LinearSource = ConstSource(
+pub const MQSCA_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQSCA_REQUIRED"), (1, "MQSCA_OPTIONAL"), (2, "MQSCA_NEVER_REQUIRED")],
     &[],
 );
-pub const MQSCOPE_CONST: LinearSource = ConstSource(
+pub const MQSCOPE_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQSCOPE_ALL"), (1, "MQSCOPE_AS_PARENT"), (4, "MQSCOPE_QMGR")],
     &[],
 );
-pub const MQSCO_CONST: LinearSource = ConstSource(
+pub const MQSCO_MAPSTR: LinearSource = ConstSource(
     &[(1, "MQSCO_Q_MGR"), (2, "MQSCO_CELL")],
     &[(0, "MQSCO_RESET_COUNT_DEFAULT")],
 );
-pub const MQSCYC_CONST: LinearSource = ConstSource(
+pub const MQSCYC_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQSCYC_UPPER"), (1, "MQSCYC_MIXED")],
     &[],
 );
-pub const MQSECCOMM_CONST: LinearSource = ConstSource(
+pub const MQSECCOMM_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQSECCOMM_NO"), (1, "MQSECCOMM_YES"), (2, "MQSECCOMM_ANON")],
     &[],
 );
-pub const MQSECITEM_CONST: LinearSource = ConstSource(
+pub const MQSECITEM_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQSECITEM_ALL"),
         (1, "MQSECITEM_MQADMIN"),
@@ -5144,7 +5202,7 @@ pub const MQSECITEM_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQSECPROT_CONST: LinearSource = ConstSource(
+pub const MQSECPROT_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQSECPROT_NONE"),
         (1, "MQSECPROT_SSLV30"),
@@ -5154,7 +5212,7 @@ pub const MQSECPROT_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQSECSW_CONST: LinearSource = ConstSource(
+pub const MQSECSW_MAPSTR: LinearSource = ConstSource(
     &[
         (1, "MQSECSW_PROCESS"),
         (2, "MQSECSW_NAMELIST"),
@@ -5177,7 +5235,7 @@ pub const MQSECSW_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQSECTYPE_CONST: LinearSource = ConstSource(
+pub const MQSECTYPE_MAPSTR: LinearSource = ConstSource(
     &[
         (1, "MQSECTYPE_AUTHSERV"),
         (2, "MQSECTYPE_SSL"),
@@ -5186,11 +5244,11 @@ pub const MQSECTYPE_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQSELTYPE_CONST: LinearSource = ConstSource(
+pub const MQSELTYPE_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQSELTYPE_NONE"), (1, "MQSELTYPE_STANDARD"), (2, "MQSELTYPE_EXTENDED")],
     &[],
 );
-pub const MQSEL_ALL_CONST: LinearSource = ConstSource(
+pub const MQSEL_ALL_MAPSTR: LinearSource = ConstSource(
     &[
         (-30003, "MQSEL_ALL_SYSTEM_SELECTORS"),
         (-30002, "MQSEL_ALL_USER_SELECTORS"),
@@ -5198,7 +5256,7 @@ pub const MQSEL_ALL_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQSEL_ANY_CONST: LinearSource = ConstSource(
+pub const MQSEL_ANY_MAPSTR: LinearSource = ConstSource(
     &[
         (-30003, "MQSEL_ANY_SYSTEM_SELECTOR"),
         (-30002, "MQSEL_ANY_USER_SELECTOR"),
@@ -5206,7 +5264,7 @@ pub const MQSEL_ANY_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQSMPO_CONST: LinearSource = ConstSource(
+pub const MQSMPO_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQSMPO_NONE"),
         (1, "MQSMPO_SET_PROP_UNDER_CURSOR"),
@@ -5214,9 +5272,9 @@ pub const MQSMPO_CONST: LinearSource = ConstSource(
         (4, "MQSMPO_APPEND_PROPERTY"),
         (8, "MQSMPO_SET_PROP_BEFORE_CURSOR"),
     ],
-    &[],
+    &[(0, "MQSMPO_SET_FIRST")],
 );
-pub const MQSO_CONST: LinearSource = ConstSource(
+pub const MQSO_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQSO_NONE"),
         (1, "MQSO_ALTER"),
@@ -5242,28 +5300,31 @@ pub const MQSO_CONST: LinearSource = ConstSource(
     ],
     &[(0, "MQSO_NON_DURABLE"), (0, "MQSO_READ_AHEAD_AS_Q_DEF")],
 );
-pub const MQSPL_CONST: LinearSource = ConstSource(
+pub const MQSPL_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQSPL_PASSTHRU"), (1, "MQSPL_REMOVE"), (2, "MQSPL_AS_POLICY")],
     &[],
 );
-pub const MQSP_CONST: LinearSource = ConstSource(
+pub const MQSP_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQSP_NOT_AVAILABLE"), (1, "MQSP_AVAILABLE")],
     &[],
 );
-pub const MQSQQM_CONST: LinearSource = ConstSource(
+pub const MQSQQM_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQSQQM_USE"), (1, "MQSQQM_IGNORE")],
     &[],
 );
-pub const MQSRO_CONST: LinearSource = ConstSource(
+pub const MQSRO_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQSRO_NONE"), (8192, "MQSRO_FAIL_IF_QUIESCING")],
     &[],
 );
-pub const MQSR_CONST: LinearSource = ConstSource(&[(1, "MQSR_ACTION_PUBLICATION")], &[]);
-pub const MQSSL_CONST: LinearSource = ConstSource(
+pub const MQSR_MAPSTR: LinearSource = ConstSource(
+    &[(1, "MQSR_ACTION_PUBLICATION")],
+    &[],
+);
+pub const MQSSL_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQSSL_FIPS_NO"), (1, "MQSSL_FIPS_YES")],
     &[],
 );
-pub const MQSTAT_CONST: LinearSource = ConstSource(
+pub const MQSTAT_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQSTAT_TYPE_ASYNC_ERROR"),
         (1, "MQSTAT_TYPE_RECONNECTION"),
@@ -5271,15 +5332,15 @@ pub const MQSTAT_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQSTDBY_CONST: LinearSource = ConstSource(
+pub const MQSTDBY_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQSTDBY_NOT_PERMITTED"), (1, "MQSTDBY_PERMITTED")],
     &[],
 );
-pub const MQST_CONST: LinearSource = ConstSource(
+pub const MQST_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQST_BEST_EFFORT"), (1, "MQST_MUST_DUP")],
     &[],
 );
-pub const MQSUBTYPE_CONST: LinearSource = ConstSource(
+pub const MQSUBTYPE_MAPSTR: LinearSource = ConstSource(
     &[
         (-2, "MQSUBTYPE_USER"),
         (-1, "MQSUBTYPE_ALL"),
@@ -5289,7 +5350,7 @@ pub const MQSUBTYPE_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQSUB_CONST: LinearSource = ConstSource(
+pub const MQSUB_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQSUB_DURABLE_AS_PARENT"),
         (1, "MQSUB_DURABLE_ALLOWED"),
@@ -5297,15 +5358,15 @@ pub const MQSUB_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQSUB_DURABILITY_CONST: LinearSource = ConstSource(
+pub const MQSUB_DURABILITY_MAPSTR: LinearSource = ConstSource(
     &[(-1, "MQSUB_DURABLE_ALL"), (1, "MQSUB_DURABLE_YES"), (2, "MQSUB_DURABLE_NO")],
     &[],
 );
-pub const MQSUS_CONST: LinearSource = ConstSource(
+pub const MQSUS_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQSUS_NO"), (1, "MQSUS_YES")],
     &[],
 );
-pub const MQSVC_CONTROL_CONST: LinearSource = ConstSource(
+pub const MQSVC_CONTROL_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQSVC_CONTROL_Q_MGR"),
         (1, "MQSVC_CONTROL_Q_MGR_START"),
@@ -5313,7 +5374,7 @@ pub const MQSVC_CONTROL_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQSVC_STATUS_CONST: LinearSource = ConstSource(
+pub const MQSVC_STATUS_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQSVC_STATUS_STOPPED"),
         (1, "MQSVC_STATUS_STARTING"),
@@ -5323,19 +5384,19 @@ pub const MQSVC_STATUS_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQSVC_TYPE_CONST: LinearSource = ConstSource(
+pub const MQSVC_TYPE_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQSVC_TYPE_COMMAND"), (1, "MQSVC_TYPE_SERVER")],
     &[],
 );
-pub const MQSYNCPOINT_CONST: LinearSource = ConstSource(
+pub const MQSYNCPOINT_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQSYNCPOINT_YES"), (1, "MQSYNCPOINT_IFPER")],
     &[],
 );
-pub const MQSYSOBJ_CONST: LinearSource = ConstSource(
+pub const MQSYSOBJ_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQSYSOBJ_YES"), (1, "MQSYSOBJ_NO")],
     &[],
 );
-pub const MQSYSP_CONST: LinearSource = ConstSource(
+pub const MQSYSP_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQSYSP_NO"),
         (1, "MQSYSP_YES"),
@@ -5358,11 +5419,11 @@ pub const MQSYSP_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQS_AVAIL_CONST: LinearSource = ConstSource(
+pub const MQS_AVAIL_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQS_AVAIL_NORMAL"), (1, "MQS_AVAIL_ERROR"), (2, "MQS_AVAIL_STOPPED")],
     &[],
 );
-pub const MQS_EXPANDST_CONST: LinearSource = ConstSource(
+pub const MQS_EXPANDST_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQS_EXPANDST_NORMAL"),
         (1, "MQS_EXPANDST_FAILED"),
@@ -5370,7 +5431,7 @@ pub const MQS_EXPANDST_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQS_OPENMODE_CONST: LinearSource = ConstSource(
+pub const MQS_OPENMODE_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQS_OPENMODE_NONE"),
         (1, "MQS_OPENMODE_READONLY"),
@@ -5379,7 +5440,7 @@ pub const MQS_OPENMODE_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQS_STATUS_CONST: LinearSource = ConstSource(
+pub const MQS_STATUS_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQS_STATUS_CLOSED"),
         (1, "MQS_STATUS_CLOSING"),
@@ -5393,59 +5454,59 @@ pub const MQS_STATUS_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQTA_CONST: LinearSource = ConstSource(
+pub const MQTA_MAPSTR: LinearSource = ConstSource(
     &[(1, "MQTA_BLOCK"), (2, "MQTA_PASSTHRU")],
     &[],
 );
-pub const MQTA_PROXY_CONST: LinearSource = ConstSource(
+pub const MQTA_PROXY_MAPSTR: LinearSource = ConstSource(
     &[(1, "MQTA_PROXY_SUB_FORCE"), (2, "MQTA_PROXY_SUB_FIRSTUSE")],
     &[],
 );
-pub const MQTA_PUB_CONST: LinearSource = ConstSource(
+pub const MQTA_PUB_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQTA_PUB_AS_PARENT"), (1, "MQTA_PUB_INHIBITED"), (2, "MQTA_PUB_ALLOWED")],
     &[],
 );
-pub const MQTA_SUB_CONST: LinearSource = ConstSource(
+pub const MQTA_SUB_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQTA_SUB_AS_PARENT"), (1, "MQTA_SUB_INHIBITED"), (2, "MQTA_SUB_ALLOWED")],
     &[],
 );
-pub const MQTCPKEEP_CONST: LinearSource = ConstSource(
+pub const MQTCPKEEP_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQTCPKEEP_NO"), (1, "MQTCPKEEP_YES")],
     &[],
 );
-pub const MQTCPSTACK_CONST: LinearSource = ConstSource(
+pub const MQTCPSTACK_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQTCPSTACK_SINGLE"), (1, "MQTCPSTACK_MULTIPLE")],
     &[],
 );
-pub const MQTC_CONST: LinearSource = ConstSource(
+pub const MQTC_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQTC_OFF"), (1, "MQTC_ON")],
     &[],
 );
-pub const MQTIME_CONST: LinearSource = ConstSource(
+pub const MQTIME_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQTIME_UNIT_MINS"), (1, "MQTIME_UNIT_SECS")],
     &[],
 );
-pub const MQTOPT_CONST: LinearSource = ConstSource(
+pub const MQTOPT_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQTOPT_LOCAL"), (1, "MQTOPT_CLUSTER"), (2, "MQTOPT_ALL")],
     &[],
 );
-pub const MQTRAXSTR_CONST: LinearSource = ConstSource(
+pub const MQTRAXSTR_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQTRAXSTR_NO"), (1, "MQTRAXSTR_YES")],
     &[],
 );
-pub const MQTRIGGER_CONST: LinearSource = ConstSource(
+pub const MQTRIGGER_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQTRIGGER_RESTART_NO"), (1, "MQTRIGGER_RESTART_YES")],
     &[],
 );
-pub const MQTSCOPE_CONST: LinearSource = ConstSource(
+pub const MQTSCOPE_MAPSTR: LinearSource = ConstSource(
     &[(1, "MQTSCOPE_QMGR"), (2, "MQTSCOPE_ALL")],
     &[],
 );
-pub const MQTT_CONST: LinearSource = ConstSource(
+pub const MQTT_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQTT_NONE"), (1, "MQTT_FIRST"), (2, "MQTT_EVERY"), (3, "MQTT_DEPTH")],
     &[],
 );
-pub const MQTYPE_CONST: LinearSource = ConstSource(
+pub const MQTYPE_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQTYPE_AS_SET"),
         (2, "MQTYPE_NULL"),
@@ -5461,15 +5522,15 @@ pub const MQTYPE_CONST: LinearSource = ConstSource(
     ],
     &[(64, "MQTYPE_LONG")],
 );
-pub const MQUCI_CONST: LinearSource = ConstSource(
+pub const MQUCI_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQUCI_NO"), (1, "MQUCI_YES")],
     &[],
 );
-pub const MQUIDSUPP_CONST: LinearSource = ConstSource(
+pub const MQUIDSUPP_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQUIDSUPP_NO"), (1, "MQUIDSUPP_YES")],
     &[],
 );
-pub const MQUNDELIVERED_CONST: LinearSource = ConstSource(
+pub const MQUNDELIVERED_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQUNDELIVERED_NORMAL"),
         (1, "MQUNDELIVERED_SAFE"),
@@ -5478,7 +5539,7 @@ pub const MQUNDELIVERED_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQUOWST_CONST: LinearSource = ConstSource(
+pub const MQUOWST_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQUOWST_NONE"),
         (1, "MQUOWST_ACTIVE"),
@@ -5487,7 +5548,7 @@ pub const MQUOWST_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQUOWT_CONST: LinearSource = ConstSource(
+pub const MQUOWT_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQUOWT_Q_MGR"),
         (1, "MQUOWT_CICS"),
@@ -5497,7 +5558,7 @@ pub const MQUOWT_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQUSAGE_DS_CONST: LinearSource = ConstSource(
+pub const MQUSAGE_DS_MAPSTR: LinearSource = ConstSource(
     &[
         (10, "MQUSAGE_DS_OLDEST_ACTIVE_UOW"),
         (11, "MQUSAGE_DS_OLDEST_PS_RECOVERY"),
@@ -5505,7 +5566,7 @@ pub const MQUSAGE_DS_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQUSAGE_EXPAND_CONST: LinearSource = ConstSource(
+pub const MQUSAGE_EXPAND_MAPSTR: LinearSource = ConstSource(
     &[
         (1, "MQUSAGE_EXPAND_USER"),
         (2, "MQUSAGE_EXPAND_SYSTEM"),
@@ -5513,7 +5574,7 @@ pub const MQUSAGE_EXPAND_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQUSAGE_PS_CONST: LinearSource = ConstSource(
+pub const MQUSAGE_PS_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQUSAGE_PS_AVAILABLE"),
         (1, "MQUSAGE_PS_DEFINED"),
@@ -5523,50 +5584,50 @@ pub const MQUSAGE_PS_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQUSAGE_SMDS_CONST: LinearSource = ConstSource(
+pub const MQUSAGE_SMDS_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQUSAGE_SMDS_AVAILABLE"), (1, "MQUSAGE_SMDS_NO_DATA")],
     &[],
 );
-pub const MQUSEDLQ_CONST: LinearSource = ConstSource(
+pub const MQUSEDLQ_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQUSEDLQ_AS_PARENT"), (1, "MQUSEDLQ_NO"), (2, "MQUSEDLQ_YES")],
     &[],
 );
-pub const MQUSRC_CONST: LinearSource = ConstSource(
+pub const MQUSRC_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQUSRC_MAP"), (1, "MQUSRC_NOACCESS"), (2, "MQUSRC_CHANNEL")],
     &[],
 );
-pub const MQUS_CONST: LinearSource = ConstSource(
+pub const MQUS_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQUS_NORMAL"), (1, "MQUS_TRANSMISSION")],
     &[],
 );
-pub const MQVL_CONST: LinearSource = ConstSource(
+pub const MQVL_MAPSTR: LinearSource = ConstSource(
     &[(-1, "MQVL_NULL_TERMINATED"), (0, "MQVL_EMPTY_STRING")],
     &[],
 );
-pub const MQVS_CONST: LinearSource = ConstSource(&[(-1, "MQVS_NULL_TERMINATED")], &[]);
-pub const MQVU_CONST: LinearSource = ConstSource(
+pub const MQVS_MAPSTR: LinearSource = ConstSource(&[(-1, "MQVS_NULL_TERMINATED")], &[]);
+pub const MQVU_MAPSTR: LinearSource = ConstSource(
     &[(1, "MQVU_FIXED_USER"), (2, "MQVU_ANY_USER")],
     &[],
 );
-pub const MQWARN_CONST: LinearSource = ConstSource(
+pub const MQWARN_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQWARN_NO"), (1, "MQWARN_YES")],
     &[],
 );
-pub const MQWIH_CONST: LinearSource = ConstSource(&[(0, "MQWIH_NONE")], &[]);
-pub const MQWI_CONST: LinearSource = ConstSource(&[(-1, "MQWI_UNLIMITED")], &[]);
-pub const MQWS_CONST: LinearSource = ConstSource(
+pub const MQWIH_MAPSTR: LinearSource = ConstSource(&[(0, "MQWIH_NONE")], &[]);
+pub const MQWI_MAPSTR: LinearSource = ConstSource(&[(-1, "MQWI_UNLIMITED")], &[]);
+pub const MQWS_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQWS_DEFAULT"), (1, "MQWS_CHAR"), (2, "MQWS_TOPIC")],
     &[],
 );
-pub const MQWXP_CONST: LinearSource = ConstSource(
+pub const MQWXP_MAPSTR: LinearSource = ConstSource(
     &[(2, "MQWXP_PUT_BY_CLUSTER_CHL")],
     &[],
 );
-pub const MQXACT_CONST: LinearSource = ConstSource(
+pub const MQXACT_MAPSTR: LinearSource = ConstSource(
     &[(1, "MQXACT_EXTERNAL"), (2, "MQXACT_INTERNAL")],
     &[],
 );
-pub const MQXCC_CONST: LinearSource = ConstSource(
+pub const MQXCC_MAPSTR: LinearSource = ConstSource(
     &[
         (-8, "MQXCC_FAILED"),
         (-7, "MQXCC_REQUEST_ACK"),
@@ -5580,12 +5641,32 @@ pub const MQXCC_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQXDR_CONST: LinearSource = ConstSource(
+pub const MQXC_MAPSTR: LinearSource = ConstSource(
+    &[
+        (1, "MQXC_MQOPEN"),
+        (2, "MQXC_MQCLOSE"),
+        (3, "MQXC_MQGET"),
+        (4, "MQXC_MQPUT"),
+        (5, "MQXC_MQPUT1"),
+        (6, "MQXC_MQINQ"),
+        (8, "MQXC_MQSET"),
+        (9, "MQXC_MQBACK"),
+        (10, "MQXC_MQCMIT"),
+        (42, "MQXC_MQSUB"),
+        (43, "MQXC_MQSUBRQ"),
+        (44, "MQXC_MQCB"),
+        (45, "MQXC_MQCTL"),
+        (46, "MQXC_MQSTAT"),
+        (48, "MQXC_CALLBACK"),
+    ],
+    &[],
+);
+pub const MQXDR_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQXDR_OK"), (1, "MQXDR_CONVERSION_FAILED")],
     &[],
 );
-pub const MQXEPO_CONST: LinearSource = ConstSource(&[(0, "MQXEPO_NONE")], &[]);
-pub const MQXE_CONST: LinearSource = ConstSource(
+pub const MQXEPO_MAPSTR: LinearSource = ConstSource(&[(0, "MQXEPO_NONE")], &[]);
+pub const MQXE_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQXE_OTHER"),
         (1, "MQXE_MCA"),
@@ -5596,7 +5677,7 @@ pub const MQXE_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQXF_CONST: LinearSource = ConstSource(
+pub const MQXF_MAPSTR: LinearSource = ConstSource(
     &[
         (1, "MQXF_INIT"),
         (2, "MQXF_TERM"),
@@ -5635,7 +5716,7 @@ pub const MQXF_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQXPT_CONST: LinearSource = ConstSource(
+pub const MQXPT_MAPSTR: LinearSource = ConstSource(
     &[
         (-1, "MQXPT_ALL"),
         (0, "MQXPT_LOCAL"),
@@ -5648,7 +5729,7 @@ pub const MQXPT_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQXR2_CONST: LinearSource = ConstSource(
+pub const MQXR2_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQXR2_DEFAULT_CONTINUATION"),
         (1, "MQXR2_PUT_WITH_DEF_USERID"),
@@ -5664,7 +5745,7 @@ pub const MQXR2_CONST: LinearSource = ConstSource(
         (0, "MQXR2_USE_AGENT_BUFFER"),
     ],
 );
-pub const MQXR_CONST: LinearSource = ConstSource(
+pub const MQXR_MAPSTR: LinearSource = ConstSource(
     &[
         (1, "MQXR_BEFORE"),
         (2, "MQXR_AFTER"),
@@ -5694,7 +5775,7 @@ pub const MQXR_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQXT_CONST: LinearSource = ConstSource(
+pub const MQXT_MAPSTR: LinearSource = ConstSource(
     &[
         (1, "MQXT_API_CROSSING_EXIT"),
         (2, "MQXT_API_EXIT"),
@@ -5711,7 +5792,7 @@ pub const MQXT_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQZAET_CONST: LinearSource = ConstSource(
+pub const MQZAET_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQZAET_NONE"),
         (1, "MQZAET_PRINCIPAL"),
@@ -5720,7 +5801,7 @@ pub const MQZAET_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQZAO_CONST: LinearSource = ConstSource(
+pub const MQZAO_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQZAO_NONE"),
         (1, "MQZAO_CONNECT"),
@@ -5754,19 +5835,19 @@ pub const MQZAO_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQZAT_CONST: LinearSource = ConstSource(
+pub const MQZAT_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQZAT_INITIAL_CONTEXT"), (1, "MQZAT_CHANGE_CONTEXT")],
     &[],
 );
-pub const MQZCI_CONST: LinearSource = ConstSource(
+pub const MQZCI_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQZCI_CONTINUE"), (1, "MQZCI_STOP")],
     &[(0, "MQZCI_DEFAULT")],
 );
-pub const MQZID_CONST: LinearSource = ConstSource(
+pub const MQZID_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQZID_INIT"), (1, "MQZID_TERM")],
     &[],
 );
-pub const MQZID_AUTHORITY_CONST: LinearSource = ConstSource(
+pub const MQZID_AUTHORITY_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQZID_INIT_AUTHORITY"),
         (1, "MQZID_TERM_AUTHORITY"),
@@ -5785,7 +5866,7 @@ pub const MQZID_AUTHORITY_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQZID_NAME_CONST: LinearSource = ConstSource(
+pub const MQZID_NAME_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQZID_INIT_NAME"),
         (1, "MQZID_TERM_NAME"),
@@ -5795,27 +5876,27 @@ pub const MQZID_NAME_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQZID_USERID_CONST: LinearSource = ConstSource(
+pub const MQZID_USERID_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQZID_INIT_USERID"), (1, "MQZID_TERM_USERID"), (2, "MQZID_FIND_USERID")],
     &[],
 );
-pub const MQZIO_CONST: LinearSource = ConstSource(
+pub const MQZIO_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQZIO_PRIMARY"), (1, "MQZIO_SECONDARY")],
     &[],
 );
-pub const MQZSE_CONST: LinearSource = ConstSource(
+pub const MQZSE_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQZSE_CONTINUE"), (1, "MQZSE_START")],
     &[],
 );
-pub const MQZSL_CONST: LinearSource = ConstSource(
+pub const MQZSL_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQZSL_NOT_RETURNED"), (1, "MQZSL_RETURNED")],
     &[],
 );
-pub const MQZTO_CONST: LinearSource = ConstSource(
+pub const MQZTO_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQZTO_PRIMARY"), (1, "MQZTO_SECONDARY")],
     &[],
 );
-pub const MQ_CERT_CONST: LinearSource = ConstSource(
+pub const MQ_CERT_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQ_CERT_VAL_POLICY_ANY"),
         (1, "MQ_CERT_VAL_POLICY_RFC5280"),
@@ -5823,7 +5904,7 @@ pub const MQ_CERT_CONST: LinearSource = ConstSource(
     ],
     &[(0, "MQ_CERT_VAL_POLICY_DEFAULT")],
 );
-pub const MQ_HTTPSCERTREV_CONST: LinearSource = ConstSource(
+pub const MQ_HTTPSCERTREV_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQ_HTTPSCERTREV_DEFAULT"),
         (1, "MQ_HTTPSCERTREV_REQUIRED"),
@@ -5832,7 +5913,7 @@ pub const MQ_HTTPSCERTREV_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQ_HTTPSCERTVAL_CONST: LinearSource = ConstSource(
+pub const MQ_HTTPSCERTVAL_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQ_HTTPSCERTVAL_DEFAULT"),
         (1, "MQ_HTTPSCERTVAL_ANY"),
@@ -5841,11 +5922,11 @@ pub const MQ_HTTPSCERTVAL_CONST: LinearSource = ConstSource(
     ],
     &[],
 );
-pub const MQ_MQTT_CONST: LinearSource = ConstSource(
+pub const MQ_MQTT_MAPSTR: LinearSource = ConstSource(
     &[(65536, "MQ_MQTT_MAX_KEEP_ALIVE")],
     &[],
 );
-pub const MQ_SUITE_CONST: LinearSource = ConstSource(
+pub const MQ_SUITE_MAPSTR: LinearSource = ConstSource(
     &[
         (0, "MQ_SUITE_B_NOT_AVAILABLE"),
         (1, "MQ_SUITE_B_NONE"),
@@ -5854,7 +5935,7 @@ pub const MQ_SUITE_CONST: LinearSource = ConstSource(
     ],
     &[(4, "MQ_SUITE_B_SIZE")],
 );
-pub(crate) const MQI_BY_STRING: ::phf::Map<&'static str, ::libmqm_sys::lib::MQLONG> = ::phf::Map {
+pub const MQI_BY_STRING: ::phf::Map<&'static str, ::libmqm_sys::lib::MQLONG> = ::phf::Map {
     key: 12913932095322966823,
     disps: &[
         (0, 21),
