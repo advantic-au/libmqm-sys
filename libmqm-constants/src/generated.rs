@@ -1,7 +1,8 @@
 
-#[allow(non_upper_case_globals)]
 #[cfg(feature = "generate")]
 mod c {
+    #![allow(non_upper_case_globals, clippy::unreadable_literal, clippy::needless_raw_string_hashes, clippy::upper_case_acronyms)]
+    
     pub mod mapping {
         // This file is generated during the build process
         include!(concat!(env!("OUT_DIR"), "/mapping.rs"));
@@ -9,18 +10,20 @@ mod c {
     include!(concat!(env!("OUT_DIR"), "/new_types.rs"));
 }
 
-#[allow(non_upper_case_globals)]
 #[cfg(all(not(feature = "generate"), target_os = "windows", target_arch = "x86_64"))]
 mod c {
+    #![allow(non_upper_case_globals, clippy::unreadable_literal, clippy::needless_raw_string_hashes, clippy::upper_case_acronyms)]
+    
     pub mod mapping {
         include!("pregen/x86_64-windows-mapping.rs");
     }
     include!("pregen/x86_64-windows-new_types.rs");
 }
 
-#[allow(non_upper_case_globals)]
 #[cfg(all(not(feature = "generate"), target_os = "linux", target_arch = "x86_64"))]
 mod c {
+    #![allow(non_upper_case_globals, clippy::unreadable_literal, clippy::needless_raw_string_hashes, clippy::upper_case_acronyms)]
+
     pub mod mapping {
         include!("pregen/x86_64-linux-mapping.rs");
     }
@@ -29,6 +32,8 @@ mod c {
 
 #[cfg(all(not(feature = "generate"), target_os = "macos"))]
 mod c {
+    #![allow(non_upper_case_globals, clippy::unreadable_literal, clippy::needless_raw_string_hashes, clippy::upper_case_acronyms)]
+
     mod mapping {
         include!("pregen/any-macos-mapping.rs");
     }
@@ -37,18 +42,23 @@ mod c {
 
 pub mod constants {
     pub use super::c::constants::*;
+    
+    #[cfg(feature = "mqai")]
+    mod mqai {
+        use crate::types;
+        use libmqm_sys::lib as sys;
 
-    use super::types;
-    use libmqm_sys::lib as sys;
-
-    pub const MQBA_FIRST: types::Selector = types::Selector(sys::MQBA_FIRST);
-    pub const MQBA_LAST: types::Selector = types::Selector(sys::MQBA_LAST);
-    pub const MQGA_FIRST: types::Selector = types::Selector(sys::MQGA_FIRST);
-    pub const MQGA_LAST: types::Selector = types::Selector(sys::MQGA_LAST);
-    pub const MQOA_FIRST: types::Selector = types::Selector(sys::MQOA_FIRST);
-    pub const MQOA_LAST: types::Selector = types::Selector(sys::MQOA_LAST);
-    pub const MQUA_FIRST: types::Selector = types::Selector(sys::MQUA_FIRST);
-    pub const MQUA_LAST: types::Selector = types::Selector(sys::MQUA_LAST);
+        pub const MQBA_FIRST: types::Selector = types::Selector(sys::MQBA_FIRST);
+        pub const MQBA_LAST: types::Selector = types::Selector(sys::MQBA_LAST);
+        pub const MQGA_FIRST: types::Selector = types::Selector(sys::MQGA_FIRST);
+        pub const MQGA_LAST: types::Selector = types::Selector(sys::MQGA_LAST);
+        pub const MQOA_FIRST: types::Selector = types::Selector(sys::MQOA_FIRST);
+        pub const MQOA_LAST: types::Selector = types::Selector(sys::MQOA_LAST);
+        pub const MQUA_FIRST: types::Selector = types::Selector(sys::MQUA_FIRST);
+        pub const MQUA_LAST: types::Selector = types::Selector(sys::MQUA_LAST);    
+    }
+    #[cfg(feature = "mqai")]
+    pub use mqai::*;
 }
 
 pub mod mapping {

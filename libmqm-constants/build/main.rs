@@ -1,7 +1,3 @@
-use std::collections::HashSet;
-
-use constants::generate::by_name;
-
 #[cfg(feature = "generate")]
 mod constants {
     pub mod generate;
@@ -16,6 +12,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         use libmqm_sys::lib as mqsys;
         use std::io;
         use std::io::Write as _;
+        use std::collections::HashSet;
 
         let by_name_mqi = unsafe { &mqsys::MQI_BY_NAME_STR };
 
@@ -29,7 +26,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 .flat_map(|(.., (.., primary, extra))| primary.iter().chain(extra).map(|(_, constant)| *constant))
                 .collect();
 
-            let const_all: HashSet<_> = by_name(by_name_mqi)
+            let const_all: HashSet<_> = generate::by_name(by_name_mqi)
                 .filter_map(|(name, ..)| unassigned_filter.iter().all(|r| !r.is_match(name)).then_some(name))
                 .collect();
 
@@ -125,7 +122,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         }
         writeln!(
             mapping_write,
-            "pub(crate) const MQI_BY_STRING: ::phf::Map<&'static str, ::libmqm_sys::lib::MQLONG> = {};",
+            "pub const MQI_BY_STRING: ::phf::Map<&'static str, ::libmqm_sys::lib::MQLONG> = {};",
             mqi_by_string.build()
         )?;
 
