@@ -1,13 +1,15 @@
 [workspace]
 
 [[package]]
-git_tag_name = "v{{ version }}"
 name = "libmqm-sys"
 changelog_update = true
 changelog_path = "CHANGELOG.md"
-changelog_include = ["libmqm-default"]
+changelog_include = ["libmqm-default", "libmqm-constants"]
 
 [[package]]
 name = "libmqm-default"
-git_tag_enable = false
+changelog_update = false
+
+[[package]]
+name = "libmqm-constants"
 changelog_update = false
