@@ -208,10 +208,28 @@ fn main() -> Result<(), io::Error> {
         {
             let out_bindings = out_path.join("bindings.rs");
 
+            let mut bindings_buf = Vec::<u8>::new();
             // Generate and write the bindings file
             mqi_bindgen::generate_bindings(&mq_path::mq_inc_path(), &mqc_version)
                 .map_err(|e| io::Error::new(io::ErrorKind::InvalidData, e))?
-                .write_to_file(&out_bindings)?;
+                .write(Box::new(&mut bindings_buf))?;
+            let bindings_str = String::from_utf8_lossy(&bindings_buf);
+            let mqlong_replace = regex_lite::Regex::new(r"(:\s*MQLONG\s*=\s*)(\d+)\s*;").unwrap();
+            let bindings_str = mqlong_replace.replace_all(&bindings_str, |caps: &regex_lite::Captures| {
+                if caps[2].parse::<i32>().is_err() {
+                    let i = caps[2].parse::<u32>().unwrap();
+                    #[allow(clippy::cast_possible_wrap)]
+                    let wrapped = i as i32;
+                    format!("{}{};", &caps[1], wrapped)
+                } else {
+                    caps[0].to_string()
+                }
+            });
+            {
+                use io::Write as _;
+                let mut out_file = io::BufWriter::new(std::fs::File::create(&out_bindings)?);
+                out_file.write_all(bindings_str.as_bytes())?;
+            }
 
             #[cfg(feature = "pregen")]
             {

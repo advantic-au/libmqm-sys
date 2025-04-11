@@ -1,12 +1,13 @@
+mod generated;
 pub mod lookup;
-pub mod mapping;
 
-pub(crate) mod mask;
+pub(crate) mod bitflags;
 pub(crate) mod value;
 
-mod types;
-pub use types::*;
+pub use generated::constants;
+pub use generated::mapping;
+pub use generated::types;
+
 #[cfg(feature = "mqai")]
-mod mqai_types;
-#[cfg(feature = "mqai")]
-pub use mqai_types::*;
+mod impl_mqai_types;
+mod impl_types;
