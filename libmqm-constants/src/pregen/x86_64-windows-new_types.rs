@@ -65,14 +65,23 @@ pub mod types {
         pub MQBPLOCATION, mqsys::MQLONG, crate ::mapping::MQBPLOCATION_MAPSTR
     );
     define_new_type!(pub MQBT, mqsys::MQLONG, crate ::mapping::MQBT_MAPSTR);
-    define_new_type!(pub MQCACF, mqsys::MQLONG, crate ::mapping::MQCACF_MAPSTR);
-    define_new_type!(pub MQCACH, mqsys::MQLONG, crate ::mapping::MQCACH_MAPSTR);
+    define_new_type!(
+        pub MQCACF, mqsys::MQLONG, crate ::mapping::MQCACF_MAPSTR,
+        r###"Command format Character Parameter Types"###
+    );
+    define_new_type!(
+        pub MQCACH, mqsys::MQLONG, crate ::mapping::MQCACH_MAPSTR,
+        r###"Command format Character Channel Parameter Types"###
+    );
     define_new_type!(pub MQCADSD, mqsys::MQLONG, crate ::mapping::MQCADSD_MAPSTR);
     define_new_type!(pub MQCAFTY, mqsys::MQLONG, crate ::mapping::MQCAFTY_MAPSTR);
     define_new_type!(pub MQCAMO, mqsys::MQLONG, crate ::mapping::MQCAMO_MAPSTR);
     define_new_type!(pub MQCAP, mqsys::MQLONG, crate ::mapping::MQCAP_MAPSTR);
     define_new_type!(pub MQCAUT, mqsys::MQLONG, crate ::mapping::MQCAUT_MAPSTR);
-    define_new_type!(pub MQCA, mqsys::MQLONG, crate ::mapping::MQCA_MAPSTR);
+    define_new_type!(
+        pub MQCA, mqsys::MQLONG, crate ::mapping::MQCA_MAPSTR,
+        r###"Character Attribute Selectors"###
+    );
     define_new_type!(
         pub MQCBCF, mqsys::MQLONG, crate ::mapping::MQCBCF_MAPSTR,
         r###"Flags containing information about the callback consumer"###
@@ -226,14 +235,22 @@ pub mod types {
         r###"Options mask to control the action of `MQGET`"###
     );
     define_new_type!(pub MQGUR, mqsys::MQLONG, crate ::mapping::MQGUR_MAPSTR);
-    define_new_type!(pub MQHA, mqsys::MQLONG, crate ::mapping::MQHA_MAPSTR);
+    define_new_type!(
+        pub MQHA, mqsys::MQLONG, crate ::mapping::MQHA_MAPSTR, r###"Handle Selectors"###
+    );
     define_new_type!(pub MQHB, mqsys::MQLONG, crate ::mapping::MQHB_MAPSTR);
     define_new_type!(pub MQHC, mqsys::MQHCONN, crate ::mapping::MQHC_MAPSTR);
     define_new_type!(pub MQHM, mqsys::MQHMSG, crate ::mapping::MQHM_MAPSTR);
     define_new_type!(pub MQHO, mqsys::MQHOBJ, crate ::mapping::MQHO_MAPSTR);
     define_new_type!(pub MQHSTATE, mqsys::MQLONG, crate ::mapping::MQHSTATE_MAPSTR);
-    define_new_type!(pub MQIACF, mqsys::MQLONG, crate ::mapping::MQIACF_MAPSTR);
-    define_new_type!(pub MQIACH, mqsys::MQLONG, crate ::mapping::MQIACH_MAPSTR);
+    define_new_type!(
+        pub MQIACF, mqsys::MQLONG, crate ::mapping::MQIACF_MAPSTR,
+        r###"Command format Integer Parameter Types"###
+    );
+    define_new_type!(
+        pub MQIACH, mqsys::MQLONG, crate ::mapping::MQIACH_MAPSTR,
+        r###"Command format Integer Channel Types"###
+    );
     define_new_type!(pub MQIAMO64, mqsys::MQLONG, crate ::mapping::MQIAMO64_MAPSTR);
     define_new_type!(pub MQIAMO, mqsys::MQLONG, crate ::mapping::MQIAMO_MAPSTR);
     define_new_type!(
@@ -244,9 +261,15 @@ pub mod types {
         pub MQIAMO_MONITOR_FLAGS, mqsys::MQLONG, crate
         ::mapping::MQIAMO_MONITOR_FLAGS_MAPSTR
     );
-    define_new_type!(pub MQIASY, mqsys::MQLONG, crate ::mapping::MQIASY_MAPSTR);
+    define_new_type!(
+        pub MQIASY, mqsys::MQLONG, crate ::mapping::MQIASY_MAPSTR,
+        r###"Integer System Selectors"###
+    );
     define_new_type!(pub MQIAV, mqsys::MQLONG, crate ::mapping::MQIAV_MAPSTR);
-    define_new_type!(pub MQIA, mqsys::MQLONG, crate ::mapping::MQIA_MAPSTR);
+    define_new_type!(
+        pub MQIA, mqsys::MQLONG, crate ::mapping::MQIA_MAPSTR,
+        r###"Integer Attribute Selectors"###
+    );
     define_new_type!(pub MQIDO, mqsys::MQLONG, crate ::mapping::MQIDO_MAPSTR);
     define_new_type!(pub MQIEPF, mqsys::MQLONG, crate ::mapping::MQIEPF_MAPSTR);
     define_new_type!(pub MQIGQPA, mqsys::MQLONG, crate ::mapping::MQIGQPA_MAPSTR);
