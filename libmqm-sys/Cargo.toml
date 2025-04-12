@@ -1,9 +1,9 @@
 [package]
 name = "libmqm-sys"
+version = "0.7.0"
 description = "IBM® MQ Interface (MQI) and MQ Administration Interface (MQAI) bindings"
 keywords = ["message-queue", "messaging"]
 categories = ["external-ffi-bindings", "asynchronous"]
-version.workspace = true
 authors.workspace = true
 repository.workspace = true
 license.workspace = true
@@ -49,18 +49,18 @@ docsrs = ["link_api", "pcf", "exits", "mqai", "dlopen2", "mqc_latest"]
 bindgen = ["dep:bindgen", "versiongen"]
 
 ## Generate version file from MQC library
-versiongen = [] 
+versiongen = []
 
 ## Minimum MQ client version 9.2.0.0
 mqc_9_2_0_0 = []
-mqc_9_3_0_0 = ["mqc_9_2_0_0"]  # Minimum MQ client version 9.3.0.0
-mqc_9_3_1_0 = ["mqc_9_3_0_0"]  # Minimum MQ client version 9.3.1.0
-mqc_9_3_2_0 = ["mqc_9_3_1_0"]   # Minimum MQ client version 9.3.2.0
-mqc_9_3_3_0 = ["mqc_9_3_2_0"]   # Minimum MQ client version 9.3.3.0
-mqc_9_3_4_0 = ["mqc_9_3_3_0"]   # Minimum MQ client version 9.3.4.0
-mqc_9_3_5_0 = ["mqc_9_3_4_0"]   # Minimum MQ client version 9.3.5.0
-mqc_9_4_0_0 = ["mqc_9_3_5_0"]   # Minimum MQ client version 9.4.0.0
-mqc_9_4_1_0 = ["mqc_9_4_0_0"]   # Minimum MQ client version 9.4.1.0
+mqc_9_3_0_0 = ["mqc_9_2_0_0"] # Minimum MQ client version 9.3.0.0
+mqc_9_3_1_0 = ["mqc_9_3_0_0"] # Minimum MQ client version 9.3.1.0
+mqc_9_3_2_0 = ["mqc_9_3_1_0"] # Minimum MQ client version 9.3.2.0
+mqc_9_3_3_0 = ["mqc_9_3_2_0"] # Minimum MQ client version 9.3.3.0
+mqc_9_3_4_0 = ["mqc_9_3_3_0"] # Minimum MQ client version 9.3.4.0
+mqc_9_3_5_0 = ["mqc_9_3_4_0"] # Minimum MQ client version 9.3.5.0
+mqc_9_4_0_0 = ["mqc_9_3_5_0"] # Minimum MQ client version 9.4.0.0
+mqc_9_4_1_0 = ["mqc_9_4_0_0"] # Minimum MQ client version 9.4.1.0
 ## Minimum MQ client version 9.4.2.0
 mqc_9_4_2_0 = ["mqc_9_4_1_0"]
 

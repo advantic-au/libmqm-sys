@@ -1,13 +1,12 @@
 [package]
 name = "libmqm-default"
+version = "0.7.0"
 description = "IBM® MQ Interface (MQI) and MQ Administration Interface (MQAI) structure defaults"
 keywords = ["message-queue", "messaging"]
 categories = ["external-ffi-bindings", "asynchronous"]
-version.workspace = true
 authors.workspace = true
 repository.workspace = true
 license.workspace = true
-readme.workspace = true
 edition.workspace = true
 rust-version.workspace = true
 build = "build/main.rs"
