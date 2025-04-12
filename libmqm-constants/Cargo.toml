@@ -1,12 +1,11 @@
 [package]
 name = "libmqm-constants"
+version = "0.7.0"
 description = "IBM® MQ Interface (MQI) and MQ Administration Interface (MQAI) constants"
 categories = ["external-ffi-bindings", "asynchronous"]
-version.workspace = true
 authors.workspace = true
 repository.workspace = true
 license.workspace = true
-readme.workspace = true
 edition.workspace = true
 rust-version.workspace = true
 
@@ -18,9 +17,7 @@ crate-type = ["lib"]
 
 [features]
 ## Minimal features to make the code runnable
-runnable = [
-    "libmqm-sys/mqi_helpers",
-]
+runnable = ["libmqm-sys/mqi_helpers"]
 
 ## Generate the constants (default is to use pregenerated constants)
 generate = [
@@ -28,15 +25,11 @@ generate = [
     "dep:prettyplease",
     "dep:syn",
     "dep:phf_codegen",
-    "dep:regex-lite"
+    "dep:regex-lite",
 ]
 
 ## Generate the constants and save them in the src folder
-pregen = [
-    "generate",
-    "mqai",
-    "mqc_9_4_2_0",
-]
+pregen = ["generate", "mqai", "mqc_9_4_2_0"]
 
 ## Enable the administrative API
 mqai = ["libmqm-sys/mqai"]
@@ -44,55 +37,28 @@ mqai = ["libmqm-sys/mqai"]
 ## Minimum MQ client version 9.2.0.0
 mqc_9_2_0_0 = ["libmqm-sys/mqc_9_2_0_0"]
 ## Minimum MQ client version 9.3.0.0
-mqc_9_3_0_0 = [
-    "libmqm-sys/mqc_9_3_0_0",
-    "mqc_9_2_0_0",
-]
+mqc_9_3_0_0 = ["libmqm-sys/mqc_9_3_0_0", "mqc_9_2_0_0"]
 ## Minimum MQ client version 9.3.1.0
-mqc_9_3_1_0 = [
-    "libmqm-sys/mqc_9_3_1_0",
-    "mqc_9_3_0_0",
-]
+mqc_9_3_1_0 = ["libmqm-sys/mqc_9_3_1_0", "mqc_9_3_0_0"]
 ## Minimum MQ client version 9.3.2.0
-mqc_9_3_2_0 = [
-    "libmqm-sys/mqc_9_3_2_0",
-    "mqc_9_3_1_0",
-]
+mqc_9_3_2_0 = ["libmqm-sys/mqc_9_3_2_0", "mqc_9_3_1_0"]
 ## Minimum MQ client version 9.3.3.0
-mqc_9_3_3_0 = [
-    "libmqm-sys/mqc_9_3_3_0",
-    "mqc_9_3_2_0",
-]
+mqc_9_3_3_0 = ["libmqm-sys/mqc_9_3_3_0", "mqc_9_3_2_0"]
 ## Minimum MQ client version 9.3.4.0
-mqc_9_3_4_0 = [
-    "libmqm-sys/mqc_9_3_4_0",
-    "mqc_9_3_3_0",
-]
+mqc_9_3_4_0 = ["libmqm-sys/mqc_9_3_4_0", "mqc_9_3_3_0"]
 ## Minimum MQ client version 9.3.5.0
-mqc_9_3_5_0 = [
-    "libmqm-sys/mqc_9_3_5_0",
-    "mqc_9_3_4_0",
-]
+mqc_9_3_5_0 = ["libmqm-sys/mqc_9_3_5_0", "mqc_9_3_4_0"]
 ## Minimum MQ client version 9.4.0.0
-mqc_9_4_0_0 = [
-    "libmqm-sys/mqc_9_4_0_0",
-    "mqc_9_3_5_0",
-]
+mqc_9_4_0_0 = ["libmqm-sys/mqc_9_4_0_0", "mqc_9_3_5_0"]
 ## Minimum MQ client version 9.4.1.0
-mqc_9_4_1_0 = [
-    "libmqm-sys/mqc_9_4_1_0",
-    "mqc_9_4_0_0",
-]
+mqc_9_4_1_0 = ["libmqm-sys/mqc_9_4_1_0", "mqc_9_4_0_0"]
 ## Minimum MQ client version 9.4.2.0
-mqc_9_4_2_0 = [
-    "libmqm-sys/mqc_9_4_2_0",
-    "mqc_9_4_1_0",
-]
+mqc_9_4_2_0 = ["libmqm-sys/mqc_9_4_2_0", "mqc_9_4_1_0"]
 
 [dependencies]
 libmqm-sys = { version = "0.7.0", default-features = false, path = "../libmqm-sys" }
 phf = { default-features = false, version = "0.11" }
-derive_more = { version = "2.0.1", features = [ "from", "add", "add_assign" ]}
+derive_more = { version = "2.0.1", features = ["from", "add", "add_assign"] }
 
 [build-dependencies]
 regex-lite = { version = "0.1.6", optional = true }

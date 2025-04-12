@@ -1,9 +1,8 @@
 [workspace]
 resolver = "2"
-members = [ "libmqm-constants","libmqm-default", "libmqm-sys"]
+members = ["libmqm-constants", "libmqm-default", "libmqm-sys"]
 
 [workspace.package]
-version = "0.7.0"
 authors = ["Warren Spits <warren@advantic.au>"]
 repository = "https://github.com/advantic-au/libmqm-sys"
 license = "Apache-2.0"
@@ -15,7 +14,9 @@ rust-version = "1.77"                                    # Note: Also change the
 non_camel_case_types = "allow"
 non_snake_case = "allow"
 unsafe_op_in_unsafe_fn = "warn"
-unexpected_cfgs = { level = "warn", check-cfg = ['cfg(coverage,coverage_nightly)'] }
+unexpected_cfgs = { level = "warn", check-cfg = [
+    'cfg(coverage,coverage_nightly)',
+] }
 
 [workspace.lints.clippy]
 all = { level = "deny", priority = -1 }
