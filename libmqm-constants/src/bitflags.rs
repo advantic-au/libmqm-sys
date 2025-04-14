@@ -40,24 +40,10 @@ macro_rules! impl_bitflags {
             }
         }
 
-        impl<Y: Into<::libmqm_sys::lib::MQLONG>> std::ops::BitOr<Y> for $name {
-            type Output = Self;
-
-            fn bitor(self, rhs: Y) -> Self::Output {
-                Self(self.0 | rhs.into())
-            }
-        }
-
         impl std::ops::BitOr for $name {
             type Output = Self;
             fn bitor(self, rhs: Self) -> Self::Output {
                 Self(self.0 | rhs.0)
-            }
-        }
-
-        impl<Y: Into<::libmqm_sys::lib::MQLONG>> std::ops::BitOrAssign<Y> for $name {
-            fn bitor_assign(&mut self, rhs: Y) {
-                self.0 |= rhs.into();
             }
         }
 
@@ -67,11 +53,17 @@ macro_rules! impl_bitflags {
             }
         }
 
-        impl<Y: Into<::libmqm_sys::lib::MQLONG>> std::ops::BitAnd<Y> for $name {
+        impl std::ops::BitXor for $name {
             type Output = Self;
 
-            fn bitand(self, rhs: Y) -> Self::Output {
-                Self(self.0 & rhs.into())
+            fn bitxor(self, rhs: Self) -> Self::Output {
+                Self(self.0 ^ rhs.0)
+            }
+        }
+
+        impl std::ops::BitXorAssign for $name {
+            fn bitxor_assign(&mut self, rhs: Self) {
+                self.0 ^= rhs.0;
             }
         }
 
@@ -83,15 +75,23 @@ macro_rules! impl_bitflags {
             }
         }
 
-        impl<Y: Into<::libmqm_sys::lib::MQLONG>> std::ops::BitAndAssign<Y> for $name {
-            fn bitand_assign(&mut self, rhs: Y) {
-                self.0 &= rhs.into();
-            }
-        }
-
         impl std::ops::BitAndAssign for $name {
             fn bitand_assign(&mut self, rhs: Self) {
                 self.0 &= rhs.0;
+            }
+        }
+
+        impl std::ops::Sub for $name {
+            type Output = Self;
+
+            fn sub(self, rhs: Self) -> Self::Output {
+                Self(self.0 & !rhs.0)
+            }
+        }
+
+        impl std::ops::SubAssign for $name {
+            fn sub_assign(&mut self, rhs: Self) {
+                self.0 &= !rhs.0;
             }
         }
 
@@ -196,22 +196,21 @@ mod test {
 
     #[test]
     fn bitflags_type() {
-        let mut one = MaskOne::from(1);
-        let two = (one & MaskOne::from(2)) | 7;
-        one |= MaskOne::from(2);
-        one |= 2;
+        let mut one = MaskOne(1);
+        let two = (one & MaskOne(2)) | MaskOne(7);
+        one |= MaskOne(2);
 
         let one_copy = one;
         assert_eq!(one, one_copy);
-        assert_eq!(two, MaskOne::from(7));
+        assert_eq!(two, MaskOne(7));
     }
 
     #[test]
     fn bitflags_debug() {
-        assert_eq!(format!("{:?}", MaskOne::from(1)), "MaskOne(ONE|ONEB = 0x1)");
-        assert_eq!(format!("{:?}", MaskOne::from(0)), "MaskOne(ZERO = 0x0)");
-        assert_eq!(format!("{:?}", MaskOne::from(0b101)), "MaskOne(ONE|ONEB|0x4 = 0x5)");
-        assert_eq!(format!("{:?}", MaskOne::from(0b100)), "MaskOne(0x4)");
-        assert_eq!(format!("{:?}", NoZero::from(0)), "NoZero(0x0)");
+        assert_eq!(format!("{:?}", MaskOne(1)), "MaskOne(ONE|ONEB = 0x1)");
+        assert_eq!(format!("{:?}", MaskOne(0)), "MaskOne(ZERO = 0x0)");
+        assert_eq!(format!("{:?}", MaskOne(0b101)), "MaskOne(ONE|ONEB|0x4 = 0x5)");
+        assert_eq!(format!("{:?}", MaskOne(0b100)), "MaskOne(0x4)");
+        assert_eq!(format!("{:?}", NoZero(0)), "NoZero(0x0)");
     }
 }

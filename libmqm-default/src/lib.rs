@@ -4,13 +4,13 @@ Default structures for the IBM® MQ Interface (MQI) and MQ Administration Interf
 
 */
 
-#[cfg(feature = "defaultgen")]
+#[cfg(feature = "generate")]
 #[rustfmt::skip]
 mod defaults {
     include!(concat!(env!("OUT_DIR"), "/defaults.rs"));
 }
 
-#[cfg(not(feature = "defaultgen"))]
+#[cfg(not(feature = "generate"))]
 #[path = "pregen/mod.rs"]
 mod defaults;
 

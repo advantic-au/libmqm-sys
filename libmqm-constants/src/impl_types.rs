@@ -3,6 +3,15 @@ use libmqm_sys::lib as sys;
 use super::value::impl_default_value;
 use super::{bitflags::impl_bitflags, types, value::impl_value};
 
+impl_bitflags!(types::MQMF);
+impl_bitflags!(types::MQRO);
+impl_bitflags!(types::MQREGO);
+impl_bitflags!(types::MQCTLO);
+impl_bitflags!(types::MQMO);
+impl_bitflags!(types::MQPUBO);
+impl_bitflags!(types::MQZAO);
+impl_bitflags!(types::MQAUTHOPT);
+
 impl_bitflags!(types::MQOO);
 impl_bitflags!(types::MQCO);
 impl_default_value!(types::MQCO, sys::MQCO_NONE);

@@ -1,5 +1,5 @@
 #[allow(clippy::missing_errors_doc, clippy::too_many_lines)]
-#[cfg(feature = "defaultgen")]
+#[cfg(feature = "generate")]
 pub fn generate_defaults(w: &mut impl std::io::Write) -> Result<(), std::io::Error> {
     use libmqm_sys::lib;
 
@@ -147,7 +147,7 @@ pub fn generate_defaults(w: &mut impl std::io::Write) -> Result<(), std::io::Err
     Ok(())
 }
 
-#[cfg(feature = "defaultgen")]
+#[cfg(feature = "generate")]
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     use std::io::{self, Write};
 
@@ -189,7 +189,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     Ok(())
 }
 
-#[cfg(not(feature = "defaultgen"))]
+#[cfg(not(feature = "generate"))]
 fn main() {
     // Do nothing
 }

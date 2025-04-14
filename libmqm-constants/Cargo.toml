@@ -16,12 +16,11 @@ path = "src/lib.rs"
 crate-type = ["lib"]
 
 [features]
-## Minimal features to make the code runnable
-runnable = ["libmqm-sys/mqi_helpers"]
 
 ## Generate the constants (default is to use pregenerated constants)
 generate = [
-    "runnable",
+    "libmqm-sys/mqi_helpers",
+    "libmqm-sys/bindgen",
     "dep:prettyplease",
     "dep:syn",
     "dep:phf_codegen",

@@ -26,9 +26,9 @@ syn = { version = "2.0.90", optional = true, default-features = false, features 
 workspace = true
 
 [features]
-default = ["defaultgen"]
-pregen = ["defaultgen", "pcf", "exits", "mqc_9_3_1_0", "libmqm-sys/mqc_latest"]
-defaultgen = [
+default = []
+pregen = ["generate", "pcf", "exits", "mqc_9_3_1_0", "libmqm-sys/mqc_latest"]
+generate = [
     "libmqm-sys/mqi_helpers",
     "libmqm-sys/bindgen",
     "dep:prettyplease",
