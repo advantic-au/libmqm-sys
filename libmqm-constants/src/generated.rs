@@ -95,14 +95,18 @@ pub mod mapping {
 }
 
 pub mod types {
-    use crate::value::define_new_type;
+    use crate::value::{define_new_type, impl_value};
     use ::libmqm_sys::lib as sys;
 
     pub use super::c::types::*;
 
     define_new_type!(pub MQXA, sys::MQLONG, super::mapping::MQXA_MAPSTR, "Selectors for MQIA and MQCA");
+    impl_value!(MQXA, sys::MQLONG);
     define_new_type!(pub MQRC, sys::MQLONG, super::mapping::MQRC_FULL_MAPSTR, "Reason Code from an MQ function call");
+    impl_value!(MQRC, sys::MQLONG);
 
     #[cfg(feature = "mqai")]
     define_new_type!(pub Selector, sys::MQLONG, super::mapping::SelectorLookup, "All Selectors including [`MQIA`], [`MQCA`], [`MQIACF`], [`MQCACF`], [`MQIACH`], [`MQCACH`], [`MQIASY`] and [`MQHA`]");
+    #[cfg(feature = "mqai")]
+    impl_value!(Selector, sys::MQLONG);
 }

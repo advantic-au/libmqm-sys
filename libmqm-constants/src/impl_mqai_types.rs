@@ -5,8 +5,8 @@ use crate::{
 
 use libmqm_sys::lib as sys;
 
+use super::types;
 use super::value::impl_default_value;
-use super::{bitflags::impl_bitflags, types, value::impl_value};
 
 macro_rules! impl_partialcmp_value {
     ($new_type:path, [$($other_type:path),*]) => {
@@ -17,7 +17,7 @@ macro_rules! impl_partialcmp_value {
     ($new_type:path, $other_type:path) => {
         impl PartialEq<$other_type> for $new_type {
             fn eq(&self, other: &$other_type) -> bool {
-                self.0 == other.0
+                other.0 == self.0
             }
         }
 
@@ -29,13 +29,13 @@ macro_rules! impl_partialcmp_value {
     };
 }
 
-impl_value!(types::MQIND);
-impl_value!(types::MQQT);
-impl_value!(types::MQAT);
-impl_value!(types::MQCMD);
+// impl_value!(types::MQIND);
+// impl_value!(types::MQQT);
+// impl_value!(types::MQAT);
+// impl_value!(types::MQCMD);
 impl_default_value!(types::MQCMD, sys::MQCMD_NONE);
-impl_value!(types::MQCFOP);
-impl_value!(types::Selector);
+// impl_value!(types::MQCFOP);
+// impl_value!(types::Selector);
 impl_partialcmp_value!(
     types::Selector,
     [
@@ -59,8 +59,8 @@ impl_partialcmp_value!(types::MQIASY, types::Selector);
 impl_partialcmp_value!(types::MQHA, types::Selector);
 
 impl_default_value!(types::MQIND, sys::MQIND_NONE);
-impl_bitflags!(types::MQCBO);
-impl_value!(types::MQITEM);
+// impl_bitflags!(types::MQCBO);
+// impl_value!(types::MQITEM);
 
 /*
 

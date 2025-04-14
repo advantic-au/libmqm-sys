@@ -1,70 +1,71 @@
 use libmqm_sys::lib as sys;
 
+use super::lookup::HasMqNames as _;
+use super::types;
 use super::value::impl_default_value;
-use super::{bitflags::impl_bitflags, types, value::impl_value};
 
-impl_bitflags!(types::MQMF);
-impl_bitflags!(types::MQRO);
-impl_bitflags!(types::MQREGO);
-impl_bitflags!(types::MQCTLO);
-impl_bitflags!(types::MQMO);
-impl_bitflags!(types::MQPUBO);
-impl_bitflags!(types::MQZAO);
-impl_bitflags!(types::MQAUTHOPT);
+// impl_bitflags!(types::MQMF);
+// impl_bitflags!(types::MQRO);
+// impl_bitflags!(types::MQREGO);
+// impl_bitflags!(types::MQCTLO);
+// impl_bitflags!(types::MQMO);
+// impl_bitflags!(types::MQPUBO);
+// impl_bitflags!(types::MQZAO);
+// impl_bitflags!(types::MQAUTHOPT);
 
-impl_bitflags!(types::MQOO);
-impl_bitflags!(types::MQCO);
+// impl_bitflags!(types::MQOO);
+// impl_bitflags!(types::MQCO);
 impl_default_value!(types::MQCO, sys::MQCO_NONE);
-impl_bitflags!(types::MQBO);
+// impl_bitflags!(types::MQBO);
 impl_default_value!(types::MQBO, sys::MQBO_NONE);
-impl_bitflags!(types::MQSO);
-impl_bitflags!(types::MQOP);
+// impl_bitflags!(types::MQSO);
+// impl_bitflags!(types::MQOP);
 
-impl_value!(types::MQCBCT);
-impl_value!(types::MQCBCF);
-impl_value!(types::MQCS);
-impl_value!(types::MQRD);
-impl_value!(types::MQSR);
+// impl_value!(types::MQCBCT);
+// impl_value!(types::MQCBCF);
+// impl_value!(types::MQCS);
+// impl_value!(types::MQRD);
+// impl_value!(types::MQSR);
 
-impl_bitflags!(types::MQSRO);
+// impl_bitflags!(types::MQSRO);
 impl_default_value!(types::MQSRO, sys::MQSRO_NONE);
-impl_value!(types::MQTYPE);
+// impl_value!(types::MQTYPE);
 impl_default_value!(types::MQTYPE, sys::MQTYPE_AS_SET);
-impl_bitflags!(types::MQENC);
+// impl_bitflags!(types::MQENC);
 impl_default_value!(types::MQENC, sys::MQENC_NATIVE);
-impl_bitflags!(types::MQGMO);
+// impl_bitflags!(types::MQGMO);
 impl_default_value!(types::MQGMO, sys::MQGMO_NONE);
-impl_bitflags!(types::MQPMO);
+// impl_bitflags!(types::MQPMO);
 impl_default_value!(types::MQPMO, sys::MQPMO_NONE);
-impl_value!(types::MQSTAT);
-impl_value!(types::MQCMHO);
+// impl_value!(types::MQSTAT);
+// impl_value!(types::MQCMHO);
 impl_default_value!(types::MQCMHO, sys::MQCMHO_DEFAULT_VALIDATION);
-impl_value!(types::MQSMPO);
+// impl_value!(types::MQSMPO);
 impl_default_value!(types::MQSMPO, sys::MQSMPO_SET_FIRST);
-impl_value!(types::MQDMPO);
+// impl_value!(types::MQDMPO);
 impl_default_value!(types::MQDMPO, sys::MQDMPO_DEL_FIRST);
-impl_value!(types::MQXA);
-impl_bitflags!(types::MQCBDO);
-impl_bitflags!(types::MQIMPO);
-impl_bitflags!(types::MQMHBO);
-impl_bitflags!(types::MQBMHO);
+// impl_value!(types::MQXA);
+// impl_bitflags!(types::MQCBDO);
+// impl_bitflags!(types::MQIMPO);
+// impl_bitflags!(types::MQMHBO);
+// impl_bitflags!(types::MQBMHO);
 impl_default_value!(types::MQIMPO, sys::MQIMPO_NONE);
-impl_value!(types::MQPD);
-impl_bitflags!(types::MQCOPY);
-impl_value!(types::MQRC);
-impl_value!(types::MQCC);
-impl_bitflags!(types::MQDCC);
+// impl_value!(types::MQPD);
+// impl_bitflags!(types::MQCOPY);
+// impl_value!(types::MQRC);
+// impl_value!(types::MQCC);
+// impl_bitflags!(types::MQDCC);
 impl_default_value!(types::MQDCC, sys::MQDCC_NONE);
 
-impl_bitflags!(types::MQCNO);
-impl_value!(types::MQXPT);
+// impl_bitflags!(types::MQCNO);
+// impl_value!(types::MQXPT);
 
-impl_value!(types::MQOT);
+// impl_value!(types::MQOT);
 
-#[cfg(feature = "mqc_9_4_1_0")]
-impl_value!(types::MQ_HTTPSCERTREV);
-#[cfg(feature = "mqc_9_4_1_0")]
-impl_value!(types::MQ_HTTPSCERTVAL);
+// #[cfg(feature = "mqc_9_4_1_0")]
+// impl_value!(types::MQ_HTTPSCERTREV);
+// #[cfg(feature = "mqc_9_4_1_0")]
+// impl_value!(types::MQ_HTTPSCERTVAL);
 
 impl types::MQRC {
     #[must_use]

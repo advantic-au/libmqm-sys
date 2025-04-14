@@ -19,6 +19,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         let mut unmapped_comment = Vec::new();
         let mut mapping_write: Vec<u8> = Vec::new();
         let mut new_type_mods_write: Vec<u8> = Vec::new();
+        // let mut test_cases: Vec<u8> = Vec::new();
         generate::generate_constants(|prefix_constants| {
             let unassigned_filter: Vec<_> = generate::const_ignore_regex().collect();
             let const_set: HashSet<_> = prefix_constants
@@ -44,10 +45,13 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 writeln!(unmapped_comment, " */")?;
             }
 
-            for (prefix, (new_type, orig_type, doc, primary, extra)) in prefix_constants {
+            for (prefix, (new_type, orig_type, usage, doc, primary, extra)) in prefix_constants {
                 writeln!(
                     new_type_write,
-                    "define_new_type!(pub {new_type}, mqsys::{orig_type}, crate::mapping::{prefix}MAPSTR{});",
+                    "
+                        define_new_type!(pub {new_type}, mqsys::{orig_type}, crate::mapping::{prefix}MAPSTR{});
+                        impl_{usage}!({new_type}, mqsys::{orig_type});
+                    ",
                     doc.map_or(String::new(), |doc_lines| format!(", r###\"{doc_lines}\"###"))
                 )?;
                 for (value, constant, doc) in primary.iter().chain(extra) {
@@ -58,6 +62,10 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                         constant_write,
                         "pub const {constant}: types::{new_type} = types::{new_type}({value});"
                     )?;
+                    // writeln!(
+                    //     test_cases,
+                    //     "assert_eq!(constants::{constant}, types::{new_type}(sys::{constant}));"
+                    // )?;
                 }
             }
             write!(
@@ -65,7 +73,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 "
                 pub mod types {{
                     use ::libmqm_sys::lib as mqsys;
-                    use crate::value::define_new_type;
+                    use crate::value::{{define_new_type, impl_value}};
+                    use crate::bitflags::impl_bitflags;
                     {}
                 }}
             ",
@@ -81,6 +90,22 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             ",
                 String::from_utf8_lossy(&constant_write)
             )?;
+
+            // write!(
+            //     new_type_mods_write,
+            //     "
+            //     #[cfg(test)]
+            //     pub mod tests {{
+            //         use super::*;
+            //         use ::libmqm_sys::lib as sys;
+            //         #[test]
+            //         pub fn constants_test() {{
+            //             {}
+            //         }}
+            //     }}
+            // ",
+            //     String::from_utf8_lossy(&test_cases)
+            // )?;
 
             writeln!(mapping_write, "use crate::lookup::*;")?;
             // Pick a lookup type based on the size of the constants for a prefix

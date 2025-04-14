@@ -5,6 +5,9 @@ use std::borrow::Cow;
 use super::lookup::{ConstLookup, ConstantItem};
 
 macro_rules! impl_bitflags {
+    ($name:path, $type:path) => {
+        impl_bitflags!($name);
+    };
     ($name:path) => {
         #[allow(unused_imports)]
         use $crate::lookup::{ConstLookup as _, HasConstLookup as _, HasMqNames as _};

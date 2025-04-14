@@ -13,634 +13,1009 @@
 
 pub mod types {
     use ::libmqm_sys::lib as mqsys;
-    use crate::value::define_new_type;
+    use crate::value::{define_new_type, impl_value};
+    use crate::bitflags::impl_bitflags;
     define_new_type!(pub MQACTIVE, mqsys::MQLONG, crate ::mapping::MQACTIVE_MAPSTR);
+    impl_value!(MQACTIVE, mqsys::MQLONG);
     define_new_type!(pub MQACTP, mqsys::MQLONG, crate ::mapping::MQACTP_MAPSTR);
+    impl_value!(MQACTP, mqsys::MQLONG);
     define_new_type!(pub MQACTV, mqsys::MQLONG, crate ::mapping::MQACTV_MAPSTR);
+    impl_value!(MQACTV, mqsys::MQLONG);
     define_new_type!(pub MQACT, mqsys::MQLONG, crate ::mapping::MQACT_MAPSTR);
+    impl_value!(MQACT, mqsys::MQLONG);
     define_new_type!(
         pub MQADOPT_CHECK, mqsys::MQLONG, crate ::mapping::MQADOPT_CHECK_MAPSTR
     );
+    impl_value!(MQADOPT_CHECK, mqsys::MQLONG);
     define_new_type!(
         pub MQADOPT_TYPE, mqsys::MQLONG, crate ::mapping::MQADOPT_TYPE_MAPSTR
     );
+    impl_value!(MQADOPT_TYPE, mqsys::MQLONG);
     define_new_type!(pub MQADPCTX, mqsys::MQLONG, crate ::mapping::MQADPCTX_MAPSTR);
+    impl_value!(MQADPCTX, mqsys::MQLONG);
     define_new_type!(pub MQAIT, mqsys::MQLONG, crate ::mapping::MQAIT_MAPSTR);
+    impl_value!(MQAIT, mqsys::MQLONG);
     define_new_type!(pub MQAPPL, mqsys::MQLONG, crate ::mapping::MQAPPL_MAPSTR);
+    impl_value!(MQAPPL, mqsys::MQLONG);
     define_new_type!(pub MQAS, mqsys::MQLONG, crate ::mapping::MQAS_MAPSTR);
+    impl_value!(MQAS, mqsys::MQLONG);
     define_new_type!(
         pub MQAT, mqsys::MQLONG, crate ::mapping::MQAT_MAPSTR,
         r###"Put Application Types"###
     );
+    impl_value!(MQAT, mqsys::MQLONG);
     define_new_type!(
         pub MQAUTHENTICATE, mqsys::MQLONG, crate ::mapping::MQAUTHENTICATE_MAPSTR
     );
+    impl_value!(MQAUTHENTICATE, mqsys::MQLONG);
     define_new_type!(
         pub MQAUTHOPT, mqsys::MQLONG, crate ::mapping::MQAUTHOPT_MAPSTR,
         r###"Command format Authority Options"###
     );
+    impl_bitflags!(MQAUTHOPT, mqsys::MQLONG);
     define_new_type!(pub MQAUTH, mqsys::MQLONG, crate ::mapping::MQAUTH_MAPSTR);
+    impl_value!(MQAUTH, mqsys::MQLONG);
     define_new_type!(pub MQAUTOCLUS, mqsys::MQLONG, crate ::mapping::MQAUTOCLUS_MAPSTR);
+    impl_value!(MQAUTOCLUS, mqsys::MQLONG);
     define_new_type!(pub MQAUTO, mqsys::MQLONG, crate ::mapping::MQAUTO_MAPSTR);
+    impl_value!(MQAUTO, mqsys::MQLONG);
     define_new_type!(pub MQBACF, mqsys::MQLONG, crate ::mapping::MQBACF_MAPSTR);
+    impl_value!(MQBACF, mqsys::MQLONG);
     define_new_type!(pub MQBALANCED, mqsys::MQLONG, crate ::mapping::MQBALANCED_MAPSTR);
+    impl_value!(MQBALANCED, mqsys::MQLONG);
     define_new_type!(pub MQBALSTATE, mqsys::MQLONG, crate ::mapping::MQBALSTATE_MAPSTR);
+    impl_value!(MQBALSTATE, mqsys::MQLONG);
     define_new_type!(pub MQBL, mqsys::MQLONG, crate ::mapping::MQBL_MAPSTR);
+    impl_value!(MQBL, mqsys::MQLONG);
     define_new_type!(
         pub MQBMHO, mqsys::MQLONG, crate ::mapping::MQBMHO_MAPSTR,
         r###"Options to control the action of `MQBUFMH`"###
     );
+    impl_bitflags!(MQBMHO, mqsys::MQLONG);
     define_new_type!(pub MQBND, mqsys::MQLONG, crate ::mapping::MQBND_MAPSTR);
+    impl_value!(MQBND, mqsys::MQLONG);
     define_new_type!(
         pub MQBNO_BALTYPE, mqsys::MQLONG, crate ::mapping::MQBNO_BALTYPE_MAPSTR
     );
+    impl_value!(MQBNO_BALTYPE, mqsys::MQLONG);
     define_new_type!(
         pub MQBNO_OPTIONS, mqsys::MQLONG, crate ::mapping::MQBNO_OPTIONS_MAPSTR
     );
+    impl_value!(MQBNO_OPTIONS, mqsys::MQLONG);
     define_new_type!(
         pub MQBNO_TIMEOUT, mqsys::MQLONG, crate ::mapping::MQBNO_TIMEOUT_MAPSTR
     );
+    impl_value!(MQBNO_TIMEOUT, mqsys::MQLONG);
     define_new_type!(
         pub MQBO, mqsys::MQLONG, crate ::mapping::MQBO_MAPSTR,
         r###"Options to control the action of `MQBEGIN`"###
     );
+    impl_bitflags!(MQBO, mqsys::MQLONG);
     define_new_type!(
         pub MQBPLOCATION, mqsys::MQLONG, crate ::mapping::MQBPLOCATION_MAPSTR
     );
+    impl_value!(MQBPLOCATION, mqsys::MQLONG);
     define_new_type!(pub MQBT, mqsys::MQLONG, crate ::mapping::MQBT_MAPSTR);
+    impl_value!(MQBT, mqsys::MQLONG);
     define_new_type!(
         pub MQCACF, mqsys::MQLONG, crate ::mapping::MQCACF_MAPSTR,
         r###"Command format Character Parameter Types"###
     );
+    impl_value!(MQCACF, mqsys::MQLONG);
     define_new_type!(
         pub MQCACH, mqsys::MQLONG, crate ::mapping::MQCACH_MAPSTR,
         r###"Command format Character Channel Parameter Types"###
     );
+    impl_value!(MQCACH, mqsys::MQLONG);
     define_new_type!(pub MQCADSD, mqsys::MQLONG, crate ::mapping::MQCADSD_MAPSTR);
+    impl_value!(MQCADSD, mqsys::MQLONG);
     define_new_type!(pub MQCAFTY, mqsys::MQLONG, crate ::mapping::MQCAFTY_MAPSTR);
+    impl_value!(MQCAFTY, mqsys::MQLONG);
     define_new_type!(pub MQCAMO, mqsys::MQLONG, crate ::mapping::MQCAMO_MAPSTR);
+    impl_value!(MQCAMO, mqsys::MQLONG);
     define_new_type!(pub MQCAP, mqsys::MQLONG, crate ::mapping::MQCAP_MAPSTR);
+    impl_value!(MQCAP, mqsys::MQLONG);
     define_new_type!(pub MQCAUT, mqsys::MQLONG, crate ::mapping::MQCAUT_MAPSTR);
+    impl_value!(MQCAUT, mqsys::MQLONG);
     define_new_type!(
         pub MQCA, mqsys::MQLONG, crate ::mapping::MQCA_MAPSTR,
         r###"Character Attribute Selectors"###
     );
+    impl_value!(MQCA, mqsys::MQLONG);
     define_new_type!(
         pub MQCBCF, mqsys::MQLONG, crate ::mapping::MQCBCF_MAPSTR,
         r###"Flags containing information about the callback consumer"###
     );
+    impl_value!(MQCBCF, mqsys::MQLONG);
     define_new_type!(
         pub MQCBCT, mqsys::MQLONG, crate ::mapping::MQCBCT_MAPSTR,
         r###"Callback control and message delivery call types"###
     );
+    impl_value!(MQCBCT, mqsys::MQLONG);
     define_new_type!(
         pub MQCBDO, mqsys::MQLONG, crate ::mapping::MQCBDO_MAPSTR,
         r###"Options to control the action of `MQCB`"###
     );
+    impl_bitflags!(MQCBDO, mqsys::MQLONG);
     define_new_type!(pub MQCBD, mqsys::MQLONG, crate ::mapping::MQCBD_MAPSTR);
+    impl_value!(MQCBD, mqsys::MQLONG);
     define_new_type!(
         pub MQCBO, mqsys::MQLONG, crate ::mapping::MQCBO_MAPSTR,
         r###"Options to control `mqCreateBag`"###
     );
+    impl_bitflags!(MQCBO, mqsys::MQLONG);
     define_new_type!(pub MQCBT, mqsys::MQLONG, crate ::mapping::MQCBT_MAPSTR);
+    impl_value!(MQCBT, mqsys::MQLONG);
     define_new_type!(pub MQCCSI, mqsys::MQLONG, crate ::mapping::MQCCSI_MAPSTR);
+    impl_value!(MQCCSI, mqsys::MQLONG);
     define_new_type!(pub MQCCT, mqsys::MQLONG, crate ::mapping::MQCCT_MAPSTR);
+    impl_value!(MQCCT, mqsys::MQLONG);
     define_new_type!(
         pub MQCC, mqsys::MQLONG, crate ::mapping::MQCC_MAPSTR,
         r###"Completion Code from an MQ function call"###
     );
+    impl_value!(MQCC, mqsys::MQLONG);
     define_new_type!(pub MQCDC, mqsys::MQLONG, crate ::mapping::MQCDC_MAPSTR);
+    impl_value!(MQCDC, mqsys::MQLONG);
     define_new_type!(pub MQCEX, mqsys::MQLONG, crate ::mapping::MQCEX_MAPSTR);
+    impl_value!(MQCEX, mqsys::MQLONG);
     define_new_type!(pub MQCFACCESS, mqsys::MQLONG, crate ::mapping::MQCFACCESS_MAPSTR);
+    impl_value!(MQCFACCESS, mqsys::MQLONG);
     define_new_type!(pub MQCFCONLOS, mqsys::MQLONG, crate ::mapping::MQCFCONLOS_MAPSTR);
+    impl_value!(MQCFCONLOS, mqsys::MQLONG);
     define_new_type!(pub MQCFC, mqsys::MQLONG, crate ::mapping::MQCFC_MAPSTR);
+    impl_value!(MQCFC, mqsys::MQLONG);
     define_new_type!(pub MQCFOFFLD, mqsys::MQLONG, crate ::mapping::MQCFOFFLD_MAPSTR);
+    impl_value!(MQCFOFFLD, mqsys::MQLONG);
     define_new_type!(
         pub MQCFOP, mqsys::MQLONG, crate ::mapping::MQCFOP_MAPSTR,
         r###"Command format Filter Operators"###
     );
+    impl_value!(MQCFOP, mqsys::MQLONG);
     define_new_type!(
         pub MQCFO_REFRESH, mqsys::MQLONG, crate ::mapping::MQCFO_REFRESH_MAPSTR
     );
+    impl_value!(MQCFO_REFRESH, mqsys::MQLONG);
     define_new_type!(
         pub MQCFO_REMOVE, mqsys::MQLONG, crate ::mapping::MQCFO_REMOVE_MAPSTR
     );
+    impl_value!(MQCFO_REMOVE, mqsys::MQLONG);
     define_new_type!(pub MQCFR, mqsys::MQLONG, crate ::mapping::MQCFR_MAPSTR);
+    impl_value!(MQCFR, mqsys::MQLONG);
     define_new_type!(pub MQCFSTATUS, mqsys::MQLONG, crate ::mapping::MQCFSTATUS_MAPSTR);
+    impl_value!(MQCFSTATUS, mqsys::MQLONG);
     define_new_type!(pub MQCFTYPE, mqsys::MQLONG, crate ::mapping::MQCFTYPE_MAPSTR);
+    impl_value!(MQCFTYPE, mqsys::MQLONG);
     define_new_type!(pub MQCFT, mqsys::MQLONG, crate ::mapping::MQCFT_MAPSTR);
+    impl_value!(MQCFT, mqsys::MQLONG);
     define_new_type!(pub MQCF, mqsys::MQLONG, crate ::mapping::MQCF_MAPSTR);
+    impl_value!(MQCF, mqsys::MQLONG);
     define_new_type!(pub MQCGWI, mqsys::MQLONG, crate ::mapping::MQCGWI_MAPSTR);
+    impl_value!(MQCGWI, mqsys::MQLONG);
     define_new_type!(pub MQCHAD, mqsys::MQLONG, crate ::mapping::MQCHAD_MAPSTR);
+    impl_value!(MQCHAD, mqsys::MQLONG);
     define_new_type!(pub MQCHIDS, mqsys::MQLONG, crate ::mapping::MQCHIDS_MAPSTR);
+    impl_value!(MQCHIDS, mqsys::MQLONG);
     define_new_type!(pub MQCHK, mqsys::MQLONG, crate ::mapping::MQCHK_MAPSTR);
+    impl_value!(MQCHK, mqsys::MQLONG);
     define_new_type!(pub MQCHLA, mqsys::MQLONG, crate ::mapping::MQCHLA_MAPSTR);
+    impl_value!(MQCHLA, mqsys::MQLONG);
     define_new_type!(pub MQCHLD, mqsys::MQLONG, crate ::mapping::MQCHLD_MAPSTR);
+    impl_value!(MQCHLD, mqsys::MQLONG);
     define_new_type!(pub MQCHRR, mqsys::MQLONG, crate ::mapping::MQCHRR_MAPSTR);
+    impl_value!(MQCHRR, mqsys::MQLONG);
     define_new_type!(pub MQCHSH, mqsys::MQLONG, crate ::mapping::MQCHSH_MAPSTR);
+    impl_value!(MQCHSH, mqsys::MQLONG);
     define_new_type!(pub MQCHSR, mqsys::MQLONG, crate ::mapping::MQCHSR_MAPSTR);
+    impl_value!(MQCHSR, mqsys::MQLONG);
     define_new_type!(pub MQCHSSTATE, mqsys::MQLONG, crate ::mapping::MQCHSSTATE_MAPSTR);
+    impl_value!(MQCHSSTATE, mqsys::MQLONG);
     define_new_type!(pub MQCHS, mqsys::MQLONG, crate ::mapping::MQCHS_MAPSTR);
+    impl_value!(MQCHS, mqsys::MQLONG);
     define_new_type!(pub MQCHTAB, mqsys::MQLONG, crate ::mapping::MQCHTAB_MAPSTR);
+    impl_value!(MQCHTAB, mqsys::MQLONG);
     define_new_type!(pub MQCHT, mqsys::MQLONG, crate ::mapping::MQCHT_MAPSTR);
+    impl_value!(MQCHT, mqsys::MQLONG);
     define_new_type!(pub MQCIH, mqsys::MQLONG, crate ::mapping::MQCIH_MAPSTR);
+    impl_value!(MQCIH, mqsys::MQLONG);
     define_new_type!(pub MQCIT, mqsys::MQLONG, crate ::mapping::MQCIT_MAPSTR);
+    impl_value!(MQCIT, mqsys::MQLONG);
     define_new_type!(pub MQCLCT, mqsys::MQLONG, crate ::mapping::MQCLCT_MAPSTR);
+    impl_value!(MQCLCT, mqsys::MQLONG);
     define_new_type!(pub MQCLROUTE, mqsys::MQLONG, crate ::mapping::MQCLROUTE_MAPSTR);
+    impl_value!(MQCLROUTE, mqsys::MQLONG);
     define_new_type!(pub MQCLRS, mqsys::MQLONG, crate ::mapping::MQCLRS_MAPSTR);
+    impl_value!(MQCLRS, mqsys::MQLONG);
     define_new_type!(pub MQCLRT, mqsys::MQLONG, crate ::mapping::MQCLRT_MAPSTR);
+    impl_value!(MQCLRT, mqsys::MQLONG);
     define_new_type!(pub MQCLST, mqsys::MQLONG, crate ::mapping::MQCLST_MAPSTR);
+    impl_value!(MQCLST, mqsys::MQLONG);
     define_new_type!(pub MQCLT, mqsys::MQLONG, crate ::mapping::MQCLT_MAPSTR);
+    impl_value!(MQCLT, mqsys::MQLONG);
     define_new_type!(pub MQCLWL, mqsys::MQLONG, crate ::mapping::MQCLWL_MAPSTR);
+    impl_value!(MQCLWL, mqsys::MQLONG);
     define_new_type!(pub MQCLXQ, mqsys::MQLONG, crate ::mapping::MQCLXQ_MAPSTR);
+    impl_value!(MQCLXQ, mqsys::MQLONG);
     define_new_type!(pub MQCMDI, mqsys::MQLONG, crate ::mapping::MQCMDI_MAPSTR);
+    impl_value!(MQCMDI, mqsys::MQLONG);
     define_new_type!(pub MQCMDL, mqsys::MQLONG, crate ::mapping::MQCMDL_MAPSTR);
+    impl_value!(MQCMDL, mqsys::MQLONG);
     define_new_type!(
         pub MQCMD, mqsys::MQLONG, crate ::mapping::MQCMD_MAPSTR, r###"Command Codes"###
     );
+    impl_value!(MQCMD, mqsys::MQLONG);
     define_new_type!(
         pub MQCMHO, mqsys::MQLONG, crate ::mapping::MQCMHO_MAPSTR,
         r###"Create message handle options for `MQCRTMH`"###
     );
+    impl_value!(MQCMHO, mqsys::MQLONG);
     define_new_type!(
         pub MQCNO, mqsys::MQLONG, crate ::mapping::MQCNO_MAPSTR,
         r###"Options to control the action of `MQCONNX`"###
     );
+    impl_bitflags!(MQCNO, mqsys::MQLONG);
     define_new_type!(pub MQCODL, mqsys::MQLONG, crate ::mapping::MQCODL_MAPSTR);
+    impl_value!(MQCODL, mqsys::MQLONG);
     define_new_type!(pub MQCOMPRESS, mqsys::MQLONG, crate ::mapping::MQCOMPRESS_MAPSTR);
+    impl_value!(MQCOMPRESS, mqsys::MQLONG);
     define_new_type!(
         pub MQCOPY, mqsys::MQLONG, crate ::mapping::MQCOPY_MAPSTR,
         r###"Property copy options"###
     );
+    impl_bitflags!(MQCOPY, mqsys::MQLONG);
     define_new_type!(
         pub MQCO, mqsys::MQLONG, crate ::mapping::MQCO_MAPSTR,
         r###"Options to control the action of `MQCLOSE`"###
     );
+    impl_bitflags!(MQCO, mqsys::MQLONG);
     define_new_type!(pub MQCQT, mqsys::MQLONG, crate ::mapping::MQCQT_MAPSTR);
+    impl_value!(MQCQT, mqsys::MQLONG);
     define_new_type!(pub MQCRC, mqsys::MQLONG, crate ::mapping::MQCRC_MAPSTR);
+    impl_value!(MQCRC, mqsys::MQLONG);
     define_new_type!(pub MQCSP, mqsys::MQLONG, crate ::mapping::MQCSP_MAPSTR);
+    impl_value!(MQCSP, mqsys::MQLONG);
     define_new_type!(
         pub MQCSRV_CONVERT, mqsys::MQLONG, crate ::mapping::MQCSRV_CONVERT_MAPSTR
     );
+    impl_value!(MQCSRV_CONVERT, mqsys::MQLONG);
     define_new_type!(pub MQCSRV_DLQ, mqsys::MQLONG, crate ::mapping::MQCSRV_DLQ_MAPSTR);
+    impl_value!(MQCSRV_DLQ, mqsys::MQLONG);
     define_new_type!(
         pub MQCS, mqsys::MQLONG, crate ::mapping::MQCS_MAPSTR,
         r###"Callback consumer state"###
     );
+    impl_value!(MQCS, mqsys::MQLONG);
     define_new_type!(pub MQCTES, mqsys::MQLONG, crate ::mapping::MQCTES_MAPSTR);
+    impl_value!(MQCTES, mqsys::MQLONG);
     define_new_type!(
         pub MQCTLO, mqsys::MQLONG, crate ::mapping::MQCTLO_MAPSTR,
         r###"MQCTL Consumer Control Options"###
     );
+    impl_bitflags!(MQCTLO, mqsys::MQLONG);
     define_new_type!(pub MQCUOWC, mqsys::MQLONG, crate ::mapping::MQCUOWC_MAPSTR);
+    impl_value!(MQCUOWC, mqsys::MQLONG);
     define_new_type!(
         pub MQDCC, mqsys::MQLONG, crate ::mapping::MQDCC_MAPSTR,
         r###"Options to control the action of `MQXCNVC`"###
     );
+    impl_bitflags!(MQDCC, mqsys::MQLONG);
     define_new_type!(pub MQDC, mqsys::MQLONG, crate ::mapping::MQDC_MAPSTR);
+    impl_value!(MQDC, mqsys::MQLONG);
     define_new_type!(pub MQDELO, mqsys::MQLONG, crate ::mapping::MQDELO_MAPSTR);
+    impl_value!(MQDELO, mqsys::MQLONG);
     define_new_type!(pub MQDHF, mqsys::MQLONG, crate ::mapping::MQDHF_MAPSTR);
+    impl_value!(MQDHF, mqsys::MQLONG);
     define_new_type!(
         pub MQDISCONNECT, mqsys::MQLONG, crate ::mapping::MQDISCONNECT_MAPSTR
     );
+    impl_value!(MQDISCONNECT, mqsys::MQLONG);
     define_new_type!(pub MQDLV, mqsys::MQLONG, crate ::mapping::MQDLV_MAPSTR);
+    impl_value!(MQDLV, mqsys::MQLONG);
     define_new_type!(pub MQDL, mqsys::MQLONG, crate ::mapping::MQDL_MAPSTR);
+    impl_value!(MQDL, mqsys::MQLONG);
     define_new_type!(pub MQDMHO, mqsys::MQLONG, crate ::mapping::MQDMHO_MAPSTR);
+    impl_value!(MQDMHO, mqsys::MQLONG);
     define_new_type!(
         pub MQDMPO, mqsys::MQLONG, crate ::mapping::MQDMPO_MAPSTR,
         r###"Delete message property options"###
     );
+    impl_value!(MQDMPO, mqsys::MQLONG);
     define_new_type!(pub MQDNSWLM, mqsys::MQLONG, crate ::mapping::MQDNSWLM_MAPSTR);
+    impl_value!(MQDNSWLM, mqsys::MQLONG);
     define_new_type!(pub MQDOPT, mqsys::MQLONG, crate ::mapping::MQDOPT_MAPSTR);
+    impl_value!(MQDOPT, mqsys::MQLONG);
     define_new_type!(pub MQDSB, mqsys::MQLONG, crate ::mapping::MQDSB_MAPSTR);
+    impl_value!(MQDSB, mqsys::MQLONG);
     define_new_type!(pub MQDSE, mqsys::MQLONG, crate ::mapping::MQDSE_MAPSTR);
+    impl_value!(MQDSE, mqsys::MQLONG);
     define_new_type!(pub MQEC, mqsys::MQLONG, crate ::mapping::MQEC_MAPSTR);
+    impl_value!(MQEC, mqsys::MQLONG);
     define_new_type!(pub MQEI, mqsys::MQLONG, crate ::mapping::MQEI_MAPSTR);
+    impl_value!(MQEI, mqsys::MQLONG);
     define_new_type!(
         pub MQENC, mqsys::MQLONG, crate ::mapping::MQENC_MAPSTR,
         r###"Mask describing data encoding"###
     );
+    impl_bitflags!(MQENC, mqsys::MQLONG);
     define_new_type!(pub MQEPH, mqsys::MQLONG, crate ::mapping::MQEPH_MAPSTR);
+    impl_value!(MQEPH, mqsys::MQLONG);
     define_new_type!(pub MQET, mqsys::MQLONG, crate ::mapping::MQET_MAPSTR);
+    impl_value!(MQET, mqsys::MQLONG);
     define_new_type!(pub MQEVO, mqsys::MQLONG, crate ::mapping::MQEVO_MAPSTR);
+    impl_value!(MQEVO, mqsys::MQLONG);
     define_new_type!(pub MQEVR, mqsys::MQLONG, crate ::mapping::MQEVR_MAPSTR);
+    impl_value!(MQEVR, mqsys::MQLONG);
     define_new_type!(pub MQEXPI, mqsys::MQLONG, crate ::mapping::MQEXPI_MAPSTR);
+    impl_value!(MQEXPI, mqsys::MQLONG);
     define_new_type!(pub MQEXTATTRS, mqsys::MQLONG, crate ::mapping::MQEXTATTRS_MAPSTR);
+    impl_value!(MQEXTATTRS, mqsys::MQLONG);
     define_new_type!(pub MQEXT, mqsys::MQLONG, crate ::mapping::MQEXT_MAPSTR);
+    impl_value!(MQEXT, mqsys::MQLONG);
     define_new_type!(pub MQFB, mqsys::MQLONG, crate ::mapping::MQFB_MAPSTR);
+    impl_value!(MQFB, mqsys::MQLONG);
     define_new_type!(pub MQFC, mqsys::MQLONG, crate ::mapping::MQFC_MAPSTR);
+    impl_value!(MQFC, mqsys::MQLONG);
     define_new_type!(
         pub MQFIELD_WQR, mqsys::MQLONG, crate ::mapping::MQFIELD_WQR_MAPSTR
     );
+    impl_value!(MQFIELD_WQR, mqsys::MQLONG);
     define_new_type!(pub MQFSENC, mqsys::MQLONG, crate ::mapping::MQFSENC_MAPSTR);
+    impl_value!(MQFSENC, mqsys::MQLONG);
     define_new_type!(pub MQFS, mqsys::MQLONG, crate ::mapping::MQFS_MAPSTR);
+    impl_value!(MQFS, mqsys::MQLONG);
     define_new_type!(pub MQFUN, mqsys::MQLONG, crate ::mapping::MQFUN_MAPSTR);
+    impl_value!(MQFUN, mqsys::MQLONG);
     define_new_type!(pub MQGACF, mqsys::MQLONG, crate ::mapping::MQGACF_MAPSTR);
+    impl_value!(MQGACF, mqsys::MQLONG);
     define_new_type!(
         pub MQGMO, mqsys::MQLONG, crate ::mapping::MQGMO_MAPSTR,
         r###"Options to control the action of `MQGET`"###
     );
+    impl_bitflags!(MQGMO, mqsys::MQLONG);
     define_new_type!(pub MQGUR, mqsys::MQLONG, crate ::mapping::MQGUR_MAPSTR);
+    impl_value!(MQGUR, mqsys::MQLONG);
     define_new_type!(
         pub MQHA, mqsys::MQLONG, crate ::mapping::MQHA_MAPSTR, r###"Handle Selectors"###
     );
+    impl_value!(MQHA, mqsys::MQLONG);
     define_new_type!(pub MQHB, mqsys::MQLONG, crate ::mapping::MQHB_MAPSTR);
+    impl_value!(MQHB, mqsys::MQLONG);
     define_new_type!(pub MQHC, mqsys::MQHCONN, crate ::mapping::MQHC_MAPSTR);
+    impl_value!(MQHC, mqsys::MQHCONN);
     define_new_type!(pub MQHM, mqsys::MQHMSG, crate ::mapping::MQHM_MAPSTR);
+    impl_value!(MQHM, mqsys::MQHMSG);
     define_new_type!(pub MQHO, mqsys::MQHOBJ, crate ::mapping::MQHO_MAPSTR);
+    impl_value!(MQHO, mqsys::MQHOBJ);
     define_new_type!(pub MQHSTATE, mqsys::MQLONG, crate ::mapping::MQHSTATE_MAPSTR);
+    impl_value!(MQHSTATE, mqsys::MQLONG);
     define_new_type!(
         pub MQIACF, mqsys::MQLONG, crate ::mapping::MQIACF_MAPSTR,
         r###"Command format Integer Parameter Types"###
     );
+    impl_value!(MQIACF, mqsys::MQLONG);
     define_new_type!(
         pub MQIACH, mqsys::MQLONG, crate ::mapping::MQIACH_MAPSTR,
         r###"Command format Integer Channel Types"###
     );
+    impl_value!(MQIACH, mqsys::MQLONG);
     define_new_type!(pub MQIAMO64, mqsys::MQLONG, crate ::mapping::MQIAMO64_MAPSTR);
+    impl_value!(MQIAMO64, mqsys::MQLONG);
     define_new_type!(pub MQIAMO, mqsys::MQLONG, crate ::mapping::MQIAMO_MAPSTR);
+    impl_value!(MQIAMO, mqsys::MQLONG);
     define_new_type!(
         pub MQIAMO_MONITOR_DATATYPE, mqsys::MQLONG, crate
         ::mapping::MQIAMO_MONITOR_DATATYPE_MAPSTR
     );
+    impl_value!(MQIAMO_MONITOR_DATATYPE, mqsys::MQLONG);
     define_new_type!(
         pub MQIAMO_MONITOR_FLAGS, mqsys::MQLONG, crate
         ::mapping::MQIAMO_MONITOR_FLAGS_MAPSTR
     );
+    impl_value!(MQIAMO_MONITOR_FLAGS, mqsys::MQLONG);
     define_new_type!(
         pub MQIASY, mqsys::MQLONG, crate ::mapping::MQIASY_MAPSTR,
         r###"Integer System Selectors"###
     );
+    impl_value!(MQIASY, mqsys::MQLONG);
     define_new_type!(pub MQIAV, mqsys::MQLONG, crate ::mapping::MQIAV_MAPSTR);
+    impl_value!(MQIAV, mqsys::MQLONG);
     define_new_type!(
         pub MQIA, mqsys::MQLONG, crate ::mapping::MQIA_MAPSTR,
         r###"Integer Attribute Selectors"###
     );
+    impl_value!(MQIA, mqsys::MQLONG);
     define_new_type!(pub MQIDO, mqsys::MQLONG, crate ::mapping::MQIDO_MAPSTR);
+    impl_value!(MQIDO, mqsys::MQLONG);
     define_new_type!(pub MQIEPF, mqsys::MQLONG, crate ::mapping::MQIEPF_MAPSTR);
+    impl_value!(MQIEPF, mqsys::MQLONG);
     define_new_type!(pub MQIGQPA, mqsys::MQLONG, crate ::mapping::MQIGQPA_MAPSTR);
+    impl_value!(MQIGQPA, mqsys::MQLONG);
     define_new_type!(pub MQIGQ, mqsys::MQLONG, crate ::mapping::MQIGQ_MAPSTR);
+    impl_value!(MQIGQ, mqsys::MQLONG);
     define_new_type!(pub MQIIH, mqsys::MQLONG, crate ::mapping::MQIIH_MAPSTR);
+    impl_value!(MQIIH, mqsys::MQLONG);
     define_new_type!(pub MQIMGRCOV, mqsys::MQLONG, crate ::mapping::MQIMGRCOV_MAPSTR);
+    impl_value!(MQIMGRCOV, mqsys::MQLONG);
     define_new_type!(
         pub MQIMMREASON, mqsys::MQLONG, crate ::mapping::MQIMMREASON_MAPSTR
     );
+    impl_value!(MQIMMREASON, mqsys::MQLONG);
     define_new_type!(
         pub MQIMPO, mqsys::MQLONG, crate ::mapping::MQIMPO_MAPSTR,
         r###"Options to control the action of `MQINQMP`"###
     );
+    impl_bitflags!(MQIMPO, mqsys::MQLONG);
     define_new_type!(pub MQINBD, mqsys::MQLONG, crate ::mapping::MQINBD_MAPSTR);
+    impl_value!(MQINBD, mqsys::MQLONG);
     define_new_type!(
         pub MQIND, mqsys::MQLONG, crate ::mapping::MQIND_MAPSTR,
         r###"Special Index Values"###
     );
+    impl_value!(MQIND, mqsys::MQLONG);
     define_new_type!(pub MQIPADDR, mqsys::MQLONG, crate ::mapping::MQIPADDR_MAPSTR);
+    impl_value!(MQIPADDR, mqsys::MQLONG);
     define_new_type!(pub MQIS, mqsys::MQLONG, crate ::mapping::MQIS_MAPSTR);
+    impl_value!(MQIS, mqsys::MQLONG);
     define_new_type!(
         pub MQITEM, mqsys::MQLONG, crate ::mapping::MQITEM_MAPSTR,
         r###"Item Type for `mqInquireItemInfo`"###
     );
+    impl_value!(MQITEM, mqsys::MQLONG);
     define_new_type!(pub MQIT, mqsys::MQLONG, crate ::mapping::MQIT_MAPSTR);
+    impl_value!(MQIT, mqsys::MQLONG);
     define_new_type!(pub MQKAI, mqsys::MQLONG, crate ::mapping::MQKAI_MAPSTR);
+    impl_value!(MQKAI, mqsys::MQLONG);
     define_new_type!(pub MQKEY, mqsys::MQLONG, crate ::mapping::MQKEY_MAPSTR);
+    impl_value!(MQKEY, mqsys::MQLONG);
     define_new_type!(pub MQLDAPC, mqsys::MQLONG, crate ::mapping::MQLDAPC_MAPSTR);
+    impl_value!(MQLDAPC, mqsys::MQLONG);
     define_new_type!(
         pub MQLDAP_AUTHORMD, mqsys::MQLONG, crate ::mapping::MQLDAP_AUTHORMD_MAPSTR
     );
+    impl_value!(MQLDAP_AUTHORMD, mqsys::MQLONG);
     define_new_type!(
         pub MQLDAP_NESTGRP, mqsys::MQLONG, crate ::mapping::MQLDAP_NESTGRP_MAPSTR
     );
+    impl_value!(MQLDAP_NESTGRP, mqsys::MQLONG);
     define_new_type!(pub MQLOGTYPE, mqsys::MQLONG, crate ::mapping::MQLOGTYPE_MAPSTR);
+    impl_value!(MQLOGTYPE, mqsys::MQLONG);
     define_new_type!(pub MQLR, mqsys::MQLONG, crate ::mapping::MQLR_MAPSTR);
+    impl_value!(MQLR, mqsys::MQLONG);
     define_new_type!(pub MQMASTER, mqsys::MQLONG, crate ::mapping::MQMASTER_MAPSTR);
+    impl_value!(MQMASTER, mqsys::MQLONG);
     define_new_type!(pub MQMATCH, mqsys::MQLONG, crate ::mapping::MQMATCH_MAPSTR);
+    impl_value!(MQMATCH, mqsys::MQLONG);
     define_new_type!(pub MQMCAS, mqsys::MQLONG, crate ::mapping::MQMCAS_MAPSTR);
+    impl_value!(MQMCAS, mqsys::MQLONG);
     define_new_type!(pub MQMCAT, mqsys::MQLONG, crate ::mapping::MQMCAT_MAPSTR);
+    impl_value!(MQMCAT, mqsys::MQLONG);
     define_new_type!(pub MQMCB, mqsys::MQLONG, crate ::mapping::MQMCB_MAPSTR);
+    impl_value!(MQMCB, mqsys::MQLONG);
     define_new_type!(pub MQMCEV, mqsys::MQLONG, crate ::mapping::MQMCEV_MAPSTR);
+    impl_value!(MQMCEV, mqsys::MQLONG);
     define_new_type!(pub MQMCP, mqsys::MQLONG, crate ::mapping::MQMCP_MAPSTR);
+    impl_value!(MQMCP, mqsys::MQLONG);
     define_new_type!(pub MQMC, mqsys::MQLONG, crate ::mapping::MQMC_MAPSTR);
+    impl_value!(MQMC, mqsys::MQLONG);
     define_new_type!(pub MQMDEF, mqsys::MQLONG, crate ::mapping::MQMDEF_MAPSTR);
+    impl_value!(MQMDEF, mqsys::MQLONG);
     define_new_type!(pub MQMDS, mqsys::MQLONG, crate ::mapping::MQMDS_MAPSTR);
+    impl_value!(MQMDS, mqsys::MQLONG);
     define_new_type!(
         pub MQMEDIMGINTVL, mqsys::MQLONG, crate ::mapping::MQMEDIMGINTVL_MAPSTR
     );
+    impl_value!(MQMEDIMGINTVL, mqsys::MQLONG);
     define_new_type!(
         pub MQMEDIMGLOGLN, mqsys::MQLONG, crate ::mapping::MQMEDIMGLOGLN_MAPSTR
     );
+    impl_value!(MQMEDIMGLOGLN, mqsys::MQLONG);
     define_new_type!(
         pub MQMEDIMGSCHED, mqsys::MQLONG, crate ::mapping::MQMEDIMGSCHED_MAPSTR
     );
+    impl_value!(MQMEDIMGSCHED, mqsys::MQLONG);
     define_new_type!(
         pub MQMF, mqsys::MQLONG, crate ::mapping::MQMF_MAPSTR, r###"Message Flags"###
     );
+    impl_value!(MQMF, mqsys::MQLONG);
     define_new_type!(
         pub MQMHBO, mqsys::MQLONG, crate ::mapping::MQMHBO_MAPSTR,
         r###"Options to control the action of `MQMHBUF`"###
     );
+    impl_bitflags!(MQMHBO, mqsys::MQLONG);
     define_new_type!(
         pub MQMLP_ENCRYPTION, mqsys::MQLONG, crate ::mapping::MQMLP_ENCRYPTION_MAPSTR
     );
+    impl_value!(MQMLP_ENCRYPTION, mqsys::MQLONG);
     define_new_type!(pub MQMLP_SIGN, mqsys::MQLONG, crate ::mapping::MQMLP_SIGN_MAPSTR);
+    impl_value!(MQMLP_SIGN, mqsys::MQLONG);
     define_new_type!(
         pub MQMLP_TOLERATE, mqsys::MQLONG, crate ::mapping::MQMLP_TOLERATE_MAPSTR
     );
+    impl_value!(MQMLP_TOLERATE, mqsys::MQLONG);
     define_new_type!(pub MQMMBI, mqsys::MQLONG, crate ::mapping::MQMMBI_MAPSTR);
+    impl_value!(MQMMBI, mqsys::MQLONG);
     define_new_type!(pub MQMODE, mqsys::MQLONG, crate ::mapping::MQMODE_MAPSTR);
+    impl_value!(MQMODE, mqsys::MQLONG);
     define_new_type!(pub MQMON, mqsys::MQLONG, crate ::mapping::MQMON_MAPSTR);
+    impl_value!(MQMON, mqsys::MQLONG);
     define_new_type!(
         pub MQMON_AVAILABILITY, mqsys::MQLONG, crate ::mapping::MQMON_AVAILABILITY_MAPSTR
     );
+    impl_value!(MQMON_AVAILABILITY, mqsys::MQLONG);
     define_new_type!(
         pub MQMON_OVERRIDE, mqsys::MQLONG, crate ::mapping::MQMON_OVERRIDE_MAPSTR
     );
+    impl_value!(MQMON_OVERRIDE, mqsys::MQLONG);
     define_new_type!(
         pub MQMO, mqsys::MQLONG, crate ::mapping::MQMO_MAPSTR, r###"Match Options"###
     );
+    impl_bitflags!(MQMO, mqsys::MQLONG);
     define_new_type!(pub MQMT, mqsys::MQLONG, crate ::mapping::MQMT_MAPSTR);
+    impl_value!(MQMT, mqsys::MQLONG);
     define_new_type!(pub MQMULC, mqsys::MQLONG, crate ::mapping::MQMULC_MAPSTR);
+    impl_value!(MQMULC, mqsys::MQLONG);
     define_new_type!(pub MQNC, mqsys::MQLONG, crate ::mapping::MQNC_MAPSTR);
+    impl_value!(MQNC, mqsys::MQLONG);
     define_new_type!(
         pub MQNHABACKLOG, mqsys::MQLONG, crate ::mapping::MQNHABACKLOG_MAPSTR
     );
+    impl_value!(MQNHABACKLOG, mqsys::MQLONG);
     define_new_type!(
         pub MQNHACONNACTV, mqsys::MQLONG, crate ::mapping::MQNHACONNACTV_MAPSTR
     );
+    impl_value!(MQNHACONNACTV, mqsys::MQLONG);
     define_new_type!(
         pub MQNHACONNGRP, mqsys::MQLONG, crate ::mapping::MQNHACONNGRP_MAPSTR
     );
+    impl_value!(MQNHACONNGRP, mqsys::MQLONG);
     define_new_type!(
         pub MQNHAGRPROLE, mqsys::MQLONG, crate ::mapping::MQNHAGRPROLE_MAPSTR
     );
+    impl_value!(MQNHAGRPROLE, mqsys::MQLONG);
     define_new_type!(
         pub MQNHAINSYNC, mqsys::MQLONG, crate ::mapping::MQNHAINSYNC_MAPSTR
     );
+    impl_value!(MQNHAINSYNC, mqsys::MQLONG);
     define_new_type!(pub MQNHAROLE, mqsys::MQLONG, crate ::mapping::MQNHAROLE_MAPSTR);
+    impl_value!(MQNHAROLE, mqsys::MQLONG);
     define_new_type!(
         pub MQNHASTATUS, mqsys::MQLONG, crate ::mapping::MQNHASTATUS_MAPSTR
     );
+    impl_value!(MQNHASTATUS, mqsys::MQLONG);
     define_new_type!(pub MQNHATYPE, mqsys::MQLONG, crate ::mapping::MQNHATYPE_MAPSTR);
+    impl_value!(MQNHATYPE, mqsys::MQLONG);
     define_new_type!(pub MQNPMS, mqsys::MQLONG, crate ::mapping::MQNPMS_MAPSTR);
+    impl_value!(MQNPMS, mqsys::MQLONG);
     define_new_type!(pub MQNPM, mqsys::MQLONG, crate ::mapping::MQNPM_MAPSTR);
+    impl_value!(MQNPM, mqsys::MQLONG);
     define_new_type!(pub MQNSH, mqsys::MQLONG, crate ::mapping::MQNSH_MAPSTR);
+    impl_value!(MQNSH, mqsys::MQLONG);
     define_new_type!(pub MQNT, mqsys::MQLONG, crate ::mapping::MQNT_MAPSTR);
+    impl_value!(MQNT, mqsys::MQLONG);
     define_new_type!(pub MQOL, mqsys::MQLONG, crate ::mapping::MQOL_MAPSTR);
+    impl_value!(MQOL, mqsys::MQLONG);
     define_new_type!(pub MQOM, mqsys::MQLONG, crate ::mapping::MQOM_MAPSTR);
+    impl_value!(MQOM, mqsys::MQLONG);
     define_new_type!(
         pub MQOO, mqsys::MQLONG, crate ::mapping::MQOO_MAPSTR,
         r###"Options to control the action of `MQOPEN`"###
     );
+    impl_bitflags!(MQOO, mqsys::MQLONG);
     define_new_type!(pub MQOPER, mqsys::MQLONG, crate ::mapping::MQOPER_MAPSTR);
+    impl_value!(MQOPER, mqsys::MQLONG);
     define_new_type!(pub MQOPMODE, mqsys::MQLONG, crate ::mapping::MQOPMODE_MAPSTR);
+    impl_value!(MQOPMODE, mqsys::MQLONG);
     define_new_type!(
         pub MQOP, mqsys::MQLONG, crate ::mapping::MQOP_MAPSTR,
         r###"Operation codes for `MQCTL` and `MQCB`"###
     );
+    impl_bitflags!(MQOP, mqsys::MQLONG);
     define_new_type!(
         pub MQOT, mqsys::MQLONG, crate ::mapping::MQOT_MAPSTR,
         r###"Object Types and Extended Object Types"###
     );
+    impl_value!(MQOT, mqsys::MQLONG);
     define_new_type!(pub MQPAGECLAS, mqsys::MQLONG, crate ::mapping::MQPAGECLAS_MAPSTR);
+    impl_value!(MQPAGECLAS, mqsys::MQLONG);
     define_new_type!(pub MQPA, mqsys::MQLONG, crate ::mapping::MQPA_MAPSTR);
+    impl_value!(MQPA, mqsys::MQLONG);
     define_new_type!(
         pub MQPD, mqsys::MQLONG, crate ::mapping::MQPD_MAPSTR,
         r###"Property descriptor, support and context"###
     );
+    impl_value!(MQPD, mqsys::MQLONG);
     define_new_type!(pub MQPER, mqsys::MQLONG, crate ::mapping::MQPER_MAPSTR);
+    impl_value!(MQPER, mqsys::MQLONG);
     define_new_type!(pub MQPL, mqsys::MQLONG, crate ::mapping::MQPL_MAPSTR);
+    impl_value!(MQPL, mqsys::MQLONG);
     define_new_type!(
         pub MQPMO, mqsys::MQLONG, crate ::mapping::MQPMO_MAPSTR,
         r###"Options to control the action of `MQPUT` and `MQPUT1`"###
     );
+    impl_bitflags!(MQPMO, mqsys::MQLONG);
     define_new_type!(pub MQPMRF, mqsys::MQLONG, crate ::mapping::MQPMRF_MAPSTR);
+    impl_value!(MQPMRF, mqsys::MQLONG);
     define_new_type!(pub MQPO, mqsys::MQLONG, crate ::mapping::MQPO_MAPSTR);
+    impl_value!(MQPO, mqsys::MQLONG);
     define_new_type!(pub MQPRI, mqsys::MQLONG, crate ::mapping::MQPRI_MAPSTR);
+    impl_value!(MQPRI, mqsys::MQLONG);
     define_new_type!(pub MQPROP, mqsys::MQLONG, crate ::mapping::MQPROP_MAPSTR);
+    impl_value!(MQPROP, mqsys::MQLONG);
     define_new_type!(pub MQPROTO, mqsys::MQLONG, crate ::mapping::MQPROTO_MAPSTR);
+    impl_value!(MQPROTO, mqsys::MQLONG);
     define_new_type!(pub MQPRT, mqsys::MQLONG, crate ::mapping::MQPRT_MAPSTR);
+    impl_value!(MQPRT, mqsys::MQLONG);
     define_new_type!(pub MQPSCLUS, mqsys::MQLONG, crate ::mapping::MQPSCLUS_MAPSTR);
+    impl_value!(MQPSCLUS, mqsys::MQLONG);
     define_new_type!(pub MQPSCT, mqsys::MQLONG, crate ::mapping::MQPSCT_MAPSTR);
+    impl_value!(MQPSCT, mqsys::MQLONG);
     define_new_type!(pub MQPSM, mqsys::MQLONG, crate ::mapping::MQPSM_MAPSTR);
+    impl_value!(MQPSM, mqsys::MQLONG);
     define_new_type!(pub MQPSPROP, mqsys::MQLONG, crate ::mapping::MQPSPROP_MAPSTR);
+    impl_value!(MQPSPROP, mqsys::MQLONG);
     define_new_type!(pub MQPSST, mqsys::MQLONG, crate ::mapping::MQPSST_MAPSTR);
+    impl_value!(MQPSST, mqsys::MQLONG);
     define_new_type!(pub MQPS, mqsys::MQLONG, crate ::mapping::MQPS_MAPSTR);
+    impl_value!(MQPS, mqsys::MQLONG);
     define_new_type!(
         pub MQPUBO, mqsys::MQLONG, crate ::mapping::MQPUBO_MAPSTR,
         r###"Publish/Subscribe Publication Options"###
     );
+    impl_bitflags!(MQPUBO, mqsys::MQLONG);
     define_new_type!(
         pub MQQA_BACKOUT, mqsys::MQLONG, crate ::mapping::MQQA_BACKOUT_MAPSTR
     );
+    impl_value!(MQQA_BACKOUT, mqsys::MQLONG);
     define_new_type!(pub MQQA_GET, mqsys::MQLONG, crate ::mapping::MQQA_GET_MAPSTR);
+    impl_value!(MQQA_GET, mqsys::MQLONG);
     define_new_type!(pub MQQA_PUT, mqsys::MQLONG, crate ::mapping::MQQA_PUT_MAPSTR);
+    impl_value!(MQQA_PUT, mqsys::MQLONG);
     define_new_type!(
         pub MQQA_SHAREABLE, mqsys::MQLONG, crate ::mapping::MQQA_SHAREABLE_MAPSTR
     );
+    impl_value!(MQQA_SHAREABLE, mqsys::MQLONG);
     define_new_type!(pub MQQDT, mqsys::MQLONG, crate ::mapping::MQQDT_MAPSTR);
+    impl_value!(MQQDT, mqsys::MQLONG);
     define_new_type!(pub MQQFS, mqsys::MQLONG, crate ::mapping::MQQFS_MAPSTR);
+    impl_value!(MQQFS, mqsys::MQLONG);
     define_new_type!(pub MQQF, mqsys::MQLONG, crate ::mapping::MQQF_MAPSTR);
+    impl_value!(MQQF, mqsys::MQLONG);
     define_new_type!(pub MQQMDT, mqsys::MQLONG, crate ::mapping::MQQMDT_MAPSTR);
+    impl_value!(MQQMDT, mqsys::MQLONG);
     define_new_type!(pub MQQMFAC, mqsys::MQLONG, crate ::mapping::MQQMFAC_MAPSTR);
+    impl_value!(MQQMFAC, mqsys::MQLONG);
     define_new_type!(pub MQQMF, mqsys::MQLONG, crate ::mapping::MQQMF_MAPSTR);
+    impl_value!(MQQMF, mqsys::MQLONG);
     define_new_type!(pub MQQMOPT, mqsys::MQLONG, crate ::mapping::MQQMOPT_MAPSTR);
+    impl_value!(MQQMOPT, mqsys::MQLONG);
     define_new_type!(pub MQQMSTA, mqsys::MQLONG, crate ::mapping::MQQMSTA_MAPSTR);
+    impl_value!(MQQMSTA, mqsys::MQLONG);
     define_new_type!(pub MQQMT, mqsys::MQLONG, crate ::mapping::MQQMT_MAPSTR);
+    impl_value!(MQQMT, mqsys::MQLONG);
     define_new_type!(pub MQQO, mqsys::MQLONG, crate ::mapping::MQQO_MAPSTR);
+    impl_value!(MQQO, mqsys::MQLONG);
     define_new_type!(pub MQQSGD, mqsys::MQLONG, crate ::mapping::MQQSGD_MAPSTR);
+    impl_value!(MQQSGD, mqsys::MQLONG);
     define_new_type!(pub MQQSGS, mqsys::MQLONG, crate ::mapping::MQQSGS_MAPSTR);
+    impl_value!(MQQSGS, mqsys::MQLONG);
     define_new_type!(pub MQQSIE, mqsys::MQLONG, crate ::mapping::MQQSIE_MAPSTR);
+    impl_value!(MQQSIE, mqsys::MQLONG);
     define_new_type!(pub MQQSOT, mqsys::MQLONG, crate ::mapping::MQQSOT_MAPSTR);
+    impl_value!(MQQSOT, mqsys::MQLONG);
     define_new_type!(pub MQQSO, mqsys::MQLONG, crate ::mapping::MQQSO_MAPSTR);
+    impl_value!(MQQSO, mqsys::MQLONG);
     define_new_type!(pub MQQSUM, mqsys::MQLONG, crate ::mapping::MQQSUM_MAPSTR);
+    impl_value!(MQQSUM, mqsys::MQLONG);
     define_new_type!(
         pub MQQT, mqsys::MQLONG, crate ::mapping::MQQT_MAPSTR,
         r###"Queue Types and Extended Queue Types"###
     );
+    impl_value!(MQQT, mqsys::MQLONG);
     define_new_type!(pub MQRAR, mqsys::MQLONG, crate ::mapping::MQRAR_MAPSTR);
+    impl_value!(MQRAR, mqsys::MQLONG);
     define_new_type!(pub MQRCCF, mqsys::MQLONG, crate ::mapping::MQRCCF_MAPSTR);
+    impl_value!(MQRCCF, mqsys::MQLONG);
     define_new_type!(pub MQRCN, mqsys::MQLONG, crate ::mapping::MQRCN_MAPSTR);
+    impl_value!(MQRCN, mqsys::MQLONG);
     define_new_type!(pub MQRCVTIME, mqsys::MQLONG, crate ::mapping::MQRCVTIME_MAPSTR);
+    impl_value!(MQRCVTIME, mqsys::MQLONG);
     define_new_type!(
         pub MQRC, mqsys::MQLONG, crate ::mapping::MQRC_MAPSTR,
         r###"Reason Code from an MQ function call"###
     );
+    impl_value!(MQRC, mqsys::MQLONG);
     define_new_type!(pub MQRDNS, mqsys::MQLONG, crate ::mapping::MQRDNS_MAPSTR);
+    impl_value!(MQRDNS, mqsys::MQLONG);
     define_new_type!(
         pub MQRD, mqsys::MQLONG, crate ::mapping::MQRD_MAPSTR, r###"Reconnect delay"###
     );
+    impl_value!(MQRD, mqsys::MQLONG);
     define_new_type!(pub MQREADA, mqsys::MQLONG, crate ::mapping::MQREADA_MAPSTR);
+    impl_value!(MQREADA, mqsys::MQLONG);
     define_new_type!(pub MQRECAUTO, mqsys::MQLONG, crate ::mapping::MQRECAUTO_MAPSTR);
+    impl_value!(MQRECAUTO, mqsys::MQLONG);
     define_new_type!(
         pub MQRECORDING, mqsys::MQLONG, crate ::mapping::MQRECORDING_MAPSTR
     );
+    impl_value!(MQRECORDING, mqsys::MQLONG);
     define_new_type!(
         pub MQREGO, mqsys::MQLONG, crate ::mapping::MQREGO_MAPSTR,
         r###"Publish/Subscribe Registration Options"###
     );
+    impl_bitflags!(MQREGO, mqsys::MQLONG);
     define_new_type!(pub MQREORG, mqsys::MQLONG, crate ::mapping::MQREORG_MAPSTR);
+    impl_value!(MQREORG, mqsys::MQLONG);
     define_new_type!(pub MQRFH, mqsys::MQLONG, crate ::mapping::MQRFH_MAPSTR);
+    impl_value!(MQRFH, mqsys::MQLONG);
     define_new_type!(pub MQRL, mqsys::MQLONG, crate ::mapping::MQRL_MAPSTR);
+    impl_value!(MQRL, mqsys::MQLONG);
     define_new_type!(pub MQRMHF, mqsys::MQLONG, crate ::mapping::MQRMHF_MAPSTR);
+    impl_value!(MQRMHF, mqsys::MQLONG);
     define_new_type!(pub MQROUTE, mqsys::MQLONG, crate ::mapping::MQROUTE_MAPSTR);
+    impl_value!(MQROUTE, mqsys::MQLONG);
     define_new_type!(
         pub MQRO, mqsys::MQLONG, crate ::mapping::MQRO_MAPSTR, r###"Report Options"###
     );
+    impl_bitflags!(MQRO, mqsys::MQLONG);
     define_new_type!(pub MQRP, mqsys::MQLONG, crate ::mapping::MQRP_MAPSTR);
+    impl_value!(MQRP, mqsys::MQLONG);
     define_new_type!(pub MQRQ, mqsys::MQLONG, crate ::mapping::MQRQ_MAPSTR);
+    impl_value!(MQRQ, mqsys::MQLONG);
     define_new_type!(pub MQRT, mqsys::MQLONG, crate ::mapping::MQRT_MAPSTR);
+    impl_value!(MQRT, mqsys::MQLONG);
     define_new_type!(pub MQRU, mqsys::MQLONG, crate ::mapping::MQRU_MAPSTR);
+    impl_value!(MQRU, mqsys::MQLONG);
     define_new_type!(pub MQSCA, mqsys::MQLONG, crate ::mapping::MQSCA_MAPSTR);
+    impl_value!(MQSCA, mqsys::MQLONG);
     define_new_type!(pub MQSCOPE, mqsys::MQLONG, crate ::mapping::MQSCOPE_MAPSTR);
+    impl_value!(MQSCOPE, mqsys::MQLONG);
     define_new_type!(pub MQSCO, mqsys::MQLONG, crate ::mapping::MQSCO_MAPSTR);
+    impl_value!(MQSCO, mqsys::MQLONG);
     define_new_type!(pub MQSCYC, mqsys::MQLONG, crate ::mapping::MQSCYC_MAPSTR);
+    impl_value!(MQSCYC, mqsys::MQLONG);
     define_new_type!(pub MQSECCOMM, mqsys::MQLONG, crate ::mapping::MQSECCOMM_MAPSTR);
+    impl_value!(MQSECCOMM, mqsys::MQLONG);
     define_new_type!(pub MQSECITEM, mqsys::MQLONG, crate ::mapping::MQSECITEM_MAPSTR);
+    impl_value!(MQSECITEM, mqsys::MQLONG);
     define_new_type!(pub MQSECPROT, mqsys::MQLONG, crate ::mapping::MQSECPROT_MAPSTR);
+    impl_value!(MQSECPROT, mqsys::MQLONG);
     define_new_type!(pub MQSECSW, mqsys::MQLONG, crate ::mapping::MQSECSW_MAPSTR);
+    impl_value!(MQSECSW, mqsys::MQLONG);
     define_new_type!(pub MQSECTYPE, mqsys::MQLONG, crate ::mapping::MQSECTYPE_MAPSTR);
+    impl_value!(MQSECTYPE, mqsys::MQLONG);
     define_new_type!(pub MQSELTYPE, mqsys::MQLONG, crate ::mapping::MQSELTYPE_MAPSTR);
+    impl_value!(MQSELTYPE, mqsys::MQLONG);
     define_new_type!(pub MQSEL_ALL, mqsys::MQLONG, crate ::mapping::MQSEL_ALL_MAPSTR);
+    impl_value!(MQSEL_ALL, mqsys::MQLONG);
     define_new_type!(pub MQSEL_ANY, mqsys::MQLONG, crate ::mapping::MQSEL_ANY_MAPSTR);
+    impl_value!(MQSEL_ANY, mqsys::MQLONG);
     define_new_type!(
         pub MQSMPO, mqsys::MQLONG, crate ::mapping::MQSMPO_MAPSTR,
         r###"Set message property options"###
     );
+    impl_value!(MQSMPO, mqsys::MQLONG);
     define_new_type!(
         pub MQSO, mqsys::MQLONG, crate ::mapping::MQSO_MAPSTR,
         r###"Options to control the action of `MQSUB`"###
     );
+    impl_bitflags!(MQSO, mqsys::MQLONG);
     define_new_type!(pub MQSPL, mqsys::MQLONG, crate ::mapping::MQSPL_MAPSTR);
+    impl_value!(MQSPL, mqsys::MQLONG);
     define_new_type!(pub MQSP, mqsys::MQLONG, crate ::mapping::MQSP_MAPSTR);
+    impl_value!(MQSP, mqsys::MQLONG);
     define_new_type!(pub MQSQQM, mqsys::MQLONG, crate ::mapping::MQSQQM_MAPSTR);
+    impl_value!(MQSQQM, mqsys::MQLONG);
     define_new_type!(
         pub MQSRO, mqsys::MQLONG, crate ::mapping::MQSRO_MAPSTR,
         r###"Options that control the action of `MQSUBRQ`"###
     );
+    impl_bitflags!(MQSRO, mqsys::MQLONG);
     define_new_type!(
         pub MQSR, mqsys::MQLONG, crate ::mapping::MQSR_MAPSTR,
         r###"Value describing action for `MQSUBRQ`"###
     );
+    impl_value!(MQSR, mqsys::MQLONG);
     define_new_type!(pub MQSSL, mqsys::MQLONG, crate ::mapping::MQSSL_MAPSTR);
+    impl_value!(MQSSL, mqsys::MQLONG);
     define_new_type!(
         pub MQSTAT, mqsys::MQLONG, crate ::mapping::MQSTAT_MAPSTR,
         r###"Value describing the MQSTAT outcome"###
     );
+    impl_value!(MQSTAT, mqsys::MQLONG);
     define_new_type!(pub MQSTDBY, mqsys::MQLONG, crate ::mapping::MQSTDBY_MAPSTR);
+    impl_value!(MQSTDBY, mqsys::MQLONG);
     define_new_type!(pub MQST, mqsys::MQLONG, crate ::mapping::MQST_MAPSTR);
+    impl_value!(MQST, mqsys::MQLONG);
     define_new_type!(pub MQSUBTYPE, mqsys::MQLONG, crate ::mapping::MQSUBTYPE_MAPSTR);
+    impl_value!(MQSUBTYPE, mqsys::MQLONG);
     define_new_type!(pub MQSUB, mqsys::MQLONG, crate ::mapping::MQSUB_MAPSTR);
+    impl_value!(MQSUB, mqsys::MQLONG);
     define_new_type!(
         pub MQSUB_DURABILITY, mqsys::MQLONG, crate ::mapping::MQSUB_DURABILITY_MAPSTR
     );
+    impl_value!(MQSUB_DURABILITY, mqsys::MQLONG);
     define_new_type!(pub MQSUS, mqsys::MQLONG, crate ::mapping::MQSUS_MAPSTR);
+    impl_value!(MQSUS, mqsys::MQLONG);
     define_new_type!(
         pub MQSVC_CONTROL, mqsys::MQLONG, crate ::mapping::MQSVC_CONTROL_MAPSTR
     );
+    impl_value!(MQSVC_CONTROL, mqsys::MQLONG);
     define_new_type!(
         pub MQSVC_STATUS, mqsys::MQLONG, crate ::mapping::MQSVC_STATUS_MAPSTR
     );
+    impl_value!(MQSVC_STATUS, mqsys::MQLONG);
     define_new_type!(pub MQSVC_TYPE, mqsys::MQLONG, crate ::mapping::MQSVC_TYPE_MAPSTR);
+    impl_value!(MQSVC_TYPE, mqsys::MQLONG);
     define_new_type!(
         pub MQSYNCPOINT, mqsys::MQLONG, crate ::mapping::MQSYNCPOINT_MAPSTR
     );
+    impl_value!(MQSYNCPOINT, mqsys::MQLONG);
     define_new_type!(pub MQSYSOBJ, mqsys::MQLONG, crate ::mapping::MQSYSOBJ_MAPSTR);
+    impl_value!(MQSYSOBJ, mqsys::MQLONG);
     define_new_type!(pub MQSYSP, mqsys::MQLONG, crate ::mapping::MQSYSP_MAPSTR);
+    impl_value!(MQSYSP, mqsys::MQLONG);
     define_new_type!(pub MQS_AVAIL, mqsys::MQLONG, crate ::mapping::MQS_AVAIL_MAPSTR);
+    impl_value!(MQS_AVAIL, mqsys::MQLONG);
     define_new_type!(
         pub MQS_EXPANDST, mqsys::MQLONG, crate ::mapping::MQS_EXPANDST_MAPSTR
     );
+    impl_value!(MQS_EXPANDST, mqsys::MQLONG);
     define_new_type!(
         pub MQS_OPENMODE, mqsys::MQLONG, crate ::mapping::MQS_OPENMODE_MAPSTR
     );
+    impl_value!(MQS_OPENMODE, mqsys::MQLONG);
     define_new_type!(pub MQS_STATUS, mqsys::MQLONG, crate ::mapping::MQS_STATUS_MAPSTR);
+    impl_value!(MQS_STATUS, mqsys::MQLONG);
     define_new_type!(pub MQTA, mqsys::MQLONG, crate ::mapping::MQTA_MAPSTR);
+    impl_value!(MQTA, mqsys::MQLONG);
     define_new_type!(pub MQTA_PROXY, mqsys::MQLONG, crate ::mapping::MQTA_PROXY_MAPSTR);
+    impl_value!(MQTA_PROXY, mqsys::MQLONG);
     define_new_type!(pub MQTA_PUB, mqsys::MQLONG, crate ::mapping::MQTA_PUB_MAPSTR);
+    impl_value!(MQTA_PUB, mqsys::MQLONG);
     define_new_type!(pub MQTA_SUB, mqsys::MQLONG, crate ::mapping::MQTA_SUB_MAPSTR);
+    impl_value!(MQTA_SUB, mqsys::MQLONG);
     define_new_type!(pub MQTCPKEEP, mqsys::MQLONG, crate ::mapping::MQTCPKEEP_MAPSTR);
+    impl_value!(MQTCPKEEP, mqsys::MQLONG);
     define_new_type!(pub MQTCPSTACK, mqsys::MQLONG, crate ::mapping::MQTCPSTACK_MAPSTR);
+    impl_value!(MQTCPSTACK, mqsys::MQLONG);
     define_new_type!(pub MQTC, mqsys::MQLONG, crate ::mapping::MQTC_MAPSTR);
+    impl_value!(MQTC, mqsys::MQLONG);
     define_new_type!(pub MQTIME, mqsys::MQLONG, crate ::mapping::MQTIME_MAPSTR);
+    impl_value!(MQTIME, mqsys::MQLONG);
     define_new_type!(pub MQTOPT, mqsys::MQLONG, crate ::mapping::MQTOPT_MAPSTR);
+    impl_value!(MQTOPT, mqsys::MQLONG);
     define_new_type!(pub MQTRAXSTR, mqsys::MQLONG, crate ::mapping::MQTRAXSTR_MAPSTR);
+    impl_value!(MQTRAXSTR, mqsys::MQLONG);
     define_new_type!(pub MQTRIGGER, mqsys::MQLONG, crate ::mapping::MQTRIGGER_MAPSTR);
+    impl_value!(MQTRIGGER, mqsys::MQLONG);
     define_new_type!(pub MQTSCOPE, mqsys::MQLONG, crate ::mapping::MQTSCOPE_MAPSTR);
+    impl_value!(MQTSCOPE, mqsys::MQLONG);
     define_new_type!(pub MQTT, mqsys::MQLONG, crate ::mapping::MQTT_MAPSTR);
+    impl_value!(MQTT, mqsys::MQLONG);
     define_new_type!(
         pub MQTYPE, mqsys::MQLONG, crate ::mapping::MQTYPE_MAPSTR,
         r###"Property data types"###
     );
+    impl_value!(MQTYPE, mqsys::MQLONG);
     define_new_type!(pub MQUCI, mqsys::MQLONG, crate ::mapping::MQUCI_MAPSTR);
+    impl_value!(MQUCI, mqsys::MQLONG);
     define_new_type!(pub MQUIDSUPP, mqsys::MQLONG, crate ::mapping::MQUIDSUPP_MAPSTR);
+    impl_value!(MQUIDSUPP, mqsys::MQLONG);
     define_new_type!(
         pub MQUNDELIVERED, mqsys::MQLONG, crate ::mapping::MQUNDELIVERED_MAPSTR
     );
+    impl_value!(MQUNDELIVERED, mqsys::MQLONG);
     define_new_type!(pub MQUOWST, mqsys::MQLONG, crate ::mapping::MQUOWST_MAPSTR);
+    impl_value!(MQUOWST, mqsys::MQLONG);
     define_new_type!(pub MQUOWT, mqsys::MQLONG, crate ::mapping::MQUOWT_MAPSTR);
+    impl_value!(MQUOWT, mqsys::MQLONG);
     define_new_type!(pub MQUSAGE_DS, mqsys::MQLONG, crate ::mapping::MQUSAGE_DS_MAPSTR);
+    impl_value!(MQUSAGE_DS, mqsys::MQLONG);
     define_new_type!(
         pub MQUSAGE_EXPAND, mqsys::MQLONG, crate ::mapping::MQUSAGE_EXPAND_MAPSTR
     );
+    impl_value!(MQUSAGE_EXPAND, mqsys::MQLONG);
     define_new_type!(pub MQUSAGE_PS, mqsys::MQLONG, crate ::mapping::MQUSAGE_PS_MAPSTR);
+    impl_value!(MQUSAGE_PS, mqsys::MQLONG);
     define_new_type!(
         pub MQUSAGE_SMDS, mqsys::MQLONG, crate ::mapping::MQUSAGE_SMDS_MAPSTR
     );
+    impl_value!(MQUSAGE_SMDS, mqsys::MQLONG);
     define_new_type!(pub MQUSEDLQ, mqsys::MQLONG, crate ::mapping::MQUSEDLQ_MAPSTR);
+    impl_value!(MQUSEDLQ, mqsys::MQLONG);
     define_new_type!(pub MQUSRC, mqsys::MQLONG, crate ::mapping::MQUSRC_MAPSTR);
+    impl_value!(MQUSRC, mqsys::MQLONG);
     define_new_type!(pub MQUS, mqsys::MQLONG, crate ::mapping::MQUS_MAPSTR);
+    impl_value!(MQUS, mqsys::MQLONG);
     define_new_type!(pub MQVL, mqsys::MQLONG, crate ::mapping::MQVL_MAPSTR);
+    impl_value!(MQVL, mqsys::MQLONG);
     define_new_type!(pub MQVS, mqsys::MQLONG, crate ::mapping::MQVS_MAPSTR);
+    impl_value!(MQVS, mqsys::MQLONG);
     define_new_type!(pub MQVU, mqsys::MQLONG, crate ::mapping::MQVU_MAPSTR);
+    impl_value!(MQVU, mqsys::MQLONG);
     define_new_type!(pub MQWARN, mqsys::MQLONG, crate ::mapping::MQWARN_MAPSTR);
+    impl_value!(MQWARN, mqsys::MQLONG);
     define_new_type!(pub MQWIH, mqsys::MQLONG, crate ::mapping::MQWIH_MAPSTR);
+    impl_value!(MQWIH, mqsys::MQLONG);
     define_new_type!(pub MQWI, mqsys::MQLONG, crate ::mapping::MQWI_MAPSTR);
+    impl_value!(MQWI, mqsys::MQLONG);
     define_new_type!(pub MQWS, mqsys::MQLONG, crate ::mapping::MQWS_MAPSTR);
+    impl_value!(MQWS, mqsys::MQLONG);
     define_new_type!(pub MQWXP, mqsys::MQLONG, crate ::mapping::MQWXP_MAPSTR);
+    impl_value!(MQWXP, mqsys::MQLONG);
     define_new_type!(pub MQXACT, mqsys::MQLONG, crate ::mapping::MQXACT_MAPSTR);
+    impl_value!(MQXACT, mqsys::MQLONG);
     define_new_type!(pub MQXCC, mqsys::MQLONG, crate ::mapping::MQXCC_MAPSTR);
+    impl_value!(MQXCC, mqsys::MQLONG);
     define_new_type!(
         pub MQXC, mqsys::MQLONG, crate ::mapping::MQXC_MAPSTR, r###"Exit Commands"###
     );
+    impl_value!(MQXC, mqsys::MQLONG);
     define_new_type!(pub MQXDR, mqsys::MQLONG, crate ::mapping::MQXDR_MAPSTR);
+    impl_value!(MQXDR, mqsys::MQLONG);
     define_new_type!(pub MQXEPO, mqsys::MQLONG, crate ::mapping::MQXEPO_MAPSTR);
+    impl_value!(MQXEPO, mqsys::MQLONG);
     define_new_type!(pub MQXE, mqsys::MQLONG, crate ::mapping::MQXE_MAPSTR);
+    impl_value!(MQXE, mqsys::MQLONG);
     define_new_type!(pub MQXF, mqsys::MQLONG, crate ::mapping::MQXF_MAPSTR);
+    impl_value!(MQXF, mqsys::MQLONG);
     define_new_type!(
         pub MQXPT, mqsys::MQLONG, crate ::mapping::MQXPT_MAPSTR, r###"Transport Types"###
     );
+    impl_value!(MQXPT, mqsys::MQLONG);
     define_new_type!(pub MQXR2, mqsys::MQLONG, crate ::mapping::MQXR2_MAPSTR);
+    impl_value!(MQXR2, mqsys::MQLONG);
     define_new_type!(pub MQXR, mqsys::MQLONG, crate ::mapping::MQXR_MAPSTR);
+    impl_value!(MQXR, mqsys::MQLONG);
     define_new_type!(pub MQXT, mqsys::MQLONG, crate ::mapping::MQXT_MAPSTR);
+    impl_value!(MQXT, mqsys::MQLONG);
     define_new_type!(pub MQZAET, mqsys::MQLONG, crate ::mapping::MQZAET_MAPSTR);
+    impl_value!(MQZAET, mqsys::MQLONG);
     define_new_type!(
         pub MQZAO, mqsys::MQLONG, crate ::mapping::MQZAO_MAPSTR,
         r###"Installable Services Authorizations"###
     );
+    impl_bitflags!(MQZAO, mqsys::MQLONG);
     define_new_type!(pub MQZAT, mqsys::MQLONG, crate ::mapping::MQZAT_MAPSTR);
+    impl_value!(MQZAT, mqsys::MQLONG);
     define_new_type!(pub MQZCI, mqsys::MQLONG, crate ::mapping::MQZCI_MAPSTR);
+    impl_value!(MQZCI, mqsys::MQLONG);
     define_new_type!(pub MQZID, mqsys::MQLONG, crate ::mapping::MQZID_MAPSTR);
+    impl_value!(MQZID, mqsys::MQLONG);
     define_new_type!(
         pub MQZID_AUTHORITY, mqsys::MQLONG, crate ::mapping::MQZID_AUTHORITY_MAPSTR
     );
+    impl_value!(MQZID_AUTHORITY, mqsys::MQLONG);
     define_new_type!(pub MQZID_NAME, mqsys::MQLONG, crate ::mapping::MQZID_NAME_MAPSTR);
+    impl_value!(MQZID_NAME, mqsys::MQLONG);
     define_new_type!(
         pub MQZID_USERID, mqsys::MQLONG, crate ::mapping::MQZID_USERID_MAPSTR
     );
+    impl_value!(MQZID_USERID, mqsys::MQLONG);
     define_new_type!(pub MQZIO, mqsys::MQLONG, crate ::mapping::MQZIO_MAPSTR);
+    impl_value!(MQZIO, mqsys::MQLONG);
     define_new_type!(pub MQZSE, mqsys::MQLONG, crate ::mapping::MQZSE_MAPSTR);
+    impl_value!(MQZSE, mqsys::MQLONG);
     define_new_type!(pub MQZSL, mqsys::MQLONG, crate ::mapping::MQZSL_MAPSTR);
+    impl_value!(MQZSL, mqsys::MQLONG);
     define_new_type!(pub MQZTO, mqsys::MQLONG, crate ::mapping::MQZTO_MAPSTR);
+    impl_value!(MQZTO, mqsys::MQLONG);
     define_new_type!(pub MQ_CERT, mqsys::MQLONG, crate ::mapping::MQ_CERT_MAPSTR);
+    impl_value!(MQ_CERT, mqsys::MQLONG);
     define_new_type!(
         pub MQ_HTTPSCERTREV, mqsys::MQLONG, crate ::mapping::MQ_HTTPSCERTREV_MAPSTR,
         r###"Level of certificate revocation check that is required for HTTPS connections"###
     );
+    impl_value!(MQ_HTTPSCERTREV, mqsys::MQLONG);
     define_new_type!(
         pub MQ_HTTPSCERTVAL, mqsys::MQLONG, crate ::mapping::MQ_HTTPSCERTVAL_MAPSTR,
         r###"Level of certificate validation that is required for HTTPS connections"###
     );
+    impl_value!(MQ_HTTPSCERTVAL, mqsys::MQLONG);
     define_new_type!(pub MQ_MQTT, mqsys::MQLONG, crate ::mapping::MQ_MQTT_MAPSTR);
+    impl_value!(MQ_MQTT, mqsys::MQLONG);
     define_new_type!(pub MQ_SUITE, mqsys::MQLONG, crate ::mapping::MQ_SUITE_MAPSTR);
+    impl_value!(MQ_SUITE, mqsys::MQLONG);
 }
 pub mod constants {
     use crate::types;

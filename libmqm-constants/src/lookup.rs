@@ -3,7 +3,8 @@ use libmqm_sys::lib::MQLONG;
 use crate::mapping;
 
 pub trait MqConstant {
-    fn mq_value(&self) -> MQLONG;
+    type Value;
+    fn mq_value(&self) -> Self::Value;
 }
 
 pub type ConstantItem<'a> = (MQLONG, &'a str);
@@ -110,18 +111,19 @@ pub trait HasMqNames {
     fn mq_primary_name(&self) -> Option<&'static str>;
 }
 
-impl<T: MqConstant + HasConstLookup> HasMqNames for T {
+impl<T: MqConstant + HasConstLookup> HasMqNames for T
+where
+    T::Value: TryInto<MQLONG>,
+{
     fn mq_names(&self) -> impl Iterator<Item = &'static str> {
-        Self::const_lookup().by_value(self.mq_value())
+        self.mq_value()
+            .try_into()
+            .map(|value| Self::const_lookup().by_value(value))
+            .into_iter()
+            .flatten()
     }
     fn mq_primary_name(&self) -> Option<&'static str> {
         self.mq_names().next()
-    }
-}
-
-impl<T: AsRef<MQLONG>> MqConstant for T {
-    fn mq_value(&self) -> MQLONG {
-        *self.as_ref()
     }
 }
 
