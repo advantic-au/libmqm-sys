@@ -16,12 +16,19 @@ path = "src/lib.rs"
 crate-type = ["lib"]
 
 [features]
-## Minimal features to make the code runnable
-runnable = ["libmqm-sys/mqi_helpers"]
+
+docsrs = [
+    "libmqm-sys/docsrs", # Ensure libmqm-sys uses built in docsrs mode
+    "mqai",
+    "exits",
+    "pcf",
+    "mqc_9_4_2_0",       # Latest MQ version
+]
 
 ## Generate the constants (default is to use pregenerated constants)
 generate = [
-    "runnable",
+    "libmqm-sys/mqi_helpers",
+    "libmqm-sys/bindgen",
     "dep:prettyplease",
     "dep:syn",
     "dep:phf_codegen",
@@ -29,10 +36,16 @@ generate = [
 ]
 
 ## Generate the constants and save them in the src folder
-pregen = ["generate", "mqai", "mqc_9_4_2_0"]
+pregen = ["generate", "mqai", "exits", "pcf", "mqc_9_4_2_0"]
 
-## Enable the administrative API
-mqai = ["libmqm-sys/mqai"]
+## Administrative Interface (MQAI) constants
+mqai = ["pcf", "libmqm-sys/mqai"]
+
+## MQ programmable exit related constants
+exits = ["libmqm-sys/exits"]
+
+## PCF related constants
+pcf = ["libmqm-sys/pcf"]
 
 ## Minimum MQ client version 9.2.0.0
 mqc_9_2_0_0 = ["libmqm-sys/mqc_9_2_0_0"]
@@ -72,3 +85,13 @@ syn = { version = "2.0.90", optional = true, default-features = false, features 
 
 [lints]
 workspace = true
+
+[package.metadata.docs.rs]
+features = ["docsrs"]
+no-default-features = true
+default-target = "x86_64-unknown-linux-gnu"
+targets = [
+    "x86_64-unknown-linux-gnu",
+    "x86_64-apple-darwin",
+    "x86_64-pc-windows-msvc",
+]

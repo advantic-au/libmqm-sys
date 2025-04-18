@@ -30,12 +30,6 @@ mod pcf {
     mq_default!(lib::MQCFSL, mqcfsl_default);
     mq_default!(lib::MQCFST, mqcfst_default);
     mq_default!(lib::MQEPH, mqeph_default);
-
-    mq_default!(lib::MQZED, mqzed_default);
-    mq_default!(lib::MQZAC, mqzac_default);
-    mq_default!(lib::MQZAD, mqzad_default);
-    mq_default!(lib::MQZFP, mqzfp_default);
-    mq_default!(lib::MQZIC, mqzic_default);
 }
 
 #[cfg(feature = "exits")]
@@ -68,6 +62,11 @@ mod exits {
     mq_default!(lib::MQWXP4, mqwxp4_default);
     mq_default!(lib::MQXEPO, mqxepo_default);
     mq_default!(lib::MQIEP, mqiep_default);
+    mq_default!(lib::MQZED, mqzed_default);
+    mq_default!(lib::MQZAC, mqzac_default);
+    mq_default!(lib::MQZAD, mqzad_default);
+    mq_default!(lib::MQZFP, mqzfp_default);
+    mq_default!(lib::MQZIC, mqzic_default);
 }
 
 mod mqi {

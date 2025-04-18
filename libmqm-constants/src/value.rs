@@ -2,8 +2,6 @@
 
 use std::borrow::Cow;
 
-use libmqm_sys::lib::MQLONG;
-
 macro_rules! impl_default_value {
     ($t:path, $source:path) => {
         impl Default for $t {
@@ -17,7 +15,7 @@ pub(crate) use impl_default_value;
 
 macro_rules! define_new_type {
     ($vis:vis $name:ident, $type:ty, $mapping:path) => {
-        define_new_type!($vis $name, $type, $mapping, "");
+        $crate::value::define_new_type!($vis $name, $type, $mapping, "");
     };
     ($vis:vis $name:ident, $type:ty, $mapping:path, $doc:literal) => {
         #[repr(transparent)]
@@ -64,12 +62,14 @@ macro_rules! impl_value {
                 Ok($new_type(
                     Self::const_lookup()
                         .by_name(name)
+                        .map(Into::into)
                         .map_or_else(|| std::str::FromStr::from_str(name), Ok)?,
                 ))
             }
         }
 
         impl $crate::lookup::MqConstant for $new_type {
+            type Value = $orig_type;
             fn mq_value(&self) -> $orig_type {
                 let $new_type(value) = self;
                 *value
@@ -79,7 +79,7 @@ macro_rules! impl_value {
         impl std::fmt::Display for $new_type {
             fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
                 let $new_type(attribute) = self;
-                $crate::value::value_display(*attribute, self.mq_primary_name(), f)
+                $crate::value::value_display(attribute, self.mq_primary_name(), f)
             }
         }
 
@@ -111,14 +111,36 @@ macro_rules! impl_value {
 }
 pub(crate) use impl_value;
 
-pub fn value_display(value: MQLONG, primary_name: Option<&str>, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+macro_rules! impl_partialcmp_value {
+    ($new_type:path, [$($other_type:path),*]) => {
+        $(
+            impl_partialcmp_value!($new_type, $other_type);
+        )*
+    };
+    ($new_type:path, $other_type:path) => {
+        impl PartialEq<$other_type> for $new_type {
+            fn eq(&self, other: &$other_type) -> bool {
+                other.0 == self.0
+            }
+        }
+
+        impl PartialOrd<$other_type> for $new_type {
+            fn partial_cmp(&self, other: &$other_type) -> Option<std::cmp::Ordering> {
+                Some(self.0.cmp(&other.0))
+            }
+        }
+    };
+}
+pub(crate) use impl_partialcmp_value;
+
+pub fn value_display<T: ToString>(value: &T, primary_name: Option<&str>, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     let code = primary_name.map_or_else(|| Cow::from(value.to_string()), Cow::from);
     f.write_str(&code)
 }
 
-pub fn value_debug(
+pub fn value_debug<T: std::fmt::Display>(
     type_name: &str,
-    value: MQLONG,
+    value: T,
     names: impl Iterator<Item = &'static str>,
     f: &mut std::fmt::Formatter,
 ) -> std::fmt::Result {

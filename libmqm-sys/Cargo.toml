@@ -12,16 +12,16 @@ edition.workspace = true
 rust-version.workspace = true
 
 links = "mqm"
-build = "build/mod.rs"
+build = "build/main.rs"
 
 [lints]
 workspace = true
 
 [features]
-default = ["link", "mqi_helpers", "bindgen", "versiongen", "mqc_9_2_0_0"]
+default = ["link", "mqi_helpers", "mqc_9_2_0_0"]
 
 ## Generate the bindings and save them in the src folder
-pregen = ["pcf", "exits", "mqai", "bindgen", "versiongen", "mqc_latest"]
+pregen = ["pcf", "exits", "mqai", "bindgen", "mqc_latest"]
 
 ## Enable runtime loading of the MQI library using [`dlopen2`](dlopen2)
 dlopen2 = ["dep:dlopen2", "dep:libc"]
