@@ -9,7 +9,6 @@ pub fn generate_defaults(w: &mut impl std::io::Write) -> Result<(), std::io::Err
         type_name: &str,
         value: &T,
     ) -> Result<(), std::io::Error> {
-        assert_ne!(size_of_val(value), 0);
         let s = std::slice::from_ref(value);
         let (prefix, bytes, suffix) = unsafe { s.align_to::<u8>() };
         assert_eq!(prefix.len(), 0);
