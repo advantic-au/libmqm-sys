@@ -51,13 +51,14 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         let mut new_type_mods_write: Vec<u8> = Vec::new();
         // let mut test_cases: Vec<u8> = Vec::new();
         generate::generate_constants(|prefix_constants| {
-            let by_feature = prefix_constants
-                .iter()
-                .fold(std::collections::BTreeMap::<_, Vec<_>>::new(), |mut hash, all @ (_, (feature, ..))| {
+            let by_feature = prefix_constants.iter().fold(
+                std::collections::BTreeMap::<_, Vec<_>>::new(),
+                |mut hash, all @ (_, (feature, ..))| {
                     let list = hash.entry(*feature).or_default();
                     list.push(all);
                     hash
-                });
+                },
+            );
 
             let unassigned_filter: Vec<_> = generate::const_ignore_regex().collect();
             let const_set: HashSet<_> = prefix_constants

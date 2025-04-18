@@ -15,9 +15,9 @@ const HEADER_FILES: &[FeatureFilter<&str>] = &[
         ],
         None,
     ), // MQI
-    (&["cmqbc.h", "cmqcfc.h"], Some(&["mqai"])), // MQAI
-    (&["cmqcfc.h"], Some(&["pcf"])),  // PCF
-    (&["cmqec.h", "cmqxc.h", "cmqzc.h"], Some(&["exits"])) // IEP, exits and installable services
+    (&["cmqbc.h", "cmqcfc.h"], Some(&["mqai"])),            // MQAI
+    (&["cmqcfc.h"], Some(&["pcf"])),                        // PCF
+    (&["cmqec.h", "cmqxc.h", "cmqzc.h"], Some(&["exits"])), // IEP, exits and installable services
 ];
 
 /// Functions that have bindings generated
