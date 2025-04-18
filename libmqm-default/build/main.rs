@@ -9,8 +9,8 @@ pub fn generate_defaults(w: &mut impl std::io::Write) -> Result<(), std::io::Err
         type_name: &str,
         value: &T,
     ) -> Result<(), std::io::Error> {
+        assert_ne!(size_of_val(value), 0);
         let s = std::slice::from_ref(value);
-
         let (prefix, bytes, suffix) = unsafe { s.align_to::<u8>() };
         assert_eq!(prefix.len(), 0);
         assert_eq!(suffix.len(), 0);
@@ -101,11 +101,6 @@ pub fn generate_defaults(w: &mut impl std::io::Write) -> Result<(), std::io::Err
         const_default(w, "MQCFSL_DEFAULT", "libmqm_sys::lib::MQCFSL", &lib::MQCFSL::default())?;
         const_default(w, "MQCFST_DEFAULT", "libmqm_sys::lib::MQCFST", &lib::MQCFST::default())?;
         const_default(w, "MQEPH_DEFAULT", "libmqm_sys::lib::MQEPH", &lib::MQEPH::default())?;
-        const_default(w, "MQZED_DEFAULT", "libmqm_sys::lib::MQZED", &lib::MQZED::default())?;
-        const_default(w, "MQZAC_DEFAULT", "libmqm_sys::lib::MQZAC", &lib::MQZAC::default())?;
-        const_default(w, "MQZAD_DEFAULT", "libmqm_sys::lib::MQZAD", &lib::MQZAD::default())?;
-        const_default(w, "MQZFP_DEFAULT", "libmqm_sys::lib::MQZFP", &lib::MQZFP::default())?;
-        const_default(w, "MQZIC_DEFAULT", "libmqm_sys::lib::MQZIC", &lib::MQZIC::default())?;
         writeln!(w, "}}")?;
     }
 
@@ -141,6 +136,11 @@ pub fn generate_defaults(w: &mut impl std::io::Write) -> Result<(), std::io::Err
         const_default(w, "MQWXP4_DEFAULT", "libmqm_sys::lib::MQWXP4", &lib::MQWXP4::default())?;
         const_default(w, "MQXEPO_DEFAULT", "libmqm_sys::lib::MQXEPO", &lib::MQXEPO::default())?;
         const_default(w, "MQIEP_DEFAULT", "libmqm_sys::lib::MQIEP", &lib::MQIEP::default())?;
+        const_default(w, "MQZED_DEFAULT", "libmqm_sys::lib::MQZED", &lib::MQZED::default())?;
+        const_default(w, "MQZAC_DEFAULT", "libmqm_sys::lib::MQZAC", &lib::MQZAC::default())?;
+        const_default(w, "MQZAD_DEFAULT", "libmqm_sys::lib::MQZAD", &lib::MQZAD::default())?;
+        const_default(w, "MQZFP_DEFAULT", "libmqm_sys::lib::MQZFP", &lib::MQZFP::default())?;
+        const_default(w, "MQZIC_DEFAULT", "libmqm_sys::lib::MQZIC", &lib::MQZIC::default())?;
         writeln!(w, "}}")?;
     }
 

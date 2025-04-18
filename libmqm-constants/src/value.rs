@@ -15,7 +15,7 @@ pub(crate) use impl_default_value;
 
 macro_rules! define_new_type {
     ($vis:vis $name:ident, $type:ty, $mapping:path) => {
-        define_new_type!($vis $name, $type, $mapping, "");
+        $crate::value::define_new_type!($vis $name, $type, $mapping, "");
     };
     ($vis:vis $name:ident, $type:ty, $mapping:path, $doc:literal) => {
         #[repr(transparent)]
@@ -46,19 +46,6 @@ macro_rules! define_new_type {
     };
 }
 pub(crate) use define_new_type;
-
-// pub use crate::lookup::{HasConstLookup as _, ConstLookup as _};
-// impl std::str::FromStr for crate::types::MQHB {
-//     type Err = <i64 as std::str::FromStr>::Err;
-
-//     fn from_str(name: &str) -> Result<Self, Self::Err> {
-//         Ok(crate::types::MQHB(
-//             Self::const_lookup()
-//                 .by_name(name)
-//                 .map_or_else(|| std::str::FromStr::from_str(name), Ok)?,
-//         ))
-//     }
-// }
 
 macro_rules! impl_value {
     ($new_type:path) => {
@@ -123,6 +110,28 @@ macro_rules! impl_value {
     };
 }
 pub(crate) use impl_value;
+
+macro_rules! impl_partialcmp_value {
+    ($new_type:path, [$($other_type:path),*]) => {
+        $(
+            impl_partialcmp_value!($new_type, $other_type);
+        )*
+    };
+    ($new_type:path, $other_type:path) => {
+        impl PartialEq<$other_type> for $new_type {
+            fn eq(&self, other: &$other_type) -> bool {
+                other.0 == self.0
+            }
+        }
+
+        impl PartialOrd<$other_type> for $new_type {
+            fn partial_cmp(&self, other: &$other_type) -> Option<std::cmp::Ordering> {
+                Some(self.0.cmp(&other.0))
+            }
+        }
+    };
+}
+pub(crate) use impl_partialcmp_value;
 
 pub fn value_display<T: ToString>(value: &T, primary_name: Option<&str>, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     let code = primary_name.map_or_else(|| Cow::from(value.to_string()), Cow::from);

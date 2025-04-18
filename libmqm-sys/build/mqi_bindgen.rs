@@ -10,13 +10,14 @@ const HEADER_FILES: &[FeatureFilter<&str>] = &[
     (
         &[
             "cmqc.h",    // MQI
-            "cmqxc.h",   // Exits and MQCD (required for MQI)
+            "cmqxc.h",   // MQCD (required for MQI)
             "cmqstrc.h", // Strings
         ],
         None,
     ), // MQI
     (&["cmqbc.h", "cmqcfc.h"], Some(&["mqai"])), // MQAI
-    (&["cmqec.h", "cmqcfc.h"], Some(&["pcf"])),  // PCF
+    (&["cmqcfc.h"], Some(&["pcf"])),  // PCF
+    (&["cmqec.h", "cmqxc.h", "cmqzc.h"], Some(&["exits"])) // IEP, exits and installable services
 ];
 
 /// Functions that have bindings generated
@@ -37,7 +38,7 @@ const TYPES: &[FeatureFilter<&str>] = &[
     (
         &[
             "MQCFH", "MQCFBF", "MQCFBS", "MQCFGR", "MQCFIF", "MQCFIL", "MQCFIL64", "MQCFIN", "MQCFIN64", "MQCFSF", "MQCFSL",
-            "MQCFST", "MQEPH", "MQZED", "MQZAC", "MQZAD", "MQZFP", "MQZIC",
+            "MQCFST", "MQEPH",
         ],
         Some(&["pcf"]),
     ),
@@ -45,7 +46,7 @@ const TYPES: &[FeatureFilter<&str>] = &[
         &[
             "MQACH", "MQAXC", "MQAXP", "MQCXP", "MQDXP", "MQNXP", "MQPBC", "MQPSXP", "MQSBC", "MQWCR", "MQWDR", "MQWDR1",
             "MQWDR2", "MQWQR", "MQWQR1", "MQWQR2", "MQWQR3", "MQWQR4", "MQWXP", "MQWXP1", "MQWXP2", "MQWXP3", "MQWXP4", "MQXEPO",
-            "MQIEP",
+            "MQIEP", "MQZED", "MQZAC", "MQZAD", "MQZFP", "MQZIC",
         ],
         Some(&["exits"]),
     ),

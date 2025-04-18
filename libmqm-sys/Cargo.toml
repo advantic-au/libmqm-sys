@@ -12,7 +12,7 @@ edition.workspace = true
 rust-version.workspace = true
 
 links = "mqm"
-build = "build/mod.rs"
+build = "build/main.rs"
 
 [lints]
 workspace = true

@@ -4,6 +4,36 @@ mod constants {
     mod list;
 }
 
+#[cfg(feature = "generate")]
+fn feature_mod<W: std::io::Write, F: FnOnce(&mut W) -> Result<(), std::io::Error>>(
+    feature_name: Option<&str>,
+    w: W,
+    f: F,
+) -> Result<(), std::io::Error> {
+    let mut w = w;
+    if let Some(feature) = feature_name {
+        writeln!(
+            &mut w,
+            "
+            #[cfg(feature = \"{feature}\")]
+            mod {feature} {{
+        "
+        )?;
+        f(&mut w)?;
+        writeln!(
+            &mut w,
+            "
+            }}
+            #[cfg(feature = \"{feature}\")]
+            pub use {feature}::*;
+        "
+        )?;
+    } else {
+        f(&mut w)?;
+    }
+    Ok(())
+}
+
 #[allow(clippy::unnecessary_wraps, clippy::too_many_lines)] // reason = "when no features are enabled"
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     #[cfg(feature = "generate")]
@@ -21,6 +51,14 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         let mut new_type_mods_write: Vec<u8> = Vec::new();
         // let mut test_cases: Vec<u8> = Vec::new();
         generate::generate_constants(|prefix_constants| {
+            let by_feature = prefix_constants
+                .iter()
+                .fold(std::collections::BTreeMap::<_, Vec<_>>::new(), |mut hash, all @ (_, (feature, ..))| {
+                    let list = hash.entry(*feature).or_default();
+                    list.push(all);
+                    hash
+                });
+
             let unassigned_filter: Vec<_> = generate::const_ignore_regex().collect();
             let const_set: HashSet<_> = prefix_constants
                 .iter()
@@ -37,6 +75,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             let mut new_type_write: Vec<u8> = Vec::new();
             let mut constant_write: Vec<u8> = Vec::new();
 
+            // Generate the unmapped constants list
             if !unmapped.is_empty() {
                 writeln!(unmapped_comment, "/*\n * Unmapped constants:")?;
                 for constant in unmapped {
@@ -45,36 +84,55 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 writeln!(unmapped_comment, " */")?;
             }
 
-            for (prefix, (new_type, orig_type, usage, doc, primary, extra)) in prefix_constants {
-                writeln!(
-                    new_type_write,
-                    "
-                        define_new_type!(pub {new_type}, mqsys::{orig_type}, crate::mapping::{prefix}MAPSTR{});
-                        impl_{usage}!({new_type}, mqsys::{orig_type});
-                    ",
-                    doc.map_or(String::new(), |doc_lines| format!(", r###\"{doc_lines}\"###"))
-                )?;
-                for (value, constant, doc) in primary.iter().chain(extra) {
-                    if let Some(doc_lines) = doc {
-                        writeln!(constant_write, "#[doc = r###\"{doc_lines}\"###]",)?;
-                    }
+            for (feature, prefix_constants) in &by_feature {
+                feature_mod(*feature, &mut new_type_write, |w| {
                     writeln!(
-                        constant_write,
-                        "pub const {constant}: types::{new_type} = types::{new_type}({value});"
+                        w,
+                        "
+                            use ::libmqm_sys::lib as mqsys;
+                            use crate::mapping;
+                            use crate::value::{{define_new_type, impl_value}};
+                            use crate::bitflags::impl_bitflags;
+                    "
                     )?;
-                    // writeln!(
-                    //     test_cases,
-                    //     "assert_eq!(constants::{constant}, types::{new_type}(sys::{constant}));"
-                    // )?;
-                }
+
+                    for (prefix, (_, new_type, orig_type, usage, doc, ..)) in prefix_constants {
+                        writeln!(
+                            w,
+                            "
+                                define_new_type!(pub {new_type}, mqsys::{orig_type}, mapping::{prefix}MAPSTR{});
+                                impl_{usage}!({new_type}, mqsys::{orig_type});
+                            ",
+                            doc.map_or(String::new(), |doc_lines| format!(", r##\"{doc_lines}\"##"))
+                        )?;
+                    }
+                    Ok(())
+                })?;
             }
+
+            for (feature, prefix_constants) in &by_feature {
+                feature_mod(*feature, &mut constant_write, |w| {
+                    writeln!(w, "use crate::types;")?;
+                    for (_, (_, new_type, _, _, _, primary, extra)) in prefix_constants {
+                        for (value, constant, doc) in primary.iter().chain(extra) {
+                            if let Some(doc_lines) = doc {
+                                writeln!(w, "#[doc = r##\"{doc_lines}\"##]",)?;
+                            }
+                            writeln!(w, "pub const {constant}: types::{new_type} = types::{new_type}({value});")?;
+                            // writeln!(
+                            //     test_cases,
+                            //     "assert_eq!(constants::{constant}, types::{new_type}(sys::{constant}));"
+                            // )?;
+                        }
+                    }
+                    Ok(())
+                })?;
+            }
+
             write!(
                 new_type_mods_write,
                 "
                 pub mod types {{
-                    use ::libmqm_sys::lib as mqsys;
-                    use crate::value::{{define_new_type, impl_value}};
-                    use crate::bitflags::impl_bitflags;
                     {}
                 }}
             ",
@@ -84,7 +142,6 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 new_type_mods_write,
                 "
                 pub mod constants {{
-                    use crate::types;
                     {}
                 }}
             ",

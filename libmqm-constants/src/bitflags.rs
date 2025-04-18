@@ -6,7 +6,7 @@ use super::lookup::{ConstLookup, ConstantItem};
 
 macro_rules! impl_bitflags {
     ($name:path, $type:path) => {
-        impl_bitflags!($name);
+        $crate::bitflags::impl_bitflags!($name);
     };
     ($name:path) => {
         #[allow(unused_imports)]

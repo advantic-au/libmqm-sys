@@ -19,6 +19,9 @@ crate-type = ["lib"]
 
 docsrs = [
     "libmqm-sys/docsrs", # Ensure libmqm-sys uses built in docsrs mode
+    "mqai",
+    "exits",
+    "pcf",
     "mqc_9_4_2_0",       # Latest MQ version
 ]
 
@@ -33,10 +36,16 @@ generate = [
 ]
 
 ## Generate the constants and save them in the src folder
-pregen = ["generate", "mqai", "mqc_9_4_2_0"]
+pregen = ["generate", "mqai", "exits", "pcf", "mqc_9_4_2_0"]
 
-## Enable the administrative API
-mqai = ["libmqm-sys/mqai"]
+## Administrative Interface (MQAI) constants
+mqai = ["pcf", "libmqm-sys/mqai"]
+
+## MQ programmable exit related constants
+exits = ["libmqm-sys/exits"]
+
+## PCF related constants
+pcf = ["libmqm-sys/pcf"]
 
 ## Minimum MQ client version 9.2.0.0
 mqc_9_2_0_0 = ["libmqm-sys/mqc_9_2_0_0"]

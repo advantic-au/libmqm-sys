@@ -71,6 +71,7 @@ where
         &[(
             &str,
             (
+                Option<&str>,
                 &str,
                 &str,
                 &str,
@@ -92,25 +93,37 @@ where
     let primary_constants = list::CONSTANTS
         .iter()
         .copied()
-        .map(|(prefix, new_type, check, orig_type, usage, doc)| {
-            let mut by_value_set: Vec<_> = by_value
-                .iter()
-                .copied()
-                .filter(|(value, name)| unsafe {
-                    str::from_utf8_unchecked(std::ffi::CStr::from_ptr(check(*value)).to_bytes()) == *name
-                })
-                .map(|(v, n)| (v, n, doc_map.get(n).copied()))
-                .collect();
-            by_value_set.sort_by_key(|(k, ..)| *k);
-            (prefix, (new_type, orig_type, usage, doc, by_value_set))
-        })
+        .map(
+            |list::ConstantEntry {
+                 prefix,
+                 new_type,
+                 str_fn,
+                 orig_type,
+                 usage,
+                 feature,
+                 doc,
+                 ..
+             }| {
+                let mut by_value_set: Vec<_> = by_value
+                    .iter()
+                    .copied()
+                    .filter(|(value, name)| unsafe {
+                        str::from_utf8_unchecked(std::ffi::CStr::from_ptr(str_fn(*value)).to_bytes()) == *name
+                    })
+                    .map(|(v, n)| (v, n, doc_map.get(n).copied()))
+                    .collect();
+                by_value_set.sort_by_key(|(k, ..)| *k);
+                (prefix, (feature, new_type, orig_type, usage, doc, by_value_set))
+            },
+        )
         .chain(
             list::PREFIX_CONSTANTS
                 .iter()
-                .map(|(prefix, new_type, orig_type, usage, doc)| {
+                .map(|(prefix, new_type, orig_type, usage, feature, doc)| {
                     (
                         *prefix,
                         (
+                            *feature,
                             *new_type,
                             *orig_type,
                             *usage,
@@ -151,7 +164,7 @@ where
     // Create a map of primary and extra constants
     let mut prefix_constants = primary_constants
         .iter()
-        .map(|(prefix, (new_type, orig_type, usage, doc, .., primary))| {
+        .map(|(prefix, (feature, new_type, orig_type, usage, doc, .., primary))| {
             // Similar prefixes ie prefixes that start with another prefix.
             // This need to be excluded from the "extra" list
             let similar: HashSet<_> = primary_constants
@@ -169,7 +182,7 @@ where
                 })
                 .map(|(v, n)| (*v, *n, doc_map.get(*n).copied()))
                 .collect();
-            (*prefix, (*new_type, *orig_type, *usage, *doc, &**primary, extra))
+            (*prefix, (*feature, *new_type, *orig_type, *usage, *doc, &**primary, extra))
         })
         .collect::<Vec<_>>();
 
