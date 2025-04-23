@@ -46,8 +46,8 @@ impl_default_value!(types::MQCMHO, sys::MQCMHO_DEFAULT_VALIDATION);
 impl_default_value!(types::MQSMPO, sys::MQSMPO_SET_FIRST);
 impl_default_value!(types::MQDMPO, sys::MQDMPO_DEL_FIRST);
 impl_default_value!(types::MQIMPO, sys::MQIMPO_NONE);
+#[cfg(feature = "exits")]
 impl_default_value!(types::MQDCC, sys::MQDCC_NONE);
-
 #[cfg(feature = "pcf")]
 impl_default_value!(types::MQCMD, sys::MQCMD_NONE);
 
@@ -69,11 +69,6 @@ const FIRST_LAST_MAPSTR: LinearSource = ConstSource(
     &[],
 );
 
-// #[cfg(feature = "mqc_9_4_1_0")]
-// impl_value!(types::MQ_HTTPSCERTREV);
-// #[cfg(feature = "mqc_9_4_1_0")]
-// impl_value!(types::MQ_HTTPSCERTVAL);
-
 impl types::MQRC {
     #[must_use]
     pub fn ibm_reference_url(&self, language: &str, version: Option<&str>) -> Option<String> {
@@ -94,6 +89,13 @@ impl From<types::MQCA> for types::MQXA {
 
 impl From<types::MQIA> for types::MQXA {
     fn from(value: types::MQIA) -> Self {
+        Self(value.0)
+    }
+}
+
+#[cfg(feature = "pcf")]
+impl From<types::MQRCCF> for types::MQRC {
+    fn from(value: types::MQRCCF) -> Self {
         Self(value.0)
     }
 }
@@ -180,5 +182,33 @@ impl ConstLookup for crate::mapping::SelectorLookup {
         let mapping = mapping.chain(mapping::MQIASY_MAPSTR.all()).chain(mapping::MQHA_MAPSTR.all());
 
         mapping.chain(FIRST_LAST_MAPSTR.all())
+    }
+}
+
+#[cfg(test)]
+#[cfg_attr(coverage_nightly, coverage(off))]
+mod tests {
+    use crate::constants;
+    use crate::types;
+
+    #[test]
+    fn reason_code_display() {
+        assert_eq!(constants::MQRC_Q_MGR_ACTIVE.to_string(), "MQRC_Q_MGR_ACTIVE");
+        assert_eq!(constants::MQRC_NONE.to_string(), "MQRC_NONE");
+        assert_eq!(types::MQRC(-1).to_string(), "-1");
+    }
+
+    #[test]
+    fn ibm_reference_url() {
+        assert_eq!(
+            constants::MQRC_Q_ALREADY_EXISTS.ibm_reference_url("en", None),
+            Some("https://www.ibm.com/docs/en/ibm-mq/latest?topic=codes-2290-08f2-rc2290-mqrc-q-already-exists".to_owned())
+        );
+
+        #[cfg(feature = "pcf")]
+        assert_eq!(
+            types::MQRC::from(constants::MQRCCF_CFH_TYPE_ERROR).ibm_reference_url("en", None),
+            Some("https://www.ibm.com/docs/en/ibm-mq/latest?topic=codes-3001-0bb9-rc3001-mqrccf-cfh-type-error".to_owned())
+        );
     }
 }
