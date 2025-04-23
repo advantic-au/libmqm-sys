@@ -204,7 +204,7 @@ mod tests {
             constants::MQRC_Q_ALREADY_EXISTS.ibm_reference_url("en", None),
             Some("https://www.ibm.com/docs/en/ibm-mq/latest?topic=codes-2290-08f2-rc2290-mqrc-q-already-exists".to_owned())
         );
-        
+
         #[cfg(feature = "pcf")]
         assert_eq!(
             types::MQRC::from(constants::MQRCCF_CFH_TYPE_ERROR).ibm_reference_url("en", None),
