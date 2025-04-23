@@ -188,8 +188,8 @@ impl ConstLookup for crate::mapping::SelectorLookup {
 #[cfg(test)]
 #[cfg_attr(coverage_nightly, coverage(off))]
 mod tests {
-    use crate::types::{self, MQRC};
     use crate::constants;
+    use crate::types::{self, MQRC};
 
     #[test]
     fn reason_code_display() {
