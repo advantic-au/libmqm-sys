@@ -16,406 +16,377 @@ pub mod types {
     use crate::mapping;
     use crate::value::{define_new_type, impl_value};
     use crate::bitflags::impl_bitflags;
-    define_new_type!(pub MQACTIVE, mqsys::MQLONG, mapping::MQACTIVE_MAPSTR);
-    impl_value!(MQACTIVE, mqsys::MQLONG);
-    define_new_type!(pub MQACTP, mqsys::MQLONG, mapping::MQACTP_MAPSTR);
+    define_new_type!(pub MQACTP, mqsys::MQLONG, mapping::MQACTP_MAPSTR, r##"Action"##);
     impl_value!(MQACTP, mqsys::MQLONG);
-    define_new_type!(pub MQACTV, mqsys::MQLONG, mapping::MQACTV_MAPSTR);
+    define_new_type!(
+        pub MQACTV, mqsys::MQLONG, mapping::MQACTV_MAPSTR,
+        r##"Application Activity Trace Detail"##
+    );
     impl_value!(MQACTV, mqsys::MQLONG);
-    define_new_type!(pub MQACT, mqsys::MQLONG, mapping::MQACT_MAPSTR);
-    impl_value!(MQACT, mqsys::MQLONG);
-    define_new_type!(pub MQADOPT_CHECK, mqsys::MQLONG, mapping::MQADOPT_CHECK_MAPSTR);
+    define_new_type!(
+        pub MQADOPT_CHECK, mqsys::MQLONG, mapping::MQADOPT_CHECK_MAPSTR,
+        r##"Adopt New MCA Checks"##
+    );
     impl_value!(MQADOPT_CHECK, mqsys::MQLONG);
-    define_new_type!(pub MQADOPT_TYPE, mqsys::MQLONG, mapping::MQADOPT_TYPE_MAPSTR);
+    define_new_type!(
+        pub MQADOPT_TYPE, mqsys::MQLONG, mapping::MQADOPT_TYPE_MAPSTR,
+        r##"Adopt New MCA Types"##
+    );
     impl_value!(MQADOPT_TYPE, mqsys::MQLONG);
-    define_new_type!(pub MQADPCTX, mqsys::MQLONG, mapping::MQADPCTX_MAPSTR);
-    impl_value!(MQADPCTX, mqsys::MQLONG);
-    define_new_type!(pub MQAIT, mqsys::MQLONG, mapping::MQAIT_MAPSTR);
+    define_new_type!(
+        pub MQAIT, mqsys::MQLONG, mapping::MQAIT_MAPSTR,
+        r##"Authentication Information Type"##
+    );
     impl_value!(MQAIT, mqsys::MQLONG);
-    define_new_type!(pub MQAPPL, mqsys::MQLONG, mapping::MQAPPL_MAPSTR);
-    impl_value!(MQAPPL, mqsys::MQLONG);
-    define_new_type!(pub MQAS, mqsys::MQLONG, mapping::MQAS_MAPSTR);
-    impl_value!(MQAS, mqsys::MQLONG);
     define_new_type!(
         pub MQAT, mqsys::MQLONG, mapping::MQAT_MAPSTR, r##"Put Application Types"##
     );
     impl_value!(MQAT, mqsys::MQLONG);
-    define_new_type!(pub MQAUTHENTICATE, mqsys::MQLONG, mapping::MQAUTHENTICATE_MAPSTR);
-    impl_value!(MQAUTHENTICATE, mqsys::MQLONG);
     define_new_type!(
-        pub MQAUTHOPT, mqsys::MQLONG, mapping::MQAUTHOPT_MAPSTR,
-        r##"Command format Authority Options"##
+        pub MQAUTO, mqsys::MQLONG, mapping::MQAUTO_MAPSTR, r##"Autostart"##
     );
-    impl_bitflags!(MQAUTHOPT, mqsys::MQLONG);
-    define_new_type!(pub MQAUTH, mqsys::MQLONG, mapping::MQAUTH_MAPSTR);
-    impl_value!(MQAUTH, mqsys::MQLONG);
-    define_new_type!(pub MQAUTOCLUS, mqsys::MQLONG, mapping::MQAUTOCLUS_MAPSTR);
-    impl_value!(MQAUTOCLUS, mqsys::MQLONG);
-    define_new_type!(pub MQAUTO, mqsys::MQLONG, mapping::MQAUTO_MAPSTR);
     impl_value!(MQAUTO, mqsys::MQLONG);
-    define_new_type!(pub MQBACF, mqsys::MQLONG, mapping::MQBACF_MAPSTR);
-    impl_value!(MQBACF, mqsys::MQLONG);
-    define_new_type!(pub MQBALANCED, mqsys::MQLONG, mapping::MQBALANCED_MAPSTR);
-    impl_value!(MQBALANCED, mqsys::MQLONG);
-    define_new_type!(pub MQBALSTATE, mqsys::MQLONG, mapping::MQBALSTATE_MAPSTR);
-    impl_value!(MQBALSTATE, mqsys::MQLONG);
     define_new_type!(
         pub MQBMHO, mqsys::MQLONG, mapping::MQBMHO_MAPSTR,
-        r##"Options to control the action of `MQBUFMH`"##
+        r##"Buffer To Message Handle Options"##
     );
     impl_bitflags!(MQBMHO, mqsys::MQLONG);
-    define_new_type!(pub MQBND, mqsys::MQLONG, mapping::MQBND_MAPSTR);
+    define_new_type!(
+        pub MQBND, mqsys::MQLONG, mapping::MQBND_MAPSTR, r##"Default Bindings"##
+    );
     impl_value!(MQBND, mqsys::MQLONG);
-    define_new_type!(pub MQBNO_BALTYPE, mqsys::MQLONG, mapping::MQBNO_BALTYPE_MAPSTR);
+    define_new_type!(
+        pub MQBNO_BALTYPE, mqsys::MQLONG, mapping::MQBNO_BALTYPE_MAPSTR,
+        r##"MQ Balancing Application Type"##
+    );
     impl_value!(MQBNO_BALTYPE, mqsys::MQLONG);
-    define_new_type!(pub MQBNO_OPTIONS, mqsys::MQLONG, mapping::MQBNO_OPTIONS_MAPSTR);
+    define_new_type!(
+        pub MQBNO_OPTIONS, mqsys::MQLONG, mapping::MQBNO_OPTIONS_MAPSTR,
+        r##"MQ Balancing Options"##
+    );
     impl_value!(MQBNO_OPTIONS, mqsys::MQLONG);
-    define_new_type!(pub MQBNO_TIMEOUT, mqsys::MQLONG, mapping::MQBNO_TIMEOUT_MAPSTR);
+    define_new_type!(
+        pub MQBNO_TIMEOUT, mqsys::MQLONG, mapping::MQBNO_TIMEOUT_MAPSTR,
+        r##"MQ Balancing Timeout"##
+    );
     impl_value!(MQBNO_TIMEOUT, mqsys::MQLONG);
     define_new_type!(
-        pub MQBO, mqsys::MQLONG, mapping::MQBO_MAPSTR,
-        r##"Options to control the action of `MQBEGIN`"##
+        pub MQBO, mqsys::MQLONG, mapping::MQBO_MAPSTR, r##"Begin Options"##
     );
     impl_bitflags!(MQBO, mqsys::MQLONG);
-    define_new_type!(pub MQBPLOCATION, mqsys::MQLONG, mapping::MQBPLOCATION_MAPSTR);
-    impl_value!(MQBPLOCATION, mqsys::MQLONG);
-    define_new_type!(pub MQBT, mqsys::MQLONG, mapping::MQBT_MAPSTR);
-    impl_value!(MQBT, mqsys::MQLONG);
-    define_new_type!(pub MQCADSD, mqsys::MQLONG, mapping::MQCADSD_MAPSTR);
+    define_new_type!(
+        pub MQCADSD, mqsys::MQLONG, mapping::MQCADSD_MAPSTR, r##"ADS Descriptors"##
+    );
     impl_value!(MQCADSD, mqsys::MQLONG);
-    define_new_type!(pub MQCAFTY, mqsys::MQLONG, mapping::MQCAFTY_MAPSTR);
+    define_new_type!(
+        pub MQCAFTY, mqsys::MQLONG, mapping::MQCAFTY_MAPSTR,
+        r##"Connection Affinity Values"##
+    );
     impl_value!(MQCAFTY, mqsys::MQLONG);
-    define_new_type!(pub MQCAMO, mqsys::MQLONG, mapping::MQCAMO_MAPSTR);
-    impl_value!(MQCAMO, mqsys::MQLONG);
-    define_new_type!(pub MQCAP, mqsys::MQLONG, mapping::MQCAP_MAPSTR);
+    define_new_type!(pub MQCAP, mqsys::MQLONG, mapping::MQCAP_MAPSTR, r##"Capability"##);
     impl_value!(MQCAP, mqsys::MQLONG);
-    define_new_type!(pub MQCAUT, mqsys::MQLONG, mapping::MQCAUT_MAPSTR);
-    impl_value!(MQCAUT, mqsys::MQLONG);
     define_new_type!(
         pub MQCA, mqsys::MQLONG, mapping::MQCA_MAPSTR,
         r##"Character Attribute Selectors"##
     );
     impl_value!(MQCA, mqsys::MQLONG);
     define_new_type!(
-        pub MQCBCF, mqsys::MQLONG, mapping::MQCBCF_MAPSTR,
-        r##"Flags containing information about the callback consumer"##
+        pub MQCBCF, mqsys::MQLONG, mapping::MQCBCF_MAPSTR, r##"Callback Context Flags"##
     );
     impl_value!(MQCBCF, mqsys::MQLONG);
     define_new_type!(
-        pub MQCBCT, mqsys::MQLONG, mapping::MQCBCT_MAPSTR,
-        r##"Callback control and message delivery call types"##
+        pub MQCBCT, mqsys::MQLONG, mapping::MQCBCT_MAPSTR, r##"Callback type"##
     );
     impl_value!(MQCBCT, mqsys::MQLONG);
-    define_new_type!(pub MQCBD, mqsys::MQLONG, mapping::MQCBD_MAPSTR);
+    define_new_type!(
+        pub MQCBDO, mqsys::MQLONG, mapping::MQCBDO_MAPSTR, r##"Callback Options"##
+    );
+    impl_bitflags!(MQCBDO, mqsys::MQLONG);
+    define_new_type!(
+        pub MQCBD, mqsys::MQLONG, mapping::MQCBD_MAPSTR, r##"Buffer size values"##
+    );
     impl_value!(MQCBD, mqsys::MQLONG);
     define_new_type!(
-        pub MQCBO, mqsys::MQLONG, mapping::MQCBO_MAPSTR,
-        r##"Options to control `mqCreateBag`"##
+        pub MQCBT, mqsys::MQLONG, mapping::MQCBT_MAPSTR,
+        r##"This is the type of the Callback Function"##
     );
-    impl_bitflags!(MQCBO, mqsys::MQLONG);
-    define_new_type!(pub MQCBT, mqsys::MQLONG, mapping::MQCBT_MAPSTR);
     impl_value!(MQCBT, mqsys::MQLONG);
-    define_new_type!(pub MQCCSI, mqsys::MQLONG, mapping::MQCCSI_MAPSTR);
+    define_new_type!(
+        pub MQCCSI, mqsys::MQLONG, mapping::MQCCSI_MAPSTR,
+        r##"Coded Character Set Identifiers"##
+    );
     impl_value!(MQCCSI, mqsys::MQLONG);
-    define_new_type!(pub MQCCT, mqsys::MQLONG, mapping::MQCCT_MAPSTR);
+    define_new_type!(
+        pub MQCCT, mqsys::MQLONG, mapping::MQCCT_MAPSTR,
+        r##"Conversational Task Options"##
+    );
     impl_value!(MQCCT, mqsys::MQLONG);
     define_new_type!(
-        pub MQCC, mqsys::MQLONG, mapping::MQCC_MAPSTR,
-        r##"Completion Code from an MQ function call"##
+        pub MQCC, mqsys::MQLONG, mapping::MQCC_MAPSTR, r##"Completion Codes"##
     );
     impl_value!(MQCC, mqsys::MQLONG);
-    define_new_type!(pub MQCDC, mqsys::MQLONG, mapping::MQCDC_MAPSTR);
-    impl_value!(MQCDC, mqsys::MQLONG);
-    define_new_type!(pub MQCEX, mqsys::MQLONG, mapping::MQCEX_MAPSTR);
+    define_new_type!(
+        pub MQCEX, mqsys::MQLONG, mapping::MQCEX_MAPSTR, r##"Queue cap expiry values"##
+    );
     impl_value!(MQCEX, mqsys::MQLONG);
-    define_new_type!(pub MQCFACCESS, mqsys::MQLONG, mapping::MQCFACCESS_MAPSTR);
-    impl_value!(MQCFACCESS, mqsys::MQLONG);
-    define_new_type!(pub MQCFCONLOS, mqsys::MQLONG, mapping::MQCFCONLOS_MAPSTR);
+    define_new_type!(
+        pub MQCFCONLOS, mqsys::MQLONG, mapping::MQCFCONLOS_MAPSTR,
+        r##"CF Loss of Connectivity Action"##
+    );
     impl_value!(MQCFCONLOS, mqsys::MQLONG);
-    define_new_type!(pub MQCFOFFLD, mqsys::MQLONG, mapping::MQCFOFFLD_MAPSTR);
+    define_new_type!(
+        pub MQCFOFFLD, mqsys::MQLONG, mapping::MQCFOFFLD_MAPSTR, r##"OffldUse Options"##
+    );
     impl_value!(MQCFOFFLD, mqsys::MQLONG);
     define_new_type!(
-        pub MQCFOP, mqsys::MQLONG, mapping::MQCFOP_MAPSTR,
-        r##"Command format Filter Operators"##
+        pub MQCFR, mqsys::MQLONG, mapping::MQCFR_MAPSTR, r##"CF Recoverability"##
     );
-    impl_value!(MQCFOP, mqsys::MQLONG);
-    define_new_type!(pub MQCFO_REFRESH, mqsys::MQLONG, mapping::MQCFO_REFRESH_MAPSTR);
-    impl_value!(MQCFO_REFRESH, mqsys::MQLONG);
-    define_new_type!(pub MQCFO_REMOVE, mqsys::MQLONG, mapping::MQCFO_REMOVE_MAPSTR);
-    impl_value!(MQCFO_REMOVE, mqsys::MQLONG);
-    define_new_type!(pub MQCFR, mqsys::MQLONG, mapping::MQCFR_MAPSTR);
     impl_value!(MQCFR, mqsys::MQLONG);
-    define_new_type!(pub MQCFSTATUS, mqsys::MQLONG, mapping::MQCFSTATUS_MAPSTR);
-    impl_value!(MQCFSTATUS, mqsys::MQLONG);
-    define_new_type!(pub MQCFTYPE, mqsys::MQLONG, mapping::MQCFTYPE_MAPSTR);
-    impl_value!(MQCFTYPE, mqsys::MQLONG);
-    define_new_type!(pub MQCFT, mqsys::MQLONG, mapping::MQCFT_MAPSTR);
-    impl_value!(MQCFT, mqsys::MQLONG);
-    define_new_type!(pub MQCGWI, mqsys::MQLONG, mapping::MQCGWI_MAPSTR);
+    define_new_type!(
+        pub MQCGWI, mqsys::MQLONG, mapping::MQCGWI_MAPSTR, r##"Get Wait Interval"##
+    );
     impl_value!(MQCGWI, mqsys::MQLONG);
-    define_new_type!(pub MQCHAD, mqsys::MQLONG, mapping::MQCHAD_MAPSTR);
+    define_new_type!(
+        pub MQCHAD, mqsys::MQLONG, mapping::MQCHAD_MAPSTR, r##"Channel Auto Definition"##
+    );
     impl_value!(MQCHAD, mqsys::MQLONG);
-    define_new_type!(pub MQCHIDS, mqsys::MQLONG, mapping::MQCHIDS_MAPSTR);
-    impl_value!(MQCHIDS, mqsys::MQLONG);
-    define_new_type!(pub MQCHK, mqsys::MQLONG, mapping::MQCHK_MAPSTR);
-    impl_value!(MQCHK, mqsys::MQLONG);
-    define_new_type!(pub MQCHLA, mqsys::MQLONG, mapping::MQCHLA_MAPSTR);
-    impl_value!(MQCHLA, mqsys::MQLONG);
-    define_new_type!(pub MQCHLD, mqsys::MQLONG, mapping::MQCHLD_MAPSTR);
-    impl_value!(MQCHLD, mqsys::MQLONG);
-    define_new_type!(pub MQCHRR, mqsys::MQLONG, mapping::MQCHRR_MAPSTR);
-    impl_value!(MQCHRR, mqsys::MQLONG);
-    define_new_type!(pub MQCHSH, mqsys::MQLONG, mapping::MQCHSH_MAPSTR);
-    impl_value!(MQCHSH, mqsys::MQLONG);
-    define_new_type!(pub MQCHSR, mqsys::MQLONG, mapping::MQCHSR_MAPSTR);
-    impl_value!(MQCHSR, mqsys::MQLONG);
-    define_new_type!(pub MQCHSSTATE, mqsys::MQLONG, mapping::MQCHSSTATE_MAPSTR);
-    impl_value!(MQCHSSTATE, mqsys::MQLONG);
-    define_new_type!(pub MQCHS, mqsys::MQLONG, mapping::MQCHS_MAPSTR);
-    impl_value!(MQCHS, mqsys::MQLONG);
-    define_new_type!(pub MQCHTAB, mqsys::MQLONG, mapping::MQCHTAB_MAPSTR);
-    impl_value!(MQCHTAB, mqsys::MQLONG);
-    define_new_type!(pub MQCHT, mqsys::MQLONG, mapping::MQCHT_MAPSTR);
+    define_new_type!(
+        pub MQCHT, mqsys::MQLONG, mapping::MQCHT_MAPSTR, r##"Channel Types"##
+    );
     impl_value!(MQCHT, mqsys::MQLONG);
-    define_new_type!(pub MQCIH, mqsys::MQLONG, mapping::MQCIH_MAPSTR);
+    define_new_type!(
+        pub MQCIH, mqsys::MQLONG, mapping::MQCIH_MAPSTR, r##"MQCIH Flags"##
+    );
     impl_value!(MQCIH, mqsys::MQLONG);
-    define_new_type!(pub MQCIT, mqsys::MQLONG, mapping::MQCIT_MAPSTR);
+    define_new_type!(
+        pub MQCIT, mqsys::MQLONG, mapping::MQCIT_MAPSTR, r##"CommInfo Type"##
+    );
     impl_value!(MQCIT, mqsys::MQLONG);
-    define_new_type!(pub MQCLCT, mqsys::MQLONG, mapping::MQCLCT_MAPSTR);
-    impl_value!(MQCLCT, mqsys::MQLONG);
-    define_new_type!(pub MQCLROUTE, mqsys::MQLONG, mapping::MQCLROUTE_MAPSTR);
-    impl_value!(MQCLROUTE, mqsys::MQLONG);
-    define_new_type!(pub MQCLRS, mqsys::MQLONG, mapping::MQCLRS_MAPSTR);
-    impl_value!(MQCLRS, mqsys::MQLONG);
-    define_new_type!(pub MQCLRT, mqsys::MQLONG, mapping::MQCLRT_MAPSTR);
-    impl_value!(MQCLRT, mqsys::MQLONG);
-    define_new_type!(pub MQCLST, mqsys::MQLONG, mapping::MQCLST_MAPSTR);
-    impl_value!(MQCLST, mqsys::MQLONG);
-    define_new_type!(pub MQCLT, mqsys::MQLONG, mapping::MQCLT_MAPSTR);
+    define_new_type!(pub MQCLT, mqsys::MQLONG, mapping::MQCLT_MAPSTR, r##"Link Types"##);
     impl_value!(MQCLT, mqsys::MQLONG);
-    define_new_type!(pub MQCLWL, mqsys::MQLONG, mapping::MQCLWL_MAPSTR);
+    define_new_type!(
+        pub MQCLWL, mqsys::MQLONG, mapping::MQCLWL_MAPSTR, r##"Cluster Workload"##
+    );
     impl_value!(MQCLWL, mqsys::MQLONG);
-    define_new_type!(pub MQCLXQ, mqsys::MQLONG, mapping::MQCLXQ_MAPSTR);
-    impl_value!(MQCLXQ, mqsys::MQLONG);
-    define_new_type!(pub MQCMDI, mqsys::MQLONG, mapping::MQCMDI_MAPSTR);
-    impl_value!(MQCMDI, mqsys::MQLONG);
-    define_new_type!(pub MQCMDL, mqsys::MQLONG, mapping::MQCMDL_MAPSTR);
+    define_new_type!(
+        pub MQCMDL, mqsys::MQLONG, mapping::MQCMDL_MAPSTR, r##"Command Levels"##
+    );
     impl_value!(MQCMDL, mqsys::MQLONG);
     define_new_type!(
         pub MQCMHO, mqsys::MQLONG, mapping::MQCMHO_MAPSTR,
-        r##"Create message handle options for `MQCRTMH`"##
+        r##"Create Message Handle Options"##
     );
     impl_value!(MQCMHO, mqsys::MQLONG);
     define_new_type!(
-        pub MQCNO, mqsys::MQLONG, mapping::MQCNO_MAPSTR,
-        r##"Options to control the action of `MQCONNX`"##
+        pub MQCNO, mqsys::MQLONG, mapping::MQCNO_MAPSTR, r##"Connect Options"##
     );
     impl_bitflags!(MQCNO, mqsys::MQLONG);
-    define_new_type!(pub MQCODL, mqsys::MQLONG, mapping::MQCODL_MAPSTR);
-    impl_value!(MQCODL, mqsys::MQLONG);
-    define_new_type!(pub MQCOMPRESS, mqsys::MQLONG, mapping::MQCOMPRESS_MAPSTR);
-    impl_value!(MQCOMPRESS, mqsys::MQLONG);
     define_new_type!(
-        pub MQCOPY, mqsys::MQLONG, mapping::MQCOPY_MAPSTR, r##"Property copy options"##
+        pub MQCODL, mqsys::MQLONG, mapping::MQCODL_MAPSTR, r##"Output Data Length"##
+    );
+    impl_value!(MQCODL, mqsys::MQLONG);
+    define_new_type!(
+        pub MQCOPY, mqsys::MQLONG, mapping::MQCOPY_MAPSTR, r##"Property Copy Options"##
     );
     impl_bitflags!(MQCOPY, mqsys::MQLONG);
     define_new_type!(
-        pub MQCO, mqsys::MQLONG, mapping::MQCO_MAPSTR,
-        r##"Options to control the action of `MQCLOSE`"##
+        pub MQCO, mqsys::MQLONG, mapping::MQCO_MAPSTR, r##"Close Options"##
     );
     impl_bitflags!(MQCO, mqsys::MQLONG);
-    define_new_type!(pub MQCQT, mqsys::MQLONG, mapping::MQCQT_MAPSTR);
+    define_new_type!(
+        pub MQCQT, mqsys::MQLONG, mapping::MQCQT_MAPSTR, r##"Cluster Queue Types"##
+    );
     impl_value!(MQCQT, mqsys::MQLONG);
-    define_new_type!(pub MQCRC, mqsys::MQLONG, mapping::MQCRC_MAPSTR);
+    define_new_type!(
+        pub MQCRC, mqsys::MQLONG, mapping::MQCRC_MAPSTR, r##"Return Codes"##
+    );
     impl_value!(MQCRC, mqsys::MQLONG);
-    define_new_type!(pub MQCSP, mqsys::MQLONG, mapping::MQCSP_MAPSTR);
+    define_new_type!(
+        pub MQCSP, mqsys::MQLONG, mapping::MQCSP_MAPSTR, r##"Authentication Types"##
+    );
     impl_value!(MQCSP, mqsys::MQLONG);
-    define_new_type!(pub MQCSRV_CONVERT, mqsys::MQLONG, mapping::MQCSRV_CONVERT_MAPSTR);
+    define_new_type!(
+        pub MQCSRV_CONVERT, mqsys::MQLONG, mapping::MQCSRV_CONVERT_MAPSTR,
+        r##"Command Server Options"##
+    );
     impl_value!(MQCSRV_CONVERT, mqsys::MQLONG);
-    define_new_type!(pub MQCSRV_DLQ, mqsys::MQLONG, mapping::MQCSRV_DLQ_MAPSTR);
+    define_new_type!(
+        pub MQCSRV_DLQ, mqsys::MQLONG, mapping::MQCSRV_DLQ_MAPSTR,
+        r##"Command Server Options"##
+    );
     impl_value!(MQCSRV_DLQ, mqsys::MQLONG);
     define_new_type!(
-        pub MQCS, mqsys::MQLONG, mapping::MQCS_MAPSTR, r##"Callback consumer state"##
+        pub MQCS, mqsys::MQLONG, mapping::MQCS_MAPSTR, r##"Consumer state"##
     );
     impl_value!(MQCS, mqsys::MQLONG);
-    define_new_type!(pub MQCTES, mqsys::MQLONG, mapping::MQCTES_MAPSTR);
+    define_new_type!(
+        pub MQCTES, mqsys::MQLONG, mapping::MQCTES_MAPSTR, r##"Task End Status"##
+    );
     impl_value!(MQCTES, mqsys::MQLONG);
     define_new_type!(
         pub MQCTLO, mqsys::MQLONG, mapping::MQCTLO_MAPSTR,
-        r##"MQCTL Consumer Control Options"##
+        r##"Consumer Control Options"##
     );
     impl_bitflags!(MQCTLO, mqsys::MQLONG);
-    define_new_type!(pub MQCUOWC, mqsys::MQLONG, mapping::MQCUOWC_MAPSTR);
+    define_new_type!(
+        pub MQCUOWC, mqsys::MQLONG, mapping::MQCUOWC_MAPSTR, r##"Unit-of-Work Controls"##
+    );
     impl_value!(MQCUOWC, mqsys::MQLONG);
     define_new_type!(
-        pub MQDCC, mqsys::MQLONG, mapping::MQDCC_MAPSTR,
-        r##"Options to control the action of `MQXCNVC`"##
+        pub MQDC, mqsys::MQLONG, mapping::MQDC_MAPSTR, r##"Destination Class"##
     );
-    impl_bitflags!(MQDCC, mqsys::MQLONG);
-    define_new_type!(pub MQDC, mqsys::MQLONG, mapping::MQDC_MAPSTR);
     impl_value!(MQDC, mqsys::MQLONG);
-    define_new_type!(pub MQDELO, mqsys::MQLONG, mapping::MQDELO_MAPSTR);
-    impl_value!(MQDELO, mqsys::MQLONG);
-    define_new_type!(pub MQDHF, mqsys::MQLONG, mapping::MQDHF_MAPSTR);
+    define_new_type!(pub MQDHF, mqsys::MQLONG, mapping::MQDHF_MAPSTR, r##"MQDH Flags"##);
     impl_value!(MQDHF, mqsys::MQLONG);
-    define_new_type!(pub MQDISCONNECT, mqsys::MQLONG, mapping::MQDISCONNECT_MAPSTR);
-    impl_value!(MQDISCONNECT, mqsys::MQLONG);
-    define_new_type!(pub MQDLV, mqsys::MQLONG, mapping::MQDLV_MAPSTR);
+    define_new_type!(
+        pub MQDLV, mqsys::MQLONG, mapping::MQDLV_MAPSTR,
+        r##"Persistent/Non-persistent Message Delivery"##
+    );
     impl_value!(MQDLV, mqsys::MQLONG);
-    define_new_type!(pub MQDL, mqsys::MQLONG, mapping::MQDL_MAPSTR);
+    define_new_type!(
+        pub MQDL, mqsys::MQLONG, mapping::MQDL_MAPSTR, r##"Distribution Lists"##
+    );
     impl_value!(MQDL, mqsys::MQLONG);
-    define_new_type!(pub MQDMHO, mqsys::MQLONG, mapping::MQDMHO_MAPSTR);
+    define_new_type!(
+        pub MQDMHO, mqsys::MQLONG, mapping::MQDMHO_MAPSTR,
+        r##"Delete Message Handle Options"##
+    );
     impl_value!(MQDMHO, mqsys::MQLONG);
     define_new_type!(
         pub MQDMPO, mqsys::MQLONG, mapping::MQDMPO_MAPSTR,
-        r##"Delete message property options"##
+        r##"Delete Message Property Options"##
     );
     impl_value!(MQDMPO, mqsys::MQLONG);
-    define_new_type!(pub MQDNSWLM, mqsys::MQLONG, mapping::MQDNSWLM_MAPSTR);
-    impl_value!(MQDNSWLM, mqsys::MQLONG);
-    define_new_type!(pub MQDOPT, mqsys::MQLONG, mapping::MQDOPT_MAPSTR);
-    impl_value!(MQDOPT, mqsys::MQLONG);
-    define_new_type!(pub MQDSB, mqsys::MQLONG, mapping::MQDSB_MAPSTR);
-    impl_value!(MQDSB, mqsys::MQLONG);
-    define_new_type!(pub MQDSE, mqsys::MQLONG, mapping::MQDSE_MAPSTR);
-    impl_value!(MQDSE, mqsys::MQLONG);
-    define_new_type!(pub MQEC, mqsys::MQLONG, mapping::MQEC_MAPSTR);
-    impl_value!(MQEC, mqsys::MQLONG);
-    define_new_type!(pub MQEI, mqsys::MQLONG, mapping::MQEI_MAPSTR);
-    impl_value!(MQEI, mqsys::MQLONG);
     define_new_type!(
-        pub MQENC, mqsys::MQLONG, mapping::MQENC_MAPSTR,
-        r##"Mask describing data encoding"##
+        pub MQDNSWLM, mqsys::MQLONG, mapping::MQDNSWLM_MAPSTR, r##"DNS WLM"##
     );
+    impl_value!(MQDNSWLM, mqsys::MQLONG);
+    define_new_type!(
+        pub MQDSB, mqsys::MQLONG, mapping::MQDSB_MAPSTR, r##"DSBlock Options"##
+    );
+    impl_value!(MQDSB, mqsys::MQLONG);
+    define_new_type!(
+        pub MQDSE, mqsys::MQLONG, mapping::MQDSE_MAPSTR, r##"DSExpand Options"##
+    );
+    impl_value!(MQDSE, mqsys::MQLONG);
+    define_new_type!(
+        pub MQEC, mqsys::MQLONG, mapping::MQEC_MAPSTR, r##"Signal Values"##
+    );
+    impl_value!(MQEC, mqsys::MQLONG);
+    define_new_type!(pub MQEI, mqsys::MQLONG, mapping::MQEI_MAPSTR, r##"Expiry"##);
+    impl_value!(MQEI, mqsys::MQLONG);
+    define_new_type!(pub MQENC, mqsys::MQLONG, mapping::MQENC_MAPSTR, r##"Encoding"##);
     impl_bitflags!(MQENC, mqsys::MQLONG);
-    define_new_type!(pub MQEPH, mqsys::MQLONG, mapping::MQEPH_MAPSTR);
-    impl_value!(MQEPH, mqsys::MQLONG);
-    define_new_type!(pub MQET, mqsys::MQLONG, mapping::MQET_MAPSTR);
-    impl_value!(MQET, mqsys::MQLONG);
-    define_new_type!(pub MQEVO, mqsys::MQLONG, mapping::MQEVO_MAPSTR);
-    impl_value!(MQEVO, mqsys::MQLONG);
-    define_new_type!(pub MQEVR, mqsys::MQLONG, mapping::MQEVR_MAPSTR);
-    impl_value!(MQEVR, mqsys::MQLONG);
-    define_new_type!(pub MQEXPI, mqsys::MQLONG, mapping::MQEXPI_MAPSTR);
+    define_new_type!(
+        pub MQEXPI, mqsys::MQLONG, mapping::MQEXPI_MAPSTR,
+        r##"Expiration Scan Interval"##
+    );
     impl_value!(MQEXPI, mqsys::MQLONG);
-    define_new_type!(pub MQEXTATTRS, mqsys::MQLONG, mapping::MQEXTATTRS_MAPSTR);
-    impl_value!(MQEXTATTRS, mqsys::MQLONG);
-    define_new_type!(pub MQEXT, mqsys::MQLONG, mapping::MQEXT_MAPSTR);
-    impl_value!(MQEXT, mqsys::MQLONG);
-    define_new_type!(pub MQFB, mqsys::MQLONG, mapping::MQFB_MAPSTR);
+    define_new_type!(
+        pub MQFB, mqsys::MQLONG, mapping::MQFB_MAPSTR, r##"Feedback Values"##
+    );
     impl_value!(MQFB, mqsys::MQLONG);
-    define_new_type!(pub MQFC, mqsys::MQLONG, mapping::MQFC_MAPSTR);
-    impl_value!(MQFC, mqsys::MQLONG);
     define_new_type!(pub MQFIELD_WQR, mqsys::MQLONG, mapping::MQFIELD_WQR_MAPSTR);
     impl_value!(MQFIELD_WQR, mqsys::MQLONG);
-    define_new_type!(pub MQFSENC, mqsys::MQLONG, mapping::MQFSENC_MAPSTR);
-    impl_value!(MQFSENC, mqsys::MQLONG);
-    define_new_type!(pub MQFS, mqsys::MQLONG, mapping::MQFS_MAPSTR);
-    impl_value!(MQFS, mqsys::MQLONG);
-    define_new_type!(pub MQFUN, mqsys::MQLONG, mapping::MQFUN_MAPSTR);
-    impl_value!(MQFUN, mqsys::MQLONG);
-    define_new_type!(pub MQGACF, mqsys::MQLONG, mapping::MQGACF_MAPSTR);
-    impl_value!(MQGACF, mqsys::MQLONG);
     define_new_type!(
-        pub MQGMO, mqsys::MQLONG, mapping::MQGMO_MAPSTR,
-        r##"Options to control the action of `MQGET`"##
+        pub MQFUN, mqsys::MQLONG, mapping::MQFUN_MAPSTR,
+        r##"Application Function Types"##
+    );
+    impl_value!(MQFUN, mqsys::MQLONG);
+    define_new_type!(
+        pub MQGMO, mqsys::MQLONG, mapping::MQGMO_MAPSTR, r##"Get Message Options"##
     );
     impl_bitflags!(MQGMO, mqsys::MQLONG);
-    define_new_type!(pub MQGUR, mqsys::MQLONG, mapping::MQGUR_MAPSTR);
-    impl_value!(MQGUR, mqsys::MQLONG);
-    define_new_type!(pub MQHC, mqsys::MQHCONN, mapping::MQHC_MAPSTR);
+    define_new_type!(
+        pub MQHC, mqsys::MQHCONN, mapping::MQHC_MAPSTR, r##"Connection Handles"##
+    );
     impl_value!(MQHC, mqsys::MQHCONN);
-    define_new_type!(pub MQHM, mqsys::MQHMSG, mapping::MQHM_MAPSTR);
+    define_new_type!(
+        pub MQHM, mqsys::MQHMSG, mapping::MQHM_MAPSTR, r##"Message handle"##
+    );
     impl_value!(MQHM, mqsys::MQHMSG);
-    define_new_type!(pub MQHO, mqsys::MQHOBJ, mapping::MQHO_MAPSTR);
+    define_new_type!(
+        pub MQHO, mqsys::MQHOBJ, mapping::MQHO_MAPSTR, r##"Object Handle"##
+    );
     impl_value!(MQHO, mqsys::MQHOBJ);
-    define_new_type!(pub MQHSTATE, mqsys::MQLONG, mapping::MQHSTATE_MAPSTR);
-    impl_value!(MQHSTATE, mqsys::MQLONG);
-    define_new_type!(pub MQIAMO64, mqsys::MQLONG, mapping::MQIAMO64_MAPSTR);
-    impl_value!(MQIAMO64, mqsys::MQLONG);
-    define_new_type!(pub MQIAMO, mqsys::MQLONG, mapping::MQIAMO_MAPSTR);
-    impl_value!(MQIAMO, mqsys::MQLONG);
     define_new_type!(
-        pub MQIAMO_MONITOR_DATATYPE, mqsys::MQLONG,
-        mapping::MQIAMO_MONITOR_DATATYPE_MAPSTR
+        pub MQIAV, mqsys::MQLONG, mapping::MQIAV_MAPSTR, r##"Integer Attribute Values"##
     );
-    impl_value!(MQIAMO_MONITOR_DATATYPE, mqsys::MQLONG);
-    define_new_type!(
-        pub MQIAMO_MONITOR_FLAGS, mqsys::MQLONG, mapping::MQIAMO_MONITOR_FLAGS_MAPSTR
-    );
-    impl_value!(MQIAMO_MONITOR_FLAGS, mqsys::MQLONG);
-    define_new_type!(pub MQIAV, mqsys::MQLONG, mapping::MQIAV_MAPSTR);
     impl_value!(MQIAV, mqsys::MQLONG);
     define_new_type!(
         pub MQIA, mqsys::MQLONG, mapping::MQIA_MAPSTR, r##"Integer Attribute Selectors"##
     );
     impl_value!(MQIA, mqsys::MQLONG);
-    define_new_type!(pub MQIDO, mqsys::MQLONG, mapping::MQIDO_MAPSTR);
-    impl_value!(MQIDO, mqsys::MQLONG);
-    define_new_type!(pub MQIEPF, mqsys::MQLONG, mapping::MQIEPF_MAPSTR);
-    impl_value!(MQIEPF, mqsys::MQLONG);
-    define_new_type!(pub MQIGQPA, mqsys::MQLONG, mapping::MQIGQPA_MAPSTR);
+    define_new_type!(
+        pub MQIGQPA, mqsys::MQLONG, mapping::MQIGQPA_MAPSTR,
+        r##"Intra-Group Queuing Put Authority"##
+    );
     impl_value!(MQIGQPA, mqsys::MQLONG);
-    define_new_type!(pub MQIGQ, mqsys::MQLONG, mapping::MQIGQ_MAPSTR);
+    define_new_type!(
+        pub MQIGQ, mqsys::MQLONG, mapping::MQIGQ_MAPSTR, r##"Intra-Group Queuing"##
+    );
     impl_value!(MQIGQ, mqsys::MQLONG);
-    define_new_type!(pub MQIIH, mqsys::MQLONG, mapping::MQIIH_MAPSTR);
+    define_new_type!(
+        pub MQIIH, mqsys::MQLONG, mapping::MQIIH_MAPSTR, r##"MQIIH Flags"##
+    );
     impl_value!(MQIIH, mqsys::MQLONG);
-    define_new_type!(pub MQIMGRCOV, mqsys::MQLONG, mapping::MQIMGRCOV_MAPSTR);
+    define_new_type!(
+        pub MQIMGRCOV, mqsys::MQLONG, mapping::MQIMGRCOV_MAPSTR,
+        r##"Media Image Recoverability"##
+    );
     impl_value!(MQIMGRCOV, mqsys::MQLONG);
-    define_new_type!(pub MQIMMREASON, mqsys::MQLONG, mapping::MQIMMREASON_MAPSTR);
-    impl_value!(MQIMMREASON, mqsys::MQLONG);
     define_new_type!(
         pub MQIMPO, mqsys::MQLONG, mapping::MQIMPO_MAPSTR,
-        r##"Options to control the action of `MQINQMP`"##
+        r##"Inquire Message Property Options"##
     );
     impl_bitflags!(MQIMPO, mqsys::MQLONG);
-    define_new_type!(pub MQINBD, mqsys::MQLONG, mapping::MQINBD_MAPSTR);
-    impl_value!(MQINBD, mqsys::MQLONG);
-    define_new_type!(pub MQIPADDR, mqsys::MQLONG, mapping::MQIPADDR_MAPSTR);
-    impl_value!(MQIPADDR, mqsys::MQLONG);
-    define_new_type!(pub MQIS, mqsys::MQLONG, mapping::MQIS_MAPSTR);
-    impl_value!(MQIS, mqsys::MQLONG);
-    define_new_type!(pub MQKAI, mqsys::MQLONG, mapping::MQKAI_MAPSTR);
-    impl_value!(MQKAI, mqsys::MQLONG);
-    define_new_type!(pub MQKEY, mqsys::MQLONG, mapping::MQKEY_MAPSTR);
-    impl_value!(MQKEY, mqsys::MQLONG);
-    define_new_type!(pub MQLDAPC, mqsys::MQLONG, mapping::MQLDAPC_MAPSTR);
-    impl_value!(MQLDAPC, mqsys::MQLONG);
     define_new_type!(
-        pub MQLDAP_AUTHORMD, mqsys::MQLONG, mapping::MQLDAP_AUTHORMD_MAPSTR
+        pub MQIPADDR, mqsys::MQLONG, mapping::MQIPADDR_MAPSTR, r##"IP Address Versions"##
     );
-    impl_value!(MQLDAP_AUTHORMD, mqsys::MQLONG);
-    define_new_type!(pub MQLDAP_NESTGRP, mqsys::MQLONG, mapping::MQLDAP_NESTGRP_MAPSTR);
-    impl_value!(MQLDAP_NESTGRP, mqsys::MQLONG);
-    define_new_type!(pub MQLOGTYPE, mqsys::MQLONG, mapping::MQLOGTYPE_MAPSTR);
-    impl_value!(MQLOGTYPE, mqsys::MQLONG);
-    define_new_type!(pub MQLR, mqsys::MQLONG, mapping::MQLR_MAPSTR);
-    impl_value!(MQLR, mqsys::MQLONG);
-    define_new_type!(pub MQMASTER, mqsys::MQLONG, mapping::MQMASTER_MAPSTR);
+    impl_value!(MQIPADDR, mqsys::MQLONG);
+    define_new_type!(pub MQIT, mqsys::MQLONG, mapping::MQIT_MAPSTR, r##"Index Types"##);
+    impl_value!(MQIT, mqsys::MQLONG);
+    define_new_type!(
+        pub MQKAI, mqsys::MQLONG, mapping::MQKAI_MAPSTR, r##"KeepAlive Interval"##
+    );
+    impl_value!(MQKAI, mqsys::MQLONG);
+    define_new_type!(
+        pub MQKEY, mqsys::MQLONG, mapping::MQKEY_MAPSTR, r##"Key reuse count"##
+    );
+    impl_value!(MQKEY, mqsys::MQLONG);
+    define_new_type!(
+        pub MQMASTER, mqsys::MQLONG, mapping::MQMASTER_MAPSTR,
+        r##"Master administration"##
+    );
     impl_value!(MQMASTER, mqsys::MQLONG);
-    define_new_type!(pub MQMATCH, mqsys::MQLONG, mapping::MQMATCH_MAPSTR);
-    impl_value!(MQMATCH, mqsys::MQLONG);
-    define_new_type!(pub MQMCAS, mqsys::MQLONG, mapping::MQMCAS_MAPSTR);
-    impl_value!(MQMCAS, mqsys::MQLONG);
-    define_new_type!(pub MQMCAT, mqsys::MQLONG, mapping::MQMCAT_MAPSTR);
-    impl_value!(MQMCAT, mqsys::MQLONG);
-    define_new_type!(pub MQMCB, mqsys::MQLONG, mapping::MQMCB_MAPSTR);
+    define_new_type!(
+        pub MQMCB, mqsys::MQLONG, mapping::MQMCB_MAPSTR, r##"CommInfo Bridge"##
+    );
     impl_value!(MQMCB, mqsys::MQLONG);
-    define_new_type!(pub MQMCEV, mqsys::MQLONG, mapping::MQMCEV_MAPSTR);
-    impl_value!(MQMCEV, mqsys::MQLONG);
-    define_new_type!(pub MQMCP, mqsys::MQLONG, mapping::MQMCP_MAPSTR);
-    impl_value!(MQMCP, mqsys::MQLONG);
-    define_new_type!(pub MQMC, mqsys::MQLONG, mapping::MQMC_MAPSTR);
+    define_new_type!(pub MQMC, mqsys::MQLONG, mapping::MQMC_MAPSTR, r##"Multicast"##);
     impl_value!(MQMC, mqsys::MQLONG);
-    define_new_type!(pub MQMDEF, mqsys::MQLONG, mapping::MQMDEF_MAPSTR);
+    define_new_type!(
+        pub MQMDEF, mqsys::MQLONG, mapping::MQMDEF_MAPSTR, r##"MQMDE Flags"##
+    );
     impl_value!(MQMDEF, mqsys::MQLONG);
-    define_new_type!(pub MQMDS, mqsys::MQLONG, mapping::MQMDS_MAPSTR);
+    define_new_type!(
+        pub MQMDS, mqsys::MQLONG, mapping::MQMDS_MAPSTR, r##"Message Delivery Sequence"##
+    );
     impl_value!(MQMDS, mqsys::MQLONG);
-    define_new_type!(pub MQMEDIMGINTVL, mqsys::MQLONG, mapping::MQMEDIMGINTVL_MAPSTR);
+    define_new_type!(
+        pub MQMEDIMGINTVL, mqsys::MQLONG, mapping::MQMEDIMGINTVL_MAPSTR,
+        r##"Automatic Media Image Interval"##
+    );
     impl_value!(MQMEDIMGINTVL, mqsys::MQLONG);
-    define_new_type!(pub MQMEDIMGLOGLN, mqsys::MQLONG, mapping::MQMEDIMGLOGLN_MAPSTR);
+    define_new_type!(
+        pub MQMEDIMGLOGLN, mqsys::MQLONG, mapping::MQMEDIMGLOGLN_MAPSTR,
+        r##"Automatic Media Image Log Length"##
+    );
     impl_value!(MQMEDIMGLOGLN, mqsys::MQLONG);
-    define_new_type!(pub MQMEDIMGSCHED, mqsys::MQLONG, mapping::MQMEDIMGSCHED_MAPSTR);
+    define_new_type!(
+        pub MQMEDIMGSCHED, mqsys::MQLONG, mapping::MQMEDIMGSCHED_MAPSTR,
+        r##"Media Image Scheduling"##
+    );
     impl_value!(MQMEDIMGSCHED, mqsys::MQLONG);
     define_new_type!(
         pub MQMF, mqsys::MQLONG, mapping::MQMF_MAPSTR, r##"Message Flags"##
@@ -423,439 +394,399 @@ pub mod types {
     impl_value!(MQMF, mqsys::MQLONG);
     define_new_type!(
         pub MQMHBO, mqsys::MQLONG, mapping::MQMHBO_MAPSTR,
-        r##"Options to control the action of `MQMHBUF`"##
+        r##"Message Handle To Buffer Options"##
     );
     impl_bitflags!(MQMHBO, mqsys::MQLONG);
     define_new_type!(
-        pub MQMLP_ENCRYPTION, mqsys::MQLONG, mapping::MQMLP_ENCRYPTION_MAPSTR
+        pub MQMMBI, mqsys::MQLONG, mapping::MQMMBI_MAPSTR,
+        r##"Message Mark-Browse Interval"##
     );
-    impl_value!(MQMLP_ENCRYPTION, mqsys::MQLONG);
-    define_new_type!(pub MQMLP_SIGN, mqsys::MQLONG, mapping::MQMLP_SIGN_MAPSTR);
-    impl_value!(MQMLP_SIGN, mqsys::MQLONG);
-    define_new_type!(pub MQMLP_TOLERATE, mqsys::MQLONG, mapping::MQMLP_TOLERATE_MAPSTR);
-    impl_value!(MQMLP_TOLERATE, mqsys::MQLONG);
-    define_new_type!(pub MQMMBI, mqsys::MQLONG, mapping::MQMMBI_MAPSTR);
     impl_value!(MQMMBI, mqsys::MQLONG);
-    define_new_type!(pub MQMODE, mqsys::MQLONG, mapping::MQMODE_MAPSTR);
-    impl_value!(MQMODE, mqsys::MQLONG);
-    define_new_type!(pub MQMON, mqsys::MQLONG, mapping::MQMON_MAPSTR);
+    define_new_type!(
+        pub MQMON, mqsys::MQLONG, mapping::MQMON_MAPSTR, r##"Monitoring Values"##
+    );
     impl_value!(MQMON, mqsys::MQLONG);
     define_new_type!(
-        pub MQMON_AVAILABILITY, mqsys::MQLONG, mapping::MQMON_AVAILABILITY_MAPSTR
+        pub MQMON_AVAILABILITY, mqsys::MQLONG, mapping::MQMON_AVAILABILITY_MAPSTR,
+        r##"Monitoring Values"##
     );
     impl_value!(MQMON_AVAILABILITY, mqsys::MQLONG);
-    define_new_type!(pub MQMON_OVERRIDE, mqsys::MQLONG, mapping::MQMON_OVERRIDE_MAPSTR);
+    define_new_type!(
+        pub MQMON_OVERRIDE, mqsys::MQLONG, mapping::MQMON_OVERRIDE_MAPSTR,
+        r##"Monitoring Values"##
+    );
     impl_value!(MQMON_OVERRIDE, mqsys::MQLONG);
     define_new_type!(
         pub MQMO, mqsys::MQLONG, mapping::MQMO_MAPSTR, r##"Match Options"##
     );
     impl_bitflags!(MQMO, mqsys::MQLONG);
-    define_new_type!(pub MQMT, mqsys::MQLONG, mapping::MQMT_MAPSTR);
-    impl_value!(MQMT, mqsys::MQLONG);
-    define_new_type!(pub MQMULC, mqsys::MQLONG, mapping::MQMULC_MAPSTR);
-    impl_value!(MQMULC, mqsys::MQLONG);
-    define_new_type!(pub MQNC, mqsys::MQLONG, mapping::MQNC_MAPSTR);
-    impl_value!(MQNC, mqsys::MQLONG);
-    define_new_type!(pub MQNHABACKLOG, mqsys::MQLONG, mapping::MQNHABACKLOG_MAPSTR);
-    impl_value!(MQNHABACKLOG, mqsys::MQLONG);
-    define_new_type!(pub MQNHACONNACTV, mqsys::MQLONG, mapping::MQNHACONNACTV_MAPSTR);
-    impl_value!(MQNHACONNACTV, mqsys::MQLONG);
-    define_new_type!(pub MQNHACONNGRP, mqsys::MQLONG, mapping::MQNHACONNGRP_MAPSTR);
-    impl_value!(MQNHACONNGRP, mqsys::MQLONG);
-    define_new_type!(pub MQNHAGRPROLE, mqsys::MQLONG, mapping::MQNHAGRPROLE_MAPSTR);
-    impl_value!(MQNHAGRPROLE, mqsys::MQLONG);
-    define_new_type!(pub MQNHAINSYNC, mqsys::MQLONG, mapping::MQNHAINSYNC_MAPSTR);
-    impl_value!(MQNHAINSYNC, mqsys::MQLONG);
-    define_new_type!(pub MQNHAROLE, mqsys::MQLONG, mapping::MQNHAROLE_MAPSTR);
-    impl_value!(MQNHAROLE, mqsys::MQLONG);
-    define_new_type!(pub MQNHASTATUS, mqsys::MQLONG, mapping::MQNHASTATUS_MAPSTR);
-    impl_value!(MQNHASTATUS, mqsys::MQLONG);
-    define_new_type!(pub MQNHATYPE, mqsys::MQLONG, mapping::MQNHATYPE_MAPSTR);
-    impl_value!(MQNHATYPE, mqsys::MQLONG);
-    define_new_type!(pub MQNPMS, mqsys::MQLONG, mapping::MQNPMS_MAPSTR);
-    impl_value!(MQNPMS, mqsys::MQLONG);
-    define_new_type!(pub MQNPM, mqsys::MQLONG, mapping::MQNPM_MAPSTR);
-    impl_value!(MQNPM, mqsys::MQLONG);
-    define_new_type!(pub MQNSH, mqsys::MQLONG, mapping::MQNSH_MAPSTR);
-    impl_value!(MQNSH, mqsys::MQLONG);
-    define_new_type!(pub MQNT, mqsys::MQLONG, mapping::MQNT_MAPSTR);
-    impl_value!(MQNT, mqsys::MQLONG);
-    define_new_type!(pub MQOL, mqsys::MQLONG, mapping::MQOL_MAPSTR);
-    impl_value!(MQOL, mqsys::MQLONG);
-    define_new_type!(pub MQOM, mqsys::MQLONG, mapping::MQOM_MAPSTR);
-    impl_value!(MQOM, mqsys::MQLONG);
     define_new_type!(
-        pub MQOO, mqsys::MQLONG, mapping::MQOO_MAPSTR,
-        r##"Options to control the action of `MQOPEN`"##
+        pub MQMT, mqsys::MQLONG, mapping::MQMT_MAPSTR, r##"Message Types"##
     );
+    impl_value!(MQMT, mqsys::MQLONG);
+    define_new_type!(pub MQNC, mqsys::MQLONG, mapping::MQNC_MAPSTR, r##"Name Count"##);
+    impl_value!(MQNC, mqsys::MQLONG);
+    define_new_type!(
+        pub MQNPM, mqsys::MQLONG, mapping::MQNPM_MAPSTR,
+        r##"Nonpersistent Message Class"##
+    );
+    impl_value!(MQNPM, mqsys::MQLONG);
+    define_new_type!(
+        pub MQNT, mqsys::MQLONG, mapping::MQNT_MAPSTR, r##"Namelist Types"##
+    );
+    impl_value!(MQNT, mqsys::MQLONG);
+    define_new_type!(
+        pub MQOL, mqsys::MQLONG, mapping::MQOL_MAPSTR, r##"Original Length"##
+    );
+    impl_value!(MQOL, mqsys::MQLONG);
+    define_new_type!(
+        pub MQOM, mqsys::MQLONG, mapping::MQOM_MAPSTR,
+        r##"Obsolete DB2 Messages options on Inquire Group"##
+    );
+    impl_value!(MQOM, mqsys::MQLONG);
+    define_new_type!(pub MQOO, mqsys::MQLONG, mapping::MQOO_MAPSTR, r##"Open Options"##);
     impl_bitflags!(MQOO, mqsys::MQLONG);
-    define_new_type!(pub MQOPER, mqsys::MQLONG, mapping::MQOPER_MAPSTR);
-    impl_value!(MQOPER, mqsys::MQLONG);
-    define_new_type!(pub MQOPMODE, mqsys::MQLONG, mapping::MQOPMODE_MAPSTR);
-    impl_value!(MQOPMODE, mqsys::MQLONG);
     define_new_type!(
         pub MQOP, mqsys::MQLONG, mapping::MQOP_MAPSTR,
-        r##"Operation codes for `MQCTL` and `MQCB`"##
+        r##"Operation codes for MQCTL and MQCB"##
     );
     impl_bitflags!(MQOP, mqsys::MQLONG);
     define_new_type!(
-        pub MQOT, mqsys::MQLONG, mapping::MQOT_MAPSTR,
-        r##"Object Types and Extended Object Types"##
+        pub MQOT, mqsys::MQLONG, mapping::MQOT_MAPSTR, r##"Extended Object Types"##
     );
     impl_value!(MQOT, mqsys::MQLONG);
-    define_new_type!(pub MQPAGECLAS, mqsys::MQLONG, mapping::MQPAGECLAS_MAPSTR);
-    impl_value!(MQPAGECLAS, mqsys::MQLONG);
-    define_new_type!(pub MQPA, mqsys::MQLONG, mapping::MQPA_MAPSTR);
-    impl_value!(MQPA, mqsys::MQLONG);
     define_new_type!(
-        pub MQPD, mqsys::MQLONG, mapping::MQPD_MAPSTR,
-        r##"Property descriptor, support and context"##
+        pub MQPD, mqsys::MQLONG, mapping::MQPD_MAPSTR, r##"Property Context"##
     );
     impl_value!(MQPD, mqsys::MQLONG);
-    define_new_type!(pub MQPER, mqsys::MQLONG, mapping::MQPER_MAPSTR);
+    define_new_type!(
+        pub MQPER, mqsys::MQLONG, mapping::MQPER_MAPSTR, r##"Persistence Values"##
+    );
     impl_value!(MQPER, mqsys::MQLONG);
-    define_new_type!(pub MQPL, mqsys::MQLONG, mapping::MQPL_MAPSTR);
+    define_new_type!(pub MQPL, mqsys::MQLONG, mapping::MQPL_MAPSTR, r##"Platforms"##);
     impl_value!(MQPL, mqsys::MQLONG);
     define_new_type!(
         pub MQPMO, mqsys::MQLONG, mapping::MQPMO_MAPSTR,
-        r##"Options to control the action of `MQPUT` and `MQPUT1`"##
+        r##"Put Message Options for publish mask"##
     );
     impl_bitflags!(MQPMO, mqsys::MQLONG);
-    define_new_type!(pub MQPMRF, mqsys::MQLONG, mapping::MQPMRF_MAPSTR);
-    impl_value!(MQPMRF, mqsys::MQLONG);
-    define_new_type!(pub MQPO, mqsys::MQLONG, mapping::MQPO_MAPSTR);
-    impl_value!(MQPO, mqsys::MQLONG);
-    define_new_type!(pub MQPRI, mqsys::MQLONG, mapping::MQPRI_MAPSTR);
-    impl_value!(MQPRI, mqsys::MQLONG);
-    define_new_type!(pub MQPROP, mqsys::MQLONG, mapping::MQPROP_MAPSTR);
-    impl_value!(MQPROP, mqsys::MQLONG);
-    define_new_type!(pub MQPROTO, mqsys::MQLONG, mapping::MQPROTO_MAPSTR);
-    impl_value!(MQPROTO, mqsys::MQLONG);
-    define_new_type!(pub MQPRT, mqsys::MQLONG, mapping::MQPRT_MAPSTR);
-    impl_value!(MQPRT, mqsys::MQLONG);
-    define_new_type!(pub MQPSCLUS, mqsys::MQLONG, mapping::MQPSCLUS_MAPSTR);
-    impl_value!(MQPSCLUS, mqsys::MQLONG);
-    define_new_type!(pub MQPSCT, mqsys::MQLONG, mapping::MQPSCT_MAPSTR);
-    impl_value!(MQPSCT, mqsys::MQLONG);
-    define_new_type!(pub MQPSM, mqsys::MQLONG, mapping::MQPSM_MAPSTR);
-    impl_value!(MQPSM, mqsys::MQLONG);
-    define_new_type!(pub MQPSPROP, mqsys::MQLONG, mapping::MQPSPROP_MAPSTR);
-    impl_value!(MQPSPROP, mqsys::MQLONG);
-    define_new_type!(pub MQPSST, mqsys::MQLONG, mapping::MQPSST_MAPSTR);
-    impl_value!(MQPSST, mqsys::MQLONG);
-    define_new_type!(pub MQQA_BACKOUT, mqsys::MQLONG, mapping::MQQA_BACKOUT_MAPSTR);
-    impl_value!(MQQA_BACKOUT, mqsys::MQLONG);
-    define_new_type!(pub MQQA_GET, mqsys::MQLONG, mapping::MQQA_GET_MAPSTR);
-    impl_value!(MQQA_GET, mqsys::MQLONG);
-    define_new_type!(pub MQQA_PUT, mqsys::MQLONG, mapping::MQQA_PUT_MAPSTR);
-    impl_value!(MQQA_PUT, mqsys::MQLONG);
-    define_new_type!(pub MQQA_SHAREABLE, mqsys::MQLONG, mapping::MQQA_SHAREABLE_MAPSTR);
-    impl_value!(MQQA_SHAREABLE, mqsys::MQLONG);
-    define_new_type!(pub MQQDT, mqsys::MQLONG, mapping::MQQDT_MAPSTR);
-    impl_value!(MQQDT, mqsys::MQLONG);
-    define_new_type!(pub MQQFS, mqsys::MQLONG, mapping::MQQFS_MAPSTR);
-    impl_value!(MQQFS, mqsys::MQLONG);
-    define_new_type!(pub MQQF, mqsys::MQLONG, mapping::MQQF_MAPSTR);
-    impl_value!(MQQF, mqsys::MQLONG);
-    define_new_type!(pub MQQMDT, mqsys::MQLONG, mapping::MQQMDT_MAPSTR);
-    impl_value!(MQQMDT, mqsys::MQLONG);
-    define_new_type!(pub MQQMFAC, mqsys::MQLONG, mapping::MQQMFAC_MAPSTR);
-    impl_value!(MQQMFAC, mqsys::MQLONG);
-    define_new_type!(pub MQQMOPT, mqsys::MQLONG, mapping::MQQMOPT_MAPSTR);
-    impl_value!(MQQMOPT, mqsys::MQLONG);
-    define_new_type!(pub MQQMSTA, mqsys::MQLONG, mapping::MQQMSTA_MAPSTR);
-    impl_value!(MQQMSTA, mqsys::MQLONG);
-    define_new_type!(pub MQQMT, mqsys::MQLONG, mapping::MQQMT_MAPSTR);
-    impl_value!(MQQMT, mqsys::MQLONG);
-    define_new_type!(pub MQQO, mqsys::MQLONG, mapping::MQQO_MAPSTR);
-    impl_value!(MQQO, mqsys::MQLONG);
-    define_new_type!(pub MQQSGD, mqsys::MQLONG, mapping::MQQSGD_MAPSTR);
-    impl_value!(MQQSGD, mqsys::MQLONG);
-    define_new_type!(pub MQQSGS, mqsys::MQLONG, mapping::MQQSGS_MAPSTR);
-    impl_value!(MQQSGS, mqsys::MQLONG);
-    define_new_type!(pub MQQSIE, mqsys::MQLONG, mapping::MQQSIE_MAPSTR);
-    impl_value!(MQQSIE, mqsys::MQLONG);
-    define_new_type!(pub MQQSOT, mqsys::MQLONG, mapping::MQQSOT_MAPSTR);
-    impl_value!(MQQSOT, mqsys::MQLONG);
-    define_new_type!(pub MQQSO, mqsys::MQLONG, mapping::MQQSO_MAPSTR);
-    impl_value!(MQQSO, mqsys::MQLONG);
-    define_new_type!(pub MQQSUM, mqsys::MQLONG, mapping::MQQSUM_MAPSTR);
-    impl_value!(MQQSUM, mqsys::MQLONG);
     define_new_type!(
-        pub MQQT, mqsys::MQLONG, mapping::MQQT_MAPSTR,
-        r##"Queue Types and Extended Queue Types"##
+        pub MQPMRF, mqsys::MQLONG, mapping::MQPMRF_MAPSTR,
+        r##"Put Message Record Fields"##
+    );
+    impl_value!(MQPMRF, mqsys::MQLONG);
+    define_new_type!(pub MQPRI, mqsys::MQLONG, mapping::MQPRI_MAPSTR, r##"Priority"##);
+    impl_value!(MQPRI, mqsys::MQLONG);
+    define_new_type!(
+        pub MQPROP, mqsys::MQLONG, mapping::MQPROP_MAPSTR,
+        r##"Queue and Channel Property Control Values"##
+    );
+    impl_value!(MQPROP, mqsys::MQLONG);
+    define_new_type!(
+        pub MQPRT, mqsys::MQLONG, mapping::MQPRT_MAPSTR, r##"Put Response Values"##
+    );
+    impl_value!(MQPRT, mqsys::MQLONG);
+    define_new_type!(
+        pub MQPSCLUS, mqsys::MQLONG, mapping::MQPSCLUS_MAPSTR, r##"Pub/Sub clusters"##
+    );
+    impl_value!(MQPSCLUS, mqsys::MQLONG);
+    define_new_type!(
+        pub MQPSM, mqsys::MQLONG, mapping::MQPSM_MAPSTR, r##"Pub/Sub Mode"##
+    );
+    impl_value!(MQPSM, mqsys::MQLONG);
+    define_new_type!(
+        pub MQPSPROP, mqsys::MQLONG, mapping::MQPSPROP_MAPSTR,
+        r##"Pub/Sub Message Properties"##
+    );
+    impl_value!(MQPSPROP, mqsys::MQLONG);
+    define_new_type!(
+        pub MQQA_BACKOUT, mqsys::MQLONG, mapping::MQQA_BACKOUT_MAPSTR,
+        r##"Back-Out Hardening"##
+    );
+    impl_value!(MQQA_BACKOUT, mqsys::MQLONG);
+    define_new_type!(
+        pub MQQA_GET, mqsys::MQLONG, mapping::MQQA_GET_MAPSTR, r##"Inhibit Get Values"##
+    );
+    impl_value!(MQQA_GET, mqsys::MQLONG);
+    define_new_type!(
+        pub MQQA_PUT, mqsys::MQLONG, mapping::MQQA_PUT_MAPSTR, r##"Inhibit Put Values"##
+    );
+    impl_value!(MQQA_PUT, mqsys::MQLONG);
+    define_new_type!(
+        pub MQQA_SHAREABLE, mqsys::MQLONG, mapping::MQQA_SHAREABLE_MAPSTR,
+        r##"Queue Shareability"##
+    );
+    impl_value!(MQQA_SHAREABLE, mqsys::MQLONG);
+    define_new_type!(
+        pub MQQDT, mqsys::MQLONG, mapping::MQQDT_MAPSTR, r##"Queue Definition Types"##
+    );
+    impl_value!(MQQDT, mqsys::MQLONG);
+    define_new_type!(
+        pub MQQFS, mqsys::MQLONG, mapping::MQQFS_MAPSTR,
+        r##"Max queue file size values"##
+    );
+    impl_value!(MQQFS, mqsys::MQLONG);
+    define_new_type!(
+        pub MQQMOPT, mqsys::MQLONG, mapping::MQQMOPT_MAPSTR, r##"Control Options"##
+    );
+    impl_value!(MQQMOPT, mqsys::MQLONG);
+    define_new_type!(
+        pub MQQSGD, mqsys::MQLONG, mapping::MQQSGD_MAPSTR,
+        r##"Queue Sharing Group Dispositions"##
+    );
+    impl_value!(MQQSGD, mqsys::MQLONG);
+    define_new_type!(
+        pub MQQT, mqsys::MQLONG, mapping::MQQT_MAPSTR, r##"Extended Queue Types"##
     );
     impl_value!(MQQT, mqsys::MQLONG);
-    define_new_type!(pub MQRAR, mqsys::MQLONG, mapping::MQRAR_MAPSTR);
-    impl_value!(MQRAR, mqsys::MQLONG);
-    define_new_type!(pub MQRCN, mqsys::MQLONG, mapping::MQRCN_MAPSTR);
-    impl_value!(MQRCN, mqsys::MQLONG);
-    define_new_type!(pub MQRCVTIME, mqsys::MQLONG, mapping::MQRCVTIME_MAPSTR);
-    impl_value!(MQRCVTIME, mqsys::MQLONG);
     define_new_type!(
-        pub MQRC, mqsys::MQLONG, mapping::MQRC_MAPSTR,
-        r##"Reason Code from an MQ function call"##
+        pub MQRCN, mqsys::MQLONG, mapping::MQRCN_MAPSTR, r##"Client Reconnect"##
     );
+    impl_value!(MQRCN, mqsys::MQLONG);
+    define_new_type!(
+        pub MQRCVTIME, mqsys::MQLONG, mapping::MQRCVTIME_MAPSTR,
+        r##"Receive Timeout Types"##
+    );
+    impl_value!(MQRCVTIME, mqsys::MQLONG);
+    define_new_type!(pub MQRC, mqsys::MQLONG, mapping::MQRC_MAPSTR, r##"Reason Codes"##);
     impl_value!(MQRC, mqsys::MQLONG);
-    define_new_type!(pub MQRDNS, mqsys::MQLONG, mapping::MQRDNS_MAPSTR);
-    impl_value!(MQRDNS, mqsys::MQLONG);
     define_new_type!(
         pub MQRD, mqsys::MQLONG, mapping::MQRD_MAPSTR, r##"Reconnect delay"##
     );
     impl_value!(MQRD, mqsys::MQLONG);
-    define_new_type!(pub MQREADA, mqsys::MQLONG, mapping::MQREADA_MAPSTR);
-    impl_value!(MQREADA, mqsys::MQLONG);
-    define_new_type!(pub MQRECAUTO, mqsys::MQLONG, mapping::MQRECAUTO_MAPSTR);
-    impl_value!(MQRECAUTO, mqsys::MQLONG);
-    define_new_type!(pub MQRECORDING, mqsys::MQLONG, mapping::MQRECORDING_MAPSTR);
-    impl_value!(MQRECORDING, mqsys::MQLONG);
-    define_new_type!(pub MQREORG, mqsys::MQLONG, mapping::MQREORG_MAPSTR);
-    impl_value!(MQREORG, mqsys::MQLONG);
-    define_new_type!(pub MQRFH, mqsys::MQLONG, mapping::MQRFH_MAPSTR);
-    impl_value!(MQRFH, mqsys::MQLONG);
-    define_new_type!(pub MQRL, mqsys::MQLONG, mapping::MQRL_MAPSTR);
-    impl_value!(MQRL, mqsys::MQLONG);
-    define_new_type!(pub MQRMHF, mqsys::MQLONG, mapping::MQRMHF_MAPSTR);
-    impl_value!(MQRMHF, mqsys::MQLONG);
-    define_new_type!(pub MQROUTE, mqsys::MQLONG, mapping::MQROUTE_MAPSTR);
-    impl_value!(MQROUTE, mqsys::MQLONG);
     define_new_type!(
-        pub MQRO, mqsys::MQLONG, mapping::MQRO_MAPSTR, r##"Report Options"##
+        pub MQREADA, mqsys::MQLONG, mapping::MQREADA_MAPSTR, r##"Read Ahead Values"##
+    );
+    impl_value!(MQREADA, mqsys::MQLONG);
+    define_new_type!(
+        pub MQRECAUTO, mqsys::MQLONG, mapping::MQRECAUTO_MAPSTR,
+        r##"CF Automatic Recovery"##
+    );
+    impl_value!(MQRECAUTO, mqsys::MQLONG);
+    define_new_type!(
+        pub MQRECORDING, mqsys::MQLONG, mapping::MQRECORDING_MAPSTR,
+        r##"Recording Options"##
+    );
+    impl_value!(MQRECORDING, mqsys::MQLONG);
+    define_new_type!(
+        pub MQREORG, mqsys::MQLONG, mapping::MQREORG_MAPSTR,
+        r##"Reorganization Controls"##
+    );
+    impl_value!(MQREORG, mqsys::MQLONG);
+    define_new_type!(
+        pub MQRFH, mqsys::MQLONG, mapping::MQRFH_MAPSTR, r##"MQRFH Flags"##
+    );
+    impl_value!(MQRFH, mqsys::MQLONG);
+    define_new_type!(
+        pub MQRL, mqsys::MQLONG, mapping::MQRL_MAPSTR, r##"Returned Length"##
+    );
+    impl_value!(MQRL, mqsys::MQLONG);
+    define_new_type!(
+        pub MQRMHF, mqsys::MQLONG, mapping::MQRMHF_MAPSTR, r##"MQRMH Flags"##
+    );
+    impl_value!(MQRMHF, mqsys::MQLONG);
+    define_new_type!(
+        pub MQRO, mqsys::MQLONG, mapping::MQRO_MAPSTR, r##"Report Options Masks"##
     );
     impl_bitflags!(MQRO, mqsys::MQLONG);
-    define_new_type!(pub MQRP, mqsys::MQLONG, mapping::MQRP_MAPSTR);
-    impl_value!(MQRP, mqsys::MQLONG);
-    define_new_type!(pub MQRQ, mqsys::MQLONG, mapping::MQRQ_MAPSTR);
-    impl_value!(MQRQ, mqsys::MQLONG);
-    define_new_type!(pub MQRT, mqsys::MQLONG, mapping::MQRT_MAPSTR);
-    impl_value!(MQRT, mqsys::MQLONG);
-    define_new_type!(pub MQRU, mqsys::MQLONG, mapping::MQRU_MAPSTR);
+    define_new_type!(pub MQRU, mqsys::MQLONG, mapping::MQRU_MAPSTR, r##"Request Only"##);
     impl_value!(MQRU, mqsys::MQLONG);
-    define_new_type!(pub MQSCA, mqsys::MQLONG, mapping::MQSCA_MAPSTR);
-    impl_value!(MQSCA, mqsys::MQLONG);
-    define_new_type!(pub MQSCOPE, mqsys::MQLONG, mapping::MQSCOPE_MAPSTR);
+    define_new_type!(
+        pub MQSCOPE, mqsys::MQLONG, mapping::MQSCOPE_MAPSTR, r##"Publish scope"##
+    );
     impl_value!(MQSCOPE, mqsys::MQLONG);
-    define_new_type!(pub MQSCO, mqsys::MQLONG, mapping::MQSCO_MAPSTR);
+    define_new_type!(
+        pub MQSCO, mqsys::MQLONG, mapping::MQSCO_MAPSTR, r##"Key Reset Count"##
+    );
     impl_value!(MQSCO, mqsys::MQLONG);
-    define_new_type!(pub MQSCYC, mqsys::MQLONG, mapping::MQSCYC_MAPSTR);
+    define_new_type!(
+        pub MQSCYC, mqsys::MQLONG, mapping::MQSCYC_MAPSTR, r##"Security Case"##
+    );
     impl_value!(MQSCYC, mqsys::MQLONG);
-    define_new_type!(pub MQSECCOMM, mqsys::MQLONG, mapping::MQSECCOMM_MAPSTR);
-    impl_value!(MQSECCOMM, mqsys::MQLONG);
-    define_new_type!(pub MQSECITEM, mqsys::MQLONG, mapping::MQSECITEM_MAPSTR);
-    impl_value!(MQSECITEM, mqsys::MQLONG);
-    define_new_type!(pub MQSECPROT, mqsys::MQLONG, mapping::MQSECPROT_MAPSTR);
-    impl_value!(MQSECPROT, mqsys::MQLONG);
-    define_new_type!(pub MQSECSW, mqsys::MQLONG, mapping::MQSECSW_MAPSTR);
-    impl_value!(MQSECSW, mqsys::MQLONG);
-    define_new_type!(pub MQSECTYPE, mqsys::MQLONG, mapping::MQSECTYPE_MAPSTR);
-    impl_value!(MQSECTYPE, mqsys::MQLONG);
-    define_new_type!(pub MQSELTYPE, mqsys::MQLONG, mapping::MQSELTYPE_MAPSTR);
-    impl_value!(MQSELTYPE, mqsys::MQLONG);
     define_new_type!(
         pub MQSMPO, mqsys::MQLONG, mapping::MQSMPO_MAPSTR,
-        r##"Set message property options"##
+        r##"Set Message Property Options"##
     );
     impl_value!(MQSMPO, mqsys::MQLONG);
     define_new_type!(
-        pub MQSO, mqsys::MQLONG, mapping::MQSO_MAPSTR,
-        r##"Options to control the action of `MQSUB`"##
+        pub MQSO, mqsys::MQLONG, mapping::MQSO_MAPSTR, r##"Subscribe Options"##
     );
     impl_bitflags!(MQSO, mqsys::MQLONG);
-    define_new_type!(pub MQSPL, mqsys::MQLONG, mapping::MQSPL_MAPSTR);
-    impl_value!(MQSPL, mqsys::MQLONG);
-    define_new_type!(pub MQSP, mqsys::MQLONG, mapping::MQSP_MAPSTR);
+    define_new_type!(
+        pub MQSP, mqsys::MQLONG, mapping::MQSP_MAPSTR, r##"Syncpoint Availability"##
+    );
     impl_value!(MQSP, mqsys::MQLONG);
-    define_new_type!(pub MQSQQM, mqsys::MQLONG, mapping::MQSQQM_MAPSTR);
+    define_new_type!(
+        pub MQSQQM, mqsys::MQLONG, mapping::MQSQQM_MAPSTR,
+        r##"Shared Queue Queue Manager Name"##
+    );
     impl_value!(MQSQQM, mqsys::MQLONG);
     define_new_type!(
         pub MQSRO, mqsys::MQLONG, mapping::MQSRO_MAPSTR,
-        r##"Options that control the action of `MQSUBRQ`"##
+        r##"Subscription Request Options"##
     );
     impl_bitflags!(MQSRO, mqsys::MQLONG);
-    define_new_type!(
-        pub MQSR, mqsys::MQLONG, mapping::MQSR_MAPSTR,
-        r##"Value describing action for `MQSUBRQ`"##
-    );
+    define_new_type!(pub MQSR, mqsys::MQLONG, mapping::MQSR_MAPSTR, r##"Action"##);
     impl_value!(MQSR, mqsys::MQLONG);
-    define_new_type!(pub MQSSL, mqsys::MQLONG, mapping::MQSSL_MAPSTR);
+    define_new_type!(
+        pub MQSSL, mqsys::MQLONG, mapping::MQSSL_MAPSTR, r##"SSL FIPS Requirements"##
+    );
     impl_value!(MQSSL, mqsys::MQLONG);
     define_new_type!(
-        pub MQSTAT, mqsys::MQLONG, mapping::MQSTAT_MAPSTR,
-        r##"Value describing the MQSTAT outcome"##
+        pub MQSTAT, mqsys::MQLONG, mapping::MQSTAT_MAPSTR, r##"Stat Options"##
     );
     impl_value!(MQSTAT, mqsys::MQLONG);
-    define_new_type!(pub MQSTDBY, mqsys::MQLONG, mapping::MQSTDBY_MAPSTR);
-    impl_value!(MQSTDBY, mqsys::MQLONG);
-    define_new_type!(pub MQST, mqsys::MQLONG, mapping::MQST_MAPSTR);
+    define_new_type!(
+        pub MQST, mqsys::MQLONG, mapping::MQST_MAPSTR,
+        r##"Streaming Queue Quality of Service Values"##
+    );
     impl_value!(MQST, mqsys::MQLONG);
-    define_new_type!(pub MQSUBTYPE, mqsys::MQLONG, mapping::MQSUBTYPE_MAPSTR);
-    impl_value!(MQSUBTYPE, mqsys::MQLONG);
-    define_new_type!(pub MQSUB, mqsys::MQLONG, mapping::MQSUB_MAPSTR);
+    define_new_type!(
+        pub MQSUB, mqsys::MQLONG, mapping::MQSUB_MAPSTR, r##"Durable subscriptions"##
+    );
     impl_value!(MQSUB, mqsys::MQLONG);
     define_new_type!(
-        pub MQSUB_DURABILITY, mqsys::MQLONG, mapping::MQSUB_DURABILITY_MAPSTR
+        pub MQSUB_DURABILITY, mqsys::MQLONG, mapping::MQSUB_DURABILITY_MAPSTR,
+        r##"Durable Subscriptions"##
     );
     impl_value!(MQSUB_DURABILITY, mqsys::MQLONG);
-    define_new_type!(pub MQSUS, mqsys::MQLONG, mapping::MQSUS_MAPSTR);
-    impl_value!(MQSUS, mqsys::MQLONG);
-    define_new_type!(pub MQSVC_CONTROL, mqsys::MQLONG, mapping::MQSVC_CONTROL_MAPSTR);
+    define_new_type!(
+        pub MQSVC_CONTROL, mqsys::MQLONG, mapping::MQSVC_CONTROL_MAPSTR,
+        r##"Service Controls"##
+    );
     impl_value!(MQSVC_CONTROL, mqsys::MQLONG);
-    define_new_type!(pub MQSVC_STATUS, mqsys::MQLONG, mapping::MQSVC_STATUS_MAPSTR);
+    define_new_type!(
+        pub MQSVC_STATUS, mqsys::MQLONG, mapping::MQSVC_STATUS_MAPSTR,
+        r##"Service Status"##
+    );
     impl_value!(MQSVC_STATUS, mqsys::MQLONG);
-    define_new_type!(pub MQSVC_TYPE, mqsys::MQLONG, mapping::MQSVC_TYPE_MAPSTR);
+    define_new_type!(
+        pub MQSVC_TYPE, mqsys::MQLONG, mapping::MQSVC_TYPE_MAPSTR, r##"Service Types"##
+    );
     impl_value!(MQSVC_TYPE, mqsys::MQLONG);
-    define_new_type!(pub MQSYNCPOINT, mqsys::MQLONG, mapping::MQSYNCPOINT_MAPSTR);
-    impl_value!(MQSYNCPOINT, mqsys::MQLONG);
-    define_new_type!(pub MQSYSOBJ, mqsys::MQLONG, mapping::MQSYSOBJ_MAPSTR);
-    impl_value!(MQSYSOBJ, mqsys::MQLONG);
-    define_new_type!(pub MQSYSP, mqsys::MQLONG, mapping::MQSYSP_MAPSTR);
-    impl_value!(MQSYSP, mqsys::MQLONG);
-    define_new_type!(pub MQS_AVAIL, mqsys::MQLONG, mapping::MQS_AVAIL_MAPSTR);
-    impl_value!(MQS_AVAIL, mqsys::MQLONG);
-    define_new_type!(pub MQS_EXPANDST, mqsys::MQLONG, mapping::MQS_EXPANDST_MAPSTR);
-    impl_value!(MQS_EXPANDST, mqsys::MQLONG);
-    define_new_type!(pub MQS_OPENMODE, mqsys::MQLONG, mapping::MQS_OPENMODE_MAPSTR);
-    impl_value!(MQS_OPENMODE, mqsys::MQLONG);
-    define_new_type!(pub MQS_STATUS, mqsys::MQLONG, mapping::MQS_STATUS_MAPSTR);
-    impl_value!(MQS_STATUS, mqsys::MQLONG);
-    define_new_type!(pub MQTA, mqsys::MQLONG, mapping::MQTA_MAPSTR);
+    define_new_type!(pub MQTA, mqsys::MQLONG, mapping::MQTA_MAPSTR, r##"Wildcards"##);
     impl_value!(MQTA, mqsys::MQLONG);
-    define_new_type!(pub MQTA_PROXY, mqsys::MQLONG, mapping::MQTA_PROXY_MAPSTR);
+    define_new_type!(
+        pub MQTA_PROXY, mqsys::MQLONG, mapping::MQTA_PROXY_MAPSTR,
+        r##"Proxy Sub Propagation"##
+    );
     impl_value!(MQTA_PROXY, mqsys::MQLONG);
-    define_new_type!(pub MQTA_PUB, mqsys::MQLONG, mapping::MQTA_PUB_MAPSTR);
+    define_new_type!(
+        pub MQTA_PUB, mqsys::MQLONG, mapping::MQTA_PUB_MAPSTR,
+        r##"Publications Allowed"##
+    );
     impl_value!(MQTA_PUB, mqsys::MQLONG);
-    define_new_type!(pub MQTA_SUB, mqsys::MQLONG, mapping::MQTA_SUB_MAPSTR);
+    define_new_type!(
+        pub MQTA_SUB, mqsys::MQLONG, mapping::MQTA_SUB_MAPSTR,
+        r##"Subscriptions Allowed"##
+    );
     impl_value!(MQTA_SUB, mqsys::MQLONG);
-    define_new_type!(pub MQTCPKEEP, mqsys::MQLONG, mapping::MQTCPKEEP_MAPSTR);
+    define_new_type!(
+        pub MQTCPKEEP, mqsys::MQLONG, mapping::MQTCPKEEP_MAPSTR, r##"TCP Keepalive"##
+    );
     impl_value!(MQTCPKEEP, mqsys::MQLONG);
-    define_new_type!(pub MQTCPSTACK, mqsys::MQLONG, mapping::MQTCPSTACK_MAPSTR);
+    define_new_type!(
+        pub MQTCPSTACK, mqsys::MQLONG, mapping::MQTCPSTACK_MAPSTR, r##"TCP Stack Types"##
+    );
     impl_value!(MQTCPSTACK, mqsys::MQLONG);
-    define_new_type!(pub MQTC, mqsys::MQLONG, mapping::MQTC_MAPSTR);
+    define_new_type!(
+        pub MQTC, mqsys::MQLONG, mapping::MQTC_MAPSTR, r##"Trigger Controls"##
+    );
     impl_value!(MQTC, mqsys::MQLONG);
-    define_new_type!(pub MQTIME, mqsys::MQLONG, mapping::MQTIME_MAPSTR);
-    impl_value!(MQTIME, mqsys::MQLONG);
-    define_new_type!(pub MQTOPT, mqsys::MQLONG, mapping::MQTOPT_MAPSTR);
+    define_new_type!(
+        pub MQTOPT, mqsys::MQLONG, mapping::MQTOPT_MAPSTR, r##"Topic Type"##
+    );
     impl_value!(MQTOPT, mqsys::MQLONG);
-    define_new_type!(pub MQTRAXSTR, mqsys::MQLONG, mapping::MQTRAXSTR_MAPSTR);
+    define_new_type!(
+        pub MQTRAXSTR, mqsys::MQLONG, mapping::MQTRAXSTR_MAPSTR,
+        r##"Channel Initiator Trace Autostart"##
+    );
     impl_value!(MQTRAXSTR, mqsys::MQLONG);
-    define_new_type!(pub MQTRIGGER, mqsys::MQLONG, mapping::MQTRIGGER_MAPSTR);
+    define_new_type!(
+        pub MQTRIGGER, mqsys::MQLONG, mapping::MQTRIGGER_MAPSTR, r##"Trigger Restart"##
+    );
     impl_value!(MQTRIGGER, mqsys::MQLONG);
-    define_new_type!(pub MQTSCOPE, mqsys::MQLONG, mapping::MQTSCOPE_MAPSTR);
+    define_new_type!(
+        pub MQTSCOPE, mqsys::MQLONG, mapping::MQTSCOPE_MAPSTR, r##"Subscription Scope"##
+    );
     impl_value!(MQTSCOPE, mqsys::MQLONG);
-    define_new_type!(pub MQTT, mqsys::MQLONG, mapping::MQTT_MAPSTR);
+    define_new_type!(
+        pub MQTT, mqsys::MQLONG, mapping::MQTT_MAPSTR, r##"Trigger Types"##
+    );
     impl_value!(MQTT, mqsys::MQLONG);
     define_new_type!(
         pub MQTYPE, mqsys::MQLONG, mapping::MQTYPE_MAPSTR, r##"Property data types"##
     );
     impl_value!(MQTYPE, mqsys::MQLONG);
-    define_new_type!(pub MQUCI, mqsys::MQLONG, mapping::MQUCI_MAPSTR);
-    impl_value!(MQUCI, mqsys::MQLONG);
-    define_new_type!(pub MQUIDSUPP, mqsys::MQLONG, mapping::MQUIDSUPP_MAPSTR);
-    impl_value!(MQUIDSUPP, mqsys::MQLONG);
-    define_new_type!(pub MQUNDELIVERED, mqsys::MQLONG, mapping::MQUNDELIVERED_MAPSTR);
-    impl_value!(MQUNDELIVERED, mqsys::MQLONG);
-    define_new_type!(pub MQUOWST, mqsys::MQLONG, mapping::MQUOWST_MAPSTR);
-    impl_value!(MQUOWST, mqsys::MQLONG);
-    define_new_type!(pub MQUOWT, mqsys::MQLONG, mapping::MQUOWT_MAPSTR);
-    impl_value!(MQUOWT, mqsys::MQLONG);
-    define_new_type!(pub MQUSAGE_DS, mqsys::MQLONG, mapping::MQUSAGE_DS_MAPSTR);
-    impl_value!(MQUSAGE_DS, mqsys::MQLONG);
-    define_new_type!(pub MQUSAGE_EXPAND, mqsys::MQLONG, mapping::MQUSAGE_EXPAND_MAPSTR);
-    impl_value!(MQUSAGE_EXPAND, mqsys::MQLONG);
-    define_new_type!(pub MQUSAGE_PS, mqsys::MQLONG, mapping::MQUSAGE_PS_MAPSTR);
-    impl_value!(MQUSAGE_PS, mqsys::MQLONG);
-    define_new_type!(pub MQUSAGE_SMDS, mqsys::MQLONG, mapping::MQUSAGE_SMDS_MAPSTR);
-    impl_value!(MQUSAGE_SMDS, mqsys::MQLONG);
-    define_new_type!(pub MQUSEDLQ, mqsys::MQLONG, mapping::MQUSEDLQ_MAPSTR);
+    define_new_type!(
+        pub MQUSEDLQ, mqsys::MQLONG, mapping::MQUSEDLQ_MAPSTR,
+        r##"Use Dead Letter Queue Options"##
+    );
     impl_value!(MQUSEDLQ, mqsys::MQLONG);
-    define_new_type!(pub MQUSRC, mqsys::MQLONG, mapping::MQUSRC_MAPSTR);
+    define_new_type!(
+        pub MQUSRC, mqsys::MQLONG, mapping::MQUSRC_MAPSTR, r##"User Source Options"##
+    );
     impl_value!(MQUSRC, mqsys::MQLONG);
-    define_new_type!(pub MQUS, mqsys::MQLONG, mapping::MQUS_MAPSTR);
+    define_new_type!(pub MQUS, mqsys::MQLONG, mapping::MQUS_MAPSTR, r##"Queue Usages"##);
     impl_value!(MQUS, mqsys::MQLONG);
-    define_new_type!(pub MQVL, mqsys::MQLONG, mapping::MQVL_MAPSTR);
+    define_new_type!(
+        pub MQVL, mqsys::MQLONG, mapping::MQVL_MAPSTR, r##"Property value lengths"##
+    );
     impl_value!(MQVL, mqsys::MQLONG);
-    define_new_type!(pub MQVS, mqsys::MQLONG, mapping::MQVS_MAPSTR);
+    define_new_type!(
+        pub MQVS, mqsys::MQLONG, mapping::MQVS_MAPSTR, r##"Variable String Length"##
+    );
     impl_value!(MQVS, mqsys::MQLONG);
-    define_new_type!(pub MQVU, mqsys::MQLONG, mapping::MQVU_MAPSTR);
+    define_new_type!(
+        pub MQVU, mqsys::MQLONG, mapping::MQVU_MAPSTR, r##"Variable User ID"##
+    );
     impl_value!(MQVU, mqsys::MQLONG);
-    define_new_type!(pub MQWARN, mqsys::MQLONG, mapping::MQWARN_MAPSTR);
+    define_new_type!(
+        pub MQWARN, mqsys::MQLONG, mapping::MQWARN_MAPSTR, r##"Warn Options"##
+    );
     impl_value!(MQWARN, mqsys::MQLONG);
-    define_new_type!(pub MQWIH, mqsys::MQLONG, mapping::MQWIH_MAPSTR);
+    define_new_type!(
+        pub MQWIH, mqsys::MQLONG, mapping::MQWIH_MAPSTR, r##"MQWIH Flags"##
+    );
     impl_value!(MQWIH, mqsys::MQLONG);
-    define_new_type!(pub MQWI, mqsys::MQLONG, mapping::MQWI_MAPSTR);
+    define_new_type!(
+        pub MQWI, mqsys::MQLONG, mapping::MQWI_MAPSTR, r##"Wait Interval"##
+    );
     impl_value!(MQWI, mqsys::MQLONG);
-    define_new_type!(pub MQWS, mqsys::MQLONG, mapping::MQWS_MAPSTR);
+    define_new_type!(
+        pub MQWS, mqsys::MQLONG, mapping::MQWS_MAPSTR, r##"Wildcard Schema"##
+    );
     impl_value!(MQWS, mqsys::MQLONG);
-    define_new_type!(pub MQWXP, mqsys::MQLONG, mapping::MQWXP_MAPSTR);
-    impl_value!(MQWXP, mqsys::MQLONG);
-    define_new_type!(pub MQXACT, mqsys::MQLONG, mapping::MQXACT_MAPSTR);
-    impl_value!(MQXACT, mqsys::MQLONG);
-    define_new_type!(pub MQXCC, mqsys::MQLONG, mapping::MQXCC_MAPSTR);
-    impl_value!(MQXCC, mqsys::MQLONG);
     define_new_type!(
         pub MQXC, mqsys::MQLONG, mapping::MQXC_MAPSTR, r##"Exit Commands"##
     );
     impl_value!(MQXC, mqsys::MQLONG);
-    define_new_type!(pub MQXEPO, mqsys::MQLONG, mapping::MQXEPO_MAPSTR);
-    impl_value!(MQXEPO, mqsys::MQLONG);
-    define_new_type!(pub MQXE, mqsys::MQLONG, mapping::MQXE_MAPSTR);
-    impl_value!(MQXE, mqsys::MQLONG);
-    define_new_type!(pub MQXF, mqsys::MQLONG, mapping::MQXF_MAPSTR);
-    impl_value!(MQXF, mqsys::MQLONG);
     define_new_type!(
         pub MQXPT, mqsys::MQLONG, mapping::MQXPT_MAPSTR, r##"Transport Types"##
     );
     impl_value!(MQXPT, mqsys::MQLONG);
-    define_new_type!(pub MQXR2, mqsys::MQLONG, mapping::MQXR2_MAPSTR);
-    impl_value!(MQXR2, mqsys::MQLONG);
-    define_new_type!(pub MQXR, mqsys::MQLONG, mapping::MQXR_MAPSTR);
-    impl_value!(MQXR, mqsys::MQLONG);
-    define_new_type!(pub MQXT, mqsys::MQLONG, mapping::MQXT_MAPSTR);
-    impl_value!(MQXT, mqsys::MQLONG);
-    define_new_type!(pub MQZAET, mqsys::MQLONG, mapping::MQZAET_MAPSTR);
-    impl_value!(MQZAET, mqsys::MQLONG);
     define_new_type!(
-        pub MQZAO, mqsys::MQLONG, mapping::MQZAO_MAPSTR,
-        r##"Installable Services Authorizations"##
+        pub MQ_CERT, mqsys::MQLONG, mapping::MQ_CERT_MAPSTR,
+        r##"Certificate Validation Policy Type"##
     );
-    impl_bitflags!(MQZAO, mqsys::MQLONG);
-    define_new_type!(pub MQZAT, mqsys::MQLONG, mapping::MQZAT_MAPSTR);
-    impl_value!(MQZAT, mqsys::MQLONG);
-    define_new_type!(pub MQZCI, mqsys::MQLONG, mapping::MQZCI_MAPSTR);
-    impl_value!(MQZCI, mqsys::MQLONG);
-    define_new_type!(pub MQZID, mqsys::MQLONG, mapping::MQZID_MAPSTR);
-    impl_value!(MQZID, mqsys::MQLONG);
-    define_new_type!(
-        pub MQZID_AUTHORITY, mqsys::MQLONG, mapping::MQZID_AUTHORITY_MAPSTR
-    );
-    impl_value!(MQZID_AUTHORITY, mqsys::MQLONG);
-    define_new_type!(pub MQZID_NAME, mqsys::MQLONG, mapping::MQZID_NAME_MAPSTR);
-    impl_value!(MQZID_NAME, mqsys::MQLONG);
-    define_new_type!(pub MQZID_USERID, mqsys::MQLONG, mapping::MQZID_USERID_MAPSTR);
-    impl_value!(MQZID_USERID, mqsys::MQLONG);
-    define_new_type!(pub MQZIO, mqsys::MQLONG, mapping::MQZIO_MAPSTR);
-    impl_value!(MQZIO, mqsys::MQLONG);
-    define_new_type!(pub MQZSE, mqsys::MQLONG, mapping::MQZSE_MAPSTR);
-    impl_value!(MQZSE, mqsys::MQLONG);
-    define_new_type!(pub MQZSL, mqsys::MQLONG, mapping::MQZSL_MAPSTR);
-    impl_value!(MQZSL, mqsys::MQLONG);
-    define_new_type!(pub MQZTO, mqsys::MQLONG, mapping::MQZTO_MAPSTR);
-    impl_value!(MQZTO, mqsys::MQLONG);
-    define_new_type!(pub MQ_CERT, mqsys::MQLONG, mapping::MQ_CERT_MAPSTR);
     impl_value!(MQ_CERT, mqsys::MQLONG);
     define_new_type!(
         pub MQ_HTTPSCERTREV, mqsys::MQLONG, mapping::MQ_HTTPSCERTREV_MAPSTR,
-        r##"Level of certificate revocation check that is required for HTTPS connections"##
+        r##"HTTPS Certificate Revocation Type"##
     );
     impl_value!(MQ_HTTPSCERTREV, mqsys::MQLONG);
     define_new_type!(
         pub MQ_HTTPSCERTVAL, mqsys::MQLONG, mapping::MQ_HTTPSCERTVAL_MAPSTR,
-        r##"Level of certificate validation that is required for HTTPS connections"##
+        r##"HTTPS Certificate Validation Type"##
     );
     impl_value!(MQ_HTTPSCERTVAL, mqsys::MQLONG);
-    define_new_type!(pub MQ_MQTT, mqsys::MQLONG, mapping::MQ_MQTT_MAPSTR);
+    define_new_type!(
+        pub MQ_MQTT, mqsys::MQLONG, mapping::MQ_MQTT_MAPSTR, r##"General Constants"##
+    );
     impl_value!(MQ_MQTT, mqsys::MQLONG);
-    define_new_type!(pub MQ_SUITE, mqsys::MQLONG, mapping::MQ_SUITE_MAPSTR);
+    define_new_type!(
+        pub MQ_SUITE, mqsys::MQLONG, mapping::MQ_SUITE_MAPSTR, r##"SuiteB Type"##
+    );
     impl_value!(MQ_SUITE, mqsys::MQLONG);
     #[cfg(feature = "exits")]
     mod exits {
@@ -864,17 +795,172 @@ pub mod types {
         use crate::value::{define_new_type, impl_value};
         use crate::bitflags::impl_bitflags;
         define_new_type!(
+            pub MQCDC, mqsys::MQLONG, mapping::MQCDC_MAPSTR,
+            r##"Channel Data Conversion"##
+        );
+        impl_value!(MQCDC, mqsys::MQLONG);
+        define_new_type!(
             pub MQCF, mqsys::MQLONG, mapping::MQCF_MAPSTR, r##"Capability Flags"##
         );
         impl_value!(MQCF, mqsys::MQLONG);
+        define_new_type!(
+            pub MQCLCT, mqsys::MQLONG, mapping::MQCLCT_MAPSTR, r##"Cluster Cache Types"##
+        );
+        impl_value!(MQCLCT, mqsys::MQLONG);
+        define_new_type!(
+            pub MQCOMPRESS, mqsys::MQLONG, mapping::MQCOMPRESS_MAPSTR,
+            r##"Channel Compression"##
+        );
+        impl_value!(MQCOMPRESS, mqsys::MQLONG);
+        define_new_type!(
+            pub MQDCC, mqsys::MQLONG, mapping::MQDCC_MAPSTR,
+            r##"Conversion Options Masks and Factors"##
+        );
+        impl_bitflags!(MQDCC, mqsys::MQLONG);
+        define_new_type!(
+            pub MQIEPF, mqsys::MQLONG, mapping::MQIEPF_MAPSTR, r##"IEP Flags"##
+        );
+        impl_value!(MQIEPF, mqsys::MQLONG);
+        define_new_type!(
+            pub MQMCAT, mqsys::MQLONG, mapping::MQMCAT_MAPSTR, r##"MCA Types"##
+        );
+        impl_value!(MQMCAT, mqsys::MQLONG);
+        define_new_type!(
+            pub MQMCEV, mqsys::MQLONG, mapping::MQMCEV_MAPSTR, r##"Multicast Events"##
+        );
+        impl_value!(MQMCEV, mqsys::MQLONG);
+        define_new_type!(
+            pub MQNPMS, mqsys::MQLONG, mapping::MQNPMS_MAPSTR,
+            r##"NonPersistent-Message Speeds"##
+        );
+        impl_value!(MQNPMS, mqsys::MQLONG);
+        define_new_type!(
+            pub MQPA, mqsys::MQLONG, mapping::MQPA_MAPSTR, r##"Put Authority"##
+        );
+        impl_value!(MQPA, mqsys::MQLONG);
+        define_new_type!(
+            pub MQPROTO, mqsys::MQLONG, mapping::MQPROTO_MAPSTR, r##"Protocol"##
+        );
+        impl_value!(MQPROTO, mqsys::MQLONG);
+        define_new_type!(
+            pub MQQF, mqsys::MQLONG, mapping::MQQF_MAPSTR, r##"Queue Flags"##
+        );
+        impl_value!(MQQF, mqsys::MQLONG);
         define_new_type!(
             pub MQQMF, mqsys::MQLONG, mapping::MQQMF_MAPSTR, r##"Queue Manager Flags"##
         );
         impl_bitflags!(MQQMF, mqsys::MQLONG);
         define_new_type!(
+            pub MQSCA, mqsys::MQLONG, mapping::MQSCA_MAPSTR,
+            r##"SSL Client Authentication"##
+        );
+        impl_value!(MQSCA, mqsys::MQLONG);
+        define_new_type!(
+            pub MQSECPROT, mqsys::MQLONG, mapping::MQSECPROT_MAPSTR,
+            r##"Security Protocol"##
+        );
+        impl_value!(MQSECPROT, mqsys::MQLONG);
+        define_new_type!(
+            pub MQSPL, mqsys::MQLONG, mapping::MQSPL_MAPSTR, r##"SPL Protection"##
+        );
+        impl_value!(MQSPL, mqsys::MQLONG);
+        define_new_type!(
+            pub MQWXP, mqsys::MQLONG, mapping::MQWXP_MAPSTR,
+            r##"Cluster Workload Flags"##
+        );
+        impl_value!(MQWXP, mqsys::MQLONG);
+        define_new_type!(
+            pub MQXACT, mqsys::MQLONG, mapping::MQXACT_MAPSTR, r##"API Caller Types"##
+        );
+        impl_value!(MQXACT, mqsys::MQLONG);
+        define_new_type!(
+            pub MQXCC, mqsys::MQLONG, mapping::MQXCC_MAPSTR, r##"Exit Responses"##
+        );
+        impl_value!(MQXCC, mqsys::MQLONG);
+        define_new_type!(
             pub MQXDR, mqsys::MQLONG, mapping::MQXDR_MAPSTR, r##"Exit Response"##
         );
         impl_value!(MQXDR, mqsys::MQLONG);
+        define_new_type!(
+            pub MQXEPO, mqsys::MQLONG, mapping::MQXEPO_MAPSTR, r##"Exit Options"##
+        );
+        impl_value!(MQXEPO, mqsys::MQLONG);
+        define_new_type!(
+            pub MQXE, mqsys::MQLONG, mapping::MQXE_MAPSTR, r##"Environments"##
+        );
+        impl_value!(MQXE, mqsys::MQLONG);
+        define_new_type!(
+            pub MQXF, mqsys::MQLONG, mapping::MQXF_MAPSTR,
+            r##"API Function Identifiers"##
+        );
+        impl_value!(MQXF, mqsys::MQLONG);
+        define_new_type!(
+            pub MQXR2, mqsys::MQLONG, mapping::MQXR2_MAPSTR, r##"Exit Response 2"##
+        );
+        impl_value!(MQXR2, mqsys::MQLONG);
+        define_new_type!(
+            pub MQXR, mqsys::MQLONG, mapping::MQXR_MAPSTR, r##"Exit Reasons"##
+        );
+        impl_value!(MQXR, mqsys::MQLONG);
+        define_new_type!(
+            pub MQXT, mqsys::MQLONG, mapping::MQXT_MAPSTR, r##"Exit Identifiers"##
+        );
+        impl_value!(MQXT, mqsys::MQLONG);
+        define_new_type!(
+            pub MQZAET, mqsys::MQLONG, mapping::MQZAET_MAPSTR, r##"Entity Types"##
+        );
+        impl_value!(MQZAET, mqsys::MQLONG);
+        define_new_type!(
+            pub MQZAO, mqsys::MQLONG, mapping::MQZAO_MAPSTR, r##"Authorizations"##
+        );
+        impl_bitflags!(MQZAO, mqsys::MQLONG);
+        define_new_type!(
+            pub MQZAT, mqsys::MQLONG, mapping::MQZAT_MAPSTR, r##"Authentication Types"##
+        );
+        impl_value!(MQZAT, mqsys::MQLONG);
+        define_new_type!(
+            pub MQZCI, mqsys::MQLONG, mapping::MQZCI_MAPSTR,
+            r##"Continuation Indicator"##
+        );
+        impl_value!(MQZCI, mqsys::MQLONG);
+        define_new_type!(
+            pub MQZID, mqsys::MQLONG, mapping::MQZID_MAPSTR,
+            r##"Function ids common to all services"##
+        );
+        impl_value!(MQZID, mqsys::MQLONG);
+        define_new_type!(
+            pub MQZID_AUTHORITY, mqsys::MQLONG, mapping::MQZID_AUTHORITY_MAPSTR,
+            r##"Function ids for Authority service"##
+        );
+        impl_value!(MQZID_AUTHORITY, mqsys::MQLONG);
+        define_new_type!(
+            pub MQZID_NAME, mqsys::MQLONG, mapping::MQZID_NAME_MAPSTR,
+            r##"Function ids for Name service"##
+        );
+        impl_value!(MQZID_NAME, mqsys::MQLONG);
+        define_new_type!(
+            pub MQZID_USERID, mqsys::MQLONG, mapping::MQZID_USERID_MAPSTR,
+            r##"Function ids for Userid service"##
+        );
+        impl_value!(MQZID_USERID, mqsys::MQLONG);
+        define_new_type!(
+            pub MQZIO, mqsys::MQLONG, mapping::MQZIO_MAPSTR,
+            r##"Initialization Options"##
+        );
+        impl_value!(MQZIO, mqsys::MQLONG);
+        define_new_type!(
+            pub MQZSE, mqsys::MQLONG, mapping::MQZSE_MAPSTR,
+            r##"Start-Enumeration Indicator"##
+        );
+        impl_value!(MQZSE, mqsys::MQLONG);
+        define_new_type!(
+            pub MQZSL, mqsys::MQLONG, mapping::MQZSL_MAPSTR, r##"Selector Indicator"##
+        );
+        impl_value!(MQZSL, mqsys::MQLONG);
+        define_new_type!(
+            pub MQZTO, mqsys::MQLONG, mapping::MQZTO_MAPSTR, r##"Termination Options"##
+        );
+        impl_value!(MQZTO, mqsys::MQLONG);
     }
     #[cfg(feature = "exits")]
     pub use exits::*;
@@ -890,10 +976,10 @@ pub mod types {
         );
         impl_value!(MQBL, mqsys::MQLONG);
         define_new_type!(
-            pub MQCBDO, mqsys::MQLONG, mapping::MQCBDO_MAPSTR,
+            pub MQCBO, mqsys::MQLONG, mapping::MQCBO_MAPSTR,
             r##"Create-Bag Options for mqCreateBag"##
         );
-        impl_bitflags!(MQCBDO, mqsys::MQLONG);
+        impl_bitflags!(MQCBO, mqsys::MQLONG);
         define_new_type!(
             pub MQHA, mqsys::MQLONG, mapping::MQHA_MAPSTR, r##"Handle Selectors"##
         );
@@ -916,8 +1002,6 @@ pub mod types {
             r##"Item Types for mqInquireItemInfo"##
         );
         impl_value!(MQITEM, mqsys::MQLONG);
-        define_new_type!(pub MQIT, mqsys::MQLONG, mapping::MQIT_MAPSTR);
-        impl_value!(MQIT, mqsys::MQLONG);
         define_new_type!(
             pub MQSEL_ALL, mqsys::MQLONG, mapping::MQSEL_ALL_MAPSTR,
             r##"Special Selector Values"##
@@ -938,6 +1022,71 @@ pub mod types {
         use crate::value::{define_new_type, impl_value};
         use crate::bitflags::impl_bitflags;
         define_new_type!(
+            pub MQACTIVE, mqsys::MQLONG, mapping::MQACTIVE_MAPSTR, r##"Active Options"##
+        );
+        impl_value!(MQACTIVE, mqsys::MQLONG);
+        define_new_type!(
+            pub MQACT, mqsys::MQLONG, mapping::MQACT_MAPSTR, r##"Action Options"##
+        );
+        impl_value!(MQACT, mqsys::MQLONG);
+        define_new_type!(
+            pub MQADPCTX, mqsys::MQLONG, mapping::MQADPCTX_MAPSTR,
+            r##"Authentication Adoption Context"##
+        );
+        impl_value!(MQADPCTX, mqsys::MQLONG);
+        define_new_type!(
+            pub MQAPPL, mqsys::MQLONG, mapping::MQAPPL_MAPSTR, r##"Movable Options"##
+        );
+        impl_value!(MQAPPL, mqsys::MQLONG);
+        define_new_type!(
+            pub MQAS, mqsys::MQLONG, mapping::MQAS_MAPSTR,
+            r##"Asynchronous State Values"##
+        );
+        impl_value!(MQAS, mqsys::MQLONG);
+        define_new_type!(
+            pub MQAUTHENTICATE, mqsys::MQLONG, mapping::MQAUTHENTICATE_MAPSTR,
+            r##"Authentication Method"##
+        );
+        impl_value!(MQAUTHENTICATE, mqsys::MQLONG);
+        define_new_type!(
+            pub MQAUTHOPT, mqsys::MQLONG, mapping::MQAUTHOPT_MAPSTR,
+            r##"Authority Options"##
+        );
+        impl_bitflags!(MQAUTHOPT, mqsys::MQLONG);
+        define_new_type!(
+            pub MQAUTH, mqsys::MQLONG, mapping::MQAUTH_MAPSTR, r##"Authority Values"##
+        );
+        impl_value!(MQAUTH, mqsys::MQLONG);
+        define_new_type!(
+            pub MQAUTOCLUS, mqsys::MQLONG, mapping::MQAUTOCLUS_MAPSTR,
+            r##"Automatic Cluster Types"##
+        );
+        impl_value!(MQAUTOCLUS, mqsys::MQLONG);
+        define_new_type!(
+            pub MQBACF, mqsys::MQLONG, mapping::MQBACF_MAPSTR,
+            r##"Byte Parameter Types"##
+        );
+        impl_value!(MQBACF, mqsys::MQLONG);
+        define_new_type!(
+            pub MQBALANCED, mqsys::MQLONG, mapping::MQBALANCED_MAPSTR,
+            r##"Balance Options"##
+        );
+        impl_value!(MQBALANCED, mqsys::MQLONG);
+        define_new_type!(
+            pub MQBALSTATE, mqsys::MQLONG, mapping::MQBALSTATE_MAPSTR,
+            r##"Balance State"##
+        );
+        impl_value!(MQBALSTATE, mqsys::MQLONG);
+        define_new_type!(
+            pub MQBPLOCATION, mqsys::MQLONG, mapping::MQBPLOCATION_MAPSTR,
+            r##"Values for MQIACF_BUFFER_POOL_LOCATION."##
+        );
+        impl_value!(MQBPLOCATION, mqsys::MQLONG);
+        define_new_type!(
+            pub MQBT, mqsys::MQLONG, mapping::MQBT_MAPSTR, r##"Bridge Types"##
+        );
+        impl_value!(MQBT, mqsys::MQLONG);
+        define_new_type!(
             pub MQCACF, mqsys::MQLONG, mapping::MQCACF_MAPSTR,
             r##"Character Parameter Types"##
         );
@@ -948,13 +1097,197 @@ pub mod types {
         );
         impl_value!(MQCACH, mqsys::MQLONG);
         define_new_type!(
+            pub MQCAMO, mqsys::MQLONG, mapping::MQCAMO_MAPSTR,
+            r##"Character Monitoring Parameter Types"##
+        );
+        impl_value!(MQCAMO, mqsys::MQLONG);
+        define_new_type!(
+            pub MQCAUT, mqsys::MQLONG, mapping::MQCAUT_MAPSTR, r##"CHLAUTH Type"##
+        );
+        impl_value!(MQCAUT, mqsys::MQLONG);
+        define_new_type!(
+            pub MQCFACCESS, mqsys::MQLONG, mapping::MQCFACCESS_MAPSTR,
+            r##"Access Options"##
+        );
+        impl_value!(MQCFACCESS, mqsys::MQLONG);
+        define_new_type!(
             pub MQCFC, mqsys::MQLONG, mapping::MQCFC_MAPSTR, r##"Control Options"##
         );
         impl_value!(MQCFC, mqsys::MQLONG);
         define_new_type!(
+            pub MQCFOP, mqsys::MQLONG, mapping::MQCFOP_MAPSTR, r##"Filter Operators"##
+        );
+        impl_value!(MQCFOP, mqsys::MQLONG);
+        define_new_type!(
+            pub MQCFO_REFRESH, mqsys::MQLONG, mapping::MQCFO_REFRESH_MAPSTR,
+            r##"Refresh Repository Options"##
+        );
+        impl_value!(MQCFO_REFRESH, mqsys::MQLONG);
+        define_new_type!(
+            pub MQCFO_REMOVE, mqsys::MQLONG, mapping::MQCFO_REMOVE_MAPSTR,
+            r##"Remove Queues Options"##
+        );
+        impl_value!(MQCFO_REMOVE, mqsys::MQLONG);
+        define_new_type!(
+            pub MQCFSTATUS, mqsys::MQLONG, mapping::MQCFSTATUS_MAPSTR, r##"CF Status"##
+        );
+        impl_value!(MQCFSTATUS, mqsys::MQLONG);
+        define_new_type!(
+            pub MQCFTYPE, mqsys::MQLONG, mapping::MQCFTYPE_MAPSTR, r##"CF Types"##
+        );
+        impl_value!(MQCFTYPE, mqsys::MQLONG);
+        define_new_type!(
+            pub MQCFT, mqsys::MQLONG, mapping::MQCFT_MAPSTR, r##"Types of Structure"##
+        );
+        impl_value!(MQCFT, mqsys::MQLONG);
+        define_new_type!(
+            pub MQCHIDS, mqsys::MQLONG, mapping::MQCHIDS_MAPSTR, r##"Indoubt Status"##
+        );
+        impl_value!(MQCHIDS, mqsys::MQLONG);
+        define_new_type!(
+            pub MQCHK, mqsys::MQLONG, mapping::MQCHK_MAPSTR,
+            r##"Authentication Validation Types"##
+        );
+        impl_value!(MQCHK, mqsys::MQLONG);
+        define_new_type!(
+            pub MQCHLA, mqsys::MQLONG, mapping::MQCHLA_MAPSTR, r##"CHLAUTH QMGR State"##
+        );
+        impl_value!(MQCHLA, mqsys::MQLONG);
+        define_new_type!(
+            pub MQCHLD, mqsys::MQLONG, mapping::MQCHLD_MAPSTR,
+            r##"Channel Dispositions"##
+        );
+        impl_value!(MQCHLD, mqsys::MQLONG);
+        define_new_type!(
+            pub MQCHRR, mqsys::MQLONG, mapping::MQCHRR_MAPSTR,
+            r##"Channel reset requested"##
+        );
+        impl_value!(MQCHRR, mqsys::MQLONG);
+        define_new_type!(
+            pub MQCHSH, mqsys::MQLONG, mapping::MQCHSH_MAPSTR,
+            r##"Channel Shared Restart Options"##
+        );
+        impl_value!(MQCHSH, mqsys::MQLONG);
+        define_new_type!(
+            pub MQCHSR, mqsys::MQLONG, mapping::MQCHSR_MAPSTR,
+            r##"Channel Stop Options"##
+        );
+        impl_value!(MQCHSR, mqsys::MQLONG);
+        define_new_type!(
+            pub MQCHSSTATE, mqsys::MQLONG, mapping::MQCHSSTATE_MAPSTR,
+            r##"Channel Substates"##
+        );
+        impl_value!(MQCHSSTATE, mqsys::MQLONG);
+        define_new_type!(
+            pub MQCHS, mqsys::MQLONG, mapping::MQCHS_MAPSTR, r##"Channel Status"##
+        );
+        impl_value!(MQCHS, mqsys::MQLONG);
+        define_new_type!(
+            pub MQCHTAB, mqsys::MQLONG, mapping::MQCHTAB_MAPSTR,
+            r##"Channel Table Types"##
+        );
+        impl_value!(MQCHTAB, mqsys::MQLONG);
+        define_new_type!(
+            pub MQCLROUTE, mqsys::MQLONG, mapping::MQCLROUTE_MAPSTR,
+            r##"CLROUTE Topic State"##
+        );
+        impl_value!(MQCLROUTE, mqsys::MQLONG);
+        define_new_type!(
+            pub MQCLRS, mqsys::MQLONG, mapping::MQCLRS_MAPSTR,
+            r##"Clear Topic String Scope"##
+        );
+        impl_value!(MQCLRS, mqsys::MQLONG);
+        define_new_type!(
+            pub MQCLRT, mqsys::MQLONG, mapping::MQCLRT_MAPSTR,
+            r##"Clear Topic String Type"##
+        );
+        impl_value!(MQCLRT, mqsys::MQLONG);
+        define_new_type!(
+            pub MQCLST, mqsys::MQLONG, mapping::MQCLST_MAPSTR,
+            r##"CLSTATE Clustered Topic Definition State"##
+        );
+        impl_value!(MQCLST, mqsys::MQLONG);
+        define_new_type!(
+            pub MQCLXQ, mqsys::MQLONG, mapping::MQCLXQ_MAPSTR,
+            r##"Transmission queue types"##
+        );
+        impl_value!(MQCLXQ, mqsys::MQLONG);
+        define_new_type!(
+            pub MQCMDI, mqsys::MQLONG, mapping::MQCMDI_MAPSTR,
+            r##"Command Information Values"##
+        );
+        impl_value!(MQCMDI, mqsys::MQLONG);
+        define_new_type!(
             pub MQCMD, mqsys::MQLONG, mapping::MQCMD_MAPSTR, r##"Command Codes"##
         );
         impl_value!(MQCMD, mqsys::MQLONG);
+        define_new_type!(
+            pub MQDELO, mqsys::MQLONG, mapping::MQDELO_MAPSTR, r##"Delete Options"##
+        );
+        impl_value!(MQDELO, mqsys::MQLONG);
+        define_new_type!(
+            pub MQDISCONNECT, mqsys::MQLONG, mapping::MQDISCONNECT_MAPSTR,
+            r##"Disconnect Types"##
+        );
+        impl_value!(MQDISCONNECT, mqsys::MQLONG);
+        define_new_type!(
+            pub MQDOPT, mqsys::MQLONG, mapping::MQDOPT_MAPSTR,
+            r##"Display Subscription Types"##
+        );
+        impl_value!(MQDOPT, mqsys::MQLONG);
+        define_new_type!(
+            pub MQEPH, mqsys::MQLONG, mapping::MQEPH_MAPSTR, r##"MQEPH Flags"##
+        );
+        impl_value!(MQEPH, mqsys::MQLONG);
+        define_new_type!(
+            pub MQET, mqsys::MQLONG, mapping::MQET_MAPSTR, r##"Escape Types"##
+        );
+        impl_value!(MQET, mqsys::MQLONG);
+        define_new_type!(
+            pub MQEVO, mqsys::MQLONG, mapping::MQEVO_MAPSTR, r##"Event Origins"##
+        );
+        impl_value!(MQEVO, mqsys::MQLONG);
+        define_new_type!(
+            pub MQEVR, mqsys::MQLONG, mapping::MQEVR_MAPSTR, r##"Event Recording"##
+        );
+        impl_value!(MQEVR, mqsys::MQLONG);
+        define_new_type!(
+            pub MQEXTATTRS, mqsys::MQLONG, mapping::MQEXTATTRS_MAPSTR,
+            r##"Export Attrs"##
+        );
+        impl_value!(MQEXTATTRS, mqsys::MQLONG);
+        define_new_type!(
+            pub MQEXT, mqsys::MQLONG, mapping::MQEXT_MAPSTR, r##"Export Type"##
+        );
+        impl_value!(MQEXT, mqsys::MQLONG);
+        define_new_type!(
+            pub MQFC, mqsys::MQLONG, mapping::MQFC_MAPSTR, r##"Force Options"##
+        );
+        impl_value!(MQFC, mqsys::MQLONG);
+        define_new_type!(
+            pub MQFSENC, mqsys::MQLONG, mapping::MQFSENC_MAPSTR,
+            r##"File System Encryption Values"##
+        );
+        impl_value!(MQFSENC, mqsys::MQLONG);
+        define_new_type!(
+            pub MQFS, mqsys::MQLONG, mapping::MQFS_MAPSTR,
+            r##"File System Sharing Values"##
+        );
+        impl_value!(MQFS, mqsys::MQLONG);
+        define_new_type!(
+            pub MQGACF, mqsys::MQLONG, mapping::MQGACF_MAPSTR,
+            r##"Group Parameter Types"##
+        );
+        impl_value!(MQGACF, mqsys::MQLONG);
+        define_new_type!(
+            pub MQGUR, mqsys::MQLONG, mapping::MQGUR_MAPSTR,
+            r##"Grouped Units of Recovery"##
+        );
+        impl_value!(MQGUR, mqsys::MQLONG);
+        define_new_type!(
+            pub MQHSTATE, mqsys::MQLONG, mapping::MQHSTATE_MAPSTR, r##"Handle States"##
+        );
+        impl_value!(MQHSTATE, mqsys::MQLONG);
         define_new_type!(
             pub MQIACF, mqsys::MQLONG, mapping::MQIACF_MAPSTR,
             r##"Integer Parameter Types"##
@@ -966,6 +1299,179 @@ pub mod types {
         );
         impl_value!(MQIACH, mqsys::MQLONG);
         define_new_type!(
+            pub MQIAMO64, mqsys::MQLONG, mapping::MQIAMO64_MAPSTR,
+            r##"Integer Monitoring Parameter Types"##
+        );
+        impl_value!(MQIAMO64, mqsys::MQLONG);
+        define_new_type!(
+            pub MQIAMO, mqsys::MQLONG, mapping::MQIAMO_MAPSTR,
+            r##"Integer Monitoring Parameter Types"##
+        );
+        impl_value!(MQIAMO, mqsys::MQLONG);
+        define_new_type!(
+            pub MQIAMO_MONITOR_DATATYPE, mqsys::MQLONG,
+            mapping::MQIAMO_MONITOR_DATATYPE_MAPSTR,
+            r##"Defined values for MQIAMO_MONITOR_DATATYPE"##
+        );
+        impl_value!(MQIAMO_MONITOR_DATATYPE, mqsys::MQLONG);
+        define_new_type!(
+            pub MQIAMO_MONITOR_FLAGS, mqsys::MQLONG,
+            mapping::MQIAMO_MONITOR_FLAGS_MAPSTR,
+            r##"Defined values for MQIAMO_MONITOR_FLAGS"##
+        );
+        impl_value!(MQIAMO_MONITOR_FLAGS, mqsys::MQLONG);
+        define_new_type!(
+            pub MQIDO, mqsys::MQLONG, mapping::MQIDO_MAPSTR, r##"Indoubt Options"##
+        );
+        impl_value!(MQIDO, mqsys::MQLONG);
+        define_new_type!(
+            pub MQIMMREASON, mqsys::MQLONG, mapping::MQIMMREASON_MAPSTR,
+            r##"Immovable Reasons"##
+        );
+        impl_value!(MQIMMREASON, mqsys::MQLONG);
+        define_new_type!(
+            pub MQINBD, mqsys::MQLONG, mapping::MQINBD_MAPSTR,
+            r##"Inbound Dispositions"##
+        );
+        impl_value!(MQINBD, mqsys::MQLONG);
+        define_new_type!(
+            pub MQIS, mqsys::MQLONG, mapping::MQIS_MAPSTR, r##"State Options"##
+        );
+        impl_value!(MQIS, mqsys::MQLONG);
+        define_new_type!(
+            pub MQLDAPC, mqsys::MQLONG, mapping::MQLDAPC_MAPSTR,
+            r##"QMgr LDAP Connection Status"##
+        );
+        impl_value!(MQLDAPC, mqsys::MQLONG);
+        define_new_type!(
+            pub MQLDAP_AUTHORMD, mqsys::MQLONG, mapping::MQLDAP_AUTHORMD_MAPSTR,
+            r##"LDAP Authorisation Method"##
+        );
+        impl_value!(MQLDAP_AUTHORMD, mqsys::MQLONG);
+        define_new_type!(
+            pub MQLDAP_NESTGRP, mqsys::MQLONG, mapping::MQLDAP_NESTGRP_MAPSTR,
+            r##"LDAP Nested Group Policy"##
+        );
+        impl_value!(MQLDAP_NESTGRP, mqsys::MQLONG);
+        define_new_type!(
+            pub MQLOGTYPE, mqsys::MQLONG, mapping::MQLOGTYPE_MAPSTR, r##"Log Types"##
+        );
+        impl_value!(MQLOGTYPE, mqsys::MQLONG);
+        define_new_type!(
+            pub MQLR, mqsys::MQLONG, mapping::MQLR_MAPSTR, r##"Reduce Log Options"##
+        );
+        impl_value!(MQLR, mqsys::MQLONG);
+        define_new_type!(
+            pub MQMATCH, mqsys::MQLONG, mapping::MQMATCH_MAPSTR, r##"Match Types"##
+        );
+        impl_value!(MQMATCH, mqsys::MQLONG);
+        define_new_type!(
+            pub MQMCAS, mqsys::MQLONG, mapping::MQMCAS_MAPSTR,
+            r##"Message Channel Agent Status"##
+        );
+        impl_value!(MQMCAS, mqsys::MQLONG);
+        define_new_type!(
+            pub MQMCP, mqsys::MQLONG, mapping::MQMCP_MAPSTR,
+            r##"Multicast Properties Options"##
+        );
+        impl_value!(MQMCP, mqsys::MQLONG);
+        define_new_type!(
+            pub MQMLP_ENCRYPTION, mqsys::MQLONG, mapping::MQMLP_ENCRYPTION_MAPSTR,
+            r##"Message Level Protection"##
+        );
+        impl_value!(MQMLP_ENCRYPTION, mqsys::MQLONG);
+        define_new_type!(
+            pub MQMLP_SIGN, mqsys::MQLONG, mapping::MQMLP_SIGN_MAPSTR,
+            r##"Message Level Protection"##
+        );
+        impl_value!(MQMLP_SIGN, mqsys::MQLONG);
+        define_new_type!(
+            pub MQMLP_TOLERATE, mqsys::MQLONG, mapping::MQMLP_TOLERATE_MAPSTR,
+            r##"Message Level Protection"##
+        );
+        impl_value!(MQMLP_TOLERATE, mqsys::MQLONG);
+        define_new_type!(
+            pub MQMODE, mqsys::MQLONG, mapping::MQMODE_MAPSTR, r##"Mode Options"##
+        );
+        impl_value!(MQMODE, mqsys::MQLONG);
+        define_new_type!(
+            pub MQMULC, mqsys::MQLONG, mapping::MQMULC_MAPSTR,
+            r##"Measured usage by API"##
+        );
+        impl_value!(MQMULC, mqsys::MQLONG);
+        define_new_type!(
+            pub MQNHABACKLOG, mqsys::MQLONG, mapping::MQNHABACKLOG_MAPSTR,
+            r##"Native HA Backlog Values"##
+        );
+        impl_value!(MQNHABACKLOG, mqsys::MQLONG);
+        define_new_type!(
+            pub MQNHACONNACTV, mqsys::MQLONG, mapping::MQNHACONNACTV_MAPSTR,
+            r##"Native HA Active Connection Values"##
+        );
+        impl_value!(MQNHACONNACTV, mqsys::MQLONG);
+        define_new_type!(
+            pub MQNHACONNGRP, mqsys::MQLONG, mapping::MQNHACONNGRP_MAPSTR,
+            r##"Native HA Group Connected Values"##
+        );
+        impl_value!(MQNHACONNGRP, mqsys::MQLONG);
+        define_new_type!(
+            pub MQNHAGRPROLE, mqsys::MQLONG, mapping::MQNHAGRPROLE_MAPSTR,
+            r##"Native HA Group Roles"##
+        );
+        impl_value!(MQNHAGRPROLE, mqsys::MQLONG);
+        define_new_type!(
+            pub MQNHAINSYNC, mqsys::MQLONG, mapping::MQNHAINSYNC_MAPSTR,
+            r##"Native HA In Sync Values"##
+        );
+        impl_value!(MQNHAINSYNC, mqsys::MQLONG);
+        define_new_type!(
+            pub MQNHAROLE, mqsys::MQLONG, mapping::MQNHAROLE_MAPSTR,
+            r##"Native HA Instance Roles"##
+        );
+        impl_value!(MQNHAROLE, mqsys::MQLONG);
+        define_new_type!(
+            pub MQNHASTATUS, mqsys::MQLONG, mapping::MQNHASTATUS_MAPSTR,
+            r##"Native HA Status Values"##
+        );
+        impl_value!(MQNHASTATUS, mqsys::MQLONG);
+        define_new_type!(
+            pub MQNHATYPE, mqsys::MQLONG, mapping::MQNHATYPE_MAPSTR,
+            r##"Native HA Types"##
+        );
+        impl_value!(MQNHATYPE, mqsys::MQLONG);
+        define_new_type!(
+            pub MQNSH, mqsys::MQLONG, mapping::MQNSH_MAPSTR,
+            r##"Multicast New Subscriber History Options"##
+        );
+        impl_value!(MQNSH, mqsys::MQLONG);
+        define_new_type!(
+            pub MQOPER, mqsys::MQLONG, mapping::MQOPER_MAPSTR, r##"Activity Operations"##
+        );
+        impl_value!(MQOPER, mqsys::MQLONG);
+        define_new_type!(
+            pub MQOPMODE, mqsys::MQLONG, mapping::MQOPMODE_MAPSTR,
+            r##"Major Release Function"##
+        );
+        impl_value!(MQOPMODE, mqsys::MQLONG);
+        define_new_type!(
+            pub MQPAGECLAS, mqsys::MQLONG, mapping::MQPAGECLAS_MAPSTR,
+            r##"Values for MQIACF_PAGECLAS."##
+        );
+        impl_value!(MQPAGECLAS, mqsys::MQLONG);
+        define_new_type!(
+            pub MQPO, mqsys::MQLONG, mapping::MQPO_MAPSTR, r##"Purge Options"##
+        );
+        impl_value!(MQPO, mqsys::MQLONG);
+        define_new_type!(
+            pub MQPSCT, mqsys::MQLONG, mapping::MQPSCT_MAPSTR,
+            r##"Pub/Sub Status Counts"##
+        );
+        impl_value!(MQPSCT, mqsys::MQLONG);
+        define_new_type!(
+            pub MQPSST, mqsys::MQLONG, mapping::MQPSST_MAPSTR, r##"Pub/Sub Status Type"##
+        );
+        impl_value!(MQPSST, mqsys::MQLONG);
+        define_new_type!(
             pub MQPS, mqsys::MQLONG, mapping::MQPS_MAPSTR, r##"Pub/Sub Status"##
         );
         impl_value!(MQPS, mqsys::MQLONG);
@@ -974,22 +1480,212 @@ pub mod types {
         );
         impl_bitflags!(MQPUBO, mqsys::MQLONG);
         define_new_type!(
+            pub MQQMDT, mqsys::MQLONG, mapping::MQQMDT_MAPSTR,
+            r##"Queue Manager Definition Types"##
+        );
+        impl_value!(MQQMDT, mqsys::MQLONG);
+        define_new_type!(
+            pub MQQMFAC, mqsys::MQLONG, mapping::MQQMFAC_MAPSTR,
+            r##"Queue Manager Facility"##
+        );
+        impl_value!(MQQMFAC, mqsys::MQLONG);
+        define_new_type!(
+            pub MQQMSTA, mqsys::MQLONG, mapping::MQQMSTA_MAPSTR,
+            r##"Queue Manager Status"##
+        );
+        impl_value!(MQQMSTA, mqsys::MQLONG);
+        define_new_type!(
+            pub MQQMT, mqsys::MQLONG, mapping::MQQMT_MAPSTR, r##"Queue Manager Types"##
+        );
+        impl_value!(MQQMT, mqsys::MQLONG);
+        define_new_type!(
+            pub MQQO, mqsys::MQLONG, mapping::MQQO_MAPSTR, r##"Quiesce Options"##
+        );
+        impl_value!(MQQO, mqsys::MQLONG);
+        define_new_type!(
+            pub MQQSGS, mqsys::MQLONG, mapping::MQQSGS_MAPSTR, r##"QSG Status"##
+        );
+        impl_value!(MQQSGS, mqsys::MQLONG);
+        define_new_type!(
+            pub MQQSIE, mqsys::MQLONG, mapping::MQQSIE_MAPSTR,
+            r##"Queue Service-Interval Events"##
+        );
+        impl_value!(MQQSIE, mqsys::MQLONG);
+        define_new_type!(
+            pub MQQSOT, mqsys::MQLONG, mapping::MQQSOT_MAPSTR,
+            r##"Queue Status Open Types"##
+        );
+        impl_value!(MQQSOT, mqsys::MQLONG);
+        define_new_type!(
+            pub MQQSO, mqsys::MQLONG, mapping::MQQSO_MAPSTR,
+            r##"Queue Status Open Options for SET, BROWSE, INPUT"##
+        );
+        impl_value!(MQQSO, mqsys::MQLONG);
+        define_new_type!(
+            pub MQQSUM, mqsys::MQLONG, mapping::MQQSUM_MAPSTR,
+            r##"Queue Status Uncommitted Messages"##
+        );
+        impl_value!(MQQSUM, mqsys::MQLONG);
+        define_new_type!(
+            pub MQRAR, mqsys::MQLONG, mapping::MQRAR_MAPSTR,
+            r##"Remove Authority Record Options"##
+        );
+        impl_value!(MQRAR, mqsys::MQLONG);
+        define_new_type!(
             pub MQRCCF, mqsys::MQLONG, mapping::MQRCCF_MAPSTR, r##"Reason Codes"##
         );
         impl_value!(MQRCCF, mqsys::MQLONG);
         define_new_type!(
+            pub MQRDNS, mqsys::MQLONG, mapping::MQRDNS_MAPSTR, r##"REVDNS QMGR State"##
+        );
+        impl_value!(MQRDNS, mqsys::MQLONG);
+        define_new_type!(
             pub MQREGO, mqsys::MQLONG, mapping::MQREGO_MAPSTR,
-            r##"Publish/Subscribe Registration Options"##
+            r##"Registration Options"##
         );
         impl_bitflags!(MQREGO, mqsys::MQLONG);
+        define_new_type!(
+            pub MQROUTE, mqsys::MQLONG, mapping::MQROUTE_MAPSTR,
+            r##"Trace-route Accumulation (MQIACF_ROUTE_ACCUMULATION)"##
+        );
+        impl_value!(MQROUTE, mqsys::MQLONG);
+        define_new_type!(
+            pub MQRP, mqsys::MQLONG, mapping::MQRP_MAPSTR, r##"Replace Options"##
+        );
+        impl_value!(MQRP, mqsys::MQLONG);
+        define_new_type!(
+            pub MQRQ, mqsys::MQLONG, mapping::MQRQ_MAPSTR, r##"Reason Qualifiers"##
+        );
+        impl_value!(MQRQ, mqsys::MQLONG);
+        define_new_type!(
+            pub MQRT, mqsys::MQLONG, mapping::MQRT_MAPSTR, r##"Refresh Types"##
+        );
+        impl_value!(MQRT, mqsys::MQLONG);
+        define_new_type!(
+            pub MQSECCOMM, mqsys::MQLONG, mapping::MQSECCOMM_MAPSTR,
+            r##"LDAP SSL/TLS Connection State"##
+        );
+        impl_value!(MQSECCOMM, mqsys::MQLONG);
+        define_new_type!(
+            pub MQSECITEM, mqsys::MQLONG, mapping::MQSECITEM_MAPSTR,
+            r##"Security Items"##
+        );
+        impl_value!(MQSECITEM, mqsys::MQLONG);
+        define_new_type!(
+            pub MQSECSW, mqsys::MQLONG, mapping::MQSECSW_MAPSTR,
+            r##"Security Switch States"##
+        );
+        impl_value!(MQSECSW, mqsys::MQLONG);
+        define_new_type!(
+            pub MQSECTYPE, mqsys::MQLONG, mapping::MQSECTYPE_MAPSTR,
+            r##"Security Types"##
+        );
+        impl_value!(MQSECTYPE, mqsys::MQLONG);
+        define_new_type!(
+            pub MQSELTYPE, mqsys::MQLONG, mapping::MQSELTYPE_MAPSTR,
+            r##"Selector types"##
+        );
+        impl_value!(MQSELTYPE, mqsys::MQLONG);
+        define_new_type!(
+            pub MQSTDBY, mqsys::MQLONG, mapping::MQSTDBY_MAPSTR,
+            r##"Multi-instance Queue Managers"##
+        );
+        impl_value!(MQSTDBY, mqsys::MQLONG);
+        define_new_type!(
+            pub MQSUBTYPE, mqsys::MQLONG, mapping::MQSUBTYPE_MAPSTR,
+            r##"Subscription Types"##
+        );
+        impl_value!(MQSUBTYPE, mqsys::MQLONG);
+        define_new_type!(
+            pub MQSUS, mqsys::MQLONG, mapping::MQSUS_MAPSTR, r##"Suspend Status"##
+        );
+        impl_value!(MQSUS, mqsys::MQLONG);
+        define_new_type!(
+            pub MQSYNCPOINT, mqsys::MQLONG, mapping::MQSYNCPOINT_MAPSTR,
+            r##"Syncpoint values for Pub/Sub migration"##
+        );
+        impl_value!(MQSYNCPOINT, mqsys::MQLONG);
+        define_new_type!(
+            pub MQSYSOBJ, mqsys::MQLONG, mapping::MQSYSOBJ_MAPSTR, r##"System Objects"##
+        );
+        impl_value!(MQSYSOBJ, mqsys::MQLONG);
+        define_new_type!(
+            pub MQSYSP, mqsys::MQLONG, mapping::MQSYSP_MAPSTR,
+            r##"System Parameter Values"##
+        );
+        impl_value!(MQSYSP, mqsys::MQLONG);
+        define_new_type!(
+            pub MQS_AVAIL, mqsys::MQLONG, mapping::MQS_AVAIL_MAPSTR,
+            r##"SMDS Availability Options"##
+        );
+        impl_value!(MQS_AVAIL, mqsys::MQLONG);
+        define_new_type!(
+            pub MQS_EXPANDST, mqsys::MQLONG, mapping::MQS_EXPANDST_MAPSTR,
+            r##"Expandst Options"##
+        );
+        impl_value!(MQS_EXPANDST, mqsys::MQLONG);
+        define_new_type!(
+            pub MQS_OPENMODE, mqsys::MQLONG, mapping::MQS_OPENMODE_MAPSTR,
+            r##"Open Mode Options"##
+        );
+        impl_value!(MQS_OPENMODE, mqsys::MQLONG);
+        define_new_type!(
+            pub MQS_STATUS, mqsys::MQLONG, mapping::MQS_STATUS_MAPSTR,
+            r##"SMDS Status Options"##
+        );
+        impl_value!(MQS_STATUS, mqsys::MQLONG);
+        define_new_type!(
+            pub MQTIME, mqsys::MQLONG, mapping::MQTIME_MAPSTR, r##"Time units"##
+        );
+        impl_value!(MQTIME, mqsys::MQLONG);
+        define_new_type!(
+            pub MQUCI, mqsys::MQLONG, mapping::MQUCI_MAPSTR, r##"Use ClientID"##
+        );
+        impl_value!(MQUCI, mqsys::MQLONG);
+        define_new_type!(
+            pub MQUIDSUPP, mqsys::MQLONG, mapping::MQUIDSUPP_MAPSTR,
+            r##"User ID Support"##
+        );
+        impl_value!(MQUIDSUPP, mqsys::MQLONG);
+        define_new_type!(
+            pub MQUNDELIVERED, mqsys::MQLONG, mapping::MQUNDELIVERED_MAPSTR,
+            r##"Undelivered values for Pub/Sub migration"##
+        );
+        impl_value!(MQUNDELIVERED, mqsys::MQLONG);
+        define_new_type!(
+            pub MQUOWST, mqsys::MQLONG, mapping::MQUOWST_MAPSTR, r##"UOW States"##
+        );
+        impl_value!(MQUOWST, mqsys::MQLONG);
+        define_new_type!(
+            pub MQUOWT, mqsys::MQLONG, mapping::MQUOWT_MAPSTR, r##"UOW Types"##
+        );
+        impl_value!(MQUOWT, mqsys::MQLONG);
+        define_new_type!(
+            pub MQUSAGE_DS, mqsys::MQLONG, mapping::MQUSAGE_DS_MAPSTR,
+            r##"Data Set Usage Values"##
+        );
+        impl_value!(MQUSAGE_DS, mqsys::MQLONG);
+        define_new_type!(
+            pub MQUSAGE_EXPAND, mqsys::MQLONG, mapping::MQUSAGE_EXPAND_MAPSTR,
+            r##"Expand Usage Values"##
+        );
+        impl_value!(MQUSAGE_EXPAND, mqsys::MQLONG);
+        define_new_type!(
+            pub MQUSAGE_PS, mqsys::MQLONG, mapping::MQUSAGE_PS_MAPSTR,
+            r##"Page Set Usage Values"##
+        );
+        impl_value!(MQUSAGE_PS, mqsys::MQLONG);
+        define_new_type!(
+            pub MQUSAGE_SMDS, mqsys::MQLONG, mapping::MQUSAGE_SMDS_MAPSTR,
+            r##"Usage SMDS Options"##
+        );
+        impl_value!(MQUSAGE_SMDS, mqsys::MQLONG);
     }
     #[cfg(feature = "pcf")]
     pub use pcf::*;
 }
 pub mod constants {
     use crate::types;
-    pub const MQACTIVE_NO: types::MQACTIVE = types::MQACTIVE(0);
-    pub const MQACTIVE_YES: types::MQACTIVE = types::MQACTIVE(1);
     pub const MQACTP_NEW: types::MQACTP = types::MQACTP(0);
     pub const MQACTP_FORWARD: types::MQACTP = types::MQACTP(1);
     pub const MQACTP_REPLY: types::MQACTP = types::MQACTP(2);
@@ -997,17 +1693,6 @@ pub mod constants {
     pub const MQACTV_DETAIL_LOW: types::MQACTV = types::MQACTV(1);
     pub const MQACTV_DETAIL_MEDIUM: types::MQACTV = types::MQACTV(2);
     pub const MQACTV_DETAIL_HIGH: types::MQACTV = types::MQACTV(3);
-    pub const MQACT_FORCE_REMOVE: types::MQACT = types::MQACT(1);
-    pub const MQACT_ADVANCE_LOG: types::MQACT = types::MQACT(2);
-    pub const MQACT_COLLECT_STATISTICS: types::MQACT = types::MQACT(3);
-    pub const MQACT_PUBSUB: types::MQACT = types::MQACT(4);
-    pub const MQACT_ADD: types::MQACT = types::MQACT(5);
-    pub const MQACT_REPLACE: types::MQACT = types::MQACT(6);
-    pub const MQACT_REMOVE: types::MQACT = types::MQACT(7);
-    pub const MQACT_REMOVEALL: types::MQACT = types::MQACT(8);
-    pub const MQACT_FAIL: types::MQACT = types::MQACT(9);
-    pub const MQACT_REDUCE_LOG: types::MQACT = types::MQACT(10);
-    pub const MQACT_ARCHIVE_LOG: types::MQACT = types::MQACT(11);
     pub const MQADOPT_CHECK_NONE: types::MQADOPT_CHECK = types::MQADOPT_CHECK(0);
     pub const MQADOPT_CHECK_ALL: types::MQADOPT_CHECK = types::MQADOPT_CHECK(1);
     pub const MQADOPT_CHECK_Q_MGR_NAME: types::MQADOPT_CHECK = types::MQADOPT_CHECK(2);
@@ -1019,23 +1704,11 @@ pub mod constants {
     pub const MQADOPT_TYPE_SDR: types::MQADOPT_TYPE = types::MQADOPT_TYPE(4);
     pub const MQADOPT_TYPE_RCVR: types::MQADOPT_TYPE = types::MQADOPT_TYPE(8);
     pub const MQADOPT_TYPE_CLUSRCVR: types::MQADOPT_TYPE = types::MQADOPT_TYPE(16);
-    pub const MQADPCTX_NO: types::MQADPCTX = types::MQADPCTX(0);
-    pub const MQADPCTX_YES: types::MQADPCTX = types::MQADPCTX(1);
     pub const MQAIT_ALL: types::MQAIT = types::MQAIT(0);
     pub const MQAIT_CRL_LDAP: types::MQAIT = types::MQAIT(1);
     pub const MQAIT_OCSP: types::MQAIT = types::MQAIT(2);
     pub const MQAIT_IDPW_OS: types::MQAIT = types::MQAIT(3);
     pub const MQAIT_IDPW_LDAP: types::MQAIT = types::MQAIT(4);
-    pub const MQAPPL_IMMOVABLE: types::MQAPPL = types::MQAPPL(0);
-    pub const MQAPPL_MOVABLE: types::MQAPPL = types::MQAPPL(1);
-    pub const MQAS_NONE: types::MQAS = types::MQAS(0);
-    pub const MQAS_STARTED: types::MQAS = types::MQAS(1);
-    pub const MQAS_START_WAIT: types::MQAS = types::MQAS(2);
-    pub const MQAS_STOPPED: types::MQAS = types::MQAS(3);
-    pub const MQAS_SUSPENDED: types::MQAS = types::MQAS(4);
-    pub const MQAS_SUSPENDED_TEMPORARY: types::MQAS = types::MQAS(5);
-    pub const MQAS_ACTIVE: types::MQAS = types::MQAS(6);
-    pub const MQAS_INACTIVE: types::MQAS = types::MQAS(7);
     pub const MQAT_UNKNOWN: types::MQAT = types::MQAT(-1);
     pub const MQAT_NO_CONTEXT: types::MQAT = types::MQAT(0);
     pub const MQAT_CICS: types::MQAT = types::MQAT(1);
@@ -1079,93 +1752,8 @@ pub mod constants {
     pub const MQAT_BROKER: types::MQAT = types::MQAT(26);
     pub const MQAT_USER_FIRST: types::MQAT = types::MQAT(65536);
     pub const MQAT_USER_LAST: types::MQAT = types::MQAT(999999999);
-    pub const MQAUTHENTICATE_OS: types::MQAUTHENTICATE = types::MQAUTHENTICATE(0);
-    pub const MQAUTHENTICATE_PAM: types::MQAUTHENTICATE = types::MQAUTHENTICATE(1);
-    pub const MQAUTHOPT_ENTITY_EXPLICIT: types::MQAUTHOPT = types::MQAUTHOPT(1);
-    pub const MQAUTHOPT_ENTITY_SET: types::MQAUTHOPT = types::MQAUTHOPT(2);
-    pub const MQAUTHOPT_NAME_EXPLICIT: types::MQAUTHOPT = types::MQAUTHOPT(16);
-    pub const MQAUTHOPT_NAME_ALL_MATCHING: types::MQAUTHOPT = types::MQAUTHOPT(32);
-    pub const MQAUTHOPT_NAME_AS_WILDCARD: types::MQAUTHOPT = types::MQAUTHOPT(64);
-    pub const MQAUTHOPT_CUMULATIVE: types::MQAUTHOPT = types::MQAUTHOPT(256);
-    pub const MQAUTHOPT_EXCLUDE_TEMP: types::MQAUTHOPT = types::MQAUTHOPT(512);
-    pub const MQAUTH_ALL_MQI: types::MQAUTH = types::MQAUTH(-3);
-    pub const MQAUTH_ALL_ADMIN: types::MQAUTH = types::MQAUTH(-2);
-    pub const MQAUTH_ALL: types::MQAUTH = types::MQAUTH(-1);
-    pub const MQAUTH_NONE: types::MQAUTH = types::MQAUTH(0);
-    pub const MQAUTH_ALT_USER_AUTHORITY: types::MQAUTH = types::MQAUTH(1);
-    pub const MQAUTH_BROWSE: types::MQAUTH = types::MQAUTH(2);
-    pub const MQAUTH_CHANGE: types::MQAUTH = types::MQAUTH(3);
-    pub const MQAUTH_CLEAR: types::MQAUTH = types::MQAUTH(4);
-    pub const MQAUTH_CONNECT: types::MQAUTH = types::MQAUTH(5);
-    pub const MQAUTH_CREATE: types::MQAUTH = types::MQAUTH(6);
-    pub const MQAUTH_DELETE: types::MQAUTH = types::MQAUTH(7);
-    pub const MQAUTH_DISPLAY: types::MQAUTH = types::MQAUTH(8);
-    pub const MQAUTH_INPUT: types::MQAUTH = types::MQAUTH(9);
-    pub const MQAUTH_INQUIRE: types::MQAUTH = types::MQAUTH(10);
-    pub const MQAUTH_OUTPUT: types::MQAUTH = types::MQAUTH(11);
-    pub const MQAUTH_PASS_ALL_CONTEXT: types::MQAUTH = types::MQAUTH(12);
-    pub const MQAUTH_PASS_IDENTITY_CONTEXT: types::MQAUTH = types::MQAUTH(13);
-    pub const MQAUTH_SET: types::MQAUTH = types::MQAUTH(14);
-    pub const MQAUTH_SET_ALL_CONTEXT: types::MQAUTH = types::MQAUTH(15);
-    pub const MQAUTH_SET_IDENTITY_CONTEXT: types::MQAUTH = types::MQAUTH(16);
-    pub const MQAUTH_CONTROL: types::MQAUTH = types::MQAUTH(17);
-    pub const MQAUTH_CONTROL_EXTENDED: types::MQAUTH = types::MQAUTH(18);
-    pub const MQAUTH_PUBLISH: types::MQAUTH = types::MQAUTH(19);
-    pub const MQAUTH_SUBSCRIBE: types::MQAUTH = types::MQAUTH(20);
-    pub const MQAUTH_RESUME: types::MQAUTH = types::MQAUTH(21);
-    pub const MQAUTH_SYSTEM: types::MQAUTH = types::MQAUTH(22);
-    pub const MQAUTOCLUS_TYPE_NONE: types::MQAUTOCLUS = types::MQAUTOCLUS(0);
-    pub const MQAUTOCLUS_TYPE_UNIFORM: types::MQAUTOCLUS = types::MQAUTOCLUS(1);
     pub const MQAUTO_START_NO: types::MQAUTO = types::MQAUTO(0);
     pub const MQAUTO_START_YES: types::MQAUTO = types::MQAUTO(1);
-    pub const MQBACF_EVENT_ACCOUNTING_TOKEN: types::MQBACF = types::MQBACF(7001);
-    pub const MQBACF_EVENT_SECURITY_ID: types::MQBACF = types::MQBACF(7002);
-    pub const MQBACF_RESPONSE_SET: types::MQBACF = types::MQBACF(7003);
-    pub const MQBACF_RESPONSE_ID: types::MQBACF = types::MQBACF(7004);
-    pub const MQBACF_EXTERNAL_UOW_ID: types::MQBACF = types::MQBACF(7005);
-    pub const MQBACF_CONNECTION_ID: types::MQBACF = types::MQBACF(7006);
-    pub const MQBACF_GENERIC_CONNECTION_ID: types::MQBACF = types::MQBACF(7007);
-    pub const MQBACF_ORIGIN_UOW_ID: types::MQBACF = types::MQBACF(7008);
-    pub const MQBACF_Q_MGR_UOW_ID: types::MQBACF = types::MQBACF(7009);
-    pub const MQBACF_ACCOUNTING_TOKEN: types::MQBACF = types::MQBACF(7010);
-    pub const MQBACF_CORREL_ID: types::MQBACF = types::MQBACF(7011);
-    pub const MQBACF_GROUP_ID: types::MQBACF = types::MQBACF(7012);
-    pub const MQBACF_MSG_ID: types::MQBACF = types::MQBACF(7013);
-    pub const MQBACF_CF_LEID: types::MQBACF = types::MQBACF(7014);
-    pub const MQBACF_DESTINATION_CORREL_ID: types::MQBACF = types::MQBACF(7015);
-    pub const MQBACF_SUB_ID: types::MQBACF = types::MQBACF(7016);
-    pub const MQBACF_ALTERNATE_SECURITYID: types::MQBACF = types::MQBACF(7019);
-    pub const MQBACF_MESSAGE_DATA: types::MQBACF = types::MQBACF(7020);
-    pub const MQBACF_MQBO_STRUCT: types::MQBACF = types::MQBACF(7021);
-    pub const MQBACF_MQCB_FUNCTION: types::MQBACF = types::MQBACF(7022);
-    pub const MQBACF_MQCBC_STRUCT: types::MQBACF = types::MQBACF(7023);
-    pub const MQBACF_MQCBD_STRUCT: types::MQBACF = types::MQBACF(7024);
-    pub const MQBACF_MQCD_STRUCT: types::MQBACF = types::MQBACF(7025);
-    pub const MQBACF_MQCNO_STRUCT: types::MQBACF = types::MQBACF(7026);
-    pub const MQBACF_MQGMO_STRUCT: types::MQBACF = types::MQBACF(7027);
-    pub const MQBACF_MQMD_STRUCT: types::MQBACF = types::MQBACF(7028);
-    pub const MQBACF_MQPMO_STRUCT: types::MQBACF = types::MQBACF(7029);
-    pub const MQBACF_MQSD_STRUCT: types::MQBACF = types::MQBACF(7030);
-    pub const MQBACF_MQSTS_STRUCT: types::MQBACF = types::MQBACF(7031);
-    pub const MQBACF_SUB_CORREL_ID: types::MQBACF = types::MQBACF(7032);
-    pub const MQBACF_XA_XID: types::MQBACF = types::MQBACF(7033);
-    pub const MQBACF_XQH_CORREL_ID: types::MQBACF = types::MQBACF(7034);
-    pub const MQBACF_XQH_MSG_ID: types::MQBACF = types::MQBACF(7035);
-    pub const MQBACF_REQUEST_ID: types::MQBACF = types::MQBACF(7036);
-    pub const MQBACF_PROPERTIES_DATA: types::MQBACF = types::MQBACF(7037);
-    pub const MQBACF_CONN_TAG: types::MQBACF = types::MQBACF(7038);
-    pub const MQBACF_MQBNO_STRUCT: types::MQBACF = types::MQBACF(7039);
-    pub const MQBACF_FIRST: types::MQBACF = types::MQBACF(7001);
-    pub const MQBACF_LAST_USED: types::MQBACF = types::MQBACF(7039);
-    pub const MQBALANCED_NO: types::MQBALANCED = types::MQBALANCED(0);
-    pub const MQBALANCED_YES: types::MQBALANCED = types::MQBALANCED(1);
-    pub const MQBALANCED_NOT_APPLICABLE: types::MQBALANCED = types::MQBALANCED(2);
-    pub const MQBALANCED_UNKNOWN: types::MQBALANCED = types::MQBALANCED(3);
-    pub const MQBALSTATE_NOT_APPLICABLE: types::MQBALSTATE = types::MQBALSTATE(0);
-    pub const MQBALSTATE_LOW: types::MQBALSTATE = types::MQBALSTATE(1);
-    pub const MQBALSTATE_OK: types::MQBALSTATE = types::MQBALSTATE(2);
-    pub const MQBALSTATE_HIGH: types::MQBALSTATE = types::MQBALSTATE(3);
-    pub const MQBALSTATE_UNKNOWN: types::MQBALSTATE = types::MQBALSTATE(4);
     pub const MQBMHO_NONE: types::MQBMHO = types::MQBMHO(0);
     pub const MQBMHO_DELETE_PROPERTIES: types::MQBMHO = types::MQBMHO(1);
     pub const MQBND_BIND_ON_OPEN: types::MQBND = types::MQBND(0);
@@ -1182,44 +1770,15 @@ pub mod constants {
     pub const MQBNO_TIMEOUT_AS_DEFAULT: types::MQBNO_TIMEOUT = types::MQBNO_TIMEOUT(-1);
     pub const MQBNO_TIMEOUT_IMMEDIATE: types::MQBNO_TIMEOUT = types::MQBNO_TIMEOUT(0);
     pub const MQBO_NONE: types::MQBO = types::MQBO(0);
-    pub const MQBPLOCATION_BELOW: types::MQBPLOCATION = types::MQBPLOCATION(0);
-    pub const MQBPLOCATION_ABOVE: types::MQBPLOCATION = types::MQBPLOCATION(1);
-    pub const MQBPLOCATION_SWITCHING_ABOVE: types::MQBPLOCATION = types::MQBPLOCATION(2);
-    pub const MQBPLOCATION_SWITCHING_BELOW: types::MQBPLOCATION = types::MQBPLOCATION(3);
-    pub const MQBT_OTMA: types::MQBT = types::MQBT(1);
     pub const MQCADSD_NONE: types::MQCADSD = types::MQCADSD(0);
     pub const MQCADSD_SEND: types::MQCADSD = types::MQCADSD(1);
     pub const MQCADSD_RECV: types::MQCADSD = types::MQCADSD(16);
     pub const MQCADSD_MSGFORMAT: types::MQCADSD = types::MQCADSD(256);
     pub const MQCAFTY_NONE: types::MQCAFTY = types::MQCAFTY(0);
     pub const MQCAFTY_PREFERRED: types::MQCAFTY = types::MQCAFTY(1);
-    pub const MQCAMO_CLOSE_DATE: types::MQCAMO = types::MQCAMO(2701);
-    pub const MQCAMO_CLOSE_TIME: types::MQCAMO = types::MQCAMO(2702);
-    pub const MQCAMO_CONN_DATE: types::MQCAMO = types::MQCAMO(2703);
-    pub const MQCAMO_CONN_TIME: types::MQCAMO = types::MQCAMO(2704);
-    pub const MQCAMO_DISC_DATE: types::MQCAMO = types::MQCAMO(2705);
-    pub const MQCAMO_DISC_TIME: types::MQCAMO = types::MQCAMO(2706);
-    pub const MQCAMO_END_DATE: types::MQCAMO = types::MQCAMO(2707);
-    pub const MQCAMO_END_TIME: types::MQCAMO = types::MQCAMO(2708);
-    pub const MQCAMO_OPEN_DATE: types::MQCAMO = types::MQCAMO(2709);
-    pub const MQCAMO_OPEN_TIME: types::MQCAMO = types::MQCAMO(2710);
-    pub const MQCAMO_START_DATE: types::MQCAMO = types::MQCAMO(2711);
-    pub const MQCAMO_START_TIME: types::MQCAMO = types::MQCAMO(2712);
-    pub const MQCAMO_MONITOR_CLASS: types::MQCAMO = types::MQCAMO(2713);
-    pub const MQCAMO_MONITOR_TYPE: types::MQCAMO = types::MQCAMO(2714);
-    pub const MQCAMO_MONITOR_DESC: types::MQCAMO = types::MQCAMO(2715);
-    pub const MQCAMO_FIRST: types::MQCAMO = types::MQCAMO(2701);
-    pub const MQCAMO_LAST_USED: types::MQCAMO = types::MQCAMO(2715);
     pub const MQCAP_NOT_SUPPORTED: types::MQCAP = types::MQCAP(0);
     pub const MQCAP_SUPPORTED: types::MQCAP = types::MQCAP(1);
     pub const MQCAP_EXPIRED: types::MQCAP = types::MQCAP(2);
-    pub const MQCAUT_ALL: types::MQCAUT = types::MQCAUT(0);
-    pub const MQCAUT_BLOCKUSER: types::MQCAUT = types::MQCAUT(1);
-    pub const MQCAUT_BLOCKADDR: types::MQCAUT = types::MQCAUT(2);
-    pub const MQCAUT_SSLPEERMAP: types::MQCAUT = types::MQCAUT(3);
-    pub const MQCAUT_ADDRESSMAP: types::MQCAUT = types::MQCAUT(4);
-    pub const MQCAUT_USERMAP: types::MQCAUT = types::MQCAUT(5);
-    pub const MQCAUT_QMGRMAP: types::MQCAUT = types::MQCAUT(6);
     pub const MQCA_APPL_ID: types::MQCA = types::MQCA(2001);
     pub const MQCA_BASE_OBJECT_NAME: types::MQCA = types::MQCA(2002);
     pub const MQCA_COMMAND_INPUT_Q_NAME: types::MQCA = types::MQCA(2003);
@@ -1360,19 +1919,15 @@ pub mod constants {
     pub const MQCBCT_MSG_REMOVED: types::MQCBCT = types::MQCBCT(6);
     pub const MQCBCT_MSG_NOT_REMOVED: types::MQCBCT = types::MQCBCT(7);
     pub const MQCBCT_MC_EVENT_CALL: types::MQCBCT = types::MQCBCT(8);
+    pub const MQCBDO_NONE: types::MQCBDO = types::MQCBDO(0);
+    pub const MQCBDO_START_CALL: types::MQCBDO = types::MQCBDO(1);
+    pub const MQCBDO_STOP_CALL: types::MQCBDO = types::MQCBDO(4);
+    pub const MQCBDO_REGISTER_CALL: types::MQCBDO = types::MQCBDO(256);
+    pub const MQCBDO_DEREGISTER_CALL: types::MQCBDO = types::MQCBDO(512);
+    pub const MQCBDO_FAIL_IF_QUIESCING: types::MQCBDO = types::MQCBDO(8192);
+    pub const MQCBDO_EVENT_CALL: types::MQCBDO = types::MQCBDO(16384);
+    pub const MQCBDO_MC_EVENT_CALL: types::MQCBDO = types::MQCBDO(32768);
     pub const MQCBD_FULL_MSG_LENGTH: types::MQCBD = types::MQCBD(-1);
-    pub const MQCBO_NONE: types::MQCBO = types::MQCBO(0);
-    pub const MQCBO_ADMIN_BAG: types::MQCBO = types::MQCBO(1);
-    pub const MQCBO_LIST_FORM_ALLOWED: types::MQCBO = types::MQCBO(2);
-    pub const MQCBO_REORDER_AS_REQUIRED: types::MQCBO = types::MQCBO(4);
-    pub const MQCBO_CHECK_SELECTORS: types::MQCBO = types::MQCBO(8);
-    pub const MQCBO_COMMAND_BAG: types::MQCBO = types::MQCBO(16);
-    pub const MQCBO_SYSTEM_BAG: types::MQCBO = types::MQCBO(32);
-    pub const MQCBO_GROUP_BAG: types::MQCBO = types::MQCBO(64);
-    pub const MQCBO_DO_NOT_CHECK_SELECTORS: types::MQCBO = types::MQCBO(0);
-    pub const MQCBO_DO_NOT_REORDER: types::MQCBO = types::MQCBO(0);
-    pub const MQCBO_LIST_FORM_INHIBITED: types::MQCBO = types::MQCBO(0);
-    pub const MQCBO_USER_BAG: types::MQCBO = types::MQCBO(0);
     pub const MQCBT_MESSAGE_CONSUMER: types::MQCBT = types::MQCBT(1);
     pub const MQCBT_EVENT_HANDLER: types::MQCBT = types::MQCBT(2);
     pub const MQCCSI_AS_PUBLISHED: types::MQCCSI = types::MQCCSI(-4);
@@ -1388,13 +1943,8 @@ pub mod constants {
     pub const MQCC_OK: types::MQCC = types::MQCC(0);
     pub const MQCC_WARNING: types::MQCC = types::MQCC(1);
     pub const MQCC_FAILED: types::MQCC = types::MQCC(2);
-    pub const MQCDC_NO_SENDER_CONVERSION: types::MQCDC = types::MQCDC(0);
-    pub const MQCDC_SENDER_CONVERSION: types::MQCDC = types::MQCDC(1);
     pub const MQCEX_AS_PARENT: types::MQCEX = types::MQCEX(-2);
     pub const MQCEX_NOLIMIT: types::MQCEX = types::MQCEX(-1);
-    pub const MQCFACCESS_ENABLED: types::MQCFACCESS = types::MQCFACCESS(0);
-    pub const MQCFACCESS_SUSPENDED: types::MQCFACCESS = types::MQCFACCESS(1);
-    pub const MQCFACCESS_DISABLED: types::MQCFACCESS = types::MQCFACCESS(2);
     pub const MQCFCONLOS_TERMINATE: types::MQCFCONLOS = types::MQCFCONLOS(0);
     pub const MQCFCONLOS_TOLERATE: types::MQCFCONLOS = types::MQCFCONLOS(1);
     pub const MQCFCONLOS_ASQMGR: types::MQCFCONLOS = types::MQCFCONLOS(2);
@@ -1402,128 +1952,11 @@ pub mod constants {
     pub const MQCFOFFLD_SMDS: types::MQCFOFFLD = types::MQCFOFFLD(1);
     pub const MQCFOFFLD_DB2: types::MQCFOFFLD = types::MQCFOFFLD(2);
     pub const MQCFOFFLD_BOTH: types::MQCFOFFLD = types::MQCFOFFLD(3);
-    pub const MQCFOP_LESS: types::MQCFOP = types::MQCFOP(1);
-    pub const MQCFOP_EQUAL: types::MQCFOP = types::MQCFOP(2);
-    pub const MQCFOP_NOT_GREATER: types::MQCFOP = types::MQCFOP(3);
-    pub const MQCFOP_GREATER: types::MQCFOP = types::MQCFOP(4);
-    pub const MQCFOP_NOT_EQUAL: types::MQCFOP = types::MQCFOP(5);
-    pub const MQCFOP_NOT_LESS: types::MQCFOP = types::MQCFOP(6);
-    pub const MQCFOP_CONTAINS: types::MQCFOP = types::MQCFOP(10);
-    pub const MQCFOP_EXCLUDES: types::MQCFOP = types::MQCFOP(13);
-    pub const MQCFOP_LIKE: types::MQCFOP = types::MQCFOP(18);
-    pub const MQCFOP_NOT_LIKE: types::MQCFOP = types::MQCFOP(21);
-    pub const MQCFOP_CONTAINS_GEN: types::MQCFOP = types::MQCFOP(26);
-    pub const MQCFOP_EXCLUDES_GEN: types::MQCFOP = types::MQCFOP(29);
-    pub const MQCFO_REFRESH_REPOSITORY_NO: types::MQCFO_REFRESH = types::MQCFO_REFRESH(
-        0,
-    );
-    pub const MQCFO_REFRESH_REPOSITORY_YES: types::MQCFO_REFRESH = types::MQCFO_REFRESH(
-        1,
-    );
-    pub const MQCFO_REMOVE_QUEUES_NO: types::MQCFO_REMOVE = types::MQCFO_REMOVE(0);
-    pub const MQCFO_REMOVE_QUEUES_YES: types::MQCFO_REMOVE = types::MQCFO_REMOVE(1);
     pub const MQCFR_NO: types::MQCFR = types::MQCFR(0);
     pub const MQCFR_YES: types::MQCFR = types::MQCFR(1);
-    pub const MQCFSTATUS_NOT_FOUND: types::MQCFSTATUS = types::MQCFSTATUS(0);
-    pub const MQCFSTATUS_ACTIVE: types::MQCFSTATUS = types::MQCFSTATUS(1);
-    pub const MQCFSTATUS_IN_RECOVER: types::MQCFSTATUS = types::MQCFSTATUS(2);
-    pub const MQCFSTATUS_IN_BACKUP: types::MQCFSTATUS = types::MQCFSTATUS(3);
-    pub const MQCFSTATUS_FAILED: types::MQCFSTATUS = types::MQCFSTATUS(4);
-    pub const MQCFSTATUS_NONE: types::MQCFSTATUS = types::MQCFSTATUS(5);
-    pub const MQCFSTATUS_UNKNOWN: types::MQCFSTATUS = types::MQCFSTATUS(6);
-    pub const MQCFSTATUS_RECOVERED: types::MQCFSTATUS = types::MQCFSTATUS(7);
-    pub const MQCFSTATUS_EMPTY: types::MQCFSTATUS = types::MQCFSTATUS(8);
-    pub const MQCFSTATUS_NEW: types::MQCFSTATUS = types::MQCFSTATUS(9);
-    pub const MQCFSTATUS_ADMIN_INCOMPLETE: types::MQCFSTATUS = types::MQCFSTATUS(20);
-    pub const MQCFSTATUS_NEVER_USED: types::MQCFSTATUS = types::MQCFSTATUS(21);
-    pub const MQCFSTATUS_NO_BACKUP: types::MQCFSTATUS = types::MQCFSTATUS(22);
-    pub const MQCFSTATUS_NOT_FAILED: types::MQCFSTATUS = types::MQCFSTATUS(23);
-    pub const MQCFSTATUS_NOT_RECOVERABLE: types::MQCFSTATUS = types::MQCFSTATUS(24);
-    pub const MQCFSTATUS_XES_ERROR: types::MQCFSTATUS = types::MQCFSTATUS(25);
-    pub const MQCFTYPE_APPL: types::MQCFTYPE = types::MQCFTYPE(0);
-    pub const MQCFTYPE_ADMIN: types::MQCFTYPE = types::MQCFTYPE(1);
-    pub const MQCFT_NONE: types::MQCFT = types::MQCFT(0);
-    pub const MQCFT_COMMAND: types::MQCFT = types::MQCFT(1);
-    pub const MQCFT_RESPONSE: types::MQCFT = types::MQCFT(2);
-    pub const MQCFT_INTEGER: types::MQCFT = types::MQCFT(3);
-    pub const MQCFT_STRING: types::MQCFT = types::MQCFT(4);
-    pub const MQCFT_INTEGER_LIST: types::MQCFT = types::MQCFT(5);
-    pub const MQCFT_STRING_LIST: types::MQCFT = types::MQCFT(6);
-    pub const MQCFT_EVENT: types::MQCFT = types::MQCFT(7);
-    pub const MQCFT_USER: types::MQCFT = types::MQCFT(8);
-    pub const MQCFT_BYTE_STRING: types::MQCFT = types::MQCFT(9);
-    pub const MQCFT_TRACE_ROUTE: types::MQCFT = types::MQCFT(10);
-    pub const MQCFT_REPORT: types::MQCFT = types::MQCFT(12);
-    pub const MQCFT_INTEGER_FILTER: types::MQCFT = types::MQCFT(13);
-    pub const MQCFT_STRING_FILTER: types::MQCFT = types::MQCFT(14);
-    pub const MQCFT_BYTE_STRING_FILTER: types::MQCFT = types::MQCFT(15);
-    pub const MQCFT_COMMAND_XR: types::MQCFT = types::MQCFT(16);
-    pub const MQCFT_XR_MSG: types::MQCFT = types::MQCFT(17);
-    pub const MQCFT_XR_ITEM: types::MQCFT = types::MQCFT(18);
-    pub const MQCFT_XR_SUMMARY: types::MQCFT = types::MQCFT(19);
-    pub const MQCFT_GROUP: types::MQCFT = types::MQCFT(20);
-    pub const MQCFT_STATISTICS: types::MQCFT = types::MQCFT(21);
-    pub const MQCFT_ACCOUNTING: types::MQCFT = types::MQCFT(22);
-    pub const MQCFT_INTEGER64: types::MQCFT = types::MQCFT(23);
-    pub const MQCFT_INTEGER64_LIST: types::MQCFT = types::MQCFT(25);
-    pub const MQCFT_APP_ACTIVITY: types::MQCFT = types::MQCFT(26);
-    pub const MQCFT_STATUS: types::MQCFT = types::MQCFT(27);
     pub const MQCGWI_DEFAULT: types::MQCGWI = types::MQCGWI(-2);
     pub const MQCHAD_DISABLED: types::MQCHAD = types::MQCHAD(0);
     pub const MQCHAD_ENABLED: types::MQCHAD = types::MQCHAD(1);
-    pub const MQCHIDS_NOT_INDOUBT: types::MQCHIDS = types::MQCHIDS(0);
-    pub const MQCHIDS_INDOUBT: types::MQCHIDS = types::MQCHIDS(1);
-    pub const MQCHK_OPTIONAL: types::MQCHK = types::MQCHK(0);
-    pub const MQCHK_NONE: types::MQCHK = types::MQCHK(1);
-    pub const MQCHK_REQUIRED_ADMIN: types::MQCHK = types::MQCHK(2);
-    pub const MQCHK_REQUIRED: types::MQCHK = types::MQCHK(3);
-    pub const MQCHK_AS_Q_MGR: types::MQCHK = types::MQCHK(4);
-    pub const MQCHLA_DISABLED: types::MQCHLA = types::MQCHLA(0);
-    pub const MQCHLA_ENABLED: types::MQCHLA = types::MQCHLA(1);
-    pub const MQCHLD_ALL: types::MQCHLD = types::MQCHLD(-1);
-    pub const MQCHLD_DEFAULT: types::MQCHLD = types::MQCHLD(1);
-    pub const MQCHLD_SHARED: types::MQCHLD = types::MQCHLD(2);
-    pub const MQCHLD_PRIVATE: types::MQCHLD = types::MQCHLD(4);
-    pub const MQCHLD_FIXSHARED: types::MQCHLD = types::MQCHLD(5);
-    pub const MQCHRR_RESET_NOT_REQUESTED: types::MQCHRR = types::MQCHRR(0);
-    pub const MQCHSH_RESTART_NO: types::MQCHSH = types::MQCHSH(0);
-    pub const MQCHSH_RESTART_YES: types::MQCHSH = types::MQCHSH(1);
-    pub const MQCHSR_STOP_NOT_REQUESTED: types::MQCHSR = types::MQCHSR(0);
-    pub const MQCHSR_STOP_REQUESTED: types::MQCHSR = types::MQCHSR(1);
-    pub const MQCHSSTATE_OTHER: types::MQCHSSTATE = types::MQCHSSTATE(0);
-    pub const MQCHSSTATE_END_OF_BATCH: types::MQCHSSTATE = types::MQCHSSTATE(100);
-    pub const MQCHSSTATE_SENDING: types::MQCHSSTATE = types::MQCHSSTATE(200);
-    pub const MQCHSSTATE_RECEIVING: types::MQCHSSTATE = types::MQCHSSTATE(300);
-    pub const MQCHSSTATE_SERIALIZING: types::MQCHSSTATE = types::MQCHSSTATE(400);
-    pub const MQCHSSTATE_RESYNCHING: types::MQCHSSTATE = types::MQCHSSTATE(500);
-    pub const MQCHSSTATE_HEARTBEATING: types::MQCHSSTATE = types::MQCHSSTATE(600);
-    pub const MQCHSSTATE_IN_SCYEXIT: types::MQCHSSTATE = types::MQCHSSTATE(700);
-    pub const MQCHSSTATE_IN_RCVEXIT: types::MQCHSSTATE = types::MQCHSSTATE(800);
-    pub const MQCHSSTATE_IN_SENDEXIT: types::MQCHSSTATE = types::MQCHSSTATE(900);
-    pub const MQCHSSTATE_IN_MSGEXIT: types::MQCHSSTATE = types::MQCHSSTATE(1000);
-    pub const MQCHSSTATE_IN_MREXIT: types::MQCHSSTATE = types::MQCHSSTATE(1100);
-    pub const MQCHSSTATE_IN_CHADEXIT: types::MQCHSSTATE = types::MQCHSSTATE(1200);
-    pub const MQCHSSTATE_NET_CONNECTING: types::MQCHSSTATE = types::MQCHSSTATE(1250);
-    pub const MQCHSSTATE_SSL_HANDSHAKING: types::MQCHSSTATE = types::MQCHSSTATE(1300);
-    pub const MQCHSSTATE_NAME_SERVER: types::MQCHSSTATE = types::MQCHSSTATE(1400);
-    pub const MQCHSSTATE_IN_MQPUT: types::MQCHSSTATE = types::MQCHSSTATE(1500);
-    pub const MQCHSSTATE_IN_MQGET: types::MQCHSSTATE = types::MQCHSSTATE(1600);
-    pub const MQCHSSTATE_IN_MQI_CALL: types::MQCHSSTATE = types::MQCHSSTATE(1700);
-    pub const MQCHSSTATE_COMPRESSING: types::MQCHSSTATE = types::MQCHSSTATE(1800);
-    pub const MQCHS_INACTIVE: types::MQCHS = types::MQCHS(0);
-    pub const MQCHS_BINDING: types::MQCHS = types::MQCHS(1);
-    pub const MQCHS_STARTING: types::MQCHS = types::MQCHS(2);
-    pub const MQCHS_RUNNING: types::MQCHS = types::MQCHS(3);
-    pub const MQCHS_STOPPING: types::MQCHS = types::MQCHS(4);
-    pub const MQCHS_RETRYING: types::MQCHS = types::MQCHS(5);
-    pub const MQCHS_STOPPED: types::MQCHS = types::MQCHS(6);
-    pub const MQCHS_REQUESTING: types::MQCHS = types::MQCHS(7);
-    pub const MQCHS_PAUSED: types::MQCHS = types::MQCHS(8);
-    pub const MQCHS_DISCONNECTED: types::MQCHS = types::MQCHS(9);
-    pub const MQCHS_INITIALIZING: types::MQCHS = types::MQCHS(13);
-    pub const MQCHS_SWITCHING: types::MQCHS = types::MQCHS(14);
-    pub const MQCHTAB_Q_MGR: types::MQCHTAB = types::MQCHTAB(1);
-    pub const MQCHTAB_CLNTCONN: types::MQCHTAB = types::MQCHTAB(2);
     pub const MQCHT_SENDER: types::MQCHT = types::MQCHT(1);
     pub const MQCHT_SERVER: types::MQCHT = types::MQCHT(2);
     pub const MQCHT_RECEIVER: types::MQCHT = types::MQCHT(3);
@@ -1543,43 +1976,11 @@ pub mod constants {
     pub const MQCIH_REPLY_WITH_NULLS: types::MQCIH = types::MQCIH(0);
     pub const MQCIH_UNLIMITED_EXPIRATION: types::MQCIH = types::MQCIH(0);
     pub const MQCIT_MULTICAST: types::MQCIT = types::MQCIT(1);
-    pub const MQCLCT_STATIC: types::MQCLCT = types::MQCLCT(0);
-    pub const MQCLCT_DYNAMIC: types::MQCLCT = types::MQCLCT(1);
-    pub const MQCLROUTE_DIRECT: types::MQCLROUTE = types::MQCLROUTE(0);
-    pub const MQCLROUTE_TOPIC_HOST: types::MQCLROUTE = types::MQCLROUTE(1);
-    pub const MQCLROUTE_NONE: types::MQCLROUTE = types::MQCLROUTE(2);
-    pub const MQCLRS_LOCAL: types::MQCLRS = types::MQCLRS(1);
-    pub const MQCLRS_GLOBAL: types::MQCLRS = types::MQCLRS(2);
-    pub const MQCLRT_RETAINED: types::MQCLRT = types::MQCLRT(1);
-    pub const MQCLST_ACTIVE: types::MQCLST = types::MQCLST(0);
-    pub const MQCLST_PENDING: types::MQCLST = types::MQCLST(1);
-    pub const MQCLST_INVALID: types::MQCLST = types::MQCLST(2);
-    pub const MQCLST_ERROR: types::MQCLST = types::MQCLST(3);
     pub const MQCLT_PROGRAM: types::MQCLT = types::MQCLT(1);
     pub const MQCLT_TRANSACTION: types::MQCLT = types::MQCLT(2);
     pub const MQCLWL_USEQ_AS_Q_MGR: types::MQCLWL = types::MQCLWL(-3);
     pub const MQCLWL_USEQ_LOCAL: types::MQCLWL = types::MQCLWL(0);
     pub const MQCLWL_USEQ_ANY: types::MQCLWL = types::MQCLWL(1);
-    pub const MQCLXQ_SCTQ: types::MQCLXQ = types::MQCLXQ(0);
-    pub const MQCLXQ_CHANNEL: types::MQCLXQ = types::MQCLXQ(1);
-    pub const MQCMDI_CMDSCOPE_ACCEPTED: types::MQCMDI = types::MQCMDI(1);
-    pub const MQCMDI_CMDSCOPE_GENERATED: types::MQCMDI = types::MQCMDI(2);
-    pub const MQCMDI_CMDSCOPE_COMPLETED: types::MQCMDI = types::MQCMDI(3);
-    pub const MQCMDI_QSG_DISP_COMPLETED: types::MQCMDI = types::MQCMDI(4);
-    pub const MQCMDI_COMMAND_ACCEPTED: types::MQCMDI = types::MQCMDI(5);
-    pub const MQCMDI_CLUSTER_REQUEST_QUEUED: types::MQCMDI = types::MQCMDI(6);
-    pub const MQCMDI_CHANNEL_INIT_STARTED: types::MQCMDI = types::MQCMDI(7);
-    pub const MQCMDI_RECOVER_STARTED: types::MQCMDI = types::MQCMDI(11);
-    pub const MQCMDI_BACKUP_STARTED: types::MQCMDI = types::MQCMDI(12);
-    pub const MQCMDI_RECOVER_COMPLETED: types::MQCMDI = types::MQCMDI(13);
-    pub const MQCMDI_SEC_TIMER_ZERO: types::MQCMDI = types::MQCMDI(14);
-    pub const MQCMDI_REFRESH_CONFIGURATION: types::MQCMDI = types::MQCMDI(16);
-    pub const MQCMDI_SEC_SIGNOFF_ERROR: types::MQCMDI = types::MQCMDI(17);
-    pub const MQCMDI_IMS_BRIDGE_SUSPENDED: types::MQCMDI = types::MQCMDI(18);
-    pub const MQCMDI_DB2_SUSPENDED: types::MQCMDI = types::MQCMDI(19);
-    pub const MQCMDI_DB2_OBSOLETE_MSGS: types::MQCMDI = types::MQCMDI(20);
-    pub const MQCMDI_SEC_UPPERCASE: types::MQCMDI = types::MQCMDI(21);
-    pub const MQCMDI_SEC_MIXEDCASE: types::MQCMDI = types::MQCMDI(22);
     pub const MQCMDL_LEVEL_1: types::MQCMDL = types::MQCMDL(100);
     pub const MQCMDL_LEVEL_101: types::MQCMDL = types::MQCMDL(101);
     pub const MQCMDL_LEVEL_110: types::MQCMDL = types::MQCMDL(110);
@@ -1671,15 +2072,6 @@ pub mod constants {
     ///The application and the local-queue-manager agent (the component that manages queuing operations) run in separate units of execution
     pub const MQCNO_STANDARD_BINDING: types::MQCNO = types::MQCNO(0);
     pub const MQCODL_AS_INPUT: types::MQCODL = types::MQCODL(-1);
-    pub const MQCOMPRESS_NOT_AVAILABLE: types::MQCOMPRESS = types::MQCOMPRESS(-1);
-    pub const MQCOMPRESS_NONE: types::MQCOMPRESS = types::MQCOMPRESS(0);
-    pub const MQCOMPRESS_RLE: types::MQCOMPRESS = types::MQCOMPRESS(1);
-    pub const MQCOMPRESS_ZLIBFAST: types::MQCOMPRESS = types::MQCOMPRESS(2);
-    pub const MQCOMPRESS_ZLIBHIGH: types::MQCOMPRESS = types::MQCOMPRESS(4);
-    pub const MQCOMPRESS_SYSTEM: types::MQCOMPRESS = types::MQCOMPRESS(8);
-    pub const MQCOMPRESS_LZ4FAST: types::MQCOMPRESS = types::MQCOMPRESS(16);
-    pub const MQCOMPRESS_LZ4HIGH: types::MQCOMPRESS = types::MQCOMPRESS(32);
-    pub const MQCOMPRESS_ANY: types::MQCOMPRESS = types::MQCOMPRESS(268435455);
     pub const MQCOPY_NONE: types::MQCOPY = types::MQCOPY(0);
     pub const MQCOPY_ALL: types::MQCOPY = types::MQCOPY(1);
     pub const MQCOPY_FORWARD: types::MQCOPY = types::MQCOPY(2);
@@ -1734,31 +2126,10 @@ pub mod constants {
     pub const MQCUOWC_CONTINUE: types::MQCUOWC = types::MQCUOWC(65536);
     pub const MQCUOWC_FIRST: types::MQCUOWC = types::MQCUOWC(17);
     pub const MQCUOWC_LAST: types::MQCUOWC = types::MQCUOWC(272);
-    pub const MQDCC_NONE: types::MQDCC = types::MQDCC(0);
-    pub const MQDCC_DEFAULT_CONVERSION: types::MQDCC = types::MQDCC(1);
-    pub const MQDCC_FILL_TARGET_BUFFER: types::MQDCC = types::MQDCC(2);
-    pub const MQDCC_INT_DEFAULT_CONVERSION: types::MQDCC = types::MQDCC(4);
-    pub const MQDCC_SOURCE_ENC_NORMAL: types::MQDCC = types::MQDCC(16);
-    pub const MQDCC_SOURCE_ENC_REVERSED: types::MQDCC = types::MQDCC(32);
-    pub const MQDCC_SOURCE_ENC_MASK: types::MQDCC = types::MQDCC(240);
-    pub const MQDCC_TARGET_ENC_NORMAL: types::MQDCC = types::MQDCC(256);
-    pub const MQDCC_TARGET_ENC_REVERSED: types::MQDCC = types::MQDCC(512);
-    pub const MQDCC_TARGET_ENC_MASK: types::MQDCC = types::MQDCC(3840);
-    pub const MQDCC_SOURCE_ENC_UNDEFINED: types::MQDCC = types::MQDCC(0);
-    pub const MQDCC_TARGET_ENC_UNDEFINED: types::MQDCC = types::MQDCC(0);
-    pub const MQDCC_SOURCE_ENC_FACTOR: types::MQDCC = types::MQDCC(16);
-    pub const MQDCC_SOURCE_ENC_NATIVE: types::MQDCC = types::MQDCC(32);
-    pub const MQDCC_TARGET_ENC_FACTOR: types::MQDCC = types::MQDCC(256);
-    pub const MQDCC_TARGET_ENC_NATIVE: types::MQDCC = types::MQDCC(512);
     pub const MQDC_MANAGED: types::MQDC = types::MQDC(1);
     pub const MQDC_PROVIDED: types::MQDC = types::MQDC(2);
-    pub const MQDELO_NONE: types::MQDELO = types::MQDELO(0);
-    pub const MQDELO_LOCAL: types::MQDELO = types::MQDELO(4);
     pub const MQDHF_NONE: types::MQDHF = types::MQDHF(0);
     pub const MQDHF_NEW_MSG_IDS: types::MQDHF = types::MQDHF(1);
-    pub const MQDISCONNECT_NORMAL: types::MQDISCONNECT = types::MQDISCONNECT(0);
-    pub const MQDISCONNECT_IMPLICIT: types::MQDISCONNECT = types::MQDISCONNECT(1);
-    pub const MQDISCONNECT_Q_MGR: types::MQDISCONNECT = types::MQDISCONNECT(2);
     pub const MQDLV_AS_PARENT: types::MQDLV = types::MQDLV(0);
     pub const MQDLV_ALL: types::MQDLV = types::MQDLV(1);
     pub const MQDLV_ALL_DUR: types::MQDLV = types::MQDLV(2);
@@ -1771,8 +2142,6 @@ pub mod constants {
     pub const MQDMPO_DEL_FIRST: types::MQDMPO = types::MQDMPO(0);
     pub const MQDNSWLM_NO: types::MQDNSWLM = types::MQDNSWLM(0);
     pub const MQDNSWLM_YES: types::MQDNSWLM = types::MQDNSWLM(1);
-    pub const MQDOPT_RESOLVED: types::MQDOPT = types::MQDOPT(0);
-    pub const MQDOPT_DEFINED: types::MQDOPT = types::MQDOPT(1);
     pub const MQDSB_DEFAULT: types::MQDSB = types::MQDSB(0);
     pub const MQDSB_8K: types::MQDSB = types::MQDSB(1);
     pub const MQDSB_16K: types::MQDSB = types::MQDSB(2);
@@ -1813,31 +2182,7 @@ pub mod constants {
     pub const MQENC_FLOAT_UNDEFINED: types::MQENC = types::MQENC(0);
     pub const MQENC_INTEGER_UNDEFINED: types::MQENC = types::MQENC(0);
     pub const MQENC_NATIVE: types::MQENC = types::MQENC(546);
-    pub const MQEPH_NONE: types::MQEPH = types::MQEPH(0);
-    pub const MQEPH_CCSID_EMBEDDED: types::MQEPH = types::MQEPH(1);
-    pub const MQET_MQSC: types::MQET = types::MQET(1);
-    pub const MQEVO_OTHER: types::MQEVO = types::MQEVO(0);
-    pub const MQEVO_CONSOLE: types::MQEVO = types::MQEVO(1);
-    pub const MQEVO_INIT: types::MQEVO = types::MQEVO(2);
-    pub const MQEVO_MSG: types::MQEVO = types::MQEVO(3);
-    pub const MQEVO_MQSET: types::MQEVO = types::MQEVO(4);
-    pub const MQEVO_INTERNAL: types::MQEVO = types::MQEVO(5);
-    pub const MQEVO_MQSUB: types::MQEVO = types::MQEVO(6);
-    pub const MQEVO_CTLMSG: types::MQEVO = types::MQEVO(7);
-    pub const MQEVO_REST: types::MQEVO = types::MQEVO(8);
-    pub const MQEVR_DISABLED: types::MQEVR = types::MQEVR(0);
-    pub const MQEVR_ENABLED: types::MQEVR = types::MQEVR(1);
-    pub const MQEVR_EXCEPTION: types::MQEVR = types::MQEVR(2);
-    pub const MQEVR_NO_DISPLAY: types::MQEVR = types::MQEVR(3);
-    pub const MQEVR_API_ONLY: types::MQEVR = types::MQEVR(4);
-    pub const MQEVR_ADMIN_ONLY: types::MQEVR = types::MQEVR(5);
-    pub const MQEVR_USER_ONLY: types::MQEVR = types::MQEVR(6);
     pub const MQEXPI_OFF: types::MQEXPI = types::MQEXPI(0);
-    pub const MQEXTATTRS_ALL: types::MQEXTATTRS = types::MQEXTATTRS(0);
-    pub const MQEXTATTRS_NONDEF: types::MQEXTATTRS = types::MQEXTATTRS(1);
-    pub const MQEXT_ALL: types::MQEXT = types::MQEXT(0);
-    pub const MQEXT_OBJECT: types::MQEXT = types::MQEXT(1);
-    pub const MQEXT_AUTHORITY: types::MQEXT = types::MQEXT(2);
     pub const MQFB_NONE: types::MQFB = types::MQFB(0);
     pub const MQFB_QUIT: types::MQFB = types::MQFB(256);
     pub const MQFB_EXPIRATION: types::MQFB = types::MQFB(258);
@@ -1898,8 +2243,6 @@ pub mod constants {
     pub const MQFB_SYSTEM_LAST: types::MQFB = types::MQFB(65535);
     pub const MQFB_APPL_FIRST: types::MQFB = types::MQFB(65536);
     pub const MQFB_APPL_LAST: types::MQFB = types::MQFB(999999999);
-    pub const MQFC_NO: types::MQFC = types::MQFC(0);
-    pub const MQFC_YES: types::MQFC = types::MQFC(1);
     pub const MQFIELD_WQR_StrucId: types::MQFIELD_WQR = types::MQFIELD_WQR(8000);
     pub const MQFIELD_WQR_Version: types::MQFIELD_WQR = types::MQFIELD_WQR(8001);
     pub const MQFIELD_WQR_StrucLength: types::MQFIELD_WQR = types::MQFIELD_WQR(8002);
@@ -1921,39 +2264,12 @@ pub mod constants {
     pub const MQFIELD_WQR_CLWLQueueRank: types::MQFIELD_WQR = types::MQFIELD_WQR(8014);
     pub const MQFIELD_WQR_DefPutResponse: types::MQFIELD_WQR = types::MQFIELD_WQR(8015);
     pub const MQFIELD_WQR_CapExpiry: types::MQFIELD_WQR = types::MQFIELD_WQR(8016);
-    pub const MQFSENC_NO: types::MQFSENC = types::MQFSENC(0);
-    pub const MQFSENC_YES: types::MQFSENC = types::MQFSENC(1);
-    pub const MQFSENC_UNKNOWN: types::MQFSENC = types::MQFSENC(2);
-    pub const MQFS_SHARED: types::MQFS = types::MQFS(-1);
     pub const MQFUN_TYPE_UNKNOWN: types::MQFUN = types::MQFUN(0);
     pub const MQFUN_TYPE_JVM: types::MQFUN = types::MQFUN(1);
     pub const MQFUN_TYPE_PROGRAM: types::MQFUN = types::MQFUN(2);
     pub const MQFUN_TYPE_PROCEDURE: types::MQFUN = types::MQFUN(3);
     pub const MQFUN_TYPE_USERDEF: types::MQFUN = types::MQFUN(4);
     pub const MQFUN_TYPE_COMMAND: types::MQFUN = types::MQFUN(5);
-    pub const MQGACF_COMMAND_CONTEXT: types::MQGACF = types::MQGACF(8001);
-    pub const MQGACF_COMMAND_DATA: types::MQGACF = types::MQGACF(8002);
-    pub const MQGACF_TRACE_ROUTE: types::MQGACF = types::MQGACF(8003);
-    pub const MQGACF_OPERATION: types::MQGACF = types::MQGACF(8004);
-    pub const MQGACF_ACTIVITY: types::MQGACF = types::MQGACF(8005);
-    pub const MQGACF_EMBEDDED_MQMD: types::MQGACF = types::MQGACF(8006);
-    pub const MQGACF_MESSAGE: types::MQGACF = types::MQGACF(8007);
-    pub const MQGACF_MQMD: types::MQGACF = types::MQGACF(8008);
-    pub const MQGACF_VALUE_NAMING: types::MQGACF = types::MQGACF(8009);
-    pub const MQGACF_Q_ACCOUNTING_DATA: types::MQGACF = types::MQGACF(8010);
-    pub const MQGACF_Q_STATISTICS_DATA: types::MQGACF = types::MQGACF(8011);
-    pub const MQGACF_CHL_STATISTICS_DATA: types::MQGACF = types::MQGACF(8012);
-    pub const MQGACF_ACTIVITY_TRACE: types::MQGACF = types::MQGACF(8013);
-    pub const MQGACF_APP_DIST_LIST: types::MQGACF = types::MQGACF(8014);
-    pub const MQGACF_MONITOR_CLASS: types::MQGACF = types::MQGACF(8015);
-    pub const MQGACF_MONITOR_TYPE: types::MQGACF = types::MQGACF(8016);
-    pub const MQGACF_MONITOR_ELEMENT: types::MQGACF = types::MQGACF(8017);
-    pub const MQGACF_APPL_STATUS: types::MQGACF = types::MQGACF(8018);
-    pub const MQGACF_CHANGED_APPLS: types::MQGACF = types::MQGACF(8019);
-    pub const MQGACF_ALL_APPLS: types::MQGACF = types::MQGACF(8020);
-    pub const MQGACF_APPL_BALANCE: types::MQGACF = types::MQGACF(8021);
-    pub const MQGACF_FIRST: types::MQGACF = types::MQGACF(8001);
-    pub const MQGACF_LAST_USED: types::MQGACF = types::MQGACF(8021);
     pub const MQGMO_NONE: types::MQGMO = types::MQGMO(0);
     pub const MQGMO_WAIT: types::MQGMO = types::MQGMO(1);
     pub const MQGMO_SYNCPOINT: types::MQGMO = types::MQGMO(2);
@@ -1987,8 +2303,6 @@ pub mod constants {
     pub const MQGMO_PROPERTIES_COMPATIBILITY: types::MQGMO = types::MQGMO(268435456);
     pub const MQGMO_NO_WAIT: types::MQGMO = types::MQGMO(0);
     pub const MQGMO_PROPERTIES_AS_Q_DEF: types::MQGMO = types::MQGMO(0);
-    pub const MQGUR_DISABLED: types::MQGUR = types::MQGUR(0);
-    pub const MQGUR_ENABLED: types::MQGUR = types::MQGUR(1);
     pub const MQHC_UNASSOCIATED_HCONN: types::MQHC = types::MQHC(-3);
     pub const MQHC_UNUSABLE_HCONN: types::MQHC = types::MQHC(-1);
     pub const MQHC_DEF_HCONN: types::MQHC = types::MQHC(0);
@@ -1996,186 +2310,6 @@ pub mod constants {
     pub const MQHM_NONE: types::MQHM = types::MQHM(0);
     pub const MQHO_UNUSABLE_HOBJ: types::MQHO = types::MQHO(-1);
     pub const MQHO_NONE: types::MQHO = types::MQHO(0);
-    pub const MQHSTATE_INACTIVE: types::MQHSTATE = types::MQHSTATE(0);
-    pub const MQHSTATE_ACTIVE: types::MQHSTATE = types::MQHSTATE(1);
-    pub const MQIAMO64_AVG_Q_TIME: types::MQIAMO64 = types::MQIAMO64(703);
-    pub const MQIAMO64_Q_TIME_AVG: types::MQIAMO64 = types::MQIAMO64(741);
-    pub const MQIAMO64_Q_TIME_MAX: types::MQIAMO64 = types::MQIAMO64(742);
-    pub const MQIAMO64_Q_TIME_MIN: types::MQIAMO64 = types::MQIAMO64(743);
-    pub const MQIAMO64_BROWSE_BYTES: types::MQIAMO64 = types::MQIAMO64(745);
-    pub const MQIAMO64_BYTES: types::MQIAMO64 = types::MQIAMO64(746);
-    pub const MQIAMO64_GET_BYTES: types::MQIAMO64 = types::MQIAMO64(747);
-    pub const MQIAMO64_PUT_BYTES: types::MQIAMO64 = types::MQIAMO64(748);
-    pub const MQIAMO64_TOPIC_PUT_BYTES: types::MQIAMO64 = types::MQIAMO64(783);
-    pub const MQIAMO64_PUBLISH_MSG_BYTES: types::MQIAMO64 = types::MQIAMO64(785);
-    pub const MQIAMO64_HIGHRES_TIME: types::MQIAMO64 = types::MQIAMO64(838);
-    pub const MQIAMO64_QMGR_OP_DURATION: types::MQIAMO64 = types::MQIAMO64(844);
-    pub const MQIAMO64_MONITOR_INTERVAL: types::MQIAMO64 = types::MQIAMO64(845);
-    pub const MQIAMO_AVG_BATCH_SIZE: types::MQIAMO = types::MQIAMO(702);
-    pub const MQIAMO_AVG_Q_TIME: types::MQIAMO = types::MQIAMO(703);
-    pub const MQIAMO_BACKOUTS: types::MQIAMO = types::MQIAMO(704);
-    pub const MQIAMO_BROWSES: types::MQIAMO = types::MQIAMO(705);
-    pub const MQIAMO_BROWSE_MAX_BYTES: types::MQIAMO = types::MQIAMO(706);
-    pub const MQIAMO_BROWSE_MIN_BYTES: types::MQIAMO = types::MQIAMO(707);
-    pub const MQIAMO_BROWSES_FAILED: types::MQIAMO = types::MQIAMO(708);
-    pub const MQIAMO_CLOSES: types::MQIAMO = types::MQIAMO(709);
-    pub const MQIAMO_COMMITS: types::MQIAMO = types::MQIAMO(710);
-    pub const MQIAMO_COMMITS_FAILED: types::MQIAMO = types::MQIAMO(711);
-    pub const MQIAMO_CONNS: types::MQIAMO = types::MQIAMO(712);
-    pub const MQIAMO_CONNS_MAX: types::MQIAMO = types::MQIAMO(713);
-    pub const MQIAMO_DISCS: types::MQIAMO = types::MQIAMO(714);
-    pub const MQIAMO_DISCS_IMPLICIT: types::MQIAMO = types::MQIAMO(715);
-    pub const MQIAMO_DISC_TYPE: types::MQIAMO = types::MQIAMO(716);
-    pub const MQIAMO_EXIT_TIME_AVG: types::MQIAMO = types::MQIAMO(717);
-    pub const MQIAMO_EXIT_TIME_MAX: types::MQIAMO = types::MQIAMO(718);
-    pub const MQIAMO_EXIT_TIME_MIN: types::MQIAMO = types::MQIAMO(719);
-    pub const MQIAMO_FULL_BATCHES: types::MQIAMO = types::MQIAMO(720);
-    pub const MQIAMO_GENERATED_MSGS: types::MQIAMO = types::MQIAMO(721);
-    pub const MQIAMO_GETS: types::MQIAMO = types::MQIAMO(722);
-    pub const MQIAMO_GET_MAX_BYTES: types::MQIAMO = types::MQIAMO(723);
-    pub const MQIAMO_GET_MIN_BYTES: types::MQIAMO = types::MQIAMO(724);
-    pub const MQIAMO_GETS_FAILED: types::MQIAMO = types::MQIAMO(725);
-    pub const MQIAMO_INCOMPLETE_BATCHES: types::MQIAMO = types::MQIAMO(726);
-    pub const MQIAMO_INQS: types::MQIAMO = types::MQIAMO(727);
-    pub const MQIAMO_MSGS: types::MQIAMO = types::MQIAMO(728);
-    pub const MQIAMO_NET_TIME_AVG: types::MQIAMO = types::MQIAMO(729);
-    pub const MQIAMO_NET_TIME_MAX: types::MQIAMO = types::MQIAMO(730);
-    pub const MQIAMO_NET_TIME_MIN: types::MQIAMO = types::MQIAMO(731);
-    pub const MQIAMO_OBJECT_COUNT: types::MQIAMO = types::MQIAMO(732);
-    pub const MQIAMO_OPENS: types::MQIAMO = types::MQIAMO(733);
-    pub const MQIAMO_PUT1S: types::MQIAMO = types::MQIAMO(734);
-    pub const MQIAMO_PUTS: types::MQIAMO = types::MQIAMO(735);
-    pub const MQIAMO_PUT_MAX_BYTES: types::MQIAMO = types::MQIAMO(736);
-    pub const MQIAMO_PUT_MIN_BYTES: types::MQIAMO = types::MQIAMO(737);
-    pub const MQIAMO_PUT_RETRIES: types::MQIAMO = types::MQIAMO(738);
-    pub const MQIAMO_Q_MAX_DEPTH: types::MQIAMO = types::MQIAMO(739);
-    pub const MQIAMO_Q_MIN_DEPTH: types::MQIAMO = types::MQIAMO(740);
-    pub const MQIAMO_Q_TIME_AVG: types::MQIAMO = types::MQIAMO(741);
-    pub const MQIAMO_Q_TIME_MAX: types::MQIAMO = types::MQIAMO(742);
-    pub const MQIAMO_Q_TIME_MIN: types::MQIAMO = types::MQIAMO(743);
-    pub const MQIAMO_SETS: types::MQIAMO = types::MQIAMO(744);
-    pub const MQIAMO_CONNS_FAILED: types::MQIAMO = types::MQIAMO(749);
-    pub const MQIAMO_OPENS_FAILED: types::MQIAMO = types::MQIAMO(751);
-    pub const MQIAMO_INQS_FAILED: types::MQIAMO = types::MQIAMO(752);
-    pub const MQIAMO_SETS_FAILED: types::MQIAMO = types::MQIAMO(753);
-    pub const MQIAMO_PUTS_FAILED: types::MQIAMO = types::MQIAMO(754);
-    pub const MQIAMO_PUT1S_FAILED: types::MQIAMO = types::MQIAMO(755);
-    pub const MQIAMO_CLOSES_FAILED: types::MQIAMO = types::MQIAMO(757);
-    pub const MQIAMO_MSGS_EXPIRED: types::MQIAMO = types::MQIAMO(758);
-    pub const MQIAMO_MSGS_NOT_QUEUED: types::MQIAMO = types::MQIAMO(759);
-    pub const MQIAMO_MSGS_PURGED: types::MQIAMO = types::MQIAMO(760);
-    pub const MQIAMO_SUBS_DUR: types::MQIAMO = types::MQIAMO(764);
-    pub const MQIAMO_SUBS_NDUR: types::MQIAMO = types::MQIAMO(765);
-    pub const MQIAMO_SUBS_FAILED: types::MQIAMO = types::MQIAMO(766);
-    pub const MQIAMO_SUBRQS: types::MQIAMO = types::MQIAMO(767);
-    pub const MQIAMO_SUBRQS_FAILED: types::MQIAMO = types::MQIAMO(768);
-    pub const MQIAMO_CBS: types::MQIAMO = types::MQIAMO(769);
-    pub const MQIAMO_CBS_FAILED: types::MQIAMO = types::MQIAMO(770);
-    pub const MQIAMO_CTLS: types::MQIAMO = types::MQIAMO(771);
-    pub const MQIAMO_CTLS_FAILED: types::MQIAMO = types::MQIAMO(772);
-    pub const MQIAMO_STATS: types::MQIAMO = types::MQIAMO(773);
-    pub const MQIAMO_STATS_FAILED: types::MQIAMO = types::MQIAMO(774);
-    pub const MQIAMO_SUB_DUR_HIGHWATER: types::MQIAMO = types::MQIAMO(775);
-    pub const MQIAMO_SUB_DUR_LOWWATER: types::MQIAMO = types::MQIAMO(776);
-    pub const MQIAMO_SUB_NDUR_HIGHWATER: types::MQIAMO = types::MQIAMO(777);
-    pub const MQIAMO_SUB_NDUR_LOWWATER: types::MQIAMO = types::MQIAMO(778);
-    pub const MQIAMO_TOPIC_PUTS: types::MQIAMO = types::MQIAMO(779);
-    pub const MQIAMO_TOPIC_PUTS_FAILED: types::MQIAMO = types::MQIAMO(780);
-    pub const MQIAMO_TOPIC_PUT1S: types::MQIAMO = types::MQIAMO(781);
-    pub const MQIAMO_TOPIC_PUT1S_FAILED: types::MQIAMO = types::MQIAMO(782);
-    pub const MQIAMO_PUBLISH_MSG_COUNT: types::MQIAMO = types::MQIAMO(784);
-    pub const MQIAMO_UNSUBS_DUR: types::MQIAMO = types::MQIAMO(786);
-    pub const MQIAMO_UNSUBS_NDUR: types::MQIAMO = types::MQIAMO(787);
-    pub const MQIAMO_UNSUBS_FAILED: types::MQIAMO = types::MQIAMO(788);
-    pub const MQIAMO_INTERVAL: types::MQIAMO = types::MQIAMO(789);
-    pub const MQIAMO_MSGS_SENT: types::MQIAMO = types::MQIAMO(790);
-    pub const MQIAMO_BYTES_SENT: types::MQIAMO = types::MQIAMO(791);
-    pub const MQIAMO_REPAIR_BYTES: types::MQIAMO = types::MQIAMO(792);
-    pub const MQIAMO_FEEDBACK_MODE: types::MQIAMO = types::MQIAMO(793);
-    pub const MQIAMO_RELIABILITY_TYPE: types::MQIAMO = types::MQIAMO(794);
-    pub const MQIAMO_LATE_JOIN_MARK: types::MQIAMO = types::MQIAMO(795);
-    pub const MQIAMO_NACKS_RCVD: types::MQIAMO = types::MQIAMO(796);
-    pub const MQIAMO_REPAIR_PKTS: types::MQIAMO = types::MQIAMO(797);
-    pub const MQIAMO_HISTORY_PKTS: types::MQIAMO = types::MQIAMO(798);
-    pub const MQIAMO_PENDING_PKTS: types::MQIAMO = types::MQIAMO(799);
-    pub const MQIAMO_PKT_RATE: types::MQIAMO = types::MQIAMO(800);
-    pub const MQIAMO_MCAST_XMIT_RATE: types::MQIAMO = types::MQIAMO(801);
-    pub const MQIAMO_MCAST_BATCH_TIME: types::MQIAMO = types::MQIAMO(802);
-    pub const MQIAMO_MCAST_HEARTBEAT: types::MQIAMO = types::MQIAMO(803);
-    pub const MQIAMO_DEST_DATA_PORT: types::MQIAMO = types::MQIAMO(804);
-    pub const MQIAMO_DEST_REPAIR_PORT: types::MQIAMO = types::MQIAMO(805);
-    pub const MQIAMO_ACKS_RCVD: types::MQIAMO = types::MQIAMO(806);
-    pub const MQIAMO_ACTIVE_ACKERS: types::MQIAMO = types::MQIAMO(807);
-    pub const MQIAMO_PKTS_SENT: types::MQIAMO = types::MQIAMO(808);
-    pub const MQIAMO_TOTAL_REPAIR_PKTS: types::MQIAMO = types::MQIAMO(809);
-    pub const MQIAMO_TOTAL_PKTS_SENT: types::MQIAMO = types::MQIAMO(810);
-    pub const MQIAMO_TOTAL_MSGS_SENT: types::MQIAMO = types::MQIAMO(811);
-    pub const MQIAMO_TOTAL_BYTES_SENT: types::MQIAMO = types::MQIAMO(812);
-    pub const MQIAMO_NUM_STREAMS: types::MQIAMO = types::MQIAMO(813);
-    pub const MQIAMO_ACK_FEEDBACK: types::MQIAMO = types::MQIAMO(814);
-    pub const MQIAMO_NACK_FEEDBACK: types::MQIAMO = types::MQIAMO(815);
-    pub const MQIAMO_PKTS_LOST: types::MQIAMO = types::MQIAMO(816);
-    pub const MQIAMO_MSGS_RCVD: types::MQIAMO = types::MQIAMO(817);
-    pub const MQIAMO_MSG_BYTES_RCVD: types::MQIAMO = types::MQIAMO(818);
-    pub const MQIAMO_MSGS_DELIVERED: types::MQIAMO = types::MQIAMO(819);
-    pub const MQIAMO_PKTS_PROCESSED: types::MQIAMO = types::MQIAMO(820);
-    pub const MQIAMO_PKTS_DELIVERED: types::MQIAMO = types::MQIAMO(821);
-    pub const MQIAMO_PKTS_DROPPED: types::MQIAMO = types::MQIAMO(822);
-    pub const MQIAMO_PKTS_DUPLICATED: types::MQIAMO = types::MQIAMO(823);
-    pub const MQIAMO_NACKS_CREATED: types::MQIAMO = types::MQIAMO(824);
-    pub const MQIAMO_NACK_PKTS_SENT: types::MQIAMO = types::MQIAMO(825);
-    pub const MQIAMO_REPAIR_PKTS_RQSTD: types::MQIAMO = types::MQIAMO(826);
-    pub const MQIAMO_REPAIR_PKTS_RCVD: types::MQIAMO = types::MQIAMO(827);
-    pub const MQIAMO_PKTS_REPAIRED: types::MQIAMO = types::MQIAMO(828);
-    pub const MQIAMO_TOTAL_MSGS_RCVD: types::MQIAMO = types::MQIAMO(829);
-    pub const MQIAMO_TOTAL_MSG_BYTES_RCVD: types::MQIAMO = types::MQIAMO(830);
-    pub const MQIAMO_TOTAL_REPAIR_PKTS_RCVD: types::MQIAMO = types::MQIAMO(831);
-    pub const MQIAMO_TOTAL_REPAIR_PKTS_RQSTD: types::MQIAMO = types::MQIAMO(832);
-    pub const MQIAMO_TOTAL_MSGS_PROCESSED: types::MQIAMO = types::MQIAMO(833);
-    pub const MQIAMO_TOTAL_MSGS_SELECTED: types::MQIAMO = types::MQIAMO(834);
-    pub const MQIAMO_TOTAL_MSGS_EXPIRED: types::MQIAMO = types::MQIAMO(835);
-    pub const MQIAMO_TOTAL_MSGS_DELIVERED: types::MQIAMO = types::MQIAMO(836);
-    pub const MQIAMO_TOTAL_MSGS_RETURNED: types::MQIAMO = types::MQIAMO(837);
-    pub const MQIAMO_MONITOR_CLASS: types::MQIAMO = types::MQIAMO(839);
-    pub const MQIAMO_MONITOR_TYPE: types::MQIAMO = types::MQIAMO(840);
-    pub const MQIAMO_MONITOR_ELEMENT: types::MQIAMO = types::MQIAMO(841);
-    pub const MQIAMO_MONITOR_DATATYPE: types::MQIAMO = types::MQIAMO(842);
-    pub const MQIAMO_MONITOR_FLAGS: types::MQIAMO = types::MQIAMO(843);
-    pub const MQIAMO_FIRST: types::MQIAMO = types::MQIAMO(701);
-    pub const MQIAMO_LAST_USED: types::MQIAMO = types::MQIAMO(845);
-    pub const MQIAMO_MONITOR_UNIT: types::MQIAMO_MONITOR_DATATYPE = types::MQIAMO_MONITOR_DATATYPE(
-        1,
-    );
-    pub const MQIAMO_MONITOR_DELTA: types::MQIAMO_MONITOR_DATATYPE = types::MQIAMO_MONITOR_DATATYPE(
-        2,
-    );
-    pub const MQIAMO_MONITOR_LSN: types::MQIAMO_MONITOR_DATATYPE = types::MQIAMO_MONITOR_DATATYPE(
-        3,
-    );
-    pub const MQIAMO_MONITOR_HUNDREDTHS: types::MQIAMO_MONITOR_DATATYPE = types::MQIAMO_MONITOR_DATATYPE(
-        100,
-    );
-    pub const MQIAMO_MONITOR_KB: types::MQIAMO_MONITOR_DATATYPE = types::MQIAMO_MONITOR_DATATYPE(
-        1024,
-    );
-    pub const MQIAMO_MONITOR_PERCENT: types::MQIAMO_MONITOR_DATATYPE = types::MQIAMO_MONITOR_DATATYPE(
-        10000,
-    );
-    pub const MQIAMO_MONITOR_MICROSEC: types::MQIAMO_MONITOR_DATATYPE = types::MQIAMO_MONITOR_DATATYPE(
-        1000000,
-    );
-    pub const MQIAMO_MONITOR_MB: types::MQIAMO_MONITOR_DATATYPE = types::MQIAMO_MONITOR_DATATYPE(
-        1048576,
-    );
-    pub const MQIAMO_MONITOR_GB: types::MQIAMO_MONITOR_DATATYPE = types::MQIAMO_MONITOR_DATATYPE(
-        100000000,
-    );
-    pub const MQIAMO_MONITOR_FLAGS_NONE: types::MQIAMO_MONITOR_FLAGS = types::MQIAMO_MONITOR_FLAGS(
-        0,
-    );
-    pub const MQIAMO_MONITOR_FLAGS_OBJNAME: types::MQIAMO_MONITOR_FLAGS = types::MQIAMO_MONITOR_FLAGS(
-        1,
-    );
     pub const MQIAV_UNDEFINED: types::MQIAV = types::MQIAV(-2);
     pub const MQIAV_NOT_APPLICABLE: types::MQIAV = types::MQIAV(-1);
     pub const MQIA_APPL_TYPE: types::MQIA = types::MQIA(1);
@@ -2425,13 +2559,6 @@ pub mod constants {
     pub const MQIA_FIRST: types::MQIA = types::MQIA(1);
     pub const MQIA_LAST_USED: types::MQIA = types::MQIA(276);
     pub const MQIA_LAST: types::MQIA = types::MQIA(2000);
-    pub const MQIDO_COMMIT: types::MQIDO = types::MQIDO(1);
-    pub const MQIDO_BACKOUT: types::MQIDO = types::MQIDO(2);
-    pub const MQIEPF_NONE: types::MQIEPF = types::MQIEPF(0);
-    pub const MQIEPF_THREADED_LIBRARY: types::MQIEPF = types::MQIEPF(1);
-    pub const MQIEPF_LOCAL_LIBRARY: types::MQIEPF = types::MQIEPF(2);
-    pub const MQIEPF_CLIENT_LIBRARY: types::MQIEPF = types::MQIEPF(0);
-    pub const MQIEPF_NON_THREADED_LIBRARY: types::MQIEPF = types::MQIEPF(0);
     pub const MQIGQPA_DEFAULT: types::MQIGQPA = types::MQIGQPA(1);
     pub const MQIGQPA_CONTEXT: types::MQIGQPA = types::MQIGQPA(2);
     pub const MQIGQPA_ONLY_IGQ: types::MQIGQPA = types::MQIGQPA(3);
@@ -2447,14 +2574,6 @@ pub mod constants {
     pub const MQIMGRCOV_NO: types::MQIMGRCOV = types::MQIMGRCOV(0);
     pub const MQIMGRCOV_YES: types::MQIMGRCOV = types::MQIMGRCOV(1);
     pub const MQIMGRCOV_AS_Q_MGR: types::MQIMGRCOV = types::MQIMGRCOV(2);
-    pub const MQIMMREASON_NONE: types::MQIMMREASON = types::MQIMMREASON(0);
-    pub const MQIMMREASON_NOT_CLIENT: types::MQIMMREASON = types::MQIMMREASON(1);
-    pub const MQIMMREASON_NOT_RECONNECTABLE: types::MQIMMREASON = types::MQIMMREASON(2);
-    pub const MQIMMREASON_MOVING: types::MQIMMREASON = types::MQIMMREASON(3);
-    pub const MQIMMREASON_APPLNAME_CHANGED: types::MQIMMREASON = types::MQIMMREASON(4);
-    pub const MQIMMREASON_IN_TRANSACTION: types::MQIMMREASON = types::MQIMMREASON(5);
-    pub const MQIMMREASON_AWAITS_REPLY: types::MQIMMREASON = types::MQIMMREASON(6);
-    pub const MQIMMREASON_NO_REDIRECT: types::MQIMMREASON = types::MQIMMREASON(7);
     pub const MQIMPO_NONE: types::MQIMPO = types::MQIMPO(0);
     pub const MQIMPO_CONVERT_TYPE: types::MQIMPO = types::MQIMPO(2);
     pub const MQIMPO_QUERY_LENGTH: types::MQIMPO = types::MQIMPO(4);
@@ -2462,85 +2581,23 @@ pub mod constants {
     pub const MQIMPO_INQ_PROP_UNDER_CURSOR: types::MQIMPO = types::MQIMPO(16);
     pub const MQIMPO_CONVERT_VALUE: types::MQIMPO = types::MQIMPO(32);
     pub const MQIMPO_INQ_FIRST: types::MQIMPO = types::MQIMPO(0);
-    pub const MQINBD_Q_MGR: types::MQINBD = types::MQINBD(0);
-    pub const MQINBD_GROUP: types::MQINBD = types::MQINBD(3);
     pub const MQIPADDR_IPV4: types::MQIPADDR = types::MQIPADDR(0);
     pub const MQIPADDR_IPV6: types::MQIPADDR = types::MQIPADDR(1);
-    pub const MQIS_NO: types::MQIS = types::MQIS(0);
-    pub const MQIS_YES: types::MQIS = types::MQIS(1);
+    pub const MQIT_NONE: types::MQIT = types::MQIT(0);
+    pub const MQIT_MSG_ID: types::MQIT = types::MQIT(1);
+    pub const MQIT_CORREL_ID: types::MQIT = types::MQIT(2);
+    pub const MQIT_MSG_TOKEN: types::MQIT = types::MQIT(4);
+    pub const MQIT_GROUP_ID: types::MQIT = types::MQIT(5);
+    pub const MQIT_INTEGER: types::MQIT = types::MQIT(1);
+    pub const MQIT_STRING: types::MQIT = types::MQIT(2);
+    pub const MQIT_BAG: types::MQIT = types::MQIT(3);
     pub const MQKAI_AUTO: types::MQKAI = types::MQKAI(-1);
     pub const MQKEY_REUSE_UNLIMITED: types::MQKEY = types::MQKEY(-1);
     pub const MQKEY_REUSE_DISABLED: types::MQKEY = types::MQKEY(0);
-    pub const MQLDAPC_INACTIVE: types::MQLDAPC = types::MQLDAPC(0);
-    pub const MQLDAPC_CONNECTED: types::MQLDAPC = types::MQLDAPC(1);
-    pub const MQLDAPC_ERROR: types::MQLDAPC = types::MQLDAPC(2);
-    pub const MQLDAP_AUTHORMD_OS: types::MQLDAP_AUTHORMD = types::MQLDAP_AUTHORMD(0);
-    pub const MQLDAP_AUTHORMD_SEARCHGRP: types::MQLDAP_AUTHORMD = types::MQLDAP_AUTHORMD(
-        1,
-    );
-    pub const MQLDAP_AUTHORMD_SEARCHUSR: types::MQLDAP_AUTHORMD = types::MQLDAP_AUTHORMD(
-        2,
-    );
-    pub const MQLDAP_AUTHORMD_SRCHGRPSN: types::MQLDAP_AUTHORMD = types::MQLDAP_AUTHORMD(
-        3,
-    );
-    pub const MQLDAP_NESTGRP_NO: types::MQLDAP_NESTGRP = types::MQLDAP_NESTGRP(0);
-    pub const MQLDAP_NESTGRP_YES: types::MQLDAP_NESTGRP = types::MQLDAP_NESTGRP(1);
-    pub const MQLOGTYPE_CIRCULAR: types::MQLOGTYPE = types::MQLOGTYPE(0);
-    pub const MQLOGTYPE_LINEAR: types::MQLOGTYPE = types::MQLOGTYPE(1);
-    pub const MQLOGTYPE_REPLICATED: types::MQLOGTYPE = types::MQLOGTYPE(2);
-    pub const MQLR_MAX: types::MQLR = types::MQLR(-2);
-    pub const MQLR_AUTO: types::MQLR = types::MQLR(-1);
-    pub const MQLR_ONE: types::MQLR = types::MQLR(1);
     pub const MQMASTER_NO: types::MQMASTER = types::MQMASTER(0);
     pub const MQMASTER_YES: types::MQMASTER = types::MQMASTER(1);
-    pub const MQMATCH_GENERIC: types::MQMATCH = types::MQMATCH(0);
-    pub const MQMATCH_RUNCHECK: types::MQMATCH = types::MQMATCH(1);
-    pub const MQMATCH_EXACT: types::MQMATCH = types::MQMATCH(2);
-    pub const MQMATCH_ALL: types::MQMATCH = types::MQMATCH(3);
-    pub const MQMCAS_STOPPED: types::MQMCAS = types::MQMCAS(0);
-    pub const MQMCAS_RUNNING: types::MQMCAS = types::MQMCAS(3);
-    pub const MQMCAT_PROCESS: types::MQMCAT = types::MQMCAT(1);
-    pub const MQMCAT_THREAD: types::MQMCAT = types::MQMCAT(2);
     pub const MQMCB_DISABLED: types::MQMCB = types::MQMCB(0);
     pub const MQMCB_ENABLED: types::MQMCB = types::MQMCB(1);
-    pub const MQMCEV_PACKET_LOSS: types::MQMCEV = types::MQMCEV(1);
-    pub const MQMCEV_HEARTBEAT_TIMEOUT: types::MQMCEV = types::MQMCEV(2);
-    pub const MQMCEV_VERSION_CONFLICT: types::MQMCEV = types::MQMCEV(3);
-    pub const MQMCEV_RELIABILITY: types::MQMCEV = types::MQMCEV(4);
-    pub const MQMCEV_CLOSED_TRANS: types::MQMCEV = types::MQMCEV(5);
-    pub const MQMCEV_STREAM_ERROR: types::MQMCEV = types::MQMCEV(6);
-    pub const MQMCEV_NEW_SOURCE: types::MQMCEV = types::MQMCEV(10);
-    pub const MQMCEV_RECEIVE_QUEUE_TRIMMED: types::MQMCEV = types::MQMCEV(11);
-    pub const MQMCEV_PACKET_LOSS_NACK_EXPIRE: types::MQMCEV = types::MQMCEV(12);
-    pub const MQMCEV_ACK_RETRIES_EXCEEDED: types::MQMCEV = types::MQMCEV(13);
-    pub const MQMCEV_STREAM_SUSPEND_NACK: types::MQMCEV = types::MQMCEV(14);
-    pub const MQMCEV_STREAM_RESUME_NACK: types::MQMCEV = types::MQMCEV(15);
-    pub const MQMCEV_STREAM_EXPELLED: types::MQMCEV = types::MQMCEV(16);
-    pub const MQMCEV_FIRST_MESSAGE: types::MQMCEV = types::MQMCEV(20);
-    pub const MQMCEV_LATE_JOIN_FAILURE: types::MQMCEV = types::MQMCEV(21);
-    pub const MQMCEV_MESSAGE_LOSS: types::MQMCEV = types::MQMCEV(22);
-    pub const MQMCEV_SEND_PACKET_FAILURE: types::MQMCEV = types::MQMCEV(23);
-    pub const MQMCEV_REPAIR_DELAY: types::MQMCEV = types::MQMCEV(24);
-    pub const MQMCEV_MEMORY_ALERT_ON: types::MQMCEV = types::MQMCEV(25);
-    pub const MQMCEV_MEMORY_ALERT_OFF: types::MQMCEV = types::MQMCEV(26);
-    pub const MQMCEV_NACK_ALERT_ON: types::MQMCEV = types::MQMCEV(27);
-    pub const MQMCEV_NACK_ALERT_OFF: types::MQMCEV = types::MQMCEV(28);
-    pub const MQMCEV_REPAIR_ALERT_ON: types::MQMCEV = types::MQMCEV(29);
-    pub const MQMCEV_REPAIR_ALERT_OFF: types::MQMCEV = types::MQMCEV(30);
-    pub const MQMCEV_RELIABILITY_CHANGED: types::MQMCEV = types::MQMCEV(31);
-    pub const MQMCEV_SHM_DEST_UNUSABLE: types::MQMCEV = types::MQMCEV(80);
-    pub const MQMCEV_SHM_PORT_UNUSABLE: types::MQMCEV = types::MQMCEV(81);
-    pub const MQMCEV_CCT_GETTIME_FAILED: types::MQMCEV = types::MQMCEV(110);
-    pub const MQMCEV_DEST_INTERFACE_FAILURE: types::MQMCEV = types::MQMCEV(120);
-    pub const MQMCEV_DEST_INTERFACE_FAILOVER: types::MQMCEV = types::MQMCEV(121);
-    pub const MQMCEV_PORT_INTERFACE_FAILURE: types::MQMCEV = types::MQMCEV(122);
-    pub const MQMCEV_PORT_INTERFACE_FAILOVER: types::MQMCEV = types::MQMCEV(123);
-    pub const MQMCP_COMPAT: types::MQMCP = types::MQMCP(-2);
-    pub const MQMCP_ALL: types::MQMCP = types::MQMCP(-1);
-    pub const MQMCP_NONE: types::MQMCP = types::MQMCP(0);
-    pub const MQMCP_USER: types::MQMCP = types::MQMCP(1);
-    pub const MQMCP_REPLY: types::MQMCP = types::MQMCP(2);
     pub const MQMC_AS_PARENT: types::MQMC = types::MQMC(0);
     pub const MQMC_ENABLED: types::MQMC = types::MQMC(1);
     pub const MQMC_DISABLED: types::MQMC = types::MQMC(2);
@@ -2565,41 +2622,7 @@ pub mod constants {
     pub const MQMHBO_NONE: types::MQMHBO = types::MQMHBO(0);
     pub const MQMHBO_PROPERTIES_IN_MQRFH2: types::MQMHBO = types::MQMHBO(1);
     pub const MQMHBO_DELETE_PROPERTIES: types::MQMHBO = types::MQMHBO(2);
-    pub const MQMLP_ENCRYPTION_ALG_NONE: types::MQMLP_ENCRYPTION = types::MQMLP_ENCRYPTION(
-        0,
-    );
-    pub const MQMLP_ENCRYPTION_ALG_RC2: types::MQMLP_ENCRYPTION = types::MQMLP_ENCRYPTION(
-        1,
-    );
-    pub const MQMLP_ENCRYPTION_ALG_DES: types::MQMLP_ENCRYPTION = types::MQMLP_ENCRYPTION(
-        2,
-    );
-    pub const MQMLP_ENCRYPTION_ALG_3DES: types::MQMLP_ENCRYPTION = types::MQMLP_ENCRYPTION(
-        3,
-    );
-    pub const MQMLP_ENCRYPTION_ALG_AES128: types::MQMLP_ENCRYPTION = types::MQMLP_ENCRYPTION(
-        4,
-    );
-    pub const MQMLP_ENCRYPTION_ALG_AES256: types::MQMLP_ENCRYPTION = types::MQMLP_ENCRYPTION(
-        5,
-    );
-    pub const MQMLP_SIGN_ALG_NONE: types::MQMLP_SIGN = types::MQMLP_SIGN(0);
-    pub const MQMLP_SIGN_ALG_MD5: types::MQMLP_SIGN = types::MQMLP_SIGN(1);
-    pub const MQMLP_SIGN_ALG_SHA1: types::MQMLP_SIGN = types::MQMLP_SIGN(2);
-    pub const MQMLP_SIGN_ALG_SHA224: types::MQMLP_SIGN = types::MQMLP_SIGN(3);
-    pub const MQMLP_SIGN_ALG_SHA256: types::MQMLP_SIGN = types::MQMLP_SIGN(4);
-    pub const MQMLP_SIGN_ALG_SHA384: types::MQMLP_SIGN = types::MQMLP_SIGN(5);
-    pub const MQMLP_SIGN_ALG_SHA512: types::MQMLP_SIGN = types::MQMLP_SIGN(6);
-    pub const MQMLP_TOLERATE_UNPROTECTED_NO: types::MQMLP_TOLERATE = types::MQMLP_TOLERATE(
-        0,
-    );
-    pub const MQMLP_TOLERATE_UNPROTECTED_YES: types::MQMLP_TOLERATE = types::MQMLP_TOLERATE(
-        1,
-    );
     pub const MQMMBI_UNLIMITED: types::MQMMBI = types::MQMMBI(-1);
-    pub const MQMODE_FORCE: types::MQMODE = types::MQMODE(0);
-    pub const MQMODE_QUIESCE: types::MQMODE = types::MQMODE(1);
-    pub const MQMODE_TERMINATE: types::MQMODE = types::MQMODE(2);
     pub const MQMON_Q_MGR: types::MQMON = types::MQMON(-3);
     pub const MQMON_NONE: types::MQMON = types::MQMON(-1);
     pub const MQMON_OFF: types::MQMON = types::MQMON(0);
@@ -2629,46 +2652,9 @@ pub mod constants {
     pub const MQMT_SYSTEM_LAST: types::MQMT = types::MQMT(65535);
     pub const MQMT_APPL_FIRST: types::MQMT = types::MQMT(65536);
     pub const MQMT_APPL_LAST: types::MQMT = types::MQMT(999999999);
-    pub const MQMULC_STANDARD: types::MQMULC = types::MQMULC(0);
-    pub const MQMULC_REFINED: types::MQMULC = types::MQMULC(1);
     pub const MQNC_MAX_NAMELIST_NAME_COUNT: types::MQNC = types::MQNC(256);
-    pub const MQNHABACKLOG_UNKNOWN: types::MQNHABACKLOG = types::MQNHABACKLOG(-1);
-    pub const MQNHACONNACTV_NO: types::MQNHACONNACTV = types::MQNHACONNACTV(0);
-    pub const MQNHACONNACTV_YES: types::MQNHACONNACTV = types::MQNHACONNACTV(1);
-    pub const MQNHACONNGRP_NO: types::MQNHACONNGRP = types::MQNHACONNGRP(0);
-    pub const MQNHACONNGRP_YES: types::MQNHACONNGRP = types::MQNHACONNGRP(1);
-    pub const MQNHACONNGRP_SUSPENDED: types::MQNHACONNGRP = types::MQNHACONNGRP(2);
-    pub const MQNHAGRPROLE_UNKNOWN: types::MQNHAGRPROLE = types::MQNHAGRPROLE(0);
-    pub const MQNHAGRPROLE_NOT_CONFIGURED: types::MQNHAGRPROLE = types::MQNHAGRPROLE(1);
-    pub const MQNHAGRPROLE_LIVE: types::MQNHAGRPROLE = types::MQNHAGRPROLE(2);
-    pub const MQNHAGRPROLE_RECOVERY: types::MQNHAGRPROLE = types::MQNHAGRPROLE(3);
-    pub const MQNHAGRPROLE_PENDING_LIVE: types::MQNHAGRPROLE = types::MQNHAGRPROLE(4);
-    pub const MQNHAGRPROLE_PENDING_RECOVERY: types::MQNHAGRPROLE = types::MQNHAGRPROLE(
-        5,
-    );
-    pub const MQNHAINSYNC_NO: types::MQNHAINSYNC = types::MQNHAINSYNC(0);
-    pub const MQNHAINSYNC_YES: types::MQNHAINSYNC = types::MQNHAINSYNC(1);
-    pub const MQNHAROLE_UNKNOWN: types::MQNHAROLE = types::MQNHAROLE(0);
-    pub const MQNHAROLE_ACTIVE: types::MQNHAROLE = types::MQNHAROLE(1);
-    pub const MQNHAROLE_REPLICA: types::MQNHAROLE = types::MQNHAROLE(2);
-    pub const MQNHAROLE_LEADER: types::MQNHAROLE = types::MQNHAROLE(3);
-    pub const MQNHASTATUS_UNKNOWN: types::MQNHASTATUS = types::MQNHASTATUS(0);
-    pub const MQNHASTATUS_NORMAL: types::MQNHASTATUS = types::MQNHASTATUS(1);
-    pub const MQNHASTATUS_CHECKING: types::MQNHASTATUS = types::MQNHASTATUS(2);
-    pub const MQNHASTATUS_SYNCHRONIZING: types::MQNHASTATUS = types::MQNHASTATUS(3);
-    pub const MQNHASTATUS_REBASING: types::MQNHASTATUS = types::MQNHASTATUS(4);
-    pub const MQNHASTATUS_DISK_FULL: types::MQNHASTATUS = types::MQNHASTATUS(5);
-    pub const MQNHASTATUS_DISCONNECTED: types::MQNHASTATUS = types::MQNHASTATUS(6);
-    pub const MQNHASTATUS_PARTITIONED: types::MQNHASTATUS = types::MQNHASTATUS(7);
-    pub const MQNHATYPE_ALL: types::MQNHATYPE = types::MQNHATYPE(-1);
-    pub const MQNHATYPE_INSTANCE: types::MQNHATYPE = types::MQNHATYPE(0);
-    pub const MQNHATYPE_GROUP: types::MQNHATYPE = types::MQNHATYPE(1);
-    pub const MQNPMS_NORMAL: types::MQNPMS = types::MQNPMS(1);
-    pub const MQNPMS_FAST: types::MQNPMS = types::MQNPMS(2);
     pub const MQNPM_CLASS_NORMAL: types::MQNPM = types::MQNPM(0);
     pub const MQNPM_CLASS_HIGH: types::MQNPM = types::MQNPM(10);
-    pub const MQNSH_ALL: types::MQNSH = types::MQNSH(-1);
-    pub const MQNSH_NONE: types::MQNSH = types::MQNSH(0);
     pub const MQNT_NONE: types::MQNT = types::MQNT(0);
     pub const MQNT_Q: types::MQNT = types::MQNT(1);
     pub const MQNT_CLUSTER: types::MQNT = types::MQNT(2);
@@ -2703,25 +2689,6 @@ pub mod constants {
     pub const MQOO_BIND_ON_GROUP: types::MQOO = types::MQOO(4194304);
     pub const MQOO_BIND_AS_Q_DEF: types::MQOO = types::MQOO(0);
     pub const MQOO_RESOLVE_LOCAL_TOPIC: types::MQOO = types::MQOO(262144);
-    pub const MQOPER_UNKNOWN: types::MQOPER = types::MQOPER(0);
-    pub const MQOPER_BROWSE: types::MQOPER = types::MQOPER(1);
-    pub const MQOPER_DISCARD: types::MQOPER = types::MQOPER(2);
-    pub const MQOPER_GET: types::MQOPER = types::MQOPER(3);
-    pub const MQOPER_PUT: types::MQOPER = types::MQOPER(4);
-    pub const MQOPER_PUT_REPLY: types::MQOPER = types::MQOPER(5);
-    pub const MQOPER_PUT_REPORT: types::MQOPER = types::MQOPER(6);
-    pub const MQOPER_RECEIVE: types::MQOPER = types::MQOPER(7);
-    pub const MQOPER_SEND: types::MQOPER = types::MQOPER(8);
-    pub const MQOPER_TRANSFORM: types::MQOPER = types::MQOPER(9);
-    pub const MQOPER_PUBLISH: types::MQOPER = types::MQOPER(10);
-    pub const MQOPER_EXCLUDED_PUBLISH: types::MQOPER = types::MQOPER(11);
-    pub const MQOPER_DISCARDED_PUBLISH: types::MQOPER = types::MQOPER(12);
-    pub const MQOPER_SYSTEM_FIRST: types::MQOPER = types::MQOPER(0);
-    pub const MQOPER_SYSTEM_LAST: types::MQOPER = types::MQOPER(65535);
-    pub const MQOPER_APPL_FIRST: types::MQOPER = types::MQOPER(65536);
-    pub const MQOPER_APPL_LAST: types::MQOPER = types::MQOPER(999999999);
-    pub const MQOPMODE_COMPAT: types::MQOPMODE = types::MQOPMODE(0);
-    pub const MQOPMODE_NEW_FUNCTION: types::MQOPMODE = types::MQOPMODE(1);
     pub const MQOP_START: types::MQOP = types::MQOP(1);
     pub const MQOP_START_WAIT: types::MQOP = types::MQOP(2);
     pub const MQOP_STOP: types::MQOP = types::MQOP(4);
@@ -2763,12 +2730,6 @@ pub mod constants {
     pub const MQOT_TT_CHANNEL: types::MQOT = types::MQOT(1020);
     pub const MQOT_AMQP_CHANNEL: types::MQOT = types::MQOT(1021);
     pub const MQOT_AUTH_REC: types::MQOT = types::MQOT(1022);
-    pub const MQPAGECLAS_4KB: types::MQPAGECLAS = types::MQPAGECLAS(0);
-    pub const MQPAGECLAS_FIXED4KB: types::MQPAGECLAS = types::MQPAGECLAS(1);
-    pub const MQPA_DEFAULT: types::MQPA = types::MQPA(1);
-    pub const MQPA_CONTEXT: types::MQPA = types::MQPA(2);
-    pub const MQPA_ONLY_MCA: types::MQPA = types::MQPA(3);
-    pub const MQPA_ALTERNATE_OR_MCA: types::MQPA = types::MQPA(4);
     pub const MQPD_REJECT_UNSUP_MASK: types::MQPD = types::MQPD(-1048576);
     pub const MQPD_NONE: types::MQPD = types::MQPD(0);
     pub const MQPD_SUPPORT_OPTIONAL: types::MQPD = types::MQPD(1);
@@ -2832,8 +2793,6 @@ pub mod constants {
     pub const MQPMRF_GROUP_ID: types::MQPMRF = types::MQPMRF(4);
     pub const MQPMRF_FEEDBACK: types::MQPMRF = types::MQPMRF(8);
     pub const MQPMRF_ACCOUNTING_TOKEN: types::MQPMRF = types::MQPMRF(16);
-    pub const MQPO_NO: types::MQPO = types::MQPO(0);
-    pub const MQPO_YES: types::MQPO = types::MQPO(1);
     pub const MQPRI_PRIORITY_AS_PUBLISHED: types::MQPRI = types::MQPRI(-3);
     pub const MQPRI_PRIORITY_AS_PARENT: types::MQPRI = types::MQPRI(-2);
     pub const MQPRI_PRIORITY_AS_Q_DEF: types::MQPRI = types::MQPRI(-1);
@@ -2844,16 +2803,11 @@ pub mod constants {
     pub const MQPROP_ALL: types::MQPROP = types::MQPROP(2);
     pub const MQPROP_FORCE_MQRFH2: types::MQPROP = types::MQPROP(3);
     pub const MQPROP_V6COMPAT: types::MQPROP = types::MQPROP(4);
-    pub const MQPROTO_MQTTV3: types::MQPROTO = types::MQPROTO(1);
-    pub const MQPROTO_HTTP: types::MQPROTO = types::MQPROTO(2);
-    pub const MQPROTO_AMQP: types::MQPROTO = types::MQPROTO(3);
-    pub const MQPROTO_MQTTV311: types::MQPROTO = types::MQPROTO(4);
     pub const MQPRT_RESPONSE_AS_PARENT: types::MQPRT = types::MQPRT(0);
     pub const MQPRT_SYNC_RESPONSE: types::MQPRT = types::MQPRT(1);
     pub const MQPRT_ASYNC_RESPONSE: types::MQPRT = types::MQPRT(2);
     pub const MQPSCLUS_DISABLED: types::MQPSCLUS = types::MQPSCLUS(0);
     pub const MQPSCLUS_ENABLED: types::MQPSCLUS = types::MQPSCLUS(1);
-    pub const MQPSCT_NONE: types::MQPSCT = types::MQPSCT(-1);
     pub const MQPSM_DISABLED: types::MQPSM = types::MQPSM(0);
     pub const MQPSM_COMPAT: types::MQPSM = types::MQPSM(1);
     pub const MQPSM_ENABLED: types::MQPSM = types::MQPSM(2);
@@ -2861,10 +2815,6 @@ pub mod constants {
     pub const MQPSPROP_COMPAT: types::MQPSPROP = types::MQPSPROP(1);
     pub const MQPSPROP_RFH2: types::MQPSPROP = types::MQPSPROP(2);
     pub const MQPSPROP_MSGPROP: types::MQPSPROP = types::MQPSPROP(3);
-    pub const MQPSST_ALL: types::MQPSST = types::MQPSST(0);
-    pub const MQPSST_LOCAL: types::MQPSST = types::MQPSST(1);
-    pub const MQPSST_PARENT: types::MQPSST = types::MQPSST(2);
-    pub const MQPSST_CHILD: types::MQPSST = types::MQPSST(3);
     pub const MQQA_BACKOUT_NOT_HARDENED: types::MQQA_BACKOUT = types::MQQA_BACKOUT(0);
     pub const MQQA_BACKOUT_HARDENED: types::MQQA_BACKOUT = types::MQQA_BACKOUT(1);
     pub const MQQA_GET_ALLOWED: types::MQQA_GET = types::MQQA_GET(0);
@@ -2878,26 +2828,9 @@ pub mod constants {
     pub const MQQDT_TEMPORARY_DYNAMIC: types::MQQDT = types::MQQDT(3);
     pub const MQQDT_SHARED_DYNAMIC: types::MQQDT = types::MQQDT(4);
     pub const MQQFS_DEFAULT: types::MQQFS = types::MQQFS(-1);
-    pub const MQQF_LOCAL_Q: types::MQQF = types::MQQF(1);
-    pub const MQQF_CLWL_USEQ_ANY: types::MQQF = types::MQQF(64);
-    pub const MQQF_CLWL_USEQ_LOCAL: types::MQQF = types::MQQF(128);
-    pub const MQQMDT_EXPLICIT_CLUSTER_SENDER: types::MQQMDT = types::MQQMDT(1);
-    pub const MQQMDT_AUTO_CLUSTER_SENDER: types::MQQMDT = types::MQQMDT(2);
-    pub const MQQMDT_CLUSTER_RECEIVER: types::MQQMDT = types::MQQMDT(3);
-    pub const MQQMDT_AUTO_EXP_CLUSTER_SENDER: types::MQQMDT = types::MQQMDT(4);
-    pub const MQQMFAC_IMS_BRIDGE: types::MQQMFAC = types::MQQMFAC(1);
-    pub const MQQMFAC_DB2: types::MQQMFAC = types::MQQMFAC(2);
     pub const MQQMOPT_DISABLED: types::MQQMOPT = types::MQQMOPT(0);
     pub const MQQMOPT_ENABLED: types::MQQMOPT = types::MQQMOPT(1);
     pub const MQQMOPT_REPLY: types::MQQMOPT = types::MQQMOPT(2);
-    pub const MQQMSTA_STARTING: types::MQQMSTA = types::MQQMSTA(1);
-    pub const MQQMSTA_RUNNING: types::MQQMSTA = types::MQQMSTA(2);
-    pub const MQQMSTA_QUIESCING: types::MQQMSTA = types::MQQMSTA(3);
-    pub const MQQMSTA_STANDBY: types::MQQMSTA = types::MQQMSTA(4);
-    pub const MQQMT_NORMAL: types::MQQMT = types::MQQMT(0);
-    pub const MQQMT_REPOSITORY: types::MQQMT = types::MQQMT(1);
-    pub const MQQO_NO: types::MQQO = types::MQQO(0);
-    pub const MQQO_YES: types::MQQO = types::MQQO(1);
     pub const MQQSGD_ALL: types::MQQSGD = types::MQQSGD(-1);
     pub const MQQSGD_Q_MGR: types::MQQSGD = types::MQQSGD(0);
     pub const MQQSGD_COPY: types::MQQSGD = types::MQQSGD(1);
@@ -2905,32 +2838,12 @@ pub mod constants {
     pub const MQQSGD_GROUP: types::MQQSGD = types::MQQSGD(3);
     pub const MQQSGD_PRIVATE: types::MQQSGD = types::MQQSGD(4);
     pub const MQQSGD_LIVE: types::MQQSGD = types::MQQSGD(6);
-    pub const MQQSGS_UNKNOWN: types::MQQSGS = types::MQQSGS(0);
-    pub const MQQSGS_CREATED: types::MQQSGS = types::MQQSGS(1);
-    pub const MQQSGS_ACTIVE: types::MQQSGS = types::MQQSGS(2);
-    pub const MQQSGS_INACTIVE: types::MQQSGS = types::MQQSGS(3);
-    pub const MQQSGS_FAILED: types::MQQSGS = types::MQQSGS(4);
-    pub const MQQSGS_PENDING: types::MQQSGS = types::MQQSGS(5);
-    pub const MQQSIE_NONE: types::MQQSIE = types::MQQSIE(0);
-    pub const MQQSIE_HIGH: types::MQQSIE = types::MQQSIE(1);
-    pub const MQQSIE_OK: types::MQQSIE = types::MQQSIE(2);
-    pub const MQQSOT_ALL: types::MQQSOT = types::MQQSOT(1);
-    pub const MQQSOT_INPUT: types::MQQSOT = types::MQQSOT(2);
-    pub const MQQSOT_OUTPUT: types::MQQSOT = types::MQQSOT(3);
-    pub const MQQSO_NO: types::MQQSO = types::MQQSO(0);
-    pub const MQQSO_YES: types::MQQSO = types::MQQSO(1);
-    pub const MQQSO_EXCLUSIVE: types::MQQSO = types::MQQSO(2);
-    pub const MQQSO_SHARED: types::MQQSO = types::MQQSO(1);
-    pub const MQQSUM_NO: types::MQQSUM = types::MQQSUM(0);
-    pub const MQQSUM_YES: types::MQQSUM = types::MQQSUM(1);
     pub const MQQT_LOCAL: types::MQQT = types::MQQT(1);
     pub const MQQT_MODEL: types::MQQT = types::MQQT(2);
     pub const MQQT_ALIAS: types::MQQT = types::MQQT(3);
     pub const MQQT_REMOTE: types::MQQT = types::MQQT(6);
     pub const MQQT_CLUSTER: types::MQQT = types::MQQT(7);
     pub const MQQT_ALL: types::MQQT = types::MQQT(1001);
-    pub const MQRAR_NO: types::MQRAR = types::MQRAR(0);
-    pub const MQRAR_YES: types::MQRAR = types::MQRAR(1);
     pub const MQRCN_NO: types::MQRCN = types::MQRCN(0);
     pub const MQRCN_YES: types::MQRCN = types::MQRCN(1);
     pub const MQRCN_Q_MGR: types::MQRCN = types::MQRCN(2);
@@ -3508,8 +3421,6 @@ pub mod constants {
     pub const MQRC_SUB_JOIN_NOT_ALTERABLE: types::MQRC = types::MQRC(29440);
     pub const MQRC_APPL_FIRST: types::MQRC = types::MQRC(900);
     pub const MQRC_APPL_LAST: types::MQRC = types::MQRC(999);
-    pub const MQRDNS_ENABLED: types::MQRDNS = types::MQRDNS(0);
-    pub const MQRDNS_DISABLED: types::MQRDNS = types::MQRDNS(1);
     pub const MQRD_NO_RECONNECT: types::MQRD = types::MQRD(-1);
     pub const MQRD_NO_DELAY: types::MQRD = types::MQRD(0);
     pub const MQREADA_NO: types::MQREADA = types::MQREADA(0);
@@ -3530,19 +3441,6 @@ pub mod constants {
     pub const MQRL_UNDEFINED: types::MQRL = types::MQRL(-1);
     pub const MQRMHF_NOT_LAST: types::MQRMHF = types::MQRMHF(0);
     pub const MQRMHF_LAST: types::MQRMHF = types::MQRMHF(1);
-    pub const MQROUTE_DELIVER_REJ_UNSUP_MASK: types::MQROUTE = types::MQROUTE(-65536);
-    pub const MQROUTE_UNLIMITED_ACTIVITIES: types::MQROUTE = types::MQROUTE(0);
-    pub const MQROUTE_DETAIL_LOW: types::MQROUTE = types::MQROUTE(2);
-    pub const MQROUTE_DETAIL_MEDIUM: types::MQROUTE = types::MQROUTE(8);
-    pub const MQROUTE_DETAIL_HIGH: types::MQROUTE = types::MQROUTE(32);
-    pub const MQROUTE_FORWARD_ALL: types::MQROUTE = types::MQROUTE(256);
-    pub const MQROUTE_FORWARD_IF_SUPPORTED: types::MQROUTE = types::MQROUTE(512);
-    pub const MQROUTE_DELIVER_YES: types::MQROUTE = types::MQROUTE(4096);
-    pub const MQROUTE_DELIVER_NO: types::MQROUTE = types::MQROUTE(8192);
-    pub const MQROUTE_ACCUMULATE_NONE: types::MQROUTE = types::MQROUTE(65539);
-    pub const MQROUTE_ACCUMULATE_IN_MSG: types::MQROUTE = types::MQROUTE(65540);
-    pub const MQROUTE_ACCUMULATE_AND_REPLY: types::MQROUTE = types::MQROUTE(65541);
-    pub const MQROUTE_FORWARD_REJ_UNSUP_MASK: types::MQROUTE = types::MQROUTE(-65536);
     pub const MQRO_ACCEPT_UNSUP_MASK: types::MQRO = types::MQRO(-270532353);
     pub const MQRO_NONE: types::MQRO = types::MQRO(0);
     pub const MQRO_PAN: types::MQRO = types::MQRO(1);
@@ -3569,51 +3467,8 @@ pub mod constants {
     pub const MQRO_COPY_MSG_ID_TO_CORREL_ID: types::MQRO = types::MQRO(0);
     pub const MQRO_DEAD_LETTER_Q: types::MQRO = types::MQRO(0);
     pub const MQRO_NEW_MSG_ID: types::MQRO = types::MQRO(0);
-    pub const MQRP_NO: types::MQRP = types::MQRP(0);
-    pub const MQRP_YES: types::MQRP = types::MQRP(1);
-    pub const MQRQ_CONN_NOT_AUTHORIZED: types::MQRQ = types::MQRQ(1);
-    pub const MQRQ_OPEN_NOT_AUTHORIZED: types::MQRQ = types::MQRQ(2);
-    pub const MQRQ_CLOSE_NOT_AUTHORIZED: types::MQRQ = types::MQRQ(3);
-    pub const MQRQ_CMD_NOT_AUTHORIZED: types::MQRQ = types::MQRQ(4);
-    pub const MQRQ_Q_MGR_STOPPING: types::MQRQ = types::MQRQ(5);
-    pub const MQRQ_Q_MGR_QUIESCING: types::MQRQ = types::MQRQ(6);
-    pub const MQRQ_CHANNEL_STOPPED_OK: types::MQRQ = types::MQRQ(7);
-    pub const MQRQ_CHANNEL_STOPPED_ERROR: types::MQRQ = types::MQRQ(8);
-    pub const MQRQ_CHANNEL_STOPPED_RETRY: types::MQRQ = types::MQRQ(9);
-    pub const MQRQ_CHANNEL_STOPPED_DISABLED: types::MQRQ = types::MQRQ(10);
-    pub const MQRQ_BRIDGE_STOPPED_OK: types::MQRQ = types::MQRQ(11);
-    pub const MQRQ_BRIDGE_STOPPED_ERROR: types::MQRQ = types::MQRQ(12);
-    pub const MQRQ_SSL_HANDSHAKE_ERROR: types::MQRQ = types::MQRQ(13);
-    pub const MQRQ_SSL_CIPHER_SPEC_ERROR: types::MQRQ = types::MQRQ(14);
-    pub const MQRQ_SSL_CLIENT_AUTH_ERROR: types::MQRQ = types::MQRQ(15);
-    pub const MQRQ_SSL_PEER_NAME_ERROR: types::MQRQ = types::MQRQ(16);
-    pub const MQRQ_SUB_NOT_AUTHORIZED: types::MQRQ = types::MQRQ(17);
-    pub const MQRQ_SUB_DEST_NOT_AUTHORIZED: types::MQRQ = types::MQRQ(18);
-    pub const MQRQ_SSL_UNKNOWN_REVOCATION: types::MQRQ = types::MQRQ(19);
-    pub const MQRQ_SYS_CONN_NOT_AUTHORIZED: types::MQRQ = types::MQRQ(20);
-    pub const MQRQ_CHANNEL_BLOCKED_ADDRESS: types::MQRQ = types::MQRQ(21);
-    pub const MQRQ_CHANNEL_BLOCKED_USERID: types::MQRQ = types::MQRQ(22);
-    pub const MQRQ_CHANNEL_BLOCKED_NOACCESS: types::MQRQ = types::MQRQ(23);
-    pub const MQRQ_MAX_ACTIVE_CHANNELS: types::MQRQ = types::MQRQ(24);
-    pub const MQRQ_MAX_CHANNELS: types::MQRQ = types::MQRQ(25);
-    pub const MQRQ_SVRCONN_INST_LIMIT: types::MQRQ = types::MQRQ(26);
-    pub const MQRQ_CLIENT_INST_LIMIT: types::MQRQ = types::MQRQ(27);
-    pub const MQRQ_CAF_NOT_INSTALLED: types::MQRQ = types::MQRQ(28);
-    pub const MQRQ_CSP_NOT_AUTHORIZED: types::MQRQ = types::MQRQ(29);
-    pub const MQRQ_FAILOVER_PERMITTED: types::MQRQ = types::MQRQ(30);
-    pub const MQRQ_FAILOVER_NOT_PERMITTED: types::MQRQ = types::MQRQ(31);
-    pub const MQRQ_STANDBY_ACTIVATED: types::MQRQ = types::MQRQ(32);
-    pub const MQRQ_REPLICA_ACTIVATED: types::MQRQ = types::MQRQ(33);
-    pub const MQRT_CONFIGURATION: types::MQRT = types::MQRT(1);
-    pub const MQRT_EXPIRY: types::MQRT = types::MQRT(2);
-    pub const MQRT_NSPROC: types::MQRT = types::MQRT(3);
-    pub const MQRT_PROXYSUB: types::MQRT = types::MQRT(4);
-    pub const MQRT_SUB_CONFIGURATION: types::MQRT = types::MQRT(5);
     pub const MQRU_PUBLISH_ON_REQUEST: types::MQRU = types::MQRU(1);
     pub const MQRU_PUBLISH_ALL: types::MQRU = types::MQRU(2);
-    pub const MQSCA_REQUIRED: types::MQSCA = types::MQSCA(0);
-    pub const MQSCA_OPTIONAL: types::MQSCA = types::MQSCA(1);
-    pub const MQSCA_NEVER_REQUIRED: types::MQSCA = types::MQSCA(2);
     pub const MQSCOPE_ALL: types::MQSCOPE = types::MQSCOPE(0);
     pub const MQSCOPE_AS_PARENT: types::MQSCOPE = types::MQSCOPE(1);
     pub const MQSCOPE_QMGR: types::MQSCOPE = types::MQSCOPE(4);
@@ -3622,51 +3477,6 @@ pub mod constants {
     pub const MQSCO_RESET_COUNT_DEFAULT: types::MQSCO = types::MQSCO(0);
     pub const MQSCYC_UPPER: types::MQSCYC = types::MQSCYC(0);
     pub const MQSCYC_MIXED: types::MQSCYC = types::MQSCYC(1);
-    pub const MQSECCOMM_NO: types::MQSECCOMM = types::MQSECCOMM(0);
-    pub const MQSECCOMM_YES: types::MQSECCOMM = types::MQSECCOMM(1);
-    pub const MQSECCOMM_ANON: types::MQSECCOMM = types::MQSECCOMM(2);
-    pub const MQSECITEM_ALL: types::MQSECITEM = types::MQSECITEM(0);
-    pub const MQSECITEM_MQADMIN: types::MQSECITEM = types::MQSECITEM(1);
-    pub const MQSECITEM_MQNLIST: types::MQSECITEM = types::MQSECITEM(2);
-    pub const MQSECITEM_MQPROC: types::MQSECITEM = types::MQSECITEM(3);
-    pub const MQSECITEM_MQQUEUE: types::MQSECITEM = types::MQSECITEM(4);
-    pub const MQSECITEM_MQCONN: types::MQSECITEM = types::MQSECITEM(5);
-    pub const MQSECITEM_MQCMDS: types::MQSECITEM = types::MQSECITEM(6);
-    pub const MQSECITEM_MXADMIN: types::MQSECITEM = types::MQSECITEM(7);
-    pub const MQSECITEM_MXNLIST: types::MQSECITEM = types::MQSECITEM(8);
-    pub const MQSECITEM_MXPROC: types::MQSECITEM = types::MQSECITEM(9);
-    pub const MQSECITEM_MXQUEUE: types::MQSECITEM = types::MQSECITEM(10);
-    pub const MQSECITEM_MXTOPIC: types::MQSECITEM = types::MQSECITEM(11);
-    pub const MQSECPROT_NONE: types::MQSECPROT = types::MQSECPROT(0);
-    pub const MQSECPROT_SSLV30: types::MQSECPROT = types::MQSECPROT(1);
-    pub const MQSECPROT_TLSV10: types::MQSECPROT = types::MQSECPROT(2);
-    pub const MQSECPROT_TLSV12: types::MQSECPROT = types::MQSECPROT(4);
-    pub const MQSECPROT_TLSV13: types::MQSECPROT = types::MQSECPROT(8);
-    pub const MQSECSW_PROCESS: types::MQSECSW = types::MQSECSW(1);
-    pub const MQSECSW_NAMELIST: types::MQSECSW = types::MQSECSW(2);
-    pub const MQSECSW_Q: types::MQSECSW = types::MQSECSW(3);
-    pub const MQSECSW_TOPIC: types::MQSECSW = types::MQSECSW(4);
-    pub const MQSECSW_CONTEXT: types::MQSECSW = types::MQSECSW(6);
-    pub const MQSECSW_ALTERNATE_USER: types::MQSECSW = types::MQSECSW(7);
-    pub const MQSECSW_COMMAND: types::MQSECSW = types::MQSECSW(8);
-    pub const MQSECSW_CONNECTION: types::MQSECSW = types::MQSECSW(9);
-    pub const MQSECSW_SUBSYSTEM: types::MQSECSW = types::MQSECSW(10);
-    pub const MQSECSW_COMMAND_RESOURCES: types::MQSECSW = types::MQSECSW(11);
-    pub const MQSECSW_Q_MGR: types::MQSECSW = types::MQSECSW(15);
-    pub const MQSECSW_QSG: types::MQSECSW = types::MQSECSW(16);
-    pub const MQSECSW_OFF_FOUND: types::MQSECSW = types::MQSECSW(21);
-    pub const MQSECSW_ON_FOUND: types::MQSECSW = types::MQSECSW(22);
-    pub const MQSECSW_OFF_NOT_FOUND: types::MQSECSW = types::MQSECSW(23);
-    pub const MQSECSW_ON_NOT_FOUND: types::MQSECSW = types::MQSECSW(24);
-    pub const MQSECSW_OFF_ERROR: types::MQSECSW = types::MQSECSW(25);
-    pub const MQSECSW_ON_OVERRIDDEN: types::MQSECSW = types::MQSECSW(26);
-    pub const MQSECTYPE_AUTHSERV: types::MQSECTYPE = types::MQSECTYPE(1);
-    pub const MQSECTYPE_SSL: types::MQSECTYPE = types::MQSECTYPE(2);
-    pub const MQSECTYPE_CLASSES: types::MQSECTYPE = types::MQSECTYPE(3);
-    pub const MQSECTYPE_CONNAUTH: types::MQSECTYPE = types::MQSECTYPE(4);
-    pub const MQSELTYPE_NONE: types::MQSELTYPE = types::MQSELTYPE(0);
-    pub const MQSELTYPE_STANDARD: types::MQSELTYPE = types::MQSELTYPE(1);
-    pub const MQSELTYPE_EXTENDED: types::MQSELTYPE = types::MQSELTYPE(2);
     pub const MQSMPO_NONE: types::MQSMPO = types::MQSMPO(0);
     pub const MQSMPO_SET_PROP_UNDER_CURSOR: types::MQSMPO = types::MQSMPO(1);
     pub const MQSMPO_SET_PROP_AFTER_CURSOR: types::MQSMPO = types::MQSMPO(2);
@@ -3696,9 +3506,6 @@ pub mod constants {
     pub const MQSO_READ_AHEAD: types::MQSO = types::MQSO(268435456);
     pub const MQSO_NON_DURABLE: types::MQSO = types::MQSO(0);
     pub const MQSO_READ_AHEAD_AS_Q_DEF: types::MQSO = types::MQSO(0);
-    pub const MQSPL_PASSTHRU: types::MQSPL = types::MQSPL(0);
-    pub const MQSPL_REMOVE: types::MQSPL = types::MQSPL(1);
-    pub const MQSPL_AS_POLICY: types::MQSPL = types::MQSPL(2);
     pub const MQSP_NOT_AVAILABLE: types::MQSP = types::MQSP(0);
     pub const MQSP_AVAILABLE: types::MQSP = types::MQSP(1);
     pub const MQSQQM_USE: types::MQSQQM = types::MQSQQM(0);
@@ -3711,23 +3518,14 @@ pub mod constants {
     pub const MQSTAT_TYPE_ASYNC_ERROR: types::MQSTAT = types::MQSTAT(0);
     pub const MQSTAT_TYPE_RECONNECTION: types::MQSTAT = types::MQSTAT(1);
     pub const MQSTAT_TYPE_RECONNECTION_ERROR: types::MQSTAT = types::MQSTAT(2);
-    pub const MQSTDBY_NOT_PERMITTED: types::MQSTDBY = types::MQSTDBY(0);
-    pub const MQSTDBY_PERMITTED: types::MQSTDBY = types::MQSTDBY(1);
     pub const MQST_BEST_EFFORT: types::MQST = types::MQST(0);
     pub const MQST_MUST_DUP: types::MQST = types::MQST(1);
-    pub const MQSUBTYPE_USER: types::MQSUBTYPE = types::MQSUBTYPE(-2);
-    pub const MQSUBTYPE_ALL: types::MQSUBTYPE = types::MQSUBTYPE(-1);
-    pub const MQSUBTYPE_API: types::MQSUBTYPE = types::MQSUBTYPE(1);
-    pub const MQSUBTYPE_ADMIN: types::MQSUBTYPE = types::MQSUBTYPE(2);
-    pub const MQSUBTYPE_PROXY: types::MQSUBTYPE = types::MQSUBTYPE(3);
     pub const MQSUB_DURABLE_AS_PARENT: types::MQSUB = types::MQSUB(0);
     pub const MQSUB_DURABLE_ALLOWED: types::MQSUB = types::MQSUB(1);
     pub const MQSUB_DURABLE_INHIBITED: types::MQSUB = types::MQSUB(2);
     pub const MQSUB_DURABLE_ALL: types::MQSUB_DURABILITY = types::MQSUB_DURABILITY(-1);
     pub const MQSUB_DURABLE_YES: types::MQSUB_DURABILITY = types::MQSUB_DURABILITY(1);
     pub const MQSUB_DURABLE_NO: types::MQSUB_DURABILITY = types::MQSUB_DURABILITY(2);
-    pub const MQSUS_NO: types::MQSUS = types::MQSUS(0);
-    pub const MQSUS_YES: types::MQSUS = types::MQSUS(1);
     pub const MQSVC_CONTROL_Q_MGR: types::MQSVC_CONTROL = types::MQSVC_CONTROL(0);
     pub const MQSVC_CONTROL_Q_MGR_START: types::MQSVC_CONTROL = types::MQSVC_CONTROL(1);
     pub const MQSVC_CONTROL_MANUAL: types::MQSVC_CONTROL = types::MQSVC_CONTROL(2);
@@ -3738,47 +3536,6 @@ pub mod constants {
     pub const MQSVC_STATUS_RETRYING: types::MQSVC_STATUS = types::MQSVC_STATUS(4);
     pub const MQSVC_TYPE_COMMAND: types::MQSVC_TYPE = types::MQSVC_TYPE(0);
     pub const MQSVC_TYPE_SERVER: types::MQSVC_TYPE = types::MQSVC_TYPE(1);
-    pub const MQSYNCPOINT_YES: types::MQSYNCPOINT = types::MQSYNCPOINT(0);
-    pub const MQSYNCPOINT_IFPER: types::MQSYNCPOINT = types::MQSYNCPOINT(1);
-    pub const MQSYSOBJ_YES: types::MQSYSOBJ = types::MQSYSOBJ(0);
-    pub const MQSYSOBJ_NO: types::MQSYSOBJ = types::MQSYSOBJ(1);
-    pub const MQSYSP_NO: types::MQSYSP = types::MQSYSP(0);
-    pub const MQSYSP_YES: types::MQSYSP = types::MQSYSP(1);
-    pub const MQSYSP_EXTENDED: types::MQSYSP = types::MQSYSP(2);
-    pub const MQSYSP_TYPE_INITIAL: types::MQSYSP = types::MQSYSP(10);
-    pub const MQSYSP_TYPE_SET: types::MQSYSP = types::MQSYSP(11);
-    pub const MQSYSP_TYPE_LOG_COPY: types::MQSYSP = types::MQSYSP(12);
-    pub const MQSYSP_TYPE_LOG_STATUS: types::MQSYSP = types::MQSYSP(13);
-    pub const MQSYSP_TYPE_ARCHIVE_TAPE: types::MQSYSP = types::MQSYSP(14);
-    pub const MQSYSP_ALLOC_BLK: types::MQSYSP = types::MQSYSP(20);
-    pub const MQSYSP_ALLOC_TRK: types::MQSYSP = types::MQSYSP(21);
-    pub const MQSYSP_ALLOC_CYL: types::MQSYSP = types::MQSYSP(22);
-    pub const MQSYSP_STATUS_BUSY: types::MQSYSP = types::MQSYSP(30);
-    pub const MQSYSP_STATUS_PREMOUNT: types::MQSYSP = types::MQSYSP(31);
-    pub const MQSYSP_STATUS_AVAILABLE: types::MQSYSP = types::MQSYSP(32);
-    pub const MQSYSP_STATUS_UNKNOWN: types::MQSYSP = types::MQSYSP(33);
-    pub const MQSYSP_STATUS_ALLOC_ARCHIVE: types::MQSYSP = types::MQSYSP(34);
-    pub const MQSYSP_STATUS_COPYING_BSDS: types::MQSYSP = types::MQSYSP(35);
-    pub const MQSYSP_STATUS_COPYING_LOG: types::MQSYSP = types::MQSYSP(36);
-    pub const MQS_AVAIL_NORMAL: types::MQS_AVAIL = types::MQS_AVAIL(0);
-    pub const MQS_AVAIL_ERROR: types::MQS_AVAIL = types::MQS_AVAIL(1);
-    pub const MQS_AVAIL_STOPPED: types::MQS_AVAIL = types::MQS_AVAIL(2);
-    pub const MQS_EXPANDST_NORMAL: types::MQS_EXPANDST = types::MQS_EXPANDST(0);
-    pub const MQS_EXPANDST_FAILED: types::MQS_EXPANDST = types::MQS_EXPANDST(1);
-    pub const MQS_EXPANDST_MAXIMUM: types::MQS_EXPANDST = types::MQS_EXPANDST(2);
-    pub const MQS_OPENMODE_NONE: types::MQS_OPENMODE = types::MQS_OPENMODE(0);
-    pub const MQS_OPENMODE_READONLY: types::MQS_OPENMODE = types::MQS_OPENMODE(1);
-    pub const MQS_OPENMODE_UPDATE: types::MQS_OPENMODE = types::MQS_OPENMODE(2);
-    pub const MQS_OPENMODE_RECOVERY: types::MQS_OPENMODE = types::MQS_OPENMODE(3);
-    pub const MQS_STATUS_CLOSED: types::MQS_STATUS = types::MQS_STATUS(0);
-    pub const MQS_STATUS_CLOSING: types::MQS_STATUS = types::MQS_STATUS(1);
-    pub const MQS_STATUS_OPENING: types::MQS_STATUS = types::MQS_STATUS(2);
-    pub const MQS_STATUS_OPEN: types::MQS_STATUS = types::MQS_STATUS(3);
-    pub const MQS_STATUS_NOTENABLED: types::MQS_STATUS = types::MQS_STATUS(4);
-    pub const MQS_STATUS_ALLOCFAIL: types::MQS_STATUS = types::MQS_STATUS(5);
-    pub const MQS_STATUS_OPENFAIL: types::MQS_STATUS = types::MQS_STATUS(6);
-    pub const MQS_STATUS_STGFAIL: types::MQS_STATUS = types::MQS_STATUS(7);
-    pub const MQS_STATUS_DATAFAIL: types::MQS_STATUS = types::MQS_STATUS(8);
     pub const MQTA_BLOCK: types::MQTA = types::MQTA(1);
     pub const MQTA_PASSTHRU: types::MQTA = types::MQTA(2);
     pub const MQTA_PROXY_SUB_FORCE: types::MQTA_PROXY = types::MQTA_PROXY(1);
@@ -3795,8 +3552,6 @@ pub mod constants {
     pub const MQTCPSTACK_MULTIPLE: types::MQTCPSTACK = types::MQTCPSTACK(1);
     pub const MQTC_OFF: types::MQTC = types::MQTC(0);
     pub const MQTC_ON: types::MQTC = types::MQTC(1);
-    pub const MQTIME_UNIT_MINS: types::MQTIME = types::MQTIME(0);
-    pub const MQTIME_UNIT_SECS: types::MQTIME = types::MQTIME(1);
     pub const MQTOPT_LOCAL: types::MQTOPT = types::MQTOPT(0);
     pub const MQTOPT_CLUSTER: types::MQTOPT = types::MQTOPT(1);
     pub const MQTOPT_ALL: types::MQTOPT = types::MQTOPT(2);
@@ -3822,36 +3577,6 @@ pub mod constants {
     pub const MQTYPE_FLOAT64: types::MQTYPE = types::MQTYPE(512);
     pub const MQTYPE_STRING: types::MQTYPE = types::MQTYPE(1024);
     pub const MQTYPE_LONG: types::MQTYPE = types::MQTYPE(64);
-    pub const MQUCI_NO: types::MQUCI = types::MQUCI(0);
-    pub const MQUCI_YES: types::MQUCI = types::MQUCI(1);
-    pub const MQUIDSUPP_NO: types::MQUIDSUPP = types::MQUIDSUPP(0);
-    pub const MQUIDSUPP_YES: types::MQUIDSUPP = types::MQUIDSUPP(1);
-    pub const MQUNDELIVERED_NORMAL: types::MQUNDELIVERED = types::MQUNDELIVERED(0);
-    pub const MQUNDELIVERED_SAFE: types::MQUNDELIVERED = types::MQUNDELIVERED(1);
-    pub const MQUNDELIVERED_DISCARD: types::MQUNDELIVERED = types::MQUNDELIVERED(2);
-    pub const MQUNDELIVERED_KEEP: types::MQUNDELIVERED = types::MQUNDELIVERED(3);
-    pub const MQUOWST_NONE: types::MQUOWST = types::MQUOWST(0);
-    pub const MQUOWST_ACTIVE: types::MQUOWST = types::MQUOWST(1);
-    pub const MQUOWST_PREPARED: types::MQUOWST = types::MQUOWST(2);
-    pub const MQUOWST_UNRESOLVED: types::MQUOWST = types::MQUOWST(3);
-    pub const MQUOWT_Q_MGR: types::MQUOWT = types::MQUOWT(0);
-    pub const MQUOWT_CICS: types::MQUOWT = types::MQUOWT(1);
-    pub const MQUOWT_RRS: types::MQUOWT = types::MQUOWT(2);
-    pub const MQUOWT_IMS: types::MQUOWT = types::MQUOWT(3);
-    pub const MQUOWT_XA: types::MQUOWT = types::MQUOWT(4);
-    pub const MQUSAGE_DS_OLDEST_ACTIVE_UOW: types::MQUSAGE_DS = types::MQUSAGE_DS(10);
-    pub const MQUSAGE_DS_OLDEST_PS_RECOVERY: types::MQUSAGE_DS = types::MQUSAGE_DS(11);
-    pub const MQUSAGE_DS_OLDEST_CF_RECOVERY: types::MQUSAGE_DS = types::MQUSAGE_DS(12);
-    pub const MQUSAGE_EXPAND_USER: types::MQUSAGE_EXPAND = types::MQUSAGE_EXPAND(1);
-    pub const MQUSAGE_EXPAND_SYSTEM: types::MQUSAGE_EXPAND = types::MQUSAGE_EXPAND(2);
-    pub const MQUSAGE_EXPAND_NONE: types::MQUSAGE_EXPAND = types::MQUSAGE_EXPAND(3);
-    pub const MQUSAGE_PS_AVAILABLE: types::MQUSAGE_PS = types::MQUSAGE_PS(0);
-    pub const MQUSAGE_PS_DEFINED: types::MQUSAGE_PS = types::MQUSAGE_PS(1);
-    pub const MQUSAGE_PS_OFFLINE: types::MQUSAGE_PS = types::MQUSAGE_PS(2);
-    pub const MQUSAGE_PS_NOT_DEFINED: types::MQUSAGE_PS = types::MQUSAGE_PS(3);
-    pub const MQUSAGE_PS_SUSPENDED: types::MQUSAGE_PS = types::MQUSAGE_PS(4);
-    pub const MQUSAGE_SMDS_AVAILABLE: types::MQUSAGE_SMDS = types::MQUSAGE_SMDS(0);
-    pub const MQUSAGE_SMDS_NO_DATA: types::MQUSAGE_SMDS = types::MQUSAGE_SMDS(1);
     pub const MQUSEDLQ_AS_PARENT: types::MQUSEDLQ = types::MQUSEDLQ(0);
     pub const MQUSEDLQ_NO: types::MQUSEDLQ = types::MQUSEDLQ(1);
     pub const MQUSEDLQ_YES: types::MQUSEDLQ = types::MQUSEDLQ(2);
@@ -3872,18 +3597,6 @@ pub mod constants {
     pub const MQWS_DEFAULT: types::MQWS = types::MQWS(0);
     pub const MQWS_CHAR: types::MQWS = types::MQWS(1);
     pub const MQWS_TOPIC: types::MQWS = types::MQWS(2);
-    pub const MQWXP_PUT_BY_CLUSTER_CHL: types::MQWXP = types::MQWXP(2);
-    pub const MQXACT_EXTERNAL: types::MQXACT = types::MQXACT(1);
-    pub const MQXACT_INTERNAL: types::MQXACT = types::MQXACT(2);
-    pub const MQXCC_FAILED: types::MQXCC = types::MQXCC(-8);
-    pub const MQXCC_REQUEST_ACK: types::MQXCC = types::MQXCC(-7);
-    pub const MQXCC_CLOSE_CHANNEL: types::MQXCC = types::MQXCC(-6);
-    pub const MQXCC_SUPPRESS_EXIT: types::MQXCC = types::MQXCC(-5);
-    pub const MQXCC_SEND_SEC_MSG: types::MQXCC = types::MQXCC(-4);
-    pub const MQXCC_SEND_AND_REQUEST_SEC_MSG: types::MQXCC = types::MQXCC(-3);
-    pub const MQXCC_SKIP_FUNCTION: types::MQXCC = types::MQXCC(-2);
-    pub const MQXCC_SUPPRESS_FUNCTION: types::MQXCC = types::MQXCC(-1);
-    pub const MQXCC_OK: types::MQXCC = types::MQXCC(0);
     pub const MQXC_MQOPEN: types::MQXC = types::MQXC(1);
     pub const MQXC_MQCLOSE: types::MQXC = types::MQXC(2);
     pub const MQXC_MQGET: types::MQXC = types::MQXC(3);
@@ -3899,47 +3612,6 @@ pub mod constants {
     pub const MQXC_MQCTL: types::MQXC = types::MQXC(45);
     pub const MQXC_MQSTAT: types::MQXC = types::MQXC(46);
     pub const MQXC_CALLBACK: types::MQXC = types::MQXC(48);
-    pub const MQXEPO_NONE: types::MQXEPO = types::MQXEPO(0);
-    pub const MQXE_OTHER: types::MQXE = types::MQXE(0);
-    pub const MQXE_MCA: types::MQXE = types::MQXE(1);
-    pub const MQXE_MCA_SVRCONN: types::MQXE = types::MQXE(2);
-    pub const MQXE_COMMAND_SERVER: types::MQXE = types::MQXE(3);
-    pub const MQXE_MQSC: types::MQXE = types::MQXE(4);
-    pub const MQXE_MCA_CLNTCONN: types::MQXE = types::MQXE(5);
-    pub const MQXF_INIT: types::MQXF = types::MQXF(1);
-    pub const MQXF_TERM: types::MQXF = types::MQXF(2);
-    pub const MQXF_CONN: types::MQXF = types::MQXF(3);
-    pub const MQXF_CONNX: types::MQXF = types::MQXF(4);
-    pub const MQXF_DISC: types::MQXF = types::MQXF(5);
-    pub const MQXF_OPEN: types::MQXF = types::MQXF(6);
-    pub const MQXF_CLOSE: types::MQXF = types::MQXF(7);
-    pub const MQXF_PUT1: types::MQXF = types::MQXF(8);
-    pub const MQXF_PUT: types::MQXF = types::MQXF(9);
-    pub const MQXF_GET: types::MQXF = types::MQXF(10);
-    pub const MQXF_DATA_CONV_ON_GET: types::MQXF = types::MQXF(11);
-    pub const MQXF_INQ: types::MQXF = types::MQXF(12);
-    pub const MQXF_SET: types::MQXF = types::MQXF(13);
-    pub const MQXF_BEGIN: types::MQXF = types::MQXF(14);
-    pub const MQXF_CMIT: types::MQXF = types::MQXF(15);
-    pub const MQXF_BACK: types::MQXF = types::MQXF(16);
-    pub const MQXF_STAT: types::MQXF = types::MQXF(18);
-    pub const MQXF_CB: types::MQXF = types::MQXF(19);
-    pub const MQXF_CTL: types::MQXF = types::MQXF(20);
-    pub const MQXF_CALLBACK: types::MQXF = types::MQXF(21);
-    pub const MQXF_SUB: types::MQXF = types::MQXF(22);
-    pub const MQXF_SUBRQ: types::MQXF = types::MQXF(23);
-    pub const MQXF_XACLOSE: types::MQXF = types::MQXF(24);
-    pub const MQXF_XACOMMIT: types::MQXF = types::MQXF(25);
-    pub const MQXF_XACOMPLETE: types::MQXF = types::MQXF(26);
-    pub const MQXF_XAEND: types::MQXF = types::MQXF(27);
-    pub const MQXF_XAFORGET: types::MQXF = types::MQXF(28);
-    pub const MQXF_XAOPEN: types::MQXF = types::MQXF(29);
-    pub const MQXF_XAPREPARE: types::MQXF = types::MQXF(30);
-    pub const MQXF_XARECOVER: types::MQXF = types::MQXF(31);
-    pub const MQXF_XAROLLBACK: types::MQXF = types::MQXF(32);
-    pub const MQXF_XASTART: types::MQXF = types::MQXF(33);
-    pub const MQXF_AXREG: types::MQXF = types::MQXF(34);
-    pub const MQXF_AXUNREG: types::MQXF = types::MQXF(35);
     pub const MQXPT_ALL: types::MQXPT = types::MQXPT(-1);
     pub const MQXPT_LOCAL: types::MQXPT = types::MQXPT(0);
     pub const MQXPT_LU62: types::MQXPT = types::MQXPT(1);
@@ -3948,133 +3620,6 @@ pub mod constants {
     pub const MQXPT_SPX: types::MQXPT = types::MQXPT(4);
     pub const MQXPT_DECNET: types::MQXPT = types::MQXPT(5);
     pub const MQXPT_UDP: types::MQXPT = types::MQXPT(6);
-    pub const MQXR2_DEFAULT_CONTINUATION: types::MQXR2 = types::MQXR2(0);
-    pub const MQXR2_PUT_WITH_DEF_USERID: types::MQXR2 = types::MQXR2(1);
-    pub const MQXR2_PUT_WITH_MSG_USERID: types::MQXR2 = types::MQXR2(2);
-    pub const MQXR2_USE_EXIT_BUFFER: types::MQXR2 = types::MQXR2(4);
-    pub const MQXR2_CONTINUE_CHAIN: types::MQXR2 = types::MQXR2(8);
-    pub const MQXR2_SUPPRESS_CHAIN: types::MQXR2 = types::MQXR2(16);
-    pub const MQXR2_DYNAMIC_CACHE: types::MQXR2 = types::MQXR2(32);
-    pub const MQXR2_PUT_WITH_DEF_ACTION: types::MQXR2 = types::MQXR2(0);
-    pub const MQXR2_STATIC_CACHE: types::MQXR2 = types::MQXR2(0);
-    pub const MQXR2_USE_AGENT_BUFFER: types::MQXR2 = types::MQXR2(0);
-    pub const MQXR_BEFORE: types::MQXR = types::MQXR(1);
-    pub const MQXR_AFTER: types::MQXR = types::MQXR(2);
-    pub const MQXR_CONNECTION: types::MQXR = types::MQXR(3);
-    pub const MQXR_BEFORE_CONVERT: types::MQXR = types::MQXR(4);
-    pub const MQXR_INIT: types::MQXR = types::MQXR(11);
-    pub const MQXR_TERM: types::MQXR = types::MQXR(12);
-    pub const MQXR_MSG: types::MQXR = types::MQXR(13);
-    pub const MQXR_XMIT: types::MQXR = types::MQXR(14);
-    pub const MQXR_SEC_MSG: types::MQXR = types::MQXR(15);
-    pub const MQXR_INIT_SEC: types::MQXR = types::MQXR(16);
-    pub const MQXR_RETRY: types::MQXR = types::MQXR(17);
-    pub const MQXR_AUTO_CLUSSDR: types::MQXR = types::MQXR(18);
-    pub const MQXR_AUTO_RECEIVER: types::MQXR = types::MQXR(19);
-    pub const MQXR_CLWL_OPEN: types::MQXR = types::MQXR(20);
-    pub const MQXR_CLWL_PUT: types::MQXR = types::MQXR(21);
-    pub const MQXR_CLWL_MOVE: types::MQXR = types::MQXR(22);
-    pub const MQXR_CLWL_REPOS: types::MQXR = types::MQXR(23);
-    pub const MQXR_CLWL_REPOS_MOVE: types::MQXR = types::MQXR(24);
-    pub const MQXR_END_BATCH: types::MQXR = types::MQXR(25);
-    pub const MQXR_ACK_RECEIVED: types::MQXR = types::MQXR(26);
-    pub const MQXR_AUTO_SVRCONN: types::MQXR = types::MQXR(27);
-    pub const MQXR_AUTO_CLUSRCVR: types::MQXR = types::MQXR(28);
-    pub const MQXR_SEC_PARMS: types::MQXR = types::MQXR(29);
-    pub const MQXR_PUBLICATION: types::MQXR = types::MQXR(30);
-    pub const MQXR_PRECONNECT: types::MQXR = types::MQXR(31);
-    pub const MQXT_API_CROSSING_EXIT: types::MQXT = types::MQXT(1);
-    pub const MQXT_API_EXIT: types::MQXT = types::MQXT(2);
-    pub const MQXT_CHANNEL_SEC_EXIT: types::MQXT = types::MQXT(11);
-    pub const MQXT_CHANNEL_MSG_EXIT: types::MQXT = types::MQXT(12);
-    pub const MQXT_CHANNEL_SEND_EXIT: types::MQXT = types::MQXT(13);
-    pub const MQXT_CHANNEL_RCV_EXIT: types::MQXT = types::MQXT(14);
-    pub const MQXT_CHANNEL_MSG_RETRY_EXIT: types::MQXT = types::MQXT(15);
-    pub const MQXT_CHANNEL_AUTO_DEF_EXIT: types::MQXT = types::MQXT(16);
-    pub const MQXT_CLUSTER_WORKLOAD_EXIT: types::MQXT = types::MQXT(20);
-    pub const MQXT_PUBSUB_ROUTING_EXIT: types::MQXT = types::MQXT(21);
-    pub const MQXT_PUBLISH_EXIT: types::MQXT = types::MQXT(22);
-    pub const MQXT_PRECONNECT_EXIT: types::MQXT = types::MQXT(23);
-    pub const MQZAET_NONE: types::MQZAET = types::MQZAET(0);
-    pub const MQZAET_PRINCIPAL: types::MQZAET = types::MQZAET(1);
-    pub const MQZAET_GROUP: types::MQZAET = types::MQZAET(2);
-    pub const MQZAET_UNKNOWN: types::MQZAET = types::MQZAET(3);
-    pub const MQZAO_NONE: types::MQZAO = types::MQZAO(0);
-    pub const MQZAO_CONNECT: types::MQZAO = types::MQZAO(1);
-    pub const MQZAO_BROWSE: types::MQZAO = types::MQZAO(2);
-    pub const MQZAO_INPUT: types::MQZAO = types::MQZAO(4);
-    pub const MQZAO_OUTPUT: types::MQZAO = types::MQZAO(8);
-    pub const MQZAO_INQUIRE: types::MQZAO = types::MQZAO(16);
-    pub const MQZAO_SET: types::MQZAO = types::MQZAO(32);
-    pub const MQZAO_PASS_IDENTITY_CONTEXT: types::MQZAO = types::MQZAO(64);
-    pub const MQZAO_PASS_ALL_CONTEXT: types::MQZAO = types::MQZAO(128);
-    pub const MQZAO_SET_IDENTITY_CONTEXT: types::MQZAO = types::MQZAO(256);
-    pub const MQZAO_SET_ALL_CONTEXT: types::MQZAO = types::MQZAO(512);
-    pub const MQZAO_ALTERNATE_USER_AUTHORITY: types::MQZAO = types::MQZAO(1024);
-    pub const MQZAO_PUBLISH: types::MQZAO = types::MQZAO(2048);
-    pub const MQZAO_SUBSCRIBE: types::MQZAO = types::MQZAO(4096);
-    pub const MQZAO_RESUME: types::MQZAO = types::MQZAO(8192);
-    pub const MQZAO_ALL_MQI: types::MQZAO = types::MQZAO(16383);
-    pub const MQZAO_CREATE: types::MQZAO = types::MQZAO(65536);
-    pub const MQZAO_DELETE: types::MQZAO = types::MQZAO(131072);
-    pub const MQZAO_DISPLAY: types::MQZAO = types::MQZAO(262144);
-    pub const MQZAO_CHANGE: types::MQZAO = types::MQZAO(524288);
-    pub const MQZAO_CLEAR: types::MQZAO = types::MQZAO(1048576);
-    pub const MQZAO_CONTROL: types::MQZAO = types::MQZAO(2097152);
-    pub const MQZAO_CONTROL_EXTENDED: types::MQZAO = types::MQZAO(4194304);
-    pub const MQZAO_AUTHORIZE: types::MQZAO = types::MQZAO(8388608);
-    pub const MQZAO_ALL_ADMIN: types::MQZAO = types::MQZAO(16646144);
-    pub const MQZAO_REMOVE: types::MQZAO = types::MQZAO(16777216);
-    pub const MQZAO_SYSTEM: types::MQZAO = types::MQZAO(33554432);
-    pub const MQZAO_ALL: types::MQZAO = types::MQZAO(50216959);
-    pub const MQZAO_CREATE_ONLY: types::MQZAO = types::MQZAO(67108864);
-    pub const MQZAT_INITIAL_CONTEXT: types::MQZAT = types::MQZAT(0);
-    pub const MQZAT_CHANGE_CONTEXT: types::MQZAT = types::MQZAT(1);
-    pub const MQZCI_CONTINUE: types::MQZCI = types::MQZCI(0);
-    pub const MQZCI_STOP: types::MQZCI = types::MQZCI(1);
-    pub const MQZCI_DEFAULT: types::MQZCI = types::MQZCI(0);
-    pub const MQZID_INIT: types::MQZID = types::MQZID(0);
-    pub const MQZID_TERM: types::MQZID = types::MQZID(1);
-    pub const MQZID_INIT_AUTHORITY: types::MQZID_AUTHORITY = types::MQZID_AUTHORITY(0);
-    pub const MQZID_TERM_AUTHORITY: types::MQZID_AUTHORITY = types::MQZID_AUTHORITY(1);
-    pub const MQZID_CHECK_AUTHORITY: types::MQZID_AUTHORITY = types::MQZID_AUTHORITY(2);
-    pub const MQZID_COPY_ALL_AUTHORITY: types::MQZID_AUTHORITY = types::MQZID_AUTHORITY(
-        3,
-    );
-    pub const MQZID_DELETE_AUTHORITY: types::MQZID_AUTHORITY = types::MQZID_AUTHORITY(4);
-    pub const MQZID_SET_AUTHORITY: types::MQZID_AUTHORITY = types::MQZID_AUTHORITY(5);
-    pub const MQZID_GET_AUTHORITY: types::MQZID_AUTHORITY = types::MQZID_AUTHORITY(6);
-    pub const MQZID_GET_EXPLICIT_AUTHORITY: types::MQZID_AUTHORITY = types::MQZID_AUTHORITY(
-        7,
-    );
-    pub const MQZID_REFRESH_CACHE: types::MQZID_AUTHORITY = types::MQZID_AUTHORITY(8);
-    pub const MQZID_ENUMERATE_AUTHORITY_DATA: types::MQZID_AUTHORITY = types::MQZID_AUTHORITY(
-        9,
-    );
-    pub const MQZID_AUTHENTICATE_USER: types::MQZID_AUTHORITY = types::MQZID_AUTHORITY(
-        10,
-    );
-    pub const MQZID_FREE_USER: types::MQZID_AUTHORITY = types::MQZID_AUTHORITY(11);
-    pub const MQZID_INQUIRE: types::MQZID_AUTHORITY = types::MQZID_AUTHORITY(12);
-    pub const MQZID_CHECK_PRIVILEGED: types::MQZID_AUTHORITY = types::MQZID_AUTHORITY(
-        13,
-    );
-    pub const MQZID_INIT_NAME: types::MQZID_NAME = types::MQZID_NAME(0);
-    pub const MQZID_TERM_NAME: types::MQZID_NAME = types::MQZID_NAME(1);
-    pub const MQZID_LOOKUP_NAME: types::MQZID_NAME = types::MQZID_NAME(2);
-    pub const MQZID_INSERT_NAME: types::MQZID_NAME = types::MQZID_NAME(3);
-    pub const MQZID_DELETE_NAME: types::MQZID_NAME = types::MQZID_NAME(4);
-    pub const MQZID_INIT_USERID: types::MQZID_USERID = types::MQZID_USERID(0);
-    pub const MQZID_TERM_USERID: types::MQZID_USERID = types::MQZID_USERID(1);
-    pub const MQZID_FIND_USERID: types::MQZID_USERID = types::MQZID_USERID(2);
-    pub const MQZIO_PRIMARY: types::MQZIO = types::MQZIO(0);
-    pub const MQZIO_SECONDARY: types::MQZIO = types::MQZIO(1);
-    pub const MQZSE_CONTINUE: types::MQZSE = types::MQZSE(0);
-    pub const MQZSE_START: types::MQZSE = types::MQZSE(1);
-    pub const MQZSL_NOT_RETURNED: types::MQZSL = types::MQZSL(0);
-    pub const MQZSL_RETURNED: types::MQZSL = types::MQZSL(1);
-    pub const MQZTO_PRIMARY: types::MQZTO = types::MQZTO(0);
-    pub const MQZTO_SECONDARY: types::MQZTO = types::MQZTO(1);
     pub const MQ_CERT_VAL_POLICY_ANY: types::MQ_CERT = types::MQ_CERT(0);
     pub const MQ_CERT_VAL_POLICY_RFC5280: types::MQ_CERT = types::MQ_CERT(1);
     pub const MQ_CERT_VAL_POLICY_NONE: types::MQ_CERT = types::MQ_CERT(2);
@@ -4108,14 +3653,300 @@ pub mod constants {
     #[cfg(feature = "exits")]
     mod exits {
         use crate::types;
+        pub const MQCDC_NO_SENDER_CONVERSION: types::MQCDC = types::MQCDC(0);
+        pub const MQCDC_SENDER_CONVERSION: types::MQCDC = types::MQCDC(1);
         pub const MQCF_NONE: types::MQCF = types::MQCF(0);
         pub const MQCF_DIST_LISTS: types::MQCF = types::MQCF(1);
+        pub const MQCLCT_STATIC: types::MQCLCT = types::MQCLCT(0);
+        pub const MQCLCT_DYNAMIC: types::MQCLCT = types::MQCLCT(1);
+        pub const MQCOMPRESS_NOT_AVAILABLE: types::MQCOMPRESS = types::MQCOMPRESS(-1);
+        pub const MQCOMPRESS_NONE: types::MQCOMPRESS = types::MQCOMPRESS(0);
+        pub const MQCOMPRESS_RLE: types::MQCOMPRESS = types::MQCOMPRESS(1);
+        pub const MQCOMPRESS_ZLIBFAST: types::MQCOMPRESS = types::MQCOMPRESS(2);
+        pub const MQCOMPRESS_ZLIBHIGH: types::MQCOMPRESS = types::MQCOMPRESS(4);
+        pub const MQCOMPRESS_SYSTEM: types::MQCOMPRESS = types::MQCOMPRESS(8);
+        pub const MQCOMPRESS_LZ4FAST: types::MQCOMPRESS = types::MQCOMPRESS(16);
+        pub const MQCOMPRESS_LZ4HIGH: types::MQCOMPRESS = types::MQCOMPRESS(32);
+        pub const MQCOMPRESS_ANY: types::MQCOMPRESS = types::MQCOMPRESS(268435455);
+        pub const MQDCC_NONE: types::MQDCC = types::MQDCC(0);
+        pub const MQDCC_DEFAULT_CONVERSION: types::MQDCC = types::MQDCC(1);
+        pub const MQDCC_FILL_TARGET_BUFFER: types::MQDCC = types::MQDCC(2);
+        pub const MQDCC_INT_DEFAULT_CONVERSION: types::MQDCC = types::MQDCC(4);
+        pub const MQDCC_SOURCE_ENC_NORMAL: types::MQDCC = types::MQDCC(16);
+        pub const MQDCC_SOURCE_ENC_REVERSED: types::MQDCC = types::MQDCC(32);
+        pub const MQDCC_SOURCE_ENC_MASK: types::MQDCC = types::MQDCC(240);
+        pub const MQDCC_TARGET_ENC_NORMAL: types::MQDCC = types::MQDCC(256);
+        pub const MQDCC_TARGET_ENC_REVERSED: types::MQDCC = types::MQDCC(512);
+        pub const MQDCC_TARGET_ENC_MASK: types::MQDCC = types::MQDCC(3840);
+        pub const MQDCC_SOURCE_ENC_UNDEFINED: types::MQDCC = types::MQDCC(0);
+        pub const MQDCC_TARGET_ENC_UNDEFINED: types::MQDCC = types::MQDCC(0);
+        pub const MQDCC_SOURCE_ENC_FACTOR: types::MQDCC = types::MQDCC(16);
+        pub const MQDCC_SOURCE_ENC_NATIVE: types::MQDCC = types::MQDCC(32);
+        pub const MQDCC_TARGET_ENC_FACTOR: types::MQDCC = types::MQDCC(256);
+        pub const MQDCC_TARGET_ENC_NATIVE: types::MQDCC = types::MQDCC(512);
+        pub const MQIEPF_NONE: types::MQIEPF = types::MQIEPF(0);
+        pub const MQIEPF_THREADED_LIBRARY: types::MQIEPF = types::MQIEPF(1);
+        pub const MQIEPF_LOCAL_LIBRARY: types::MQIEPF = types::MQIEPF(2);
+        pub const MQIEPF_CLIENT_LIBRARY: types::MQIEPF = types::MQIEPF(0);
+        pub const MQIEPF_NON_THREADED_LIBRARY: types::MQIEPF = types::MQIEPF(0);
+        pub const MQMCAT_PROCESS: types::MQMCAT = types::MQMCAT(1);
+        pub const MQMCAT_THREAD: types::MQMCAT = types::MQMCAT(2);
+        pub const MQMCEV_PACKET_LOSS: types::MQMCEV = types::MQMCEV(1);
+        pub const MQMCEV_HEARTBEAT_TIMEOUT: types::MQMCEV = types::MQMCEV(2);
+        pub const MQMCEV_VERSION_CONFLICT: types::MQMCEV = types::MQMCEV(3);
+        pub const MQMCEV_RELIABILITY: types::MQMCEV = types::MQMCEV(4);
+        pub const MQMCEV_CLOSED_TRANS: types::MQMCEV = types::MQMCEV(5);
+        pub const MQMCEV_STREAM_ERROR: types::MQMCEV = types::MQMCEV(6);
+        pub const MQMCEV_NEW_SOURCE: types::MQMCEV = types::MQMCEV(10);
+        pub const MQMCEV_RECEIVE_QUEUE_TRIMMED: types::MQMCEV = types::MQMCEV(11);
+        pub const MQMCEV_PACKET_LOSS_NACK_EXPIRE: types::MQMCEV = types::MQMCEV(12);
+        pub const MQMCEV_ACK_RETRIES_EXCEEDED: types::MQMCEV = types::MQMCEV(13);
+        pub const MQMCEV_STREAM_SUSPEND_NACK: types::MQMCEV = types::MQMCEV(14);
+        pub const MQMCEV_STREAM_RESUME_NACK: types::MQMCEV = types::MQMCEV(15);
+        pub const MQMCEV_STREAM_EXPELLED: types::MQMCEV = types::MQMCEV(16);
+        pub const MQMCEV_FIRST_MESSAGE: types::MQMCEV = types::MQMCEV(20);
+        pub const MQMCEV_LATE_JOIN_FAILURE: types::MQMCEV = types::MQMCEV(21);
+        pub const MQMCEV_MESSAGE_LOSS: types::MQMCEV = types::MQMCEV(22);
+        pub const MQMCEV_SEND_PACKET_FAILURE: types::MQMCEV = types::MQMCEV(23);
+        pub const MQMCEV_REPAIR_DELAY: types::MQMCEV = types::MQMCEV(24);
+        pub const MQMCEV_MEMORY_ALERT_ON: types::MQMCEV = types::MQMCEV(25);
+        pub const MQMCEV_MEMORY_ALERT_OFF: types::MQMCEV = types::MQMCEV(26);
+        pub const MQMCEV_NACK_ALERT_ON: types::MQMCEV = types::MQMCEV(27);
+        pub const MQMCEV_NACK_ALERT_OFF: types::MQMCEV = types::MQMCEV(28);
+        pub const MQMCEV_REPAIR_ALERT_ON: types::MQMCEV = types::MQMCEV(29);
+        pub const MQMCEV_REPAIR_ALERT_OFF: types::MQMCEV = types::MQMCEV(30);
+        pub const MQMCEV_RELIABILITY_CHANGED: types::MQMCEV = types::MQMCEV(31);
+        pub const MQMCEV_SHM_DEST_UNUSABLE: types::MQMCEV = types::MQMCEV(80);
+        pub const MQMCEV_SHM_PORT_UNUSABLE: types::MQMCEV = types::MQMCEV(81);
+        pub const MQMCEV_CCT_GETTIME_FAILED: types::MQMCEV = types::MQMCEV(110);
+        pub const MQMCEV_DEST_INTERFACE_FAILURE: types::MQMCEV = types::MQMCEV(120);
+        pub const MQMCEV_DEST_INTERFACE_FAILOVER: types::MQMCEV = types::MQMCEV(121);
+        pub const MQMCEV_PORT_INTERFACE_FAILURE: types::MQMCEV = types::MQMCEV(122);
+        pub const MQMCEV_PORT_INTERFACE_FAILOVER: types::MQMCEV = types::MQMCEV(123);
+        pub const MQNPMS_NORMAL: types::MQNPMS = types::MQNPMS(1);
+        pub const MQNPMS_FAST: types::MQNPMS = types::MQNPMS(2);
+        pub const MQPA_DEFAULT: types::MQPA = types::MQPA(1);
+        pub const MQPA_CONTEXT: types::MQPA = types::MQPA(2);
+        pub const MQPA_ONLY_MCA: types::MQPA = types::MQPA(3);
+        pub const MQPA_ALTERNATE_OR_MCA: types::MQPA = types::MQPA(4);
+        pub const MQPROTO_MQTTV3: types::MQPROTO = types::MQPROTO(1);
+        pub const MQPROTO_HTTP: types::MQPROTO = types::MQPROTO(2);
+        pub const MQPROTO_AMQP: types::MQPROTO = types::MQPROTO(3);
+        pub const MQPROTO_MQTTV311: types::MQPROTO = types::MQPROTO(4);
+        pub const MQQF_LOCAL_Q: types::MQQF = types::MQQF(1);
+        pub const MQQF_CLWL_USEQ_ANY: types::MQQF = types::MQQF(64);
+        pub const MQQF_CLWL_USEQ_LOCAL: types::MQQF = types::MQQF(128);
         pub const MQQMF_REPOSITORY_Q_MGR: types::MQQMF = types::MQQMF(2);
         pub const MQQMF_CLUSSDR_USER_DEFINED: types::MQQMF = types::MQQMF(8);
         pub const MQQMF_CLUSSDR_AUTO_DEFINED: types::MQQMF = types::MQQMF(16);
         pub const MQQMF_AVAILABLE: types::MQQMF = types::MQQMF(32);
+        pub const MQSCA_REQUIRED: types::MQSCA = types::MQSCA(0);
+        pub const MQSCA_OPTIONAL: types::MQSCA = types::MQSCA(1);
+        pub const MQSCA_NEVER_REQUIRED: types::MQSCA = types::MQSCA(2);
+        pub const MQSECPROT_NONE: types::MQSECPROT = types::MQSECPROT(0);
+        pub const MQSECPROT_SSLV30: types::MQSECPROT = types::MQSECPROT(1);
+        pub const MQSECPROT_TLSV10: types::MQSECPROT = types::MQSECPROT(2);
+        pub const MQSECPROT_TLSV12: types::MQSECPROT = types::MQSECPROT(4);
+        pub const MQSECPROT_TLSV13: types::MQSECPROT = types::MQSECPROT(8);
+        pub const MQSPL_PASSTHRU: types::MQSPL = types::MQSPL(0);
+        pub const MQSPL_REMOVE: types::MQSPL = types::MQSPL(1);
+        pub const MQSPL_AS_POLICY: types::MQSPL = types::MQSPL(2);
+        pub const MQWXP_PUT_BY_CLUSTER_CHL: types::MQWXP = types::MQWXP(2);
+        pub const MQXACT_EXTERNAL: types::MQXACT = types::MQXACT(1);
+        pub const MQXACT_INTERNAL: types::MQXACT = types::MQXACT(2);
+        pub const MQXCC_FAILED: types::MQXCC = types::MQXCC(-8);
+        pub const MQXCC_REQUEST_ACK: types::MQXCC = types::MQXCC(-7);
+        pub const MQXCC_CLOSE_CHANNEL: types::MQXCC = types::MQXCC(-6);
+        pub const MQXCC_SUPPRESS_EXIT: types::MQXCC = types::MQXCC(-5);
+        pub const MQXCC_SEND_SEC_MSG: types::MQXCC = types::MQXCC(-4);
+        pub const MQXCC_SEND_AND_REQUEST_SEC_MSG: types::MQXCC = types::MQXCC(-3);
+        pub const MQXCC_SKIP_FUNCTION: types::MQXCC = types::MQXCC(-2);
+        pub const MQXCC_SUPPRESS_FUNCTION: types::MQXCC = types::MQXCC(-1);
+        pub const MQXCC_OK: types::MQXCC = types::MQXCC(0);
         pub const MQXDR_OK: types::MQXDR = types::MQXDR(0);
         pub const MQXDR_CONVERSION_FAILED: types::MQXDR = types::MQXDR(1);
+        pub const MQXEPO_NONE: types::MQXEPO = types::MQXEPO(0);
+        pub const MQXE_OTHER: types::MQXE = types::MQXE(0);
+        pub const MQXE_MCA: types::MQXE = types::MQXE(1);
+        pub const MQXE_MCA_SVRCONN: types::MQXE = types::MQXE(2);
+        pub const MQXE_COMMAND_SERVER: types::MQXE = types::MQXE(3);
+        pub const MQXE_MQSC: types::MQXE = types::MQXE(4);
+        pub const MQXE_MCA_CLNTCONN: types::MQXE = types::MQXE(5);
+        pub const MQXF_INIT: types::MQXF = types::MQXF(1);
+        pub const MQXF_TERM: types::MQXF = types::MQXF(2);
+        pub const MQXF_CONN: types::MQXF = types::MQXF(3);
+        pub const MQXF_CONNX: types::MQXF = types::MQXF(4);
+        pub const MQXF_DISC: types::MQXF = types::MQXF(5);
+        pub const MQXF_OPEN: types::MQXF = types::MQXF(6);
+        pub const MQXF_CLOSE: types::MQXF = types::MQXF(7);
+        pub const MQXF_PUT1: types::MQXF = types::MQXF(8);
+        pub const MQXF_PUT: types::MQXF = types::MQXF(9);
+        pub const MQXF_GET: types::MQXF = types::MQXF(10);
+        pub const MQXF_DATA_CONV_ON_GET: types::MQXF = types::MQXF(11);
+        pub const MQXF_INQ: types::MQXF = types::MQXF(12);
+        pub const MQXF_SET: types::MQXF = types::MQXF(13);
+        pub const MQXF_BEGIN: types::MQXF = types::MQXF(14);
+        pub const MQXF_CMIT: types::MQXF = types::MQXF(15);
+        pub const MQXF_BACK: types::MQXF = types::MQXF(16);
+        pub const MQXF_STAT: types::MQXF = types::MQXF(18);
+        pub const MQXF_CB: types::MQXF = types::MQXF(19);
+        pub const MQXF_CTL: types::MQXF = types::MQXF(20);
+        pub const MQXF_CALLBACK: types::MQXF = types::MQXF(21);
+        pub const MQXF_SUB: types::MQXF = types::MQXF(22);
+        pub const MQXF_SUBRQ: types::MQXF = types::MQXF(23);
+        pub const MQXF_XACLOSE: types::MQXF = types::MQXF(24);
+        pub const MQXF_XACOMMIT: types::MQXF = types::MQXF(25);
+        pub const MQXF_XACOMPLETE: types::MQXF = types::MQXF(26);
+        pub const MQXF_XAEND: types::MQXF = types::MQXF(27);
+        pub const MQXF_XAFORGET: types::MQXF = types::MQXF(28);
+        pub const MQXF_XAOPEN: types::MQXF = types::MQXF(29);
+        pub const MQXF_XAPREPARE: types::MQXF = types::MQXF(30);
+        pub const MQXF_XARECOVER: types::MQXF = types::MQXF(31);
+        pub const MQXF_XAROLLBACK: types::MQXF = types::MQXF(32);
+        pub const MQXF_XASTART: types::MQXF = types::MQXF(33);
+        pub const MQXF_AXREG: types::MQXF = types::MQXF(34);
+        pub const MQXF_AXUNREG: types::MQXF = types::MQXF(35);
+        pub const MQXR2_DEFAULT_CONTINUATION: types::MQXR2 = types::MQXR2(0);
+        pub const MQXR2_PUT_WITH_DEF_USERID: types::MQXR2 = types::MQXR2(1);
+        pub const MQXR2_PUT_WITH_MSG_USERID: types::MQXR2 = types::MQXR2(2);
+        pub const MQXR2_USE_EXIT_BUFFER: types::MQXR2 = types::MQXR2(4);
+        pub const MQXR2_CONTINUE_CHAIN: types::MQXR2 = types::MQXR2(8);
+        pub const MQXR2_SUPPRESS_CHAIN: types::MQXR2 = types::MQXR2(16);
+        pub const MQXR2_DYNAMIC_CACHE: types::MQXR2 = types::MQXR2(32);
+        pub const MQXR2_PUT_WITH_DEF_ACTION: types::MQXR2 = types::MQXR2(0);
+        pub const MQXR2_STATIC_CACHE: types::MQXR2 = types::MQXR2(0);
+        pub const MQXR2_USE_AGENT_BUFFER: types::MQXR2 = types::MQXR2(0);
+        pub const MQXR_BEFORE: types::MQXR = types::MQXR(1);
+        pub const MQXR_AFTER: types::MQXR = types::MQXR(2);
+        pub const MQXR_CONNECTION: types::MQXR = types::MQXR(3);
+        pub const MQXR_BEFORE_CONVERT: types::MQXR = types::MQXR(4);
+        pub const MQXR_INIT: types::MQXR = types::MQXR(11);
+        pub const MQXR_TERM: types::MQXR = types::MQXR(12);
+        pub const MQXR_MSG: types::MQXR = types::MQXR(13);
+        pub const MQXR_XMIT: types::MQXR = types::MQXR(14);
+        pub const MQXR_SEC_MSG: types::MQXR = types::MQXR(15);
+        pub const MQXR_INIT_SEC: types::MQXR = types::MQXR(16);
+        pub const MQXR_RETRY: types::MQXR = types::MQXR(17);
+        pub const MQXR_AUTO_CLUSSDR: types::MQXR = types::MQXR(18);
+        pub const MQXR_AUTO_RECEIVER: types::MQXR = types::MQXR(19);
+        pub const MQXR_CLWL_OPEN: types::MQXR = types::MQXR(20);
+        pub const MQXR_CLWL_PUT: types::MQXR = types::MQXR(21);
+        pub const MQXR_CLWL_MOVE: types::MQXR = types::MQXR(22);
+        pub const MQXR_CLWL_REPOS: types::MQXR = types::MQXR(23);
+        pub const MQXR_CLWL_REPOS_MOVE: types::MQXR = types::MQXR(24);
+        pub const MQXR_END_BATCH: types::MQXR = types::MQXR(25);
+        pub const MQXR_ACK_RECEIVED: types::MQXR = types::MQXR(26);
+        pub const MQXR_AUTO_SVRCONN: types::MQXR = types::MQXR(27);
+        pub const MQXR_AUTO_CLUSRCVR: types::MQXR = types::MQXR(28);
+        pub const MQXR_SEC_PARMS: types::MQXR = types::MQXR(29);
+        pub const MQXR_PUBLICATION: types::MQXR = types::MQXR(30);
+        pub const MQXR_PRECONNECT: types::MQXR = types::MQXR(31);
+        pub const MQXT_API_CROSSING_EXIT: types::MQXT = types::MQXT(1);
+        pub const MQXT_API_EXIT: types::MQXT = types::MQXT(2);
+        pub const MQXT_CHANNEL_SEC_EXIT: types::MQXT = types::MQXT(11);
+        pub const MQXT_CHANNEL_MSG_EXIT: types::MQXT = types::MQXT(12);
+        pub const MQXT_CHANNEL_SEND_EXIT: types::MQXT = types::MQXT(13);
+        pub const MQXT_CHANNEL_RCV_EXIT: types::MQXT = types::MQXT(14);
+        pub const MQXT_CHANNEL_MSG_RETRY_EXIT: types::MQXT = types::MQXT(15);
+        pub const MQXT_CHANNEL_AUTO_DEF_EXIT: types::MQXT = types::MQXT(16);
+        pub const MQXT_CLUSTER_WORKLOAD_EXIT: types::MQXT = types::MQXT(20);
+        pub const MQXT_PUBSUB_ROUTING_EXIT: types::MQXT = types::MQXT(21);
+        pub const MQXT_PUBLISH_EXIT: types::MQXT = types::MQXT(22);
+        pub const MQXT_PRECONNECT_EXIT: types::MQXT = types::MQXT(23);
+        pub const MQZAET_NONE: types::MQZAET = types::MQZAET(0);
+        pub const MQZAET_PRINCIPAL: types::MQZAET = types::MQZAET(1);
+        pub const MQZAET_GROUP: types::MQZAET = types::MQZAET(2);
+        pub const MQZAET_UNKNOWN: types::MQZAET = types::MQZAET(3);
+        pub const MQZAO_NONE: types::MQZAO = types::MQZAO(0);
+        pub const MQZAO_CONNECT: types::MQZAO = types::MQZAO(1);
+        pub const MQZAO_BROWSE: types::MQZAO = types::MQZAO(2);
+        pub const MQZAO_INPUT: types::MQZAO = types::MQZAO(4);
+        pub const MQZAO_OUTPUT: types::MQZAO = types::MQZAO(8);
+        pub const MQZAO_INQUIRE: types::MQZAO = types::MQZAO(16);
+        pub const MQZAO_SET: types::MQZAO = types::MQZAO(32);
+        pub const MQZAO_PASS_IDENTITY_CONTEXT: types::MQZAO = types::MQZAO(64);
+        pub const MQZAO_PASS_ALL_CONTEXT: types::MQZAO = types::MQZAO(128);
+        pub const MQZAO_SET_IDENTITY_CONTEXT: types::MQZAO = types::MQZAO(256);
+        pub const MQZAO_SET_ALL_CONTEXT: types::MQZAO = types::MQZAO(512);
+        pub const MQZAO_ALTERNATE_USER_AUTHORITY: types::MQZAO = types::MQZAO(1024);
+        pub const MQZAO_PUBLISH: types::MQZAO = types::MQZAO(2048);
+        pub const MQZAO_SUBSCRIBE: types::MQZAO = types::MQZAO(4096);
+        pub const MQZAO_RESUME: types::MQZAO = types::MQZAO(8192);
+        pub const MQZAO_ALL_MQI: types::MQZAO = types::MQZAO(16383);
+        pub const MQZAO_CREATE: types::MQZAO = types::MQZAO(65536);
+        pub const MQZAO_DELETE: types::MQZAO = types::MQZAO(131072);
+        pub const MQZAO_DISPLAY: types::MQZAO = types::MQZAO(262144);
+        pub const MQZAO_CHANGE: types::MQZAO = types::MQZAO(524288);
+        pub const MQZAO_CLEAR: types::MQZAO = types::MQZAO(1048576);
+        pub const MQZAO_CONTROL: types::MQZAO = types::MQZAO(2097152);
+        pub const MQZAO_CONTROL_EXTENDED: types::MQZAO = types::MQZAO(4194304);
+        pub const MQZAO_AUTHORIZE: types::MQZAO = types::MQZAO(8388608);
+        pub const MQZAO_ALL_ADMIN: types::MQZAO = types::MQZAO(16646144);
+        pub const MQZAO_REMOVE: types::MQZAO = types::MQZAO(16777216);
+        pub const MQZAO_SYSTEM: types::MQZAO = types::MQZAO(33554432);
+        pub const MQZAO_ALL: types::MQZAO = types::MQZAO(50216959);
+        pub const MQZAO_CREATE_ONLY: types::MQZAO = types::MQZAO(67108864);
+        pub const MQZAT_INITIAL_CONTEXT: types::MQZAT = types::MQZAT(0);
+        pub const MQZAT_CHANGE_CONTEXT: types::MQZAT = types::MQZAT(1);
+        pub const MQZCI_CONTINUE: types::MQZCI = types::MQZCI(0);
+        pub const MQZCI_STOP: types::MQZCI = types::MQZCI(1);
+        pub const MQZCI_DEFAULT: types::MQZCI = types::MQZCI(0);
+        pub const MQZID_INIT: types::MQZID = types::MQZID(0);
+        pub const MQZID_TERM: types::MQZID = types::MQZID(1);
+        pub const MQZID_INIT_AUTHORITY: types::MQZID_AUTHORITY = types::MQZID_AUTHORITY(
+            0,
+        );
+        pub const MQZID_TERM_AUTHORITY: types::MQZID_AUTHORITY = types::MQZID_AUTHORITY(
+            1,
+        );
+        pub const MQZID_CHECK_AUTHORITY: types::MQZID_AUTHORITY = types::MQZID_AUTHORITY(
+            2,
+        );
+        pub const MQZID_COPY_ALL_AUTHORITY: types::MQZID_AUTHORITY = types::MQZID_AUTHORITY(
+            3,
+        );
+        pub const MQZID_DELETE_AUTHORITY: types::MQZID_AUTHORITY = types::MQZID_AUTHORITY(
+            4,
+        );
+        pub const MQZID_SET_AUTHORITY: types::MQZID_AUTHORITY = types::MQZID_AUTHORITY(
+            5,
+        );
+        pub const MQZID_GET_AUTHORITY: types::MQZID_AUTHORITY = types::MQZID_AUTHORITY(
+            6,
+        );
+        pub const MQZID_GET_EXPLICIT_AUTHORITY: types::MQZID_AUTHORITY = types::MQZID_AUTHORITY(
+            7,
+        );
+        pub const MQZID_REFRESH_CACHE: types::MQZID_AUTHORITY = types::MQZID_AUTHORITY(
+            8,
+        );
+        pub const MQZID_ENUMERATE_AUTHORITY_DATA: types::MQZID_AUTHORITY = types::MQZID_AUTHORITY(
+            9,
+        );
+        pub const MQZID_AUTHENTICATE_USER: types::MQZID_AUTHORITY = types::MQZID_AUTHORITY(
+            10,
+        );
+        pub const MQZID_FREE_USER: types::MQZID_AUTHORITY = types::MQZID_AUTHORITY(11);
+        pub const MQZID_INQUIRE: types::MQZID_AUTHORITY = types::MQZID_AUTHORITY(12);
+        pub const MQZID_CHECK_PRIVILEGED: types::MQZID_AUTHORITY = types::MQZID_AUTHORITY(
+            13,
+        );
+        pub const MQZID_INIT_NAME: types::MQZID_NAME = types::MQZID_NAME(0);
+        pub const MQZID_TERM_NAME: types::MQZID_NAME = types::MQZID_NAME(1);
+        pub const MQZID_LOOKUP_NAME: types::MQZID_NAME = types::MQZID_NAME(2);
+        pub const MQZID_INSERT_NAME: types::MQZID_NAME = types::MQZID_NAME(3);
+        pub const MQZID_DELETE_NAME: types::MQZID_NAME = types::MQZID_NAME(4);
+        pub const MQZID_INIT_USERID: types::MQZID_USERID = types::MQZID_USERID(0);
+        pub const MQZID_TERM_USERID: types::MQZID_USERID = types::MQZID_USERID(1);
+        pub const MQZID_FIND_USERID: types::MQZID_USERID = types::MQZID_USERID(2);
+        pub const MQZIO_PRIMARY: types::MQZIO = types::MQZIO(0);
+        pub const MQZIO_SECONDARY: types::MQZIO = types::MQZIO(1);
+        pub const MQZSE_CONTINUE: types::MQZSE = types::MQZSE(0);
+        pub const MQZSE_START: types::MQZSE = types::MQZSE(1);
+        pub const MQZSL_NOT_RETURNED: types::MQZSL = types::MQZSL(0);
+        pub const MQZSL_RETURNED: types::MQZSL = types::MQZSL(1);
+        pub const MQZTO_PRIMARY: types::MQZTO = types::MQZTO(0);
+        pub const MQZTO_SECONDARY: types::MQZTO = types::MQZTO(1);
     }
     #[cfg(feature = "exits")]
     pub use exits::*;
@@ -4123,14 +3954,18 @@ pub mod constants {
     mod mqai {
         use crate::types;
         pub const MQBL_NULL_TERMINATED: types::MQBL = types::MQBL(-1);
-        pub const MQCBDO_NONE: types::MQCBDO = types::MQCBDO(0);
-        pub const MQCBDO_START_CALL: types::MQCBDO = types::MQCBDO(1);
-        pub const MQCBDO_STOP_CALL: types::MQCBDO = types::MQCBDO(4);
-        pub const MQCBDO_REGISTER_CALL: types::MQCBDO = types::MQCBDO(256);
-        pub const MQCBDO_DEREGISTER_CALL: types::MQCBDO = types::MQCBDO(512);
-        pub const MQCBDO_FAIL_IF_QUIESCING: types::MQCBDO = types::MQCBDO(8192);
-        pub const MQCBDO_EVENT_CALL: types::MQCBDO = types::MQCBDO(16384);
-        pub const MQCBDO_MC_EVENT_CALL: types::MQCBDO = types::MQCBDO(32768);
+        pub const MQCBO_NONE: types::MQCBO = types::MQCBO(0);
+        pub const MQCBO_ADMIN_BAG: types::MQCBO = types::MQCBO(1);
+        pub const MQCBO_LIST_FORM_ALLOWED: types::MQCBO = types::MQCBO(2);
+        pub const MQCBO_REORDER_AS_REQUIRED: types::MQCBO = types::MQCBO(4);
+        pub const MQCBO_CHECK_SELECTORS: types::MQCBO = types::MQCBO(8);
+        pub const MQCBO_COMMAND_BAG: types::MQCBO = types::MQCBO(16);
+        pub const MQCBO_SYSTEM_BAG: types::MQCBO = types::MQCBO(32);
+        pub const MQCBO_GROUP_BAG: types::MQCBO = types::MQCBO(64);
+        pub const MQCBO_DO_NOT_CHECK_SELECTORS: types::MQCBO = types::MQCBO(0);
+        pub const MQCBO_DO_NOT_REORDER: types::MQCBO = types::MQCBO(0);
+        pub const MQCBO_LIST_FORM_INHIBITED: types::MQCBO = types::MQCBO(0);
+        pub const MQCBO_USER_BAG: types::MQCBO = types::MQCBO(0);
         pub const MQHA_BAG_HANDLE: types::MQHA = types::MQHA(4001);
         pub const MQHA_FIRST: types::MQHA = types::MQHA(4001);
         pub const MQHA_LAST_USED: types::MQHA = types::MQHA(4001);
@@ -4159,14 +3994,6 @@ pub mod constants {
         pub const MQITEM_STRING_FILTER: types::MQITEM = types::MQITEM(6);
         pub const MQITEM_INTEGER64: types::MQITEM = types::MQITEM(7);
         pub const MQITEM_BYTE_STRING_FILTER: types::MQITEM = types::MQITEM(8);
-        pub const MQIT_NONE: types::MQIT = types::MQIT(0);
-        pub const MQIT_MSG_ID: types::MQIT = types::MQIT(1);
-        pub const MQIT_CORREL_ID: types::MQIT = types::MQIT(2);
-        pub const MQIT_MSG_TOKEN: types::MQIT = types::MQIT(4);
-        pub const MQIT_GROUP_ID: types::MQIT = types::MQIT(5);
-        pub const MQIT_INTEGER: types::MQIT = types::MQIT(1);
-        pub const MQIT_STRING: types::MQIT = types::MQIT(2);
-        pub const MQIT_BAG: types::MQIT = types::MQIT(3);
         pub const MQSEL_ALL_SYSTEM_SELECTORS: types::MQSEL_ALL = types::MQSEL_ALL(
             -30003,
         );
@@ -4181,6 +4008,125 @@ pub mod constants {
     #[cfg(feature = "pcf")]
     mod pcf {
         use crate::types;
+        pub const MQACTIVE_NO: types::MQACTIVE = types::MQACTIVE(0);
+        pub const MQACTIVE_YES: types::MQACTIVE = types::MQACTIVE(1);
+        pub const MQACT_FORCE_REMOVE: types::MQACT = types::MQACT(1);
+        pub const MQACT_ADVANCE_LOG: types::MQACT = types::MQACT(2);
+        pub const MQACT_COLLECT_STATISTICS: types::MQACT = types::MQACT(3);
+        pub const MQACT_PUBSUB: types::MQACT = types::MQACT(4);
+        pub const MQACT_ADD: types::MQACT = types::MQACT(5);
+        pub const MQACT_REPLACE: types::MQACT = types::MQACT(6);
+        pub const MQACT_REMOVE: types::MQACT = types::MQACT(7);
+        pub const MQACT_REMOVEALL: types::MQACT = types::MQACT(8);
+        pub const MQACT_FAIL: types::MQACT = types::MQACT(9);
+        pub const MQACT_REDUCE_LOG: types::MQACT = types::MQACT(10);
+        pub const MQACT_ARCHIVE_LOG: types::MQACT = types::MQACT(11);
+        pub const MQADPCTX_NO: types::MQADPCTX = types::MQADPCTX(0);
+        pub const MQADPCTX_YES: types::MQADPCTX = types::MQADPCTX(1);
+        pub const MQAPPL_IMMOVABLE: types::MQAPPL = types::MQAPPL(0);
+        pub const MQAPPL_MOVABLE: types::MQAPPL = types::MQAPPL(1);
+        pub const MQAS_NONE: types::MQAS = types::MQAS(0);
+        pub const MQAS_STARTED: types::MQAS = types::MQAS(1);
+        pub const MQAS_START_WAIT: types::MQAS = types::MQAS(2);
+        pub const MQAS_STOPPED: types::MQAS = types::MQAS(3);
+        pub const MQAS_SUSPENDED: types::MQAS = types::MQAS(4);
+        pub const MQAS_SUSPENDED_TEMPORARY: types::MQAS = types::MQAS(5);
+        pub const MQAS_ACTIVE: types::MQAS = types::MQAS(6);
+        pub const MQAS_INACTIVE: types::MQAS = types::MQAS(7);
+        pub const MQAUTHENTICATE_OS: types::MQAUTHENTICATE = types::MQAUTHENTICATE(0);
+        pub const MQAUTHENTICATE_PAM: types::MQAUTHENTICATE = types::MQAUTHENTICATE(1);
+        pub const MQAUTHOPT_ENTITY_EXPLICIT: types::MQAUTHOPT = types::MQAUTHOPT(1);
+        pub const MQAUTHOPT_ENTITY_SET: types::MQAUTHOPT = types::MQAUTHOPT(2);
+        pub const MQAUTHOPT_NAME_EXPLICIT: types::MQAUTHOPT = types::MQAUTHOPT(16);
+        pub const MQAUTHOPT_NAME_ALL_MATCHING: types::MQAUTHOPT = types::MQAUTHOPT(32);
+        pub const MQAUTHOPT_NAME_AS_WILDCARD: types::MQAUTHOPT = types::MQAUTHOPT(64);
+        pub const MQAUTHOPT_CUMULATIVE: types::MQAUTHOPT = types::MQAUTHOPT(256);
+        pub const MQAUTHOPT_EXCLUDE_TEMP: types::MQAUTHOPT = types::MQAUTHOPT(512);
+        pub const MQAUTH_ALL_MQI: types::MQAUTH = types::MQAUTH(-3);
+        pub const MQAUTH_ALL_ADMIN: types::MQAUTH = types::MQAUTH(-2);
+        pub const MQAUTH_ALL: types::MQAUTH = types::MQAUTH(-1);
+        pub const MQAUTH_NONE: types::MQAUTH = types::MQAUTH(0);
+        pub const MQAUTH_ALT_USER_AUTHORITY: types::MQAUTH = types::MQAUTH(1);
+        pub const MQAUTH_BROWSE: types::MQAUTH = types::MQAUTH(2);
+        pub const MQAUTH_CHANGE: types::MQAUTH = types::MQAUTH(3);
+        pub const MQAUTH_CLEAR: types::MQAUTH = types::MQAUTH(4);
+        pub const MQAUTH_CONNECT: types::MQAUTH = types::MQAUTH(5);
+        pub const MQAUTH_CREATE: types::MQAUTH = types::MQAUTH(6);
+        pub const MQAUTH_DELETE: types::MQAUTH = types::MQAUTH(7);
+        pub const MQAUTH_DISPLAY: types::MQAUTH = types::MQAUTH(8);
+        pub const MQAUTH_INPUT: types::MQAUTH = types::MQAUTH(9);
+        pub const MQAUTH_INQUIRE: types::MQAUTH = types::MQAUTH(10);
+        pub const MQAUTH_OUTPUT: types::MQAUTH = types::MQAUTH(11);
+        pub const MQAUTH_PASS_ALL_CONTEXT: types::MQAUTH = types::MQAUTH(12);
+        pub const MQAUTH_PASS_IDENTITY_CONTEXT: types::MQAUTH = types::MQAUTH(13);
+        pub const MQAUTH_SET: types::MQAUTH = types::MQAUTH(14);
+        pub const MQAUTH_SET_ALL_CONTEXT: types::MQAUTH = types::MQAUTH(15);
+        pub const MQAUTH_SET_IDENTITY_CONTEXT: types::MQAUTH = types::MQAUTH(16);
+        pub const MQAUTH_CONTROL: types::MQAUTH = types::MQAUTH(17);
+        pub const MQAUTH_CONTROL_EXTENDED: types::MQAUTH = types::MQAUTH(18);
+        pub const MQAUTH_PUBLISH: types::MQAUTH = types::MQAUTH(19);
+        pub const MQAUTH_SUBSCRIBE: types::MQAUTH = types::MQAUTH(20);
+        pub const MQAUTH_RESUME: types::MQAUTH = types::MQAUTH(21);
+        pub const MQAUTH_SYSTEM: types::MQAUTH = types::MQAUTH(22);
+        pub const MQAUTOCLUS_TYPE_NONE: types::MQAUTOCLUS = types::MQAUTOCLUS(0);
+        pub const MQAUTOCLUS_TYPE_UNIFORM: types::MQAUTOCLUS = types::MQAUTOCLUS(1);
+        pub const MQBACF_EVENT_ACCOUNTING_TOKEN: types::MQBACF = types::MQBACF(7001);
+        pub const MQBACF_EVENT_SECURITY_ID: types::MQBACF = types::MQBACF(7002);
+        pub const MQBACF_RESPONSE_SET: types::MQBACF = types::MQBACF(7003);
+        pub const MQBACF_RESPONSE_ID: types::MQBACF = types::MQBACF(7004);
+        pub const MQBACF_EXTERNAL_UOW_ID: types::MQBACF = types::MQBACF(7005);
+        pub const MQBACF_CONNECTION_ID: types::MQBACF = types::MQBACF(7006);
+        pub const MQBACF_GENERIC_CONNECTION_ID: types::MQBACF = types::MQBACF(7007);
+        pub const MQBACF_ORIGIN_UOW_ID: types::MQBACF = types::MQBACF(7008);
+        pub const MQBACF_Q_MGR_UOW_ID: types::MQBACF = types::MQBACF(7009);
+        pub const MQBACF_ACCOUNTING_TOKEN: types::MQBACF = types::MQBACF(7010);
+        pub const MQBACF_CORREL_ID: types::MQBACF = types::MQBACF(7011);
+        pub const MQBACF_GROUP_ID: types::MQBACF = types::MQBACF(7012);
+        pub const MQBACF_MSG_ID: types::MQBACF = types::MQBACF(7013);
+        pub const MQBACF_CF_LEID: types::MQBACF = types::MQBACF(7014);
+        pub const MQBACF_DESTINATION_CORREL_ID: types::MQBACF = types::MQBACF(7015);
+        pub const MQBACF_SUB_ID: types::MQBACF = types::MQBACF(7016);
+        pub const MQBACF_ALTERNATE_SECURITYID: types::MQBACF = types::MQBACF(7019);
+        pub const MQBACF_MESSAGE_DATA: types::MQBACF = types::MQBACF(7020);
+        pub const MQBACF_MQBO_STRUCT: types::MQBACF = types::MQBACF(7021);
+        pub const MQBACF_MQCB_FUNCTION: types::MQBACF = types::MQBACF(7022);
+        pub const MQBACF_MQCBC_STRUCT: types::MQBACF = types::MQBACF(7023);
+        pub const MQBACF_MQCBD_STRUCT: types::MQBACF = types::MQBACF(7024);
+        pub const MQBACF_MQCD_STRUCT: types::MQBACF = types::MQBACF(7025);
+        pub const MQBACF_MQCNO_STRUCT: types::MQBACF = types::MQBACF(7026);
+        pub const MQBACF_MQGMO_STRUCT: types::MQBACF = types::MQBACF(7027);
+        pub const MQBACF_MQMD_STRUCT: types::MQBACF = types::MQBACF(7028);
+        pub const MQBACF_MQPMO_STRUCT: types::MQBACF = types::MQBACF(7029);
+        pub const MQBACF_MQSD_STRUCT: types::MQBACF = types::MQBACF(7030);
+        pub const MQBACF_MQSTS_STRUCT: types::MQBACF = types::MQBACF(7031);
+        pub const MQBACF_SUB_CORREL_ID: types::MQBACF = types::MQBACF(7032);
+        pub const MQBACF_XA_XID: types::MQBACF = types::MQBACF(7033);
+        pub const MQBACF_XQH_CORREL_ID: types::MQBACF = types::MQBACF(7034);
+        pub const MQBACF_XQH_MSG_ID: types::MQBACF = types::MQBACF(7035);
+        pub const MQBACF_REQUEST_ID: types::MQBACF = types::MQBACF(7036);
+        pub const MQBACF_PROPERTIES_DATA: types::MQBACF = types::MQBACF(7037);
+        pub const MQBACF_CONN_TAG: types::MQBACF = types::MQBACF(7038);
+        pub const MQBACF_MQBNO_STRUCT: types::MQBACF = types::MQBACF(7039);
+        pub const MQBACF_FIRST: types::MQBACF = types::MQBACF(7001);
+        pub const MQBACF_LAST_USED: types::MQBACF = types::MQBACF(7039);
+        pub const MQBALANCED_NO: types::MQBALANCED = types::MQBALANCED(0);
+        pub const MQBALANCED_YES: types::MQBALANCED = types::MQBALANCED(1);
+        pub const MQBALANCED_NOT_APPLICABLE: types::MQBALANCED = types::MQBALANCED(2);
+        pub const MQBALANCED_UNKNOWN: types::MQBALANCED = types::MQBALANCED(3);
+        pub const MQBALSTATE_NOT_APPLICABLE: types::MQBALSTATE = types::MQBALSTATE(0);
+        pub const MQBALSTATE_LOW: types::MQBALSTATE = types::MQBALSTATE(1);
+        pub const MQBALSTATE_OK: types::MQBALSTATE = types::MQBALSTATE(2);
+        pub const MQBALSTATE_HIGH: types::MQBALSTATE = types::MQBALSTATE(3);
+        pub const MQBALSTATE_UNKNOWN: types::MQBALSTATE = types::MQBALSTATE(4);
+        pub const MQBPLOCATION_BELOW: types::MQBPLOCATION = types::MQBPLOCATION(0);
+        pub const MQBPLOCATION_ABOVE: types::MQBPLOCATION = types::MQBPLOCATION(1);
+        pub const MQBPLOCATION_SWITCHING_ABOVE: types::MQBPLOCATION = types::MQBPLOCATION(
+            2,
+        );
+        pub const MQBPLOCATION_SWITCHING_BELOW: types::MQBPLOCATION = types::MQBPLOCATION(
+            3,
+        );
+        pub const MQBT_OTMA: types::MQBT = types::MQBT(1);
         pub const MQCACF_FROM_Q_NAME: types::MQCACF = types::MQCACF(3001);
         pub const MQCACF_TO_Q_NAME: types::MQCACF = types::MQCACF(3002);
         pub const MQCACF_FROM_PROCESS_NAME: types::MQCACF = types::MQCACF(3003);
@@ -4469,8 +4415,184 @@ pub mod constants {
         pub const MQCACH_TEMPORARY_Q_PREFIX: types::MQCACH = types::MQCACH(3573);
         pub const MQCACH_FIRST: types::MQCACH = types::MQCACH(3501);
         pub const MQCACH_LAST_USED: types::MQCACH = types::MQCACH(3573);
+        pub const MQCAMO_CLOSE_DATE: types::MQCAMO = types::MQCAMO(2701);
+        pub const MQCAMO_CLOSE_TIME: types::MQCAMO = types::MQCAMO(2702);
+        pub const MQCAMO_CONN_DATE: types::MQCAMO = types::MQCAMO(2703);
+        pub const MQCAMO_CONN_TIME: types::MQCAMO = types::MQCAMO(2704);
+        pub const MQCAMO_DISC_DATE: types::MQCAMO = types::MQCAMO(2705);
+        pub const MQCAMO_DISC_TIME: types::MQCAMO = types::MQCAMO(2706);
+        pub const MQCAMO_END_DATE: types::MQCAMO = types::MQCAMO(2707);
+        pub const MQCAMO_END_TIME: types::MQCAMO = types::MQCAMO(2708);
+        pub const MQCAMO_OPEN_DATE: types::MQCAMO = types::MQCAMO(2709);
+        pub const MQCAMO_OPEN_TIME: types::MQCAMO = types::MQCAMO(2710);
+        pub const MQCAMO_START_DATE: types::MQCAMO = types::MQCAMO(2711);
+        pub const MQCAMO_START_TIME: types::MQCAMO = types::MQCAMO(2712);
+        pub const MQCAMO_MONITOR_CLASS: types::MQCAMO = types::MQCAMO(2713);
+        pub const MQCAMO_MONITOR_TYPE: types::MQCAMO = types::MQCAMO(2714);
+        pub const MQCAMO_MONITOR_DESC: types::MQCAMO = types::MQCAMO(2715);
+        pub const MQCAMO_FIRST: types::MQCAMO = types::MQCAMO(2701);
+        pub const MQCAMO_LAST_USED: types::MQCAMO = types::MQCAMO(2715);
+        pub const MQCAUT_ALL: types::MQCAUT = types::MQCAUT(0);
+        pub const MQCAUT_BLOCKUSER: types::MQCAUT = types::MQCAUT(1);
+        pub const MQCAUT_BLOCKADDR: types::MQCAUT = types::MQCAUT(2);
+        pub const MQCAUT_SSLPEERMAP: types::MQCAUT = types::MQCAUT(3);
+        pub const MQCAUT_ADDRESSMAP: types::MQCAUT = types::MQCAUT(4);
+        pub const MQCAUT_USERMAP: types::MQCAUT = types::MQCAUT(5);
+        pub const MQCAUT_QMGRMAP: types::MQCAUT = types::MQCAUT(6);
+        pub const MQCFACCESS_ENABLED: types::MQCFACCESS = types::MQCFACCESS(0);
+        pub const MQCFACCESS_SUSPENDED: types::MQCFACCESS = types::MQCFACCESS(1);
+        pub const MQCFACCESS_DISABLED: types::MQCFACCESS = types::MQCFACCESS(2);
         pub const MQCFC_NOT_LAST: types::MQCFC = types::MQCFC(0);
         pub const MQCFC_LAST: types::MQCFC = types::MQCFC(1);
+        pub const MQCFOP_LESS: types::MQCFOP = types::MQCFOP(1);
+        pub const MQCFOP_EQUAL: types::MQCFOP = types::MQCFOP(2);
+        pub const MQCFOP_NOT_GREATER: types::MQCFOP = types::MQCFOP(3);
+        pub const MQCFOP_GREATER: types::MQCFOP = types::MQCFOP(4);
+        pub const MQCFOP_NOT_EQUAL: types::MQCFOP = types::MQCFOP(5);
+        pub const MQCFOP_NOT_LESS: types::MQCFOP = types::MQCFOP(6);
+        pub const MQCFOP_CONTAINS: types::MQCFOP = types::MQCFOP(10);
+        pub const MQCFOP_EXCLUDES: types::MQCFOP = types::MQCFOP(13);
+        pub const MQCFOP_LIKE: types::MQCFOP = types::MQCFOP(18);
+        pub const MQCFOP_NOT_LIKE: types::MQCFOP = types::MQCFOP(21);
+        pub const MQCFOP_CONTAINS_GEN: types::MQCFOP = types::MQCFOP(26);
+        pub const MQCFOP_EXCLUDES_GEN: types::MQCFOP = types::MQCFOP(29);
+        pub const MQCFO_REFRESH_REPOSITORY_NO: types::MQCFO_REFRESH = types::MQCFO_REFRESH(
+            0,
+        );
+        pub const MQCFO_REFRESH_REPOSITORY_YES: types::MQCFO_REFRESH = types::MQCFO_REFRESH(
+            1,
+        );
+        pub const MQCFO_REMOVE_QUEUES_NO: types::MQCFO_REMOVE = types::MQCFO_REMOVE(0);
+        pub const MQCFO_REMOVE_QUEUES_YES: types::MQCFO_REMOVE = types::MQCFO_REMOVE(1);
+        pub const MQCFSTATUS_NOT_FOUND: types::MQCFSTATUS = types::MQCFSTATUS(0);
+        pub const MQCFSTATUS_ACTIVE: types::MQCFSTATUS = types::MQCFSTATUS(1);
+        pub const MQCFSTATUS_IN_RECOVER: types::MQCFSTATUS = types::MQCFSTATUS(2);
+        pub const MQCFSTATUS_IN_BACKUP: types::MQCFSTATUS = types::MQCFSTATUS(3);
+        pub const MQCFSTATUS_FAILED: types::MQCFSTATUS = types::MQCFSTATUS(4);
+        pub const MQCFSTATUS_NONE: types::MQCFSTATUS = types::MQCFSTATUS(5);
+        pub const MQCFSTATUS_UNKNOWN: types::MQCFSTATUS = types::MQCFSTATUS(6);
+        pub const MQCFSTATUS_RECOVERED: types::MQCFSTATUS = types::MQCFSTATUS(7);
+        pub const MQCFSTATUS_EMPTY: types::MQCFSTATUS = types::MQCFSTATUS(8);
+        pub const MQCFSTATUS_NEW: types::MQCFSTATUS = types::MQCFSTATUS(9);
+        pub const MQCFSTATUS_ADMIN_INCOMPLETE: types::MQCFSTATUS = types::MQCFSTATUS(20);
+        pub const MQCFSTATUS_NEVER_USED: types::MQCFSTATUS = types::MQCFSTATUS(21);
+        pub const MQCFSTATUS_NO_BACKUP: types::MQCFSTATUS = types::MQCFSTATUS(22);
+        pub const MQCFSTATUS_NOT_FAILED: types::MQCFSTATUS = types::MQCFSTATUS(23);
+        pub const MQCFSTATUS_NOT_RECOVERABLE: types::MQCFSTATUS = types::MQCFSTATUS(24);
+        pub const MQCFSTATUS_XES_ERROR: types::MQCFSTATUS = types::MQCFSTATUS(25);
+        pub const MQCFTYPE_APPL: types::MQCFTYPE = types::MQCFTYPE(0);
+        pub const MQCFTYPE_ADMIN: types::MQCFTYPE = types::MQCFTYPE(1);
+        pub const MQCFT_NONE: types::MQCFT = types::MQCFT(0);
+        pub const MQCFT_COMMAND: types::MQCFT = types::MQCFT(1);
+        pub const MQCFT_RESPONSE: types::MQCFT = types::MQCFT(2);
+        pub const MQCFT_INTEGER: types::MQCFT = types::MQCFT(3);
+        pub const MQCFT_STRING: types::MQCFT = types::MQCFT(4);
+        pub const MQCFT_INTEGER_LIST: types::MQCFT = types::MQCFT(5);
+        pub const MQCFT_STRING_LIST: types::MQCFT = types::MQCFT(6);
+        pub const MQCFT_EVENT: types::MQCFT = types::MQCFT(7);
+        pub const MQCFT_USER: types::MQCFT = types::MQCFT(8);
+        pub const MQCFT_BYTE_STRING: types::MQCFT = types::MQCFT(9);
+        pub const MQCFT_TRACE_ROUTE: types::MQCFT = types::MQCFT(10);
+        pub const MQCFT_REPORT: types::MQCFT = types::MQCFT(12);
+        pub const MQCFT_INTEGER_FILTER: types::MQCFT = types::MQCFT(13);
+        pub const MQCFT_STRING_FILTER: types::MQCFT = types::MQCFT(14);
+        pub const MQCFT_BYTE_STRING_FILTER: types::MQCFT = types::MQCFT(15);
+        pub const MQCFT_COMMAND_XR: types::MQCFT = types::MQCFT(16);
+        pub const MQCFT_XR_MSG: types::MQCFT = types::MQCFT(17);
+        pub const MQCFT_XR_ITEM: types::MQCFT = types::MQCFT(18);
+        pub const MQCFT_XR_SUMMARY: types::MQCFT = types::MQCFT(19);
+        pub const MQCFT_GROUP: types::MQCFT = types::MQCFT(20);
+        pub const MQCFT_STATISTICS: types::MQCFT = types::MQCFT(21);
+        pub const MQCFT_ACCOUNTING: types::MQCFT = types::MQCFT(22);
+        pub const MQCFT_INTEGER64: types::MQCFT = types::MQCFT(23);
+        pub const MQCFT_INTEGER64_LIST: types::MQCFT = types::MQCFT(25);
+        pub const MQCFT_APP_ACTIVITY: types::MQCFT = types::MQCFT(26);
+        pub const MQCFT_STATUS: types::MQCFT = types::MQCFT(27);
+        pub const MQCHIDS_NOT_INDOUBT: types::MQCHIDS = types::MQCHIDS(0);
+        pub const MQCHIDS_INDOUBT: types::MQCHIDS = types::MQCHIDS(1);
+        pub const MQCHK_OPTIONAL: types::MQCHK = types::MQCHK(0);
+        pub const MQCHK_NONE: types::MQCHK = types::MQCHK(1);
+        pub const MQCHK_REQUIRED_ADMIN: types::MQCHK = types::MQCHK(2);
+        pub const MQCHK_REQUIRED: types::MQCHK = types::MQCHK(3);
+        pub const MQCHK_AS_Q_MGR: types::MQCHK = types::MQCHK(4);
+        pub const MQCHLA_DISABLED: types::MQCHLA = types::MQCHLA(0);
+        pub const MQCHLA_ENABLED: types::MQCHLA = types::MQCHLA(1);
+        pub const MQCHLD_ALL: types::MQCHLD = types::MQCHLD(-1);
+        pub const MQCHLD_DEFAULT: types::MQCHLD = types::MQCHLD(1);
+        pub const MQCHLD_SHARED: types::MQCHLD = types::MQCHLD(2);
+        pub const MQCHLD_PRIVATE: types::MQCHLD = types::MQCHLD(4);
+        pub const MQCHLD_FIXSHARED: types::MQCHLD = types::MQCHLD(5);
+        pub const MQCHRR_RESET_NOT_REQUESTED: types::MQCHRR = types::MQCHRR(0);
+        pub const MQCHSH_RESTART_NO: types::MQCHSH = types::MQCHSH(0);
+        pub const MQCHSH_RESTART_YES: types::MQCHSH = types::MQCHSH(1);
+        pub const MQCHSR_STOP_NOT_REQUESTED: types::MQCHSR = types::MQCHSR(0);
+        pub const MQCHSR_STOP_REQUESTED: types::MQCHSR = types::MQCHSR(1);
+        pub const MQCHSSTATE_OTHER: types::MQCHSSTATE = types::MQCHSSTATE(0);
+        pub const MQCHSSTATE_END_OF_BATCH: types::MQCHSSTATE = types::MQCHSSTATE(100);
+        pub const MQCHSSTATE_SENDING: types::MQCHSSTATE = types::MQCHSSTATE(200);
+        pub const MQCHSSTATE_RECEIVING: types::MQCHSSTATE = types::MQCHSSTATE(300);
+        pub const MQCHSSTATE_SERIALIZING: types::MQCHSSTATE = types::MQCHSSTATE(400);
+        pub const MQCHSSTATE_RESYNCHING: types::MQCHSSTATE = types::MQCHSSTATE(500);
+        pub const MQCHSSTATE_HEARTBEATING: types::MQCHSSTATE = types::MQCHSSTATE(600);
+        pub const MQCHSSTATE_IN_SCYEXIT: types::MQCHSSTATE = types::MQCHSSTATE(700);
+        pub const MQCHSSTATE_IN_RCVEXIT: types::MQCHSSTATE = types::MQCHSSTATE(800);
+        pub const MQCHSSTATE_IN_SENDEXIT: types::MQCHSSTATE = types::MQCHSSTATE(900);
+        pub const MQCHSSTATE_IN_MSGEXIT: types::MQCHSSTATE = types::MQCHSSTATE(1000);
+        pub const MQCHSSTATE_IN_MREXIT: types::MQCHSSTATE = types::MQCHSSTATE(1100);
+        pub const MQCHSSTATE_IN_CHADEXIT: types::MQCHSSTATE = types::MQCHSSTATE(1200);
+        pub const MQCHSSTATE_NET_CONNECTING: types::MQCHSSTATE = types::MQCHSSTATE(1250);
+        pub const MQCHSSTATE_SSL_HANDSHAKING: types::MQCHSSTATE = types::MQCHSSTATE(
+            1300,
+        );
+        pub const MQCHSSTATE_NAME_SERVER: types::MQCHSSTATE = types::MQCHSSTATE(1400);
+        pub const MQCHSSTATE_IN_MQPUT: types::MQCHSSTATE = types::MQCHSSTATE(1500);
+        pub const MQCHSSTATE_IN_MQGET: types::MQCHSSTATE = types::MQCHSSTATE(1600);
+        pub const MQCHSSTATE_IN_MQI_CALL: types::MQCHSSTATE = types::MQCHSSTATE(1700);
+        pub const MQCHSSTATE_COMPRESSING: types::MQCHSSTATE = types::MQCHSSTATE(1800);
+        pub const MQCHS_INACTIVE: types::MQCHS = types::MQCHS(0);
+        pub const MQCHS_BINDING: types::MQCHS = types::MQCHS(1);
+        pub const MQCHS_STARTING: types::MQCHS = types::MQCHS(2);
+        pub const MQCHS_RUNNING: types::MQCHS = types::MQCHS(3);
+        pub const MQCHS_STOPPING: types::MQCHS = types::MQCHS(4);
+        pub const MQCHS_RETRYING: types::MQCHS = types::MQCHS(5);
+        pub const MQCHS_STOPPED: types::MQCHS = types::MQCHS(6);
+        pub const MQCHS_REQUESTING: types::MQCHS = types::MQCHS(7);
+        pub const MQCHS_PAUSED: types::MQCHS = types::MQCHS(8);
+        pub const MQCHS_DISCONNECTED: types::MQCHS = types::MQCHS(9);
+        pub const MQCHS_INITIALIZING: types::MQCHS = types::MQCHS(13);
+        pub const MQCHS_SWITCHING: types::MQCHS = types::MQCHS(14);
+        pub const MQCHTAB_Q_MGR: types::MQCHTAB = types::MQCHTAB(1);
+        pub const MQCHTAB_CLNTCONN: types::MQCHTAB = types::MQCHTAB(2);
+        pub const MQCLROUTE_DIRECT: types::MQCLROUTE = types::MQCLROUTE(0);
+        pub const MQCLROUTE_TOPIC_HOST: types::MQCLROUTE = types::MQCLROUTE(1);
+        pub const MQCLROUTE_NONE: types::MQCLROUTE = types::MQCLROUTE(2);
+        pub const MQCLRS_LOCAL: types::MQCLRS = types::MQCLRS(1);
+        pub const MQCLRS_GLOBAL: types::MQCLRS = types::MQCLRS(2);
+        pub const MQCLRT_RETAINED: types::MQCLRT = types::MQCLRT(1);
+        pub const MQCLST_ACTIVE: types::MQCLST = types::MQCLST(0);
+        pub const MQCLST_PENDING: types::MQCLST = types::MQCLST(1);
+        pub const MQCLST_INVALID: types::MQCLST = types::MQCLST(2);
+        pub const MQCLST_ERROR: types::MQCLST = types::MQCLST(3);
+        pub const MQCLXQ_SCTQ: types::MQCLXQ = types::MQCLXQ(0);
+        pub const MQCLXQ_CHANNEL: types::MQCLXQ = types::MQCLXQ(1);
+        pub const MQCMDI_CMDSCOPE_ACCEPTED: types::MQCMDI = types::MQCMDI(1);
+        pub const MQCMDI_CMDSCOPE_GENERATED: types::MQCMDI = types::MQCMDI(2);
+        pub const MQCMDI_CMDSCOPE_COMPLETED: types::MQCMDI = types::MQCMDI(3);
+        pub const MQCMDI_QSG_DISP_COMPLETED: types::MQCMDI = types::MQCMDI(4);
+        pub const MQCMDI_COMMAND_ACCEPTED: types::MQCMDI = types::MQCMDI(5);
+        pub const MQCMDI_CLUSTER_REQUEST_QUEUED: types::MQCMDI = types::MQCMDI(6);
+        pub const MQCMDI_CHANNEL_INIT_STARTED: types::MQCMDI = types::MQCMDI(7);
+        pub const MQCMDI_RECOVER_STARTED: types::MQCMDI = types::MQCMDI(11);
+        pub const MQCMDI_BACKUP_STARTED: types::MQCMDI = types::MQCMDI(12);
+        pub const MQCMDI_RECOVER_COMPLETED: types::MQCMDI = types::MQCMDI(13);
+        pub const MQCMDI_SEC_TIMER_ZERO: types::MQCMDI = types::MQCMDI(14);
+        pub const MQCMDI_REFRESH_CONFIGURATION: types::MQCMDI = types::MQCMDI(16);
+        pub const MQCMDI_SEC_SIGNOFF_ERROR: types::MQCMDI = types::MQCMDI(17);
+        pub const MQCMDI_IMS_BRIDGE_SUSPENDED: types::MQCMDI = types::MQCMDI(18);
+        pub const MQCMDI_DB2_SUSPENDED: types::MQCMDI = types::MQCMDI(19);
+        pub const MQCMDI_DB2_OBSOLETE_MSGS: types::MQCMDI = types::MQCMDI(20);
+        pub const MQCMDI_SEC_UPPERCASE: types::MQCMDI = types::MQCMDI(21);
+        pub const MQCMDI_SEC_MIXEDCASE: types::MQCMDI = types::MQCMDI(22);
         pub const MQCMD_NONE: types::MQCMD = types::MQCMD(0);
         pub const MQCMD_CHANGE_Q_MGR: types::MQCMD = types::MQCMD(1);
         pub const MQCMD_INQUIRE_Q_MGR: types::MQCMD = types::MQCMD(2);
@@ -4667,6 +4789,70 @@ pub mod constants {
         pub const MQCMD_INTER_Q_MGR_BALANCE: types::MQCMD = types::MQCMD(219);
         pub const MQCMD_INQUIRE_APPL_STATUS: types::MQCMD = types::MQCMD(220);
         pub const MQCMD_SET_PROT_POLICY: types::MQCMD = types::MQCMD(208);
+        pub const MQDELO_NONE: types::MQDELO = types::MQDELO(0);
+        pub const MQDELO_LOCAL: types::MQDELO = types::MQDELO(4);
+        pub const MQDISCONNECT_NORMAL: types::MQDISCONNECT = types::MQDISCONNECT(0);
+        pub const MQDISCONNECT_IMPLICIT: types::MQDISCONNECT = types::MQDISCONNECT(1);
+        pub const MQDISCONNECT_Q_MGR: types::MQDISCONNECT = types::MQDISCONNECT(2);
+        pub const MQDOPT_RESOLVED: types::MQDOPT = types::MQDOPT(0);
+        pub const MQDOPT_DEFINED: types::MQDOPT = types::MQDOPT(1);
+        pub const MQEPH_NONE: types::MQEPH = types::MQEPH(0);
+        pub const MQEPH_CCSID_EMBEDDED: types::MQEPH = types::MQEPH(1);
+        pub const MQET_MQSC: types::MQET = types::MQET(1);
+        pub const MQEVO_OTHER: types::MQEVO = types::MQEVO(0);
+        pub const MQEVO_CONSOLE: types::MQEVO = types::MQEVO(1);
+        pub const MQEVO_INIT: types::MQEVO = types::MQEVO(2);
+        pub const MQEVO_MSG: types::MQEVO = types::MQEVO(3);
+        pub const MQEVO_MQSET: types::MQEVO = types::MQEVO(4);
+        pub const MQEVO_INTERNAL: types::MQEVO = types::MQEVO(5);
+        pub const MQEVO_MQSUB: types::MQEVO = types::MQEVO(6);
+        pub const MQEVO_CTLMSG: types::MQEVO = types::MQEVO(7);
+        pub const MQEVO_REST: types::MQEVO = types::MQEVO(8);
+        pub const MQEVR_DISABLED: types::MQEVR = types::MQEVR(0);
+        pub const MQEVR_ENABLED: types::MQEVR = types::MQEVR(1);
+        pub const MQEVR_EXCEPTION: types::MQEVR = types::MQEVR(2);
+        pub const MQEVR_NO_DISPLAY: types::MQEVR = types::MQEVR(3);
+        pub const MQEVR_API_ONLY: types::MQEVR = types::MQEVR(4);
+        pub const MQEVR_ADMIN_ONLY: types::MQEVR = types::MQEVR(5);
+        pub const MQEVR_USER_ONLY: types::MQEVR = types::MQEVR(6);
+        pub const MQEXTATTRS_ALL: types::MQEXTATTRS = types::MQEXTATTRS(0);
+        pub const MQEXTATTRS_NONDEF: types::MQEXTATTRS = types::MQEXTATTRS(1);
+        pub const MQEXT_ALL: types::MQEXT = types::MQEXT(0);
+        pub const MQEXT_OBJECT: types::MQEXT = types::MQEXT(1);
+        pub const MQEXT_AUTHORITY: types::MQEXT = types::MQEXT(2);
+        pub const MQFC_NO: types::MQFC = types::MQFC(0);
+        pub const MQFC_YES: types::MQFC = types::MQFC(1);
+        pub const MQFSENC_NO: types::MQFSENC = types::MQFSENC(0);
+        pub const MQFSENC_YES: types::MQFSENC = types::MQFSENC(1);
+        pub const MQFSENC_UNKNOWN: types::MQFSENC = types::MQFSENC(2);
+        pub const MQFS_SHARED: types::MQFS = types::MQFS(-1);
+        pub const MQGACF_COMMAND_CONTEXT: types::MQGACF = types::MQGACF(8001);
+        pub const MQGACF_COMMAND_DATA: types::MQGACF = types::MQGACF(8002);
+        pub const MQGACF_TRACE_ROUTE: types::MQGACF = types::MQGACF(8003);
+        pub const MQGACF_OPERATION: types::MQGACF = types::MQGACF(8004);
+        pub const MQGACF_ACTIVITY: types::MQGACF = types::MQGACF(8005);
+        pub const MQGACF_EMBEDDED_MQMD: types::MQGACF = types::MQGACF(8006);
+        pub const MQGACF_MESSAGE: types::MQGACF = types::MQGACF(8007);
+        pub const MQGACF_MQMD: types::MQGACF = types::MQGACF(8008);
+        pub const MQGACF_VALUE_NAMING: types::MQGACF = types::MQGACF(8009);
+        pub const MQGACF_Q_ACCOUNTING_DATA: types::MQGACF = types::MQGACF(8010);
+        pub const MQGACF_Q_STATISTICS_DATA: types::MQGACF = types::MQGACF(8011);
+        pub const MQGACF_CHL_STATISTICS_DATA: types::MQGACF = types::MQGACF(8012);
+        pub const MQGACF_ACTIVITY_TRACE: types::MQGACF = types::MQGACF(8013);
+        pub const MQGACF_APP_DIST_LIST: types::MQGACF = types::MQGACF(8014);
+        pub const MQGACF_MONITOR_CLASS: types::MQGACF = types::MQGACF(8015);
+        pub const MQGACF_MONITOR_TYPE: types::MQGACF = types::MQGACF(8016);
+        pub const MQGACF_MONITOR_ELEMENT: types::MQGACF = types::MQGACF(8017);
+        pub const MQGACF_APPL_STATUS: types::MQGACF = types::MQGACF(8018);
+        pub const MQGACF_CHANGED_APPLS: types::MQGACF = types::MQGACF(8019);
+        pub const MQGACF_ALL_APPLS: types::MQGACF = types::MQGACF(8020);
+        pub const MQGACF_APPL_BALANCE: types::MQGACF = types::MQGACF(8021);
+        pub const MQGACF_FIRST: types::MQGACF = types::MQGACF(8001);
+        pub const MQGACF_LAST_USED: types::MQGACF = types::MQGACF(8021);
+        pub const MQGUR_DISABLED: types::MQGUR = types::MQGUR(0);
+        pub const MQGUR_ENABLED: types::MQGUR = types::MQGUR(1);
+        pub const MQHSTATE_INACTIVE: types::MQHSTATE = types::MQHSTATE(0);
+        pub const MQHSTATE_ACTIVE: types::MQHSTATE = types::MQHSTATE(1);
         pub const MQIACF_Q_MGR_ATTRS: types::MQIACF = types::MQIACF(1001);
         pub const MQIACF_Q_ATTRS: types::MQIACF = types::MQIACF(1002);
         pub const MQIACF_PROCESS_ATTRS: types::MQIACF = types::MQIACF(1003);
@@ -5211,6 +5397,335 @@ pub mod constants {
         pub const MQIACH_BUFFERS_RECEIVED: types::MQIACH = types::MQIACH(1539);
         pub const MQIACH_MSGS_RECEIVED: types::MQIACH = types::MQIACH(1634);
         pub const MQIACH_LAST_USED: types::MQIACH = types::MQIACH(1646);
+        pub const MQIAMO64_AVG_Q_TIME: types::MQIAMO64 = types::MQIAMO64(703);
+        pub const MQIAMO64_Q_TIME_AVG: types::MQIAMO64 = types::MQIAMO64(741);
+        pub const MQIAMO64_Q_TIME_MAX: types::MQIAMO64 = types::MQIAMO64(742);
+        pub const MQIAMO64_Q_TIME_MIN: types::MQIAMO64 = types::MQIAMO64(743);
+        pub const MQIAMO64_BROWSE_BYTES: types::MQIAMO64 = types::MQIAMO64(745);
+        pub const MQIAMO64_BYTES: types::MQIAMO64 = types::MQIAMO64(746);
+        pub const MQIAMO64_GET_BYTES: types::MQIAMO64 = types::MQIAMO64(747);
+        pub const MQIAMO64_PUT_BYTES: types::MQIAMO64 = types::MQIAMO64(748);
+        pub const MQIAMO64_TOPIC_PUT_BYTES: types::MQIAMO64 = types::MQIAMO64(783);
+        pub const MQIAMO64_PUBLISH_MSG_BYTES: types::MQIAMO64 = types::MQIAMO64(785);
+        pub const MQIAMO64_HIGHRES_TIME: types::MQIAMO64 = types::MQIAMO64(838);
+        pub const MQIAMO64_QMGR_OP_DURATION: types::MQIAMO64 = types::MQIAMO64(844);
+        pub const MQIAMO64_MONITOR_INTERVAL: types::MQIAMO64 = types::MQIAMO64(845);
+        pub const MQIAMO_AVG_BATCH_SIZE: types::MQIAMO = types::MQIAMO(702);
+        pub const MQIAMO_AVG_Q_TIME: types::MQIAMO = types::MQIAMO(703);
+        pub const MQIAMO_BACKOUTS: types::MQIAMO = types::MQIAMO(704);
+        pub const MQIAMO_BROWSES: types::MQIAMO = types::MQIAMO(705);
+        pub const MQIAMO_BROWSE_MAX_BYTES: types::MQIAMO = types::MQIAMO(706);
+        pub const MQIAMO_BROWSE_MIN_BYTES: types::MQIAMO = types::MQIAMO(707);
+        pub const MQIAMO_BROWSES_FAILED: types::MQIAMO = types::MQIAMO(708);
+        pub const MQIAMO_CLOSES: types::MQIAMO = types::MQIAMO(709);
+        pub const MQIAMO_COMMITS: types::MQIAMO = types::MQIAMO(710);
+        pub const MQIAMO_COMMITS_FAILED: types::MQIAMO = types::MQIAMO(711);
+        pub const MQIAMO_CONNS: types::MQIAMO = types::MQIAMO(712);
+        pub const MQIAMO_CONNS_MAX: types::MQIAMO = types::MQIAMO(713);
+        pub const MQIAMO_DISCS: types::MQIAMO = types::MQIAMO(714);
+        pub const MQIAMO_DISCS_IMPLICIT: types::MQIAMO = types::MQIAMO(715);
+        pub const MQIAMO_DISC_TYPE: types::MQIAMO = types::MQIAMO(716);
+        pub const MQIAMO_EXIT_TIME_AVG: types::MQIAMO = types::MQIAMO(717);
+        pub const MQIAMO_EXIT_TIME_MAX: types::MQIAMO = types::MQIAMO(718);
+        pub const MQIAMO_EXIT_TIME_MIN: types::MQIAMO = types::MQIAMO(719);
+        pub const MQIAMO_FULL_BATCHES: types::MQIAMO = types::MQIAMO(720);
+        pub const MQIAMO_GENERATED_MSGS: types::MQIAMO = types::MQIAMO(721);
+        pub const MQIAMO_GETS: types::MQIAMO = types::MQIAMO(722);
+        pub const MQIAMO_GET_MAX_BYTES: types::MQIAMO = types::MQIAMO(723);
+        pub const MQIAMO_GET_MIN_BYTES: types::MQIAMO = types::MQIAMO(724);
+        pub const MQIAMO_GETS_FAILED: types::MQIAMO = types::MQIAMO(725);
+        pub const MQIAMO_INCOMPLETE_BATCHES: types::MQIAMO = types::MQIAMO(726);
+        pub const MQIAMO_INQS: types::MQIAMO = types::MQIAMO(727);
+        pub const MQIAMO_MSGS: types::MQIAMO = types::MQIAMO(728);
+        pub const MQIAMO_NET_TIME_AVG: types::MQIAMO = types::MQIAMO(729);
+        pub const MQIAMO_NET_TIME_MAX: types::MQIAMO = types::MQIAMO(730);
+        pub const MQIAMO_NET_TIME_MIN: types::MQIAMO = types::MQIAMO(731);
+        pub const MQIAMO_OBJECT_COUNT: types::MQIAMO = types::MQIAMO(732);
+        pub const MQIAMO_OPENS: types::MQIAMO = types::MQIAMO(733);
+        pub const MQIAMO_PUT1S: types::MQIAMO = types::MQIAMO(734);
+        pub const MQIAMO_PUTS: types::MQIAMO = types::MQIAMO(735);
+        pub const MQIAMO_PUT_MAX_BYTES: types::MQIAMO = types::MQIAMO(736);
+        pub const MQIAMO_PUT_MIN_BYTES: types::MQIAMO = types::MQIAMO(737);
+        pub const MQIAMO_PUT_RETRIES: types::MQIAMO = types::MQIAMO(738);
+        pub const MQIAMO_Q_MAX_DEPTH: types::MQIAMO = types::MQIAMO(739);
+        pub const MQIAMO_Q_MIN_DEPTH: types::MQIAMO = types::MQIAMO(740);
+        pub const MQIAMO_Q_TIME_AVG: types::MQIAMO = types::MQIAMO(741);
+        pub const MQIAMO_Q_TIME_MAX: types::MQIAMO = types::MQIAMO(742);
+        pub const MQIAMO_Q_TIME_MIN: types::MQIAMO = types::MQIAMO(743);
+        pub const MQIAMO_SETS: types::MQIAMO = types::MQIAMO(744);
+        pub const MQIAMO_CONNS_FAILED: types::MQIAMO = types::MQIAMO(749);
+        pub const MQIAMO_OPENS_FAILED: types::MQIAMO = types::MQIAMO(751);
+        pub const MQIAMO_INQS_FAILED: types::MQIAMO = types::MQIAMO(752);
+        pub const MQIAMO_SETS_FAILED: types::MQIAMO = types::MQIAMO(753);
+        pub const MQIAMO_PUTS_FAILED: types::MQIAMO = types::MQIAMO(754);
+        pub const MQIAMO_PUT1S_FAILED: types::MQIAMO = types::MQIAMO(755);
+        pub const MQIAMO_CLOSES_FAILED: types::MQIAMO = types::MQIAMO(757);
+        pub const MQIAMO_MSGS_EXPIRED: types::MQIAMO = types::MQIAMO(758);
+        pub const MQIAMO_MSGS_NOT_QUEUED: types::MQIAMO = types::MQIAMO(759);
+        pub const MQIAMO_MSGS_PURGED: types::MQIAMO = types::MQIAMO(760);
+        pub const MQIAMO_SUBS_DUR: types::MQIAMO = types::MQIAMO(764);
+        pub const MQIAMO_SUBS_NDUR: types::MQIAMO = types::MQIAMO(765);
+        pub const MQIAMO_SUBS_FAILED: types::MQIAMO = types::MQIAMO(766);
+        pub const MQIAMO_SUBRQS: types::MQIAMO = types::MQIAMO(767);
+        pub const MQIAMO_SUBRQS_FAILED: types::MQIAMO = types::MQIAMO(768);
+        pub const MQIAMO_CBS: types::MQIAMO = types::MQIAMO(769);
+        pub const MQIAMO_CBS_FAILED: types::MQIAMO = types::MQIAMO(770);
+        pub const MQIAMO_CTLS: types::MQIAMO = types::MQIAMO(771);
+        pub const MQIAMO_CTLS_FAILED: types::MQIAMO = types::MQIAMO(772);
+        pub const MQIAMO_STATS: types::MQIAMO = types::MQIAMO(773);
+        pub const MQIAMO_STATS_FAILED: types::MQIAMO = types::MQIAMO(774);
+        pub const MQIAMO_SUB_DUR_HIGHWATER: types::MQIAMO = types::MQIAMO(775);
+        pub const MQIAMO_SUB_DUR_LOWWATER: types::MQIAMO = types::MQIAMO(776);
+        pub const MQIAMO_SUB_NDUR_HIGHWATER: types::MQIAMO = types::MQIAMO(777);
+        pub const MQIAMO_SUB_NDUR_LOWWATER: types::MQIAMO = types::MQIAMO(778);
+        pub const MQIAMO_TOPIC_PUTS: types::MQIAMO = types::MQIAMO(779);
+        pub const MQIAMO_TOPIC_PUTS_FAILED: types::MQIAMO = types::MQIAMO(780);
+        pub const MQIAMO_TOPIC_PUT1S: types::MQIAMO = types::MQIAMO(781);
+        pub const MQIAMO_TOPIC_PUT1S_FAILED: types::MQIAMO = types::MQIAMO(782);
+        pub const MQIAMO_PUBLISH_MSG_COUNT: types::MQIAMO = types::MQIAMO(784);
+        pub const MQIAMO_UNSUBS_DUR: types::MQIAMO = types::MQIAMO(786);
+        pub const MQIAMO_UNSUBS_NDUR: types::MQIAMO = types::MQIAMO(787);
+        pub const MQIAMO_UNSUBS_FAILED: types::MQIAMO = types::MQIAMO(788);
+        pub const MQIAMO_INTERVAL: types::MQIAMO = types::MQIAMO(789);
+        pub const MQIAMO_MSGS_SENT: types::MQIAMO = types::MQIAMO(790);
+        pub const MQIAMO_BYTES_SENT: types::MQIAMO = types::MQIAMO(791);
+        pub const MQIAMO_REPAIR_BYTES: types::MQIAMO = types::MQIAMO(792);
+        pub const MQIAMO_FEEDBACK_MODE: types::MQIAMO = types::MQIAMO(793);
+        pub const MQIAMO_RELIABILITY_TYPE: types::MQIAMO = types::MQIAMO(794);
+        pub const MQIAMO_LATE_JOIN_MARK: types::MQIAMO = types::MQIAMO(795);
+        pub const MQIAMO_NACKS_RCVD: types::MQIAMO = types::MQIAMO(796);
+        pub const MQIAMO_REPAIR_PKTS: types::MQIAMO = types::MQIAMO(797);
+        pub const MQIAMO_HISTORY_PKTS: types::MQIAMO = types::MQIAMO(798);
+        pub const MQIAMO_PENDING_PKTS: types::MQIAMO = types::MQIAMO(799);
+        pub const MQIAMO_PKT_RATE: types::MQIAMO = types::MQIAMO(800);
+        pub const MQIAMO_MCAST_XMIT_RATE: types::MQIAMO = types::MQIAMO(801);
+        pub const MQIAMO_MCAST_BATCH_TIME: types::MQIAMO = types::MQIAMO(802);
+        pub const MQIAMO_MCAST_HEARTBEAT: types::MQIAMO = types::MQIAMO(803);
+        pub const MQIAMO_DEST_DATA_PORT: types::MQIAMO = types::MQIAMO(804);
+        pub const MQIAMO_DEST_REPAIR_PORT: types::MQIAMO = types::MQIAMO(805);
+        pub const MQIAMO_ACKS_RCVD: types::MQIAMO = types::MQIAMO(806);
+        pub const MQIAMO_ACTIVE_ACKERS: types::MQIAMO = types::MQIAMO(807);
+        pub const MQIAMO_PKTS_SENT: types::MQIAMO = types::MQIAMO(808);
+        pub const MQIAMO_TOTAL_REPAIR_PKTS: types::MQIAMO = types::MQIAMO(809);
+        pub const MQIAMO_TOTAL_PKTS_SENT: types::MQIAMO = types::MQIAMO(810);
+        pub const MQIAMO_TOTAL_MSGS_SENT: types::MQIAMO = types::MQIAMO(811);
+        pub const MQIAMO_TOTAL_BYTES_SENT: types::MQIAMO = types::MQIAMO(812);
+        pub const MQIAMO_NUM_STREAMS: types::MQIAMO = types::MQIAMO(813);
+        pub const MQIAMO_ACK_FEEDBACK: types::MQIAMO = types::MQIAMO(814);
+        pub const MQIAMO_NACK_FEEDBACK: types::MQIAMO = types::MQIAMO(815);
+        pub const MQIAMO_PKTS_LOST: types::MQIAMO = types::MQIAMO(816);
+        pub const MQIAMO_MSGS_RCVD: types::MQIAMO = types::MQIAMO(817);
+        pub const MQIAMO_MSG_BYTES_RCVD: types::MQIAMO = types::MQIAMO(818);
+        pub const MQIAMO_MSGS_DELIVERED: types::MQIAMO = types::MQIAMO(819);
+        pub const MQIAMO_PKTS_PROCESSED: types::MQIAMO = types::MQIAMO(820);
+        pub const MQIAMO_PKTS_DELIVERED: types::MQIAMO = types::MQIAMO(821);
+        pub const MQIAMO_PKTS_DROPPED: types::MQIAMO = types::MQIAMO(822);
+        pub const MQIAMO_PKTS_DUPLICATED: types::MQIAMO = types::MQIAMO(823);
+        pub const MQIAMO_NACKS_CREATED: types::MQIAMO = types::MQIAMO(824);
+        pub const MQIAMO_NACK_PKTS_SENT: types::MQIAMO = types::MQIAMO(825);
+        pub const MQIAMO_REPAIR_PKTS_RQSTD: types::MQIAMO = types::MQIAMO(826);
+        pub const MQIAMO_REPAIR_PKTS_RCVD: types::MQIAMO = types::MQIAMO(827);
+        pub const MQIAMO_PKTS_REPAIRED: types::MQIAMO = types::MQIAMO(828);
+        pub const MQIAMO_TOTAL_MSGS_RCVD: types::MQIAMO = types::MQIAMO(829);
+        pub const MQIAMO_TOTAL_MSG_BYTES_RCVD: types::MQIAMO = types::MQIAMO(830);
+        pub const MQIAMO_TOTAL_REPAIR_PKTS_RCVD: types::MQIAMO = types::MQIAMO(831);
+        pub const MQIAMO_TOTAL_REPAIR_PKTS_RQSTD: types::MQIAMO = types::MQIAMO(832);
+        pub const MQIAMO_TOTAL_MSGS_PROCESSED: types::MQIAMO = types::MQIAMO(833);
+        pub const MQIAMO_TOTAL_MSGS_SELECTED: types::MQIAMO = types::MQIAMO(834);
+        pub const MQIAMO_TOTAL_MSGS_EXPIRED: types::MQIAMO = types::MQIAMO(835);
+        pub const MQIAMO_TOTAL_MSGS_DELIVERED: types::MQIAMO = types::MQIAMO(836);
+        pub const MQIAMO_TOTAL_MSGS_RETURNED: types::MQIAMO = types::MQIAMO(837);
+        pub const MQIAMO_MONITOR_CLASS: types::MQIAMO = types::MQIAMO(839);
+        pub const MQIAMO_MONITOR_TYPE: types::MQIAMO = types::MQIAMO(840);
+        pub const MQIAMO_MONITOR_ELEMENT: types::MQIAMO = types::MQIAMO(841);
+        pub const MQIAMO_MONITOR_DATATYPE: types::MQIAMO = types::MQIAMO(842);
+        pub const MQIAMO_MONITOR_FLAGS: types::MQIAMO = types::MQIAMO(843);
+        pub const MQIAMO_FIRST: types::MQIAMO = types::MQIAMO(701);
+        pub const MQIAMO_LAST_USED: types::MQIAMO = types::MQIAMO(845);
+        pub const MQIAMO_MONITOR_UNIT: types::MQIAMO_MONITOR_DATATYPE = types::MQIAMO_MONITOR_DATATYPE(
+            1,
+        );
+        pub const MQIAMO_MONITOR_DELTA: types::MQIAMO_MONITOR_DATATYPE = types::MQIAMO_MONITOR_DATATYPE(
+            2,
+        );
+        pub const MQIAMO_MONITOR_LSN: types::MQIAMO_MONITOR_DATATYPE = types::MQIAMO_MONITOR_DATATYPE(
+            3,
+        );
+        pub const MQIAMO_MONITOR_HUNDREDTHS: types::MQIAMO_MONITOR_DATATYPE = types::MQIAMO_MONITOR_DATATYPE(
+            100,
+        );
+        pub const MQIAMO_MONITOR_KB: types::MQIAMO_MONITOR_DATATYPE = types::MQIAMO_MONITOR_DATATYPE(
+            1024,
+        );
+        pub const MQIAMO_MONITOR_PERCENT: types::MQIAMO_MONITOR_DATATYPE = types::MQIAMO_MONITOR_DATATYPE(
+            10000,
+        );
+        pub const MQIAMO_MONITOR_MICROSEC: types::MQIAMO_MONITOR_DATATYPE = types::MQIAMO_MONITOR_DATATYPE(
+            1000000,
+        );
+        pub const MQIAMO_MONITOR_MB: types::MQIAMO_MONITOR_DATATYPE = types::MQIAMO_MONITOR_DATATYPE(
+            1048576,
+        );
+        pub const MQIAMO_MONITOR_GB: types::MQIAMO_MONITOR_DATATYPE = types::MQIAMO_MONITOR_DATATYPE(
+            100000000,
+        );
+        pub const MQIAMO_MONITOR_FLAGS_NONE: types::MQIAMO_MONITOR_FLAGS = types::MQIAMO_MONITOR_FLAGS(
+            0,
+        );
+        pub const MQIAMO_MONITOR_FLAGS_OBJNAME: types::MQIAMO_MONITOR_FLAGS = types::MQIAMO_MONITOR_FLAGS(
+            1,
+        );
+        pub const MQIDO_COMMIT: types::MQIDO = types::MQIDO(1);
+        pub const MQIDO_BACKOUT: types::MQIDO = types::MQIDO(2);
+        pub const MQIMMREASON_NONE: types::MQIMMREASON = types::MQIMMREASON(0);
+        pub const MQIMMREASON_NOT_CLIENT: types::MQIMMREASON = types::MQIMMREASON(1);
+        pub const MQIMMREASON_NOT_RECONNECTABLE: types::MQIMMREASON = types::MQIMMREASON(
+            2,
+        );
+        pub const MQIMMREASON_MOVING: types::MQIMMREASON = types::MQIMMREASON(3);
+        pub const MQIMMREASON_APPLNAME_CHANGED: types::MQIMMREASON = types::MQIMMREASON(
+            4,
+        );
+        pub const MQIMMREASON_IN_TRANSACTION: types::MQIMMREASON = types::MQIMMREASON(5);
+        pub const MQIMMREASON_AWAITS_REPLY: types::MQIMMREASON = types::MQIMMREASON(6);
+        pub const MQIMMREASON_NO_REDIRECT: types::MQIMMREASON = types::MQIMMREASON(7);
+        pub const MQINBD_Q_MGR: types::MQINBD = types::MQINBD(0);
+        pub const MQINBD_GROUP: types::MQINBD = types::MQINBD(3);
+        pub const MQIS_NO: types::MQIS = types::MQIS(0);
+        pub const MQIS_YES: types::MQIS = types::MQIS(1);
+        pub const MQLDAPC_INACTIVE: types::MQLDAPC = types::MQLDAPC(0);
+        pub const MQLDAPC_CONNECTED: types::MQLDAPC = types::MQLDAPC(1);
+        pub const MQLDAPC_ERROR: types::MQLDAPC = types::MQLDAPC(2);
+        pub const MQLDAP_AUTHORMD_OS: types::MQLDAP_AUTHORMD = types::MQLDAP_AUTHORMD(0);
+        pub const MQLDAP_AUTHORMD_SEARCHGRP: types::MQLDAP_AUTHORMD = types::MQLDAP_AUTHORMD(
+            1,
+        );
+        pub const MQLDAP_AUTHORMD_SEARCHUSR: types::MQLDAP_AUTHORMD = types::MQLDAP_AUTHORMD(
+            2,
+        );
+        pub const MQLDAP_AUTHORMD_SRCHGRPSN: types::MQLDAP_AUTHORMD = types::MQLDAP_AUTHORMD(
+            3,
+        );
+        pub const MQLDAP_NESTGRP_NO: types::MQLDAP_NESTGRP = types::MQLDAP_NESTGRP(0);
+        pub const MQLDAP_NESTGRP_YES: types::MQLDAP_NESTGRP = types::MQLDAP_NESTGRP(1);
+        pub const MQLOGTYPE_CIRCULAR: types::MQLOGTYPE = types::MQLOGTYPE(0);
+        pub const MQLOGTYPE_LINEAR: types::MQLOGTYPE = types::MQLOGTYPE(1);
+        pub const MQLOGTYPE_REPLICATED: types::MQLOGTYPE = types::MQLOGTYPE(2);
+        pub const MQLR_MAX: types::MQLR = types::MQLR(-2);
+        pub const MQLR_AUTO: types::MQLR = types::MQLR(-1);
+        pub const MQLR_ONE: types::MQLR = types::MQLR(1);
+        pub const MQMATCH_GENERIC: types::MQMATCH = types::MQMATCH(0);
+        pub const MQMATCH_RUNCHECK: types::MQMATCH = types::MQMATCH(1);
+        pub const MQMATCH_EXACT: types::MQMATCH = types::MQMATCH(2);
+        pub const MQMATCH_ALL: types::MQMATCH = types::MQMATCH(3);
+        pub const MQMCAS_STOPPED: types::MQMCAS = types::MQMCAS(0);
+        pub const MQMCAS_RUNNING: types::MQMCAS = types::MQMCAS(3);
+        pub const MQMCP_COMPAT: types::MQMCP = types::MQMCP(-2);
+        pub const MQMCP_ALL: types::MQMCP = types::MQMCP(-1);
+        pub const MQMCP_NONE: types::MQMCP = types::MQMCP(0);
+        pub const MQMCP_USER: types::MQMCP = types::MQMCP(1);
+        pub const MQMCP_REPLY: types::MQMCP = types::MQMCP(2);
+        pub const MQMLP_ENCRYPTION_ALG_NONE: types::MQMLP_ENCRYPTION = types::MQMLP_ENCRYPTION(
+            0,
+        );
+        pub const MQMLP_ENCRYPTION_ALG_RC2: types::MQMLP_ENCRYPTION = types::MQMLP_ENCRYPTION(
+            1,
+        );
+        pub const MQMLP_ENCRYPTION_ALG_DES: types::MQMLP_ENCRYPTION = types::MQMLP_ENCRYPTION(
+            2,
+        );
+        pub const MQMLP_ENCRYPTION_ALG_3DES: types::MQMLP_ENCRYPTION = types::MQMLP_ENCRYPTION(
+            3,
+        );
+        pub const MQMLP_ENCRYPTION_ALG_AES128: types::MQMLP_ENCRYPTION = types::MQMLP_ENCRYPTION(
+            4,
+        );
+        pub const MQMLP_ENCRYPTION_ALG_AES256: types::MQMLP_ENCRYPTION = types::MQMLP_ENCRYPTION(
+            5,
+        );
+        pub const MQMLP_SIGN_ALG_NONE: types::MQMLP_SIGN = types::MQMLP_SIGN(0);
+        pub const MQMLP_SIGN_ALG_MD5: types::MQMLP_SIGN = types::MQMLP_SIGN(1);
+        pub const MQMLP_SIGN_ALG_SHA1: types::MQMLP_SIGN = types::MQMLP_SIGN(2);
+        pub const MQMLP_SIGN_ALG_SHA224: types::MQMLP_SIGN = types::MQMLP_SIGN(3);
+        pub const MQMLP_SIGN_ALG_SHA256: types::MQMLP_SIGN = types::MQMLP_SIGN(4);
+        pub const MQMLP_SIGN_ALG_SHA384: types::MQMLP_SIGN = types::MQMLP_SIGN(5);
+        pub const MQMLP_SIGN_ALG_SHA512: types::MQMLP_SIGN = types::MQMLP_SIGN(6);
+        pub const MQMLP_TOLERATE_UNPROTECTED_NO: types::MQMLP_TOLERATE = types::MQMLP_TOLERATE(
+            0,
+        );
+        pub const MQMLP_TOLERATE_UNPROTECTED_YES: types::MQMLP_TOLERATE = types::MQMLP_TOLERATE(
+            1,
+        );
+        pub const MQMODE_FORCE: types::MQMODE = types::MQMODE(0);
+        pub const MQMODE_QUIESCE: types::MQMODE = types::MQMODE(1);
+        pub const MQMODE_TERMINATE: types::MQMODE = types::MQMODE(2);
+        pub const MQMULC_STANDARD: types::MQMULC = types::MQMULC(0);
+        pub const MQMULC_REFINED: types::MQMULC = types::MQMULC(1);
+        pub const MQNHABACKLOG_UNKNOWN: types::MQNHABACKLOG = types::MQNHABACKLOG(-1);
+        pub const MQNHACONNACTV_NO: types::MQNHACONNACTV = types::MQNHACONNACTV(0);
+        pub const MQNHACONNACTV_YES: types::MQNHACONNACTV = types::MQNHACONNACTV(1);
+        pub const MQNHACONNGRP_NO: types::MQNHACONNGRP = types::MQNHACONNGRP(0);
+        pub const MQNHACONNGRP_YES: types::MQNHACONNGRP = types::MQNHACONNGRP(1);
+        pub const MQNHACONNGRP_SUSPENDED: types::MQNHACONNGRP = types::MQNHACONNGRP(2);
+        pub const MQNHAGRPROLE_UNKNOWN: types::MQNHAGRPROLE = types::MQNHAGRPROLE(0);
+        pub const MQNHAGRPROLE_NOT_CONFIGURED: types::MQNHAGRPROLE = types::MQNHAGRPROLE(
+            1,
+        );
+        pub const MQNHAGRPROLE_LIVE: types::MQNHAGRPROLE = types::MQNHAGRPROLE(2);
+        pub const MQNHAGRPROLE_RECOVERY: types::MQNHAGRPROLE = types::MQNHAGRPROLE(3);
+        pub const MQNHAGRPROLE_PENDING_LIVE: types::MQNHAGRPROLE = types::MQNHAGRPROLE(
+            4,
+        );
+        pub const MQNHAGRPROLE_PENDING_RECOVERY: types::MQNHAGRPROLE = types::MQNHAGRPROLE(
+            5,
+        );
+        pub const MQNHAINSYNC_NO: types::MQNHAINSYNC = types::MQNHAINSYNC(0);
+        pub const MQNHAINSYNC_YES: types::MQNHAINSYNC = types::MQNHAINSYNC(1);
+        pub const MQNHAROLE_UNKNOWN: types::MQNHAROLE = types::MQNHAROLE(0);
+        pub const MQNHAROLE_ACTIVE: types::MQNHAROLE = types::MQNHAROLE(1);
+        pub const MQNHAROLE_REPLICA: types::MQNHAROLE = types::MQNHAROLE(2);
+        pub const MQNHAROLE_LEADER: types::MQNHAROLE = types::MQNHAROLE(3);
+        pub const MQNHASTATUS_UNKNOWN: types::MQNHASTATUS = types::MQNHASTATUS(0);
+        pub const MQNHASTATUS_NORMAL: types::MQNHASTATUS = types::MQNHASTATUS(1);
+        pub const MQNHASTATUS_CHECKING: types::MQNHASTATUS = types::MQNHASTATUS(2);
+        pub const MQNHASTATUS_SYNCHRONIZING: types::MQNHASTATUS = types::MQNHASTATUS(3);
+        pub const MQNHASTATUS_REBASING: types::MQNHASTATUS = types::MQNHASTATUS(4);
+        pub const MQNHASTATUS_DISK_FULL: types::MQNHASTATUS = types::MQNHASTATUS(5);
+        pub const MQNHASTATUS_DISCONNECTED: types::MQNHASTATUS = types::MQNHASTATUS(6);
+        pub const MQNHASTATUS_PARTITIONED: types::MQNHASTATUS = types::MQNHASTATUS(7);
+        pub const MQNHATYPE_ALL: types::MQNHATYPE = types::MQNHATYPE(-1);
+        pub const MQNHATYPE_INSTANCE: types::MQNHATYPE = types::MQNHATYPE(0);
+        pub const MQNHATYPE_GROUP: types::MQNHATYPE = types::MQNHATYPE(1);
+        pub const MQNSH_ALL: types::MQNSH = types::MQNSH(-1);
+        pub const MQNSH_NONE: types::MQNSH = types::MQNSH(0);
+        pub const MQOPER_UNKNOWN: types::MQOPER = types::MQOPER(0);
+        pub const MQOPER_BROWSE: types::MQOPER = types::MQOPER(1);
+        pub const MQOPER_DISCARD: types::MQOPER = types::MQOPER(2);
+        pub const MQOPER_GET: types::MQOPER = types::MQOPER(3);
+        pub const MQOPER_PUT: types::MQOPER = types::MQOPER(4);
+        pub const MQOPER_PUT_REPLY: types::MQOPER = types::MQOPER(5);
+        pub const MQOPER_PUT_REPORT: types::MQOPER = types::MQOPER(6);
+        pub const MQOPER_RECEIVE: types::MQOPER = types::MQOPER(7);
+        pub const MQOPER_SEND: types::MQOPER = types::MQOPER(8);
+        pub const MQOPER_TRANSFORM: types::MQOPER = types::MQOPER(9);
+        pub const MQOPER_PUBLISH: types::MQOPER = types::MQOPER(10);
+        pub const MQOPER_EXCLUDED_PUBLISH: types::MQOPER = types::MQOPER(11);
+        pub const MQOPER_DISCARDED_PUBLISH: types::MQOPER = types::MQOPER(12);
+        pub const MQOPER_SYSTEM_FIRST: types::MQOPER = types::MQOPER(0);
+        pub const MQOPER_SYSTEM_LAST: types::MQOPER = types::MQOPER(65535);
+        pub const MQOPER_APPL_FIRST: types::MQOPER = types::MQOPER(65536);
+        pub const MQOPER_APPL_LAST: types::MQOPER = types::MQOPER(999999999);
+        pub const MQOPMODE_COMPAT: types::MQOPMODE = types::MQOPMODE(0);
+        pub const MQOPMODE_NEW_FUNCTION: types::MQOPMODE = types::MQOPMODE(1);
+        pub const MQPAGECLAS_4KB: types::MQPAGECLAS = types::MQPAGECLAS(0);
+        pub const MQPAGECLAS_FIXED4KB: types::MQPAGECLAS = types::MQPAGECLAS(1);
+        pub const MQPO_NO: types::MQPO = types::MQPO(0);
+        pub const MQPO_YES: types::MQPO = types::MQPO(1);
+        pub const MQPSCT_NONE: types::MQPSCT = types::MQPSCT(-1);
+        pub const MQPSST_ALL: types::MQPSST = types::MQPSST(0);
+        pub const MQPSST_LOCAL: types::MQPSST = types::MQPSST(1);
+        pub const MQPSST_PARENT: types::MQPSST = types::MQPSST(2);
+        pub const MQPSST_CHILD: types::MQPSST = types::MQPSST(3);
         pub const MQPS_STATUS_INACTIVE: types::MQPS = types::MQPS(0);
         pub const MQPS_STATUS_STARTING: types::MQPS = types::MQPS(1);
         pub const MQPS_STATUS_STOPPING: types::MQPS = types::MQPS(2);
@@ -5224,6 +5739,40 @@ pub mod constants {
         pub const MQPUBO_OTHER_SUBSCRIBERS_ONLY: types::MQPUBO = types::MQPUBO(4);
         pub const MQPUBO_NO_REGISTRATION: types::MQPUBO = types::MQPUBO(8);
         pub const MQPUBO_IS_RETAINED_PUBLICATION: types::MQPUBO = types::MQPUBO(16);
+        pub const MQQMDT_EXPLICIT_CLUSTER_SENDER: types::MQQMDT = types::MQQMDT(1);
+        pub const MQQMDT_AUTO_CLUSTER_SENDER: types::MQQMDT = types::MQQMDT(2);
+        pub const MQQMDT_CLUSTER_RECEIVER: types::MQQMDT = types::MQQMDT(3);
+        pub const MQQMDT_AUTO_EXP_CLUSTER_SENDER: types::MQQMDT = types::MQQMDT(4);
+        pub const MQQMFAC_IMS_BRIDGE: types::MQQMFAC = types::MQQMFAC(1);
+        pub const MQQMFAC_DB2: types::MQQMFAC = types::MQQMFAC(2);
+        pub const MQQMSTA_STARTING: types::MQQMSTA = types::MQQMSTA(1);
+        pub const MQQMSTA_RUNNING: types::MQQMSTA = types::MQQMSTA(2);
+        pub const MQQMSTA_QUIESCING: types::MQQMSTA = types::MQQMSTA(3);
+        pub const MQQMSTA_STANDBY: types::MQQMSTA = types::MQQMSTA(4);
+        pub const MQQMT_NORMAL: types::MQQMT = types::MQQMT(0);
+        pub const MQQMT_REPOSITORY: types::MQQMT = types::MQQMT(1);
+        pub const MQQO_NO: types::MQQO = types::MQQO(0);
+        pub const MQQO_YES: types::MQQO = types::MQQO(1);
+        pub const MQQSGS_UNKNOWN: types::MQQSGS = types::MQQSGS(0);
+        pub const MQQSGS_CREATED: types::MQQSGS = types::MQQSGS(1);
+        pub const MQQSGS_ACTIVE: types::MQQSGS = types::MQQSGS(2);
+        pub const MQQSGS_INACTIVE: types::MQQSGS = types::MQQSGS(3);
+        pub const MQQSGS_FAILED: types::MQQSGS = types::MQQSGS(4);
+        pub const MQQSGS_PENDING: types::MQQSGS = types::MQQSGS(5);
+        pub const MQQSIE_NONE: types::MQQSIE = types::MQQSIE(0);
+        pub const MQQSIE_HIGH: types::MQQSIE = types::MQQSIE(1);
+        pub const MQQSIE_OK: types::MQQSIE = types::MQQSIE(2);
+        pub const MQQSOT_ALL: types::MQQSOT = types::MQQSOT(1);
+        pub const MQQSOT_INPUT: types::MQQSOT = types::MQQSOT(2);
+        pub const MQQSOT_OUTPUT: types::MQQSOT = types::MQQSOT(3);
+        pub const MQQSO_NO: types::MQQSO = types::MQQSO(0);
+        pub const MQQSO_YES: types::MQQSO = types::MQQSO(1);
+        pub const MQQSO_EXCLUSIVE: types::MQQSO = types::MQQSO(2);
+        pub const MQQSO_SHARED: types::MQQSO = types::MQQSO(1);
+        pub const MQQSUM_NO: types::MQQSUM = types::MQQSUM(0);
+        pub const MQQSUM_YES: types::MQQSUM = types::MQQSUM(1);
+        pub const MQRAR_NO: types::MQRAR = types::MQRAR(0);
+        pub const MQRAR_YES: types::MQRAR = types::MQRAR(1);
         pub const MQRCCF_CFH_TYPE_ERROR: types::MQRCCF = types::MQRCCF(3001);
         pub const MQRCCF_CFH_LENGTH_ERROR: types::MQRCCF = types::MQRCCF(3002);
         pub const MQRCCF_CFH_VERSION_ERROR: types::MQRCCF = types::MQRCCF(3003);
@@ -5589,6 +6138,8 @@ pub mod constants {
         pub const MQRCCF_Q_MGR_STATUS_NOT_FOUND: types::MQRCCF = types::MQRCCF(4099);
         pub const MQRCCF_MODE_VALUE_ERROR: types::MQRCCF = types::MQRCCF(3029);
         pub const MQRCCF_IPADDR_ERROR: types::MQRCCF = types::MQRCCF(3345);
+        pub const MQRDNS_ENABLED: types::MQRDNS = types::MQRDNS(0);
+        pub const MQRDNS_DISABLED: types::MQRDNS = types::MQRDNS(1);
         pub const MQREGO_NONE: types::MQREGO = types::MQREGO(0);
         pub const MQREGO_CORREL_ID_AS_IDENTITY: types::MQREGO = types::MQREGO(1);
         pub const MQREGO_ANONYMOUS: types::MQREGO = types::MQREGO(2);
@@ -5612,6 +6163,193 @@ pub mod constants {
         pub const MQREGO_LEAVE_ONLY: types::MQREGO = types::MQREGO(524288);
         pub const MQREGO_VARIABLE_USER_ID: types::MQREGO = types::MQREGO(1048576);
         pub const MQREGO_LOCKED: types::MQREGO = types::MQREGO(2097152);
+        pub const MQROUTE_DELIVER_REJ_UNSUP_MASK: types::MQROUTE = types::MQROUTE(
+            -65536,
+        );
+        pub const MQROUTE_UNLIMITED_ACTIVITIES: types::MQROUTE = types::MQROUTE(0);
+        pub const MQROUTE_DETAIL_LOW: types::MQROUTE = types::MQROUTE(2);
+        pub const MQROUTE_DETAIL_MEDIUM: types::MQROUTE = types::MQROUTE(8);
+        pub const MQROUTE_DETAIL_HIGH: types::MQROUTE = types::MQROUTE(32);
+        pub const MQROUTE_FORWARD_ALL: types::MQROUTE = types::MQROUTE(256);
+        pub const MQROUTE_FORWARD_IF_SUPPORTED: types::MQROUTE = types::MQROUTE(512);
+        pub const MQROUTE_DELIVER_YES: types::MQROUTE = types::MQROUTE(4096);
+        pub const MQROUTE_DELIVER_NO: types::MQROUTE = types::MQROUTE(8192);
+        pub const MQROUTE_ACCUMULATE_NONE: types::MQROUTE = types::MQROUTE(65539);
+        pub const MQROUTE_ACCUMULATE_IN_MSG: types::MQROUTE = types::MQROUTE(65540);
+        pub const MQROUTE_ACCUMULATE_AND_REPLY: types::MQROUTE = types::MQROUTE(65541);
+        pub const MQROUTE_FORWARD_REJ_UNSUP_MASK: types::MQROUTE = types::MQROUTE(
+            -65536,
+        );
+        pub const MQRP_NO: types::MQRP = types::MQRP(0);
+        pub const MQRP_YES: types::MQRP = types::MQRP(1);
+        pub const MQRQ_CONN_NOT_AUTHORIZED: types::MQRQ = types::MQRQ(1);
+        pub const MQRQ_OPEN_NOT_AUTHORIZED: types::MQRQ = types::MQRQ(2);
+        pub const MQRQ_CLOSE_NOT_AUTHORIZED: types::MQRQ = types::MQRQ(3);
+        pub const MQRQ_CMD_NOT_AUTHORIZED: types::MQRQ = types::MQRQ(4);
+        pub const MQRQ_Q_MGR_STOPPING: types::MQRQ = types::MQRQ(5);
+        pub const MQRQ_Q_MGR_QUIESCING: types::MQRQ = types::MQRQ(6);
+        pub const MQRQ_CHANNEL_STOPPED_OK: types::MQRQ = types::MQRQ(7);
+        pub const MQRQ_CHANNEL_STOPPED_ERROR: types::MQRQ = types::MQRQ(8);
+        pub const MQRQ_CHANNEL_STOPPED_RETRY: types::MQRQ = types::MQRQ(9);
+        pub const MQRQ_CHANNEL_STOPPED_DISABLED: types::MQRQ = types::MQRQ(10);
+        pub const MQRQ_BRIDGE_STOPPED_OK: types::MQRQ = types::MQRQ(11);
+        pub const MQRQ_BRIDGE_STOPPED_ERROR: types::MQRQ = types::MQRQ(12);
+        pub const MQRQ_SSL_HANDSHAKE_ERROR: types::MQRQ = types::MQRQ(13);
+        pub const MQRQ_SSL_CIPHER_SPEC_ERROR: types::MQRQ = types::MQRQ(14);
+        pub const MQRQ_SSL_CLIENT_AUTH_ERROR: types::MQRQ = types::MQRQ(15);
+        pub const MQRQ_SSL_PEER_NAME_ERROR: types::MQRQ = types::MQRQ(16);
+        pub const MQRQ_SUB_NOT_AUTHORIZED: types::MQRQ = types::MQRQ(17);
+        pub const MQRQ_SUB_DEST_NOT_AUTHORIZED: types::MQRQ = types::MQRQ(18);
+        pub const MQRQ_SSL_UNKNOWN_REVOCATION: types::MQRQ = types::MQRQ(19);
+        pub const MQRQ_SYS_CONN_NOT_AUTHORIZED: types::MQRQ = types::MQRQ(20);
+        pub const MQRQ_CHANNEL_BLOCKED_ADDRESS: types::MQRQ = types::MQRQ(21);
+        pub const MQRQ_CHANNEL_BLOCKED_USERID: types::MQRQ = types::MQRQ(22);
+        pub const MQRQ_CHANNEL_BLOCKED_NOACCESS: types::MQRQ = types::MQRQ(23);
+        pub const MQRQ_MAX_ACTIVE_CHANNELS: types::MQRQ = types::MQRQ(24);
+        pub const MQRQ_MAX_CHANNELS: types::MQRQ = types::MQRQ(25);
+        pub const MQRQ_SVRCONN_INST_LIMIT: types::MQRQ = types::MQRQ(26);
+        pub const MQRQ_CLIENT_INST_LIMIT: types::MQRQ = types::MQRQ(27);
+        pub const MQRQ_CAF_NOT_INSTALLED: types::MQRQ = types::MQRQ(28);
+        pub const MQRQ_CSP_NOT_AUTHORIZED: types::MQRQ = types::MQRQ(29);
+        pub const MQRQ_FAILOVER_PERMITTED: types::MQRQ = types::MQRQ(30);
+        pub const MQRQ_FAILOVER_NOT_PERMITTED: types::MQRQ = types::MQRQ(31);
+        pub const MQRQ_STANDBY_ACTIVATED: types::MQRQ = types::MQRQ(32);
+        pub const MQRQ_REPLICA_ACTIVATED: types::MQRQ = types::MQRQ(33);
+        pub const MQRT_CONFIGURATION: types::MQRT = types::MQRT(1);
+        pub const MQRT_EXPIRY: types::MQRT = types::MQRT(2);
+        pub const MQRT_NSPROC: types::MQRT = types::MQRT(3);
+        pub const MQRT_PROXYSUB: types::MQRT = types::MQRT(4);
+        pub const MQRT_SUB_CONFIGURATION: types::MQRT = types::MQRT(5);
+        pub const MQSECCOMM_NO: types::MQSECCOMM = types::MQSECCOMM(0);
+        pub const MQSECCOMM_YES: types::MQSECCOMM = types::MQSECCOMM(1);
+        pub const MQSECCOMM_ANON: types::MQSECCOMM = types::MQSECCOMM(2);
+        pub const MQSECITEM_ALL: types::MQSECITEM = types::MQSECITEM(0);
+        pub const MQSECITEM_MQADMIN: types::MQSECITEM = types::MQSECITEM(1);
+        pub const MQSECITEM_MQNLIST: types::MQSECITEM = types::MQSECITEM(2);
+        pub const MQSECITEM_MQPROC: types::MQSECITEM = types::MQSECITEM(3);
+        pub const MQSECITEM_MQQUEUE: types::MQSECITEM = types::MQSECITEM(4);
+        pub const MQSECITEM_MQCONN: types::MQSECITEM = types::MQSECITEM(5);
+        pub const MQSECITEM_MQCMDS: types::MQSECITEM = types::MQSECITEM(6);
+        pub const MQSECITEM_MXADMIN: types::MQSECITEM = types::MQSECITEM(7);
+        pub const MQSECITEM_MXNLIST: types::MQSECITEM = types::MQSECITEM(8);
+        pub const MQSECITEM_MXPROC: types::MQSECITEM = types::MQSECITEM(9);
+        pub const MQSECITEM_MXQUEUE: types::MQSECITEM = types::MQSECITEM(10);
+        pub const MQSECITEM_MXTOPIC: types::MQSECITEM = types::MQSECITEM(11);
+        pub const MQSECSW_PROCESS: types::MQSECSW = types::MQSECSW(1);
+        pub const MQSECSW_NAMELIST: types::MQSECSW = types::MQSECSW(2);
+        pub const MQSECSW_Q: types::MQSECSW = types::MQSECSW(3);
+        pub const MQSECSW_TOPIC: types::MQSECSW = types::MQSECSW(4);
+        pub const MQSECSW_CONTEXT: types::MQSECSW = types::MQSECSW(6);
+        pub const MQSECSW_ALTERNATE_USER: types::MQSECSW = types::MQSECSW(7);
+        pub const MQSECSW_COMMAND: types::MQSECSW = types::MQSECSW(8);
+        pub const MQSECSW_CONNECTION: types::MQSECSW = types::MQSECSW(9);
+        pub const MQSECSW_SUBSYSTEM: types::MQSECSW = types::MQSECSW(10);
+        pub const MQSECSW_COMMAND_RESOURCES: types::MQSECSW = types::MQSECSW(11);
+        pub const MQSECSW_Q_MGR: types::MQSECSW = types::MQSECSW(15);
+        pub const MQSECSW_QSG: types::MQSECSW = types::MQSECSW(16);
+        pub const MQSECSW_OFF_FOUND: types::MQSECSW = types::MQSECSW(21);
+        pub const MQSECSW_ON_FOUND: types::MQSECSW = types::MQSECSW(22);
+        pub const MQSECSW_OFF_NOT_FOUND: types::MQSECSW = types::MQSECSW(23);
+        pub const MQSECSW_ON_NOT_FOUND: types::MQSECSW = types::MQSECSW(24);
+        pub const MQSECSW_OFF_ERROR: types::MQSECSW = types::MQSECSW(25);
+        pub const MQSECSW_ON_OVERRIDDEN: types::MQSECSW = types::MQSECSW(26);
+        pub const MQSECTYPE_AUTHSERV: types::MQSECTYPE = types::MQSECTYPE(1);
+        pub const MQSECTYPE_SSL: types::MQSECTYPE = types::MQSECTYPE(2);
+        pub const MQSECTYPE_CLASSES: types::MQSECTYPE = types::MQSECTYPE(3);
+        pub const MQSECTYPE_CONNAUTH: types::MQSECTYPE = types::MQSECTYPE(4);
+        pub const MQSELTYPE_NONE: types::MQSELTYPE = types::MQSELTYPE(0);
+        pub const MQSELTYPE_STANDARD: types::MQSELTYPE = types::MQSELTYPE(1);
+        pub const MQSELTYPE_EXTENDED: types::MQSELTYPE = types::MQSELTYPE(2);
+        pub const MQSTDBY_NOT_PERMITTED: types::MQSTDBY = types::MQSTDBY(0);
+        pub const MQSTDBY_PERMITTED: types::MQSTDBY = types::MQSTDBY(1);
+        pub const MQSUBTYPE_USER: types::MQSUBTYPE = types::MQSUBTYPE(-2);
+        pub const MQSUBTYPE_ALL: types::MQSUBTYPE = types::MQSUBTYPE(-1);
+        pub const MQSUBTYPE_API: types::MQSUBTYPE = types::MQSUBTYPE(1);
+        pub const MQSUBTYPE_ADMIN: types::MQSUBTYPE = types::MQSUBTYPE(2);
+        pub const MQSUBTYPE_PROXY: types::MQSUBTYPE = types::MQSUBTYPE(3);
+        pub const MQSUS_NO: types::MQSUS = types::MQSUS(0);
+        pub const MQSUS_YES: types::MQSUS = types::MQSUS(1);
+        pub const MQSYNCPOINT_YES: types::MQSYNCPOINT = types::MQSYNCPOINT(0);
+        pub const MQSYNCPOINT_IFPER: types::MQSYNCPOINT = types::MQSYNCPOINT(1);
+        pub const MQSYSOBJ_YES: types::MQSYSOBJ = types::MQSYSOBJ(0);
+        pub const MQSYSOBJ_NO: types::MQSYSOBJ = types::MQSYSOBJ(1);
+        pub const MQSYSP_NO: types::MQSYSP = types::MQSYSP(0);
+        pub const MQSYSP_YES: types::MQSYSP = types::MQSYSP(1);
+        pub const MQSYSP_EXTENDED: types::MQSYSP = types::MQSYSP(2);
+        pub const MQSYSP_TYPE_INITIAL: types::MQSYSP = types::MQSYSP(10);
+        pub const MQSYSP_TYPE_SET: types::MQSYSP = types::MQSYSP(11);
+        pub const MQSYSP_TYPE_LOG_COPY: types::MQSYSP = types::MQSYSP(12);
+        pub const MQSYSP_TYPE_LOG_STATUS: types::MQSYSP = types::MQSYSP(13);
+        pub const MQSYSP_TYPE_ARCHIVE_TAPE: types::MQSYSP = types::MQSYSP(14);
+        pub const MQSYSP_ALLOC_BLK: types::MQSYSP = types::MQSYSP(20);
+        pub const MQSYSP_ALLOC_TRK: types::MQSYSP = types::MQSYSP(21);
+        pub const MQSYSP_ALLOC_CYL: types::MQSYSP = types::MQSYSP(22);
+        pub const MQSYSP_STATUS_BUSY: types::MQSYSP = types::MQSYSP(30);
+        pub const MQSYSP_STATUS_PREMOUNT: types::MQSYSP = types::MQSYSP(31);
+        pub const MQSYSP_STATUS_AVAILABLE: types::MQSYSP = types::MQSYSP(32);
+        pub const MQSYSP_STATUS_UNKNOWN: types::MQSYSP = types::MQSYSP(33);
+        pub const MQSYSP_STATUS_ALLOC_ARCHIVE: types::MQSYSP = types::MQSYSP(34);
+        pub const MQSYSP_STATUS_COPYING_BSDS: types::MQSYSP = types::MQSYSP(35);
+        pub const MQSYSP_STATUS_COPYING_LOG: types::MQSYSP = types::MQSYSP(36);
+        pub const MQS_AVAIL_NORMAL: types::MQS_AVAIL = types::MQS_AVAIL(0);
+        pub const MQS_AVAIL_ERROR: types::MQS_AVAIL = types::MQS_AVAIL(1);
+        pub const MQS_AVAIL_STOPPED: types::MQS_AVAIL = types::MQS_AVAIL(2);
+        pub const MQS_EXPANDST_NORMAL: types::MQS_EXPANDST = types::MQS_EXPANDST(0);
+        pub const MQS_EXPANDST_FAILED: types::MQS_EXPANDST = types::MQS_EXPANDST(1);
+        pub const MQS_EXPANDST_MAXIMUM: types::MQS_EXPANDST = types::MQS_EXPANDST(2);
+        pub const MQS_OPENMODE_NONE: types::MQS_OPENMODE = types::MQS_OPENMODE(0);
+        pub const MQS_OPENMODE_READONLY: types::MQS_OPENMODE = types::MQS_OPENMODE(1);
+        pub const MQS_OPENMODE_UPDATE: types::MQS_OPENMODE = types::MQS_OPENMODE(2);
+        pub const MQS_OPENMODE_RECOVERY: types::MQS_OPENMODE = types::MQS_OPENMODE(3);
+        pub const MQS_STATUS_CLOSED: types::MQS_STATUS = types::MQS_STATUS(0);
+        pub const MQS_STATUS_CLOSING: types::MQS_STATUS = types::MQS_STATUS(1);
+        pub const MQS_STATUS_OPENING: types::MQS_STATUS = types::MQS_STATUS(2);
+        pub const MQS_STATUS_OPEN: types::MQS_STATUS = types::MQS_STATUS(3);
+        pub const MQS_STATUS_NOTENABLED: types::MQS_STATUS = types::MQS_STATUS(4);
+        pub const MQS_STATUS_ALLOCFAIL: types::MQS_STATUS = types::MQS_STATUS(5);
+        pub const MQS_STATUS_OPENFAIL: types::MQS_STATUS = types::MQS_STATUS(6);
+        pub const MQS_STATUS_STGFAIL: types::MQS_STATUS = types::MQS_STATUS(7);
+        pub const MQS_STATUS_DATAFAIL: types::MQS_STATUS = types::MQS_STATUS(8);
+        pub const MQTIME_UNIT_MINS: types::MQTIME = types::MQTIME(0);
+        pub const MQTIME_UNIT_SECS: types::MQTIME = types::MQTIME(1);
+        pub const MQUCI_NO: types::MQUCI = types::MQUCI(0);
+        pub const MQUCI_YES: types::MQUCI = types::MQUCI(1);
+        pub const MQUIDSUPP_NO: types::MQUIDSUPP = types::MQUIDSUPP(0);
+        pub const MQUIDSUPP_YES: types::MQUIDSUPP = types::MQUIDSUPP(1);
+        pub const MQUNDELIVERED_NORMAL: types::MQUNDELIVERED = types::MQUNDELIVERED(0);
+        pub const MQUNDELIVERED_SAFE: types::MQUNDELIVERED = types::MQUNDELIVERED(1);
+        pub const MQUNDELIVERED_DISCARD: types::MQUNDELIVERED = types::MQUNDELIVERED(2);
+        pub const MQUNDELIVERED_KEEP: types::MQUNDELIVERED = types::MQUNDELIVERED(3);
+        pub const MQUOWST_NONE: types::MQUOWST = types::MQUOWST(0);
+        pub const MQUOWST_ACTIVE: types::MQUOWST = types::MQUOWST(1);
+        pub const MQUOWST_PREPARED: types::MQUOWST = types::MQUOWST(2);
+        pub const MQUOWST_UNRESOLVED: types::MQUOWST = types::MQUOWST(3);
+        pub const MQUOWT_Q_MGR: types::MQUOWT = types::MQUOWT(0);
+        pub const MQUOWT_CICS: types::MQUOWT = types::MQUOWT(1);
+        pub const MQUOWT_RRS: types::MQUOWT = types::MQUOWT(2);
+        pub const MQUOWT_IMS: types::MQUOWT = types::MQUOWT(3);
+        pub const MQUOWT_XA: types::MQUOWT = types::MQUOWT(4);
+        pub const MQUSAGE_DS_OLDEST_ACTIVE_UOW: types::MQUSAGE_DS = types::MQUSAGE_DS(
+            10,
+        );
+        pub const MQUSAGE_DS_OLDEST_PS_RECOVERY: types::MQUSAGE_DS = types::MQUSAGE_DS(
+            11,
+        );
+        pub const MQUSAGE_DS_OLDEST_CF_RECOVERY: types::MQUSAGE_DS = types::MQUSAGE_DS(
+            12,
+        );
+        pub const MQUSAGE_EXPAND_USER: types::MQUSAGE_EXPAND = types::MQUSAGE_EXPAND(1);
+        pub const MQUSAGE_EXPAND_SYSTEM: types::MQUSAGE_EXPAND = types::MQUSAGE_EXPAND(
+            2,
+        );
+        pub const MQUSAGE_EXPAND_NONE: types::MQUSAGE_EXPAND = types::MQUSAGE_EXPAND(3);
+        pub const MQUSAGE_PS_AVAILABLE: types::MQUSAGE_PS = types::MQUSAGE_PS(0);
+        pub const MQUSAGE_PS_DEFINED: types::MQUSAGE_PS = types::MQUSAGE_PS(1);
+        pub const MQUSAGE_PS_OFFLINE: types::MQUSAGE_PS = types::MQUSAGE_PS(2);
+        pub const MQUSAGE_PS_NOT_DEFINED: types::MQUSAGE_PS = types::MQUSAGE_PS(3);
+        pub const MQUSAGE_PS_SUSPENDED: types::MQUSAGE_PS = types::MQUSAGE_PS(4);
+        pub const MQUSAGE_SMDS_AVAILABLE: types::MQUSAGE_SMDS = types::MQUSAGE_SMDS(0);
+        pub const MQUSAGE_SMDS_NO_DATA: types::MQUSAGE_SMDS = types::MQUSAGE_SMDS(1);
     }
     #[cfg(feature = "pcf")]
     pub use pcf::*;
