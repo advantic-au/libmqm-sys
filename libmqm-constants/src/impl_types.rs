@@ -94,6 +94,7 @@ impl From<types::MQIA> for types::MQXA {
     }
 }
 
+#[cfg(feature = "pcf")]
 impl From<types::MQRCCF> for types::MQRC {
     fn from(value: types::MQRCCF) -> Self {
         Self(value.0)
