@@ -78,6 +78,11 @@ pub mod types {
         pub MQCADSD, mqsys::MQLONG, mapping::MQCADSD_MAPSTR, r##"ADS Descriptors"##
     );
     impl_value!(MQCADSD, mqsys::MQLONG);
+    define_new_type!(
+        pub MQCAFTY, mqsys::MQLONG, mapping::MQCAFTY_MAPSTR,
+        r##"Connection Affinity Values"##
+    );
+    impl_value!(MQCAFTY, mqsys::MQLONG);
     define_new_type!(pub MQCAP, mqsys::MQLONG, mapping::MQCAP_MAPSTR, r##"Capability"##);
     impl_value!(MQCAP, mqsys::MQLONG);
     define_new_type!(
@@ -85,7 +90,9 @@ pub mod types {
         r##"Character Attribute Selectors"##
     );
     impl_value!(MQCA, mqsys::MQLONG);
-    define_new_type!(pub MQCBCF, mqsys::MQLONG, mapping::MQCBCF_MAPSTR, r##"Flags"##);
+    define_new_type!(
+        pub MQCBCF, mqsys::MQLONG, mapping::MQCBCF_MAPSTR, r##"Callback Context Flags"##
+    );
     impl_value!(MQCBCF, mqsys::MQLONG);
     define_new_type!(
         pub MQCBCT, mqsys::MQLONG, mapping::MQCBCT_MAPSTR, r##"Callback type"##
@@ -143,7 +150,13 @@ pub mod types {
         pub MQCHAD, mqsys::MQLONG, mapping::MQCHAD_MAPSTR, r##"Channel Auto Definition"##
     );
     impl_value!(MQCHAD, mqsys::MQLONG);
-    define_new_type!(pub MQCIH, mqsys::MQLONG, mapping::MQCIH_MAPSTR, r##"Flags"##);
+    define_new_type!(
+        pub MQCHT, mqsys::MQLONG, mapping::MQCHT_MAPSTR, r##"Channel Types"##
+    );
+    impl_value!(MQCHT, mqsys::MQLONG);
+    define_new_type!(
+        pub MQCIH, mqsys::MQLONG, mapping::MQCIH_MAPSTR, r##"MQCIH Flags"##
+    );
     impl_value!(MQCIH, mqsys::MQLONG);
     define_new_type!(
         pub MQCIT, mqsys::MQLONG, mapping::MQCIT_MAPSTR, r##"CommInfo Type"##
@@ -223,7 +236,7 @@ pub mod types {
         pub MQDC, mqsys::MQLONG, mapping::MQDC_MAPSTR, r##"Destination Class"##
     );
     impl_value!(MQDC, mqsys::MQLONG);
-    define_new_type!(pub MQDHF, mqsys::MQLONG, mapping::MQDHF_MAPSTR, r##"Flags"##);
+    define_new_type!(pub MQDHF, mqsys::MQLONG, mapping::MQDHF_MAPSTR, r##"MQDH Flags"##);
     impl_value!(MQDHF, mqsys::MQLONG);
     define_new_type!(
         pub MQDLV, mqsys::MQLONG, mapping::MQDLV_MAPSTR,
@@ -313,7 +326,9 @@ pub mod types {
         pub MQIGQ, mqsys::MQLONG, mapping::MQIGQ_MAPSTR, r##"Intra-Group Queuing"##
     );
     impl_value!(MQIGQ, mqsys::MQLONG);
-    define_new_type!(pub MQIIH, mqsys::MQLONG, mapping::MQIIH_MAPSTR, r##"Flags"##);
+    define_new_type!(
+        pub MQIIH, mqsys::MQLONG, mapping::MQIIH_MAPSTR, r##"MQIIH Flags"##
+    );
     impl_value!(MQIIH, mqsys::MQLONG);
     define_new_type!(
         pub MQIMGRCOV, mqsys::MQLONG, mapping::MQIMGRCOV_MAPSTR,
@@ -332,6 +347,10 @@ pub mod types {
     define_new_type!(pub MQIT, mqsys::MQLONG, mapping::MQIT_MAPSTR, r##"Index Types"##);
     impl_value!(MQIT, mqsys::MQLONG);
     define_new_type!(
+        pub MQKAI, mqsys::MQLONG, mapping::MQKAI_MAPSTR, r##"KeepAlive Interval"##
+    );
+    impl_value!(MQKAI, mqsys::MQLONG);
+    define_new_type!(
         pub MQKEY, mqsys::MQLONG, mapping::MQKEY_MAPSTR, r##"Key reuse count"##
     );
     impl_value!(MQKEY, mqsys::MQLONG);
@@ -346,7 +365,9 @@ pub mod types {
     impl_value!(MQMCB, mqsys::MQLONG);
     define_new_type!(pub MQMC, mqsys::MQLONG, mapping::MQMC_MAPSTR, r##"Multicast"##);
     impl_value!(MQMC, mqsys::MQLONG);
-    define_new_type!(pub MQMDEF, mqsys::MQLONG, mapping::MQMDEF_MAPSTR, r##"Flags"##);
+    define_new_type!(
+        pub MQMDEF, mqsys::MQLONG, mapping::MQMDEF_MAPSTR, r##"MQMDE Flags"##
+    );
     impl_value!(MQMDEF, mqsys::MQLONG);
     define_new_type!(
         pub MQMDS, mqsys::MQLONG, mapping::MQMDS_MAPSTR, r##"Message Delivery Sequence"##
@@ -519,6 +540,10 @@ pub mod types {
     );
     impl_value!(MQQT, mqsys::MQLONG);
     define_new_type!(
+        pub MQRCN, mqsys::MQLONG, mapping::MQRCN_MAPSTR, r##"Client Reconnect"##
+    );
+    impl_value!(MQRCN, mqsys::MQLONG);
+    define_new_type!(
         pub MQRCVTIME, mqsys::MQLONG, mapping::MQRCVTIME_MAPSTR,
         r##"Receive Timeout Types"##
     );
@@ -548,13 +573,17 @@ pub mod types {
         r##"Reorganization Controls"##
     );
     impl_value!(MQREORG, mqsys::MQLONG);
-    define_new_type!(pub MQRFH, mqsys::MQLONG, mapping::MQRFH_MAPSTR, r##"Flags"##);
+    define_new_type!(
+        pub MQRFH, mqsys::MQLONG, mapping::MQRFH_MAPSTR, r##"MQRFH Flags"##
+    );
     impl_value!(MQRFH, mqsys::MQLONG);
     define_new_type!(
         pub MQRL, mqsys::MQLONG, mapping::MQRL_MAPSTR, r##"Returned Length"##
     );
     impl_value!(MQRL, mqsys::MQLONG);
-    define_new_type!(pub MQRMHF, mqsys::MQLONG, mapping::MQRMHF_MAPSTR, r##"Flags"##);
+    define_new_type!(
+        pub MQRMHF, mqsys::MQLONG, mapping::MQRMHF_MAPSTR, r##"MQRMH Flags"##
+    );
     impl_value!(MQRMHF, mqsys::MQLONG);
     define_new_type!(
         pub MQRO, mqsys::MQLONG, mapping::MQRO_MAPSTR, r##"Report Options Masks"##
@@ -716,7 +745,9 @@ pub mod types {
         pub MQWARN, mqsys::MQLONG, mapping::MQWARN_MAPSTR, r##"Warn Options"##
     );
     impl_value!(MQWARN, mqsys::MQLONG);
-    define_new_type!(pub MQWIH, mqsys::MQLONG, mapping::MQWIH_MAPSTR, r##"Flags"##);
+    define_new_type!(
+        pub MQWIH, mqsys::MQLONG, mapping::MQWIH_MAPSTR, r##"MQWIH Flags"##
+    );
     impl_value!(MQWIH, mqsys::MQLONG);
     define_new_type!(
         pub MQWI, mqsys::MQLONG, mapping::MQWI_MAPSTR, r##"Wait Interval"##
@@ -730,6 +761,10 @@ pub mod types {
         pub MQXC, mqsys::MQLONG, mapping::MQXC_MAPSTR, r##"Exit Commands"##
     );
     impl_value!(MQXC, mqsys::MQLONG);
+    define_new_type!(
+        pub MQXPT, mqsys::MQLONG, mapping::MQXPT_MAPSTR, r##"Transport Types"##
+    );
+    impl_value!(MQXPT, mqsys::MQLONG);
     define_new_type!(
         pub MQ_CERT, mqsys::MQLONG, mapping::MQ_CERT_MAPSTR,
         r##"Certificate Validation Policy Type"##
@@ -760,11 +795,6 @@ pub mod types {
         use crate::value::{define_new_type, impl_value};
         use crate::bitflags::impl_bitflags;
         define_new_type!(
-            pub MQCAFTY, mqsys::MQLONG, mapping::MQCAFTY_MAPSTR,
-            r##"Connection Affinity Values"##
-        );
-        impl_value!(MQCAFTY, mqsys::MQLONG);
-        define_new_type!(
             pub MQCDC, mqsys::MQLONG, mapping::MQCDC_MAPSTR,
             r##"Channel Data Conversion"##
         );
@@ -773,10 +803,6 @@ pub mod types {
             pub MQCF, mqsys::MQLONG, mapping::MQCF_MAPSTR, r##"Capability Flags"##
         );
         impl_value!(MQCF, mqsys::MQLONG);
-        define_new_type!(
-            pub MQCHT, mqsys::MQLONG, mapping::MQCHT_MAPSTR, r##"Channel Types"##
-        );
-        impl_value!(MQCHT, mqsys::MQLONG);
         define_new_type!(
             pub MQCLCT, mqsys::MQLONG, mapping::MQCLCT_MAPSTR, r##"Cluster Cache Types"##
         );
@@ -795,10 +821,6 @@ pub mod types {
             pub MQIEPF, mqsys::MQLONG, mapping::MQIEPF_MAPSTR, r##"IEP Flags"##
         );
         impl_value!(MQIEPF, mqsys::MQLONG);
-        define_new_type!(
-            pub MQKAI, mqsys::MQLONG, mapping::MQKAI_MAPSTR, r##"KeepAlive Interval"##
-        );
-        impl_value!(MQKAI, mqsys::MQLONG);
         define_new_type!(
             pub MQMCAT, mqsys::MQLONG, mapping::MQMCAT_MAPSTR, r##"MCA Types"##
         );
@@ -828,10 +850,6 @@ pub mod types {
             pub MQQMF, mqsys::MQLONG, mapping::MQQMF_MAPSTR, r##"Queue Manager Flags"##
         );
         impl_bitflags!(MQQMF, mqsys::MQLONG);
-        define_new_type!(
-            pub MQRCN, mqsys::MQLONG, mapping::MQRCN_MAPSTR, r##"Client Reconnect"##
-        );
-        impl_value!(MQRCN, mqsys::MQLONG);
         define_new_type!(
             pub MQSCA, mqsys::MQLONG, mapping::MQSCA_MAPSTR,
             r##"SSL Client Authentication"##
@@ -876,10 +894,6 @@ pub mod types {
             r##"API Function Identifiers"##
         );
         impl_value!(MQXF, mqsys::MQLONG);
-        define_new_type!(
-            pub MQXPT, mqsys::MQLONG, mapping::MQXPT_MAPSTR, r##"Transport Types"##
-        );
-        impl_value!(MQXPT, mqsys::MQLONG);
         define_new_type!(
             pub MQXR2, mqsys::MQLONG, mapping::MQXR2_MAPSTR, r##"Exit Response 2"##
         );
@@ -1221,7 +1235,9 @@ pub mod types {
             r##"Display Subscription Types"##
         );
         impl_value!(MQDOPT, mqsys::MQLONG);
-        define_new_type!(pub MQEPH, mqsys::MQLONG, mapping::MQEPH_MAPSTR, r##"Flags"##);
+        define_new_type!(
+            pub MQEPH, mqsys::MQLONG, mapping::MQEPH_MAPSTR, r##"MQEPH Flags"##
+        );
         impl_value!(MQEPH, mqsys::MQLONG);
         define_new_type!(
             pub MQET, mqsys::MQLONG, mapping::MQET_MAPSTR, r##"Escape Types"##
@@ -1758,6 +1774,8 @@ pub mod constants {
     pub const MQCADSD_SEND: types::MQCADSD = types::MQCADSD(1);
     pub const MQCADSD_RECV: types::MQCADSD = types::MQCADSD(16);
     pub const MQCADSD_MSGFORMAT: types::MQCADSD = types::MQCADSD(256);
+    pub const MQCAFTY_NONE: types::MQCAFTY = types::MQCAFTY(0);
+    pub const MQCAFTY_PREFERRED: types::MQCAFTY = types::MQCAFTY(1);
     pub const MQCAP_NOT_SUPPORTED: types::MQCAP = types::MQCAP(0);
     pub const MQCAP_SUPPORTED: types::MQCAP = types::MQCAP(1);
     pub const MQCAP_EXPIRED: types::MQCAP = types::MQCAP(2);
@@ -1939,6 +1957,17 @@ pub mod constants {
     pub const MQCGWI_DEFAULT: types::MQCGWI = types::MQCGWI(-2);
     pub const MQCHAD_DISABLED: types::MQCHAD = types::MQCHAD(0);
     pub const MQCHAD_ENABLED: types::MQCHAD = types::MQCHAD(1);
+    pub const MQCHT_SENDER: types::MQCHT = types::MQCHT(1);
+    pub const MQCHT_SERVER: types::MQCHT = types::MQCHT(2);
+    pub const MQCHT_RECEIVER: types::MQCHT = types::MQCHT(3);
+    pub const MQCHT_REQUESTER: types::MQCHT = types::MQCHT(4);
+    pub const MQCHT_ALL: types::MQCHT = types::MQCHT(5);
+    pub const MQCHT_CLNTCONN: types::MQCHT = types::MQCHT(6);
+    pub const MQCHT_SVRCONN: types::MQCHT = types::MQCHT(7);
+    pub const MQCHT_CLUSRCVR: types::MQCHT = types::MQCHT(8);
+    pub const MQCHT_CLUSSDR: types::MQCHT = types::MQCHT(9);
+    pub const MQCHT_MQTT: types::MQCHT = types::MQCHT(10);
+    pub const MQCHT_AMQP: types::MQCHT = types::MQCHT(11);
     pub const MQCIH_NONE: types::MQCIH = types::MQCIH(0);
     pub const MQCIH_PASS_EXPIRATION: types::MQCIH = types::MQCIH(1);
     pub const MQCIH_REPLY_WITHOUT_NULLS: types::MQCIH = types::MQCIH(2);
@@ -2562,6 +2591,7 @@ pub mod constants {
     pub const MQIT_INTEGER: types::MQIT = types::MQIT(1);
     pub const MQIT_STRING: types::MQIT = types::MQIT(2);
     pub const MQIT_BAG: types::MQIT = types::MQIT(3);
+    pub const MQKAI_AUTO: types::MQKAI = types::MQKAI(-1);
     pub const MQKEY_REUSE_UNLIMITED: types::MQKEY = types::MQKEY(-1);
     pub const MQKEY_REUSE_DISABLED: types::MQKEY = types::MQKEY(0);
     pub const MQMASTER_NO: types::MQMASTER = types::MQMASTER(0);
@@ -2814,6 +2844,10 @@ pub mod constants {
     pub const MQQT_REMOTE: types::MQQT = types::MQQT(6);
     pub const MQQT_CLUSTER: types::MQQT = types::MQQT(7);
     pub const MQQT_ALL: types::MQQT = types::MQQT(1001);
+    pub const MQRCN_NO: types::MQRCN = types::MQRCN(0);
+    pub const MQRCN_YES: types::MQRCN = types::MQRCN(1);
+    pub const MQRCN_Q_MGR: types::MQRCN = types::MQRCN(2);
+    pub const MQRCN_DISABLED: types::MQRCN = types::MQRCN(3);
     pub const MQRCVTIME_MULTIPLY: types::MQRCVTIME = types::MQRCVTIME(0);
     pub const MQRCVTIME_ADD: types::MQRCVTIME = types::MQRCVTIME(1);
     pub const MQRCVTIME_EQUAL: types::MQRCVTIME = types::MQRCVTIME(2);
@@ -3578,6 +3612,14 @@ pub mod constants {
     pub const MQXC_MQCTL: types::MQXC = types::MQXC(45);
     pub const MQXC_MQSTAT: types::MQXC = types::MQXC(46);
     pub const MQXC_CALLBACK: types::MQXC = types::MQXC(48);
+    pub const MQXPT_ALL: types::MQXPT = types::MQXPT(-1);
+    pub const MQXPT_LOCAL: types::MQXPT = types::MQXPT(0);
+    pub const MQXPT_LU62: types::MQXPT = types::MQXPT(1);
+    pub const MQXPT_TCP: types::MQXPT = types::MQXPT(2);
+    pub const MQXPT_NETBIOS: types::MQXPT = types::MQXPT(3);
+    pub const MQXPT_SPX: types::MQXPT = types::MQXPT(4);
+    pub const MQXPT_DECNET: types::MQXPT = types::MQXPT(5);
+    pub const MQXPT_UDP: types::MQXPT = types::MQXPT(6);
     pub const MQ_CERT_VAL_POLICY_ANY: types::MQ_CERT = types::MQ_CERT(0);
     pub const MQ_CERT_VAL_POLICY_RFC5280: types::MQ_CERT = types::MQ_CERT(1);
     pub const MQ_CERT_VAL_POLICY_NONE: types::MQ_CERT = types::MQ_CERT(2);
@@ -3611,23 +3653,10 @@ pub mod constants {
     #[cfg(feature = "exits")]
     mod exits {
         use crate::types;
-        pub const MQCAFTY_NONE: types::MQCAFTY = types::MQCAFTY(0);
-        pub const MQCAFTY_PREFERRED: types::MQCAFTY = types::MQCAFTY(1);
         pub const MQCDC_NO_SENDER_CONVERSION: types::MQCDC = types::MQCDC(0);
         pub const MQCDC_SENDER_CONVERSION: types::MQCDC = types::MQCDC(1);
         pub const MQCF_NONE: types::MQCF = types::MQCF(0);
         pub const MQCF_DIST_LISTS: types::MQCF = types::MQCF(1);
-        pub const MQCHT_SENDER: types::MQCHT = types::MQCHT(1);
-        pub const MQCHT_SERVER: types::MQCHT = types::MQCHT(2);
-        pub const MQCHT_RECEIVER: types::MQCHT = types::MQCHT(3);
-        pub const MQCHT_REQUESTER: types::MQCHT = types::MQCHT(4);
-        pub const MQCHT_ALL: types::MQCHT = types::MQCHT(5);
-        pub const MQCHT_CLNTCONN: types::MQCHT = types::MQCHT(6);
-        pub const MQCHT_SVRCONN: types::MQCHT = types::MQCHT(7);
-        pub const MQCHT_CLUSRCVR: types::MQCHT = types::MQCHT(8);
-        pub const MQCHT_CLUSSDR: types::MQCHT = types::MQCHT(9);
-        pub const MQCHT_MQTT: types::MQCHT = types::MQCHT(10);
-        pub const MQCHT_AMQP: types::MQCHT = types::MQCHT(11);
         pub const MQCLCT_STATIC: types::MQCLCT = types::MQCLCT(0);
         pub const MQCLCT_DYNAMIC: types::MQCLCT = types::MQCLCT(1);
         pub const MQCOMPRESS_NOT_AVAILABLE: types::MQCOMPRESS = types::MQCOMPRESS(-1);
@@ -3660,7 +3689,6 @@ pub mod constants {
         pub const MQIEPF_LOCAL_LIBRARY: types::MQIEPF = types::MQIEPF(2);
         pub const MQIEPF_CLIENT_LIBRARY: types::MQIEPF = types::MQIEPF(0);
         pub const MQIEPF_NON_THREADED_LIBRARY: types::MQIEPF = types::MQIEPF(0);
-        pub const MQKAI_AUTO: types::MQKAI = types::MQKAI(-1);
         pub const MQMCAT_PROCESS: types::MQMCAT = types::MQMCAT(1);
         pub const MQMCAT_THREAD: types::MQMCAT = types::MQMCAT(2);
         pub const MQMCEV_PACKET_LOSS: types::MQMCEV = types::MQMCEV(1);
@@ -3712,10 +3740,6 @@ pub mod constants {
         pub const MQQMF_CLUSSDR_USER_DEFINED: types::MQQMF = types::MQQMF(8);
         pub const MQQMF_CLUSSDR_AUTO_DEFINED: types::MQQMF = types::MQQMF(16);
         pub const MQQMF_AVAILABLE: types::MQQMF = types::MQQMF(32);
-        pub const MQRCN_NO: types::MQRCN = types::MQRCN(0);
-        pub const MQRCN_YES: types::MQRCN = types::MQRCN(1);
-        pub const MQRCN_Q_MGR: types::MQRCN = types::MQRCN(2);
-        pub const MQRCN_DISABLED: types::MQRCN = types::MQRCN(3);
         pub const MQSCA_REQUIRED: types::MQSCA = types::MQSCA(0);
         pub const MQSCA_OPTIONAL: types::MQSCA = types::MQSCA(1);
         pub const MQSCA_NEVER_REQUIRED: types::MQSCA = types::MQSCA(2);
@@ -3782,14 +3806,6 @@ pub mod constants {
         pub const MQXF_XASTART: types::MQXF = types::MQXF(33);
         pub const MQXF_AXREG: types::MQXF = types::MQXF(34);
         pub const MQXF_AXUNREG: types::MQXF = types::MQXF(35);
-        pub const MQXPT_ALL: types::MQXPT = types::MQXPT(-1);
-        pub const MQXPT_LOCAL: types::MQXPT = types::MQXPT(0);
-        pub const MQXPT_LU62: types::MQXPT = types::MQXPT(1);
-        pub const MQXPT_TCP: types::MQXPT = types::MQXPT(2);
-        pub const MQXPT_NETBIOS: types::MQXPT = types::MQXPT(3);
-        pub const MQXPT_SPX: types::MQXPT = types::MQXPT(4);
-        pub const MQXPT_DECNET: types::MQXPT = types::MQXPT(5);
-        pub const MQXPT_UDP: types::MQXPT = types::MQXPT(6);
         pub const MQXR2_DEFAULT_CONTINUATION: types::MQXR2 = types::MQXR2(0);
         pub const MQXR2_PUT_WITH_DEF_USERID: types::MQXR2 = types::MQXR2(1);
         pub const MQXR2_PUT_WITH_MSG_USERID: types::MQXR2 = types::MQXR2(2);

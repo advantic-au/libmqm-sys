@@ -351,7 +351,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
         mqsys::MQCAFTY_STR,
         "MQLONG",
         "value",
-        Some("exits"),
+        None, // Required in base feature for MQCD
         Some("Connection Affinity Values"),
     ),
     c(
@@ -390,7 +390,15 @@ pub const CONSTANTS: &[ConstantEntry] = &[
         None,
         Some("Character Attribute Selectors"),
     ),
-    c("MQCBCF_", "MQCBCF", mqsys::MQCBCF_STR, "MQLONG", "value", None, Some("Flags")),
+    c(
+        "MQCBCF_",
+        "MQCBCF",
+        mqsys::MQCBCF_STR,
+        "MQLONG",
+        "value",
+        None,
+        Some("Callback Context Flags"),
+    ),
     c(
         "MQCBCT_",
         "MQCBCT",
@@ -705,10 +713,18 @@ pub const CONSTANTS: &[ConstantEntry] = &[
         mqsys::MQCHT_STR,
         "MQLONG",
         "value",
-        Some("exits"),
+        None, // Required in base feature for MQCD
         Some("Channel Types"),
     ),
-    c("MQCIH_", "MQCIH", mqsys::MQCIH_STR, "MQLONG", "value", None, Some("Flags")),
+    c(
+        "MQCIH_",
+        "MQCIH",
+        mqsys::MQCIH_STR,
+        "MQLONG",
+        "value",
+        None,
+        Some("MQCIH Flags"),
+    ),
     c(
         "MQCIT_",
         "MQCIT",
@@ -979,7 +995,15 @@ pub const CONSTANTS: &[ConstantEntry] = &[
         Some("pcf"),
         Some("Delete Options"),
     ),
-    c("MQDHF_", "MQDHF", mqsys::MQDHF_STR, "MQLONG", "value", None, Some("Flags")),
+    c(
+        "MQDHF_",
+        "MQDHF",
+        mqsys::MQDHF_STR,
+        "MQLONG",
+        "value",
+        None,
+        Some("MQDH Flags"),
+    ),
     c(
         "MQDISCONNECT_",
         "MQDISCONNECT",
@@ -1087,7 +1111,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
         "MQLONG",
         "value",
         Some("pcf"),
-        Some("Flags"),
+        Some("MQEPH Flags"),
     ),
     c(
         "MQET_",
@@ -1390,7 +1414,15 @@ pub const CONSTANTS: &[ConstantEntry] = &[
         None,
         Some("Intra-Group Queuing"),
     ),
-    c("MQIIH_", "MQIIH", mqsys::MQIIH_STR, "MQLONG", "value", None, Some("Flags")),
+    c(
+        "MQIIH_",
+        "MQIIH",
+        mqsys::MQIIH_STR,
+        "MQLONG",
+        "value",
+        None,
+        Some("MQIIH Flags"),
+    ),
     c(
         "MQIMGRCOV_",
         "MQIMGRCOV",
@@ -1461,7 +1493,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
         mqsys::MQKAI_STR,
         "MQLONG",
         "value",
-        Some("exits"),
+        None, // Required in base feature for MQCD
         Some("KeepAlive Interval"),
     ),
     c(
@@ -1583,7 +1615,15 @@ pub const CONSTANTS: &[ConstantEntry] = &[
         Some("Multicast Properties Options"),
     ),
     c("MQMC_", "MQMC", mqsys::MQMC_STR, "MQLONG", "value", None, Some("Multicast")),
-    c("MQMDEF_", "MQMDEF", mqsys::MQMDEF_STR, "MQLONG", "value", None, Some("Flags")),
+    c(
+        "MQMDEF_",
+        "MQMDEF",
+        mqsys::MQMDEF_STR,
+        "MQLONG",
+        "value",
+        None,
+        Some("MQMDE Flags"),
+    ),
     c(
         "MQMDS_",
         "MQMDS",
@@ -2248,7 +2288,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
         mqsys::MQRCN_STR,
         "MQLONG",
         "value",
-        Some("exits"),
+        None, // Required in base feature for MQCD
         Some("Client Reconnect"),
     ),
     c(
@@ -2332,7 +2372,15 @@ pub const CONSTANTS: &[ConstantEntry] = &[
         None,
         Some("Reorganization Controls"),
     ),
-    c("MQRFH_", "MQRFH", mqsys::MQRFH_STR, "MQLONG", "value", None, Some("Flags")),
+    c(
+        "MQRFH_",
+        "MQRFH",
+        mqsys::MQRFH_STR,
+        "MQLONG",
+        "value",
+        None,
+        Some("MQRFH Flags"),
+    ),
     c(
         "MQRL_",
         "MQRL",
@@ -2343,7 +2391,15 @@ pub const CONSTANTS: &[ConstantEntry] = &[
         Some("Returned Length"),
     ),
     #[cfg(feature = "mqc_9_3_2_0")]
-    c("MQRMHF_", "MQRMHF", mqsys::MQRMHF_STR, "MQLONG", "value", None, Some("Flags")),
+    c(
+        "MQRMHF_",
+        "MQRMHF",
+        mqsys::MQRMHF_STR,
+        "MQLONG",
+        "value",
+        None,
+        Some("MQRMH Flags"),
+    ),
     c(
         "MQROUTE_",
         "MQROUTE",
@@ -2987,7 +3043,15 @@ pub const CONSTANTS: &[ConstantEntry] = &[
         None,
         Some("Warn Options"),
     ),
-    c("MQWIH_", "MQWIH", mqsys::MQWIH_STR, "MQLONG", "value", None, Some("Flags")),
+    c(
+        "MQWIH_",
+        "MQWIH",
+        mqsys::MQWIH_STR,
+        "MQLONG",
+        "value",
+        None,
+        Some("MQWIH Flags"),
+    ),
     c(
         "MQWI_",
         "MQWI",
@@ -3084,7 +3148,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
         mqsys::MQXPT_STR,
         "MQLONG",
         "value",
-        Some("exits"),
+        None, // Required in base feature for MQCD
         Some("Transport Types"),
     ),
     c(
