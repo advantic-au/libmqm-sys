@@ -48,7 +48,6 @@ impl_default_value!(types::MQDMPO, sys::MQDMPO_DEL_FIRST);
 impl_default_value!(types::MQIMPO, sys::MQIMPO_NONE);
 #[cfg(feature = "exits")]
 impl_default_value!(types::MQDCC, sys::MQDCC_NONE);
-
 #[cfg(feature = "pcf")]
 impl_default_value!(types::MQCMD, sys::MQCMD_NONE);
 
@@ -190,13 +189,13 @@ impl ConstLookup for crate::mapping::SelectorLookup {
 #[cfg_attr(coverage_nightly, coverage(off))]
 mod tests {
     use crate::constants;
-    use crate::types::{self, MQRC};
+    use crate::types;
 
     #[test]
     fn reason_code_display() {
         assert_eq!(constants::MQRC_Q_MGR_ACTIVE.to_string(), "MQRC_Q_MGR_ACTIVE");
         assert_eq!(constants::MQRC_NONE.to_string(), "MQRC_NONE");
-        assert_eq!(MQRC(-1).to_string(), "-1");
+        assert_eq!(types::MQRC(-1).to_string(), "-1");
     }
 
     #[test]
