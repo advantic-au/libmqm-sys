@@ -1,6 +1,6 @@
 [package]
 name = "libmqm-default"
-version = "0.7.0"
+version = "0.8.0"
 description = "IBM® MQ Interface (MQI), Programmable Command Format (PCF) and MQ Administration Interface (MQAI) structure defaults"
 keywords = ["message-queue", "messaging"]
 categories = ["external-ffi-bindings", "asynchronous"]
@@ -12,11 +12,11 @@ rust-version.workspace = true
 build = "build/main.rs"
 
 [dependencies]
-libmqm-sys = { version = "0.7", path = "../libmqm-sys", default-features = false }
+libmqm-sys = { version = "0.8", path = "../libmqm-sys", default-features = false }
 document-features = "0.2.10"
 
 [build-dependencies]
-libmqm-sys = { version = "0.7", path = "../libmqm-sys", default-features = false }
+libmqm-sys = { version = "0.8", path = "../libmqm-sys", default-features = false }
 prettyplease = { version = "0.2.31", optional = true }
 syn = { version = "2.0.90", optional = true, default-features = false, features = [
     "full",
