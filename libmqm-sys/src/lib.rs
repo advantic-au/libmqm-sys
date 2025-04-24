@@ -1,6 +1,6 @@
 /*!
 
-Bindings to the IBM® MQ Interface (MQI) and MQ Administration Interface (MQAI) C libraries.
+Bindings to the IBM® MQ Interface (MQI), Programmable Command Format (PCF) and MQ Administration Interface (MQAI) C libraries.
 
 Overview
 --------
@@ -8,7 +8,7 @@ Overview
 You can use `libmqm_sys` to:
 
 - Connect to an IBM MQ server to send and receive MQ messages through the MQI functions
-- Administer IBM MQ server through the MQAI functions
+- Administer IBM MQ server through the PCF structures and MQAI functions
 
 Compile time dynamic linking and run-time dynamic linking is supported.
 
@@ -82,7 +82,7 @@ unsafe {
 
 /*!
  *
- * Minimum MQ client can be set using features from `mqc_9_2_0_0` to `mqc_9_4_1_1`
+ * Minimum MQ client can be set using the `mqc_*` features
 */
 
 #[cfg(feature = "bindgen")]

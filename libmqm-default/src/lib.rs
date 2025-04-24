@@ -1,7 +1,15 @@
 /*!
 
-Default structures for the IBM® MQ Interface (MQI) and MQ Administration Interface (MQAI) libraries.
+Default structures for the IBM® MQ Interface (MQI), Programmable Command Format (PCF) and MQ Administration Interface (MQAI) libraries.
 
+## Features
+*/
+
+#![doc = document_features::document_features!()]
+
+/*!
+ *
+ * Minimum MQ client can be set using the `mqc_*` features
 */
 
 #[cfg(feature = "generate")]

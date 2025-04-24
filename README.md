@@ -10,7 +10,7 @@ Bindings to the IBM® MQ Interface (MQI) and MQ Administration Interface (MQAI) 
 You can use `libmqm-sys` to:
 
 - Connect to an IBM MQ server to send and receive MQ messages through the MQI functions
-- Administer IBM MQ server through the MQAI functions
+- Administer IBM MQ server through the PCF structures and MQAI functions
 
 Functions provided in this crate are the raw `unsafe` functions exposed from the
 IBM provided library. Developers should build safe rust API wrappers over these functions.
