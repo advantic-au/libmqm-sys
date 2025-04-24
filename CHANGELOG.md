@@ -17,7 +17,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - New types ([#69](https://github.com/advantic-au/libmqm-sys/pull/69))
 - constants docrs and feature sorting ([#76](https://github.com/advantic-au/libmqm-sys/pull/76))
 - libmqm-constants documentation and release configuration ([#71](https://github.com/advantic-au/libmqm-sys/pull/71))
-- pregen generate ([#67](https://github.com/advantic-au/libmqm-sys/pull/67))
 
 ## [0.7.0](https://github.com/advantic-au/libmqm-sys/compare/v0.6.0...v0.7.0) - 2025-03-26
 
