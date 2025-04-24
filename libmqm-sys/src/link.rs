@@ -468,7 +468,10 @@ impl function::Mqi for LinkedMq {
             lib::MQDLTMP(Hconn, Hmsg, pDltPropOpts, pName, pCompCode, pReason);
         }
     }
+}
 
+#[cfg(feature = "exits")]
+impl function::Exits for LinkedMq {
     unsafe fn MQXCNVC(
         &self,
         Hconn: lib::MQHCONN,

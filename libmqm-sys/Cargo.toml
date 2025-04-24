@@ -1,7 +1,7 @@
 [package]
 name = "libmqm-sys"
 version = "0.7.0"
-description = "IBM® MQ Interface (MQI) and MQ Administration Interface (MQAI) bindings"
+description = "IBM® MQ Interface (MQI), Programmable Command Format (PCF) and MQ Administration Interface (MQAI) bindings"
 keywords = ["message-queue", "messaging"]
 categories = ["external-ffi-bindings", "asynchronous"]
 authors.workspace = true
@@ -70,7 +70,7 @@ mqc_latest = ["mqc_9_4_2_0"]
 [dependencies]
 dlopen2 = { version = "0.7.0", optional = true }
 libc = { version = "0.2.155", optional = true }
-document-features = "0.2"
+document-features = "0.2.10"
 
 [build-dependencies]
 regex-lite = "0.1.6"
