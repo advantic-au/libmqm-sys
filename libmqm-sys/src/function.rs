@@ -354,7 +354,11 @@ pub trait Mqi {
         pCompCode: mqsys::PMQLONG,
         pReason: mqsys::PMQLONG,
     );
+}
 
+#[allow(clippy::missing_safety_doc, clippy::too_many_arguments, non_snake_case)]
+#[cfg(feature = "exits")]
+pub trait Exits {
     /// Convert characters from one character set to another
     ///
     /// References

@@ -1065,7 +1065,10 @@ impl function::Mqi for MqmContainer {
             MqWrapper::MQDLTMP(self, Hconn, Hmsg, pDltPropOpts, pName, pCompCode, pReason);
         }
     }
+}
 
+#[cfg(feature = "exits")]
+impl function::Exits for MqmContainer {
     unsafe fn MQXCNVC(
         &self,
         Hconn: mqsys::MQHCONN,
