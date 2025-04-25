@@ -27,16 +27,18 @@ jobs:
         id: mq-client
         with:
           client-version: latest
-      - name: Install stable rust
-        uses: dtolnay/rust-toolchain@stable
-      - uses: Swatinem/rust-cache@v2
+      - name: Install rust stable
+        uses: dtolnay/rust-toolchain@56f84321dbccf38fb67ce29ab63e4754056677e0
+        with:
+          toolchain: stable
+      - uses: Swatinem/rust-cache@9d47c6ad4b02e050fd481d890b2ea34778fd09d6 # v2.7.8
         with:
           shared-key: "build"
       - name: Run build and refresh generated source code
         run: cargo build --no-default-features --features pregen
         env:
           MQ_HOME: ${{ steps.mq-client.outputs.client-install-path }}
-      - uses: qoomon/actions--setup-git@v1
+      - uses: qoomon/actions--setup-git@8e6bd30ac05e17a81b61169daae62cb6b7e61294 #v1.1
       - name: Modify pull request with refreshed pregen files
         shell: bash
         run: |
