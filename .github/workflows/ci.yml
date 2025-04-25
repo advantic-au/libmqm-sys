@@ -95,9 +95,6 @@ jobs:
         run: cargo clippy --tests --examples ${{ matrix.features }} --
         env:
           MQ_HOME: ${{ steps.mq-client.outputs.client-install-path }}
-        with:
-          check-args: --tests ${{ matrix.features }}
-          token: ${{secrets.GITHUB_TOKEN}}
 
   minimum:
     runs-on: ubuntu-24.04
