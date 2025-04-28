@@ -141,9 +141,9 @@ macro_rules! impl_bitflags {
 
         impl FromIterator<Self> for $name {
             fn from_iter<T: IntoIterator<Item = Self>>(iter: T) -> Self {
-                iter.into_iter().fold(Self(0), Self::union )
+                iter.into_iter().fold(Self(0), Self::union)
             }
-        }        
+        }
 
         // Format of Display is 'CONSTANT_A|CONSTANT_B|(residual number))'
         impl std::fmt::Display for $name {

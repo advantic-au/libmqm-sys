@@ -46,7 +46,7 @@ macro_rules! define_new_type {
                 unsafe { &*std::ptr::from_ref(self).cast() }
             }
         }
-        
+
         impl AsMut<$name> for $type {
             fn as_mut(&mut self) -> &mut $name {
                 // SAFETY: repr(transparent) ensures new type has same memory layout
