@@ -134,7 +134,7 @@ pub fn generate_bindings(mq_inc_path: &Path, mq_version: &str) -> Result<bindgen
     // The bindgen::Builder is the main entry point
     // to bindgen, and lets you build up options for
     // the resulting bindings.
-    #[allow(deprecated, reason="RustTarget::Stable_1_82 is deprecated.")]
+    #[allow(deprecated, reason = "RustTarget::Stable_1_82 is deprecated.")]
     let builder = bindgen::builder()
         .rust_target(bindgen::RustTarget::Stable_1_82)
         .clang_arg(format!("-I{}", mq_inc_path.display()))
