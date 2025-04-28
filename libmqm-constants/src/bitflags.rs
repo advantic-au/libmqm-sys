@@ -35,6 +35,45 @@ macro_rules! impl_bitflags {
                 $crate::bitflags::bitflags_list(val, Self::const_lookup().all())
             }
 
+            #[must_use]
+            #[allow(dead_code)]
+            pub const fn contains(self, other: Self) -> bool {
+                self.0 & other.0 == other.0
+            }
+
+            #[must_use]
+            pub const fn union(self, other: Self) -> Self {
+                Self(self.0 | other.0)
+            }
+
+            #[must_use]
+            pub const fn intersection(self, other: Self) -> Self {
+                Self(self.0 & other.0)
+            }
+
+            #[must_use]
+            #[allow(dead_code)]
+            pub const fn intersects(self, other: Self) -> bool {
+                self.0 & other.0 != 0
+            }
+
+            #[must_use]
+            pub const fn complement(self) -> Self {
+                Self(!self.0)
+            }
+
+            pub const fn insert(&mut self, other: Self) {
+                self.0 |= other.0;
+            }
+
+            pub const fn remove(&mut self, other: Self) {
+                self.0 &= !other.0;
+            }
+
+            pub const fn toggle(&mut self, other: Self) {
+                self.0 ^= other.0;
+            }
+
             fn bitflags_str<'a>(
                 list: impl Iterator<Item = $crate::lookup::ConstantItem<'a>>,
                 residual: ::libmqm_sys::lib::MQLONG,
@@ -46,13 +85,13 @@ macro_rules! impl_bitflags {
         impl std::ops::BitOr for $name {
             type Output = Self;
             fn bitor(self, rhs: Self) -> Self::Output {
-                Self(self.0 | rhs.0)
+                self.union(rhs)
             }
         }
 
         impl std::ops::BitOrAssign for $name {
             fn bitor_assign(&mut self, rhs: Self) {
-                self.0 |= rhs.0;
+                self.insert(rhs);
             }
         }
 
@@ -66,7 +105,7 @@ macro_rules! impl_bitflags {
 
         impl std::ops::BitXorAssign for $name {
             fn bitxor_assign(&mut self, rhs: Self) {
-                self.0 ^= rhs.0;
+                self.toggle(rhs);
             }
         }
 
@@ -74,13 +113,15 @@ macro_rules! impl_bitflags {
             type Output = Self;
 
             fn bitand(self, rhs: Self) -> Self::Output {
-                Self(self.0 & rhs.0)
+                self.intersection(rhs)
             }
         }
 
-        impl std::ops::BitAndAssign for $name {
-            fn bitand_assign(&mut self, rhs: Self) {
-                self.0 &= rhs.0;
+        impl std::ops::Not for $name {
+            type Output = Self;
+
+            fn not(self) -> Self::Output {
+                self.complement()
             }
         }
 
@@ -88,15 +129,21 @@ macro_rules! impl_bitflags {
             type Output = Self;
 
             fn sub(self, rhs: Self) -> Self::Output {
-                Self(self.0 & !rhs.0)
+                self.intersection(rhs.complement())
             }
         }
 
         impl std::ops::SubAssign for $name {
             fn sub_assign(&mut self, rhs: Self) {
-                self.0 &= !rhs.0;
+                self.remove(rhs);
             }
         }
+
+        impl FromIterator<Self> for $name {
+            fn from_iter<T: IntoIterator<Item = Self>>(iter: T) -> Self {
+                iter.into_iter().fold(Self(0), Self::union )
+            }
+        }        
 
         // Format of Display is 'CONSTANT_A|CONSTANT_B|(residual number))'
         impl std::fmt::Display for $name {
@@ -112,6 +159,14 @@ macro_rules! impl_bitflags {
         impl std::fmt::Debug for $name {
             fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
                 $crate::bitflags::bitflags_debug(stringify!($name), self.0, Self::const_lookup(), f)
+            }
+        }
+
+        impl Extend<Self> for $name {
+            fn extend<T: IntoIterator<Item = Self>>(&mut self, iter: T) {
+                for flags in iter {
+                    self.insert(flags);
+                }
             }
         }
     };

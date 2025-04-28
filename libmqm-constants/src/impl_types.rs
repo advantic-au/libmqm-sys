@@ -5,51 +5,51 @@ use crate::lookup::{ConstLookup, ConstSource, ConstantItem, HasMqNames as _, Lin
 use crate::mapping;
 use crate::types;
 
-use super::value::{impl_default_value, impl_partialcmp_value};
+use super::value::{impl_default_value, impl_equivalent_type};
 
 #[cfg(feature = "pcf")]
 mod pcf {
     use crate::types;
-    use crate::value::impl_partialcmp_value;
+    use crate::value::impl_equivalent_type;
 
-    impl_partialcmp_value!(types::MQIACF, types::Selector);
-    impl_partialcmp_value!(types::MQCACF, types::Selector);
-    impl_partialcmp_value!(types::MQIACH, types::Selector);
-    impl_partialcmp_value!(types::MQCACH, types::Selector);
+    impl_equivalent_type!(types::MQIACF, types::Selector);
+    impl_equivalent_type!(types::MQCACF, types::Selector);
+    impl_equivalent_type!(types::MQIACH, types::Selector);
+    impl_equivalent_type!(types::MQCACH, types::Selector);
 
-    impl_partialcmp_value!(types::Selector, [types::MQIACF, types::MQCACF, types::MQIACH, types::MQCACH]);
+    impl_equivalent_type!(types::Selector, [types::MQIACF, types::MQCACF, types::MQIACH, types::MQCACH]);
 }
 
 #[cfg(feature = "mqai")]
 mod mqia {
-    use crate::value::{impl_default_value, impl_partialcmp_value};
+    use crate::value::{impl_default_value, impl_equivalent_type};
     use crate::{constants, types};
 
     impl_default_value!(types::MQIND, constants::MQIND_NONE);
 
-    impl_partialcmp_value!(types::MQIASY, types::Selector);
-    impl_partialcmp_value!(types::MQHA, types::Selector);
-
-    impl_partialcmp_value!(types::Selector, [types::MQIASY, types::MQHA]);
+    impl_equivalent_type!(types::MQIASY, types::Selector);
+    impl_equivalent_type!(types::MQHA, types::Selector);
+    impl_equivalent_type!(types::Selector, [types::MQIASY, types::MQHA]);
 }
 
-impl_partialcmp_value!(types::MQIA, types::Selector);
-impl_partialcmp_value!(types::MQCA, types::Selector);
+impl_equivalent_type!(types::MQIA, types::Selector);
+impl_equivalent_type!(types::MQCA, types::Selector);
+impl_equivalent_type!(types::Selector, [types::MQIA, types::MQCA]);
 
-impl_default_value!(types::MQCO, sys::MQCO_NONE);
-impl_default_value!(types::MQBO, sys::MQBO_NONE);
-impl_default_value!(types::MQTYPE, sys::MQTYPE_AS_SET);
-impl_default_value!(types::MQENC, sys::MQENC_NATIVE);
-impl_default_value!(types::MQGMO, sys::MQGMO_NONE);
-impl_default_value!(types::MQPMO, sys::MQPMO_NONE);
-impl_default_value!(types::MQCMHO, sys::MQCMHO_DEFAULT_VALIDATION);
-impl_default_value!(types::MQSMPO, sys::MQSMPO_SET_FIRST);
-impl_default_value!(types::MQDMPO, sys::MQDMPO_DEL_FIRST);
-impl_default_value!(types::MQIMPO, sys::MQIMPO_NONE);
+impl_default_value!(types::MQCO, constants::MQCO_NONE);
+impl_default_value!(types::MQBO, constants::MQBO_NONE);
+impl_default_value!(types::MQTYPE, constants::MQTYPE_AS_SET);
+impl_default_value!(types::MQENC, constants::MQENC_NATIVE);
+impl_default_value!(types::MQGMO, constants::MQGMO_NONE);
+impl_default_value!(types::MQPMO, constants::MQPMO_NONE);
+impl_default_value!(types::MQCMHO, constants::MQCMHO_DEFAULT_VALIDATION);
+impl_default_value!(types::MQSMPO, constants::MQSMPO_SET_FIRST);
+impl_default_value!(types::MQDMPO, constants::MQDMPO_DEL_FIRST);
+impl_default_value!(types::MQIMPO, constants::MQIMPO_NONE);
 #[cfg(feature = "exits")]
-impl_default_value!(types::MQDCC, sys::MQDCC_NONE);
+impl_default_value!(types::MQDCC, constants::MQDCC_NONE);
 #[cfg(feature = "pcf")]
-impl_default_value!(types::MQCMD, sys::MQCMD_NONE);
+impl_default_value!(types::MQCMD, constants::MQCMD_NONE);
 
 const FIRST_LAST_MAPSTR: LinearSource = ConstSource(
     &[
@@ -81,24 +81,11 @@ impl types::MQRC {
     }
 }
 
-impl From<types::MQCA> for types::MQXA {
-    fn from(value: types::MQCA) -> Self {
-        Self(value.0)
-    }
-}
-
-impl From<types::MQIA> for types::MQXA {
-    fn from(value: types::MQIA) -> Self {
-        Self(value.0)
-    }
-}
+#[cfg(feature = "pcf")]
+impl_equivalent_type!(types::MQRC, types::MQRCCF);
 
 #[cfg(feature = "pcf")]
-impl From<types::MQRCCF> for types::MQRC {
-    fn from(value: types::MQRCCF) -> Self {
-        Self(value.0)
-    }
-}
+impl_equivalent_type!(types::MQRCCF, types::MQRC);
 
 impl types::MQXA {
     #[inline]
@@ -114,9 +101,9 @@ impl types::MQXA {
     }
 }
 
-impl_partialcmp_value!(types::MQXA, [types::MQCA, types::MQIA]);
-impl_partialcmp_value!(types::MQCA, types::MQXA);
-impl_partialcmp_value!(types::MQIA, types::MQXA);
+impl_equivalent_type!(types::MQXA, [types::MQCA, types::MQIA]);
+impl_equivalent_type!(types::MQCA, types::MQXA);
+impl_equivalent_type!(types::MQIA, types::MQXA);
 
 /*
 
