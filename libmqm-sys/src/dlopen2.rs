@@ -10,7 +10,6 @@
  *  Dynamically load the `libmqm_r` library and issue an `MQCONN`
  *
  * ```no_run
- *  use std::ptr::addr_of_mut;
  *  use dlopen2::wrapper::Container;
  *  use libmqm_sys::{lib, dlopen2::MqWrapper};
  *
@@ -26,10 +25,10 @@
  * let mut qmgr: [lib::MQCHAR; 48] = [32; 48]; // All spaces
  * unsafe {
  *    mq.MQCONN(
- *      addr_of_mut!(qmgr).cast(),
- *      addr_of_mut!(hconn),
- *      addr_of_mut!(comp_code),
- *      addr_of_mut!(reason),
+ *      (&raw mut qmgr).cast(),
+ *      &raw mut hconn,
+ *      &raw mut comp_code,
+ *      &raw mut reason,
  *    );
  * }
  * #
@@ -1698,7 +1697,6 @@ impl function::Mqai for MqmContainer {
 #[cfg(test)]
 mod tests {
     use dlopen2::wrapper::Container;
-    use std::ptr::addr_of_mut;
 
     use crate::lib;
 
@@ -1719,12 +1717,7 @@ mod tests {
         let mut reason = lib::MQRC_NONE;
         let mut qmgr: [lib::MQCHAR; 48] = [32; 48]; // All spaces
         unsafe {
-            mq.MQCONN(
-                addr_of_mut!(qmgr).cast(),
-                addr_of_mut!(hconn),
-                addr_of_mut!(comp_code),
-                addr_of_mut!(reason),
-            );
+            mq.MQCONN((&raw mut qmgr).cast(), &raw mut hconn, &raw mut comp_code, &raw mut reason);
         }
 
         Ok(())
