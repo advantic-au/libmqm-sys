@@ -7,7 +7,6 @@
  *  Use the compile time linked MQ library and issue an `MQCONN`
  *
  * ```no_run
- * use std::ptr::addr_of_mut;
  * use libmqm_sys::{lib, Mqi as _};
  *
  * // Use the compile time linked MQ library
@@ -20,10 +19,10 @@
  * let mut qmgr: [lib::MQCHAR; 48] = [32; 48]; // All spaces
  * unsafe {
  *    mq.MQCONN(
- *      addr_of_mut!(qmgr).cast(),
- *      addr_of_mut!(hconn),
- *      addr_of_mut!(comp_code),
- *      addr_of_mut!(reason),
+ *      (&raw mut qmgr).cast(),
+ *      &raw mut hconn,
+ *      &raw mut comp_code,
+ *      &raw mut reason,
  *    );
  * }
  * ```

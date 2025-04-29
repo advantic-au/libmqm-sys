@@ -18,7 +18,7 @@ mod features {
     pub fn filtered<'a, T: 'a>(features: impl IntoIterator<Item = &'a FeatureFilter<'a, T>>) -> impl Iterator<Item = &'a T> {
         features
             .into_iter()
-            .filter(|(.., feature)| feature.map_or(true, |names| names.iter().copied().any(is_enabled)))
+            .filter(|(.., feature)| feature.is_none_or(|names| names.iter().copied().any(is_enabled)))
             .flat_map(|(x, ..)| *x)
     }
 }

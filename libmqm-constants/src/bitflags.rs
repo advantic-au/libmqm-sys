@@ -28,7 +28,7 @@ macro_rules! impl_bitflags {
             pub fn bitflags_list(
                 &self,
             ) -> (
-                impl Iterator<Item = $crate::lookup::ConstantItem<'static>>,
+                impl Iterator<Item = $crate::lookup::ConstantItem<'static>> + use<>,
                 ::libmqm_sys::lib::MQLONG,
             ) {
                 let &Self(val) = self;
