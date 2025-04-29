@@ -6,7 +6,7 @@ macro_rules! impl_default_value {
     ($t:path, $source:path) => {
         impl Default for $t {
             fn default() -> Self {
-                Self::from($source)
+                $source
             }
         }
     };
@@ -26,6 +26,9 @@ macro_rules! define_new_type {
             Eq,
             Hash,
             ::derive_more::From,
+            ::derive_more::UpperHex,
+            ::derive_more::LowerHex,
+            ::derive_more::Binary
         )]
         #[allow(clippy::empty_docs,non_camel_case_types)]
         #[doc = $doc]
@@ -34,6 +37,32 @@ macro_rules! define_new_type {
         impl PartialEq<$type> for $name {
             fn eq(&self, other: &$type) -> bool {
                 self.0 == *other
+            }
+        }
+
+        impl AsRef<$name> for $type {
+            fn as_ref(&self) -> &$name {
+                // SAFETY: repr(transparent) ensures new type has same memory layout
+                unsafe { &*std::ptr::from_ref(self).cast() }
+            }
+        }
+
+        impl AsMut<$name> for $type {
+            fn as_mut(&mut self) -> &mut $name {
+                // SAFETY: repr(transparent) ensures new type has same memory layout
+                unsafe { &mut *std::ptr::from_mut(self).cast() }
+            }
+        }
+
+        impl AsRef<$type> for $name {
+            fn as_ref(&self) -> &$type {
+                &self.0
+            }
+        }
+
+        impl AsMut<$type> for $name {
+            fn as_mut(&mut self) -> &mut $type {
+                &mut self.0
             }
         }
 
@@ -111,10 +140,10 @@ macro_rules! impl_value {
 }
 pub(crate) use impl_value;
 
-macro_rules! impl_partialcmp_value {
+macro_rules! impl_equivalent_type {
     ($new_type:path, [$($other_type:path),*]) => {
         $(
-            impl_partialcmp_value!($new_type, $other_type);
+            impl_equivalent_type!($new_type, $other_type);
         )*
     };
     ($new_type:path, $other_type:path) => {
@@ -129,9 +158,29 @@ macro_rules! impl_partialcmp_value {
                 Some(self.0.cmp(&other.0))
             }
         }
+
+        impl From<$other_type> for $new_type {
+            fn from(value: $other_type) -> Self {
+                Self(value.0)
+            }
+        }
+
+        impl AsRef<$new_type> for $other_type {
+            fn as_ref(&self) -> &$new_type {
+                // SAFETY: repr(transparent) ensures new type has same memory layout
+                unsafe { &*std::ptr::from_ref(self).cast() }
+            }
+        }
+
+        impl AsMut<$new_type> for $other_type {
+            fn as_mut(&mut self) -> &mut $new_type {
+                // SAFETY: repr(transparent) ensures new type has same memory layout
+                unsafe { &mut *std::ptr::from_mut(self).cast() }
+            }
+        }
     };
 }
-pub(crate) use impl_partialcmp_value;
+pub(crate) use impl_equivalent_type;
 
 pub fn value_display<T: ToString>(value: &T, primary_name: Option<&str>, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     let code = primary_name.map_or_else(|| Cow::from(value.to_string()), Cow::from);
