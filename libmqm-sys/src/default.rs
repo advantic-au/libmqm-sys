@@ -2,7 +2,7 @@
 /// from the MQI C library
 macro_rules! mq_default {
     ($struc:ty, $cdefault:ident) => {
-        extern "C" {
+        unsafe extern "C" {
             static $cdefault: $struc;
         } // Refer to the compiled c function
         impl ::core::default::Default for $struc {
@@ -72,7 +72,7 @@ mod exits {
 mod mqi {
     use crate::lib;
 
-    extern "C" {
+    unsafe extern "C" {
         static mqcd_client_conn_default: lib::MQCD;
     }
     impl lib::MQCD {

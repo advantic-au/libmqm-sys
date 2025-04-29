@@ -53,7 +53,6 @@ Example
 -------
 
 ```no_run
-use std::ptr::addr_of_mut;
 use libmqm_sys::lib;
 
 let mut hconn = lib::MQHC_DEF_HCONN;
@@ -63,14 +62,14 @@ let mut qmgr: [lib::MQCHAR; 48] = [32; 48]; // All spaces = default qmgr
 
 unsafe {
     lib::MQCONN(
-        addr_of_mut!(qmgr).cast(),
-        addr_of_mut!(hconn),
-        addr_of_mut!(comp_code),
-        addr_of_mut!(reason),
+        (&raw mut qmgr).cast(),
+        &raw mut hconn,
+        &raw mut comp_code,
+        &raw mut reason,
     );
     assert_eq!(reason, lib::MQRC_NONE, "MQRC");
     assert_eq!(comp_code, lib::MQCC_OK, "MQCC");
-    lib::MQDISC(addr_of_mut!(hconn), addr_of_mut!(comp_code), addr_of_mut!(reason));
+    lib::MQDISC(&raw mut hconn, &raw mut comp_code, &raw mut reason);
 };
 ```
 
