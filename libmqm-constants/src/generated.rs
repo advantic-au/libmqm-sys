@@ -44,6 +44,22 @@ mod c {
     include!("pregen/x86_64-linux-new_types.rs");
 }
 
+#[cfg(all(not(feature = "generate"), target_os = "linux", target_arch = "aarch64"))]
+mod c {
+    #![allow(
+        non_upper_case_globals,
+        clippy::unreadable_literal,
+        clippy::needless_raw_string_hashes,
+        clippy::upper_case_acronyms
+    )]
+
+    pub mod mapping {
+        include!("pregen/aarch64-linux-mapping.rs");
+    }
+    include!("pregen/aarch64-linux-new_types.rs");
+}
+
+
 #[cfg(all(not(feature = "generate"), target_os = "macos"))]
 mod c {
     #![allow(
