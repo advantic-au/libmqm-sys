@@ -59,7 +59,6 @@ mod c {
     include!("pregen/aarch64-linux-new_types.rs");
 }
 
-
 #[cfg(all(not(feature = "generate"), target_os = "macos"))]
 mod c {
     #![allow(
