@@ -1,4 +1,4 @@
-/* Generated with MQ client version 9.4.2.0 */
+/* Generated with MQ client version 9.4.2.1 */
 use crate::lookup::*;
 pub const MQACTIVE_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQACTIVE_NO"), (1, "MQACTIVE_YES")],
