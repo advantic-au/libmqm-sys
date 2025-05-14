@@ -183,7 +183,7 @@ macro_rules! impl_equivalent_type {
 pub(crate) use impl_equivalent_type;
 
 pub fn value_display<T: ToString>(value: &T, primary_name: Option<&str>, f: &mut std::fmt::Formatter) -> std::fmt::Result {
-    let code = primary_name.map_or_else(|| Cow::from(value.to_string()), Cow::from);
+    let code = primary_name.map_or_else(|| Cow::Owned(value.to_string()), Cow::Borrowed);
     f.write_str(&code)
 }
 
@@ -193,7 +193,7 @@ pub fn value_debug<T: std::fmt::Display>(
     names: impl Iterator<Item = &'static str>,
     f: &mut std::fmt::Formatter,
 ) -> std::fmt::Result {
-    let names_str = names.map(Cow::from).reduce(|acc, name| Cow::from(format!("{acc}|{name}")));
+    let names_str = names.map(Cow::Borrowed).reduce(|acc, name| Cow::Owned(format!("{acc}|{name}")));
     if let Some(name_list) = names_str {
         f.debug_tuple(type_name)
             .field(&format_args!("{name_list} = {value}"))
