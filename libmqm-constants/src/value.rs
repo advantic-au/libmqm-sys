@@ -193,7 +193,9 @@ pub fn value_debug<T: std::fmt::Display>(
     names: impl Iterator<Item = &'static str>,
     f: &mut std::fmt::Formatter,
 ) -> std::fmt::Result {
-    let names_str = names.map(Cow::Borrowed).reduce(|acc, name| Cow::Owned(format!("{acc}|{name}")));
+    let names_str = names
+        .map(Cow::Borrowed)
+        .reduce(|acc, name| Cow::Owned(format!("{acc}|{name}")));
     if let Some(name_list) = names_str {
         f.debug_tuple(type_name)
             .field(&format_args!("{name_list} = {value}"))

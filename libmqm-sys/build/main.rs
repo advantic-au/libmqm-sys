@@ -142,13 +142,16 @@ fn main() -> Result<(), io::Error> {
 
         let out_version = out_path.join("version.rs");
 
-        let mqc_version = ["README.Redist", "README.Advanced"].iter().find_map(|file_name| {
-            let file_content = std::fs::read_to_string(mq_path::home_path().join(file_name)).ok()?;
-            regex_lite::Regex::new(r"(?m)^\s*Version:\s+(?<version>.*?)\s*$")
-                .ok()?
-                .captures(&file_content)
-                .map(|m| m["version"].to_owned())
-        }).ok_or_else(|| io::Error::new(io::ErrorKind::InvalidData, "could not extract version from MQ"))?;
+        let mqc_version = ["README.Redist", "README.Client", "README.Advanced"]
+            .iter()
+            .find_map(|file_name| {
+                let file_content = std::fs::read_to_string(mq_path::home_path().join(file_name)).ok()?;
+                regex_lite::Regex::new(r"(?m)^\s*Version:\s+(?<version>.*?)\s*$")
+                    .ok()?
+                    .captures(&file_content)
+                    .map(|m| m["version"].to_owned())
+            })
+            .ok_or_else(|| io::Error::new(io::ErrorKind::InvalidData, "could not extract version from MQ README file"))?;
 
         let mqc_env = regex_lite::Regex::new(r"CARGO_FEATURE_(MQC_\d+_\d+_\d+_\d+)").expect("valid regex");
         let min_mqc_version = std::env::vars()
