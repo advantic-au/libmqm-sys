@@ -168,6 +168,7 @@ jobs:
           githubToken: ${{ github.token }}
           dockerRunArgs: |
             --volume "${{ steps.mq-client.outputs.client-install-path }}:/opt/mqm"
+            --volume "${{PWD}}/working"
           install: |
             apt-get update -q -y
             apt-get install -q -y build-essential libclang-18-dev curl ca-certificates
@@ -175,8 +176,9 @@ jobs:
             MQ_HOME: /opt/mqm
           run: |
             curl --proto '=https' --tlsv1.2 --retry 10 --retry-connrefused --location --silent --show-error --fail https://sh.rustup.rs | sh -s -- --default-toolchain none -y
-            . $HOME/.cargo/enc
+            . $HOME/.cargo/env
             rustup toolchain install stable --profile minimal
+            cd /working
             cargo build --no-default-features --features pregen
       - name: Detect pregenerated changes
         run: |
