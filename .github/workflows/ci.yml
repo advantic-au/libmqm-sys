@@ -168,10 +168,10 @@ jobs:
           githubToken: ${{ github.token }}
           dockerRunArgs: |
             --volume "${{ steps.mq-client.outputs.client-install-path }}:/opt/mqm"
-            --volume "${PWD}/working"
+            --volume "${PWD}:/working"
           install: |
-            apt-get update -q -y
-            apt-get install -q -y build-essential libclang-18-dev curl ca-certificates
+            apt-get update -q -y --silent
+            apt-get install -q -y --silent build-essential libclang-18-dev curl ca-certificates git
           env: |
             MQ_HOME: /opt/mqm
           run: |
