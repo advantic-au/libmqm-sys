@@ -150,6 +150,29 @@ pub fn generate_defaults(w: &mut impl std::io::Write) -> Result<(), std::io::Err
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     use std::io::{self, Write};
 
+    pub const POINTER_WIDTH: usize = std::mem::size_of::<usize>() * 8;
+
+    let target_endian = std::env::var("CARGO_CFG_TARGET_ENDIAN").map_err(|e| io::Error::new(io::ErrorKind::InvalidInput, e))?; // Mandatory
+    let target_pointer_width =
+        std::env::var("CARGO_CFG_TARGET_POINTER_WIDTH").map_err(|e| io::Error::new(io::ErrorKind::InvalidInput, e))?; // Mandatory
+
+    #[cfg(target_endian = "little")]
+    assert_eq!(
+        target_endian, "little",
+        "the build system endian must match the target platform endian"
+    );
+    #[cfg(target_endian = "big")]
+    assert_eq!(
+        target_endian, "big",
+        "the build system endian must match the target platform endian"
+    );
+
+    assert_eq!(
+        format!("{POINTER_WIDTH}"),
+        target_pointer_width,
+        "the build system pointer size must match the target platform size"
+    );
+
     // Generate and write the serialised defaults
     let out_path =
         std::path::PathBuf::from(std::env::var("OUT_DIR").map_err(|e| io::Error::new(io::ErrorKind::InvalidInput, e))?); // Mandatory OUT_DIR
@@ -177,12 +200,6 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
         let target_os = std::env::var("CARGO_CFG_TARGET_OS").map_err(|e| io::Error::new(io::ErrorKind::InvalidInput, e))?; // Mandatory
         let target_arch = std::env::var("CARGO_CFG_TARGET_ARCH").map_err(|e| io::Error::new(io::ErrorKind::InvalidInput, e))?; // Mandatory
-        let target_endian = std::env::var("CARGO_CFG_TARGET_ENDIAN").map_err(|e| io::Error::new(io::ErrorKind::InvalidInput, e))?; // Mandatory
-
-        #[cfg(target_endian = "little")]
-        assert_eq!(target_endian, "little");
-        #[cfg(target_endian = "big")]
-        assert_eq!(target_endian, "big");
 
         fs::copy(
             defaults_path,
