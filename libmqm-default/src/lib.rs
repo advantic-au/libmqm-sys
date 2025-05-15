@@ -24,3 +24,14 @@ mod defaults;
 
 #[doc(inline)]
 pub use defaults::*;
+
+#[cfg(test)]
+mod tests {
+    use crate::defaults;
+
+    #[test]
+    fn endian() {
+        assert_eq!(defaults::MQMD2_DEFAULT.Encoding, libmqm_sys::lib::MQENC_NATIVE);
+        assert_eq!(defaults::MQMD2_DEFAULT.Version, libmqm_sys::lib::MQMD_VERSION_2);
+    }
+}
