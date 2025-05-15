@@ -170,7 +170,7 @@ jobs:
             --volume "${{ steps.mq-client.outputs.client-install-path }}:/opt/mqm"
           install: |
             apt-get update -q -y
-            apt-get install -q build-essential libclang-18-dev curl ca-certificates
+            apt-get install -q -y build-essential libclang-18-dev curl ca-certificates
           env: |
             MQ_HOME: /opt/mqm
           run: |
