@@ -51,7 +51,7 @@ jobs:
         run: cargo test --features ${{ matrix.version.feature }},pcf,exits,mqai,dlopen2
         env:
           MQ_HOME: ${{ steps.mq-client.outputs.client-install-path }}
-  
+
   rustfmt:
     runs-on: ubuntu-24.04
     steps:
@@ -65,7 +65,7 @@ jobs:
           components: rustfmt
       - name: Lint with rustfmt
         run: cargo fmt -- --check
-        
+
   clippy:
     strategy:
       fail-fast: false
@@ -91,7 +91,7 @@ jobs:
       - uses: Swatinem/rust-cache@9d47c6ad4b02e050fd481d890b2ea34778fd09d6 # v2.7.8
         with:
           shared-key: "build"
-      - name: Lint with clippy 
+      - name: Lint with clippy
         run: cargo clippy --tests --examples ${{ matrix.features }} --
         env:
           MQ_HOME: ${{ steps.mq-client.outputs.client-install-path }}
@@ -137,6 +137,51 @@ jobs:
           tool: cargo-docs-rs
       - run: cargo docs-rs -p libmqm-sys --target x86_64-unknown-linux-gnu
       - run: cargo docs-rs -p libmqm-default --target x86_64-unknown-linux-gnu
+  pregen_arch:
+    strategy:
+      fail-fast: false
+      matrix:
+        env:
+          - arch: s390x
+            distro: ubuntu-24.04
+            client_arch: S390X
+          - arch: ppc64le
+            distro: ubuntu-24.04
+            client_arch: PPC64LE
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Download MQ library
+        uses: advantic-au/action-mq-client@stable
+        id: mq-client
+        with:
+          client-version: latest
+          os: Linux
+          arch: ${{ matrix.env.client_arch }}
+      - name: Pregenerate arch container
+        uses: uraimo/run-on-arch-action@v3
+        with:
+          arch: ${{ matrix.env.arch }}
+          distro: ${{ matrix.env.distro }}
+          githubToken: ${{ github.token }}
+          dockerRunArgs: |
+            --volume "${{ steps.mq-client.outputs.client-install-path }}:/opt/mqm"
+          install: |
+            apt-get update -q -y
+            apt-get install -q build-essential libclang-18-dev curl ca-certificates
+          env: |
+            MQ_HOME: /opt/mqm
+          run: |
+            curl --proto '=https' --tlsv1.2 --retry 10 --retry-connrefused --location --silent --show-error --fail https://sh.rustup.rs | sh -s -- --default-toolchain none -y
+            . $HOME/.cargo/enc
+            rustup toolchain install stable --profile minimal
+            cargo build --no-default-features --features pregen
+      - name: Detect pregenerated changes
+        run: |
+          git add -N libmqm-sys/src libmqm-default/src libmqm-constants/src
+          git diff --stat --exit-code libmqm-sys/src libmqm-default/src libmqm-constants/src
   pregen:
     strategy:
       fail-fast: false
