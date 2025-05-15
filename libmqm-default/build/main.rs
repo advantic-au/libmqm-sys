@@ -177,6 +177,12 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
         let target_os = std::env::var("CARGO_CFG_TARGET_OS").map_err(|e| io::Error::new(io::ErrorKind::InvalidInput, e))?; // Mandatory
         let target_arch = std::env::var("CARGO_CFG_TARGET_ARCH").map_err(|e| io::Error::new(io::ErrorKind::InvalidInput, e))?; // Mandatory
+        let target_endian = std::env::var("CARGO_CFG_TARGET_ENDIAN").map_err(|e| io::Error::new(io::ErrorKind::InvalidInput, e))?; // Mandatory
+
+        #[cfg(target_endian = "little")]
+        assert_eq!(target_endian, "little");
+        #[cfg(target_endian = "big")]
+        assert_eq!(target_endian, "big");
 
         fs::copy(
             defaults_path,
