@@ -121,7 +121,7 @@ mod mq_path {
     }
 }
 
-#[allow(clippy::unnecessary_wraps)]
+#[allow(clippy::unnecessary_wraps, clippy::too_many_lines)]
 fn main() -> Result<(), io::Error> {
     println!("cargo:rerun-if-env-changed=MQ_HOME");
 
@@ -180,14 +180,18 @@ fn main() -> Result<(), io::Error> {
 
         #[cfg(feature = "pregen")]
         {
-            use std::{env::consts, fs, path};
+            use std::{fs, path};
+
+            let target_os = std::env::var("CARGO_CFG_TARGET_OS").map_err(|e| io::Error::new(io::ErrorKind::InvalidInput, e))?; // Mandatory
+            let target_arch =
+                std::env::var("CARGO_CFG_TARGET_ARCH").map_err(|e| io::Error::new(io::ErrorKind::InvalidInput, e))?; // Mandatory
 
             fs::copy(
                 out_version,
                 path::PathBuf::from("src/version/pregen").join(format!(
                     "{}-{}-version.rs",
-                    if consts::OS == "macos" { "any" } else { consts::ARCH },
-                    consts::OS
+                    if target_os == "macos" { "any" } else { &target_arch },
+                    target_os
                 )),
             )?;
         }
@@ -221,14 +225,19 @@ fn main() -> Result<(), io::Error> {
 
             #[cfg(feature = "pregen")]
             {
-                use std::{env::consts, fs, path};
+                use std::{fs, path};
+
+                let target_os =
+                    std::env::var("CARGO_CFG_TARGET_OS").map_err(|e| io::Error::new(io::ErrorKind::InvalidInput, e))?; // Mandatory
+                let target_arch =
+                    std::env::var("CARGO_CFG_TARGET_ARCH").map_err(|e| io::Error::new(io::ErrorKind::InvalidInput, e))?; // Mandatory
 
                 fs::copy(
                     out_bindings,
                     path::PathBuf::from("./src/lib/pregen").join(format!(
                         "{}-{}-bindings.rs",
-                        if consts::OS == "macos" { "any" } else { consts::ARCH },
-                        consts::OS
+                        if target_os == "macos" { "any" } else { &target_arch },
+                        target_os
                     )),
                 )?;
             }

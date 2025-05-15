@@ -149,22 +149,6 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 String::from_utf8_lossy(&constant_write)
             )?;
 
-            // write!(
-            //     new_type_mods_write,
-            //     "
-            //     #[cfg(test)]
-            //     pub mod tests {{
-            //         use super::*;
-            //         use ::libmqm_sys::lib as sys;
-            //         #[test]
-            //         pub fn constants_test() {{
-            //             {}
-            //         }}
-            //     }}
-            // ",
-            //     String::from_utf8_lossy(&test_cases)
-            // )?;
-
             writeln!(mapping_write, "use crate::lookup::*;")?;
             // Pick a lookup type based on the size of the constants for a prefix
             // TODO: Determine best ranges for performance
@@ -240,14 +224,19 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             }
             #[cfg(feature = "pregen")]
             {
-                use std::{env::consts as env_consts, fs, path};
+                use std::{fs, path};
+
+                let target_os =
+                    std::env::var("CARGO_CFG_TARGET_OS").map_err(|e| io::Error::new(io::ErrorKind::InvalidInput, e))?; // Mandatory
+                let target_arch =
+                    std::env::var("CARGO_CFG_TARGET_ARCH").map_err(|e| io::Error::new(io::ErrorKind::InvalidInput, e))?; // Mandatory
 
                 fs::copy(
                     &gen_path,
                     path::PathBuf::from("./src/pregen").join(format!(
                         "{}-{}-{}",
-                        if env_consts::OS == "macos" { "any" } else { env_consts::ARCH },
-                        env_consts::OS,
+                        if target_os == "macos" { "any" } else { &target_arch },
+                        target_os,
                         filename
                     )),
                 )?;

@@ -173,14 +173,17 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     #[cfg(feature = "pregen")]
     {
-        use std::{env::consts, fs, path};
+        use std::{fs, path};
+
+        let target_os = std::env::var("CARGO_CFG_TARGET_OS").map_err(|e| io::Error::new(io::ErrorKind::InvalidInput, e))?; // Mandatory
+        let target_arch = std::env::var("CARGO_CFG_TARGET_ARCH").map_err(|e| io::Error::new(io::ErrorKind::InvalidInput, e))?; // Mandatory
 
         fs::copy(
             defaults_path,
             path::PathBuf::from("src/pregen").join(format!(
                 "{}-{}-defaults.rs",
-                if consts::OS == "macos" { "any" } else { consts::ARCH },
-                consts::OS
+                if target_os == "macos" { "any" } else { &target_arch },
+                target_os
             )),
         )?;
     }
