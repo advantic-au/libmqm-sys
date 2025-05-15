@@ -143,10 +143,10 @@ jobs:
       matrix:
         env:
           - arch: s390x
-            distro: ubuntu-24.04
+            distro: ubuntu24.04
             client_arch: S390X
           - arch: ppc64le
-            distro: ubuntu-24.04
+            distro: ubuntu24.04
             client_arch: PPC64LE
     runs-on: ubuntu-24.04
     steps:
