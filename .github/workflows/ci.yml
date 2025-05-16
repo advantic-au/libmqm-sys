@@ -122,6 +122,7 @@ jobs:
           MQ_HOME: ${{ steps.mq-client.outputs.client-install-path }}
 
   docs:
+    name: docs-rs generation
     runs-on: ubuntu-24.04
     env:
       RUSTDOCFLAGS: -Dwarnings
@@ -138,6 +139,7 @@ jobs:
       - run: cargo docs-rs -p libmqm-sys --target x86_64-unknown-linux-gnu
       - run: cargo docs-rs -p libmqm-default --target x86_64-unknown-linux-gnu
   pregen_arch:
+    name: Generate bindings on emulated architectures
     strategy:
       fail-fast: false
       matrix:
@@ -192,7 +194,8 @@ jobs:
             cd /working
             cargo build --no-default-features --features pregen
       - id: cache-target-save
-        name: Cache save Rust target 
+        name: Cache save Rust target
+        if: ${{ steps.cache-target-restore.outputs.cache-hit != 'true' }}
         uses: actions/cache/save@v4
         with:
           path: |
@@ -204,10 +207,12 @@ jobs:
           git add -N libmqm-sys/src libmqm-default/src libmqm-constants/src
           git diff --stat --exit-code libmqm-sys/src libmqm-default/src libmqm-constants/src
   pregen:
+    name: Generate bindings
     strategy:
-      fail-fast: false
+      fail-fast: true
+      max-parallel: 2
       matrix:
-        os: [windows-latest, ubuntu-24.04, ubuntu-24.04-arm, macos-latest]
+        os: [ubuntu-24.04, ubuntu-24.04-arm, macos-latest, windows-latest]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
