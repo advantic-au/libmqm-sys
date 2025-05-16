@@ -16,7 +16,9 @@ pub mod types {
     use crate::mapping;
     use crate::value::{define_new_type, impl_value};
     use crate::bitflags::impl_bitflags;
-    define_new_type!(pub MQACTP, mqsys::MQLONG, mapping::MQACTP_MAPSTR, r##"Action"##);
+    define_new_type!(
+        pub MQACTP, mqsys::MQLONG, mapping::MQACTP_MAPSTR, r##"Property Action"##
+    );
     impl_value!(MQACTP, mqsys::MQLONG);
     define_new_type!(
         pub MQACTV, mqsys::MQLONG, mapping::MQACTV_MAPSTR,
@@ -626,7 +628,9 @@ pub mod types {
         r##"Subscription Request Options"##
     );
     impl_bitflags!(MQSRO, mqsys::MQLONG);
-    define_new_type!(pub MQSR, mqsys::MQLONG, mapping::MQSR_MAPSTR, r##"Action"##);
+    define_new_type!(
+        pub MQSR, mqsys::MQLONG, mapping::MQSR_MAPSTR, r##"Subscription Request Action"##
+    );
     impl_value!(MQSR, mqsys::MQLONG);
     define_new_type!(
         pub MQSSL, mqsys::MQLONG, mapping::MQSSL_MAPSTR, r##"SSL FIPS Requirements"##
@@ -664,7 +668,9 @@ pub mod types {
         pub MQSVC_TYPE, mqsys::MQLONG, mapping::MQSVC_TYPE_MAPSTR, r##"Service Types"##
     );
     impl_value!(MQSVC_TYPE, mqsys::MQLONG);
-    define_new_type!(pub MQTA, mqsys::MQLONG, mapping::MQTA_MAPSTR, r##"Wildcards"##);
+    define_new_type!(
+        pub MQTA, mqsys::MQLONG, mapping::MQTA_MAPSTR, r##"Topic Attributes"##
+    );
     impl_value!(MQTA, mqsys::MQLONG);
     define_new_type!(
         pub MQTA_PROXY, mqsys::MQLONG, mapping::MQTA_PROXY_MAPSTR,
