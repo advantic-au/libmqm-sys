@@ -59,6 +59,36 @@ mod c {
     include!("pregen/aarch64-linux-new_types.rs");
 }
 
+#[cfg(all(not(feature = "generate"), target_os = "linux", target_arch = "powerpc64"))]
+mod c {
+    #![allow(
+        non_upper_case_globals,
+        clippy::unreadable_literal,
+        clippy::needless_raw_string_hashes,
+        clippy::upper_case_acronyms
+    )]
+
+    pub mod mapping {
+        include!("pregen/powerpc64-linux-mapping.rs");
+    }
+    include!("pregen/powerpc64-linux-new_types.rs");
+}
+
+#[cfg(all(not(feature = "generate"), target_os = "linux", target_arch = "s390x"))]
+mod c {
+    #![allow(
+        non_upper_case_globals,
+        clippy::unreadable_literal,
+        clippy::needless_raw_string_hashes,
+        clippy::upper_case_acronyms
+    )]
+
+    pub mod mapping {
+        include!("pregen/s390x-linux-mapping.rs");
+    }
+    include!("pregen/s390x-linux-new_types.rs");
+}
+
 #[cfg(all(not(feature = "generate"), target_os = "macos"))]
 mod c {
     #![allow(
@@ -68,7 +98,7 @@ mod c {
         clippy::upper_case_acronyms
     )]
 
-    mod mapping {
+    pub mod mapping {
         include!("pregen/any-macos-mapping.rs");
     }
     include!("pregen/any-macos-new_types.rs");
