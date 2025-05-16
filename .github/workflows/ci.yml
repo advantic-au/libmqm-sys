@@ -149,6 +149,8 @@ jobs:
             distro: ubuntu24.04
             client_arch: PPC64LE
     runs-on: ubuntu-24.04
+    permissions:
+      packages: write
     steps:
       - uses: actions/checkout@v4
         with:
@@ -160,14 +162,13 @@ jobs:
           client-version: latest
           os: Linux
           arch: ${{ matrix.env.client_arch }}
-      - id: cache-target
+      - id: cache-target-restore
         name: Cache rust target
-        uses: actions/cache@v4
+        uses: actions/cache/restore@v4
         with:
           path: |
             **/target
           key: rust-target-pregen-${{ matrix.env.distro }}-${{ matrix.env.arch }}
-
       - name: Pregenerate arch container
         uses: uraimo/run-on-arch-action@v3
         with:
@@ -188,6 +189,14 @@ jobs:
             rustup toolchain install stable --component rustfmt --profile minimal
             cd /working
             cargo build --no-default-features --features pregen
+      - id: cache-target-save
+        name: Cache rust steps.alias.outputs.client-version
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            **/target
+          key: rust-target-pregen-${{ matrix.env.distro }}-${{ matrix.env.arch }}
+
       - name: Detect pregenerated changes
         run: |
           git add -N libmqm-sys/src libmqm-default/src libmqm-constants/src
