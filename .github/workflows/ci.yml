@@ -140,6 +140,7 @@ jobs:
       - run: cargo docs-rs -p libmqm-default --target x86_64-unknown-linux-gnu
   pregen_arch:
     name: Generate bindings on emulated architectures
+    needs: [pregen]
     strategy:
       fail-fast: false
       matrix:
