@@ -219,15 +219,15 @@ pub fn bitflags_str<'a>(
     list: impl Iterator<Item = ConstantItem<'a>>,
     residual: libmqm_sys::lib::MQLONG,
 ) -> Option<Cow<'a, str>> {
-    let res_cow = (residual != 0).then(|| Cow::from(format!("{residual:#X}")));
-    let list = list.map(|(.., name)| Cow::from(name)).chain(res_cow);
+    let res_cow = (residual != 0).then(|| Cow::Owned(format!("{residual:#X}")));
+    let list = list.map(|(.., name)| Cow::Borrowed(name)).chain(res_cow);
     list.reduce(|mut acc, name| {
         let acc_mut = acc.to_mut();
         acc_mut.push('|');
         acc_mut.push_str(&name);
         acc
     })
-    .or_else(|| lookup.by_value(residual).next().map(Cow::from))
+    .or_else(|| lookup.by_value(residual).next().map(Cow::Borrowed))
 }
 
 #[cfg(test)]

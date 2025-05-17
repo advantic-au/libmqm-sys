@@ -121,17 +121,7 @@ mod mq_path {
     }
 }
 
-#[cfg(feature = "versiongen")]
-#[must_use]
-fn dspmqver() -> std::path::PathBuf {
-    mq_path::home_path().join(
-        std::env::var("CARGO_CFG_WINDOWS")
-            .map(|_| "bin64/dspmqver.exe")
-            .unwrap_or("bin/dspmqver"),
-    )
-}
-
-#[allow(clippy::unnecessary_wraps)]
+#[allow(clippy::unnecessary_wraps, clippy::too_many_lines)]
 fn main() -> Result<(), io::Error> {
     println!("cargo:rerun-if-env-changed=MQ_HOME");
 
@@ -152,18 +142,16 @@ fn main() -> Result<(), io::Error> {
 
         let out_version = out_path.join("version.rs");
 
-        let dspmqver_path = dspmqver();
-        let dspmqver_raw = std::process::Command::new(&dspmqver_path)
-            .stdout(std::process::Stdio::piped())
-            .output()?;
-        let dspmqver_output =
-            String::from_utf8(dspmqver_raw.stdout).map_err(|e| io::Error::new(io::ErrorKind::InvalidData, e))?;
-
-        let mqc_version = regex_lite::Regex::new(r"(?m)^\s*Version:\s+(?<version>.*?)\s*$")
-            .expect("valid regex")
-            .captures(&dspmqver_output)
-            .map(|m| m["version"].to_owned())
-            .ok_or_else(|| io::Error::new(io::ErrorKind::InvalidData, "could not extract version from dspmqver"))?;
+        let mqc_version = ["README.Redist", "README.Client", "README.Advanced"]
+            .iter()
+            .find_map(|file_name| {
+                let file_content = std::fs::read_to_string(mq_path::home_path().join(file_name)).ok()?;
+                regex_lite::Regex::new(r"(?m)^\s*Version:\s+(?<version>.*?)\s*$")
+                    .ok()?
+                    .captures(&file_content)
+                    .map(|m| m["version"].to_owned())
+            })
+            .ok_or_else(|| io::Error::new(io::ErrorKind::InvalidData, "could not extract version from MQ README file"))?;
 
         let mqc_env = regex_lite::Regex::new(r"CARGO_FEATURE_(MQC_\d+_\d+_\d+_\d+)").expect("valid regex");
         let min_mqc_version = std::env::vars()
@@ -192,14 +180,18 @@ fn main() -> Result<(), io::Error> {
 
         #[cfg(feature = "pregen")]
         {
-            use std::{env::consts, fs, path};
+            use std::{fs, path};
+
+            let target_os = std::env::var("CARGO_CFG_TARGET_OS").map_err(|e| io::Error::new(io::ErrorKind::InvalidInput, e))?; // Mandatory
+            let target_arch =
+                std::env::var("CARGO_CFG_TARGET_ARCH").map_err(|e| io::Error::new(io::ErrorKind::InvalidInput, e))?; // Mandatory
 
             fs::copy(
                 out_version,
                 path::PathBuf::from("src/version/pregen").join(format!(
                     "{}-{}-version.rs",
-                    if consts::OS == "macos" { "any" } else { consts::ARCH },
-                    consts::OS
+                    if target_os == "macos" { "any" } else { &target_arch },
+                    target_os
                 )),
             )?;
         }
@@ -233,14 +225,19 @@ fn main() -> Result<(), io::Error> {
 
             #[cfg(feature = "pregen")]
             {
-                use std::{env::consts, fs, path};
+                use std::{fs, path};
+
+                let target_os =
+                    std::env::var("CARGO_CFG_TARGET_OS").map_err(|e| io::Error::new(io::ErrorKind::InvalidInput, e))?; // Mandatory
+                let target_arch =
+                    std::env::var("CARGO_CFG_TARGET_ARCH").map_err(|e| io::Error::new(io::ErrorKind::InvalidInput, e))?; // Mandatory
 
                 fs::copy(
                     out_bindings,
                     path::PathBuf::from("./src/lib/pregen").join(format!(
                         "{}-{}-bindings.rs",
-                        if consts::OS == "macos" { "any" } else { consts::ARCH },
-                        consts::OS
+                        if target_os == "macos" { "any" } else { &target_arch },
+                        target_os
                     )),
                 )?;
             }

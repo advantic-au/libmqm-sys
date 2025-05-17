@@ -77,7 +77,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
         "MQLONG",
         "value",
         None,
-        Some("Action"),
+        Some("Property Action"),
     ),
     c(
         "MQACTV_",
@@ -2616,7 +2616,15 @@ pub const CONSTANTS: &[ConstantEntry] = &[
         None,
         Some("Subscription Request Options"),
     ),
-    c("MQSR_", "MQSR", mqsys::MQSR_STR, "MQLONG", "value", None, Some("Action")),
+    c(
+        "MQSR_",
+        "MQSR",
+        mqsys::MQSR_STR,
+        "MQLONG",
+        "value",
+        None,
+        Some("Subscription Request Action"),
+    ),
     c(
         "MQSSL_",
         "MQSSL",
@@ -2781,7 +2789,15 @@ pub const CONSTANTS: &[ConstantEntry] = &[
         Some("pcf"),
         Some("SMDS Status Options"),
     ),
-    c("MQTA_", "MQTA", mqsys::MQTA_STR, "MQLONG", "value", None, Some("Wildcards")),
+    c(
+        "MQTA_",
+        "MQTA",
+        mqsys::MQTA_STR,
+        "MQLONG",
+        "value",
+        None,
+        Some("Topic Attributes"),
+    ),
     c(
         "MQTA_PROXY_",
         "MQTA_PROXY",
