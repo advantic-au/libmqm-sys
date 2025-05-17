@@ -253,4 +253,4 @@ jobs:
             exit 1
           fi
         env:
-          NEEDS_RESULT: ${{ needs.pregen.result }}
+          NEEDS_RESULT: ${{ needs.pregen.result && needs.pregen_arch.result }}
