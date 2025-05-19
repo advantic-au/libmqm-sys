@@ -77,7 +77,7 @@ unsafe {
 
 */
 
-#![doc = document_features::document_features!()]
+#![cfg_attr(feature = "docsrs", doc = document_features::document_features!())]
 
 /*!
  *
@@ -90,6 +90,11 @@ pub mod lib {
     mod bindgen;
     #[doc(inline)]
     pub use bindgen::*;
+}
+
+#[cfg(feature = "constant_lookup")]
+pub mod str {
+    include!(concat!(env!("OUT_DIR"), "/str.rs"));
 }
 
 #[cfg(not(feature = "bindgen"))]
@@ -114,6 +119,7 @@ pub mod version {
     include!(concat!(env!("OUT_DIR"), "/version.rs"));
 }
 
+#[cfg(feature = "struct_defaults")]
 mod default;
 
 mod function;

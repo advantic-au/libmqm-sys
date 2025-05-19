@@ -4,7 +4,7 @@ use std::collections::{HashMap, HashSet};
 use std::ffi::CStr;
 use std::str;
 
-use libmqm_sys::lib as mqsys;
+use libmqm_sys::str as mqstr;
 
 const CONST_IGNORE: &[&str] = &[
     r".+_CURRENT_LENGTH.*",
@@ -22,7 +22,7 @@ pub fn const_ignore_regex() -> impl Iterator<Item = regex_lite::Regex> {
 }
 
 // Load the `MQI_BY_NAME_STR` into a Vec
-pub fn by_name(by_name_mqi: &[mqsys::MQI_BY_NAME_STR]) -> impl Iterator<Item = (&str, i32)> {
+pub fn by_name(by_name_mqi: &[mqstr::MQI_BY_NAME_STR]) -> impl Iterator<Item = (&str, mqstr::MQLONG)> {
     by_name_mqi
         .iter()
         .map(|entry| {
@@ -35,7 +35,7 @@ pub fn by_name(by_name_mqi: &[mqsys::MQI_BY_NAME_STR]) -> impl Iterator<Item = (
 }
 
 /// Load the `MQI_BY_VALUE_STR` into a Vec
-fn by_value(by_value_mqi: &[mqsys::MQI_BY_VALUE_STR]) -> impl Iterator<Item = (i32, &str)> {
+fn by_value(by_value_mqi: &[mqstr::MQI_BY_VALUE_STR]) -> impl Iterator<Item = (mqstr::MQLONG, &str)> {
     by_value_mqi
         .iter()
         .map(|entry| {
@@ -46,7 +46,7 @@ fn by_value(by_value_mqi: &[mqsys::MQI_BY_VALUE_STR]) -> impl Iterator<Item = (i
         .filter(|(.., name)| !name.is_empty())
 }
 
-pub fn as_array(by_value: &[(mqsys::MQLONG, &str, Option<&str>)]) -> String {
+pub fn as_array(by_value: &[(mqstr::MQLONG, &str, Option<&str>)]) -> String {
     use std::fmt::Write as _;
     let mut result = String::new();
     result.push('[');
@@ -57,7 +57,7 @@ pub fn as_array(by_value: &[(mqsys::MQLONG, &str, Option<&str>)]) -> String {
     result
 }
 
-pub fn as_phf(by_value: &[(mqsys::MQLONG, &str, Option<&str>)]) -> String {
+pub fn as_phf(by_value: &[(mqstr::MQLONG, &str, Option<&str>)]) -> String {
     let mut phf_set = phf_codegen::Map::new();
     for (value, name, _) in by_value {
         phf_set.entry(*value, &format!("\"{name}\""));
@@ -82,7 +82,7 @@ where
         )],
     ) -> Result<(), E>,
 {
-    let by_value_mqi = unsafe { &mqsys::MQI_BY_VALUE_STR };
+    let by_value_mqi = unsafe { &mqstr::MQI_BY_VALUE_STR };
     let by_value: Vec<_> = by_value(by_value_mqi).collect();
 
     let doc_map = list::CONSTANTS_DOC.iter().copied().collect::<HashMap<_, _>>();

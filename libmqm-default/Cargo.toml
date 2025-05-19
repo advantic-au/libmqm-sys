@@ -13,7 +13,7 @@ build = "build/main.rs"
 
 [dependencies]
 libmqm-sys = { version = "0.8", path = "../libmqm-sys", default-features = false }
-document-features = "0.2.10"
+document-features = { version = "0.2.10", optional = true }
 
 [build-dependencies]
 libmqm-sys = { version = "0.8", path = "../libmqm-sys", default-features = false }
@@ -30,8 +30,7 @@ workspace = true
 default = ["mqc_9_2_0_0"]
 pregen = ["generate", "pcf", "exits", "mqc_9_3_1_0", "libmqm-sys/mqc_latest"]
 generate = [
-    "libmqm-sys/mqi_helpers",
-    "libmqm-sys/bindgen",
+    "libmqm-sys/struct_defaults",
     "dep:prettyplease",
     "dep:syn",
 ]
@@ -44,6 +43,7 @@ docsrs = [
     "pcf",
     "exits",
     "mqc_9_3_1_0",       # Latest MQ version that affects included defaults
+    "dep:document-features"
 ]
 
 mqc_9_2_0_0 = ["libmqm-sys/mqc_9_2_0_0"]

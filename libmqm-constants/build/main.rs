@@ -39,12 +39,12 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     #[cfg(feature = "generate")]
     {
         use constants::generate;
-        use libmqm_sys::lib as mqsys;
+        use libmqm_sys::str as mqstr;
         use std::collections::HashSet;
         use std::io;
         use std::io::Write as _;
 
-        let by_name_mqi = unsafe { &mqsys::MQI_BY_NAME_STR };
+        let by_name_mqi = unsafe { &mqstr::MQI_BY_NAME_STR };
 
         let mut unmapped_comment = Vec::new();
         let mut mapping_write: Vec<u8> = Vec::new();

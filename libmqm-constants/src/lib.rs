@@ -11,7 +11,7 @@ Programming constants for the IBM® MQ Interface (MQI), Programmable Command For
 ## Features
 */
 
-#![doc = document_features::document_features!()]
+#![cfg_attr(feature = "docsrs", doc = document_features::document_features!())]
 
 /*!
  *
