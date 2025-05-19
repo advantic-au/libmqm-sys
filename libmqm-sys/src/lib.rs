@@ -27,11 +27,11 @@ Usage
 -----
 
 1. Download and install the redistributable client from IBM:
-  <https://ibm.biz/mq94redistclients>
+   <https://ibm.biz/mq94redistclients>
 
 2. Install the client in `/opt/mqm` or another location.
 
-3. Set the MQ_HOME environment variable to the installed location.
+3. Set the `MQ_HOME` environment variable to the installed location.
 
     ```bash
     MQ_HOME=/opt/mqm
