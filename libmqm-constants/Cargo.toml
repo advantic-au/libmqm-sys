@@ -24,12 +24,12 @@ docsrs = [
     "exits",
     "pcf",
     "mqc_9_4_2_0",       # Latest MQ version
+    "dep:document-features"
 ]
 
 ## Generate the constants (default is to use pregenerated constants)
 generate = [
-    "libmqm-sys/mqi_helpers",
-    "libmqm-sys/bindgen",
+    "libmqm-sys/constant_lookup",
     "dep:prettyplease",
     "dep:syn",
     "dep:phf_codegen",
@@ -73,11 +73,11 @@ mqc_9_4_2_0 = ["libmqm-sys/mqc_9_4_2_0", "mqc_9_4_1_0"]
 libmqm-sys = { version = "0.8.0", default-features = false, path = "../libmqm-sys" }
 phf = { default-features = false, version = "0.11" }
 derive_more = { version = "2.0.1", features = ["from", "add", "add_assign", "display"] }
-document-features = "0.2.10"
+document-features = { version = "0.2.10", optional = true }
 
 [build-dependencies]
-regex-lite = { version = "0.1.6", optional = true }
 libmqm-sys = { version = "0.8.0", default-features = false, path = "../libmqm-sys" }
+regex-lite = { version = "0.1.6", optional = true }
 phf_codegen = { version = "0.11.2", optional = true }
 prettyplease = { version = "0.2.31", optional = true }
 syn = { version = "2.0.90", optional = true, default-features = false, features = [

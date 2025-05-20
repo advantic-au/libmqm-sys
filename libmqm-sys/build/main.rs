@@ -1,9 +1,9 @@
 use std::io;
 
-#[cfg(feature = "bindgen")]
+#[cfg(any(feature = "bindgen", feature = "constant_lookup"))]
 mod mqi_bindgen;
 
-#[cfg(any(feature = "mqi_helpers", feature = "bindgen"))]
+#[cfg(any(feature = "struct_defaults", feature = "constant_lookup", feature = "bindgen"))]
 mod features {
     use std::env;
 
@@ -18,20 +18,21 @@ mod features {
     pub fn filtered<'a, T: 'a>(features: impl IntoIterator<Item = &'a FeatureFilter<'a, T>>) -> impl Iterator<Item = &'a T> {
         features
             .into_iter()
-            .filter(|(.., feature)| feature.is_none_or(|names| names.iter().copied().any(is_enabled)))
+            .filter(|(.., feature)| feature.is_none_or(|names| names.iter().copied().all(is_enabled)))
             .flat_map(|(x, ..)| *x)
     }
 }
 
-#[cfg(feature = "mqi_helpers")]
+#[cfg(any(feature = "constant_lookup", feature = "struct_defaults"))]
 mod mqi_helpers {
     use std::{io, path::PathBuf};
 
     /// Source files that are built by cc to support the bindings
     const SOURCE_FILES: &[super::features::FeatureFilter<&str>] = &[
-        (&["src/c/defaults.c", "src/c/strings.c"], None), // MQI, MQAI, Strings
-        (&["src/c/exits.c"], Some(&["exits"])),           // Exits
-        (&["src/c/pcf.c"], Some(&["pcf"])),               // PCF
+        (&["src/c/strings.c"], Some(&["constant_lookup"])),        // _STR functions
+        (&["src/c/mqi.c"], Some(&["struct_defaults"])),            // MQI defaults
+        (&["src/c/exits.c"], Some(&["struct_defaults", "exits"])), // exit defaults
+        (&["src/c/pcf.c"], Some(&["struct_defaults", "pcf"])),     // PCF defaults
     ];
 
     pub fn build_c(mq_inc_path: &PathBuf) -> Result<(), io::Error> {
@@ -52,7 +53,7 @@ mod mqi_helpers {
     }
 }
 
-#[cfg(feature = "bindgen")]
+#[cfg(feature = "versiongen")]
 mod versions {
     use regex_lite::Regex;
 
@@ -98,7 +99,7 @@ mod link_mqm {
     }
 }
 
-#[cfg(any(feature = "link_mqm", feature = "mqi_helpers", feature = "bindgen"))]
+#[allow(dead_code)]
 mod mq_path {
     use std::{env, path::PathBuf};
 
@@ -132,7 +133,7 @@ fn main() -> Result<(), io::Error> {
         println!("cargo:rustc-link-lib=dylib={}", link_mqm::link_lib());
     }
 
-    #[cfg(feature = "mqi_helpers")]
+    #[cfg(any(feature = "struct_defaults", feature = "constant_lookup"))]
     mqi_helpers::build_c(&mq_path::mq_inc_path())?; // Build the c files
 
     #[cfg(feature = "versiongen")]
@@ -179,33 +180,37 @@ fn main() -> Result<(), io::Error> {
         drop(version_writer);
 
         #[cfg(feature = "pregen")]
+        pregen_copy(&out_version, &std::path::PathBuf::from("./src/version/pregen"))?;
+
+        #[cfg(feature = "constant_lookup")]
         {
-            use std::{fs, path};
+            let out_bindings = out_path.join("str.rs");
+            let mq_inc_path = mq_path::mq_inc_path();
 
-            let target_os = std::env::var("CARGO_CFG_TARGET_OS").map_err(|e| io::Error::new(io::ErrorKind::InvalidInput, e))?; // Mandatory
-            let target_arch =
-                std::env::var("CARGO_CFG_TARGET_ARCH").map_err(|e| io::Error::new(io::ErrorKind::InvalidInput, e))?; // Mandatory
-
-            fs::copy(
-                out_version,
-                path::PathBuf::from("src/version/pregen").join(format!(
-                    "{}-{}-version.rs",
-                    if target_os == "macos" { "any" } else { &target_arch },
-                    target_os
-                )),
-            )?;
+            let mut out_file = io::BufWriter::new(std::fs::File::create(&out_bindings)?);
+            // Generate and write the bindings file
+            mqi_bindgen::str::str_bindings_builder(mqi_bindgen::bindgen_builder(&mq_inc_path, &mqc_version), &mq_inc_path)
+                .generate()
+                .map_err(|e| io::Error::new(io::ErrorKind::InvalidData, e))?
+                .write(Box::new(&mut out_file))?;
         }
 
         #[cfg(feature = "bindgen")]
         {
+            use io::Write as _;
+
             let out_bindings = out_path.join("bindings.rs");
 
             let mut bindings_buf = Vec::<u8>::new();
+            let mq_inc_path = mq_path::mq_inc_path();
             // Generate and write the bindings file
-            mqi_bindgen::generate_bindings(&mq_path::mq_inc_path(), &mqc_version)
+            mqi_bindgen::mqi::mqi_bindgen_builder(mqi_bindgen::bindgen_builder(&mq_inc_path, &mqc_version), &mq_inc_path)
+                .generate()
                 .map_err(|e| io::Error::new(io::ErrorKind::InvalidData, e))?
                 .write(Box::new(&mut bindings_buf))?;
             let bindings_str = String::from_utf8_lossy(&bindings_buf);
+
+            // Replace MQLONGs that are too large with wrapped equivalent MQLONG's.
             let mqlong_replace = regex_lite::Regex::new(r"(:\s*MQLONG\s*=\s*)(\d+)\s*;").unwrap();
             let bindings_str = mqlong_replace.replace_all(&bindings_str, |caps: &regex_lite::Captures| {
                 if caps[2].parse::<i32>().is_err() {
@@ -217,32 +222,35 @@ fn main() -> Result<(), io::Error> {
                     caps[0].to_string()
                 }
             });
-            {
-                use io::Write as _;
-                let mut out_file = io::BufWriter::new(std::fs::File::create(&out_bindings)?);
-                out_file.write_all(bindings_str.as_bytes())?;
-            }
+
+            let mut out_file = io::BufWriter::new(std::fs::File::create(&out_bindings)?);
+            out_file.write_all(bindings_str.as_bytes())?;
+            drop(out_file);
 
             #[cfg(feature = "pregen")]
-            {
-                use std::{fs, path};
-
-                let target_os =
-                    std::env::var("CARGO_CFG_TARGET_OS").map_err(|e| io::Error::new(io::ErrorKind::InvalidInput, e))?; // Mandatory
-                let target_arch =
-                    std::env::var("CARGO_CFG_TARGET_ARCH").map_err(|e| io::Error::new(io::ErrorKind::InvalidInput, e))?; // Mandatory
-
-                fs::copy(
-                    out_bindings,
-                    path::PathBuf::from("./src/lib/pregen").join(format!(
-                        "{}-{}-bindings.rs",
-                        if target_os == "macos" { "any" } else { &target_arch },
-                        target_os
-                    )),
-                )?;
-            }
+            pregen_copy(&out_bindings, &std::path::PathBuf::from("./src/lib/pregen"))?;
         }
     }
 
+    Ok(())
+}
+
+#[cfg(feature = "pregen")]
+fn pregen_copy(out_bindings: &std::path::PathBuf, target: &std::path::Path) -> Result<(), io::Error> {
+    use std::fs;
+    let target_os = std::env::var("CARGO_CFG_TARGET_OS").map_err(|e| io::Error::new(io::ErrorKind::InvalidInput, e))?;
+    let target_arch = std::env::var("CARGO_CFG_TARGET_ARCH").map_err(|e| io::Error::new(io::ErrorKind::InvalidInput, e))?;
+    fs::copy(
+        out_bindings,
+        target.join(format!(
+            "{}-{}-{}",
+            if target_os == "macos" { "any" } else { &target_arch },
+            target_os,
+            out_bindings
+                .file_name()
+                .expect("out_bindings includes filename")
+                .to_string_lossy()
+        )),
+    )?;
     Ok(())
 }

@@ -1,7 +1,7 @@
-use libmqm_sys::lib as mqsys;
+use libmqm_sys::str as mqstr;
 use std::str;
 
-pub type MqCStrFnExtern = unsafe extern "C" fn(mqsys::MQLONG) -> *mut std::os::raw::c_char;
+pub type MqCStrFnExtern = unsafe extern "C" fn(mqstr::MQLONG) -> *mut std::os::raw::c_char;
 
 #[derive(Clone, Copy)]
 pub struct ConstantEntry<'a> {
@@ -64,7 +64,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQACTIVE_",
         "MQACTIVE",
-        mqsys::MQACTIVE_STR,
+        mqstr::MQACTIVE_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -73,7 +73,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQACTP_",
         "MQACTP",
-        mqsys::MQACTP_STR,
+        mqstr::MQACTP_STR,
         "MQLONG",
         "value",
         None,
@@ -82,7 +82,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQACTV_",
         "MQACTV",
-        mqsys::MQACTV_STR,
+        mqstr::MQACTV_STR,
         "MQLONG",
         "value",
         None,
@@ -91,7 +91,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQACT_",
         "MQACT",
-        mqsys::MQACT_STR,
+        mqstr::MQACT_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -100,7 +100,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQADOPT_CHECK_",
         "MQADOPT_CHECK",
-        mqsys::MQADOPT_CHECK_STR,
+        mqstr::MQADOPT_CHECK_STR,
         "MQLONG",
         "value",
         None,
@@ -109,7 +109,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQADOPT_TYPE_",
         "MQADOPT_TYPE",
-        mqsys::MQADOPT_TYPE_STR,
+        mqstr::MQADOPT_TYPE_STR,
         "MQLONG",
         "value",
         None,
@@ -118,7 +118,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQADPCTX_",
         "MQADPCTX",
-        mqsys::MQADPCTX_STR,
+        mqstr::MQADPCTX_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -127,7 +127,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQAIT_",
         "MQAIT",
-        mqsys::MQAIT_STR,
+        mqstr::MQAIT_STR,
         "MQLONG",
         "value",
         None,
@@ -136,7 +136,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQAPPL_",
         "MQAPPL",
-        mqsys::MQAPPL_STR,
+        mqstr::MQAPPL_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -146,7 +146,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQAS_",
         "MQAS",
-        mqsys::MQAS_STR,
+        mqstr::MQAS_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -155,7 +155,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQAT_",
         "MQAT",
-        mqsys::MQAT_STR,
+        mqstr::MQAT_STR,
         "MQLONG",
         "value",
         None,
@@ -164,7 +164,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQAUTHENTICATE_",
         "MQAUTHENTICATE",
-        mqsys::MQAUTHENTICATE_STR,
+        mqstr::MQAUTHENTICATE_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -173,7 +173,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQAUTHOPT_",
         "MQAUTHOPT",
-        mqsys::MQAUTHOPT_STR,
+        mqstr::MQAUTHOPT_STR,
         "MQLONG",
         "bitflags",
         Some("pcf"),
@@ -182,7 +182,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQAUTH_",
         "MQAUTH",
-        mqsys::MQAUTH_STR,
+        mqstr::MQAUTH_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -192,7 +192,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQAUTOCLUS_",
         "MQAUTOCLUS",
-        mqsys::MQAUTOCLUS_STR,
+        mqstr::MQAUTOCLUS_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -201,7 +201,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQAUTO_",
         "MQAUTO",
-        mqsys::MQAUTO_STR,
+        mqstr::MQAUTO_STR,
         "MQLONG",
         "value",
         None,
@@ -210,7 +210,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQBACF_",
         "MQBACF",
-        mqsys::MQBACF_STR,
+        mqstr::MQBACF_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -219,7 +219,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQBALANCED_",
         "MQBALANCED",
-        mqsys::MQBALANCED_STR,
+        mqstr::MQBALANCED_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -228,7 +228,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQBALSTATE_",
         "MQBALSTATE",
-        mqsys::MQBALSTATE_STR,
+        mqstr::MQBALSTATE_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -237,7 +237,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQBL_",
         "MQBL",
-        mqsys::MQBL_STR,
+        mqstr::MQBL_STR,
         "MQLONG",
         "value",
         Some("mqai"),
@@ -246,7 +246,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQBMHO_",
         "MQBMHO",
-        mqsys::MQBMHO_STR,
+        mqstr::MQBMHO_STR,
         "MQLONG",
         "bitflags",
         None,
@@ -255,7 +255,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQBND_",
         "MQBND",
-        mqsys::MQBND_STR,
+        mqstr::MQBND_STR,
         "MQLONG",
         "value",
         None,
@@ -265,7 +265,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQBNO_BALTYPE_",
         "MQBNO_BALTYPE",
-        mqsys::MQBNO_BALTYPE_STR,
+        mqstr::MQBNO_BALTYPE_STR,
         "MQLONG",
         "value",
         None,
@@ -275,7 +275,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQBNO_OPTIONS_",
         "MQBNO_OPTIONS",
-        mqsys::MQBNO_OPTIONS_STR,
+        mqstr::MQBNO_OPTIONS_STR,
         "MQLONG",
         "value",
         None,
@@ -285,7 +285,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQBNO_TIMEOUT_",
         "MQBNO_TIMEOUT",
-        mqsys::MQBNO_TIMEOUT_STR,
+        mqstr::MQBNO_TIMEOUT_STR,
         "MQLONG",
         "value",
         None,
@@ -294,7 +294,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQBO_",
         "MQBO",
-        mqsys::MQBO_STR,
+        mqstr::MQBO_STR,
         "MQLONG",
         "bitflags",
         None,
@@ -303,7 +303,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQBPLOCATION_",
         "MQBPLOCATION",
-        mqsys::MQBPLOCATION_STR,
+        mqstr::MQBPLOCATION_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -312,7 +312,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQBT_",
         "MQBT",
-        mqsys::MQBT_STR,
+        mqstr::MQBT_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -321,7 +321,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCACF_",
         "MQCACF",
-        mqsys::MQCACF_STR,
+        mqstr::MQCACF_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -330,7 +330,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCACH_",
         "MQCACH",
-        mqsys::MQCACH_STR,
+        mqstr::MQCACH_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -339,7 +339,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCADSD_",
         "MQCADSD",
-        mqsys::MQCADSD_STR,
+        mqstr::MQCADSD_STR,
         "MQLONG",
         "value",
         None,
@@ -348,7 +348,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCAFTY_",
         "MQCAFTY",
-        mqsys::MQCAFTY_STR,
+        mqstr::MQCAFTY_STR,
         "MQLONG",
         "value",
         None, // Required in base feature for MQCD
@@ -357,7 +357,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCAMO_",
         "MQCAMO",
-        mqsys::MQCAMO_STR,
+        mqstr::MQCAMO_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -366,7 +366,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCAP_",
         "MQCAP",
-        mqsys::MQCAP_STR,
+        mqstr::MQCAP_STR,
         "MQLONG",
         "value",
         None,
@@ -375,7 +375,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCAUT_",
         "MQCAUT",
-        mqsys::MQCAUT_STR,
+        mqstr::MQCAUT_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -384,7 +384,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCA_",
         "MQCA",
-        mqsys::MQCA_STR,
+        mqstr::MQCA_STR,
         "MQLONG",
         "value",
         None,
@@ -393,7 +393,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCBCF_",
         "MQCBCF",
-        mqsys::MQCBCF_STR,
+        mqstr::MQCBCF_STR,
         "MQLONG",
         "value",
         None,
@@ -402,7 +402,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCBCT_",
         "MQCBCT",
-        mqsys::MQCBCT_STR,
+        mqstr::MQCBCT_STR,
         "MQLONG",
         "value",
         None,
@@ -411,7 +411,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCBDO_",
         "MQCBDO",
-        mqsys::MQCBDO_STR,
+        mqstr::MQCBDO_STR,
         "MQLONG",
         "bitflags",
         None,
@@ -420,7 +420,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCBD_",
         "MQCBD",
-        mqsys::MQCBD_STR,
+        mqstr::MQCBD_STR,
         "MQLONG",
         "value",
         None,
@@ -429,7 +429,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCBO_",
         "MQCBO",
-        mqsys::MQCBO_STR,
+        mqstr::MQCBO_STR,
         "MQLONG",
         "bitflags",
         Some("mqai"),
@@ -438,7 +438,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCBT_",
         "MQCBT",
-        mqsys::MQCBT_STR,
+        mqstr::MQCBT_STR,
         "MQLONG",
         "value",
         None,
@@ -447,7 +447,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCCSI_",
         "MQCCSI",
-        mqsys::MQCCSI_STR,
+        mqstr::MQCCSI_STR,
         "MQLONG",
         "value",
         None,
@@ -456,7 +456,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCCT_",
         "MQCCT",
-        mqsys::MQCCT_STR,
+        mqstr::MQCCT_STR,
         "MQLONG",
         "value",
         None,
@@ -465,7 +465,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCC_",
         "MQCC",
-        mqsys::MQCC_STR,
+        mqstr::MQCC_STR,
         "MQLONG",
         "value",
         None,
@@ -474,7 +474,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCDC_",
         "MQCDC",
-        mqsys::MQCDC_STR,
+        mqstr::MQCDC_STR,
         "MQLONG",
         "value",
         Some("exits"),
@@ -484,7 +484,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCEX_",
         "MQCEX",
-        mqsys::MQCEX_STR,
+        mqstr::MQCEX_STR,
         "MQLONG",
         "value",
         None,
@@ -493,7 +493,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCFACCESS_",
         "MQCFACCESS",
-        mqsys::MQCFACCESS_STR,
+        mqstr::MQCFACCESS_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -502,7 +502,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCFCONLOS_",
         "MQCFCONLOS",
-        mqsys::MQCFCONLOS_STR,
+        mqstr::MQCFCONLOS_STR,
         "MQLONG",
         "value",
         None,
@@ -512,7 +512,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCFC_",
         "MQCFC",
-        mqsys::MQCFC_STR,
+        mqstr::MQCFC_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -521,7 +521,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCFOFFLD_",
         "MQCFOFFLD",
-        mqsys::MQCFOFFLD_STR,
+        mqstr::MQCFOFFLD_STR,
         "MQLONG",
         "value",
         None,
@@ -530,7 +530,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCFOP_",
         "MQCFOP",
-        mqsys::MQCFOP_STR,
+        mqstr::MQCFOP_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -539,7 +539,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCFO_REFRESH_",
         "MQCFO_REFRESH",
-        mqsys::MQCFO_REFRESH_STR,
+        mqstr::MQCFO_REFRESH_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -548,7 +548,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCFO_REMOVE_",
         "MQCFO_REMOVE",
-        mqsys::MQCFO_REMOVE_STR,
+        mqstr::MQCFO_REMOVE_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -557,7 +557,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCFR_",
         "MQCFR",
-        mqsys::MQCFR_STR,
+        mqstr::MQCFR_STR,
         "MQLONG",
         "value",
         None,
@@ -566,7 +566,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCFSTATUS_",
         "MQCFSTATUS",
-        mqsys::MQCFSTATUS_STR,
+        mqstr::MQCFSTATUS_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -575,7 +575,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCFTYPE_",
         "MQCFTYPE",
-        mqsys::MQCFTYPE_STR,
+        mqstr::MQCFTYPE_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -584,7 +584,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCFT_",
         "MQCFT",
-        mqsys::MQCFT_STR,
+        mqstr::MQCFT_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -593,7 +593,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCF_",
         "MQCF",
-        mqsys::MQCF_STR,
+        mqstr::MQCF_STR,
         "MQLONG",
         "value",
         Some("exits"),
@@ -602,7 +602,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCGWI_",
         "MQCGWI",
-        mqsys::MQCGWI_STR,
+        mqstr::MQCGWI_STR,
         "MQLONG",
         "value",
         None,
@@ -611,7 +611,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCHAD_",
         "MQCHAD",
-        mqsys::MQCHAD_STR,
+        mqstr::MQCHAD_STR,
         "MQLONG",
         "value",
         None,
@@ -620,7 +620,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCHIDS_",
         "MQCHIDS",
-        mqsys::MQCHIDS_STR,
+        mqstr::MQCHIDS_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -629,7 +629,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCHK_",
         "MQCHK",
-        mqsys::MQCHK_STR,
+        mqstr::MQCHK_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -638,7 +638,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCHLA_",
         "MQCHLA",
-        mqsys::MQCHLA_STR,
+        mqstr::MQCHLA_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -647,7 +647,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCHLD_",
         "MQCHLD",
-        mqsys::MQCHLD_STR,
+        mqstr::MQCHLD_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -656,7 +656,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCHRR_",
         "MQCHRR",
-        mqsys::MQCHRR_STR,
+        mqstr::MQCHRR_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -665,7 +665,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCHSH_",
         "MQCHSH",
-        mqsys::MQCHSH_STR,
+        mqstr::MQCHSH_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -674,7 +674,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCHSR_",
         "MQCHSR",
-        mqsys::MQCHSR_STR,
+        mqstr::MQCHSR_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -683,7 +683,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCHSSTATE_",
         "MQCHSSTATE",
-        mqsys::MQCHSSTATE_STR,
+        mqstr::MQCHSSTATE_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -692,7 +692,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCHS_",
         "MQCHS",
-        mqsys::MQCHS_STR,
+        mqstr::MQCHS_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -701,7 +701,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCHTAB_",
         "MQCHTAB",
-        mqsys::MQCHTAB_STR,
+        mqstr::MQCHTAB_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -710,7 +710,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCHT_",
         "MQCHT",
-        mqsys::MQCHT_STR,
+        mqstr::MQCHT_STR,
         "MQLONG",
         "value",
         None, // Required in base feature for MQCD
@@ -719,7 +719,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCIH_",
         "MQCIH",
-        mqsys::MQCIH_STR,
+        mqstr::MQCIH_STR,
         "MQLONG",
         "value",
         None,
@@ -728,7 +728,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCIT_",
         "MQCIT",
-        mqsys::MQCIT_STR,
+        mqstr::MQCIT_STR,
         "MQLONG",
         "value",
         None,
@@ -737,7 +737,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCLCT_",
         "MQCLCT",
-        mqsys::MQCLCT_STR,
+        mqstr::MQCLCT_STR,
         "MQLONG",
         "value",
         Some("exits"),
@@ -746,7 +746,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCLROUTE_",
         "MQCLROUTE",
-        mqsys::MQCLROUTE_STR,
+        mqstr::MQCLROUTE_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -755,7 +755,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCLRS_",
         "MQCLRS",
-        mqsys::MQCLRS_STR,
+        mqstr::MQCLRS_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -764,7 +764,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCLRT_",
         "MQCLRT",
-        mqsys::MQCLRT_STR,
+        mqstr::MQCLRT_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -773,7 +773,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCLST_",
         "MQCLST",
-        mqsys::MQCLST_STR,
+        mqstr::MQCLST_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -782,7 +782,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCLT_",
         "MQCLT",
-        mqsys::MQCLT_STR,
+        mqstr::MQCLT_STR,
         "MQLONG",
         "value",
         None,
@@ -791,7 +791,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCLWL_",
         "MQCLWL",
-        mqsys::MQCLWL_STR,
+        mqstr::MQCLWL_STR,
         "MQLONG",
         "value",
         None,
@@ -800,7 +800,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCLXQ_",
         "MQCLXQ",
-        mqsys::MQCLXQ_STR,
+        mqstr::MQCLXQ_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -809,7 +809,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCMDI_",
         "MQCMDI",
-        mqsys::MQCMDI_STR,
+        mqstr::MQCMDI_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -818,7 +818,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCMDL_",
         "MQCMDL",
-        mqsys::MQCMDL_STR,
+        mqstr::MQCMDL_STR,
         "MQLONG",
         "value",
         None,
@@ -827,7 +827,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCMD_",
         "MQCMD",
-        mqsys::MQCMD_STR,
+        mqstr::MQCMD_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -836,7 +836,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCMHO_",
         "MQCMHO",
-        mqsys::MQCMHO_STR,
+        mqstr::MQCMHO_STR,
         "MQLONG",
         "value",
         None,
@@ -845,7 +845,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCNO_",
         "MQCNO",
-        mqsys::MQCNO_STR,
+        mqstr::MQCNO_STR,
         "MQLONG",
         "bitflags",
         None,
@@ -854,7 +854,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCODL_",
         "MQCODL",
-        mqsys::MQCODL_STR,
+        mqstr::MQCODL_STR,
         "MQLONG",
         "value",
         None,
@@ -863,7 +863,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCOMPRESS_",
         "MQCOMPRESS",
-        mqsys::MQCOMPRESS_STR,
+        mqstr::MQCOMPRESS_STR,
         "MQLONG",
         "value",
         Some("exits"),
@@ -872,7 +872,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCOPY_",
         "MQCOPY",
-        mqsys::MQCOPY_STR,
+        mqstr::MQCOPY_STR,
         "MQLONG",
         "bitflags",
         None,
@@ -881,7 +881,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCO_",
         "MQCO",
-        mqsys::MQCO_STR,
+        mqstr::MQCO_STR,
         "MQLONG",
         "bitflags",
         None,
@@ -890,7 +890,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCQT_",
         "MQCQT",
-        mqsys::MQCQT_STR,
+        mqstr::MQCQT_STR,
         "MQLONG",
         "value",
         None,
@@ -899,7 +899,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCRC_",
         "MQCRC",
-        mqsys::MQCRC_STR,
+        mqstr::MQCRC_STR,
         "MQLONG",
         "value",
         None,
@@ -908,7 +908,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCSP_",
         "MQCSP",
-        mqsys::MQCSP_STR,
+        mqstr::MQCSP_STR,
         "MQLONG",
         "value",
         None,
@@ -917,7 +917,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCSRV_CONVERT_",
         "MQCSRV_CONVERT",
-        mqsys::MQCSRV_CONVERT_STR,
+        mqstr::MQCSRV_CONVERT_STR,
         "MQLONG",
         "value",
         None,
@@ -926,7 +926,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCSRV_DLQ_",
         "MQCSRV_DLQ",
-        mqsys::MQCSRV_DLQ_STR,
+        mqstr::MQCSRV_DLQ_STR,
         "MQLONG",
         "value",
         None,
@@ -935,7 +935,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCS_",
         "MQCS",
-        mqsys::MQCS_STR,
+        mqstr::MQCS_STR,
         "MQLONG",
         "value",
         None,
@@ -944,7 +944,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCTES_",
         "MQCTES",
-        mqsys::MQCTES_STR,
+        mqstr::MQCTES_STR,
         "MQLONG",
         "value",
         None,
@@ -953,7 +953,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCTLO_",
         "MQCTLO",
-        mqsys::MQCTLO_STR,
+        mqstr::MQCTLO_STR,
         "MQLONG",
         "bitflags",
         None,
@@ -962,7 +962,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQCUOWC_",
         "MQCUOWC",
-        mqsys::MQCUOWC_STR,
+        mqstr::MQCUOWC_STR,
         "MQLONG",
         "value",
         None,
@@ -971,7 +971,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQDCC_",
         "MQDCC",
-        mqsys::MQDCC_STR,
+        mqstr::MQDCC_STR,
         "MQLONG",
         "bitflags",
         Some("exits"),
@@ -980,7 +980,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQDC_",
         "MQDC",
-        mqsys::MQDC_STR,
+        mqstr::MQDC_STR,
         "MQLONG",
         "value",
         None,
@@ -989,7 +989,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQDELO_",
         "MQDELO",
-        mqsys::MQDELO_STR,
+        mqstr::MQDELO_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -998,7 +998,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQDHF_",
         "MQDHF",
-        mqsys::MQDHF_STR,
+        mqstr::MQDHF_STR,
         "MQLONG",
         "value",
         None,
@@ -1007,7 +1007,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQDISCONNECT_",
         "MQDISCONNECT",
-        mqsys::MQDISCONNECT_STR,
+        mqstr::MQDISCONNECT_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -1016,7 +1016,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQDLV_",
         "MQDLV",
-        mqsys::MQDLV_STR,
+        mqstr::MQDLV_STR,
         "MQLONG",
         "value",
         None,
@@ -1025,7 +1025,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQDL_",
         "MQDL",
-        mqsys::MQDL_STR,
+        mqstr::MQDL_STR,
         "MQLONG",
         "value",
         None,
@@ -1034,7 +1034,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQDMHO_",
         "MQDMHO",
-        mqsys::MQDMHO_STR,
+        mqstr::MQDMHO_STR,
         "MQLONG",
         "value",
         None,
@@ -1043,7 +1043,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQDMPO_",
         "MQDMPO",
-        mqsys::MQDMPO_STR,
+        mqstr::MQDMPO_STR,
         "MQLONG",
         "value",
         None,
@@ -1052,7 +1052,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQDNSWLM_",
         "MQDNSWLM",
-        mqsys::MQDNSWLM_STR,
+        mqstr::MQDNSWLM_STR,
         "MQLONG",
         "value",
         None,
@@ -1061,7 +1061,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQDOPT_",
         "MQDOPT",
-        mqsys::MQDOPT_STR,
+        mqstr::MQDOPT_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -1070,7 +1070,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQDSB_",
         "MQDSB",
-        mqsys::MQDSB_STR,
+        mqstr::MQDSB_STR,
         "MQLONG",
         "value",
         None,
@@ -1079,7 +1079,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQDSE_",
         "MQDSE",
-        mqsys::MQDSE_STR,
+        mqstr::MQDSE_STR,
         "MQLONG",
         "value",
         None,
@@ -1088,17 +1088,17 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQEC_",
         "MQEC",
-        mqsys::MQEC_STR,
+        mqstr::MQEC_STR,
         "MQLONG",
         "value",
         None,
         Some("Signal Values"),
     ),
-    c("MQEI_", "MQEI", mqsys::MQEI_STR, "MQLONG", "value", None, Some("Expiry")),
+    c("MQEI_", "MQEI", mqstr::MQEI_STR, "MQLONG", "value", None, Some("Expiry")),
     c(
         "MQENC_",
         "MQENC",
-        mqsys::MQENC_STR,
+        mqstr::MQENC_STR,
         "MQLONG",
         "bitflags",
         None,
@@ -1107,7 +1107,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQEPH_",
         "MQEPH",
-        mqsys::MQEPH_STR,
+        mqstr::MQEPH_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -1116,7 +1116,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQET_",
         "MQET",
-        mqsys::MQET_STR,
+        mqstr::MQET_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -1125,7 +1125,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQEVO_",
         "MQEVO",
-        mqsys::MQEVO_STR,
+        mqstr::MQEVO_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -1134,7 +1134,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQEVR_",
         "MQEVR",
-        mqsys::MQEVR_STR,
+        mqstr::MQEVR_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -1143,7 +1143,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQEXPI_",
         "MQEXPI",
-        mqsys::MQEXPI_STR,
+        mqstr::MQEXPI_STR,
         "MQLONG",
         "value",
         None,
@@ -1152,7 +1152,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQEXTATTRS_",
         "MQEXTATTRS",
-        mqsys::MQEXTATTRS_STR,
+        mqstr::MQEXTATTRS_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -1161,7 +1161,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQEXT_",
         "MQEXT",
-        mqsys::MQEXT_STR,
+        mqstr::MQEXT_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -1170,7 +1170,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQFB_",
         "MQFB",
-        mqsys::MQFB_STR,
+        mqstr::MQFB_STR,
         "MQLONG",
         "value",
         None,
@@ -1179,7 +1179,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQFC_",
         "MQFC",
-        mqsys::MQFC_STR,
+        mqstr::MQFC_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -1189,7 +1189,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQFSENC_",
         "MQFSENC",
-        mqsys::MQFSENC_STR,
+        mqstr::MQFSENC_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -1199,7 +1199,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQFS_",
         "MQFS",
-        mqsys::MQFS_STR,
+        mqstr::MQFS_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -1208,7 +1208,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQFUN_",
         "MQFUN",
-        mqsys::MQFUN_STR,
+        mqstr::MQFUN_STR,
         "MQLONG",
         "value",
         None,
@@ -1217,7 +1217,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQGACF_",
         "MQGACF",
-        mqsys::MQGACF_STR,
+        mqstr::MQGACF_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -1226,7 +1226,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQGMO_",
         "MQGMO",
-        mqsys::MQGMO_STR,
+        mqstr::MQGMO_STR,
         "MQLONG",
         "bitflags",
         None,
@@ -1235,7 +1235,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQGUR_",
         "MQGUR",
-        mqsys::MQGUR_STR,
+        mqstr::MQGUR_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -1244,7 +1244,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQHA_",
         "MQHA",
-        mqsys::MQHA_STR,
+        mqstr::MQHA_STR,
         "MQLONG",
         "value",
         Some("mqai"),
@@ -1253,7 +1253,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQHB_",
         "MQHB",
-        mqsys::MQHB_STR,
+        mqstr::MQHB_STR,
         "MQLONG",
         "value",
         Some("mqai"),
@@ -1262,7 +1262,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQHC_",
         "MQHC",
-        mqsys::MQHC_STR,
+        mqstr::MQHC_STR,
         "MQHCONN",
         "value",
         None,
@@ -1271,7 +1271,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQHM_",
         "MQHM",
-        mqsys::MQHM_STR,
+        mqstr::MQHM_STR,
         "MQHMSG",
         "value",
         None,
@@ -1280,7 +1280,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQHO_",
         "MQHO",
-        mqsys::MQHO_STR,
+        mqstr::MQHO_STR,
         "MQHOBJ",
         "value",
         None,
@@ -1289,7 +1289,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQHSTATE_",
         "MQHSTATE",
-        mqsys::MQHSTATE_STR,
+        mqstr::MQHSTATE_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -1298,7 +1298,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQIACF_",
         "MQIACF",
-        mqsys::MQIACF_STR,
+        mqstr::MQIACF_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -1307,7 +1307,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQIACH_",
         "MQIACH",
-        mqsys::MQIACH_STR,
+        mqstr::MQIACH_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -1316,7 +1316,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQIAMO64_",
         "MQIAMO64",
-        mqsys::MQIAMO64_STR,
+        mqstr::MQIAMO64_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -1325,7 +1325,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQIAMO_",
         "MQIAMO",
-        mqsys::MQIAMO_STR,
+        mqstr::MQIAMO_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -1335,7 +1335,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQIAMO_MONITOR_DATATYPE_",
         "MQIAMO_MONITOR_DATATYPE",
-        mqsys::MQIAMO_MONITOR_DATATYPE_STR,
+        mqstr::MQIAMO_MONITOR_DATATYPE_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -1345,7 +1345,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQIAMO_MONITOR_FLAGS_",
         "MQIAMO_MONITOR_FLAGS",
-        mqsys::MQIAMO_MONITOR_FLAGS_STR,
+        mqstr::MQIAMO_MONITOR_FLAGS_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -1354,7 +1354,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQIASY_",
         "MQIASY",
-        mqsys::MQIASY_STR,
+        mqstr::MQIASY_STR,
         "MQLONG",
         "value",
         Some("mqai"),
@@ -1363,7 +1363,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQIAV_",
         "MQIAV",
-        mqsys::MQIAV_STR,
+        mqstr::MQIAV_STR,
         "MQLONG",
         "value",
         None,
@@ -1372,7 +1372,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQIA_",
         "MQIA",
-        mqsys::MQIA_STR,
+        mqstr::MQIA_STR,
         "MQLONG",
         "value",
         None,
@@ -1381,7 +1381,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQIDO_",
         "MQIDO",
-        mqsys::MQIDO_STR,
+        mqstr::MQIDO_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -1390,7 +1390,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQIEPF_",
         "MQIEPF",
-        mqsys::MQIEPF_STR,
+        mqstr::MQIEPF_STR,
         "MQLONG",
         "value",
         Some("exits"),
@@ -1399,7 +1399,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQIGQPA_",
         "MQIGQPA",
-        mqsys::MQIGQPA_STR,
+        mqstr::MQIGQPA_STR,
         "MQLONG",
         "value",
         None,
@@ -1408,7 +1408,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQIGQ_",
         "MQIGQ",
-        mqsys::MQIGQ_STR,
+        mqstr::MQIGQ_STR,
         "MQLONG",
         "value",
         None,
@@ -1417,7 +1417,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQIIH_",
         "MQIIH",
-        mqsys::MQIIH_STR,
+        mqstr::MQIIH_STR,
         "MQLONG",
         "value",
         None,
@@ -1426,7 +1426,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQIMGRCOV_",
         "MQIMGRCOV",
-        mqsys::MQIMGRCOV_STR,
+        mqstr::MQIMGRCOV_STR,
         "MQLONG",
         "value",
         None,
@@ -1435,7 +1435,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQIMMREASON_",
         "MQIMMREASON",
-        mqsys::MQIMMREASON_STR,
+        mqstr::MQIMMREASON_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -1444,7 +1444,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQIMPO_",
         "MQIMPO",
-        mqsys::MQIMPO_STR,
+        mqstr::MQIMPO_STR,
         "MQLONG",
         "bitflags",
         None,
@@ -1453,7 +1453,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQINBD_",
         "MQINBD",
-        mqsys::MQINBD_STR,
+        mqstr::MQINBD_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -1462,7 +1462,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQIND_",
         "MQIND",
-        mqsys::MQIND_STR,
+        mqstr::MQIND_STR,
         "MQLONG",
         "value",
         Some("mqai"),
@@ -1471,7 +1471,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQIPADDR_",
         "MQIPADDR",
-        mqsys::MQIPADDR_STR,
+        mqstr::MQIPADDR_STR,
         "MQLONG",
         "value",
         None,
@@ -1480,17 +1480,17 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQIS_",
         "MQIS",
-        mqsys::MQIS_STR,
+        mqstr::MQIS_STR,
         "MQLONG",
         "value",
         Some("pcf"),
         Some("State Options"),
     ),
-    c("MQIT_", "MQIT", mqsys::MQIT_STR, "MQLONG", "value", None, Some("Index Types")),
+    c("MQIT_", "MQIT", mqstr::MQIT_STR, "MQLONG", "value", None, Some("Index Types")),
     c(
         "MQKAI_",
         "MQKAI",
-        mqsys::MQKAI_STR,
+        mqstr::MQKAI_STR,
         "MQLONG",
         "value",
         None, // Required in base feature for MQCD
@@ -1499,7 +1499,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQKEY_",
         "MQKEY",
-        mqsys::MQKEY_STR,
+        mqstr::MQKEY_STR,
         "MQLONG",
         "value",
         None,
@@ -1508,7 +1508,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQLDAPC_",
         "MQLDAPC",
-        mqsys::MQLDAPC_STR,
+        mqstr::MQLDAPC_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -1517,7 +1517,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQLDAP_AUTHORMD_",
         "MQLDAP_AUTHORMD",
-        mqsys::MQLDAP_AUTHORMD_STR,
+        mqstr::MQLDAP_AUTHORMD_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -1526,7 +1526,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQLDAP_NESTGRP_",
         "MQLDAP_NESTGRP",
-        mqsys::MQLDAP_NESTGRP_STR,
+        mqstr::MQLDAP_NESTGRP_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -1536,7 +1536,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQLOGTYPE_",
         "MQLOGTYPE",
-        mqsys::MQLOGTYPE_STR,
+        mqstr::MQLOGTYPE_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -1545,7 +1545,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQLR_",
         "MQLR",
-        mqsys::MQLR_STR,
+        mqstr::MQLR_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -1554,7 +1554,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQMASTER_",
         "MQMASTER",
-        mqsys::MQMASTER_STR,
+        mqstr::MQMASTER_STR,
         "MQLONG",
         "value",
         None,
@@ -1563,7 +1563,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQMATCH_",
         "MQMATCH",
-        mqsys::MQMATCH_STR,
+        mqstr::MQMATCH_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -1572,7 +1572,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQMCAS_",
         "MQMCAS",
-        mqsys::MQMCAS_STR,
+        mqstr::MQMCAS_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -1581,7 +1581,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQMCAT_",
         "MQMCAT",
-        mqsys::MQMCAT_STR,
+        mqstr::MQMCAT_STR,
         "MQLONG",
         "value",
         Some("exits"),
@@ -1590,7 +1590,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQMCB_",
         "MQMCB",
-        mqsys::MQMCB_STR,
+        mqstr::MQMCB_STR,
         "MQLONG",
         "value",
         None,
@@ -1599,7 +1599,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQMCEV_",
         "MQMCEV",
-        mqsys::MQMCEV_STR,
+        mqstr::MQMCEV_STR,
         "MQLONG",
         "value",
         Some("exits"),
@@ -1608,17 +1608,17 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQMCP_",
         "MQMCP",
-        mqsys::MQMCP_STR,
+        mqstr::MQMCP_STR,
         "MQLONG",
         "value",
         Some("pcf"),
         Some("Multicast Properties Options"),
     ),
-    c("MQMC_", "MQMC", mqsys::MQMC_STR, "MQLONG", "value", None, Some("Multicast")),
+    c("MQMC_", "MQMC", mqstr::MQMC_STR, "MQLONG", "value", None, Some("Multicast")),
     c(
         "MQMDEF_",
         "MQMDEF",
-        mqsys::MQMDEF_STR,
+        mqstr::MQMDEF_STR,
         "MQLONG",
         "value",
         None,
@@ -1627,7 +1627,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQMDS_",
         "MQMDS",
-        mqsys::MQMDS_STR,
+        mqstr::MQMDS_STR,
         "MQLONG",
         "value",
         None,
@@ -1636,7 +1636,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQMEDIMGINTVL_",
         "MQMEDIMGINTVL",
-        mqsys::MQMEDIMGINTVL_STR,
+        mqstr::MQMEDIMGINTVL_STR,
         "MQLONG",
         "value",
         None,
@@ -1645,7 +1645,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQMEDIMGLOGLN_",
         "MQMEDIMGLOGLN",
-        mqsys::MQMEDIMGLOGLN_STR,
+        mqstr::MQMEDIMGLOGLN_STR,
         "MQLONG",
         "value",
         None,
@@ -1654,7 +1654,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQMEDIMGSCHED_",
         "MQMEDIMGSCHED",
-        mqsys::MQMEDIMGSCHED_STR,
+        mqstr::MQMEDIMGSCHED_STR,
         "MQLONG",
         "value",
         None,
@@ -1663,7 +1663,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQMF_",
         "MQMF",
-        mqsys::MQMF_STR,
+        mqstr::MQMF_STR,
         "MQLONG",
         "value",
         None,
@@ -1672,7 +1672,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQMHBO_",
         "MQMHBO",
-        mqsys::MQMHBO_STR,
+        mqstr::MQMHBO_STR,
         "MQLONG",
         "bitflags",
         None,
@@ -1681,7 +1681,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQMLP_ENCRYPTION_",
         "MQMLP_ENCRYPTION",
-        mqsys::MQMLP_ENCRYPTION_STR,
+        mqstr::MQMLP_ENCRYPTION_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -1690,7 +1690,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQMLP_SIGN_",
         "MQMLP_SIGN",
-        mqsys::MQMLP_SIGN_STR,
+        mqstr::MQMLP_SIGN_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -1699,7 +1699,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQMLP_TOLERATE_",
         "MQMLP_TOLERATE",
-        mqsys::MQMLP_TOLERATE_STR,
+        mqstr::MQMLP_TOLERATE_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -1708,7 +1708,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQMMBI_",
         "MQMMBI",
-        mqsys::MQMMBI_STR,
+        mqstr::MQMMBI_STR,
         "MQLONG",
         "value",
         None,
@@ -1717,7 +1717,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQMODE_",
         "MQMODE",
-        mqsys::MQMODE_STR,
+        mqstr::MQMODE_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -1727,7 +1727,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQMON_OVERRIDE_",
         "MQMON_OVERRIDE",
-        mqsys::MQMON_OVERRIDE_STR,
+        mqstr::MQMON_OVERRIDE_STR,
         "MQLONG",
         "value",
         None,
@@ -1736,7 +1736,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQMON_",
         "MQMON",
-        mqsys::MQMON_STR,
+        mqstr::MQMON_STR,
         "MQLONG",
         "value",
         None,
@@ -1746,7 +1746,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQMON_AVAILABILITY_",
         "MQMON_AVAILABILITY",
-        mqsys::MQMON_AVAILABILITY_STR,
+        mqstr::MQMON_AVAILABILITY_STR,
         "MQLONG",
         "value",
         None,
@@ -1755,7 +1755,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQMO_",
         "MQMO",
-        mqsys::MQMO_STR,
+        mqstr::MQMO_STR,
         "MQLONG",
         "bitflags",
         None,
@@ -1764,7 +1764,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQMT_",
         "MQMT",
-        mqsys::MQMT_STR,
+        mqstr::MQMT_STR,
         "MQLONG",
         "value",
         None,
@@ -1773,18 +1773,18 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQMULC_",
         "MQMULC",
-        mqsys::MQMULC_STR,
+        mqstr::MQMULC_STR,
         "MQLONG",
         "value",
         Some("pcf"),
         Some("Measured usage by API"),
     ),
-    c("MQNC_", "MQNC", mqsys::MQNC_STR, "MQLONG", "value", None, Some("Name Count")),
+    c("MQNC_", "MQNC", mqstr::MQNC_STR, "MQLONG", "value", None, Some("Name Count")),
     #[cfg(feature = "mqc_9_3_2_0")]
     c(
         "MQNHABACKLOG_",
         "MQNHABACKLOG",
-        mqsys::MQNHABACKLOG_STR,
+        mqstr::MQNHABACKLOG_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -1794,7 +1794,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQNHACONNACTV_",
         "MQNHACONNACTV",
-        mqsys::MQNHACONNACTV_STR,
+        mqstr::MQNHACONNACTV_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -1804,7 +1804,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQNHAINSYNC_",
         "MQNHAINSYNC",
-        mqsys::MQNHAINSYNC_STR,
+        mqstr::MQNHAINSYNC_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -1814,7 +1814,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQNHAROLE_",
         "MQNHAROLE",
-        mqsys::MQNHAROLE_STR,
+        mqstr::MQNHAROLE_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -1823,7 +1823,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQNPMS_",
         "MQNPMS",
-        mqsys::MQNPMS_STR,
+        mqstr::MQNPMS_STR,
         "MQLONG",
         "value",
         Some("exits"),
@@ -1832,7 +1832,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQNPM_",
         "MQNPM",
-        mqsys::MQNPM_STR,
+        mqstr::MQNPM_STR,
         "MQLONG",
         "value",
         None,
@@ -1841,7 +1841,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQNSH_",
         "MQNSH",
-        mqsys::MQNSH_STR,
+        mqstr::MQNSH_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -1850,7 +1850,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQNT_",
         "MQNT",
-        mqsys::MQNT_STR,
+        mqstr::MQNT_STR,
         "MQLONG",
         "value",
         None,
@@ -1859,7 +1859,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQOL_",
         "MQOL",
-        mqsys::MQOL_STR,
+        mqstr::MQOL_STR,
         "MQLONG",
         "value",
         None,
@@ -1868,7 +1868,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQOM_",
         "MQOM",
-        mqsys::MQOM_STR,
+        mqstr::MQOM_STR,
         "MQLONG",
         "value",
         None,
@@ -1877,7 +1877,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQOO_",
         "MQOO",
-        mqsys::MQOO_STR,
+        mqstr::MQOO_STR,
         "MQLONG",
         "bitflags",
         None,
@@ -1886,7 +1886,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQOPER_",
         "MQOPER",
-        mqsys::MQOPER_STR,
+        mqstr::MQOPER_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -1895,7 +1895,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQOPMODE_",
         "MQOPMODE",
-        mqsys::MQOPMODE_STR,
+        mqstr::MQOPMODE_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -1904,7 +1904,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQOP_",
         "MQOP",
-        mqsys::MQOP_STR,
+        mqstr::MQOP_STR,
         "MQLONG",
         "bitflags",
         None,
@@ -1913,7 +1913,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQOT_",
         "MQOT",
-        mqsys::MQOT_STR,
+        mqstr::MQOT_STR,
         "MQLONG",
         "value",
         None,
@@ -1922,7 +1922,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQPAGECLAS_",
         "MQPAGECLAS",
-        mqsys::MQPAGECLAS_STR,
+        mqstr::MQPAGECLAS_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -1931,7 +1931,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQPA_",
         "MQPA",
-        mqsys::MQPA_STR,
+        mqstr::MQPA_STR,
         "MQLONG",
         "value",
         Some("exits"),
@@ -1940,7 +1940,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQPD_",
         "MQPD",
-        mqsys::MQPD_STR,
+        mqstr::MQPD_STR,
         "MQLONG",
         "value",
         None,
@@ -1949,17 +1949,17 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQPER_",
         "MQPER",
-        mqsys::MQPER_STR,
+        mqstr::MQPER_STR,
         "MQLONG",
         "value",
         None,
         Some("Persistence Values"),
     ),
-    c("MQPL_", "MQPL", mqsys::MQPL_STR, "MQLONG", "value", None, Some("Platforms")),
+    c("MQPL_", "MQPL", mqstr::MQPL_STR, "MQLONG", "value", None, Some("Platforms")),
     c(
         "MQPMO_",
         "MQPMO",
-        mqsys::MQPMO_STR,
+        mqstr::MQPMO_STR,
         "MQLONG",
         "bitflags",
         None,
@@ -1968,7 +1968,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQPMRF_",
         "MQPMRF",
-        mqsys::MQPMRF_STR,
+        mqstr::MQPMRF_STR,
         "MQLONG",
         "value",
         None,
@@ -1977,17 +1977,17 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQPO_",
         "MQPO",
-        mqsys::MQPO_STR,
+        mqstr::MQPO_STR,
         "MQLONG",
         "value",
         Some("pcf"),
         Some("Purge Options"),
     ),
-    c("MQPRI_", "MQPRI", mqsys::MQPRI_STR, "MQLONG", "value", None, Some("Priority")),
+    c("MQPRI_", "MQPRI", mqstr::MQPRI_STR, "MQLONG", "value", None, Some("Priority")),
     c(
         "MQPROP_",
         "MQPROP",
-        mqsys::MQPROP_STR,
+        mqstr::MQPROP_STR,
         "MQLONG",
         "value",
         None,
@@ -1996,7 +1996,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQPROTO_",
         "MQPROTO",
-        mqsys::MQPROTO_STR,
+        mqstr::MQPROTO_STR,
         "MQLONG",
         "value",
         Some("exits"),
@@ -2005,7 +2005,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQPRT_",
         "MQPRT",
-        mqsys::MQPRT_STR,
+        mqstr::MQPRT_STR,
         "MQLONG",
         "value",
         None,
@@ -2014,7 +2014,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQPSCLUS_",
         "MQPSCLUS",
-        mqsys::MQPSCLUS_STR,
+        mqstr::MQPSCLUS_STR,
         "MQLONG",
         "value",
         None,
@@ -2023,7 +2023,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQPSCT_",
         "MQPSCT",
-        mqsys::MQPSCT_STR,
+        mqstr::MQPSCT_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -2032,7 +2032,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQPSM_",
         "MQPSM",
-        mqsys::MQPSM_STR,
+        mqstr::MQPSM_STR,
         "MQLONG",
         "value",
         None,
@@ -2041,7 +2041,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQPSPROP_",
         "MQPSPROP",
-        mqsys::MQPSPROP_STR,
+        mqstr::MQPSPROP_STR,
         "MQLONG",
         "value",
         None,
@@ -2050,7 +2050,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQPSST_",
         "MQPSST",
-        mqsys::MQPSST_STR,
+        mqstr::MQPSST_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -2059,7 +2059,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQPS_",
         "MQPS",
-        mqsys::MQPS_STR,
+        mqstr::MQPS_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -2068,7 +2068,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQPUBO_",
         "MQPUBO",
-        mqsys::MQPUBO_STR,
+        mqstr::MQPUBO_STR,
         "MQLONG",
         "bitflags",
         Some("pcf"),
@@ -2077,7 +2077,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQQA_BACKOUT_",
         "MQQA_BACKOUT",
-        mqsys::MQQA_BACKOUT_STR,
+        mqstr::MQQA_BACKOUT_STR,
         "MQLONG",
         "value",
         None,
@@ -2086,7 +2086,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQQA_GET_",
         "MQQA_GET",
-        mqsys::MQQA_GET_STR,
+        mqstr::MQQA_GET_STR,
         "MQLONG",
         "value",
         None,
@@ -2095,7 +2095,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQQA_PUT_",
         "MQQA_PUT",
-        mqsys::MQQA_PUT_STR,
+        mqstr::MQQA_PUT_STR,
         "MQLONG",
         "value",
         None,
@@ -2105,7 +2105,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQQA_SHAREABLE_",
         "MQQA_SHAREABLE",
-        mqsys::MQQA_SHAREABLE_STR,
+        mqstr::MQQA_SHAREABLE_STR,
         "MQLONG",
         "value",
         None,
@@ -2114,7 +2114,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQQDT_",
         "MQQDT",
-        mqsys::MQQDT_STR,
+        mqstr::MQQDT_STR,
         "MQLONG",
         "value",
         None,
@@ -2123,7 +2123,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQQFS_",
         "MQQFS",
-        mqsys::MQQFS_STR,
+        mqstr::MQQFS_STR,
         "MQLONG",
         "value",
         None,
@@ -2132,7 +2132,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQQF_",
         "MQQF",
-        mqsys::MQQF_STR,
+        mqstr::MQQF_STR,
         "MQLONG",
         "value",
         Some("exits"),
@@ -2141,7 +2141,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQQMDT_",
         "MQQMDT",
-        mqsys::MQQMDT_STR,
+        mqstr::MQQMDT_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -2150,7 +2150,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQQMFAC_",
         "MQQMFAC",
-        mqsys::MQQMFAC_STR,
+        mqstr::MQQMFAC_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -2159,7 +2159,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQQMF_",
         "MQQMF",
-        mqsys::MQQMF_STR,
+        mqstr::MQQMF_STR,
         "MQLONG",
         "bitflags",
         Some("exits"),
@@ -2168,7 +2168,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQQMOPT_",
         "MQQMOPT",
-        mqsys::MQQMOPT_STR,
+        mqstr::MQQMOPT_STR,
         "MQLONG",
         "value",
         None,
@@ -2177,7 +2177,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQQMSTA_",
         "MQQMSTA",
-        mqsys::MQQMSTA_STR,
+        mqstr::MQQMSTA_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -2186,7 +2186,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQQMT_",
         "MQQMT",
-        mqsys::MQQMT_STR,
+        mqstr::MQQMT_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -2195,7 +2195,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQQO_",
         "MQQO",
-        mqsys::MQQO_STR,
+        mqstr::MQQO_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -2204,7 +2204,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQQSGD_",
         "MQQSGD",
-        mqsys::MQQSGD_STR,
+        mqstr::MQQSGD_STR,
         "MQLONG",
         "value",
         None,
@@ -2213,7 +2213,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQQSGS_",
         "MQQSGS",
-        mqsys::MQQSGS_STR,
+        mqstr::MQQSGS_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -2222,7 +2222,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQQSIE_",
         "MQQSIE",
-        mqsys::MQQSIE_STR,
+        mqstr::MQQSIE_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -2231,7 +2231,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQQSOT_",
         "MQQSOT",
-        mqsys::MQQSOT_STR,
+        mqstr::MQQSOT_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -2240,7 +2240,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQQSO_",
         "MQQSO",
-        mqsys::MQQSO_STR,
+        mqstr::MQQSO_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -2249,7 +2249,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQQSUM_",
         "MQQSUM",
-        mqsys::MQQSUM_STR,
+        mqstr::MQQSUM_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -2258,7 +2258,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQQT_",
         "MQQT",
-        mqsys::MQQT_STR,
+        mqstr::MQQT_STR,
         "MQLONG",
         "value",
         None,
@@ -2267,7 +2267,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQRAR_",
         "MQRAR",
-        mqsys::MQRAR_STR,
+        mqstr::MQRAR_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -2276,7 +2276,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQRCCF_",
         "MQRCCF",
-        mqsys::MQRCCF_STR,
+        mqstr::MQRCCF_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -2285,7 +2285,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQRCN_",
         "MQRCN",
-        mqsys::MQRCN_STR,
+        mqstr::MQRCN_STR,
         "MQLONG",
         "value",
         None, // Required in base feature for MQCD
@@ -2294,7 +2294,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQRCVTIME_",
         "MQRCVTIME",
-        mqsys::MQRCVTIME_STR,
+        mqstr::MQRCVTIME_STR,
         "MQLONG",
         "value",
         None,
@@ -2303,7 +2303,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQRC_",
         "MQRC",
-        mqsys::MQRC_STR,
+        mqstr::MQRC_STR,
         "MQLONG",
         "value",
         None,
@@ -2312,7 +2312,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQRDNS_",
         "MQRDNS",
-        mqsys::MQRDNS_STR,
+        mqstr::MQRDNS_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -2321,7 +2321,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQRD_",
         "MQRD",
-        mqsys::MQRD_STR,
+        mqstr::MQRD_STR,
         "MQLONG",
         "value",
         None,
@@ -2330,7 +2330,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQREADA_",
         "MQREADA",
-        mqsys::MQREADA_STR,
+        mqstr::MQREADA_STR,
         "MQLONG",
         "value",
         None,
@@ -2339,7 +2339,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQRECAUTO_",
         "MQRECAUTO",
-        mqsys::MQRECAUTO_STR,
+        mqstr::MQRECAUTO_STR,
         "MQLONG",
         "value",
         None,
@@ -2348,7 +2348,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQRECORDING_",
         "MQRECORDING",
-        mqsys::MQRECORDING_STR,
+        mqstr::MQRECORDING_STR,
         "MQLONG",
         "value",
         None,
@@ -2357,7 +2357,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQREGO_",
         "MQREGO",
-        mqsys::MQREGO_STR,
+        mqstr::MQREGO_STR,
         "MQLONG",
         "bitflags",
         Some("pcf"),
@@ -2366,7 +2366,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQREORG_",
         "MQREORG",
-        mqsys::MQREORG_STR,
+        mqstr::MQREORG_STR,
         "MQLONG",
         "value",
         None,
@@ -2375,7 +2375,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQRFH_",
         "MQRFH",
-        mqsys::MQRFH_STR,
+        mqstr::MQRFH_STR,
         "MQLONG",
         "value",
         None,
@@ -2384,7 +2384,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQRL_",
         "MQRL",
-        mqsys::MQRL_STR,
+        mqstr::MQRL_STR,
         "MQLONG",
         "value",
         None,
@@ -2394,7 +2394,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQRMHF_",
         "MQRMHF",
-        mqsys::MQRMHF_STR,
+        mqstr::MQRMHF_STR,
         "MQLONG",
         "value",
         None,
@@ -2403,7 +2403,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQROUTE_",
         "MQROUTE",
-        mqsys::MQROUTE_STR,
+        mqstr::MQROUTE_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -2412,7 +2412,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQRO_",
         "MQRO",
-        mqsys::MQRO_STR,
+        mqstr::MQRO_STR,
         "MQLONG",
         "bitflags",
         None,
@@ -2421,7 +2421,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQRP_",
         "MQRP",
-        mqsys::MQRP_STR,
+        mqstr::MQRP_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -2430,7 +2430,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQRQ_",
         "MQRQ",
-        mqsys::MQRQ_STR,
+        mqstr::MQRQ_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -2439,7 +2439,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQRT_",
         "MQRT",
-        mqsys::MQRT_STR,
+        mqstr::MQRT_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -2448,7 +2448,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQRU_",
         "MQRU",
-        mqsys::MQRU_STR,
+        mqstr::MQRU_STR,
         "MQLONG",
         "value",
         None,
@@ -2457,7 +2457,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQSCA_",
         "MQSCA",
-        mqsys::MQSCA_STR,
+        mqstr::MQSCA_STR,
         "MQLONG",
         "value",
         Some("exits"),
@@ -2466,7 +2466,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQSCOPE_",
         "MQSCOPE",
-        mqsys::MQSCOPE_STR,
+        mqstr::MQSCOPE_STR,
         "MQLONG",
         "value",
         None,
@@ -2475,7 +2475,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQSCO_",
         "MQSCO",
-        mqsys::MQSCO_STR,
+        mqstr::MQSCO_STR,
         "MQLONG",
         "value",
         None,
@@ -2484,7 +2484,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQSCYC_",
         "MQSCYC",
-        mqsys::MQSCYC_STR,
+        mqstr::MQSCYC_STR,
         "MQLONG",
         "value",
         None,
@@ -2493,7 +2493,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQSECCOMM_",
         "MQSECCOMM",
-        mqsys::MQSECCOMM_STR,
+        mqstr::MQSECCOMM_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -2502,7 +2502,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQSECITEM_",
         "MQSECITEM",
-        mqsys::MQSECITEM_STR,
+        mqstr::MQSECITEM_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -2511,7 +2511,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQSECPROT_",
         "MQSECPROT",
-        mqsys::MQSECPROT_STR,
+        mqstr::MQSECPROT_STR,
         "MQLONG",
         "value",
         Some("exits"),
@@ -2520,7 +2520,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQSECSW_",
         "MQSECSW",
-        mqsys::MQSECSW_STR,
+        mqstr::MQSECSW_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -2529,7 +2529,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQSECTYPE_",
         "MQSECTYPE",
-        mqsys::MQSECTYPE_STR,
+        mqstr::MQSECTYPE_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -2538,7 +2538,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQSELTYPE_",
         "MQSELTYPE",
-        mqsys::MQSELTYPE_STR,
+        mqstr::MQSELTYPE_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -2547,7 +2547,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQSEL_ALL_",
         "MQSEL_ALL",
-        mqsys::MQSEL_ALL_STR,
+        mqstr::MQSEL_ALL_STR,
         "MQLONG",
         "value",
         Some("mqai"),
@@ -2556,7 +2556,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQSEL_ANY_",
         "MQSEL_ANY",
-        mqsys::MQSEL_ANY_STR,
+        mqstr::MQSEL_ANY_STR,
         "MQLONG",
         "value",
         Some("mqai"),
@@ -2565,7 +2565,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQSMPO_",
         "MQSMPO",
-        mqsys::MQSMPO_STR,
+        mqstr::MQSMPO_STR,
         "MQLONG",
         "value",
         None,
@@ -2574,7 +2574,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQSO_",
         "MQSO",
-        mqsys::MQSO_STR,
+        mqstr::MQSO_STR,
         "MQLONG",
         "bitflags",
         None,
@@ -2583,7 +2583,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQSPL_",
         "MQSPL",
-        mqsys::MQSPL_STR,
+        mqstr::MQSPL_STR,
         "MQLONG",
         "value",
         Some("exits"),
@@ -2592,7 +2592,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQSP_",
         "MQSP",
-        mqsys::MQSP_STR,
+        mqstr::MQSP_STR,
         "MQLONG",
         "value",
         None,
@@ -2601,7 +2601,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQSQQM_",
         "MQSQQM",
-        mqsys::MQSQQM_STR,
+        mqstr::MQSQQM_STR,
         "MQLONG",
         "value",
         None,
@@ -2610,7 +2610,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQSRO_",
         "MQSRO",
-        mqsys::MQSRO_STR,
+        mqstr::MQSRO_STR,
         "MQLONG",
         "bitflags",
         None,
@@ -2619,7 +2619,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQSR_",
         "MQSR",
-        mqsys::MQSR_STR,
+        mqstr::MQSR_STR,
         "MQLONG",
         "value",
         None,
@@ -2628,7 +2628,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQSSL_",
         "MQSSL",
-        mqsys::MQSSL_STR,
+        mqstr::MQSSL_STR,
         "MQLONG",
         "value",
         None,
@@ -2637,7 +2637,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQSTAT_",
         "MQSTAT",
-        mqsys::MQSTAT_STR,
+        mqstr::MQSTAT_STR,
         "MQLONG",
         "value",
         None,
@@ -2646,7 +2646,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQSTDBY_",
         "MQSTDBY",
-        mqsys::MQSTDBY_STR,
+        mqstr::MQSTDBY_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -2656,7 +2656,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQST_",
         "MQST",
-        mqsys::MQST_STR,
+        mqstr::MQST_STR,
         "MQLONG",
         "value",
         None,
@@ -2665,7 +2665,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQSUBTYPE_",
         "MQSUBTYPE",
-        mqsys::MQSUBTYPE_STR,
+        mqstr::MQSUBTYPE_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -2675,7 +2675,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQSUB_DURABILITY_",
         "MQSUB_DURABILITY",
-        mqsys::MQSUB_DURABILITY_STR,
+        mqstr::MQSUB_DURABILITY_STR,
         "MQLONG",
         "value",
         None,
@@ -2684,7 +2684,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQSUB_",
         "MQSUB",
-        mqsys::MQSUB_STR,
+        mqstr::MQSUB_STR,
         "MQLONG",
         "value",
         None,
@@ -2693,7 +2693,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQSUS_",
         "MQSUS",
-        mqsys::MQSUS_STR,
+        mqstr::MQSUS_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -2702,7 +2702,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQSVC_CONTROL_",
         "MQSVC_CONTROL",
-        mqsys::MQSVC_CONTROL_STR,
+        mqstr::MQSVC_CONTROL_STR,
         "MQLONG",
         "value",
         None,
@@ -2711,7 +2711,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQSVC_STATUS_",
         "MQSVC_STATUS",
-        mqsys::MQSVC_STATUS_STR,
+        mqstr::MQSVC_STATUS_STR,
         "MQLONG",
         "value",
         None,
@@ -2720,7 +2720,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQSVC_TYPE_",
         "MQSVC_TYPE",
-        mqsys::MQSVC_TYPE_STR,
+        mqstr::MQSVC_TYPE_STR,
         "MQLONG",
         "value",
         None,
@@ -2729,7 +2729,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQSYNCPOINT_",
         "MQSYNCPOINT",
-        mqsys::MQSYNCPOINT_STR,
+        mqstr::MQSYNCPOINT_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -2738,7 +2738,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQSYSOBJ_",
         "MQSYSOBJ",
-        mqsys::MQSYSOBJ_STR,
+        mqstr::MQSYSOBJ_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -2747,7 +2747,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQSYSP_",
         "MQSYSP",
-        mqsys::MQSYSP_STR,
+        mqstr::MQSYSP_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -2756,7 +2756,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQS_AVAIL_",
         "MQS_AVAIL",
-        mqsys::MQS_AVAIL_STR,
+        mqstr::MQS_AVAIL_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -2765,7 +2765,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQS_EXPANDST_",
         "MQS_EXPANDST",
-        mqsys::MQS_EXPANDST_STR,
+        mqstr::MQS_EXPANDST_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -2774,7 +2774,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQS_OPENMODE_",
         "MQS_OPENMODE",
-        mqsys::MQS_OPENMODE_STR,
+        mqstr::MQS_OPENMODE_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -2783,7 +2783,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQS_STATUS_",
         "MQS_STATUS",
-        mqsys::MQS_STATUS_STR,
+        mqstr::MQS_STATUS_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -2792,7 +2792,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQTA_",
         "MQTA",
-        mqsys::MQTA_STR,
+        mqstr::MQTA_STR,
         "MQLONG",
         "value",
         None,
@@ -2801,7 +2801,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQTA_PROXY_",
         "MQTA_PROXY",
-        mqsys::MQTA_PROXY_STR,
+        mqstr::MQTA_PROXY_STR,
         "MQLONG",
         "value",
         None,
@@ -2810,7 +2810,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQTA_PUB_",
         "MQTA_PUB",
-        mqsys::MQTA_PUB_STR,
+        mqstr::MQTA_PUB_STR,
         "MQLONG",
         "value",
         None,
@@ -2819,7 +2819,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQTA_SUB_",
         "MQTA_SUB",
-        mqsys::MQTA_SUB_STR,
+        mqstr::MQTA_SUB_STR,
         "MQLONG",
         "value",
         None,
@@ -2828,7 +2828,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQTCPKEEP_",
         "MQTCPKEEP",
-        mqsys::MQTCPKEEP_STR,
+        mqstr::MQTCPKEEP_STR,
         "MQLONG",
         "value",
         None,
@@ -2837,7 +2837,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQTCPSTACK_",
         "MQTCPSTACK",
-        mqsys::MQTCPSTACK_STR,
+        mqstr::MQTCPSTACK_STR,
         "MQLONG",
         "value",
         None,
@@ -2846,7 +2846,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQTC_",
         "MQTC",
-        mqsys::MQTC_STR,
+        mqstr::MQTC_STR,
         "MQLONG",
         "value",
         None,
@@ -2855,7 +2855,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQTIME_",
         "MQTIME",
-        mqsys::MQTIME_STR,
+        mqstr::MQTIME_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -2864,7 +2864,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQTOPT_",
         "MQTOPT",
-        mqsys::MQTOPT_STR,
+        mqstr::MQTOPT_STR,
         "MQLONG",
         "value",
         None,
@@ -2873,7 +2873,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQTRAXSTR_",
         "MQTRAXSTR",
-        mqsys::MQTRAXSTR_STR,
+        mqstr::MQTRAXSTR_STR,
         "MQLONG",
         "value",
         None,
@@ -2882,7 +2882,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQTRIGGER_",
         "MQTRIGGER",
-        mqsys::MQTRIGGER_STR,
+        mqstr::MQTRIGGER_STR,
         "MQLONG",
         "value",
         None,
@@ -2891,7 +2891,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQTSCOPE_",
         "MQTSCOPE",
-        mqsys::MQTSCOPE_STR,
+        mqstr::MQTSCOPE_STR,
         "MQLONG",
         "value",
         None,
@@ -2900,7 +2900,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQTT_",
         "MQTT",
-        mqsys::MQTT_STR,
+        mqstr::MQTT_STR,
         "MQLONG",
         "value",
         None,
@@ -2909,7 +2909,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQTYPE_",
         "MQTYPE",
-        mqsys::MQTYPE_STR,
+        mqstr::MQTYPE_STR,
         "MQLONG",
         "value",
         None,
@@ -2918,7 +2918,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQUCI_",
         "MQUCI",
-        mqsys::MQUCI_STR,
+        mqstr::MQUCI_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -2927,7 +2927,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQUIDSUPP_",
         "MQUIDSUPP",
-        mqsys::MQUIDSUPP_STR,
+        mqstr::MQUIDSUPP_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -2936,7 +2936,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQUNDELIVERED_",
         "MQUNDELIVERED",
-        mqsys::MQUNDELIVERED_STR,
+        mqstr::MQUNDELIVERED_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -2945,7 +2945,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQUOWST_",
         "MQUOWST",
-        mqsys::MQUOWST_STR,
+        mqstr::MQUOWST_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -2954,7 +2954,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQUOWT_",
         "MQUOWT",
-        mqsys::MQUOWT_STR,
+        mqstr::MQUOWT_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -2963,7 +2963,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQUSAGE_DS_",
         "MQUSAGE_DS",
-        mqsys::MQUSAGE_DS_STR,
+        mqstr::MQUSAGE_DS_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -2972,7 +2972,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQUSAGE_EXPAND_",
         "MQUSAGE_EXPAND",
-        mqsys::MQUSAGE_EXPAND_STR,
+        mqstr::MQUSAGE_EXPAND_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -2981,7 +2981,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQUSAGE_PS_",
         "MQUSAGE_PS",
-        mqsys::MQUSAGE_PS_STR,
+        mqstr::MQUSAGE_PS_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -2990,7 +2990,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQUSAGE_SMDS_",
         "MQUSAGE_SMDS",
-        mqsys::MQUSAGE_SMDS_STR,
+        mqstr::MQUSAGE_SMDS_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -2999,7 +2999,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQUSEDLQ_",
         "MQUSEDLQ",
-        mqsys::MQUSEDLQ_STR,
+        mqstr::MQUSEDLQ_STR,
         "MQLONG",
         "value",
         None,
@@ -3008,7 +3008,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQUSRC_",
         "MQUSRC",
-        mqsys::MQUSRC_STR,
+        mqstr::MQUSRC_STR,
         "MQLONG",
         "value",
         None,
@@ -3017,7 +3017,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQUS_",
         "MQUS",
-        mqsys::MQUS_STR,
+        mqstr::MQUS_STR,
         "MQLONG",
         "value",
         None,
@@ -3026,7 +3026,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQVL_",
         "MQVL",
-        mqsys::MQVL_STR,
+        mqstr::MQVL_STR,
         "MQLONG",
         "value",
         None,
@@ -3035,7 +3035,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQVS_",
         "MQVS",
-        mqsys::MQVS_STR,
+        mqstr::MQVS_STR,
         "MQLONG",
         "value",
         None,
@@ -3044,7 +3044,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQVU_",
         "MQVU",
-        mqsys::MQVU_STR,
+        mqstr::MQVU_STR,
         "MQLONG",
         "value",
         None,
@@ -3053,7 +3053,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQWARN_",
         "MQWARN",
-        mqsys::MQWARN_STR,
+        mqstr::MQWARN_STR,
         "MQLONG",
         "value",
         None,
@@ -3062,7 +3062,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQWIH_",
         "MQWIH",
-        mqsys::MQWIH_STR,
+        mqstr::MQWIH_STR,
         "MQLONG",
         "value",
         None,
@@ -3071,7 +3071,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQWI_",
         "MQWI",
-        mqsys::MQWI_STR,
+        mqstr::MQWI_STR,
         "MQLONG",
         "value",
         None,
@@ -3080,7 +3080,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQWS_",
         "MQWS",
-        mqsys::MQWS_STR,
+        mqstr::MQWS_STR,
         "MQLONG",
         "value",
         None,
@@ -3089,7 +3089,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQWXP_",
         "MQWXP",
-        mqsys::MQWXP_STR,
+        mqstr::MQWXP_STR,
         "MQLONG",
         "value",
         Some("exits"),
@@ -3098,7 +3098,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQXACT_",
         "MQXACT",
-        mqsys::MQXACT_STR,
+        mqstr::MQXACT_STR,
         "MQLONG",
         "value",
         Some("exits"),
@@ -3107,7 +3107,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQXCC_",
         "MQXCC",
-        mqsys::MQXCC_STR,
+        mqstr::MQXCC_STR,
         "MQLONG",
         "value",
         Some("exits"),
@@ -3116,7 +3116,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQXC_",
         "MQXC",
-        mqsys::MQXC_STR,
+        mqstr::MQXC_STR,
         "MQLONG",
         "value",
         None,
@@ -3125,7 +3125,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQXDR_",
         "MQXDR",
-        mqsys::MQXDR_STR,
+        mqstr::MQXDR_STR,
         "MQLONG",
         "value",
         Some("exits"),
@@ -3134,7 +3134,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQXEPO_",
         "MQXEPO",
-        mqsys::MQXEPO_STR,
+        mqstr::MQXEPO_STR,
         "MQLONG",
         "value",
         Some("exits"),
@@ -3143,7 +3143,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQXE_",
         "MQXE",
-        mqsys::MQXE_STR,
+        mqstr::MQXE_STR,
         "MQLONG",
         "value",
         Some("exits"),
@@ -3152,7 +3152,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQXF_",
         "MQXF",
-        mqsys::MQXF_STR,
+        mqstr::MQXF_STR,
         "MQLONG",
         "value",
         Some("exits"),
@@ -3161,7 +3161,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQXPT_",
         "MQXPT",
-        mqsys::MQXPT_STR,
+        mqstr::MQXPT_STR,
         "MQLONG",
         "value",
         None, // Required in base feature for MQCD
@@ -3170,7 +3170,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQXR2_",
         "MQXR2",
-        mqsys::MQXR2_STR,
+        mqstr::MQXR2_STR,
         "MQLONG",
         "value",
         Some("exits"),
@@ -3179,7 +3179,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQXR_",
         "MQXR",
-        mqsys::MQXR_STR,
+        mqstr::MQXR_STR,
         "MQLONG",
         "value",
         Some("exits"),
@@ -3188,7 +3188,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQXT_",
         "MQXT",
-        mqsys::MQXT_STR,
+        mqstr::MQXT_STR,
         "MQLONG",
         "value",
         Some("exits"),
@@ -3197,7 +3197,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQZAET_",
         "MQZAET",
-        mqsys::MQZAET_STR,
+        mqstr::MQZAET_STR,
         "MQLONG",
         "value",
         Some("exits"),
@@ -3206,7 +3206,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQZAO_",
         "MQZAO",
-        mqsys::MQZAO_STR,
+        mqstr::MQZAO_STR,
         "MQLONG",
         "bitflags",
         Some("exits"),
@@ -3215,7 +3215,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQZAT_",
         "MQZAT",
-        mqsys::MQZAT_STR,
+        mqstr::MQZAT_STR,
         "MQLONG",
         "value",
         Some("exits"),
@@ -3224,7 +3224,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQZCI_",
         "MQZCI",
-        mqsys::MQZCI_STR,
+        mqstr::MQZCI_STR,
         "MQLONG",
         "value",
         Some("exits"),
@@ -3234,7 +3234,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQZID_AUTHORITY_",
         "MQZID_AUTHORITY",
-        mqsys::MQZID_AUTHORITY_STR,
+        mqstr::MQZID_AUTHORITY_STR,
         "MQLONG",
         "value",
         Some("exits"),
@@ -3244,7 +3244,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQZID_NAME_",
         "MQZID_NAME",
-        mqsys::MQZID_NAME_STR,
+        mqstr::MQZID_NAME_STR,
         "MQLONG",
         "value",
         Some("exits"),
@@ -3254,7 +3254,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQZID_USERID_",
         "MQZID_USERID",
-        mqsys::MQZID_USERID_STR,
+        mqstr::MQZID_USERID_STR,
         "MQLONG",
         "value",
         Some("exits"),
@@ -3264,7 +3264,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQZID_",
         "MQZID",
-        mqsys::MQZID_STR,
+        mqstr::MQZID_STR,
         "MQLONG",
         "value",
         Some("exits"),
@@ -3273,7 +3273,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQZIO_",
         "MQZIO",
-        mqsys::MQZIO_STR,
+        mqstr::MQZIO_STR,
         "MQLONG",
         "value",
         Some("exits"),
@@ -3282,7 +3282,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQZSE_",
         "MQZSE",
-        mqsys::MQZSE_STR,
+        mqstr::MQZSE_STR,
         "MQLONG",
         "value",
         Some("exits"),
@@ -3291,7 +3291,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQZSL_",
         "MQZSL",
-        mqsys::MQZSL_STR,
+        mqstr::MQZSL_STR,
         "MQLONG",
         "value",
         Some("exits"),
@@ -3300,7 +3300,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQZTO_",
         "MQZTO",
-        mqsys::MQZTO_STR,
+        mqstr::MQZTO_STR,
         "MQLONG",
         "value",
         Some("exits"),
@@ -3309,7 +3309,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQ_CERT_",
         "MQ_CERT",
-        mqsys::MQ_CERT_STR,
+        mqstr::MQ_CERT_STR,
         "MQLONG",
         "value",
         None,
@@ -3318,7 +3318,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQ_MQTT_",
         "MQ_MQTT",
-        mqsys::MQ_MQTT_STR,
+        mqstr::MQ_MQTT_STR,
         "MQLONG",
         "value",
         None,
@@ -3327,7 +3327,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQ_SUITE_",
         "MQ_SUITE",
-        mqsys::MQ_SUITE_STR,
+        mqstr::MQ_SUITE_STR,
         "MQLONG",
         "value",
         None,
@@ -3337,7 +3337,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQ_HTTPSCERTREV_",
         "MQ_HTTPSCERTREV",
-        mqsys::MQ_HTTPSCERTREV_STR,
+        mqstr::MQ_HTTPSCERTREV_STR,
         "MQLONG",
         "value",
         None,
@@ -3347,7 +3347,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQ_HTTPSCERTVAL_",
         "MQ_HTTPSCERTVAL",
-        mqsys::MQ_HTTPSCERTVAL_STR,
+        mqstr::MQ_HTTPSCERTVAL_STR,
         "MQLONG",
         "value",
         None,
@@ -3357,7 +3357,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQNHACONNGRP_",
         "MQNHACONNGRP",
-        mqsys::MQNHACONNGRP_STR,
+        mqstr::MQNHACONNGRP_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -3367,7 +3367,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQNHAGRPROLE_",
         "MQNHAGRPROLE",
-        mqsys::MQNHAGRPROLE_STR,
+        mqstr::MQNHAGRPROLE_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -3377,7 +3377,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQNHASTATUS_",
         "MQNHASTATUS",
-        mqsys::MQNHASTATUS_STR,
+        mqstr::MQNHASTATUS_STR,
         "MQLONG",
         "value",
         Some("pcf"),
@@ -3387,7 +3387,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     c(
         "MQNHATYPE_",
         "MQNHATYPE",
-        mqsys::MQNHATYPE_STR,
+        mqstr::MQNHATYPE_STR,
         "MQLONG",
         "value",
         Some("pcf"),

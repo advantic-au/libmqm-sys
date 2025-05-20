@@ -18,7 +18,7 @@ build = "build/main.rs"
 workspace = true
 
 [features]
-default = ["link", "mqi_helpers", "mqc_9_2_0_0"]
+default = ["link", "mqc_9_2_0_0"]
 
 ## Generate the bindings and save them in the src folder
 pregen = ["pcf", "exits", "mqai", "bindgen", "mqc_latest"]
@@ -31,8 +31,11 @@ link = ["link_mqm", "link_api"]
 link_mqm = []
 link_api = []
 
-## Compile the string and stuct initialisers from the MQI C headers
-mqi_helpers = []
+## Compile the string lookup functions from the MQI C headers
+constant_lookup = ["versiongen", "dep:cc", "dep:bindgen"]
+
+## Compile the struct initialisers from the MQI C headers
+struct_defaults = ["bindgen", "dep:cc"]
 
 ## Enable structures for PCF
 pcf = []
@@ -43,13 +46,13 @@ exits = []
 ## Enable structures and constants for MQAI
 mqai = []
 
-docsrs = ["link_api", "pcf", "exits", "mqai", "dlopen2", "mqc_latest"]
+docsrs = ["link_api", "pcf", "exits", "mqai", "dlopen2", "mqc_latest", "dep:document-features"]
 
 ## Use [`bindgen`](https://docs.rs/bindgen/latest/bindgen/) to generate bindings
-bindgen = ["dep:bindgen", "versiongen"]
+bindgen = ["versiongen", "dep:bindgen", "dep:regex-lite"]
 
 ## Generate version file from MQC library
-versiongen = []
+versiongen = [ "dep:regex-lite" ]
 
 ## Minimum MQ client version 9.2.0.0
 mqc_9_2_0_0 = []
@@ -70,12 +73,12 @@ mqc_latest = ["mqc_9_4_2_0"]
 [dependencies]
 dlopen2 = { version = "0.7.0", optional = true }
 libc = { version = "0.2.155", optional = true }
-document-features = "0.2.10"
+document-features = { version = "0.2.10", optional = true }
 
 [build-dependencies]
-regex-lite = "0.1.6"
+regex-lite = { version = "0.1.6", optional = true }
 bindgen = { version = "0.71.1", optional = true }
-cc = "1.1.18"
+cc = { version = "1.1.18", optional = true }
 
 [package.metadata.docs.rs]
 features = ["docsrs"]
