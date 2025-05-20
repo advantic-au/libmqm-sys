@@ -50,43 +50,44 @@ jobs:
         env:
           MQ_HOME: ${{ steps.mq-client.outputs.client-install-path }}
 
-  rustfmt:
-    runs-on: ubuntu-24.04
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          persist-credentials: false
-      - name: Install stable
-        uses: dtolnay/rust-toolchain@b3b07ba8b418998c39fb20f53e8b695cdcc8de1b
-        with:
-          toolchain: stable
-          components: rustfmt
-      - name: Lint with rustfmt
-        run: cargo fmt -- --check
-
-  clippy:
+  clippy_fmt:
     strategy:
       fail-fast: false
       matrix:
-        features:
-          - ""
-          - "--no-default-features"
-          - "--features pcf,exits,mqai,dlopen2,mqc_latest"
+        toolchain: [ stable, beta ]
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
-      - name: Install stable
+      - name: Install rust ${{ matrix.toolchain }}
         uses: dtolnay/rust-toolchain@b3b07ba8b418998c39fb20f53e8b695cdcc8de1b
         with:
-          toolchain: stable
-          components: clippy
+          toolchain: ${{ matrix.toolchain }}
+          components: clippy, rustfmt
       - uses: Swatinem/rust-cache@9d47c6ad4b02e050fd481d890b2ea34778fd09d6 # v2.7.8
         with:
           shared-key: "build"
-      - name: Lint with clippy
-        run: cargo clippy --tests --examples ${{ matrix.features }} --
+      - name: Lint with clippy and rustfmt
+        run: |
+          cargo clippy --tests --examples --
+          cargo clippy --tests --examples --no-default-features --
+          cargo clippy --tests --examples --features pcf,exits,mqai,dlopen2,mqc_latest --
+          cargo fmt -- --check
+  clippy_fmt_outcome:
+    if: ${{ always() }}
+    runs-on: ubuntu-24.04
+    name: Cliipy and rustfmt outcome
+    needs: [clippy_fmt]
+    steps:
+      - run: |
+          if [[ ${NEEDS_CLIPPY_FMT} == "success" || ${NEEDS_CLIPPY_FMT} == "skipped" ]]; then
+            exit 0
+          else
+            exit 1
+          fi
+        env:
+          NEEDS_CLIPPY_FMT: ${{ needs.clippy_fmt.result }}
 
   minimum:
     runs-on: ubuntu-24.04
