@@ -42,9 +42,11 @@ jobs:
       - name: Modify pull request with refreshed pregen files
         shell: bash
         run: |
+          PREGEN_BRANCH=pregen_${{ github.run_id }}
+          git switch --track origin/${PREGEN_BRANCH} || git switch -c ${PREGEN_BRANCH}
           git add libmqm-sys/src libmqm-default/src libmqm-constants/src
-          git commit -m "chore: MQ client ${MQ_CLIENT_VERSION} ${{ runner.os }}" || true
-          git push
+          git commit -m "chore: MQ client ${MQ_CLIENT_VERSION} ${{ runner.os }}" && \
+            git push --set-upstream origin ${PREGEN_BRANCH} || true
         env:
           MQ_CLIENT_VERSION: ${{ steps.mq-client.outputs.client-version }}
   pregen_arch:
@@ -102,7 +104,7 @@ jobs:
           run: |
             curl --proto '=https' --tlsv1.2 --retry 10 --retry-connrefused --location --silent --show-error --fail https://sh.rustup.rs | sh -s -- --default-toolchain none -y
             . $HOME/.cargo/env
-            rustup toolchain install stable --component rustfmt --profile minimal
+            rustup toolchain install stable --profile minimal
             export CARGO_INCREMENTAL=0
             export CARGO_TERM_COLOR=always
             cd /working
@@ -119,8 +121,26 @@ jobs:
       - name: Modify pull request with refreshed pregen files
         shell: bash
         run: |
+          PREGEN_BRANCH=pregen_${{ github.run_id }}
+          git switch --track origin/${PREGEN_BRANCH} || git switch -c ${PREGEN_BRANCH}
           git add libmqm-sys/src libmqm-default/src libmqm-constants/src
-          git commit -m "chore: MQ client ${MQ_CLIENT_VERSION} ${{ runner.os }}" || true
-          git push
+          git commit -m "chore: MQ client ${MQ_CLIENT_VERSION} Linux ${{ matrix.env.client_arch }}" && \
+            git push --set-upstream origin ${PREGEN_BRANCH} || true
         env:
           MQ_CLIENT_VERSION: ${{ steps.mq-client.outputs.client-version }}
+  pregen_merge:
+    runs-on: ubuntu-24.04
+    needs: [ pregen, pregen_arch ]
+    if: ${{ always() }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          token: ${{ secrets.SCD }}
+          repository: ${{ github.event.client_payload.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.client_payload.pull_request.head.ref }}
+      - name: Merge pregenerated
+        shell: bash
+        run: |
+          PREGEN_BRANCH=pregen_${{ github.run_id }}
+          git merge --ff-only origin/${PREGEN_BRANCH} && git push || true

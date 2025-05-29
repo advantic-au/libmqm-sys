@@ -184,4 +184,5 @@ pub fn bindgen_builder(mq_inc_path: &Path, mq_version: &str) -> bindgen::Builder
         .merge_extern_blocks(true)
         .generate_cstr(true)
         .parse_callbacks(Box::new(bindgen::CargoCallbacks::new()))
+        .formatter(bindgen::Formatter::Prettyplease)
 }

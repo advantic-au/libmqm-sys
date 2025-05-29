@@ -77,7 +77,7 @@ jobs:
   clippy_fmt_outcome:
     if: ${{ always() }}
     runs-on: ubuntu-24.04
-    name: Cliipy and rustfmt outcome
+    name: Clippy and rustfmt outcome
     needs: [clippy_fmt]
     steps:
       - run: |
@@ -183,7 +183,7 @@ jobs:
           run: |
             curl --proto '=https' --tlsv1.2 --retry 10 --retry-connrefused --location --silent --show-error --fail https://sh.rustup.rs | sh -s -- --default-toolchain none -y
             . $HOME/.cargo/env
-            rustup toolchain install stable --component rustfmt --profile minimal
+            rustup toolchain install stable --profile minimal
             export CARGO_INCREMENTAL=0
             export CARGO_TERM_COLOR=always
             cd /working
