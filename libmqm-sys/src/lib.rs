@@ -93,6 +93,7 @@ pub mod lib {
 }
 
 #[cfg(feature = "constant_lookup")]
+#[rustfmt::skip]
 pub mod str {
     include!(concat!(env!("OUT_DIR"), "/str.rs"));
 }

@@ -20,6 +20,7 @@ mod defaults {
 
 #[cfg(not(feature = "generate"))]
 #[path = "pregen/mod.rs"]
+#[rustfmt::skip]
 mod defaults;
 
 #[doc(inline)]

@@ -45,7 +45,7 @@ jobs:
           PREGEN_BRANCH=pregen_${{ github.run_id }}
           git switch --track origin/${PREGEN_BRANCH} || git switch -c ${PREGEN_BRANCH}
           git add libmqm-sys/src libmqm-default/src libmqm-constants/src
-          git commit -m "chore: MQ client ${MQ_CLIENT_VERSION} ${{ runner.os }}" && \
+          git commit -m "chore: MQ client ${MQ_CLIENT_VERSION} ${{ runner.os }} ${{ runner.arch }}" && \
             git push --set-upstream origin ${PREGEN_BRANCH} || true
         env:
           MQ_CLIENT_VERSION: ${{ steps.mq-client.outputs.client-version }}
@@ -124,7 +124,7 @@ jobs:
           PREGEN_BRANCH=pregen_${{ github.run_id }}
           git switch --track origin/${PREGEN_BRANCH} || git switch -c ${PREGEN_BRANCH}
           git add libmqm-sys/src libmqm-default/src libmqm-constants/src
-          git commit -m "chore: MQ client ${MQ_CLIENT_VERSION} Linux ${{ matrix.env.client_arch }}" && \
+          git commit -m "chore: MQ client ${MQ_CLIENT_VERSION} Linux ${{ matrix.env.arch }}" && \
             git push --set-upstream origin ${PREGEN_BRANCH} || true
         env:
           MQ_CLIENT_VERSION: ${{ steps.mq-client.outputs.client-version }}
