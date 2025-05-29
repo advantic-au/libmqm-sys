@@ -25,16 +25,14 @@ Refer to the [Usage](#usage) instructions.
 Usage
 -----
 
-1. Download and install the redistributable client from IBM:
-  <https://ibm.biz/mq94redistclients>
+1. Download and install the client from IBM:
+   - Windows/Linux x86-64 redistributable - <https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/messaging/mqdev/redist/>
+   - MacOS (x86-64/ARM64) toolkit - <https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/messaging/mqdev/mactoolkit/>
+   - Linux (x86-64/ARM64/PowerPC64le/S390X) MQ Advanced Developer - <https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/messaging/mqadv/>
 
-2. Install the client in `/opt/mqm` or another location.
+2. Extract and install the MQ client in any location.
 
 3. Set the MQ_HOME environment variable to the installed location.
-
-    ```bash
-    MQ_HOME=/opt/mqm
-    ```
 
 4. Add the `libmqm-sys` crate to your project:
 
@@ -42,11 +40,16 @@ Usage
     cargo add libmqm-sys
     ```
 
-5. Use the crate in your source code:
+5. Ensure the MQ libraries are in the library search path. On Linux, this can
+   be achieved by setting the `LD_LIBRARY_PATH` environment variable.
 
-    ```rust
-    use libmqm-sys as mqsys;
-    ```
+An easy way of running an MQ server for development and testing is to run the IBM supplied docker container:
+
+```sh
+docker run -d --publish 1414:1414 icr.io/ibm-messaging/mq:latest
+```
+
+Refer to <https://github.com/ibm-messaging/mq-container/blob/master/docs/usage.md>
 
 Example
 -------
@@ -77,16 +80,16 @@ For further examples of using the API, refer to the [MQI crate usage](https://gi
 Feature flags
 -------------
 
-| Feature           | Description |
-|-------------------|-------------|
-| link (default)    | Support linking the MQ library at compile-time |
-| bindgen (default) | Generate the bindings from MQI library |
-| dlopen2           | Support loading the MQ library at run-time using [`dlopen2`](https://crates.io/crates/dlopen2) |
-| mqai              | Expose the MQAI functions |
-| pcf               | Generate the PCF structures |
-| exits             | Generate the exit structures |
-| mqc_*             | Enable features of a specific MQI library version eg `mqc_9_3_1_0` |
-| mqc_latest        | Enable features of the latest MQI library version |
+| Feature           | Default     | Description |
+|-------------------|-------------|-------------|
+| link              | ✔ | Support linking the MQ library at compile-time |
+| bindgen           |   | Generate the bindings from MQI library |
+| dlopen2           |   | Support loading the MQ library at run-time using [`dlopen2`](https://crates.io/crates/dlopen2) |
+| mqai              |   | Expose the MQAI functions |
+| pcf               |   | Generate the PCF structures |
+| exits             |   | Generate the exit structures |
+| mqc_*             | mqc_9_2_0_0 | Enable features of a specific MQI library version eg `mqc_9_3_1_0` |
+| mqc_latest        |   | Enable features of the latest MQI library version |
 
 Status
 ------
