@@ -90,10 +90,18 @@ pub type MQTM = tagMQTM;
 pub type MQTMC2 = tagMQTMC2;
 pub type MQWIH = tagMQWIH;
 pub type MQXQH = tagMQXQH;
-pub type MQ_BACK_CALL = ::std::option::Option<unsafe extern "C" fn(Hconn: MQHCONN, pCompCode: PMQLONG, pReason: PMQLONG)>;
+pub type MQ_BACK_CALL = ::std::option::Option<
+    unsafe extern "C" fn(Hconn: MQHCONN, pCompCode: PMQLONG, pReason: PMQLONG),
+>;
 pub type PMQ_BACK_CALL = MQ_BACK_CALL;
-pub type MQ_BEGIN_CALL =
-    ::std::option::Option<unsafe extern "C" fn(Hconn: MQHCONN, pBeginOptions: PMQVOID, pCompCode: PMQLONG, pReason: PMQLONG)>;
+pub type MQ_BEGIN_CALL = ::std::option::Option<
+    unsafe extern "C" fn(
+        Hconn: MQHCONN,
+        pBeginOptions: PMQVOID,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    ),
+>;
 pub type PMQ_BEGIN_CALL = MQ_BEGIN_CALL;
 pub type MQ_BUFMH_CALL = ::std::option::Option<
     unsafe extern "C" fn(
@@ -123,30 +131,70 @@ pub type MQ_CB_CALL = ::std::option::Option<
 >;
 pub type PMQ_CB_CALL = MQ_CB_CALL;
 pub type MQ_CLOSE_CALL = ::std::option::Option<
-    unsafe extern "C" fn(Hconn: MQHCONN, pHobj: PMQHOBJ, Options: MQLONG, pCompCode: PMQLONG, pReason: PMQLONG),
+    unsafe extern "C" fn(
+        Hconn: MQHCONN,
+        pHobj: PMQHOBJ,
+        Options: MQLONG,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    ),
 >;
 pub type PMQ_CLOSE_CALL = MQ_CLOSE_CALL;
-pub type MQ_CMIT_CALL = ::std::option::Option<unsafe extern "C" fn(Hconn: MQHCONN, pCompCode: PMQLONG, pReason: PMQLONG)>;
+pub type MQ_CMIT_CALL = ::std::option::Option<
+    unsafe extern "C" fn(Hconn: MQHCONN, pCompCode: PMQLONG, pReason: PMQLONG),
+>;
 pub type PMQ_CMIT_CALL = MQ_CMIT_CALL;
-pub type MQ_CONN_CALL =
-    ::std::option::Option<unsafe extern "C" fn(pQMgrName: PMQCHAR, pHconn: PMQHCONN, pCompCode: PMQLONG, pReason: PMQLONG)>;
+pub type MQ_CONN_CALL = ::std::option::Option<
+    unsafe extern "C" fn(
+        pQMgrName: PMQCHAR,
+        pHconn: PMQHCONN,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    ),
+>;
 pub type PMQ_CONN_CALL = MQ_CONN_CALL;
 pub type MQ_CONNX_CALL = ::std::option::Option<
-    unsafe extern "C" fn(pQMgrName: PMQCHAR, pConnectOpts: PMQCNO, pHconn: PMQHCONN, pCompCode: PMQLONG, pReason: PMQLONG),
+    unsafe extern "C" fn(
+        pQMgrName: PMQCHAR,
+        pConnectOpts: PMQCNO,
+        pHconn: PMQHCONN,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    ),
 >;
 pub type PMQ_CONNX_CALL = MQ_CONNX_CALL;
 pub type MQ_CRTMH_CALL = ::std::option::Option<
-    unsafe extern "C" fn(Hconn: MQHCONN, pCrtMsgHOpts: PMQVOID, pHmsg: PMQHMSG, pCompCode: PMQLONG, pReason: PMQLONG),
+    unsafe extern "C" fn(
+        Hconn: MQHCONN,
+        pCrtMsgHOpts: PMQVOID,
+        pHmsg: PMQHMSG,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    ),
 >;
 pub type PMQ_CRTMH_CALL = MQ_CRTMH_CALL;
 pub type MQ_CTL_CALL = ::std::option::Option<
-    unsafe extern "C" fn(Hconn: MQHCONN, Operation: MQLONG, pControlOpts: PMQVOID, pCompCode: PMQLONG, pReason: PMQLONG),
+    unsafe extern "C" fn(
+        Hconn: MQHCONN,
+        Operation: MQLONG,
+        pControlOpts: PMQVOID,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    ),
 >;
 pub type PMQ_CTL_CALL = MQ_CTL_CALL;
-pub type MQ_DISC_CALL = ::std::option::Option<unsafe extern "C" fn(pHconn: PMQHCONN, pCompCode: PMQLONG, pReason: PMQLONG)>;
+pub type MQ_DISC_CALL = ::std::option::Option<
+    unsafe extern "C" fn(pHconn: PMQHCONN, pCompCode: PMQLONG, pReason: PMQLONG),
+>;
 pub type PMQ_DISC_CALL = MQ_DISC_CALL;
 pub type MQ_DLTMH_CALL = ::std::option::Option<
-    unsafe extern "C" fn(Hconn: MQHCONN, pHmsg: PMQHMSG, pDltMsgHOpts: PMQVOID, pCompCode: PMQLONG, pReason: PMQLONG),
+    unsafe extern "C" fn(
+        Hconn: MQHCONN,
+        pHmsg: PMQHMSG,
+        pDltMsgHOpts: PMQVOID,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    ),
 >;
 pub type PMQ_DLTMH_CALL = MQ_DLTMH_CALL;
 pub type MQ_DLTMP_CALL = ::std::option::Option<
@@ -288,15 +336,35 @@ pub type MQ_SETMP_CALL = ::std::option::Option<
 >;
 pub type PMQ_SETMP_CALL = MQ_SETMP_CALL;
 pub type MQ_STAT_CALL = ::std::option::Option<
-    unsafe extern "C" fn(Hconn: MQHCONN, Type: MQLONG, pStatus: PMQVOID, pCompCode: PMQLONG, pReason: PMQLONG),
+    unsafe extern "C" fn(
+        Hconn: MQHCONN,
+        Type: MQLONG,
+        pStatus: PMQVOID,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    ),
 >;
 pub type PMQ_STAT_CALL = MQ_STAT_CALL;
 pub type MQ_SUB_CALL = ::std::option::Option<
-    unsafe extern "C" fn(Hconn: MQHCONN, pSubDesc: PMQVOID, pHobj: PMQHOBJ, pHsub: PMQHOBJ, pCompCode: PMQLONG, pReason: PMQLONG),
+    unsafe extern "C" fn(
+        Hconn: MQHCONN,
+        pSubDesc: PMQVOID,
+        pHobj: PMQHOBJ,
+        pHsub: PMQHOBJ,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    ),
 >;
 pub type PMQ_SUB_CALL = MQ_SUB_CALL;
 pub type MQ_SUBRQ_CALL = ::std::option::Option<
-    unsafe extern "C" fn(Hconn: MQHCONN, Hsub: MQHOBJ, Action: MQLONG, pSubRqOpts: PMQVOID, pCompCode: PMQLONG, pReason: PMQLONG),
+    unsafe extern "C" fn(
+        Hconn: MQHCONN,
+        Hsub: MQHOBJ,
+        Action: MQLONG,
+        pSubRqOpts: PMQVOID,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    ),
 >;
 pub type PMQ_SUBRQ_CALL = MQ_SUBRQ_CALL;
 pub type MQCD = tagMQCD;
@@ -406,7 +474,13 @@ pub type MQZAD = tagMQZAD;
 pub type MQZFP = tagMQZFP;
 pub type MQZIC = tagMQZIC;
 pub type MQ_ZEP_CALL = ::std::option::Option<
-    unsafe extern "C" fn(Hconfig: MQHCONFIG, Function: MQLONG, pEntryPoint: PMQFUNC, pCompCode: PMQLONG, pReason: PMQLONG),
+    unsafe extern "C" fn(
+        Hconfig: MQHCONFIG,
+        Function: MQLONG,
+        pEntryPoint: PMQFUNC,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    ),
 >;
 pub type PMQ_ZEP_CALL = MQ_ZEP_CALL;
 #[repr(C)]
@@ -2076,7 +2150,7 @@ pub const MQCNO_RECONNECT_Q_MGR: MQLONG = 67108864;
 pub const MQCNO_ACTIVITY_TRACE_ENABLED: MQLONG = 134217728;
 pub const MQCNO_ACTIVITY_TRACE_DISABLED: MQLONG = 268435456;
 pub const MQCNO_NONE: MQLONG = 0;
-pub const MQCT_NONE : & [u8 ; 129] = b"\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0" ;
+pub const MQCT_NONE: &[u8; 129] = b"\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0";
 pub const MQCONNID_NONE: &[u8; 25] = b"\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0";
 pub const MQAN_NONE: &::std::ffi::CStr = c"                            ";
 pub const MQDH_STRUC_ID: &::std::ffi::CStr = c"DH  ";
@@ -4310,8 +4384,7 @@ pub const MQAXP_LENGTH_1: usize = 256;
 pub const MQAXP_CURRENT_LENGTH: usize = 256;
 pub const MQXACT_EXTERNAL: MQLONG = 1;
 pub const MQXACT_INTERNAL: MQLONG = 2;
-pub const MQXPDA_NONE: &[u8; 49] =
-    b"\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0";
+pub const MQXPDA_NONE: &[u8; 49] = b"\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0";
 pub const MQXF_INIT: MQLONG = 1;
 pub const MQXF_TERM: MQLONG = 2;
 pub const MQXF_CONN: MQLONG = 3;
@@ -7090,1509 +7163,3666 @@ pub const MQIEPF_LOCAL_LIBRARY: MQLONG = 2;
 const _: () = {
     ["Size of tagMQAIR"][::std::mem::size_of::<tagMQAIR>() - 584usize];
     ["Alignment of tagMQAIR"][::std::mem::align_of::<tagMQAIR>() - 8usize];
-    ["Offset of field: tagMQAIR::StrucId"][::std::mem::offset_of!(tagMQAIR, StrucId) - 0usize];
-    ["Offset of field: tagMQAIR::Version"][::std::mem::offset_of!(tagMQAIR, Version) - 4usize];
-    ["Offset of field: tagMQAIR::AuthInfoType"][::std::mem::offset_of!(tagMQAIR, AuthInfoType) - 8usize];
-    ["Offset of field: tagMQAIR::AuthInfoConnName"][::std::mem::offset_of!(tagMQAIR, AuthInfoConnName) - 12usize];
-    ["Offset of field: tagMQAIR::LDAPUserNamePtr"][::std::mem::offset_of!(tagMQAIR, LDAPUserNamePtr) - 280usize];
-    ["Offset of field: tagMQAIR::LDAPUserNameOffset"][::std::mem::offset_of!(tagMQAIR, LDAPUserNameOffset) - 288usize];
-    ["Offset of field: tagMQAIR::LDAPUserNameLength"][::std::mem::offset_of!(tagMQAIR, LDAPUserNameLength) - 292usize];
-    ["Offset of field: tagMQAIR::LDAPPassword"][::std::mem::offset_of!(tagMQAIR, LDAPPassword) - 296usize];
-    ["Offset of field: tagMQAIR::OCSPResponderURL"][::std::mem::offset_of!(tagMQAIR, OCSPResponderURL) - 328usize];
+    [
+        "Offset of field: tagMQAIR::StrucId",
+    ][::std::mem::offset_of!(tagMQAIR, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQAIR::Version",
+    ][::std::mem::offset_of!(tagMQAIR, Version) - 4usize];
+    [
+        "Offset of field: tagMQAIR::AuthInfoType",
+    ][::std::mem::offset_of!(tagMQAIR, AuthInfoType) - 8usize];
+    [
+        "Offset of field: tagMQAIR::AuthInfoConnName",
+    ][::std::mem::offset_of!(tagMQAIR, AuthInfoConnName) - 12usize];
+    [
+        "Offset of field: tagMQAIR::LDAPUserNamePtr",
+    ][::std::mem::offset_of!(tagMQAIR, LDAPUserNamePtr) - 280usize];
+    [
+        "Offset of field: tagMQAIR::LDAPUserNameOffset",
+    ][::std::mem::offset_of!(tagMQAIR, LDAPUserNameOffset) - 288usize];
+    [
+        "Offset of field: tagMQAIR::LDAPUserNameLength",
+    ][::std::mem::offset_of!(tagMQAIR, LDAPUserNameLength) - 292usize];
+    [
+        "Offset of field: tagMQAIR::LDAPPassword",
+    ][::std::mem::offset_of!(tagMQAIR, LDAPPassword) - 296usize];
+    [
+        "Offset of field: tagMQAIR::OCSPResponderURL",
+    ][::std::mem::offset_of!(tagMQAIR, OCSPResponderURL) - 328usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQBNO"][::std::mem::size_of::<tagMQBNO>() - 20usize];
     ["Alignment of tagMQBNO"][::std::mem::align_of::<tagMQBNO>() - 4usize];
-    ["Offset of field: tagMQBNO::StrucId"][::std::mem::offset_of!(tagMQBNO, StrucId) - 0usize];
-    ["Offset of field: tagMQBNO::Version"][::std::mem::offset_of!(tagMQBNO, Version) - 4usize];
-    ["Offset of field: tagMQBNO::ApplType"][::std::mem::offset_of!(tagMQBNO, ApplType) - 8usize];
-    ["Offset of field: tagMQBNO::Timeout"][::std::mem::offset_of!(tagMQBNO, Timeout) - 12usize];
-    ["Offset of field: tagMQBNO::Options"][::std::mem::offset_of!(tagMQBNO, Options) - 16usize];
+    [
+        "Offset of field: tagMQBNO::StrucId",
+    ][::std::mem::offset_of!(tagMQBNO, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQBNO::Version",
+    ][::std::mem::offset_of!(tagMQBNO, Version) - 4usize];
+    [
+        "Offset of field: tagMQBNO::ApplType",
+    ][::std::mem::offset_of!(tagMQBNO, ApplType) - 8usize];
+    [
+        "Offset of field: tagMQBNO::Timeout",
+    ][::std::mem::offset_of!(tagMQBNO, Timeout) - 12usize];
+    [
+        "Offset of field: tagMQBNO::Options",
+    ][::std::mem::offset_of!(tagMQBNO, Options) - 16usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQBMHO"][::std::mem::size_of::<tagMQBMHO>() - 12usize];
     ["Alignment of tagMQBMHO"][::std::mem::align_of::<tagMQBMHO>() - 4usize];
-    ["Offset of field: tagMQBMHO::StrucId"][::std::mem::offset_of!(tagMQBMHO, StrucId) - 0usize];
-    ["Offset of field: tagMQBMHO::Version"][::std::mem::offset_of!(tagMQBMHO, Version) - 4usize];
-    ["Offset of field: tagMQBMHO::Options"][::std::mem::offset_of!(tagMQBMHO, Options) - 8usize];
+    [
+        "Offset of field: tagMQBMHO::StrucId",
+    ][::std::mem::offset_of!(tagMQBMHO, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQBMHO::Version",
+    ][::std::mem::offset_of!(tagMQBMHO, Version) - 4usize];
+    [
+        "Offset of field: tagMQBMHO::Options",
+    ][::std::mem::offset_of!(tagMQBMHO, Options) - 8usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQBO"][::std::mem::size_of::<tagMQBO>() - 12usize];
     ["Alignment of tagMQBO"][::std::mem::align_of::<tagMQBO>() - 4usize];
-    ["Offset of field: tagMQBO::StrucId"][::std::mem::offset_of!(tagMQBO, StrucId) - 0usize];
-    ["Offset of field: tagMQBO::Version"][::std::mem::offset_of!(tagMQBO, Version) - 4usize];
-    ["Offset of field: tagMQBO::Options"][::std::mem::offset_of!(tagMQBO, Options) - 8usize];
+    [
+        "Offset of field: tagMQBO::StrucId",
+    ][::std::mem::offset_of!(tagMQBO, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQBO::Version",
+    ][::std::mem::offset_of!(tagMQBO, Version) - 4usize];
+    [
+        "Offset of field: tagMQBO::Options",
+    ][::std::mem::offset_of!(tagMQBO, Options) - 8usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQCBC"][::std::mem::size_of::<tagMQCBC>() - 64usize];
     ["Alignment of tagMQCBC"][::std::mem::align_of::<tagMQCBC>() - 8usize];
-    ["Offset of field: tagMQCBC::StrucId"][::std::mem::offset_of!(tagMQCBC, StrucId) - 0usize];
-    ["Offset of field: tagMQCBC::Version"][::std::mem::offset_of!(tagMQCBC, Version) - 4usize];
-    ["Offset of field: tagMQCBC::CallType"][::std::mem::offset_of!(tagMQCBC, CallType) - 8usize];
-    ["Offset of field: tagMQCBC::Hobj"][::std::mem::offset_of!(tagMQCBC, Hobj) - 12usize];
-    ["Offset of field: tagMQCBC::CallbackArea"][::std::mem::offset_of!(tagMQCBC, CallbackArea) - 16usize];
-    ["Offset of field: tagMQCBC::ConnectionArea"][::std::mem::offset_of!(tagMQCBC, ConnectionArea) - 24usize];
-    ["Offset of field: tagMQCBC::CompCode"][::std::mem::offset_of!(tagMQCBC, CompCode) - 32usize];
-    ["Offset of field: tagMQCBC::Reason"][::std::mem::offset_of!(tagMQCBC, Reason) - 36usize];
-    ["Offset of field: tagMQCBC::State"][::std::mem::offset_of!(tagMQCBC, State) - 40usize];
-    ["Offset of field: tagMQCBC::DataLength"][::std::mem::offset_of!(tagMQCBC, DataLength) - 44usize];
-    ["Offset of field: tagMQCBC::BufferLength"][::std::mem::offset_of!(tagMQCBC, BufferLength) - 48usize];
-    ["Offset of field: tagMQCBC::Flags"][::std::mem::offset_of!(tagMQCBC, Flags) - 52usize];
-    ["Offset of field: tagMQCBC::ReconnectDelay"][::std::mem::offset_of!(tagMQCBC, ReconnectDelay) - 56usize];
+    [
+        "Offset of field: tagMQCBC::StrucId",
+    ][::std::mem::offset_of!(tagMQCBC, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQCBC::Version",
+    ][::std::mem::offset_of!(tagMQCBC, Version) - 4usize];
+    [
+        "Offset of field: tagMQCBC::CallType",
+    ][::std::mem::offset_of!(tagMQCBC, CallType) - 8usize];
+    [
+        "Offset of field: tagMQCBC::Hobj",
+    ][::std::mem::offset_of!(tagMQCBC, Hobj) - 12usize];
+    [
+        "Offset of field: tagMQCBC::CallbackArea",
+    ][::std::mem::offset_of!(tagMQCBC, CallbackArea) - 16usize];
+    [
+        "Offset of field: tagMQCBC::ConnectionArea",
+    ][::std::mem::offset_of!(tagMQCBC, ConnectionArea) - 24usize];
+    [
+        "Offset of field: tagMQCBC::CompCode",
+    ][::std::mem::offset_of!(tagMQCBC, CompCode) - 32usize];
+    [
+        "Offset of field: tagMQCBC::Reason",
+    ][::std::mem::offset_of!(tagMQCBC, Reason) - 36usize];
+    [
+        "Offset of field: tagMQCBC::State",
+    ][::std::mem::offset_of!(tagMQCBC, State) - 40usize];
+    [
+        "Offset of field: tagMQCBC::DataLength",
+    ][::std::mem::offset_of!(tagMQCBC, DataLength) - 44usize];
+    [
+        "Offset of field: tagMQCBC::BufferLength",
+    ][::std::mem::offset_of!(tagMQCBC, BufferLength) - 48usize];
+    [
+        "Offset of field: tagMQCBC::Flags",
+    ][::std::mem::offset_of!(tagMQCBC, Flags) - 52usize];
+    [
+        "Offset of field: tagMQCBC::ReconnectDelay",
+    ][::std::mem::offset_of!(tagMQCBC, ReconnectDelay) - 56usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQCBD"][::std::mem::size_of::<tagMQCBD>() - 168usize];
     ["Alignment of tagMQCBD"][::std::mem::align_of::<tagMQCBD>() - 8usize];
-    ["Offset of field: tagMQCBD::StrucId"][::std::mem::offset_of!(tagMQCBD, StrucId) - 0usize];
-    ["Offset of field: tagMQCBD::Version"][::std::mem::offset_of!(tagMQCBD, Version) - 4usize];
-    ["Offset of field: tagMQCBD::CallbackType"][::std::mem::offset_of!(tagMQCBD, CallbackType) - 8usize];
-    ["Offset of field: tagMQCBD::Options"][::std::mem::offset_of!(tagMQCBD, Options) - 12usize];
-    ["Offset of field: tagMQCBD::CallbackArea"][::std::mem::offset_of!(tagMQCBD, CallbackArea) - 16usize];
-    ["Offset of field: tagMQCBD::CallbackFunction"][::std::mem::offset_of!(tagMQCBD, CallbackFunction) - 24usize];
-    ["Offset of field: tagMQCBD::CallbackName"][::std::mem::offset_of!(tagMQCBD, CallbackName) - 32usize];
-    ["Offset of field: tagMQCBD::MaxMsgLength"][::std::mem::offset_of!(tagMQCBD, MaxMsgLength) - 160usize];
+    [
+        "Offset of field: tagMQCBD::StrucId",
+    ][::std::mem::offset_of!(tagMQCBD, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQCBD::Version",
+    ][::std::mem::offset_of!(tagMQCBD, Version) - 4usize];
+    [
+        "Offset of field: tagMQCBD::CallbackType",
+    ][::std::mem::offset_of!(tagMQCBD, CallbackType) - 8usize];
+    [
+        "Offset of field: tagMQCBD::Options",
+    ][::std::mem::offset_of!(tagMQCBD, Options) - 12usize];
+    [
+        "Offset of field: tagMQCBD::CallbackArea",
+    ][::std::mem::offset_of!(tagMQCBD, CallbackArea) - 16usize];
+    [
+        "Offset of field: tagMQCBD::CallbackFunction",
+    ][::std::mem::offset_of!(tagMQCBD, CallbackFunction) - 24usize];
+    [
+        "Offset of field: tagMQCBD::CallbackName",
+    ][::std::mem::offset_of!(tagMQCBD, CallbackName) - 32usize];
+    [
+        "Offset of field: tagMQCBD::MaxMsgLength",
+    ][::std::mem::offset_of!(tagMQCBD, MaxMsgLength) - 160usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQCHARV"][::std::mem::size_of::<tagMQCHARV>() - 24usize];
     ["Alignment of tagMQCHARV"][::std::mem::align_of::<tagMQCHARV>() - 8usize];
-    ["Offset of field: tagMQCHARV::VSPtr"][::std::mem::offset_of!(tagMQCHARV, VSPtr) - 0usize];
-    ["Offset of field: tagMQCHARV::VSOffset"][::std::mem::offset_of!(tagMQCHARV, VSOffset) - 8usize];
-    ["Offset of field: tagMQCHARV::VSBufSize"][::std::mem::offset_of!(tagMQCHARV, VSBufSize) - 12usize];
-    ["Offset of field: tagMQCHARV::VSLength"][::std::mem::offset_of!(tagMQCHARV, VSLength) - 16usize];
-    ["Offset of field: tagMQCHARV::VSCCSID"][::std::mem::offset_of!(tagMQCHARV, VSCCSID) - 20usize];
+    [
+        "Offset of field: tagMQCHARV::VSPtr",
+    ][::std::mem::offset_of!(tagMQCHARV, VSPtr) - 0usize];
+    [
+        "Offset of field: tagMQCHARV::VSOffset",
+    ][::std::mem::offset_of!(tagMQCHARV, VSOffset) - 8usize];
+    [
+        "Offset of field: tagMQCHARV::VSBufSize",
+    ][::std::mem::offset_of!(tagMQCHARV, VSBufSize) - 12usize];
+    [
+        "Offset of field: tagMQCHARV::VSLength",
+    ][::std::mem::offset_of!(tagMQCHARV, VSLength) - 16usize];
+    [
+        "Offset of field: tagMQCHARV::VSCCSID",
+    ][::std::mem::offset_of!(tagMQCHARV, VSCCSID) - 20usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQCIH"][::std::mem::size_of::<tagMQCIH>() - 180usize];
     ["Alignment of tagMQCIH"][::std::mem::align_of::<tagMQCIH>() - 4usize];
-    ["Offset of field: tagMQCIH::StrucId"][::std::mem::offset_of!(tagMQCIH, StrucId) - 0usize];
-    ["Offset of field: tagMQCIH::Version"][::std::mem::offset_of!(tagMQCIH, Version) - 4usize];
-    ["Offset of field: tagMQCIH::StrucLength"][::std::mem::offset_of!(tagMQCIH, StrucLength) - 8usize];
-    ["Offset of field: tagMQCIH::Encoding"][::std::mem::offset_of!(tagMQCIH, Encoding) - 12usize];
-    ["Offset of field: tagMQCIH::CodedCharSetId"][::std::mem::offset_of!(tagMQCIH, CodedCharSetId) - 16usize];
-    ["Offset of field: tagMQCIH::Format"][::std::mem::offset_of!(tagMQCIH, Format) - 20usize];
-    ["Offset of field: tagMQCIH::Flags"][::std::mem::offset_of!(tagMQCIH, Flags) - 28usize];
-    ["Offset of field: tagMQCIH::ReturnCode"][::std::mem::offset_of!(tagMQCIH, ReturnCode) - 32usize];
-    ["Offset of field: tagMQCIH::CompCode"][::std::mem::offset_of!(tagMQCIH, CompCode) - 36usize];
-    ["Offset of field: tagMQCIH::Reason"][::std::mem::offset_of!(tagMQCIH, Reason) - 40usize];
-    ["Offset of field: tagMQCIH::UOWControl"][::std::mem::offset_of!(tagMQCIH, UOWControl) - 44usize];
-    ["Offset of field: tagMQCIH::GetWaitInterval"][::std::mem::offset_of!(tagMQCIH, GetWaitInterval) - 48usize];
-    ["Offset of field: tagMQCIH::LinkType"][::std::mem::offset_of!(tagMQCIH, LinkType) - 52usize];
-    ["Offset of field: tagMQCIH::OutputDataLength"][::std::mem::offset_of!(tagMQCIH, OutputDataLength) - 56usize];
-    ["Offset of field: tagMQCIH::FacilityKeepTime"][::std::mem::offset_of!(tagMQCIH, FacilityKeepTime) - 60usize];
-    ["Offset of field: tagMQCIH::ADSDescriptor"][::std::mem::offset_of!(tagMQCIH, ADSDescriptor) - 64usize];
-    ["Offset of field: tagMQCIH::ConversationalTask"][::std::mem::offset_of!(tagMQCIH, ConversationalTask) - 68usize];
-    ["Offset of field: tagMQCIH::TaskEndStatus"][::std::mem::offset_of!(tagMQCIH, TaskEndStatus) - 72usize];
-    ["Offset of field: tagMQCIH::Facility"][::std::mem::offset_of!(tagMQCIH, Facility) - 76usize];
-    ["Offset of field: tagMQCIH::Function"][::std::mem::offset_of!(tagMQCIH, Function) - 84usize];
-    ["Offset of field: tagMQCIH::AbendCode"][::std::mem::offset_of!(tagMQCIH, AbendCode) - 88usize];
-    ["Offset of field: tagMQCIH::Authenticator"][::std::mem::offset_of!(tagMQCIH, Authenticator) - 92usize];
-    ["Offset of field: tagMQCIH::Reserved1"][::std::mem::offset_of!(tagMQCIH, Reserved1) - 100usize];
-    ["Offset of field: tagMQCIH::ReplyToFormat"][::std::mem::offset_of!(tagMQCIH, ReplyToFormat) - 108usize];
-    ["Offset of field: tagMQCIH::RemoteSysId"][::std::mem::offset_of!(tagMQCIH, RemoteSysId) - 116usize];
-    ["Offset of field: tagMQCIH::RemoteTransId"][::std::mem::offset_of!(tagMQCIH, RemoteTransId) - 120usize];
-    ["Offset of field: tagMQCIH::TransactionId"][::std::mem::offset_of!(tagMQCIH, TransactionId) - 124usize];
-    ["Offset of field: tagMQCIH::FacilityLike"][::std::mem::offset_of!(tagMQCIH, FacilityLike) - 128usize];
-    ["Offset of field: tagMQCIH::AttentionId"][::std::mem::offset_of!(tagMQCIH, AttentionId) - 132usize];
-    ["Offset of field: tagMQCIH::StartCode"][::std::mem::offset_of!(tagMQCIH, StartCode) - 136usize];
-    ["Offset of field: tagMQCIH::CancelCode"][::std::mem::offset_of!(tagMQCIH, CancelCode) - 140usize];
-    ["Offset of field: tagMQCIH::NextTransactionId"][::std::mem::offset_of!(tagMQCIH, NextTransactionId) - 144usize];
-    ["Offset of field: tagMQCIH::Reserved2"][::std::mem::offset_of!(tagMQCIH, Reserved2) - 148usize];
-    ["Offset of field: tagMQCIH::Reserved3"][::std::mem::offset_of!(tagMQCIH, Reserved3) - 156usize];
-    ["Offset of field: tagMQCIH::CursorPosition"][::std::mem::offset_of!(tagMQCIH, CursorPosition) - 164usize];
-    ["Offset of field: tagMQCIH::ErrorOffset"][::std::mem::offset_of!(tagMQCIH, ErrorOffset) - 168usize];
-    ["Offset of field: tagMQCIH::InputItem"][::std::mem::offset_of!(tagMQCIH, InputItem) - 172usize];
-    ["Offset of field: tagMQCIH::Reserved4"][::std::mem::offset_of!(tagMQCIH, Reserved4) - 176usize];
+    [
+        "Offset of field: tagMQCIH::StrucId",
+    ][::std::mem::offset_of!(tagMQCIH, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQCIH::Version",
+    ][::std::mem::offset_of!(tagMQCIH, Version) - 4usize];
+    [
+        "Offset of field: tagMQCIH::StrucLength",
+    ][::std::mem::offset_of!(tagMQCIH, StrucLength) - 8usize];
+    [
+        "Offset of field: tagMQCIH::Encoding",
+    ][::std::mem::offset_of!(tagMQCIH, Encoding) - 12usize];
+    [
+        "Offset of field: tagMQCIH::CodedCharSetId",
+    ][::std::mem::offset_of!(tagMQCIH, CodedCharSetId) - 16usize];
+    [
+        "Offset of field: tagMQCIH::Format",
+    ][::std::mem::offset_of!(tagMQCIH, Format) - 20usize];
+    [
+        "Offset of field: tagMQCIH::Flags",
+    ][::std::mem::offset_of!(tagMQCIH, Flags) - 28usize];
+    [
+        "Offset of field: tagMQCIH::ReturnCode",
+    ][::std::mem::offset_of!(tagMQCIH, ReturnCode) - 32usize];
+    [
+        "Offset of field: tagMQCIH::CompCode",
+    ][::std::mem::offset_of!(tagMQCIH, CompCode) - 36usize];
+    [
+        "Offset of field: tagMQCIH::Reason",
+    ][::std::mem::offset_of!(tagMQCIH, Reason) - 40usize];
+    [
+        "Offset of field: tagMQCIH::UOWControl",
+    ][::std::mem::offset_of!(tagMQCIH, UOWControl) - 44usize];
+    [
+        "Offset of field: tagMQCIH::GetWaitInterval",
+    ][::std::mem::offset_of!(tagMQCIH, GetWaitInterval) - 48usize];
+    [
+        "Offset of field: tagMQCIH::LinkType",
+    ][::std::mem::offset_of!(tagMQCIH, LinkType) - 52usize];
+    [
+        "Offset of field: tagMQCIH::OutputDataLength",
+    ][::std::mem::offset_of!(tagMQCIH, OutputDataLength) - 56usize];
+    [
+        "Offset of field: tagMQCIH::FacilityKeepTime",
+    ][::std::mem::offset_of!(tagMQCIH, FacilityKeepTime) - 60usize];
+    [
+        "Offset of field: tagMQCIH::ADSDescriptor",
+    ][::std::mem::offset_of!(tagMQCIH, ADSDescriptor) - 64usize];
+    [
+        "Offset of field: tagMQCIH::ConversationalTask",
+    ][::std::mem::offset_of!(tagMQCIH, ConversationalTask) - 68usize];
+    [
+        "Offset of field: tagMQCIH::TaskEndStatus",
+    ][::std::mem::offset_of!(tagMQCIH, TaskEndStatus) - 72usize];
+    [
+        "Offset of field: tagMQCIH::Facility",
+    ][::std::mem::offset_of!(tagMQCIH, Facility) - 76usize];
+    [
+        "Offset of field: tagMQCIH::Function",
+    ][::std::mem::offset_of!(tagMQCIH, Function) - 84usize];
+    [
+        "Offset of field: tagMQCIH::AbendCode",
+    ][::std::mem::offset_of!(tagMQCIH, AbendCode) - 88usize];
+    [
+        "Offset of field: tagMQCIH::Authenticator",
+    ][::std::mem::offset_of!(tagMQCIH, Authenticator) - 92usize];
+    [
+        "Offset of field: tagMQCIH::Reserved1",
+    ][::std::mem::offset_of!(tagMQCIH, Reserved1) - 100usize];
+    [
+        "Offset of field: tagMQCIH::ReplyToFormat",
+    ][::std::mem::offset_of!(tagMQCIH, ReplyToFormat) - 108usize];
+    [
+        "Offset of field: tagMQCIH::RemoteSysId",
+    ][::std::mem::offset_of!(tagMQCIH, RemoteSysId) - 116usize];
+    [
+        "Offset of field: tagMQCIH::RemoteTransId",
+    ][::std::mem::offset_of!(tagMQCIH, RemoteTransId) - 120usize];
+    [
+        "Offset of field: tagMQCIH::TransactionId",
+    ][::std::mem::offset_of!(tagMQCIH, TransactionId) - 124usize];
+    [
+        "Offset of field: tagMQCIH::FacilityLike",
+    ][::std::mem::offset_of!(tagMQCIH, FacilityLike) - 128usize];
+    [
+        "Offset of field: tagMQCIH::AttentionId",
+    ][::std::mem::offset_of!(tagMQCIH, AttentionId) - 132usize];
+    [
+        "Offset of field: tagMQCIH::StartCode",
+    ][::std::mem::offset_of!(tagMQCIH, StartCode) - 136usize];
+    [
+        "Offset of field: tagMQCIH::CancelCode",
+    ][::std::mem::offset_of!(tagMQCIH, CancelCode) - 140usize];
+    [
+        "Offset of field: tagMQCIH::NextTransactionId",
+    ][::std::mem::offset_of!(tagMQCIH, NextTransactionId) - 144usize];
+    [
+        "Offset of field: tagMQCIH::Reserved2",
+    ][::std::mem::offset_of!(tagMQCIH, Reserved2) - 148usize];
+    [
+        "Offset of field: tagMQCIH::Reserved3",
+    ][::std::mem::offset_of!(tagMQCIH, Reserved3) - 156usize];
+    [
+        "Offset of field: tagMQCIH::CursorPosition",
+    ][::std::mem::offset_of!(tagMQCIH, CursorPosition) - 164usize];
+    [
+        "Offset of field: tagMQCIH::ErrorOffset",
+    ][::std::mem::offset_of!(tagMQCIH, ErrorOffset) - 168usize];
+    [
+        "Offset of field: tagMQCIH::InputItem",
+    ][::std::mem::offset_of!(tagMQCIH, InputItem) - 172usize];
+    [
+        "Offset of field: tagMQCIH::Reserved4",
+    ][::std::mem::offset_of!(tagMQCIH, Reserved4) - 176usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQCMHO"][::std::mem::size_of::<tagMQCMHO>() - 12usize];
     ["Alignment of tagMQCMHO"][::std::mem::align_of::<tagMQCMHO>() - 4usize];
-    ["Offset of field: tagMQCMHO::StrucId"][::std::mem::offset_of!(tagMQCMHO, StrucId) - 0usize];
-    ["Offset of field: tagMQCMHO::Version"][::std::mem::offset_of!(tagMQCMHO, Version) - 4usize];
-    ["Offset of field: tagMQCMHO::Options"][::std::mem::offset_of!(tagMQCMHO, Options) - 8usize];
+    [
+        "Offset of field: tagMQCMHO::StrucId",
+    ][::std::mem::offset_of!(tagMQCMHO, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQCMHO::Version",
+    ][::std::mem::offset_of!(tagMQCMHO, Version) - 4usize];
+    [
+        "Offset of field: tagMQCMHO::Options",
+    ][::std::mem::offset_of!(tagMQCMHO, Options) - 8usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQCTLO"][::std::mem::size_of::<tagMQCTLO>() - 24usize];
     ["Alignment of tagMQCTLO"][::std::mem::align_of::<tagMQCTLO>() - 8usize];
-    ["Offset of field: tagMQCTLO::StrucId"][::std::mem::offset_of!(tagMQCTLO, StrucId) - 0usize];
-    ["Offset of field: tagMQCTLO::Version"][::std::mem::offset_of!(tagMQCTLO, Version) - 4usize];
-    ["Offset of field: tagMQCTLO::Options"][::std::mem::offset_of!(tagMQCTLO, Options) - 8usize];
-    ["Offset of field: tagMQCTLO::Reserved"][::std::mem::offset_of!(tagMQCTLO, Reserved) - 12usize];
-    ["Offset of field: tagMQCTLO::ConnectionArea"][::std::mem::offset_of!(tagMQCTLO, ConnectionArea) - 16usize];
+    [
+        "Offset of field: tagMQCTLO::StrucId",
+    ][::std::mem::offset_of!(tagMQCTLO, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQCTLO::Version",
+    ][::std::mem::offset_of!(tagMQCTLO, Version) - 4usize];
+    [
+        "Offset of field: tagMQCTLO::Options",
+    ][::std::mem::offset_of!(tagMQCTLO, Options) - 8usize];
+    [
+        "Offset of field: tagMQCTLO::Reserved",
+    ][::std::mem::offset_of!(tagMQCTLO, Reserved) - 12usize];
+    [
+        "Offset of field: tagMQCTLO::ConnectionArea",
+    ][::std::mem::offset_of!(tagMQCTLO, ConnectionArea) - 16usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQSCO"][::std::mem::size_of::<tagMQSCO>() - 672usize];
     ["Alignment of tagMQSCO"][::std::mem::align_of::<tagMQSCO>() - 8usize];
-    ["Offset of field: tagMQSCO::StrucId"][::std::mem::offset_of!(tagMQSCO, StrucId) - 0usize];
-    ["Offset of field: tagMQSCO::Version"][::std::mem::offset_of!(tagMQSCO, Version) - 4usize];
-    ["Offset of field: tagMQSCO::KeyRepository"][::std::mem::offset_of!(tagMQSCO, KeyRepository) - 8usize];
-    ["Offset of field: tagMQSCO::CryptoHardware"][::std::mem::offset_of!(tagMQSCO, CryptoHardware) - 264usize];
-    ["Offset of field: tagMQSCO::AuthInfoRecCount"][::std::mem::offset_of!(tagMQSCO, AuthInfoRecCount) - 520usize];
-    ["Offset of field: tagMQSCO::AuthInfoRecOffset"][::std::mem::offset_of!(tagMQSCO, AuthInfoRecOffset) - 524usize];
-    ["Offset of field: tagMQSCO::AuthInfoRecPtr"][::std::mem::offset_of!(tagMQSCO, AuthInfoRecPtr) - 528usize];
-    ["Offset of field: tagMQSCO::KeyResetCount"][::std::mem::offset_of!(tagMQSCO, KeyResetCount) - 536usize];
-    ["Offset of field: tagMQSCO::FipsRequired"][::std::mem::offset_of!(tagMQSCO, FipsRequired) - 540usize];
-    ["Offset of field: tagMQSCO::EncryptionPolicySuiteB"][::std::mem::offset_of!(tagMQSCO, EncryptionPolicySuiteB) - 544usize];
-    ["Offset of field: tagMQSCO::CertificateValPolicy"][::std::mem::offset_of!(tagMQSCO, CertificateValPolicy) - 560usize];
-    ["Offset of field: tagMQSCO::CertificateLabel"][::std::mem::offset_of!(tagMQSCO, CertificateLabel) - 564usize];
-    ["Offset of field: tagMQSCO::KeyRepoPasswordPtr"][::std::mem::offset_of!(tagMQSCO, KeyRepoPasswordPtr) - 632usize];
-    ["Offset of field: tagMQSCO::KeyRepoPasswordOffset"][::std::mem::offset_of!(tagMQSCO, KeyRepoPasswordOffset) - 640usize];
-    ["Offset of field: tagMQSCO::KeyRepoPasswordLength"][::std::mem::offset_of!(tagMQSCO, KeyRepoPasswordLength) - 644usize];
-    ["Offset of field: tagMQSCO::HTTPSCertValidation"][::std::mem::offset_of!(tagMQSCO, HTTPSCertValidation) - 648usize];
-    ["Offset of field: tagMQSCO::HTTPSCertRevocation"][::std::mem::offset_of!(tagMQSCO, HTTPSCertRevocation) - 652usize];
-    ["Offset of field: tagMQSCO::HTTPSKeyStorePtr"][::std::mem::offset_of!(tagMQSCO, HTTPSKeyStorePtr) - 656usize];
-    ["Offset of field: tagMQSCO::HTTPSKeyStoreOffset"][::std::mem::offset_of!(tagMQSCO, HTTPSKeyStoreOffset) - 664usize];
-    ["Offset of field: tagMQSCO::HTTPSKeyStoreLength"][::std::mem::offset_of!(tagMQSCO, HTTPSKeyStoreLength) - 668usize];
+    [
+        "Offset of field: tagMQSCO::StrucId",
+    ][::std::mem::offset_of!(tagMQSCO, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQSCO::Version",
+    ][::std::mem::offset_of!(tagMQSCO, Version) - 4usize];
+    [
+        "Offset of field: tagMQSCO::KeyRepository",
+    ][::std::mem::offset_of!(tagMQSCO, KeyRepository) - 8usize];
+    [
+        "Offset of field: tagMQSCO::CryptoHardware",
+    ][::std::mem::offset_of!(tagMQSCO, CryptoHardware) - 264usize];
+    [
+        "Offset of field: tagMQSCO::AuthInfoRecCount",
+    ][::std::mem::offset_of!(tagMQSCO, AuthInfoRecCount) - 520usize];
+    [
+        "Offset of field: tagMQSCO::AuthInfoRecOffset",
+    ][::std::mem::offset_of!(tagMQSCO, AuthInfoRecOffset) - 524usize];
+    [
+        "Offset of field: tagMQSCO::AuthInfoRecPtr",
+    ][::std::mem::offset_of!(tagMQSCO, AuthInfoRecPtr) - 528usize];
+    [
+        "Offset of field: tagMQSCO::KeyResetCount",
+    ][::std::mem::offset_of!(tagMQSCO, KeyResetCount) - 536usize];
+    [
+        "Offset of field: tagMQSCO::FipsRequired",
+    ][::std::mem::offset_of!(tagMQSCO, FipsRequired) - 540usize];
+    [
+        "Offset of field: tagMQSCO::EncryptionPolicySuiteB",
+    ][::std::mem::offset_of!(tagMQSCO, EncryptionPolicySuiteB) - 544usize];
+    [
+        "Offset of field: tagMQSCO::CertificateValPolicy",
+    ][::std::mem::offset_of!(tagMQSCO, CertificateValPolicy) - 560usize];
+    [
+        "Offset of field: tagMQSCO::CertificateLabel",
+    ][::std::mem::offset_of!(tagMQSCO, CertificateLabel) - 564usize];
+    [
+        "Offset of field: tagMQSCO::KeyRepoPasswordPtr",
+    ][::std::mem::offset_of!(tagMQSCO, KeyRepoPasswordPtr) - 632usize];
+    [
+        "Offset of field: tagMQSCO::KeyRepoPasswordOffset",
+    ][::std::mem::offset_of!(tagMQSCO, KeyRepoPasswordOffset) - 640usize];
+    [
+        "Offset of field: tagMQSCO::KeyRepoPasswordLength",
+    ][::std::mem::offset_of!(tagMQSCO, KeyRepoPasswordLength) - 644usize];
+    [
+        "Offset of field: tagMQSCO::HTTPSCertValidation",
+    ][::std::mem::offset_of!(tagMQSCO, HTTPSCertValidation) - 648usize];
+    [
+        "Offset of field: tagMQSCO::HTTPSCertRevocation",
+    ][::std::mem::offset_of!(tagMQSCO, HTTPSCertRevocation) - 652usize];
+    [
+        "Offset of field: tagMQSCO::HTTPSKeyStorePtr",
+    ][::std::mem::offset_of!(tagMQSCO, HTTPSKeyStorePtr) - 656usize];
+    [
+        "Offset of field: tagMQSCO::HTTPSKeyStoreOffset",
+    ][::std::mem::offset_of!(tagMQSCO, HTTPSKeyStoreOffset) - 664usize];
+    [
+        "Offset of field: tagMQSCO::HTTPSKeyStoreLength",
+    ][::std::mem::offset_of!(tagMQSCO, HTTPSKeyStoreLength) - 668usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQCSP"][::std::mem::size_of::<tagMQCSP>() - 104usize];
     ["Alignment of tagMQCSP"][::std::mem::align_of::<tagMQCSP>() - 8usize];
-    ["Offset of field: tagMQCSP::StrucId"][::std::mem::offset_of!(tagMQCSP, StrucId) - 0usize];
-    ["Offset of field: tagMQCSP::Version"][::std::mem::offset_of!(tagMQCSP, Version) - 4usize];
-    ["Offset of field: tagMQCSP::AuthenticationType"][::std::mem::offset_of!(tagMQCSP, AuthenticationType) - 8usize];
-    ["Offset of field: tagMQCSP::Reserved1"][::std::mem::offset_of!(tagMQCSP, Reserved1) - 12usize];
-    ["Offset of field: tagMQCSP::CSPUserIdPtr"][::std::mem::offset_of!(tagMQCSP, CSPUserIdPtr) - 16usize];
-    ["Offset of field: tagMQCSP::CSPUserIdOffset"][::std::mem::offset_of!(tagMQCSP, CSPUserIdOffset) - 24usize];
-    ["Offset of field: tagMQCSP::CSPUserIdLength"][::std::mem::offset_of!(tagMQCSP, CSPUserIdLength) - 28usize];
-    ["Offset of field: tagMQCSP::Reserved2"][::std::mem::offset_of!(tagMQCSP, Reserved2) - 32usize];
-    ["Offset of field: tagMQCSP::CSPPasswordPtr"][::std::mem::offset_of!(tagMQCSP, CSPPasswordPtr) - 40usize];
-    ["Offset of field: tagMQCSP::CSPPasswordOffset"][::std::mem::offset_of!(tagMQCSP, CSPPasswordOffset) - 48usize];
-    ["Offset of field: tagMQCSP::CSPPasswordLength"][::std::mem::offset_of!(tagMQCSP, CSPPasswordLength) - 52usize];
-    ["Offset of field: tagMQCSP::Reserved3"][::std::mem::offset_of!(tagMQCSP, Reserved3) - 56usize];
-    ["Offset of field: tagMQCSP::InitialKeyPtr"][::std::mem::offset_of!(tagMQCSP, InitialKeyPtr) - 64usize];
-    ["Offset of field: tagMQCSP::InitialKeyOffset"][::std::mem::offset_of!(tagMQCSP, InitialKeyOffset) - 72usize];
-    ["Offset of field: tagMQCSP::InitialKeyLength"][::std::mem::offset_of!(tagMQCSP, InitialKeyLength) - 76usize];
-    ["Offset of field: tagMQCSP::Reserved4"][::std::mem::offset_of!(tagMQCSP, Reserved4) - 80usize];
-    ["Offset of field: tagMQCSP::TokenPtr"][::std::mem::offset_of!(tagMQCSP, TokenPtr) - 88usize];
-    ["Offset of field: tagMQCSP::TokenOffset"][::std::mem::offset_of!(tagMQCSP, TokenOffset) - 96usize];
-    ["Offset of field: tagMQCSP::TokenLength"][::std::mem::offset_of!(tagMQCSP, TokenLength) - 100usize];
+    [
+        "Offset of field: tagMQCSP::StrucId",
+    ][::std::mem::offset_of!(tagMQCSP, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQCSP::Version",
+    ][::std::mem::offset_of!(tagMQCSP, Version) - 4usize];
+    [
+        "Offset of field: tagMQCSP::AuthenticationType",
+    ][::std::mem::offset_of!(tagMQCSP, AuthenticationType) - 8usize];
+    [
+        "Offset of field: tagMQCSP::Reserved1",
+    ][::std::mem::offset_of!(tagMQCSP, Reserved1) - 12usize];
+    [
+        "Offset of field: tagMQCSP::CSPUserIdPtr",
+    ][::std::mem::offset_of!(tagMQCSP, CSPUserIdPtr) - 16usize];
+    [
+        "Offset of field: tagMQCSP::CSPUserIdOffset",
+    ][::std::mem::offset_of!(tagMQCSP, CSPUserIdOffset) - 24usize];
+    [
+        "Offset of field: tagMQCSP::CSPUserIdLength",
+    ][::std::mem::offset_of!(tagMQCSP, CSPUserIdLength) - 28usize];
+    [
+        "Offset of field: tagMQCSP::Reserved2",
+    ][::std::mem::offset_of!(tagMQCSP, Reserved2) - 32usize];
+    [
+        "Offset of field: tagMQCSP::CSPPasswordPtr",
+    ][::std::mem::offset_of!(tagMQCSP, CSPPasswordPtr) - 40usize];
+    [
+        "Offset of field: tagMQCSP::CSPPasswordOffset",
+    ][::std::mem::offset_of!(tagMQCSP, CSPPasswordOffset) - 48usize];
+    [
+        "Offset of field: tagMQCSP::CSPPasswordLength",
+    ][::std::mem::offset_of!(tagMQCSP, CSPPasswordLength) - 52usize];
+    [
+        "Offset of field: tagMQCSP::Reserved3",
+    ][::std::mem::offset_of!(tagMQCSP, Reserved3) - 56usize];
+    [
+        "Offset of field: tagMQCSP::InitialKeyPtr",
+    ][::std::mem::offset_of!(tagMQCSP, InitialKeyPtr) - 64usize];
+    [
+        "Offset of field: tagMQCSP::InitialKeyOffset",
+    ][::std::mem::offset_of!(tagMQCSP, InitialKeyOffset) - 72usize];
+    [
+        "Offset of field: tagMQCSP::InitialKeyLength",
+    ][::std::mem::offset_of!(tagMQCSP, InitialKeyLength) - 76usize];
+    [
+        "Offset of field: tagMQCSP::Reserved4",
+    ][::std::mem::offset_of!(tagMQCSP, Reserved4) - 80usize];
+    [
+        "Offset of field: tagMQCSP::TokenPtr",
+    ][::std::mem::offset_of!(tagMQCSP, TokenPtr) - 88usize];
+    [
+        "Offset of field: tagMQCSP::TokenOffset",
+    ][::std::mem::offset_of!(tagMQCSP, TokenOffset) - 96usize];
+    [
+        "Offset of field: tagMQCSP::TokenLength",
+    ][::std::mem::offset_of!(tagMQCSP, TokenLength) - 100usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQCNO"][::std::mem::size_of::<tagMQCNO>() - 272usize];
     ["Alignment of tagMQCNO"][::std::mem::align_of::<tagMQCNO>() - 8usize];
-    ["Offset of field: tagMQCNO::StrucId"][::std::mem::offset_of!(tagMQCNO, StrucId) - 0usize];
-    ["Offset of field: tagMQCNO::Version"][::std::mem::offset_of!(tagMQCNO, Version) - 4usize];
-    ["Offset of field: tagMQCNO::Options"][::std::mem::offset_of!(tagMQCNO, Options) - 8usize];
-    ["Offset of field: tagMQCNO::ClientConnOffset"][::std::mem::offset_of!(tagMQCNO, ClientConnOffset) - 12usize];
-    ["Offset of field: tagMQCNO::ClientConnPtr"][::std::mem::offset_of!(tagMQCNO, ClientConnPtr) - 16usize];
-    ["Offset of field: tagMQCNO::ConnTag"][::std::mem::offset_of!(tagMQCNO, ConnTag) - 24usize];
-    ["Offset of field: tagMQCNO::SSLConfigPtr"][::std::mem::offset_of!(tagMQCNO, SSLConfigPtr) - 152usize];
-    ["Offset of field: tagMQCNO::SSLConfigOffset"][::std::mem::offset_of!(tagMQCNO, SSLConfigOffset) - 160usize];
-    ["Offset of field: tagMQCNO::ConnectionId"][::std::mem::offset_of!(tagMQCNO, ConnectionId) - 164usize];
-    ["Offset of field: tagMQCNO::SecurityParmsOffset"][::std::mem::offset_of!(tagMQCNO, SecurityParmsOffset) - 188usize];
-    ["Offset of field: tagMQCNO::SecurityParmsPtr"][::std::mem::offset_of!(tagMQCNO, SecurityParmsPtr) - 192usize];
-    ["Offset of field: tagMQCNO::CCDTUrlPtr"][::std::mem::offset_of!(tagMQCNO, CCDTUrlPtr) - 200usize];
-    ["Offset of field: tagMQCNO::CCDTUrlOffset"][::std::mem::offset_of!(tagMQCNO, CCDTUrlOffset) - 208usize];
-    ["Offset of field: tagMQCNO::CCDTUrlLength"][::std::mem::offset_of!(tagMQCNO, CCDTUrlLength) - 212usize];
-    ["Offset of field: tagMQCNO::Reserved"][::std::mem::offset_of!(tagMQCNO, Reserved) - 216usize];
-    ["Offset of field: tagMQCNO::ApplName"][::std::mem::offset_of!(tagMQCNO, ApplName) - 224usize];
-    ["Offset of field: tagMQCNO::Reserved2"][::std::mem::offset_of!(tagMQCNO, Reserved2) - 252usize];
-    ["Offset of field: tagMQCNO::BalanceParmsPtr"][::std::mem::offset_of!(tagMQCNO, BalanceParmsPtr) - 256usize];
-    ["Offset of field: tagMQCNO::BalanceParmsOffset"][::std::mem::offset_of!(tagMQCNO, BalanceParmsOffset) - 264usize];
-    ["Offset of field: tagMQCNO::Reserved3"][::std::mem::offset_of!(tagMQCNO, Reserved3) - 268usize];
+    [
+        "Offset of field: tagMQCNO::StrucId",
+    ][::std::mem::offset_of!(tagMQCNO, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQCNO::Version",
+    ][::std::mem::offset_of!(tagMQCNO, Version) - 4usize];
+    [
+        "Offset of field: tagMQCNO::Options",
+    ][::std::mem::offset_of!(tagMQCNO, Options) - 8usize];
+    [
+        "Offset of field: tagMQCNO::ClientConnOffset",
+    ][::std::mem::offset_of!(tagMQCNO, ClientConnOffset) - 12usize];
+    [
+        "Offset of field: tagMQCNO::ClientConnPtr",
+    ][::std::mem::offset_of!(tagMQCNO, ClientConnPtr) - 16usize];
+    [
+        "Offset of field: tagMQCNO::ConnTag",
+    ][::std::mem::offset_of!(tagMQCNO, ConnTag) - 24usize];
+    [
+        "Offset of field: tagMQCNO::SSLConfigPtr",
+    ][::std::mem::offset_of!(tagMQCNO, SSLConfigPtr) - 152usize];
+    [
+        "Offset of field: tagMQCNO::SSLConfigOffset",
+    ][::std::mem::offset_of!(tagMQCNO, SSLConfigOffset) - 160usize];
+    [
+        "Offset of field: tagMQCNO::ConnectionId",
+    ][::std::mem::offset_of!(tagMQCNO, ConnectionId) - 164usize];
+    [
+        "Offset of field: tagMQCNO::SecurityParmsOffset",
+    ][::std::mem::offset_of!(tagMQCNO, SecurityParmsOffset) - 188usize];
+    [
+        "Offset of field: tagMQCNO::SecurityParmsPtr",
+    ][::std::mem::offset_of!(tagMQCNO, SecurityParmsPtr) - 192usize];
+    [
+        "Offset of field: tagMQCNO::CCDTUrlPtr",
+    ][::std::mem::offset_of!(tagMQCNO, CCDTUrlPtr) - 200usize];
+    [
+        "Offset of field: tagMQCNO::CCDTUrlOffset",
+    ][::std::mem::offset_of!(tagMQCNO, CCDTUrlOffset) - 208usize];
+    [
+        "Offset of field: tagMQCNO::CCDTUrlLength",
+    ][::std::mem::offset_of!(tagMQCNO, CCDTUrlLength) - 212usize];
+    [
+        "Offset of field: tagMQCNO::Reserved",
+    ][::std::mem::offset_of!(tagMQCNO, Reserved) - 216usize];
+    [
+        "Offset of field: tagMQCNO::ApplName",
+    ][::std::mem::offset_of!(tagMQCNO, ApplName) - 224usize];
+    [
+        "Offset of field: tagMQCNO::Reserved2",
+    ][::std::mem::offset_of!(tagMQCNO, Reserved2) - 252usize];
+    [
+        "Offset of field: tagMQCNO::BalanceParmsPtr",
+    ][::std::mem::offset_of!(tagMQCNO, BalanceParmsPtr) - 256usize];
+    [
+        "Offset of field: tagMQCNO::BalanceParmsOffset",
+    ][::std::mem::offset_of!(tagMQCNO, BalanceParmsOffset) - 264usize];
+    [
+        "Offset of field: tagMQCNO::Reserved3",
+    ][::std::mem::offset_of!(tagMQCNO, Reserved3) - 268usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQDH"][::std::mem::size_of::<tagMQDH>() - 48usize];
     ["Alignment of tagMQDH"][::std::mem::align_of::<tagMQDH>() - 4usize];
-    ["Offset of field: tagMQDH::StrucId"][::std::mem::offset_of!(tagMQDH, StrucId) - 0usize];
-    ["Offset of field: tagMQDH::Version"][::std::mem::offset_of!(tagMQDH, Version) - 4usize];
-    ["Offset of field: tagMQDH::StrucLength"][::std::mem::offset_of!(tagMQDH, StrucLength) - 8usize];
-    ["Offset of field: tagMQDH::Encoding"][::std::mem::offset_of!(tagMQDH, Encoding) - 12usize];
-    ["Offset of field: tagMQDH::CodedCharSetId"][::std::mem::offset_of!(tagMQDH, CodedCharSetId) - 16usize];
-    ["Offset of field: tagMQDH::Format"][::std::mem::offset_of!(tagMQDH, Format) - 20usize];
-    ["Offset of field: tagMQDH::Flags"][::std::mem::offset_of!(tagMQDH, Flags) - 28usize];
-    ["Offset of field: tagMQDH::PutMsgRecFields"][::std::mem::offset_of!(tagMQDH, PutMsgRecFields) - 32usize];
-    ["Offset of field: tagMQDH::RecsPresent"][::std::mem::offset_of!(tagMQDH, RecsPresent) - 36usize];
-    ["Offset of field: tagMQDH::ObjectRecOffset"][::std::mem::offset_of!(tagMQDH, ObjectRecOffset) - 40usize];
-    ["Offset of field: tagMQDH::PutMsgRecOffset"][::std::mem::offset_of!(tagMQDH, PutMsgRecOffset) - 44usize];
+    [
+        "Offset of field: tagMQDH::StrucId",
+    ][::std::mem::offset_of!(tagMQDH, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQDH::Version",
+    ][::std::mem::offset_of!(tagMQDH, Version) - 4usize];
+    [
+        "Offset of field: tagMQDH::StrucLength",
+    ][::std::mem::offset_of!(tagMQDH, StrucLength) - 8usize];
+    [
+        "Offset of field: tagMQDH::Encoding",
+    ][::std::mem::offset_of!(tagMQDH, Encoding) - 12usize];
+    [
+        "Offset of field: tagMQDH::CodedCharSetId",
+    ][::std::mem::offset_of!(tagMQDH, CodedCharSetId) - 16usize];
+    [
+        "Offset of field: tagMQDH::Format",
+    ][::std::mem::offset_of!(tagMQDH, Format) - 20usize];
+    [
+        "Offset of field: tagMQDH::Flags",
+    ][::std::mem::offset_of!(tagMQDH, Flags) - 28usize];
+    [
+        "Offset of field: tagMQDH::PutMsgRecFields",
+    ][::std::mem::offset_of!(tagMQDH, PutMsgRecFields) - 32usize];
+    [
+        "Offset of field: tagMQDH::RecsPresent",
+    ][::std::mem::offset_of!(tagMQDH, RecsPresent) - 36usize];
+    [
+        "Offset of field: tagMQDH::ObjectRecOffset",
+    ][::std::mem::offset_of!(tagMQDH, ObjectRecOffset) - 40usize];
+    [
+        "Offset of field: tagMQDH::PutMsgRecOffset",
+    ][::std::mem::offset_of!(tagMQDH, PutMsgRecOffset) - 44usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQDLH"][::std::mem::size_of::<tagMQDLH>() - 172usize];
     ["Alignment of tagMQDLH"][::std::mem::align_of::<tagMQDLH>() - 4usize];
-    ["Offset of field: tagMQDLH::StrucId"][::std::mem::offset_of!(tagMQDLH, StrucId) - 0usize];
-    ["Offset of field: tagMQDLH::Version"][::std::mem::offset_of!(tagMQDLH, Version) - 4usize];
-    ["Offset of field: tagMQDLH::Reason"][::std::mem::offset_of!(tagMQDLH, Reason) - 8usize];
-    ["Offset of field: tagMQDLH::DestQName"][::std::mem::offset_of!(tagMQDLH, DestQName) - 12usize];
-    ["Offset of field: tagMQDLH::DestQMgrName"][::std::mem::offset_of!(tagMQDLH, DestQMgrName) - 60usize];
-    ["Offset of field: tagMQDLH::Encoding"][::std::mem::offset_of!(tagMQDLH, Encoding) - 108usize];
-    ["Offset of field: tagMQDLH::CodedCharSetId"][::std::mem::offset_of!(tagMQDLH, CodedCharSetId) - 112usize];
-    ["Offset of field: tagMQDLH::Format"][::std::mem::offset_of!(tagMQDLH, Format) - 116usize];
-    ["Offset of field: tagMQDLH::PutApplType"][::std::mem::offset_of!(tagMQDLH, PutApplType) - 124usize];
-    ["Offset of field: tagMQDLH::PutApplName"][::std::mem::offset_of!(tagMQDLH, PutApplName) - 128usize];
-    ["Offset of field: tagMQDLH::PutDate"][::std::mem::offset_of!(tagMQDLH, PutDate) - 156usize];
-    ["Offset of field: tagMQDLH::PutTime"][::std::mem::offset_of!(tagMQDLH, PutTime) - 164usize];
+    [
+        "Offset of field: tagMQDLH::StrucId",
+    ][::std::mem::offset_of!(tagMQDLH, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQDLH::Version",
+    ][::std::mem::offset_of!(tagMQDLH, Version) - 4usize];
+    [
+        "Offset of field: tagMQDLH::Reason",
+    ][::std::mem::offset_of!(tagMQDLH, Reason) - 8usize];
+    [
+        "Offset of field: tagMQDLH::DestQName",
+    ][::std::mem::offset_of!(tagMQDLH, DestQName) - 12usize];
+    [
+        "Offset of field: tagMQDLH::DestQMgrName",
+    ][::std::mem::offset_of!(tagMQDLH, DestQMgrName) - 60usize];
+    [
+        "Offset of field: tagMQDLH::Encoding",
+    ][::std::mem::offset_of!(tagMQDLH, Encoding) - 108usize];
+    [
+        "Offset of field: tagMQDLH::CodedCharSetId",
+    ][::std::mem::offset_of!(tagMQDLH, CodedCharSetId) - 112usize];
+    [
+        "Offset of field: tagMQDLH::Format",
+    ][::std::mem::offset_of!(tagMQDLH, Format) - 116usize];
+    [
+        "Offset of field: tagMQDLH::PutApplType",
+    ][::std::mem::offset_of!(tagMQDLH, PutApplType) - 124usize];
+    [
+        "Offset of field: tagMQDLH::PutApplName",
+    ][::std::mem::offset_of!(tagMQDLH, PutApplName) - 128usize];
+    [
+        "Offset of field: tagMQDLH::PutDate",
+    ][::std::mem::offset_of!(tagMQDLH, PutDate) - 156usize];
+    [
+        "Offset of field: tagMQDLH::PutTime",
+    ][::std::mem::offset_of!(tagMQDLH, PutTime) - 164usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQDMHO"][::std::mem::size_of::<tagMQDMHO>() - 12usize];
     ["Alignment of tagMQDMHO"][::std::mem::align_of::<tagMQDMHO>() - 4usize];
-    ["Offset of field: tagMQDMHO::StrucId"][::std::mem::offset_of!(tagMQDMHO, StrucId) - 0usize];
-    ["Offset of field: tagMQDMHO::Version"][::std::mem::offset_of!(tagMQDMHO, Version) - 4usize];
-    ["Offset of field: tagMQDMHO::Options"][::std::mem::offset_of!(tagMQDMHO, Options) - 8usize];
+    [
+        "Offset of field: tagMQDMHO::StrucId",
+    ][::std::mem::offset_of!(tagMQDMHO, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQDMHO::Version",
+    ][::std::mem::offset_of!(tagMQDMHO, Version) - 4usize];
+    [
+        "Offset of field: tagMQDMHO::Options",
+    ][::std::mem::offset_of!(tagMQDMHO, Options) - 8usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQDMPO"][::std::mem::size_of::<tagMQDMPO>() - 12usize];
     ["Alignment of tagMQDMPO"][::std::mem::align_of::<tagMQDMPO>() - 4usize];
-    ["Offset of field: tagMQDMPO::StrucId"][::std::mem::offset_of!(tagMQDMPO, StrucId) - 0usize];
-    ["Offset of field: tagMQDMPO::Version"][::std::mem::offset_of!(tagMQDMPO, Version) - 4usize];
-    ["Offset of field: tagMQDMPO::Options"][::std::mem::offset_of!(tagMQDMPO, Options) - 8usize];
+    [
+        "Offset of field: tagMQDMPO::StrucId",
+    ][::std::mem::offset_of!(tagMQDMPO, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQDMPO::Version",
+    ][::std::mem::offset_of!(tagMQDMPO, Version) - 4usize];
+    [
+        "Offset of field: tagMQDMPO::Options",
+    ][::std::mem::offset_of!(tagMQDMPO, Options) - 8usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQGMO"][::std::mem::size_of::<tagMQGMO>() - 112usize];
     ["Alignment of tagMQGMO"][::std::mem::align_of::<tagMQGMO>() - 8usize];
-    ["Offset of field: tagMQGMO::StrucId"][::std::mem::offset_of!(tagMQGMO, StrucId) - 0usize];
-    ["Offset of field: tagMQGMO::Version"][::std::mem::offset_of!(tagMQGMO, Version) - 4usize];
-    ["Offset of field: tagMQGMO::Options"][::std::mem::offset_of!(tagMQGMO, Options) - 8usize];
-    ["Offset of field: tagMQGMO::WaitInterval"][::std::mem::offset_of!(tagMQGMO, WaitInterval) - 12usize];
-    ["Offset of field: tagMQGMO::Signal1"][::std::mem::offset_of!(tagMQGMO, Signal1) - 16usize];
-    ["Offset of field: tagMQGMO::Signal2"][::std::mem::offset_of!(tagMQGMO, Signal2) - 20usize];
-    ["Offset of field: tagMQGMO::ResolvedQName"][::std::mem::offset_of!(tagMQGMO, ResolvedQName) - 24usize];
-    ["Offset of field: tagMQGMO::MatchOptions"][::std::mem::offset_of!(tagMQGMO, MatchOptions) - 72usize];
-    ["Offset of field: tagMQGMO::GroupStatus"][::std::mem::offset_of!(tagMQGMO, GroupStatus) - 76usize];
-    ["Offset of field: tagMQGMO::SegmentStatus"][::std::mem::offset_of!(tagMQGMO, SegmentStatus) - 77usize];
-    ["Offset of field: tagMQGMO::Segmentation"][::std::mem::offset_of!(tagMQGMO, Segmentation) - 78usize];
-    ["Offset of field: tagMQGMO::Reserved1"][::std::mem::offset_of!(tagMQGMO, Reserved1) - 79usize];
-    ["Offset of field: tagMQGMO::MsgToken"][::std::mem::offset_of!(tagMQGMO, MsgToken) - 80usize];
-    ["Offset of field: tagMQGMO::ReturnedLength"][::std::mem::offset_of!(tagMQGMO, ReturnedLength) - 96usize];
-    ["Offset of field: tagMQGMO::Reserved2"][::std::mem::offset_of!(tagMQGMO, Reserved2) - 100usize];
-    ["Offset of field: tagMQGMO::MsgHandle"][::std::mem::offset_of!(tagMQGMO, MsgHandle) - 104usize];
+    [
+        "Offset of field: tagMQGMO::StrucId",
+    ][::std::mem::offset_of!(tagMQGMO, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQGMO::Version",
+    ][::std::mem::offset_of!(tagMQGMO, Version) - 4usize];
+    [
+        "Offset of field: tagMQGMO::Options",
+    ][::std::mem::offset_of!(tagMQGMO, Options) - 8usize];
+    [
+        "Offset of field: tagMQGMO::WaitInterval",
+    ][::std::mem::offset_of!(tagMQGMO, WaitInterval) - 12usize];
+    [
+        "Offset of field: tagMQGMO::Signal1",
+    ][::std::mem::offset_of!(tagMQGMO, Signal1) - 16usize];
+    [
+        "Offset of field: tagMQGMO::Signal2",
+    ][::std::mem::offset_of!(tagMQGMO, Signal2) - 20usize];
+    [
+        "Offset of field: tagMQGMO::ResolvedQName",
+    ][::std::mem::offset_of!(tagMQGMO, ResolvedQName) - 24usize];
+    [
+        "Offset of field: tagMQGMO::MatchOptions",
+    ][::std::mem::offset_of!(tagMQGMO, MatchOptions) - 72usize];
+    [
+        "Offset of field: tagMQGMO::GroupStatus",
+    ][::std::mem::offset_of!(tagMQGMO, GroupStatus) - 76usize];
+    [
+        "Offset of field: tagMQGMO::SegmentStatus",
+    ][::std::mem::offset_of!(tagMQGMO, SegmentStatus) - 77usize];
+    [
+        "Offset of field: tagMQGMO::Segmentation",
+    ][::std::mem::offset_of!(tagMQGMO, Segmentation) - 78usize];
+    [
+        "Offset of field: tagMQGMO::Reserved1",
+    ][::std::mem::offset_of!(tagMQGMO, Reserved1) - 79usize];
+    [
+        "Offset of field: tagMQGMO::MsgToken",
+    ][::std::mem::offset_of!(tagMQGMO, MsgToken) - 80usize];
+    [
+        "Offset of field: tagMQGMO::ReturnedLength",
+    ][::std::mem::offset_of!(tagMQGMO, ReturnedLength) - 96usize];
+    [
+        "Offset of field: tagMQGMO::Reserved2",
+    ][::std::mem::offset_of!(tagMQGMO, Reserved2) - 100usize];
+    [
+        "Offset of field: tagMQGMO::MsgHandle",
+    ][::std::mem::offset_of!(tagMQGMO, MsgHandle) - 104usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQIIH"][::std::mem::size_of::<tagMQIIH>() - 84usize];
     ["Alignment of tagMQIIH"][::std::mem::align_of::<tagMQIIH>() - 4usize];
-    ["Offset of field: tagMQIIH::StrucId"][::std::mem::offset_of!(tagMQIIH, StrucId) - 0usize];
-    ["Offset of field: tagMQIIH::Version"][::std::mem::offset_of!(tagMQIIH, Version) - 4usize];
-    ["Offset of field: tagMQIIH::StrucLength"][::std::mem::offset_of!(tagMQIIH, StrucLength) - 8usize];
-    ["Offset of field: tagMQIIH::Encoding"][::std::mem::offset_of!(tagMQIIH, Encoding) - 12usize];
-    ["Offset of field: tagMQIIH::CodedCharSetId"][::std::mem::offset_of!(tagMQIIH, CodedCharSetId) - 16usize];
-    ["Offset of field: tagMQIIH::Format"][::std::mem::offset_of!(tagMQIIH, Format) - 20usize];
-    ["Offset of field: tagMQIIH::Flags"][::std::mem::offset_of!(tagMQIIH, Flags) - 28usize];
-    ["Offset of field: tagMQIIH::LTermOverride"][::std::mem::offset_of!(tagMQIIH, LTermOverride) - 32usize];
-    ["Offset of field: tagMQIIH::MFSMapName"][::std::mem::offset_of!(tagMQIIH, MFSMapName) - 40usize];
-    ["Offset of field: tagMQIIH::ReplyToFormat"][::std::mem::offset_of!(tagMQIIH, ReplyToFormat) - 48usize];
-    ["Offset of field: tagMQIIH::Authenticator"][::std::mem::offset_of!(tagMQIIH, Authenticator) - 56usize];
-    ["Offset of field: tagMQIIH::TranInstanceId"][::std::mem::offset_of!(tagMQIIH, TranInstanceId) - 64usize];
-    ["Offset of field: tagMQIIH::TranState"][::std::mem::offset_of!(tagMQIIH, TranState) - 80usize];
-    ["Offset of field: tagMQIIH::CommitMode"][::std::mem::offset_of!(tagMQIIH, CommitMode) - 81usize];
-    ["Offset of field: tagMQIIH::SecurityScope"][::std::mem::offset_of!(tagMQIIH, SecurityScope) - 82usize];
-    ["Offset of field: tagMQIIH::Reserved"][::std::mem::offset_of!(tagMQIIH, Reserved) - 83usize];
+    [
+        "Offset of field: tagMQIIH::StrucId",
+    ][::std::mem::offset_of!(tagMQIIH, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQIIH::Version",
+    ][::std::mem::offset_of!(tagMQIIH, Version) - 4usize];
+    [
+        "Offset of field: tagMQIIH::StrucLength",
+    ][::std::mem::offset_of!(tagMQIIH, StrucLength) - 8usize];
+    [
+        "Offset of field: tagMQIIH::Encoding",
+    ][::std::mem::offset_of!(tagMQIIH, Encoding) - 12usize];
+    [
+        "Offset of field: tagMQIIH::CodedCharSetId",
+    ][::std::mem::offset_of!(tagMQIIH, CodedCharSetId) - 16usize];
+    [
+        "Offset of field: tagMQIIH::Format",
+    ][::std::mem::offset_of!(tagMQIIH, Format) - 20usize];
+    [
+        "Offset of field: tagMQIIH::Flags",
+    ][::std::mem::offset_of!(tagMQIIH, Flags) - 28usize];
+    [
+        "Offset of field: tagMQIIH::LTermOverride",
+    ][::std::mem::offset_of!(tagMQIIH, LTermOverride) - 32usize];
+    [
+        "Offset of field: tagMQIIH::MFSMapName",
+    ][::std::mem::offset_of!(tagMQIIH, MFSMapName) - 40usize];
+    [
+        "Offset of field: tagMQIIH::ReplyToFormat",
+    ][::std::mem::offset_of!(tagMQIIH, ReplyToFormat) - 48usize];
+    [
+        "Offset of field: tagMQIIH::Authenticator",
+    ][::std::mem::offset_of!(tagMQIIH, Authenticator) - 56usize];
+    [
+        "Offset of field: tagMQIIH::TranInstanceId",
+    ][::std::mem::offset_of!(tagMQIIH, TranInstanceId) - 64usize];
+    [
+        "Offset of field: tagMQIIH::TranState",
+    ][::std::mem::offset_of!(tagMQIIH, TranState) - 80usize];
+    [
+        "Offset of field: tagMQIIH::CommitMode",
+    ][::std::mem::offset_of!(tagMQIIH, CommitMode) - 81usize];
+    [
+        "Offset of field: tagMQIIH::SecurityScope",
+    ][::std::mem::offset_of!(tagMQIIH, SecurityScope) - 82usize];
+    [
+        "Offset of field: tagMQIIH::Reserved",
+    ][::std::mem::offset_of!(tagMQIIH, Reserved) - 83usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQIMPO"][::std::mem::size_of::<tagMQIMPO>() - 64usize];
     ["Alignment of tagMQIMPO"][::std::mem::align_of::<tagMQIMPO>() - 8usize];
-    ["Offset of field: tagMQIMPO::StrucId"][::std::mem::offset_of!(tagMQIMPO, StrucId) - 0usize];
-    ["Offset of field: tagMQIMPO::Version"][::std::mem::offset_of!(tagMQIMPO, Version) - 4usize];
-    ["Offset of field: tagMQIMPO::Options"][::std::mem::offset_of!(tagMQIMPO, Options) - 8usize];
-    ["Offset of field: tagMQIMPO::RequestedEncoding"][::std::mem::offset_of!(tagMQIMPO, RequestedEncoding) - 12usize];
-    ["Offset of field: tagMQIMPO::RequestedCCSID"][::std::mem::offset_of!(tagMQIMPO, RequestedCCSID) - 16usize];
-    ["Offset of field: tagMQIMPO::ReturnedEncoding"][::std::mem::offset_of!(tagMQIMPO, ReturnedEncoding) - 20usize];
-    ["Offset of field: tagMQIMPO::ReturnedCCSID"][::std::mem::offset_of!(tagMQIMPO, ReturnedCCSID) - 24usize];
-    ["Offset of field: tagMQIMPO::Reserved1"][::std::mem::offset_of!(tagMQIMPO, Reserved1) - 28usize];
-    ["Offset of field: tagMQIMPO::ReturnedName"][::std::mem::offset_of!(tagMQIMPO, ReturnedName) - 32usize];
-    ["Offset of field: tagMQIMPO::TypeString"][::std::mem::offset_of!(tagMQIMPO, TypeString) - 56usize];
+    [
+        "Offset of field: tagMQIMPO::StrucId",
+    ][::std::mem::offset_of!(tagMQIMPO, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQIMPO::Version",
+    ][::std::mem::offset_of!(tagMQIMPO, Version) - 4usize];
+    [
+        "Offset of field: tagMQIMPO::Options",
+    ][::std::mem::offset_of!(tagMQIMPO, Options) - 8usize];
+    [
+        "Offset of field: tagMQIMPO::RequestedEncoding",
+    ][::std::mem::offset_of!(tagMQIMPO, RequestedEncoding) - 12usize];
+    [
+        "Offset of field: tagMQIMPO::RequestedCCSID",
+    ][::std::mem::offset_of!(tagMQIMPO, RequestedCCSID) - 16usize];
+    [
+        "Offset of field: tagMQIMPO::ReturnedEncoding",
+    ][::std::mem::offset_of!(tagMQIMPO, ReturnedEncoding) - 20usize];
+    [
+        "Offset of field: tagMQIMPO::ReturnedCCSID",
+    ][::std::mem::offset_of!(tagMQIMPO, ReturnedCCSID) - 24usize];
+    [
+        "Offset of field: tagMQIMPO::Reserved1",
+    ][::std::mem::offset_of!(tagMQIMPO, Reserved1) - 28usize];
+    [
+        "Offset of field: tagMQIMPO::ReturnedName",
+    ][::std::mem::offset_of!(tagMQIMPO, ReturnedName) - 32usize];
+    [
+        "Offset of field: tagMQIMPO::TypeString",
+    ][::std::mem::offset_of!(tagMQIMPO, TypeString) - 56usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQMD"][::std::mem::size_of::<tagMQMD>() - 364usize];
     ["Alignment of tagMQMD"][::std::mem::align_of::<tagMQMD>() - 4usize];
-    ["Offset of field: tagMQMD::StrucId"][::std::mem::offset_of!(tagMQMD, StrucId) - 0usize];
-    ["Offset of field: tagMQMD::Version"][::std::mem::offset_of!(tagMQMD, Version) - 4usize];
-    ["Offset of field: tagMQMD::Report"][::std::mem::offset_of!(tagMQMD, Report) - 8usize];
-    ["Offset of field: tagMQMD::MsgType"][::std::mem::offset_of!(tagMQMD, MsgType) - 12usize];
-    ["Offset of field: tagMQMD::Expiry"][::std::mem::offset_of!(tagMQMD, Expiry) - 16usize];
-    ["Offset of field: tagMQMD::Feedback"][::std::mem::offset_of!(tagMQMD, Feedback) - 20usize];
-    ["Offset of field: tagMQMD::Encoding"][::std::mem::offset_of!(tagMQMD, Encoding) - 24usize];
-    ["Offset of field: tagMQMD::CodedCharSetId"][::std::mem::offset_of!(tagMQMD, CodedCharSetId) - 28usize];
-    ["Offset of field: tagMQMD::Format"][::std::mem::offset_of!(tagMQMD, Format) - 32usize];
-    ["Offset of field: tagMQMD::Priority"][::std::mem::offset_of!(tagMQMD, Priority) - 40usize];
-    ["Offset of field: tagMQMD::Persistence"][::std::mem::offset_of!(tagMQMD, Persistence) - 44usize];
-    ["Offset of field: tagMQMD::MsgId"][::std::mem::offset_of!(tagMQMD, MsgId) - 48usize];
-    ["Offset of field: tagMQMD::CorrelId"][::std::mem::offset_of!(tagMQMD, CorrelId) - 72usize];
-    ["Offset of field: tagMQMD::BackoutCount"][::std::mem::offset_of!(tagMQMD, BackoutCount) - 96usize];
-    ["Offset of field: tagMQMD::ReplyToQ"][::std::mem::offset_of!(tagMQMD, ReplyToQ) - 100usize];
-    ["Offset of field: tagMQMD::ReplyToQMgr"][::std::mem::offset_of!(tagMQMD, ReplyToQMgr) - 148usize];
-    ["Offset of field: tagMQMD::UserIdentifier"][::std::mem::offset_of!(tagMQMD, UserIdentifier) - 196usize];
-    ["Offset of field: tagMQMD::AccountingToken"][::std::mem::offset_of!(tagMQMD, AccountingToken) - 208usize];
-    ["Offset of field: tagMQMD::ApplIdentityData"][::std::mem::offset_of!(tagMQMD, ApplIdentityData) - 240usize];
-    ["Offset of field: tagMQMD::PutApplType"][::std::mem::offset_of!(tagMQMD, PutApplType) - 272usize];
-    ["Offset of field: tagMQMD::PutApplName"][::std::mem::offset_of!(tagMQMD, PutApplName) - 276usize];
-    ["Offset of field: tagMQMD::PutDate"][::std::mem::offset_of!(tagMQMD, PutDate) - 304usize];
-    ["Offset of field: tagMQMD::PutTime"][::std::mem::offset_of!(tagMQMD, PutTime) - 312usize];
-    ["Offset of field: tagMQMD::ApplOriginData"][::std::mem::offset_of!(tagMQMD, ApplOriginData) - 320usize];
-    ["Offset of field: tagMQMD::GroupId"][::std::mem::offset_of!(tagMQMD, GroupId) - 324usize];
-    ["Offset of field: tagMQMD::MsgSeqNumber"][::std::mem::offset_of!(tagMQMD, MsgSeqNumber) - 348usize];
-    ["Offset of field: tagMQMD::Offset"][::std::mem::offset_of!(tagMQMD, Offset) - 352usize];
-    ["Offset of field: tagMQMD::MsgFlags"][::std::mem::offset_of!(tagMQMD, MsgFlags) - 356usize];
-    ["Offset of field: tagMQMD::OriginalLength"][::std::mem::offset_of!(tagMQMD, OriginalLength) - 360usize];
+    [
+        "Offset of field: tagMQMD::StrucId",
+    ][::std::mem::offset_of!(tagMQMD, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQMD::Version",
+    ][::std::mem::offset_of!(tagMQMD, Version) - 4usize];
+    [
+        "Offset of field: tagMQMD::Report",
+    ][::std::mem::offset_of!(tagMQMD, Report) - 8usize];
+    [
+        "Offset of field: tagMQMD::MsgType",
+    ][::std::mem::offset_of!(tagMQMD, MsgType) - 12usize];
+    [
+        "Offset of field: tagMQMD::Expiry",
+    ][::std::mem::offset_of!(tagMQMD, Expiry) - 16usize];
+    [
+        "Offset of field: tagMQMD::Feedback",
+    ][::std::mem::offset_of!(tagMQMD, Feedback) - 20usize];
+    [
+        "Offset of field: tagMQMD::Encoding",
+    ][::std::mem::offset_of!(tagMQMD, Encoding) - 24usize];
+    [
+        "Offset of field: tagMQMD::CodedCharSetId",
+    ][::std::mem::offset_of!(tagMQMD, CodedCharSetId) - 28usize];
+    [
+        "Offset of field: tagMQMD::Format",
+    ][::std::mem::offset_of!(tagMQMD, Format) - 32usize];
+    [
+        "Offset of field: tagMQMD::Priority",
+    ][::std::mem::offset_of!(tagMQMD, Priority) - 40usize];
+    [
+        "Offset of field: tagMQMD::Persistence",
+    ][::std::mem::offset_of!(tagMQMD, Persistence) - 44usize];
+    [
+        "Offset of field: tagMQMD::MsgId",
+    ][::std::mem::offset_of!(tagMQMD, MsgId) - 48usize];
+    [
+        "Offset of field: tagMQMD::CorrelId",
+    ][::std::mem::offset_of!(tagMQMD, CorrelId) - 72usize];
+    [
+        "Offset of field: tagMQMD::BackoutCount",
+    ][::std::mem::offset_of!(tagMQMD, BackoutCount) - 96usize];
+    [
+        "Offset of field: tagMQMD::ReplyToQ",
+    ][::std::mem::offset_of!(tagMQMD, ReplyToQ) - 100usize];
+    [
+        "Offset of field: tagMQMD::ReplyToQMgr",
+    ][::std::mem::offset_of!(tagMQMD, ReplyToQMgr) - 148usize];
+    [
+        "Offset of field: tagMQMD::UserIdentifier",
+    ][::std::mem::offset_of!(tagMQMD, UserIdentifier) - 196usize];
+    [
+        "Offset of field: tagMQMD::AccountingToken",
+    ][::std::mem::offset_of!(tagMQMD, AccountingToken) - 208usize];
+    [
+        "Offset of field: tagMQMD::ApplIdentityData",
+    ][::std::mem::offset_of!(tagMQMD, ApplIdentityData) - 240usize];
+    [
+        "Offset of field: tagMQMD::PutApplType",
+    ][::std::mem::offset_of!(tagMQMD, PutApplType) - 272usize];
+    [
+        "Offset of field: tagMQMD::PutApplName",
+    ][::std::mem::offset_of!(tagMQMD, PutApplName) - 276usize];
+    [
+        "Offset of field: tagMQMD::PutDate",
+    ][::std::mem::offset_of!(tagMQMD, PutDate) - 304usize];
+    [
+        "Offset of field: tagMQMD::PutTime",
+    ][::std::mem::offset_of!(tagMQMD, PutTime) - 312usize];
+    [
+        "Offset of field: tagMQMD::ApplOriginData",
+    ][::std::mem::offset_of!(tagMQMD, ApplOriginData) - 320usize];
+    [
+        "Offset of field: tagMQMD::GroupId",
+    ][::std::mem::offset_of!(tagMQMD, GroupId) - 324usize];
+    [
+        "Offset of field: tagMQMD::MsgSeqNumber",
+    ][::std::mem::offset_of!(tagMQMD, MsgSeqNumber) - 348usize];
+    [
+        "Offset of field: tagMQMD::Offset",
+    ][::std::mem::offset_of!(tagMQMD, Offset) - 352usize];
+    [
+        "Offset of field: tagMQMD::MsgFlags",
+    ][::std::mem::offset_of!(tagMQMD, MsgFlags) - 356usize];
+    [
+        "Offset of field: tagMQMD::OriginalLength",
+    ][::std::mem::offset_of!(tagMQMD, OriginalLength) - 360usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQMDE"][::std::mem::size_of::<tagMQMDE>() - 72usize];
     ["Alignment of tagMQMDE"][::std::mem::align_of::<tagMQMDE>() - 4usize];
-    ["Offset of field: tagMQMDE::StrucId"][::std::mem::offset_of!(tagMQMDE, StrucId) - 0usize];
-    ["Offset of field: tagMQMDE::Version"][::std::mem::offset_of!(tagMQMDE, Version) - 4usize];
-    ["Offset of field: tagMQMDE::StrucLength"][::std::mem::offset_of!(tagMQMDE, StrucLength) - 8usize];
-    ["Offset of field: tagMQMDE::Encoding"][::std::mem::offset_of!(tagMQMDE, Encoding) - 12usize];
-    ["Offset of field: tagMQMDE::CodedCharSetId"][::std::mem::offset_of!(tagMQMDE, CodedCharSetId) - 16usize];
-    ["Offset of field: tagMQMDE::Format"][::std::mem::offset_of!(tagMQMDE, Format) - 20usize];
-    ["Offset of field: tagMQMDE::Flags"][::std::mem::offset_of!(tagMQMDE, Flags) - 28usize];
-    ["Offset of field: tagMQMDE::GroupId"][::std::mem::offset_of!(tagMQMDE, GroupId) - 32usize];
-    ["Offset of field: tagMQMDE::MsgSeqNumber"][::std::mem::offset_of!(tagMQMDE, MsgSeqNumber) - 56usize];
-    ["Offset of field: tagMQMDE::Offset"][::std::mem::offset_of!(tagMQMDE, Offset) - 60usize];
-    ["Offset of field: tagMQMDE::MsgFlags"][::std::mem::offset_of!(tagMQMDE, MsgFlags) - 64usize];
-    ["Offset of field: tagMQMDE::OriginalLength"][::std::mem::offset_of!(tagMQMDE, OriginalLength) - 68usize];
+    [
+        "Offset of field: tagMQMDE::StrucId",
+    ][::std::mem::offset_of!(tagMQMDE, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQMDE::Version",
+    ][::std::mem::offset_of!(tagMQMDE, Version) - 4usize];
+    [
+        "Offset of field: tagMQMDE::StrucLength",
+    ][::std::mem::offset_of!(tagMQMDE, StrucLength) - 8usize];
+    [
+        "Offset of field: tagMQMDE::Encoding",
+    ][::std::mem::offset_of!(tagMQMDE, Encoding) - 12usize];
+    [
+        "Offset of field: tagMQMDE::CodedCharSetId",
+    ][::std::mem::offset_of!(tagMQMDE, CodedCharSetId) - 16usize];
+    [
+        "Offset of field: tagMQMDE::Format",
+    ][::std::mem::offset_of!(tagMQMDE, Format) - 20usize];
+    [
+        "Offset of field: tagMQMDE::Flags",
+    ][::std::mem::offset_of!(tagMQMDE, Flags) - 28usize];
+    [
+        "Offset of field: tagMQMDE::GroupId",
+    ][::std::mem::offset_of!(tagMQMDE, GroupId) - 32usize];
+    [
+        "Offset of field: tagMQMDE::MsgSeqNumber",
+    ][::std::mem::offset_of!(tagMQMDE, MsgSeqNumber) - 56usize];
+    [
+        "Offset of field: tagMQMDE::Offset",
+    ][::std::mem::offset_of!(tagMQMDE, Offset) - 60usize];
+    [
+        "Offset of field: tagMQMDE::MsgFlags",
+    ][::std::mem::offset_of!(tagMQMDE, MsgFlags) - 64usize];
+    [
+        "Offset of field: tagMQMDE::OriginalLength",
+    ][::std::mem::offset_of!(tagMQMDE, OriginalLength) - 68usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQMD1"][::std::mem::size_of::<tagMQMD1>() - 324usize];
     ["Alignment of tagMQMD1"][::std::mem::align_of::<tagMQMD1>() - 4usize];
-    ["Offset of field: tagMQMD1::StrucId"][::std::mem::offset_of!(tagMQMD1, StrucId) - 0usize];
-    ["Offset of field: tagMQMD1::Version"][::std::mem::offset_of!(tagMQMD1, Version) - 4usize];
-    ["Offset of field: tagMQMD1::Report"][::std::mem::offset_of!(tagMQMD1, Report) - 8usize];
-    ["Offset of field: tagMQMD1::MsgType"][::std::mem::offset_of!(tagMQMD1, MsgType) - 12usize];
-    ["Offset of field: tagMQMD1::Expiry"][::std::mem::offset_of!(tagMQMD1, Expiry) - 16usize];
-    ["Offset of field: tagMQMD1::Feedback"][::std::mem::offset_of!(tagMQMD1, Feedback) - 20usize];
-    ["Offset of field: tagMQMD1::Encoding"][::std::mem::offset_of!(tagMQMD1, Encoding) - 24usize];
-    ["Offset of field: tagMQMD1::CodedCharSetId"][::std::mem::offset_of!(tagMQMD1, CodedCharSetId) - 28usize];
-    ["Offset of field: tagMQMD1::Format"][::std::mem::offset_of!(tagMQMD1, Format) - 32usize];
-    ["Offset of field: tagMQMD1::Priority"][::std::mem::offset_of!(tagMQMD1, Priority) - 40usize];
-    ["Offset of field: tagMQMD1::Persistence"][::std::mem::offset_of!(tagMQMD1, Persistence) - 44usize];
-    ["Offset of field: tagMQMD1::MsgId"][::std::mem::offset_of!(tagMQMD1, MsgId) - 48usize];
-    ["Offset of field: tagMQMD1::CorrelId"][::std::mem::offset_of!(tagMQMD1, CorrelId) - 72usize];
-    ["Offset of field: tagMQMD1::BackoutCount"][::std::mem::offset_of!(tagMQMD1, BackoutCount) - 96usize];
-    ["Offset of field: tagMQMD1::ReplyToQ"][::std::mem::offset_of!(tagMQMD1, ReplyToQ) - 100usize];
-    ["Offset of field: tagMQMD1::ReplyToQMgr"][::std::mem::offset_of!(tagMQMD1, ReplyToQMgr) - 148usize];
-    ["Offset of field: tagMQMD1::UserIdentifier"][::std::mem::offset_of!(tagMQMD1, UserIdentifier) - 196usize];
-    ["Offset of field: tagMQMD1::AccountingToken"][::std::mem::offset_of!(tagMQMD1, AccountingToken) - 208usize];
-    ["Offset of field: tagMQMD1::ApplIdentityData"][::std::mem::offset_of!(tagMQMD1, ApplIdentityData) - 240usize];
-    ["Offset of field: tagMQMD1::PutApplType"][::std::mem::offset_of!(tagMQMD1, PutApplType) - 272usize];
-    ["Offset of field: tagMQMD1::PutApplName"][::std::mem::offset_of!(tagMQMD1, PutApplName) - 276usize];
-    ["Offset of field: tagMQMD1::PutDate"][::std::mem::offset_of!(tagMQMD1, PutDate) - 304usize];
-    ["Offset of field: tagMQMD1::PutTime"][::std::mem::offset_of!(tagMQMD1, PutTime) - 312usize];
-    ["Offset of field: tagMQMD1::ApplOriginData"][::std::mem::offset_of!(tagMQMD1, ApplOriginData) - 320usize];
+    [
+        "Offset of field: tagMQMD1::StrucId",
+    ][::std::mem::offset_of!(tagMQMD1, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQMD1::Version",
+    ][::std::mem::offset_of!(tagMQMD1, Version) - 4usize];
+    [
+        "Offset of field: tagMQMD1::Report",
+    ][::std::mem::offset_of!(tagMQMD1, Report) - 8usize];
+    [
+        "Offset of field: tagMQMD1::MsgType",
+    ][::std::mem::offset_of!(tagMQMD1, MsgType) - 12usize];
+    [
+        "Offset of field: tagMQMD1::Expiry",
+    ][::std::mem::offset_of!(tagMQMD1, Expiry) - 16usize];
+    [
+        "Offset of field: tagMQMD1::Feedback",
+    ][::std::mem::offset_of!(tagMQMD1, Feedback) - 20usize];
+    [
+        "Offset of field: tagMQMD1::Encoding",
+    ][::std::mem::offset_of!(tagMQMD1, Encoding) - 24usize];
+    [
+        "Offset of field: tagMQMD1::CodedCharSetId",
+    ][::std::mem::offset_of!(tagMQMD1, CodedCharSetId) - 28usize];
+    [
+        "Offset of field: tagMQMD1::Format",
+    ][::std::mem::offset_of!(tagMQMD1, Format) - 32usize];
+    [
+        "Offset of field: tagMQMD1::Priority",
+    ][::std::mem::offset_of!(tagMQMD1, Priority) - 40usize];
+    [
+        "Offset of field: tagMQMD1::Persistence",
+    ][::std::mem::offset_of!(tagMQMD1, Persistence) - 44usize];
+    [
+        "Offset of field: tagMQMD1::MsgId",
+    ][::std::mem::offset_of!(tagMQMD1, MsgId) - 48usize];
+    [
+        "Offset of field: tagMQMD1::CorrelId",
+    ][::std::mem::offset_of!(tagMQMD1, CorrelId) - 72usize];
+    [
+        "Offset of field: tagMQMD1::BackoutCount",
+    ][::std::mem::offset_of!(tagMQMD1, BackoutCount) - 96usize];
+    [
+        "Offset of field: tagMQMD1::ReplyToQ",
+    ][::std::mem::offset_of!(tagMQMD1, ReplyToQ) - 100usize];
+    [
+        "Offset of field: tagMQMD1::ReplyToQMgr",
+    ][::std::mem::offset_of!(tagMQMD1, ReplyToQMgr) - 148usize];
+    [
+        "Offset of field: tagMQMD1::UserIdentifier",
+    ][::std::mem::offset_of!(tagMQMD1, UserIdentifier) - 196usize];
+    [
+        "Offset of field: tagMQMD1::AccountingToken",
+    ][::std::mem::offset_of!(tagMQMD1, AccountingToken) - 208usize];
+    [
+        "Offset of field: tagMQMD1::ApplIdentityData",
+    ][::std::mem::offset_of!(tagMQMD1, ApplIdentityData) - 240usize];
+    [
+        "Offset of field: tagMQMD1::PutApplType",
+    ][::std::mem::offset_of!(tagMQMD1, PutApplType) - 272usize];
+    [
+        "Offset of field: tagMQMD1::PutApplName",
+    ][::std::mem::offset_of!(tagMQMD1, PutApplName) - 276usize];
+    [
+        "Offset of field: tagMQMD1::PutDate",
+    ][::std::mem::offset_of!(tagMQMD1, PutDate) - 304usize];
+    [
+        "Offset of field: tagMQMD1::PutTime",
+    ][::std::mem::offset_of!(tagMQMD1, PutTime) - 312usize];
+    [
+        "Offset of field: tagMQMD1::ApplOriginData",
+    ][::std::mem::offset_of!(tagMQMD1, ApplOriginData) - 320usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQMD2"][::std::mem::size_of::<tagMQMD2>() - 364usize];
     ["Alignment of tagMQMD2"][::std::mem::align_of::<tagMQMD2>() - 4usize];
-    ["Offset of field: tagMQMD2::StrucId"][::std::mem::offset_of!(tagMQMD2, StrucId) - 0usize];
-    ["Offset of field: tagMQMD2::Version"][::std::mem::offset_of!(tagMQMD2, Version) - 4usize];
-    ["Offset of field: tagMQMD2::Report"][::std::mem::offset_of!(tagMQMD2, Report) - 8usize];
-    ["Offset of field: tagMQMD2::MsgType"][::std::mem::offset_of!(tagMQMD2, MsgType) - 12usize];
-    ["Offset of field: tagMQMD2::Expiry"][::std::mem::offset_of!(tagMQMD2, Expiry) - 16usize];
-    ["Offset of field: tagMQMD2::Feedback"][::std::mem::offset_of!(tagMQMD2, Feedback) - 20usize];
-    ["Offset of field: tagMQMD2::Encoding"][::std::mem::offset_of!(tagMQMD2, Encoding) - 24usize];
-    ["Offset of field: tagMQMD2::CodedCharSetId"][::std::mem::offset_of!(tagMQMD2, CodedCharSetId) - 28usize];
-    ["Offset of field: tagMQMD2::Format"][::std::mem::offset_of!(tagMQMD2, Format) - 32usize];
-    ["Offset of field: tagMQMD2::Priority"][::std::mem::offset_of!(tagMQMD2, Priority) - 40usize];
-    ["Offset of field: tagMQMD2::Persistence"][::std::mem::offset_of!(tagMQMD2, Persistence) - 44usize];
-    ["Offset of field: tagMQMD2::MsgId"][::std::mem::offset_of!(tagMQMD2, MsgId) - 48usize];
-    ["Offset of field: tagMQMD2::CorrelId"][::std::mem::offset_of!(tagMQMD2, CorrelId) - 72usize];
-    ["Offset of field: tagMQMD2::BackoutCount"][::std::mem::offset_of!(tagMQMD2, BackoutCount) - 96usize];
-    ["Offset of field: tagMQMD2::ReplyToQ"][::std::mem::offset_of!(tagMQMD2, ReplyToQ) - 100usize];
-    ["Offset of field: tagMQMD2::ReplyToQMgr"][::std::mem::offset_of!(tagMQMD2, ReplyToQMgr) - 148usize];
-    ["Offset of field: tagMQMD2::UserIdentifier"][::std::mem::offset_of!(tagMQMD2, UserIdentifier) - 196usize];
-    ["Offset of field: tagMQMD2::AccountingToken"][::std::mem::offset_of!(tagMQMD2, AccountingToken) - 208usize];
-    ["Offset of field: tagMQMD2::ApplIdentityData"][::std::mem::offset_of!(tagMQMD2, ApplIdentityData) - 240usize];
-    ["Offset of field: tagMQMD2::PutApplType"][::std::mem::offset_of!(tagMQMD2, PutApplType) - 272usize];
-    ["Offset of field: tagMQMD2::PutApplName"][::std::mem::offset_of!(tagMQMD2, PutApplName) - 276usize];
-    ["Offset of field: tagMQMD2::PutDate"][::std::mem::offset_of!(tagMQMD2, PutDate) - 304usize];
-    ["Offset of field: tagMQMD2::PutTime"][::std::mem::offset_of!(tagMQMD2, PutTime) - 312usize];
-    ["Offset of field: tagMQMD2::ApplOriginData"][::std::mem::offset_of!(tagMQMD2, ApplOriginData) - 320usize];
-    ["Offset of field: tagMQMD2::GroupId"][::std::mem::offset_of!(tagMQMD2, GroupId) - 324usize];
-    ["Offset of field: tagMQMD2::MsgSeqNumber"][::std::mem::offset_of!(tagMQMD2, MsgSeqNumber) - 348usize];
-    ["Offset of field: tagMQMD2::Offset"][::std::mem::offset_of!(tagMQMD2, Offset) - 352usize];
-    ["Offset of field: tagMQMD2::MsgFlags"][::std::mem::offset_of!(tagMQMD2, MsgFlags) - 356usize];
-    ["Offset of field: tagMQMD2::OriginalLength"][::std::mem::offset_of!(tagMQMD2, OriginalLength) - 360usize];
+    [
+        "Offset of field: tagMQMD2::StrucId",
+    ][::std::mem::offset_of!(tagMQMD2, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQMD2::Version",
+    ][::std::mem::offset_of!(tagMQMD2, Version) - 4usize];
+    [
+        "Offset of field: tagMQMD2::Report",
+    ][::std::mem::offset_of!(tagMQMD2, Report) - 8usize];
+    [
+        "Offset of field: tagMQMD2::MsgType",
+    ][::std::mem::offset_of!(tagMQMD2, MsgType) - 12usize];
+    [
+        "Offset of field: tagMQMD2::Expiry",
+    ][::std::mem::offset_of!(tagMQMD2, Expiry) - 16usize];
+    [
+        "Offset of field: tagMQMD2::Feedback",
+    ][::std::mem::offset_of!(tagMQMD2, Feedback) - 20usize];
+    [
+        "Offset of field: tagMQMD2::Encoding",
+    ][::std::mem::offset_of!(tagMQMD2, Encoding) - 24usize];
+    [
+        "Offset of field: tagMQMD2::CodedCharSetId",
+    ][::std::mem::offset_of!(tagMQMD2, CodedCharSetId) - 28usize];
+    [
+        "Offset of field: tagMQMD2::Format",
+    ][::std::mem::offset_of!(tagMQMD2, Format) - 32usize];
+    [
+        "Offset of field: tagMQMD2::Priority",
+    ][::std::mem::offset_of!(tagMQMD2, Priority) - 40usize];
+    [
+        "Offset of field: tagMQMD2::Persistence",
+    ][::std::mem::offset_of!(tagMQMD2, Persistence) - 44usize];
+    [
+        "Offset of field: tagMQMD2::MsgId",
+    ][::std::mem::offset_of!(tagMQMD2, MsgId) - 48usize];
+    [
+        "Offset of field: tagMQMD2::CorrelId",
+    ][::std::mem::offset_of!(tagMQMD2, CorrelId) - 72usize];
+    [
+        "Offset of field: tagMQMD2::BackoutCount",
+    ][::std::mem::offset_of!(tagMQMD2, BackoutCount) - 96usize];
+    [
+        "Offset of field: tagMQMD2::ReplyToQ",
+    ][::std::mem::offset_of!(tagMQMD2, ReplyToQ) - 100usize];
+    [
+        "Offset of field: tagMQMD2::ReplyToQMgr",
+    ][::std::mem::offset_of!(tagMQMD2, ReplyToQMgr) - 148usize];
+    [
+        "Offset of field: tagMQMD2::UserIdentifier",
+    ][::std::mem::offset_of!(tagMQMD2, UserIdentifier) - 196usize];
+    [
+        "Offset of field: tagMQMD2::AccountingToken",
+    ][::std::mem::offset_of!(tagMQMD2, AccountingToken) - 208usize];
+    [
+        "Offset of field: tagMQMD2::ApplIdentityData",
+    ][::std::mem::offset_of!(tagMQMD2, ApplIdentityData) - 240usize];
+    [
+        "Offset of field: tagMQMD2::PutApplType",
+    ][::std::mem::offset_of!(tagMQMD2, PutApplType) - 272usize];
+    [
+        "Offset of field: tagMQMD2::PutApplName",
+    ][::std::mem::offset_of!(tagMQMD2, PutApplName) - 276usize];
+    [
+        "Offset of field: tagMQMD2::PutDate",
+    ][::std::mem::offset_of!(tagMQMD2, PutDate) - 304usize];
+    [
+        "Offset of field: tagMQMD2::PutTime",
+    ][::std::mem::offset_of!(tagMQMD2, PutTime) - 312usize];
+    [
+        "Offset of field: tagMQMD2::ApplOriginData",
+    ][::std::mem::offset_of!(tagMQMD2, ApplOriginData) - 320usize];
+    [
+        "Offset of field: tagMQMD2::GroupId",
+    ][::std::mem::offset_of!(tagMQMD2, GroupId) - 324usize];
+    [
+        "Offset of field: tagMQMD2::MsgSeqNumber",
+    ][::std::mem::offset_of!(tagMQMD2, MsgSeqNumber) - 348usize];
+    [
+        "Offset of field: tagMQMD2::Offset",
+    ][::std::mem::offset_of!(tagMQMD2, Offset) - 352usize];
+    [
+        "Offset of field: tagMQMD2::MsgFlags",
+    ][::std::mem::offset_of!(tagMQMD2, MsgFlags) - 356usize];
+    [
+        "Offset of field: tagMQMD2::OriginalLength",
+    ][::std::mem::offset_of!(tagMQMD2, OriginalLength) - 360usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQMHBO"][::std::mem::size_of::<tagMQMHBO>() - 12usize];
     ["Alignment of tagMQMHBO"][::std::mem::align_of::<tagMQMHBO>() - 4usize];
-    ["Offset of field: tagMQMHBO::StrucId"][::std::mem::offset_of!(tagMQMHBO, StrucId) - 0usize];
-    ["Offset of field: tagMQMHBO::Version"][::std::mem::offset_of!(tagMQMHBO, Version) - 4usize];
-    ["Offset of field: tagMQMHBO::Options"][::std::mem::offset_of!(tagMQMHBO, Options) - 8usize];
+    [
+        "Offset of field: tagMQMHBO::StrucId",
+    ][::std::mem::offset_of!(tagMQMHBO, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQMHBO::Version",
+    ][::std::mem::offset_of!(tagMQMHBO, Version) - 4usize];
+    [
+        "Offset of field: tagMQMHBO::Options",
+    ][::std::mem::offset_of!(tagMQMHBO, Options) - 8usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQOD"][::std::mem::size_of::<tagMQOD>() - 424usize];
     ["Alignment of tagMQOD"][::std::mem::align_of::<tagMQOD>() - 8usize];
-    ["Offset of field: tagMQOD::StrucId"][::std::mem::offset_of!(tagMQOD, StrucId) - 0usize];
-    ["Offset of field: tagMQOD::Version"][::std::mem::offset_of!(tagMQOD, Version) - 4usize];
-    ["Offset of field: tagMQOD::ObjectType"][::std::mem::offset_of!(tagMQOD, ObjectType) - 8usize];
-    ["Offset of field: tagMQOD::ObjectName"][::std::mem::offset_of!(tagMQOD, ObjectName) - 12usize];
-    ["Offset of field: tagMQOD::ObjectQMgrName"][::std::mem::offset_of!(tagMQOD, ObjectQMgrName) - 60usize];
-    ["Offset of field: tagMQOD::DynamicQName"][::std::mem::offset_of!(tagMQOD, DynamicQName) - 108usize];
-    ["Offset of field: tagMQOD::AlternateUserId"][::std::mem::offset_of!(tagMQOD, AlternateUserId) - 156usize];
-    ["Offset of field: tagMQOD::RecsPresent"][::std::mem::offset_of!(tagMQOD, RecsPresent) - 168usize];
-    ["Offset of field: tagMQOD::KnownDestCount"][::std::mem::offset_of!(tagMQOD, KnownDestCount) - 172usize];
-    ["Offset of field: tagMQOD::UnknownDestCount"][::std::mem::offset_of!(tagMQOD, UnknownDestCount) - 176usize];
-    ["Offset of field: tagMQOD::InvalidDestCount"][::std::mem::offset_of!(tagMQOD, InvalidDestCount) - 180usize];
-    ["Offset of field: tagMQOD::ObjectRecOffset"][::std::mem::offset_of!(tagMQOD, ObjectRecOffset) - 184usize];
-    ["Offset of field: tagMQOD::ResponseRecOffset"][::std::mem::offset_of!(tagMQOD, ResponseRecOffset) - 188usize];
-    ["Offset of field: tagMQOD::ObjectRecPtr"][::std::mem::offset_of!(tagMQOD, ObjectRecPtr) - 192usize];
-    ["Offset of field: tagMQOD::ResponseRecPtr"][::std::mem::offset_of!(tagMQOD, ResponseRecPtr) - 200usize];
-    ["Offset of field: tagMQOD::AlternateSecurityId"][::std::mem::offset_of!(tagMQOD, AlternateSecurityId) - 208usize];
-    ["Offset of field: tagMQOD::ResolvedQName"][::std::mem::offset_of!(tagMQOD, ResolvedQName) - 248usize];
-    ["Offset of field: tagMQOD::ResolvedQMgrName"][::std::mem::offset_of!(tagMQOD, ResolvedQMgrName) - 296usize];
-    ["Offset of field: tagMQOD::ObjectString"][::std::mem::offset_of!(tagMQOD, ObjectString) - 344usize];
-    ["Offset of field: tagMQOD::SelectionString"][::std::mem::offset_of!(tagMQOD, SelectionString) - 368usize];
-    ["Offset of field: tagMQOD::ResObjectString"][::std::mem::offset_of!(tagMQOD, ResObjectString) - 392usize];
-    ["Offset of field: tagMQOD::ResolvedType"][::std::mem::offset_of!(tagMQOD, ResolvedType) - 416usize];
+    [
+        "Offset of field: tagMQOD::StrucId",
+    ][::std::mem::offset_of!(tagMQOD, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQOD::Version",
+    ][::std::mem::offset_of!(tagMQOD, Version) - 4usize];
+    [
+        "Offset of field: tagMQOD::ObjectType",
+    ][::std::mem::offset_of!(tagMQOD, ObjectType) - 8usize];
+    [
+        "Offset of field: tagMQOD::ObjectName",
+    ][::std::mem::offset_of!(tagMQOD, ObjectName) - 12usize];
+    [
+        "Offset of field: tagMQOD::ObjectQMgrName",
+    ][::std::mem::offset_of!(tagMQOD, ObjectQMgrName) - 60usize];
+    [
+        "Offset of field: tagMQOD::DynamicQName",
+    ][::std::mem::offset_of!(tagMQOD, DynamicQName) - 108usize];
+    [
+        "Offset of field: tagMQOD::AlternateUserId",
+    ][::std::mem::offset_of!(tagMQOD, AlternateUserId) - 156usize];
+    [
+        "Offset of field: tagMQOD::RecsPresent",
+    ][::std::mem::offset_of!(tagMQOD, RecsPresent) - 168usize];
+    [
+        "Offset of field: tagMQOD::KnownDestCount",
+    ][::std::mem::offset_of!(tagMQOD, KnownDestCount) - 172usize];
+    [
+        "Offset of field: tagMQOD::UnknownDestCount",
+    ][::std::mem::offset_of!(tagMQOD, UnknownDestCount) - 176usize];
+    [
+        "Offset of field: tagMQOD::InvalidDestCount",
+    ][::std::mem::offset_of!(tagMQOD, InvalidDestCount) - 180usize];
+    [
+        "Offset of field: tagMQOD::ObjectRecOffset",
+    ][::std::mem::offset_of!(tagMQOD, ObjectRecOffset) - 184usize];
+    [
+        "Offset of field: tagMQOD::ResponseRecOffset",
+    ][::std::mem::offset_of!(tagMQOD, ResponseRecOffset) - 188usize];
+    [
+        "Offset of field: tagMQOD::ObjectRecPtr",
+    ][::std::mem::offset_of!(tagMQOD, ObjectRecPtr) - 192usize];
+    [
+        "Offset of field: tagMQOD::ResponseRecPtr",
+    ][::std::mem::offset_of!(tagMQOD, ResponseRecPtr) - 200usize];
+    [
+        "Offset of field: tagMQOD::AlternateSecurityId",
+    ][::std::mem::offset_of!(tagMQOD, AlternateSecurityId) - 208usize];
+    [
+        "Offset of field: tagMQOD::ResolvedQName",
+    ][::std::mem::offset_of!(tagMQOD, ResolvedQName) - 248usize];
+    [
+        "Offset of field: tagMQOD::ResolvedQMgrName",
+    ][::std::mem::offset_of!(tagMQOD, ResolvedQMgrName) - 296usize];
+    [
+        "Offset of field: tagMQOD::ObjectString",
+    ][::std::mem::offset_of!(tagMQOD, ObjectString) - 344usize];
+    [
+        "Offset of field: tagMQOD::SelectionString",
+    ][::std::mem::offset_of!(tagMQOD, SelectionString) - 368usize];
+    [
+        "Offset of field: tagMQOD::ResObjectString",
+    ][::std::mem::offset_of!(tagMQOD, ResObjectString) - 392usize];
+    [
+        "Offset of field: tagMQOD::ResolvedType",
+    ][::std::mem::offset_of!(tagMQOD, ResolvedType) - 416usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQOR"][::std::mem::size_of::<tagMQOR>() - 96usize];
     ["Alignment of tagMQOR"][::std::mem::align_of::<tagMQOR>() - 1usize];
-    ["Offset of field: tagMQOR::ObjectName"][::std::mem::offset_of!(tagMQOR, ObjectName) - 0usize];
-    ["Offset of field: tagMQOR::ObjectQMgrName"][::std::mem::offset_of!(tagMQOR, ObjectQMgrName) - 48usize];
+    [
+        "Offset of field: tagMQOR::ObjectName",
+    ][::std::mem::offset_of!(tagMQOR, ObjectName) - 0usize];
+    [
+        "Offset of field: tagMQOR::ObjectQMgrName",
+    ][::std::mem::offset_of!(tagMQOR, ObjectQMgrName) - 48usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQPD"][::std::mem::size_of::<tagMQPD>() - 24usize];
     ["Alignment of tagMQPD"][::std::mem::align_of::<tagMQPD>() - 4usize];
-    ["Offset of field: tagMQPD::StrucId"][::std::mem::offset_of!(tagMQPD, StrucId) - 0usize];
-    ["Offset of field: tagMQPD::Version"][::std::mem::offset_of!(tagMQPD, Version) - 4usize];
-    ["Offset of field: tagMQPD::Options"][::std::mem::offset_of!(tagMQPD, Options) - 8usize];
-    ["Offset of field: tagMQPD::Support"][::std::mem::offset_of!(tagMQPD, Support) - 12usize];
-    ["Offset of field: tagMQPD::Context"][::std::mem::offset_of!(tagMQPD, Context) - 16usize];
-    ["Offset of field: tagMQPD::CopyOptions"][::std::mem::offset_of!(tagMQPD, CopyOptions) - 20usize];
+    [
+        "Offset of field: tagMQPD::StrucId",
+    ][::std::mem::offset_of!(tagMQPD, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQPD::Version",
+    ][::std::mem::offset_of!(tagMQPD, Version) - 4usize];
+    [
+        "Offset of field: tagMQPD::Options",
+    ][::std::mem::offset_of!(tagMQPD, Options) - 8usize];
+    [
+        "Offset of field: tagMQPD::Support",
+    ][::std::mem::offset_of!(tagMQPD, Support) - 12usize];
+    [
+        "Offset of field: tagMQPD::Context",
+    ][::std::mem::offset_of!(tagMQPD, Context) - 16usize];
+    [
+        "Offset of field: tagMQPD::CopyOptions",
+    ][::std::mem::offset_of!(tagMQPD, CopyOptions) - 20usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQPMO"][::std::mem::size_of::<tagMQPMO>() - 184usize];
     ["Alignment of tagMQPMO"][::std::mem::align_of::<tagMQPMO>() - 8usize];
-    ["Offset of field: tagMQPMO::StrucId"][::std::mem::offset_of!(tagMQPMO, StrucId) - 0usize];
-    ["Offset of field: tagMQPMO::Version"][::std::mem::offset_of!(tagMQPMO, Version) - 4usize];
-    ["Offset of field: tagMQPMO::Options"][::std::mem::offset_of!(tagMQPMO, Options) - 8usize];
-    ["Offset of field: tagMQPMO::Timeout"][::std::mem::offset_of!(tagMQPMO, Timeout) - 12usize];
-    ["Offset of field: tagMQPMO::Context"][::std::mem::offset_of!(tagMQPMO, Context) - 16usize];
-    ["Offset of field: tagMQPMO::KnownDestCount"][::std::mem::offset_of!(tagMQPMO, KnownDestCount) - 20usize];
-    ["Offset of field: tagMQPMO::UnknownDestCount"][::std::mem::offset_of!(tagMQPMO, UnknownDestCount) - 24usize];
-    ["Offset of field: tagMQPMO::InvalidDestCount"][::std::mem::offset_of!(tagMQPMO, InvalidDestCount) - 28usize];
-    ["Offset of field: tagMQPMO::ResolvedQName"][::std::mem::offset_of!(tagMQPMO, ResolvedQName) - 32usize];
-    ["Offset of field: tagMQPMO::ResolvedQMgrName"][::std::mem::offset_of!(tagMQPMO, ResolvedQMgrName) - 80usize];
-    ["Offset of field: tagMQPMO::RecsPresent"][::std::mem::offset_of!(tagMQPMO, RecsPresent) - 128usize];
-    ["Offset of field: tagMQPMO::PutMsgRecFields"][::std::mem::offset_of!(tagMQPMO, PutMsgRecFields) - 132usize];
-    ["Offset of field: tagMQPMO::PutMsgRecOffset"][::std::mem::offset_of!(tagMQPMO, PutMsgRecOffset) - 136usize];
-    ["Offset of field: tagMQPMO::ResponseRecOffset"][::std::mem::offset_of!(tagMQPMO, ResponseRecOffset) - 140usize];
-    ["Offset of field: tagMQPMO::PutMsgRecPtr"][::std::mem::offset_of!(tagMQPMO, PutMsgRecPtr) - 144usize];
-    ["Offset of field: tagMQPMO::ResponseRecPtr"][::std::mem::offset_of!(tagMQPMO, ResponseRecPtr) - 152usize];
-    ["Offset of field: tagMQPMO::OriginalMsgHandle"][::std::mem::offset_of!(tagMQPMO, OriginalMsgHandle) - 160usize];
-    ["Offset of field: tagMQPMO::NewMsgHandle"][::std::mem::offset_of!(tagMQPMO, NewMsgHandle) - 168usize];
-    ["Offset of field: tagMQPMO::Action"][::std::mem::offset_of!(tagMQPMO, Action) - 176usize];
-    ["Offset of field: tagMQPMO::PubLevel"][::std::mem::offset_of!(tagMQPMO, PubLevel) - 180usize];
+    [
+        "Offset of field: tagMQPMO::StrucId",
+    ][::std::mem::offset_of!(tagMQPMO, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQPMO::Version",
+    ][::std::mem::offset_of!(tagMQPMO, Version) - 4usize];
+    [
+        "Offset of field: tagMQPMO::Options",
+    ][::std::mem::offset_of!(tagMQPMO, Options) - 8usize];
+    [
+        "Offset of field: tagMQPMO::Timeout",
+    ][::std::mem::offset_of!(tagMQPMO, Timeout) - 12usize];
+    [
+        "Offset of field: tagMQPMO::Context",
+    ][::std::mem::offset_of!(tagMQPMO, Context) - 16usize];
+    [
+        "Offset of field: tagMQPMO::KnownDestCount",
+    ][::std::mem::offset_of!(tagMQPMO, KnownDestCount) - 20usize];
+    [
+        "Offset of field: tagMQPMO::UnknownDestCount",
+    ][::std::mem::offset_of!(tagMQPMO, UnknownDestCount) - 24usize];
+    [
+        "Offset of field: tagMQPMO::InvalidDestCount",
+    ][::std::mem::offset_of!(tagMQPMO, InvalidDestCount) - 28usize];
+    [
+        "Offset of field: tagMQPMO::ResolvedQName",
+    ][::std::mem::offset_of!(tagMQPMO, ResolvedQName) - 32usize];
+    [
+        "Offset of field: tagMQPMO::ResolvedQMgrName",
+    ][::std::mem::offset_of!(tagMQPMO, ResolvedQMgrName) - 80usize];
+    [
+        "Offset of field: tagMQPMO::RecsPresent",
+    ][::std::mem::offset_of!(tagMQPMO, RecsPresent) - 128usize];
+    [
+        "Offset of field: tagMQPMO::PutMsgRecFields",
+    ][::std::mem::offset_of!(tagMQPMO, PutMsgRecFields) - 132usize];
+    [
+        "Offset of field: tagMQPMO::PutMsgRecOffset",
+    ][::std::mem::offset_of!(tagMQPMO, PutMsgRecOffset) - 136usize];
+    [
+        "Offset of field: tagMQPMO::ResponseRecOffset",
+    ][::std::mem::offset_of!(tagMQPMO, ResponseRecOffset) - 140usize];
+    [
+        "Offset of field: tagMQPMO::PutMsgRecPtr",
+    ][::std::mem::offset_of!(tagMQPMO, PutMsgRecPtr) - 144usize];
+    [
+        "Offset of field: tagMQPMO::ResponseRecPtr",
+    ][::std::mem::offset_of!(tagMQPMO, ResponseRecPtr) - 152usize];
+    [
+        "Offset of field: tagMQPMO::OriginalMsgHandle",
+    ][::std::mem::offset_of!(tagMQPMO, OriginalMsgHandle) - 160usize];
+    [
+        "Offset of field: tagMQPMO::NewMsgHandle",
+    ][::std::mem::offset_of!(tagMQPMO, NewMsgHandle) - 168usize];
+    [
+        "Offset of field: tagMQPMO::Action",
+    ][::std::mem::offset_of!(tagMQPMO, Action) - 176usize];
+    [
+        "Offset of field: tagMQPMO::PubLevel",
+    ][::std::mem::offset_of!(tagMQPMO, PubLevel) - 180usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQRFH"][::std::mem::size_of::<tagMQRFH>() - 32usize];
     ["Alignment of tagMQRFH"][::std::mem::align_of::<tagMQRFH>() - 4usize];
-    ["Offset of field: tagMQRFH::StrucId"][::std::mem::offset_of!(tagMQRFH, StrucId) - 0usize];
-    ["Offset of field: tagMQRFH::Version"][::std::mem::offset_of!(tagMQRFH, Version) - 4usize];
-    ["Offset of field: tagMQRFH::StrucLength"][::std::mem::offset_of!(tagMQRFH, StrucLength) - 8usize];
-    ["Offset of field: tagMQRFH::Encoding"][::std::mem::offset_of!(tagMQRFH, Encoding) - 12usize];
-    ["Offset of field: tagMQRFH::CodedCharSetId"][::std::mem::offset_of!(tagMQRFH, CodedCharSetId) - 16usize];
-    ["Offset of field: tagMQRFH::Format"][::std::mem::offset_of!(tagMQRFH, Format) - 20usize];
-    ["Offset of field: tagMQRFH::Flags"][::std::mem::offset_of!(tagMQRFH, Flags) - 28usize];
+    [
+        "Offset of field: tagMQRFH::StrucId",
+    ][::std::mem::offset_of!(tagMQRFH, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQRFH::Version",
+    ][::std::mem::offset_of!(tagMQRFH, Version) - 4usize];
+    [
+        "Offset of field: tagMQRFH::StrucLength",
+    ][::std::mem::offset_of!(tagMQRFH, StrucLength) - 8usize];
+    [
+        "Offset of field: tagMQRFH::Encoding",
+    ][::std::mem::offset_of!(tagMQRFH, Encoding) - 12usize];
+    [
+        "Offset of field: tagMQRFH::CodedCharSetId",
+    ][::std::mem::offset_of!(tagMQRFH, CodedCharSetId) - 16usize];
+    [
+        "Offset of field: tagMQRFH::Format",
+    ][::std::mem::offset_of!(tagMQRFH, Format) - 20usize];
+    [
+        "Offset of field: tagMQRFH::Flags",
+    ][::std::mem::offset_of!(tagMQRFH, Flags) - 28usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQRFH2"][::std::mem::size_of::<tagMQRFH2>() - 36usize];
     ["Alignment of tagMQRFH2"][::std::mem::align_of::<tagMQRFH2>() - 4usize];
-    ["Offset of field: tagMQRFH2::StrucId"][::std::mem::offset_of!(tagMQRFH2, StrucId) - 0usize];
-    ["Offset of field: tagMQRFH2::Version"][::std::mem::offset_of!(tagMQRFH2, Version) - 4usize];
-    ["Offset of field: tagMQRFH2::StrucLength"][::std::mem::offset_of!(tagMQRFH2, StrucLength) - 8usize];
-    ["Offset of field: tagMQRFH2::Encoding"][::std::mem::offset_of!(tagMQRFH2, Encoding) - 12usize];
-    ["Offset of field: tagMQRFH2::CodedCharSetId"][::std::mem::offset_of!(tagMQRFH2, CodedCharSetId) - 16usize];
-    ["Offset of field: tagMQRFH2::Format"][::std::mem::offset_of!(tagMQRFH2, Format) - 20usize];
-    ["Offset of field: tagMQRFH2::Flags"][::std::mem::offset_of!(tagMQRFH2, Flags) - 28usize];
-    ["Offset of field: tagMQRFH2::NameValueCCSID"][::std::mem::offset_of!(tagMQRFH2, NameValueCCSID) - 32usize];
+    [
+        "Offset of field: tagMQRFH2::StrucId",
+    ][::std::mem::offset_of!(tagMQRFH2, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQRFH2::Version",
+    ][::std::mem::offset_of!(tagMQRFH2, Version) - 4usize];
+    [
+        "Offset of field: tagMQRFH2::StrucLength",
+    ][::std::mem::offset_of!(tagMQRFH2, StrucLength) - 8usize];
+    [
+        "Offset of field: tagMQRFH2::Encoding",
+    ][::std::mem::offset_of!(tagMQRFH2, Encoding) - 12usize];
+    [
+        "Offset of field: tagMQRFH2::CodedCharSetId",
+    ][::std::mem::offset_of!(tagMQRFH2, CodedCharSetId) - 16usize];
+    [
+        "Offset of field: tagMQRFH2::Format",
+    ][::std::mem::offset_of!(tagMQRFH2, Format) - 20usize];
+    [
+        "Offset of field: tagMQRFH2::Flags",
+    ][::std::mem::offset_of!(tagMQRFH2, Flags) - 28usize];
+    [
+        "Offset of field: tagMQRFH2::NameValueCCSID",
+    ][::std::mem::offset_of!(tagMQRFH2, NameValueCCSID) - 32usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQRMH"][::std::mem::size_of::<tagMQRMH>() - 108usize];
     ["Alignment of tagMQRMH"][::std::mem::align_of::<tagMQRMH>() - 4usize];
-    ["Offset of field: tagMQRMH::StrucId"][::std::mem::offset_of!(tagMQRMH, StrucId) - 0usize];
-    ["Offset of field: tagMQRMH::Version"][::std::mem::offset_of!(tagMQRMH, Version) - 4usize];
-    ["Offset of field: tagMQRMH::StrucLength"][::std::mem::offset_of!(tagMQRMH, StrucLength) - 8usize];
-    ["Offset of field: tagMQRMH::Encoding"][::std::mem::offset_of!(tagMQRMH, Encoding) - 12usize];
-    ["Offset of field: tagMQRMH::CodedCharSetId"][::std::mem::offset_of!(tagMQRMH, CodedCharSetId) - 16usize];
-    ["Offset of field: tagMQRMH::Format"][::std::mem::offset_of!(tagMQRMH, Format) - 20usize];
-    ["Offset of field: tagMQRMH::Flags"][::std::mem::offset_of!(tagMQRMH, Flags) - 28usize];
-    ["Offset of field: tagMQRMH::ObjectType"][::std::mem::offset_of!(tagMQRMH, ObjectType) - 32usize];
-    ["Offset of field: tagMQRMH::ObjectInstanceId"][::std::mem::offset_of!(tagMQRMH, ObjectInstanceId) - 40usize];
-    ["Offset of field: tagMQRMH::SrcEnvLength"][::std::mem::offset_of!(tagMQRMH, SrcEnvLength) - 64usize];
-    ["Offset of field: tagMQRMH::SrcEnvOffset"][::std::mem::offset_of!(tagMQRMH, SrcEnvOffset) - 68usize];
-    ["Offset of field: tagMQRMH::SrcNameLength"][::std::mem::offset_of!(tagMQRMH, SrcNameLength) - 72usize];
-    ["Offset of field: tagMQRMH::SrcNameOffset"][::std::mem::offset_of!(tagMQRMH, SrcNameOffset) - 76usize];
-    ["Offset of field: tagMQRMH::DestEnvLength"][::std::mem::offset_of!(tagMQRMH, DestEnvLength) - 80usize];
-    ["Offset of field: tagMQRMH::DestEnvOffset"][::std::mem::offset_of!(tagMQRMH, DestEnvOffset) - 84usize];
-    ["Offset of field: tagMQRMH::DestNameLength"][::std::mem::offset_of!(tagMQRMH, DestNameLength) - 88usize];
-    ["Offset of field: tagMQRMH::DestNameOffset"][::std::mem::offset_of!(tagMQRMH, DestNameOffset) - 92usize];
-    ["Offset of field: tagMQRMH::DataLogicalLength"][::std::mem::offset_of!(tagMQRMH, DataLogicalLength) - 96usize];
-    ["Offset of field: tagMQRMH::DataLogicalOffset"][::std::mem::offset_of!(tagMQRMH, DataLogicalOffset) - 100usize];
-    ["Offset of field: tagMQRMH::DataLogicalOffset2"][::std::mem::offset_of!(tagMQRMH, DataLogicalOffset2) - 104usize];
+    [
+        "Offset of field: tagMQRMH::StrucId",
+    ][::std::mem::offset_of!(tagMQRMH, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQRMH::Version",
+    ][::std::mem::offset_of!(tagMQRMH, Version) - 4usize];
+    [
+        "Offset of field: tagMQRMH::StrucLength",
+    ][::std::mem::offset_of!(tagMQRMH, StrucLength) - 8usize];
+    [
+        "Offset of field: tagMQRMH::Encoding",
+    ][::std::mem::offset_of!(tagMQRMH, Encoding) - 12usize];
+    [
+        "Offset of field: tagMQRMH::CodedCharSetId",
+    ][::std::mem::offset_of!(tagMQRMH, CodedCharSetId) - 16usize];
+    [
+        "Offset of field: tagMQRMH::Format",
+    ][::std::mem::offset_of!(tagMQRMH, Format) - 20usize];
+    [
+        "Offset of field: tagMQRMH::Flags",
+    ][::std::mem::offset_of!(tagMQRMH, Flags) - 28usize];
+    [
+        "Offset of field: tagMQRMH::ObjectType",
+    ][::std::mem::offset_of!(tagMQRMH, ObjectType) - 32usize];
+    [
+        "Offset of field: tagMQRMH::ObjectInstanceId",
+    ][::std::mem::offset_of!(tagMQRMH, ObjectInstanceId) - 40usize];
+    [
+        "Offset of field: tagMQRMH::SrcEnvLength",
+    ][::std::mem::offset_of!(tagMQRMH, SrcEnvLength) - 64usize];
+    [
+        "Offset of field: tagMQRMH::SrcEnvOffset",
+    ][::std::mem::offset_of!(tagMQRMH, SrcEnvOffset) - 68usize];
+    [
+        "Offset of field: tagMQRMH::SrcNameLength",
+    ][::std::mem::offset_of!(tagMQRMH, SrcNameLength) - 72usize];
+    [
+        "Offset of field: tagMQRMH::SrcNameOffset",
+    ][::std::mem::offset_of!(tagMQRMH, SrcNameOffset) - 76usize];
+    [
+        "Offset of field: tagMQRMH::DestEnvLength",
+    ][::std::mem::offset_of!(tagMQRMH, DestEnvLength) - 80usize];
+    [
+        "Offset of field: tagMQRMH::DestEnvOffset",
+    ][::std::mem::offset_of!(tagMQRMH, DestEnvOffset) - 84usize];
+    [
+        "Offset of field: tagMQRMH::DestNameLength",
+    ][::std::mem::offset_of!(tagMQRMH, DestNameLength) - 88usize];
+    [
+        "Offset of field: tagMQRMH::DestNameOffset",
+    ][::std::mem::offset_of!(tagMQRMH, DestNameOffset) - 92usize];
+    [
+        "Offset of field: tagMQRMH::DataLogicalLength",
+    ][::std::mem::offset_of!(tagMQRMH, DataLogicalLength) - 96usize];
+    [
+        "Offset of field: tagMQRMH::DataLogicalOffset",
+    ][::std::mem::offset_of!(tagMQRMH, DataLogicalOffset) - 100usize];
+    [
+        "Offset of field: tagMQRMH::DataLogicalOffset2",
+    ][::std::mem::offset_of!(tagMQRMH, DataLogicalOffset2) - 104usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQRR"][::std::mem::size_of::<tagMQRR>() - 8usize];
     ["Alignment of tagMQRR"][::std::mem::align_of::<tagMQRR>() - 4usize];
-    ["Offset of field: tagMQRR::CompCode"][::std::mem::offset_of!(tagMQRR, CompCode) - 0usize];
-    ["Offset of field: tagMQRR::Reason"][::std::mem::offset_of!(tagMQRR, Reason) - 4usize];
+    [
+        "Offset of field: tagMQRR::CompCode",
+    ][::std::mem::offset_of!(tagMQRR, CompCode) - 0usize];
+    [
+        "Offset of field: tagMQRR::Reason",
+    ][::std::mem::offset_of!(tagMQRR, Reason) - 4usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQSD"][::std::mem::size_of::<tagMQSD>() - 344usize];
     ["Alignment of tagMQSD"][::std::mem::align_of::<tagMQSD>() - 8usize];
-    ["Offset of field: tagMQSD::StrucId"][::std::mem::offset_of!(tagMQSD, StrucId) - 0usize];
-    ["Offset of field: tagMQSD::Version"][::std::mem::offset_of!(tagMQSD, Version) - 4usize];
-    ["Offset of field: tagMQSD::Options"][::std::mem::offset_of!(tagMQSD, Options) - 8usize];
-    ["Offset of field: tagMQSD::ObjectName"][::std::mem::offset_of!(tagMQSD, ObjectName) - 12usize];
-    ["Offset of field: tagMQSD::AlternateUserId"][::std::mem::offset_of!(tagMQSD, AlternateUserId) - 60usize];
-    ["Offset of field: tagMQSD::AlternateSecurityId"][::std::mem::offset_of!(tagMQSD, AlternateSecurityId) - 72usize];
-    ["Offset of field: tagMQSD::SubExpiry"][::std::mem::offset_of!(tagMQSD, SubExpiry) - 112usize];
-    ["Offset of field: tagMQSD::ObjectString"][::std::mem::offset_of!(tagMQSD, ObjectString) - 120usize];
-    ["Offset of field: tagMQSD::SubName"][::std::mem::offset_of!(tagMQSD, SubName) - 144usize];
-    ["Offset of field: tagMQSD::SubUserData"][::std::mem::offset_of!(tagMQSD, SubUserData) - 168usize];
-    ["Offset of field: tagMQSD::SubCorrelId"][::std::mem::offset_of!(tagMQSD, SubCorrelId) - 192usize];
-    ["Offset of field: tagMQSD::PubPriority"][::std::mem::offset_of!(tagMQSD, PubPriority) - 216usize];
-    ["Offset of field: tagMQSD::PubAccountingToken"][::std::mem::offset_of!(tagMQSD, PubAccountingToken) - 220usize];
-    ["Offset of field: tagMQSD::PubApplIdentityData"][::std::mem::offset_of!(tagMQSD, PubApplIdentityData) - 252usize];
-    ["Offset of field: tagMQSD::SelectionString"][::std::mem::offset_of!(tagMQSD, SelectionString) - 288usize];
-    ["Offset of field: tagMQSD::SubLevel"][::std::mem::offset_of!(tagMQSD, SubLevel) - 312usize];
-    ["Offset of field: tagMQSD::ResObjectString"][::std::mem::offset_of!(tagMQSD, ResObjectString) - 320usize];
+    [
+        "Offset of field: tagMQSD::StrucId",
+    ][::std::mem::offset_of!(tagMQSD, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQSD::Version",
+    ][::std::mem::offset_of!(tagMQSD, Version) - 4usize];
+    [
+        "Offset of field: tagMQSD::Options",
+    ][::std::mem::offset_of!(tagMQSD, Options) - 8usize];
+    [
+        "Offset of field: tagMQSD::ObjectName",
+    ][::std::mem::offset_of!(tagMQSD, ObjectName) - 12usize];
+    [
+        "Offset of field: tagMQSD::AlternateUserId",
+    ][::std::mem::offset_of!(tagMQSD, AlternateUserId) - 60usize];
+    [
+        "Offset of field: tagMQSD::AlternateSecurityId",
+    ][::std::mem::offset_of!(tagMQSD, AlternateSecurityId) - 72usize];
+    [
+        "Offset of field: tagMQSD::SubExpiry",
+    ][::std::mem::offset_of!(tagMQSD, SubExpiry) - 112usize];
+    [
+        "Offset of field: tagMQSD::ObjectString",
+    ][::std::mem::offset_of!(tagMQSD, ObjectString) - 120usize];
+    [
+        "Offset of field: tagMQSD::SubName",
+    ][::std::mem::offset_of!(tagMQSD, SubName) - 144usize];
+    [
+        "Offset of field: tagMQSD::SubUserData",
+    ][::std::mem::offset_of!(tagMQSD, SubUserData) - 168usize];
+    [
+        "Offset of field: tagMQSD::SubCorrelId",
+    ][::std::mem::offset_of!(tagMQSD, SubCorrelId) - 192usize];
+    [
+        "Offset of field: tagMQSD::PubPriority",
+    ][::std::mem::offset_of!(tagMQSD, PubPriority) - 216usize];
+    [
+        "Offset of field: tagMQSD::PubAccountingToken",
+    ][::std::mem::offset_of!(tagMQSD, PubAccountingToken) - 220usize];
+    [
+        "Offset of field: tagMQSD::PubApplIdentityData",
+    ][::std::mem::offset_of!(tagMQSD, PubApplIdentityData) - 252usize];
+    [
+        "Offset of field: tagMQSD::SelectionString",
+    ][::std::mem::offset_of!(tagMQSD, SelectionString) - 288usize];
+    [
+        "Offset of field: tagMQSD::SubLevel",
+    ][::std::mem::offset_of!(tagMQSD, SubLevel) - 312usize];
+    [
+        "Offset of field: tagMQSD::ResObjectString",
+    ][::std::mem::offset_of!(tagMQSD, ResObjectString) - 320usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQSMPO"][::std::mem::size_of::<tagMQSMPO>() - 20usize];
     ["Alignment of tagMQSMPO"][::std::mem::align_of::<tagMQSMPO>() - 4usize];
-    ["Offset of field: tagMQSMPO::StrucId"][::std::mem::offset_of!(tagMQSMPO, StrucId) - 0usize];
-    ["Offset of field: tagMQSMPO::Version"][::std::mem::offset_of!(tagMQSMPO, Version) - 4usize];
-    ["Offset of field: tagMQSMPO::Options"][::std::mem::offset_of!(tagMQSMPO, Options) - 8usize];
-    ["Offset of field: tagMQSMPO::ValueEncoding"][::std::mem::offset_of!(tagMQSMPO, ValueEncoding) - 12usize];
-    ["Offset of field: tagMQSMPO::ValueCCSID"][::std::mem::offset_of!(tagMQSMPO, ValueCCSID) - 16usize];
+    [
+        "Offset of field: tagMQSMPO::StrucId",
+    ][::std::mem::offset_of!(tagMQSMPO, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQSMPO::Version",
+    ][::std::mem::offset_of!(tagMQSMPO, Version) - 4usize];
+    [
+        "Offset of field: tagMQSMPO::Options",
+    ][::std::mem::offset_of!(tagMQSMPO, Options) - 8usize];
+    [
+        "Offset of field: tagMQSMPO::ValueEncoding",
+    ][::std::mem::offset_of!(tagMQSMPO, ValueEncoding) - 12usize];
+    [
+        "Offset of field: tagMQSMPO::ValueCCSID",
+    ][::std::mem::offset_of!(tagMQSMPO, ValueCCSID) - 16usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQSRO"][::std::mem::size_of::<tagMQSRO>() - 16usize];
     ["Alignment of tagMQSRO"][::std::mem::align_of::<tagMQSRO>() - 4usize];
-    ["Offset of field: tagMQSRO::StrucId"][::std::mem::offset_of!(tagMQSRO, StrucId) - 0usize];
-    ["Offset of field: tagMQSRO::Version"][::std::mem::offset_of!(tagMQSRO, Version) - 4usize];
-    ["Offset of field: tagMQSRO::Options"][::std::mem::offset_of!(tagMQSRO, Options) - 8usize];
-    ["Offset of field: tagMQSRO::NumPubs"][::std::mem::offset_of!(tagMQSRO, NumPubs) - 12usize];
+    [
+        "Offset of field: tagMQSRO::StrucId",
+    ][::std::mem::offset_of!(tagMQSRO, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQSRO::Version",
+    ][::std::mem::offset_of!(tagMQSRO, Version) - 4usize];
+    [
+        "Offset of field: tagMQSRO::Options",
+    ][::std::mem::offset_of!(tagMQSRO, Options) - 8usize];
+    [
+        "Offset of field: tagMQSRO::NumPubs",
+    ][::std::mem::offset_of!(tagMQSRO, NumPubs) - 12usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQSTS"][::std::mem::size_of::<tagMQSTS>() - 280usize];
     ["Alignment of tagMQSTS"][::std::mem::align_of::<tagMQSTS>() - 8usize];
-    ["Offset of field: tagMQSTS::StrucId"][::std::mem::offset_of!(tagMQSTS, StrucId) - 0usize];
-    ["Offset of field: tagMQSTS::Version"][::std::mem::offset_of!(tagMQSTS, Version) - 4usize];
-    ["Offset of field: tagMQSTS::CompCode"][::std::mem::offset_of!(tagMQSTS, CompCode) - 8usize];
-    ["Offset of field: tagMQSTS::Reason"][::std::mem::offset_of!(tagMQSTS, Reason) - 12usize];
-    ["Offset of field: tagMQSTS::PutSuccessCount"][::std::mem::offset_of!(tagMQSTS, PutSuccessCount) - 16usize];
-    ["Offset of field: tagMQSTS::PutWarningCount"][::std::mem::offset_of!(tagMQSTS, PutWarningCount) - 20usize];
-    ["Offset of field: tagMQSTS::PutFailureCount"][::std::mem::offset_of!(tagMQSTS, PutFailureCount) - 24usize];
-    ["Offset of field: tagMQSTS::ObjectType"][::std::mem::offset_of!(tagMQSTS, ObjectType) - 28usize];
-    ["Offset of field: tagMQSTS::ObjectName"][::std::mem::offset_of!(tagMQSTS, ObjectName) - 32usize];
-    ["Offset of field: tagMQSTS::ObjectQMgrName"][::std::mem::offset_of!(tagMQSTS, ObjectQMgrName) - 80usize];
-    ["Offset of field: tagMQSTS::ResolvedObjectName"][::std::mem::offset_of!(tagMQSTS, ResolvedObjectName) - 128usize];
-    ["Offset of field: tagMQSTS::ResolvedQMgrName"][::std::mem::offset_of!(tagMQSTS, ResolvedQMgrName) - 176usize];
-    ["Offset of field: tagMQSTS::ObjectString"][::std::mem::offset_of!(tagMQSTS, ObjectString) - 224usize];
-    ["Offset of field: tagMQSTS::SubName"][::std::mem::offset_of!(tagMQSTS, SubName) - 248usize];
-    ["Offset of field: tagMQSTS::OpenOptions"][::std::mem::offset_of!(tagMQSTS, OpenOptions) - 272usize];
-    ["Offset of field: tagMQSTS::SubOptions"][::std::mem::offset_of!(tagMQSTS, SubOptions) - 276usize];
+    [
+        "Offset of field: tagMQSTS::StrucId",
+    ][::std::mem::offset_of!(tagMQSTS, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQSTS::Version",
+    ][::std::mem::offset_of!(tagMQSTS, Version) - 4usize];
+    [
+        "Offset of field: tagMQSTS::CompCode",
+    ][::std::mem::offset_of!(tagMQSTS, CompCode) - 8usize];
+    [
+        "Offset of field: tagMQSTS::Reason",
+    ][::std::mem::offset_of!(tagMQSTS, Reason) - 12usize];
+    [
+        "Offset of field: tagMQSTS::PutSuccessCount",
+    ][::std::mem::offset_of!(tagMQSTS, PutSuccessCount) - 16usize];
+    [
+        "Offset of field: tagMQSTS::PutWarningCount",
+    ][::std::mem::offset_of!(tagMQSTS, PutWarningCount) - 20usize];
+    [
+        "Offset of field: tagMQSTS::PutFailureCount",
+    ][::std::mem::offset_of!(tagMQSTS, PutFailureCount) - 24usize];
+    [
+        "Offset of field: tagMQSTS::ObjectType",
+    ][::std::mem::offset_of!(tagMQSTS, ObjectType) - 28usize];
+    [
+        "Offset of field: tagMQSTS::ObjectName",
+    ][::std::mem::offset_of!(tagMQSTS, ObjectName) - 32usize];
+    [
+        "Offset of field: tagMQSTS::ObjectQMgrName",
+    ][::std::mem::offset_of!(tagMQSTS, ObjectQMgrName) - 80usize];
+    [
+        "Offset of field: tagMQSTS::ResolvedObjectName",
+    ][::std::mem::offset_of!(tagMQSTS, ResolvedObjectName) - 128usize];
+    [
+        "Offset of field: tagMQSTS::ResolvedQMgrName",
+    ][::std::mem::offset_of!(tagMQSTS, ResolvedQMgrName) - 176usize];
+    [
+        "Offset of field: tagMQSTS::ObjectString",
+    ][::std::mem::offset_of!(tagMQSTS, ObjectString) - 224usize];
+    [
+        "Offset of field: tagMQSTS::SubName",
+    ][::std::mem::offset_of!(tagMQSTS, SubName) - 248usize];
+    [
+        "Offset of field: tagMQSTS::OpenOptions",
+    ][::std::mem::offset_of!(tagMQSTS, OpenOptions) - 272usize];
+    [
+        "Offset of field: tagMQSTS::SubOptions",
+    ][::std::mem::offset_of!(tagMQSTS, SubOptions) - 276usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQTM"][::std::mem::size_of::<tagMQTM>() - 684usize];
     ["Alignment of tagMQTM"][::std::mem::align_of::<tagMQTM>() - 4usize];
-    ["Offset of field: tagMQTM::StrucId"][::std::mem::offset_of!(tagMQTM, StrucId) - 0usize];
-    ["Offset of field: tagMQTM::Version"][::std::mem::offset_of!(tagMQTM, Version) - 4usize];
+    [
+        "Offset of field: tagMQTM::StrucId",
+    ][::std::mem::offset_of!(tagMQTM, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQTM::Version",
+    ][::std::mem::offset_of!(tagMQTM, Version) - 4usize];
     ["Offset of field: tagMQTM::QName"][::std::mem::offset_of!(tagMQTM, QName) - 8usize];
-    ["Offset of field: tagMQTM::ProcessName"][::std::mem::offset_of!(tagMQTM, ProcessName) - 56usize];
-    ["Offset of field: tagMQTM::TriggerData"][::std::mem::offset_of!(tagMQTM, TriggerData) - 104usize];
-    ["Offset of field: tagMQTM::ApplType"][::std::mem::offset_of!(tagMQTM, ApplType) - 168usize];
-    ["Offset of field: tagMQTM::ApplId"][::std::mem::offset_of!(tagMQTM, ApplId) - 172usize];
-    ["Offset of field: tagMQTM::EnvData"][::std::mem::offset_of!(tagMQTM, EnvData) - 428usize];
-    ["Offset of field: tagMQTM::UserData"][::std::mem::offset_of!(tagMQTM, UserData) - 556usize];
+    [
+        "Offset of field: tagMQTM::ProcessName",
+    ][::std::mem::offset_of!(tagMQTM, ProcessName) - 56usize];
+    [
+        "Offset of field: tagMQTM::TriggerData",
+    ][::std::mem::offset_of!(tagMQTM, TriggerData) - 104usize];
+    [
+        "Offset of field: tagMQTM::ApplType",
+    ][::std::mem::offset_of!(tagMQTM, ApplType) - 168usize];
+    [
+        "Offset of field: tagMQTM::ApplId",
+    ][::std::mem::offset_of!(tagMQTM, ApplId) - 172usize];
+    [
+        "Offset of field: tagMQTM::EnvData",
+    ][::std::mem::offset_of!(tagMQTM, EnvData) - 428usize];
+    [
+        "Offset of field: tagMQTM::UserData",
+    ][::std::mem::offset_of!(tagMQTM, UserData) - 556usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQTMC2"][::std::mem::size_of::<tagMQTMC2>() - 732usize];
     ["Alignment of tagMQTMC2"][::std::mem::align_of::<tagMQTMC2>() - 1usize];
-    ["Offset of field: tagMQTMC2::StrucId"][::std::mem::offset_of!(tagMQTMC2, StrucId) - 0usize];
-    ["Offset of field: tagMQTMC2::Version"][::std::mem::offset_of!(tagMQTMC2, Version) - 4usize];
-    ["Offset of field: tagMQTMC2::QName"][::std::mem::offset_of!(tagMQTMC2, QName) - 8usize];
-    ["Offset of field: tagMQTMC2::ProcessName"][::std::mem::offset_of!(tagMQTMC2, ProcessName) - 56usize];
-    ["Offset of field: tagMQTMC2::TriggerData"][::std::mem::offset_of!(tagMQTMC2, TriggerData) - 104usize];
-    ["Offset of field: tagMQTMC2::ApplType"][::std::mem::offset_of!(tagMQTMC2, ApplType) - 168usize];
-    ["Offset of field: tagMQTMC2::ApplId"][::std::mem::offset_of!(tagMQTMC2, ApplId) - 172usize];
-    ["Offset of field: tagMQTMC2::EnvData"][::std::mem::offset_of!(tagMQTMC2, EnvData) - 428usize];
-    ["Offset of field: tagMQTMC2::UserData"][::std::mem::offset_of!(tagMQTMC2, UserData) - 556usize];
-    ["Offset of field: tagMQTMC2::QMgrName"][::std::mem::offset_of!(tagMQTMC2, QMgrName) - 684usize];
+    [
+        "Offset of field: tagMQTMC2::StrucId",
+    ][::std::mem::offset_of!(tagMQTMC2, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQTMC2::Version",
+    ][::std::mem::offset_of!(tagMQTMC2, Version) - 4usize];
+    [
+        "Offset of field: tagMQTMC2::QName",
+    ][::std::mem::offset_of!(tagMQTMC2, QName) - 8usize];
+    [
+        "Offset of field: tagMQTMC2::ProcessName",
+    ][::std::mem::offset_of!(tagMQTMC2, ProcessName) - 56usize];
+    [
+        "Offset of field: tagMQTMC2::TriggerData",
+    ][::std::mem::offset_of!(tagMQTMC2, TriggerData) - 104usize];
+    [
+        "Offset of field: tagMQTMC2::ApplType",
+    ][::std::mem::offset_of!(tagMQTMC2, ApplType) - 168usize];
+    [
+        "Offset of field: tagMQTMC2::ApplId",
+    ][::std::mem::offset_of!(tagMQTMC2, ApplId) - 172usize];
+    [
+        "Offset of field: tagMQTMC2::EnvData",
+    ][::std::mem::offset_of!(tagMQTMC2, EnvData) - 428usize];
+    [
+        "Offset of field: tagMQTMC2::UserData",
+    ][::std::mem::offset_of!(tagMQTMC2, UserData) - 556usize];
+    [
+        "Offset of field: tagMQTMC2::QMgrName",
+    ][::std::mem::offset_of!(tagMQTMC2, QMgrName) - 684usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQWIH"][::std::mem::size_of::<tagMQWIH>() - 120usize];
     ["Alignment of tagMQWIH"][::std::mem::align_of::<tagMQWIH>() - 4usize];
-    ["Offset of field: tagMQWIH::StrucId"][::std::mem::offset_of!(tagMQWIH, StrucId) - 0usize];
-    ["Offset of field: tagMQWIH::Version"][::std::mem::offset_of!(tagMQWIH, Version) - 4usize];
-    ["Offset of field: tagMQWIH::StrucLength"][::std::mem::offset_of!(tagMQWIH, StrucLength) - 8usize];
-    ["Offset of field: tagMQWIH::Encoding"][::std::mem::offset_of!(tagMQWIH, Encoding) - 12usize];
-    ["Offset of field: tagMQWIH::CodedCharSetId"][::std::mem::offset_of!(tagMQWIH, CodedCharSetId) - 16usize];
-    ["Offset of field: tagMQWIH::Format"][::std::mem::offset_of!(tagMQWIH, Format) - 20usize];
-    ["Offset of field: tagMQWIH::Flags"][::std::mem::offset_of!(tagMQWIH, Flags) - 28usize];
-    ["Offset of field: tagMQWIH::ServiceName"][::std::mem::offset_of!(tagMQWIH, ServiceName) - 32usize];
-    ["Offset of field: tagMQWIH::ServiceStep"][::std::mem::offset_of!(tagMQWIH, ServiceStep) - 64usize];
-    ["Offset of field: tagMQWIH::MsgToken"][::std::mem::offset_of!(tagMQWIH, MsgToken) - 72usize];
-    ["Offset of field: tagMQWIH::Reserved"][::std::mem::offset_of!(tagMQWIH, Reserved) - 88usize];
+    [
+        "Offset of field: tagMQWIH::StrucId",
+    ][::std::mem::offset_of!(tagMQWIH, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQWIH::Version",
+    ][::std::mem::offset_of!(tagMQWIH, Version) - 4usize];
+    [
+        "Offset of field: tagMQWIH::StrucLength",
+    ][::std::mem::offset_of!(tagMQWIH, StrucLength) - 8usize];
+    [
+        "Offset of field: tagMQWIH::Encoding",
+    ][::std::mem::offset_of!(tagMQWIH, Encoding) - 12usize];
+    [
+        "Offset of field: tagMQWIH::CodedCharSetId",
+    ][::std::mem::offset_of!(tagMQWIH, CodedCharSetId) - 16usize];
+    [
+        "Offset of field: tagMQWIH::Format",
+    ][::std::mem::offset_of!(tagMQWIH, Format) - 20usize];
+    [
+        "Offset of field: tagMQWIH::Flags",
+    ][::std::mem::offset_of!(tagMQWIH, Flags) - 28usize];
+    [
+        "Offset of field: tagMQWIH::ServiceName",
+    ][::std::mem::offset_of!(tagMQWIH, ServiceName) - 32usize];
+    [
+        "Offset of field: tagMQWIH::ServiceStep",
+    ][::std::mem::offset_of!(tagMQWIH, ServiceStep) - 64usize];
+    [
+        "Offset of field: tagMQWIH::MsgToken",
+    ][::std::mem::offset_of!(tagMQWIH, MsgToken) - 72usize];
+    [
+        "Offset of field: tagMQWIH::Reserved",
+    ][::std::mem::offset_of!(tagMQWIH, Reserved) - 88usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQXQH"][::std::mem::size_of::<tagMQXQH>() - 428usize];
     ["Alignment of tagMQXQH"][::std::mem::align_of::<tagMQXQH>() - 4usize];
-    ["Offset of field: tagMQXQH::StrucId"][::std::mem::offset_of!(tagMQXQH, StrucId) - 0usize];
-    ["Offset of field: tagMQXQH::Version"][::std::mem::offset_of!(tagMQXQH, Version) - 4usize];
-    ["Offset of field: tagMQXQH::RemoteQName"][::std::mem::offset_of!(tagMQXQH, RemoteQName) - 8usize];
-    ["Offset of field: tagMQXQH::RemoteQMgrName"][::std::mem::offset_of!(tagMQXQH, RemoteQMgrName) - 56usize];
-    ["Offset of field: tagMQXQH::MsgDesc"][::std::mem::offset_of!(tagMQXQH, MsgDesc) - 104usize];
+    [
+        "Offset of field: tagMQXQH::StrucId",
+    ][::std::mem::offset_of!(tagMQXQH, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQXQH::Version",
+    ][::std::mem::offset_of!(tagMQXQH, Version) - 4usize];
+    [
+        "Offset of field: tagMQXQH::RemoteQName",
+    ][::std::mem::offset_of!(tagMQXQH, RemoteQName) - 8usize];
+    [
+        "Offset of field: tagMQXQH::RemoteQMgrName",
+    ][::std::mem::offset_of!(tagMQXQH, RemoteQMgrName) - 56usize];
+    [
+        "Offset of field: tagMQXQH::MsgDesc",
+    ][::std::mem::offset_of!(tagMQXQH, MsgDesc) - 104usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQCD"][::std::mem::size_of::<tagMQCD>() - 1992usize];
     ["Alignment of tagMQCD"][::std::mem::align_of::<tagMQCD>() - 8usize];
-    ["Offset of field: tagMQCD::ChannelName"][::std::mem::offset_of!(tagMQCD, ChannelName) - 0usize];
-    ["Offset of field: tagMQCD::Version"][::std::mem::offset_of!(tagMQCD, Version) - 20usize];
-    ["Offset of field: tagMQCD::ChannelType"][::std::mem::offset_of!(tagMQCD, ChannelType) - 24usize];
-    ["Offset of field: tagMQCD::TransportType"][::std::mem::offset_of!(tagMQCD, TransportType) - 28usize];
+    [
+        "Offset of field: tagMQCD::ChannelName",
+    ][::std::mem::offset_of!(tagMQCD, ChannelName) - 0usize];
+    [
+        "Offset of field: tagMQCD::Version",
+    ][::std::mem::offset_of!(tagMQCD, Version) - 20usize];
+    [
+        "Offset of field: tagMQCD::ChannelType",
+    ][::std::mem::offset_of!(tagMQCD, ChannelType) - 24usize];
+    [
+        "Offset of field: tagMQCD::TransportType",
+    ][::std::mem::offset_of!(tagMQCD, TransportType) - 28usize];
     ["Offset of field: tagMQCD::Desc"][::std::mem::offset_of!(tagMQCD, Desc) - 32usize];
-    ["Offset of field: tagMQCD::QMgrName"][::std::mem::offset_of!(tagMQCD, QMgrName) - 96usize];
-    ["Offset of field: tagMQCD::XmitQName"][::std::mem::offset_of!(tagMQCD, XmitQName) - 144usize];
-    ["Offset of field: tagMQCD::ShortConnectionName"][::std::mem::offset_of!(tagMQCD, ShortConnectionName) - 192usize];
-    ["Offset of field: tagMQCD::MCAName"][::std::mem::offset_of!(tagMQCD, MCAName) - 212usize];
-    ["Offset of field: tagMQCD::ModeName"][::std::mem::offset_of!(tagMQCD, ModeName) - 232usize];
-    ["Offset of field: tagMQCD::TpName"][::std::mem::offset_of!(tagMQCD, TpName) - 240usize];
-    ["Offset of field: tagMQCD::BatchSize"][::std::mem::offset_of!(tagMQCD, BatchSize) - 304usize];
-    ["Offset of field: tagMQCD::DiscInterval"][::std::mem::offset_of!(tagMQCD, DiscInterval) - 308usize];
-    ["Offset of field: tagMQCD::ShortRetryCount"][::std::mem::offset_of!(tagMQCD, ShortRetryCount) - 312usize];
-    ["Offset of field: tagMQCD::ShortRetryInterval"][::std::mem::offset_of!(tagMQCD, ShortRetryInterval) - 316usize];
-    ["Offset of field: tagMQCD::LongRetryCount"][::std::mem::offset_of!(tagMQCD, LongRetryCount) - 320usize];
-    ["Offset of field: tagMQCD::LongRetryInterval"][::std::mem::offset_of!(tagMQCD, LongRetryInterval) - 324usize];
-    ["Offset of field: tagMQCD::SecurityExit"][::std::mem::offset_of!(tagMQCD, SecurityExit) - 328usize];
-    ["Offset of field: tagMQCD::MsgExit"][::std::mem::offset_of!(tagMQCD, MsgExit) - 456usize];
-    ["Offset of field: tagMQCD::SendExit"][::std::mem::offset_of!(tagMQCD, SendExit) - 584usize];
-    ["Offset of field: tagMQCD::ReceiveExit"][::std::mem::offset_of!(tagMQCD, ReceiveExit) - 712usize];
-    ["Offset of field: tagMQCD::SeqNumberWrap"][::std::mem::offset_of!(tagMQCD, SeqNumberWrap) - 840usize];
-    ["Offset of field: tagMQCD::MaxMsgLength"][::std::mem::offset_of!(tagMQCD, MaxMsgLength) - 844usize];
-    ["Offset of field: tagMQCD::PutAuthority"][::std::mem::offset_of!(tagMQCD, PutAuthority) - 848usize];
-    ["Offset of field: tagMQCD::DataConversion"][::std::mem::offset_of!(tagMQCD, DataConversion) - 852usize];
-    ["Offset of field: tagMQCD::SecurityUserData"][::std::mem::offset_of!(tagMQCD, SecurityUserData) - 856usize];
-    ["Offset of field: tagMQCD::MsgUserData"][::std::mem::offset_of!(tagMQCD, MsgUserData) - 888usize];
-    ["Offset of field: tagMQCD::SendUserData"][::std::mem::offset_of!(tagMQCD, SendUserData) - 920usize];
-    ["Offset of field: tagMQCD::ReceiveUserData"][::std::mem::offset_of!(tagMQCD, ReceiveUserData) - 952usize];
-    ["Offset of field: tagMQCD::UserIdentifier"][::std::mem::offset_of!(tagMQCD, UserIdentifier) - 984usize];
-    ["Offset of field: tagMQCD::Password"][::std::mem::offset_of!(tagMQCD, Password) - 996usize];
-    ["Offset of field: tagMQCD::MCAUserIdentifier"][::std::mem::offset_of!(tagMQCD, MCAUserIdentifier) - 1008usize];
-    ["Offset of field: tagMQCD::MCAType"][::std::mem::offset_of!(tagMQCD, MCAType) - 1020usize];
-    ["Offset of field: tagMQCD::ConnectionName"][::std::mem::offset_of!(tagMQCD, ConnectionName) - 1024usize];
-    ["Offset of field: tagMQCD::RemoteUserIdentifier"][::std::mem::offset_of!(tagMQCD, RemoteUserIdentifier) - 1288usize];
-    ["Offset of field: tagMQCD::RemotePassword"][::std::mem::offset_of!(tagMQCD, RemotePassword) - 1300usize];
-    ["Offset of field: tagMQCD::MsgRetryExit"][::std::mem::offset_of!(tagMQCD, MsgRetryExit) - 1312usize];
-    ["Offset of field: tagMQCD::MsgRetryUserData"][::std::mem::offset_of!(tagMQCD, MsgRetryUserData) - 1440usize];
-    ["Offset of field: tagMQCD::MsgRetryCount"][::std::mem::offset_of!(tagMQCD, MsgRetryCount) - 1472usize];
-    ["Offset of field: tagMQCD::MsgRetryInterval"][::std::mem::offset_of!(tagMQCD, MsgRetryInterval) - 1476usize];
-    ["Offset of field: tagMQCD::HeartbeatInterval"][::std::mem::offset_of!(tagMQCD, HeartbeatInterval) - 1480usize];
-    ["Offset of field: tagMQCD::BatchInterval"][::std::mem::offset_of!(tagMQCD, BatchInterval) - 1484usize];
-    ["Offset of field: tagMQCD::NonPersistentMsgSpeed"][::std::mem::offset_of!(tagMQCD, NonPersistentMsgSpeed) - 1488usize];
-    ["Offset of field: tagMQCD::StrucLength"][::std::mem::offset_of!(tagMQCD, StrucLength) - 1492usize];
-    ["Offset of field: tagMQCD::ExitNameLength"][::std::mem::offset_of!(tagMQCD, ExitNameLength) - 1496usize];
-    ["Offset of field: tagMQCD::ExitDataLength"][::std::mem::offset_of!(tagMQCD, ExitDataLength) - 1500usize];
-    ["Offset of field: tagMQCD::MsgExitsDefined"][::std::mem::offset_of!(tagMQCD, MsgExitsDefined) - 1504usize];
-    ["Offset of field: tagMQCD::SendExitsDefined"][::std::mem::offset_of!(tagMQCD, SendExitsDefined) - 1508usize];
-    ["Offset of field: tagMQCD::ReceiveExitsDefined"][::std::mem::offset_of!(tagMQCD, ReceiveExitsDefined) - 1512usize];
-    ["Offset of field: tagMQCD::MsgExitPtr"][::std::mem::offset_of!(tagMQCD, MsgExitPtr) - 1520usize];
-    ["Offset of field: tagMQCD::MsgUserDataPtr"][::std::mem::offset_of!(tagMQCD, MsgUserDataPtr) - 1528usize];
-    ["Offset of field: tagMQCD::SendExitPtr"][::std::mem::offset_of!(tagMQCD, SendExitPtr) - 1536usize];
-    ["Offset of field: tagMQCD::SendUserDataPtr"][::std::mem::offset_of!(tagMQCD, SendUserDataPtr) - 1544usize];
-    ["Offset of field: tagMQCD::ReceiveExitPtr"][::std::mem::offset_of!(tagMQCD, ReceiveExitPtr) - 1552usize];
-    ["Offset of field: tagMQCD::ReceiveUserDataPtr"][::std::mem::offset_of!(tagMQCD, ReceiveUserDataPtr) - 1560usize];
-    ["Offset of field: tagMQCD::ClusterPtr"][::std::mem::offset_of!(tagMQCD, ClusterPtr) - 1568usize];
-    ["Offset of field: tagMQCD::ClustersDefined"][::std::mem::offset_of!(tagMQCD, ClustersDefined) - 1576usize];
-    ["Offset of field: tagMQCD::NetworkPriority"][::std::mem::offset_of!(tagMQCD, NetworkPriority) - 1580usize];
-    ["Offset of field: tagMQCD::LongMCAUserIdLength"][::std::mem::offset_of!(tagMQCD, LongMCAUserIdLength) - 1584usize];
-    ["Offset of field: tagMQCD::LongRemoteUserIdLength"][::std::mem::offset_of!(tagMQCD, LongRemoteUserIdLength) - 1588usize];
-    ["Offset of field: tagMQCD::LongMCAUserIdPtr"][::std::mem::offset_of!(tagMQCD, LongMCAUserIdPtr) - 1592usize];
-    ["Offset of field: tagMQCD::LongRemoteUserIdPtr"][::std::mem::offset_of!(tagMQCD, LongRemoteUserIdPtr) - 1600usize];
-    ["Offset of field: tagMQCD::MCASecurityId"][::std::mem::offset_of!(tagMQCD, MCASecurityId) - 1608usize];
-    ["Offset of field: tagMQCD::RemoteSecurityId"][::std::mem::offset_of!(tagMQCD, RemoteSecurityId) - 1648usize];
-    ["Offset of field: tagMQCD::SSLCipherSpec"][::std::mem::offset_of!(tagMQCD, SSLCipherSpec) - 1688usize];
-    ["Offset of field: tagMQCD::SSLPeerNamePtr"][::std::mem::offset_of!(tagMQCD, SSLPeerNamePtr) - 1720usize];
-    ["Offset of field: tagMQCD::SSLPeerNameLength"][::std::mem::offset_of!(tagMQCD, SSLPeerNameLength) - 1728usize];
-    ["Offset of field: tagMQCD::SSLClientAuth"][::std::mem::offset_of!(tagMQCD, SSLClientAuth) - 1732usize];
-    ["Offset of field: tagMQCD::KeepAliveInterval"][::std::mem::offset_of!(tagMQCD, KeepAliveInterval) - 1736usize];
-    ["Offset of field: tagMQCD::LocalAddress"][::std::mem::offset_of!(tagMQCD, LocalAddress) - 1740usize];
-    ["Offset of field: tagMQCD::BatchHeartbeat"][::std::mem::offset_of!(tagMQCD, BatchHeartbeat) - 1788usize];
-    ["Offset of field: tagMQCD::HdrCompList"][::std::mem::offset_of!(tagMQCD, HdrCompList) - 1792usize];
-    ["Offset of field: tagMQCD::MsgCompList"][::std::mem::offset_of!(tagMQCD, MsgCompList) - 1800usize];
-    ["Offset of field: tagMQCD::CLWLChannelRank"][::std::mem::offset_of!(tagMQCD, CLWLChannelRank) - 1864usize];
-    ["Offset of field: tagMQCD::CLWLChannelPriority"][::std::mem::offset_of!(tagMQCD, CLWLChannelPriority) - 1868usize];
-    ["Offset of field: tagMQCD::CLWLChannelWeight"][::std::mem::offset_of!(tagMQCD, CLWLChannelWeight) - 1872usize];
-    ["Offset of field: tagMQCD::ChannelMonitoring"][::std::mem::offset_of!(tagMQCD, ChannelMonitoring) - 1876usize];
-    ["Offset of field: tagMQCD::ChannelStatistics"][::std::mem::offset_of!(tagMQCD, ChannelStatistics) - 1880usize];
-    ["Offset of field: tagMQCD::SharingConversations"][::std::mem::offset_of!(tagMQCD, SharingConversations) - 1884usize];
-    ["Offset of field: tagMQCD::PropertyControl"][::std::mem::offset_of!(tagMQCD, PropertyControl) - 1888usize];
-    ["Offset of field: tagMQCD::MaxInstances"][::std::mem::offset_of!(tagMQCD, MaxInstances) - 1892usize];
-    ["Offset of field: tagMQCD::MaxInstancesPerClient"][::std::mem::offset_of!(tagMQCD, MaxInstancesPerClient) - 1896usize];
-    ["Offset of field: tagMQCD::ClientChannelWeight"][::std::mem::offset_of!(tagMQCD, ClientChannelWeight) - 1900usize];
-    ["Offset of field: tagMQCD::ConnectionAffinity"][::std::mem::offset_of!(tagMQCD, ConnectionAffinity) - 1904usize];
-    ["Offset of field: tagMQCD::BatchDataLimit"][::std::mem::offset_of!(tagMQCD, BatchDataLimit) - 1908usize];
-    ["Offset of field: tagMQCD::UseDLQ"][::std::mem::offset_of!(tagMQCD, UseDLQ) - 1912usize];
-    ["Offset of field: tagMQCD::DefReconnect"][::std::mem::offset_of!(tagMQCD, DefReconnect) - 1916usize];
-    ["Offset of field: tagMQCD::CertificateLabel"][::std::mem::offset_of!(tagMQCD, CertificateLabel) - 1920usize];
-    ["Offset of field: tagMQCD::SPLProtection"][::std::mem::offset_of!(tagMQCD, SPLProtection) - 1984usize];
+    [
+        "Offset of field: tagMQCD::QMgrName",
+    ][::std::mem::offset_of!(tagMQCD, QMgrName) - 96usize];
+    [
+        "Offset of field: tagMQCD::XmitQName",
+    ][::std::mem::offset_of!(tagMQCD, XmitQName) - 144usize];
+    [
+        "Offset of field: tagMQCD::ShortConnectionName",
+    ][::std::mem::offset_of!(tagMQCD, ShortConnectionName) - 192usize];
+    [
+        "Offset of field: tagMQCD::MCAName",
+    ][::std::mem::offset_of!(tagMQCD, MCAName) - 212usize];
+    [
+        "Offset of field: tagMQCD::ModeName",
+    ][::std::mem::offset_of!(tagMQCD, ModeName) - 232usize];
+    [
+        "Offset of field: tagMQCD::TpName",
+    ][::std::mem::offset_of!(tagMQCD, TpName) - 240usize];
+    [
+        "Offset of field: tagMQCD::BatchSize",
+    ][::std::mem::offset_of!(tagMQCD, BatchSize) - 304usize];
+    [
+        "Offset of field: tagMQCD::DiscInterval",
+    ][::std::mem::offset_of!(tagMQCD, DiscInterval) - 308usize];
+    [
+        "Offset of field: tagMQCD::ShortRetryCount",
+    ][::std::mem::offset_of!(tagMQCD, ShortRetryCount) - 312usize];
+    [
+        "Offset of field: tagMQCD::ShortRetryInterval",
+    ][::std::mem::offset_of!(tagMQCD, ShortRetryInterval) - 316usize];
+    [
+        "Offset of field: tagMQCD::LongRetryCount",
+    ][::std::mem::offset_of!(tagMQCD, LongRetryCount) - 320usize];
+    [
+        "Offset of field: tagMQCD::LongRetryInterval",
+    ][::std::mem::offset_of!(tagMQCD, LongRetryInterval) - 324usize];
+    [
+        "Offset of field: tagMQCD::SecurityExit",
+    ][::std::mem::offset_of!(tagMQCD, SecurityExit) - 328usize];
+    [
+        "Offset of field: tagMQCD::MsgExit",
+    ][::std::mem::offset_of!(tagMQCD, MsgExit) - 456usize];
+    [
+        "Offset of field: tagMQCD::SendExit",
+    ][::std::mem::offset_of!(tagMQCD, SendExit) - 584usize];
+    [
+        "Offset of field: tagMQCD::ReceiveExit",
+    ][::std::mem::offset_of!(tagMQCD, ReceiveExit) - 712usize];
+    [
+        "Offset of field: tagMQCD::SeqNumberWrap",
+    ][::std::mem::offset_of!(tagMQCD, SeqNumberWrap) - 840usize];
+    [
+        "Offset of field: tagMQCD::MaxMsgLength",
+    ][::std::mem::offset_of!(tagMQCD, MaxMsgLength) - 844usize];
+    [
+        "Offset of field: tagMQCD::PutAuthority",
+    ][::std::mem::offset_of!(tagMQCD, PutAuthority) - 848usize];
+    [
+        "Offset of field: tagMQCD::DataConversion",
+    ][::std::mem::offset_of!(tagMQCD, DataConversion) - 852usize];
+    [
+        "Offset of field: tagMQCD::SecurityUserData",
+    ][::std::mem::offset_of!(tagMQCD, SecurityUserData) - 856usize];
+    [
+        "Offset of field: tagMQCD::MsgUserData",
+    ][::std::mem::offset_of!(tagMQCD, MsgUserData) - 888usize];
+    [
+        "Offset of field: tagMQCD::SendUserData",
+    ][::std::mem::offset_of!(tagMQCD, SendUserData) - 920usize];
+    [
+        "Offset of field: tagMQCD::ReceiveUserData",
+    ][::std::mem::offset_of!(tagMQCD, ReceiveUserData) - 952usize];
+    [
+        "Offset of field: tagMQCD::UserIdentifier",
+    ][::std::mem::offset_of!(tagMQCD, UserIdentifier) - 984usize];
+    [
+        "Offset of field: tagMQCD::Password",
+    ][::std::mem::offset_of!(tagMQCD, Password) - 996usize];
+    [
+        "Offset of field: tagMQCD::MCAUserIdentifier",
+    ][::std::mem::offset_of!(tagMQCD, MCAUserIdentifier) - 1008usize];
+    [
+        "Offset of field: tagMQCD::MCAType",
+    ][::std::mem::offset_of!(tagMQCD, MCAType) - 1020usize];
+    [
+        "Offset of field: tagMQCD::ConnectionName",
+    ][::std::mem::offset_of!(tagMQCD, ConnectionName) - 1024usize];
+    [
+        "Offset of field: tagMQCD::RemoteUserIdentifier",
+    ][::std::mem::offset_of!(tagMQCD, RemoteUserIdentifier) - 1288usize];
+    [
+        "Offset of field: tagMQCD::RemotePassword",
+    ][::std::mem::offset_of!(tagMQCD, RemotePassword) - 1300usize];
+    [
+        "Offset of field: tagMQCD::MsgRetryExit",
+    ][::std::mem::offset_of!(tagMQCD, MsgRetryExit) - 1312usize];
+    [
+        "Offset of field: tagMQCD::MsgRetryUserData",
+    ][::std::mem::offset_of!(tagMQCD, MsgRetryUserData) - 1440usize];
+    [
+        "Offset of field: tagMQCD::MsgRetryCount",
+    ][::std::mem::offset_of!(tagMQCD, MsgRetryCount) - 1472usize];
+    [
+        "Offset of field: tagMQCD::MsgRetryInterval",
+    ][::std::mem::offset_of!(tagMQCD, MsgRetryInterval) - 1476usize];
+    [
+        "Offset of field: tagMQCD::HeartbeatInterval",
+    ][::std::mem::offset_of!(tagMQCD, HeartbeatInterval) - 1480usize];
+    [
+        "Offset of field: tagMQCD::BatchInterval",
+    ][::std::mem::offset_of!(tagMQCD, BatchInterval) - 1484usize];
+    [
+        "Offset of field: tagMQCD::NonPersistentMsgSpeed",
+    ][::std::mem::offset_of!(tagMQCD, NonPersistentMsgSpeed) - 1488usize];
+    [
+        "Offset of field: tagMQCD::StrucLength",
+    ][::std::mem::offset_of!(tagMQCD, StrucLength) - 1492usize];
+    [
+        "Offset of field: tagMQCD::ExitNameLength",
+    ][::std::mem::offset_of!(tagMQCD, ExitNameLength) - 1496usize];
+    [
+        "Offset of field: tagMQCD::ExitDataLength",
+    ][::std::mem::offset_of!(tagMQCD, ExitDataLength) - 1500usize];
+    [
+        "Offset of field: tagMQCD::MsgExitsDefined",
+    ][::std::mem::offset_of!(tagMQCD, MsgExitsDefined) - 1504usize];
+    [
+        "Offset of field: tagMQCD::SendExitsDefined",
+    ][::std::mem::offset_of!(tagMQCD, SendExitsDefined) - 1508usize];
+    [
+        "Offset of field: tagMQCD::ReceiveExitsDefined",
+    ][::std::mem::offset_of!(tagMQCD, ReceiveExitsDefined) - 1512usize];
+    [
+        "Offset of field: tagMQCD::MsgExitPtr",
+    ][::std::mem::offset_of!(tagMQCD, MsgExitPtr) - 1520usize];
+    [
+        "Offset of field: tagMQCD::MsgUserDataPtr",
+    ][::std::mem::offset_of!(tagMQCD, MsgUserDataPtr) - 1528usize];
+    [
+        "Offset of field: tagMQCD::SendExitPtr",
+    ][::std::mem::offset_of!(tagMQCD, SendExitPtr) - 1536usize];
+    [
+        "Offset of field: tagMQCD::SendUserDataPtr",
+    ][::std::mem::offset_of!(tagMQCD, SendUserDataPtr) - 1544usize];
+    [
+        "Offset of field: tagMQCD::ReceiveExitPtr",
+    ][::std::mem::offset_of!(tagMQCD, ReceiveExitPtr) - 1552usize];
+    [
+        "Offset of field: tagMQCD::ReceiveUserDataPtr",
+    ][::std::mem::offset_of!(tagMQCD, ReceiveUserDataPtr) - 1560usize];
+    [
+        "Offset of field: tagMQCD::ClusterPtr",
+    ][::std::mem::offset_of!(tagMQCD, ClusterPtr) - 1568usize];
+    [
+        "Offset of field: tagMQCD::ClustersDefined",
+    ][::std::mem::offset_of!(tagMQCD, ClustersDefined) - 1576usize];
+    [
+        "Offset of field: tagMQCD::NetworkPriority",
+    ][::std::mem::offset_of!(tagMQCD, NetworkPriority) - 1580usize];
+    [
+        "Offset of field: tagMQCD::LongMCAUserIdLength",
+    ][::std::mem::offset_of!(tagMQCD, LongMCAUserIdLength) - 1584usize];
+    [
+        "Offset of field: tagMQCD::LongRemoteUserIdLength",
+    ][::std::mem::offset_of!(tagMQCD, LongRemoteUserIdLength) - 1588usize];
+    [
+        "Offset of field: tagMQCD::LongMCAUserIdPtr",
+    ][::std::mem::offset_of!(tagMQCD, LongMCAUserIdPtr) - 1592usize];
+    [
+        "Offset of field: tagMQCD::LongRemoteUserIdPtr",
+    ][::std::mem::offset_of!(tagMQCD, LongRemoteUserIdPtr) - 1600usize];
+    [
+        "Offset of field: tagMQCD::MCASecurityId",
+    ][::std::mem::offset_of!(tagMQCD, MCASecurityId) - 1608usize];
+    [
+        "Offset of field: tagMQCD::RemoteSecurityId",
+    ][::std::mem::offset_of!(tagMQCD, RemoteSecurityId) - 1648usize];
+    [
+        "Offset of field: tagMQCD::SSLCipherSpec",
+    ][::std::mem::offset_of!(tagMQCD, SSLCipherSpec) - 1688usize];
+    [
+        "Offset of field: tagMQCD::SSLPeerNamePtr",
+    ][::std::mem::offset_of!(tagMQCD, SSLPeerNamePtr) - 1720usize];
+    [
+        "Offset of field: tagMQCD::SSLPeerNameLength",
+    ][::std::mem::offset_of!(tagMQCD, SSLPeerNameLength) - 1728usize];
+    [
+        "Offset of field: tagMQCD::SSLClientAuth",
+    ][::std::mem::offset_of!(tagMQCD, SSLClientAuth) - 1732usize];
+    [
+        "Offset of field: tagMQCD::KeepAliveInterval",
+    ][::std::mem::offset_of!(tagMQCD, KeepAliveInterval) - 1736usize];
+    [
+        "Offset of field: tagMQCD::LocalAddress",
+    ][::std::mem::offset_of!(tagMQCD, LocalAddress) - 1740usize];
+    [
+        "Offset of field: tagMQCD::BatchHeartbeat",
+    ][::std::mem::offset_of!(tagMQCD, BatchHeartbeat) - 1788usize];
+    [
+        "Offset of field: tagMQCD::HdrCompList",
+    ][::std::mem::offset_of!(tagMQCD, HdrCompList) - 1792usize];
+    [
+        "Offset of field: tagMQCD::MsgCompList",
+    ][::std::mem::offset_of!(tagMQCD, MsgCompList) - 1800usize];
+    [
+        "Offset of field: tagMQCD::CLWLChannelRank",
+    ][::std::mem::offset_of!(tagMQCD, CLWLChannelRank) - 1864usize];
+    [
+        "Offset of field: tagMQCD::CLWLChannelPriority",
+    ][::std::mem::offset_of!(tagMQCD, CLWLChannelPriority) - 1868usize];
+    [
+        "Offset of field: tagMQCD::CLWLChannelWeight",
+    ][::std::mem::offset_of!(tagMQCD, CLWLChannelWeight) - 1872usize];
+    [
+        "Offset of field: tagMQCD::ChannelMonitoring",
+    ][::std::mem::offset_of!(tagMQCD, ChannelMonitoring) - 1876usize];
+    [
+        "Offset of field: tagMQCD::ChannelStatistics",
+    ][::std::mem::offset_of!(tagMQCD, ChannelStatistics) - 1880usize];
+    [
+        "Offset of field: tagMQCD::SharingConversations",
+    ][::std::mem::offset_of!(tagMQCD, SharingConversations) - 1884usize];
+    [
+        "Offset of field: tagMQCD::PropertyControl",
+    ][::std::mem::offset_of!(tagMQCD, PropertyControl) - 1888usize];
+    [
+        "Offset of field: tagMQCD::MaxInstances",
+    ][::std::mem::offset_of!(tagMQCD, MaxInstances) - 1892usize];
+    [
+        "Offset of field: tagMQCD::MaxInstancesPerClient",
+    ][::std::mem::offset_of!(tagMQCD, MaxInstancesPerClient) - 1896usize];
+    [
+        "Offset of field: tagMQCD::ClientChannelWeight",
+    ][::std::mem::offset_of!(tagMQCD, ClientChannelWeight) - 1900usize];
+    [
+        "Offset of field: tagMQCD::ConnectionAffinity",
+    ][::std::mem::offset_of!(tagMQCD, ConnectionAffinity) - 1904usize];
+    [
+        "Offset of field: tagMQCD::BatchDataLimit",
+    ][::std::mem::offset_of!(tagMQCD, BatchDataLimit) - 1908usize];
+    [
+        "Offset of field: tagMQCD::UseDLQ",
+    ][::std::mem::offset_of!(tagMQCD, UseDLQ) - 1912usize];
+    [
+        "Offset of field: tagMQCD::DefReconnect",
+    ][::std::mem::offset_of!(tagMQCD, DefReconnect) - 1916usize];
+    [
+        "Offset of field: tagMQCD::CertificateLabel",
+    ][::std::mem::offset_of!(tagMQCD, CertificateLabel) - 1920usize];
+    [
+        "Offset of field: tagMQCD::SPLProtection",
+    ][::std::mem::offset_of!(tagMQCD, SPLProtection) - 1984usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQACH"][::std::mem::size_of::<tagMQACH>() - 72usize];
     ["Alignment of tagMQACH"][::std::mem::align_of::<tagMQACH>() - 8usize];
-    ["Offset of field: tagMQACH::StrucId"][::std::mem::offset_of!(tagMQACH, StrucId) - 0usize];
-    ["Offset of field: tagMQACH::Version"][::std::mem::offset_of!(tagMQACH, Version) - 4usize];
-    ["Offset of field: tagMQACH::StrucLength"][::std::mem::offset_of!(tagMQACH, StrucLength) - 8usize];
-    ["Offset of field: tagMQACH::ChainAreaLength"][::std::mem::offset_of!(tagMQACH, ChainAreaLength) - 12usize];
-    ["Offset of field: tagMQACH::ExitInfoName"][::std::mem::offset_of!(tagMQACH, ExitInfoName) - 16usize];
-    ["Offset of field: tagMQACH::NextChainAreaPtr"][::std::mem::offset_of!(tagMQACH, NextChainAreaPtr) - 64usize];
+    [
+        "Offset of field: tagMQACH::StrucId",
+    ][::std::mem::offset_of!(tagMQACH, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQACH::Version",
+    ][::std::mem::offset_of!(tagMQACH, Version) - 4usize];
+    [
+        "Offset of field: tagMQACH::StrucLength",
+    ][::std::mem::offset_of!(tagMQACH, StrucLength) - 8usize];
+    [
+        "Offset of field: tagMQACH::ChainAreaLength",
+    ][::std::mem::offset_of!(tagMQACH, ChainAreaLength) - 12usize];
+    [
+        "Offset of field: tagMQACH::ExitInfoName",
+    ][::std::mem::offset_of!(tagMQACH, ExitInfoName) - 16usize];
+    [
+        "Offset of field: tagMQACH::NextChainAreaPtr",
+    ][::std::mem::offset_of!(tagMQACH, NextChainAreaPtr) - 64usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQAXC"][::std::mem::size_of::<tagMQAXC>() - 424usize];
     ["Alignment of tagMQAXC"][::std::mem::align_of::<tagMQAXC>() - 8usize];
-    ["Offset of field: tagMQAXC::StrucId"][::std::mem::offset_of!(tagMQAXC, StrucId) - 0usize];
-    ["Offset of field: tagMQAXC::Version"][::std::mem::offset_of!(tagMQAXC, Version) - 4usize];
-    ["Offset of field: tagMQAXC::Environment"][::std::mem::offset_of!(tagMQAXC, Environment) - 8usize];
-    ["Offset of field: tagMQAXC::UserId"][::std::mem::offset_of!(tagMQAXC, UserId) - 12usize];
-    ["Offset of field: tagMQAXC::SecurityId"][::std::mem::offset_of!(tagMQAXC, SecurityId) - 24usize];
-    ["Offset of field: tagMQAXC::ConnectionName"][::std::mem::offset_of!(tagMQAXC, ConnectionName) - 64usize];
-    ["Offset of field: tagMQAXC::LongMCAUserIdLength"][::std::mem::offset_of!(tagMQAXC, LongMCAUserIdLength) - 328usize];
-    ["Offset of field: tagMQAXC::LongRemoteUserIdLength"][::std::mem::offset_of!(tagMQAXC, LongRemoteUserIdLength) - 332usize];
-    ["Offset of field: tagMQAXC::LongMCAUserIdPtr"][::std::mem::offset_of!(tagMQAXC, LongMCAUserIdPtr) - 336usize];
-    ["Offset of field: tagMQAXC::LongRemoteUserIdPtr"][::std::mem::offset_of!(tagMQAXC, LongRemoteUserIdPtr) - 344usize];
-    ["Offset of field: tagMQAXC::ApplName"][::std::mem::offset_of!(tagMQAXC, ApplName) - 352usize];
-    ["Offset of field: tagMQAXC::ApplType"][::std::mem::offset_of!(tagMQAXC, ApplType) - 380usize];
-    ["Offset of field: tagMQAXC::ProcessId"][::std::mem::offset_of!(tagMQAXC, ProcessId) - 384usize];
-    ["Offset of field: tagMQAXC::ThreadId"][::std::mem::offset_of!(tagMQAXC, ThreadId) - 388usize];
-    ["Offset of field: tagMQAXC::ChannelName"][::std::mem::offset_of!(tagMQAXC, ChannelName) - 392usize];
-    ["Offset of field: tagMQAXC::Reserved1"][::std::mem::offset_of!(tagMQAXC, Reserved1) - 412usize];
-    ["Offset of field: tagMQAXC::pChannelDefinition"][::std::mem::offset_of!(tagMQAXC, pChannelDefinition) - 416usize];
+    [
+        "Offset of field: tagMQAXC::StrucId",
+    ][::std::mem::offset_of!(tagMQAXC, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQAXC::Version",
+    ][::std::mem::offset_of!(tagMQAXC, Version) - 4usize];
+    [
+        "Offset of field: tagMQAXC::Environment",
+    ][::std::mem::offset_of!(tagMQAXC, Environment) - 8usize];
+    [
+        "Offset of field: tagMQAXC::UserId",
+    ][::std::mem::offset_of!(tagMQAXC, UserId) - 12usize];
+    [
+        "Offset of field: tagMQAXC::SecurityId",
+    ][::std::mem::offset_of!(tagMQAXC, SecurityId) - 24usize];
+    [
+        "Offset of field: tagMQAXC::ConnectionName",
+    ][::std::mem::offset_of!(tagMQAXC, ConnectionName) - 64usize];
+    [
+        "Offset of field: tagMQAXC::LongMCAUserIdLength",
+    ][::std::mem::offset_of!(tagMQAXC, LongMCAUserIdLength) - 328usize];
+    [
+        "Offset of field: tagMQAXC::LongRemoteUserIdLength",
+    ][::std::mem::offset_of!(tagMQAXC, LongRemoteUserIdLength) - 332usize];
+    [
+        "Offset of field: tagMQAXC::LongMCAUserIdPtr",
+    ][::std::mem::offset_of!(tagMQAXC, LongMCAUserIdPtr) - 336usize];
+    [
+        "Offset of field: tagMQAXC::LongRemoteUserIdPtr",
+    ][::std::mem::offset_of!(tagMQAXC, LongRemoteUserIdPtr) - 344usize];
+    [
+        "Offset of field: tagMQAXC::ApplName",
+    ][::std::mem::offset_of!(tagMQAXC, ApplName) - 352usize];
+    [
+        "Offset of field: tagMQAXC::ApplType",
+    ][::std::mem::offset_of!(tagMQAXC, ApplType) - 380usize];
+    [
+        "Offset of field: tagMQAXC::ProcessId",
+    ][::std::mem::offset_of!(tagMQAXC, ProcessId) - 384usize];
+    [
+        "Offset of field: tagMQAXC::ThreadId",
+    ][::std::mem::offset_of!(tagMQAXC, ThreadId) - 388usize];
+    [
+        "Offset of field: tagMQAXC::ChannelName",
+    ][::std::mem::offset_of!(tagMQAXC, ChannelName) - 392usize];
+    [
+        "Offset of field: tagMQAXC::Reserved1",
+    ][::std::mem::offset_of!(tagMQAXC, Reserved1) - 412usize];
+    [
+        "Offset of field: tagMQAXC::pChannelDefinition",
+    ][::std::mem::offset_of!(tagMQAXC, pChannelDefinition) - 416usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQAXP"][::std::mem::size_of::<tagMQAXP>() - 256usize];
     ["Alignment of tagMQAXP"][::std::mem::align_of::<tagMQAXP>() - 8usize];
-    ["Offset of field: tagMQAXP::StrucId"][::std::mem::offset_of!(tagMQAXP, StrucId) - 0usize];
-    ["Offset of field: tagMQAXP::Version"][::std::mem::offset_of!(tagMQAXP, Version) - 4usize];
-    ["Offset of field: tagMQAXP::ExitId"][::std::mem::offset_of!(tagMQAXP, ExitId) - 8usize];
-    ["Offset of field: tagMQAXP::ExitReason"][::std::mem::offset_of!(tagMQAXP, ExitReason) - 12usize];
-    ["Offset of field: tagMQAXP::ExitResponse"][::std::mem::offset_of!(tagMQAXP, ExitResponse) - 16usize];
-    ["Offset of field: tagMQAXP::ExitResponse2"][::std::mem::offset_of!(tagMQAXP, ExitResponse2) - 20usize];
-    ["Offset of field: tagMQAXP::Feedback"][::std::mem::offset_of!(tagMQAXP, Feedback) - 24usize];
-    ["Offset of field: tagMQAXP::APICallerType"][::std::mem::offset_of!(tagMQAXP, APICallerType) - 28usize];
-    ["Offset of field: tagMQAXP::ExitUserArea"][::std::mem::offset_of!(tagMQAXP, ExitUserArea) - 32usize];
-    ["Offset of field: tagMQAXP::ExitData"][::std::mem::offset_of!(tagMQAXP, ExitData) - 48usize];
-    ["Offset of field: tagMQAXP::ExitInfoName"][::std::mem::offset_of!(tagMQAXP, ExitInfoName) - 80usize];
-    ["Offset of field: tagMQAXP::ExitPDArea"][::std::mem::offset_of!(tagMQAXP, ExitPDArea) - 128usize];
-    ["Offset of field: tagMQAXP::QMgrName"][::std::mem::offset_of!(tagMQAXP, QMgrName) - 176usize];
-    ["Offset of field: tagMQAXP::ExitChainAreaPtr"][::std::mem::offset_of!(tagMQAXP, ExitChainAreaPtr) - 224usize];
-    ["Offset of field: tagMQAXP::Hconfig"][::std::mem::offset_of!(tagMQAXP, Hconfig) - 232usize];
-    ["Offset of field: tagMQAXP::Function"][::std::mem::offset_of!(tagMQAXP, Function) - 240usize];
-    ["Offset of field: tagMQAXP::ExitMsgHandle"][::std::mem::offset_of!(tagMQAXP, ExitMsgHandle) - 248usize];
+    [
+        "Offset of field: tagMQAXP::StrucId",
+    ][::std::mem::offset_of!(tagMQAXP, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQAXP::Version",
+    ][::std::mem::offset_of!(tagMQAXP, Version) - 4usize];
+    [
+        "Offset of field: tagMQAXP::ExitId",
+    ][::std::mem::offset_of!(tagMQAXP, ExitId) - 8usize];
+    [
+        "Offset of field: tagMQAXP::ExitReason",
+    ][::std::mem::offset_of!(tagMQAXP, ExitReason) - 12usize];
+    [
+        "Offset of field: tagMQAXP::ExitResponse",
+    ][::std::mem::offset_of!(tagMQAXP, ExitResponse) - 16usize];
+    [
+        "Offset of field: tagMQAXP::ExitResponse2",
+    ][::std::mem::offset_of!(tagMQAXP, ExitResponse2) - 20usize];
+    [
+        "Offset of field: tagMQAXP::Feedback",
+    ][::std::mem::offset_of!(tagMQAXP, Feedback) - 24usize];
+    [
+        "Offset of field: tagMQAXP::APICallerType",
+    ][::std::mem::offset_of!(tagMQAXP, APICallerType) - 28usize];
+    [
+        "Offset of field: tagMQAXP::ExitUserArea",
+    ][::std::mem::offset_of!(tagMQAXP, ExitUserArea) - 32usize];
+    [
+        "Offset of field: tagMQAXP::ExitData",
+    ][::std::mem::offset_of!(tagMQAXP, ExitData) - 48usize];
+    [
+        "Offset of field: tagMQAXP::ExitInfoName",
+    ][::std::mem::offset_of!(tagMQAXP, ExitInfoName) - 80usize];
+    [
+        "Offset of field: tagMQAXP::ExitPDArea",
+    ][::std::mem::offset_of!(tagMQAXP, ExitPDArea) - 128usize];
+    [
+        "Offset of field: tagMQAXP::QMgrName",
+    ][::std::mem::offset_of!(tagMQAXP, QMgrName) - 176usize];
+    [
+        "Offset of field: tagMQAXP::ExitChainAreaPtr",
+    ][::std::mem::offset_of!(tagMQAXP, ExitChainAreaPtr) - 224usize];
+    [
+        "Offset of field: tagMQAXP::Hconfig",
+    ][::std::mem::offset_of!(tagMQAXP, Hconfig) - 232usize];
+    [
+        "Offset of field: tagMQAXP::Function",
+    ][::std::mem::offset_of!(tagMQAXP, Function) - 240usize];
+    [
+        "Offset of field: tagMQAXP::ExitMsgHandle",
+    ][::std::mem::offset_of!(tagMQAXP, ExitMsgHandle) - 248usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQCXP"][::std::mem::size_of::<tagMQCXP>() - 240usize];
     ["Alignment of tagMQCXP"][::std::mem::align_of::<tagMQCXP>() - 8usize];
-    ["Offset of field: tagMQCXP::StrucId"][::std::mem::offset_of!(tagMQCXP, StrucId) - 0usize];
-    ["Offset of field: tagMQCXP::Version"][::std::mem::offset_of!(tagMQCXP, Version) - 4usize];
-    ["Offset of field: tagMQCXP::ExitId"][::std::mem::offset_of!(tagMQCXP, ExitId) - 8usize];
-    ["Offset of field: tagMQCXP::ExitReason"][::std::mem::offset_of!(tagMQCXP, ExitReason) - 12usize];
-    ["Offset of field: tagMQCXP::ExitResponse"][::std::mem::offset_of!(tagMQCXP, ExitResponse) - 16usize];
-    ["Offset of field: tagMQCXP::ExitResponse2"][::std::mem::offset_of!(tagMQCXP, ExitResponse2) - 20usize];
-    ["Offset of field: tagMQCXP::Feedback"][::std::mem::offset_of!(tagMQCXP, Feedback) - 24usize];
-    ["Offset of field: tagMQCXP::MaxSegmentLength"][::std::mem::offset_of!(tagMQCXP, MaxSegmentLength) - 28usize];
-    ["Offset of field: tagMQCXP::ExitUserArea"][::std::mem::offset_of!(tagMQCXP, ExitUserArea) - 32usize];
-    ["Offset of field: tagMQCXP::ExitData"][::std::mem::offset_of!(tagMQCXP, ExitData) - 48usize];
-    ["Offset of field: tagMQCXP::MsgRetryCount"][::std::mem::offset_of!(tagMQCXP, MsgRetryCount) - 80usize];
-    ["Offset of field: tagMQCXP::MsgRetryInterval"][::std::mem::offset_of!(tagMQCXP, MsgRetryInterval) - 84usize];
-    ["Offset of field: tagMQCXP::MsgRetryReason"][::std::mem::offset_of!(tagMQCXP, MsgRetryReason) - 88usize];
-    ["Offset of field: tagMQCXP::HeaderLength"][::std::mem::offset_of!(tagMQCXP, HeaderLength) - 92usize];
-    ["Offset of field: tagMQCXP::PartnerName"][::std::mem::offset_of!(tagMQCXP, PartnerName) - 96usize];
-    ["Offset of field: tagMQCXP::FAPLevel"][::std::mem::offset_of!(tagMQCXP, FAPLevel) - 144usize];
-    ["Offset of field: tagMQCXP::CapabilityFlags"][::std::mem::offset_of!(tagMQCXP, CapabilityFlags) - 148usize];
-    ["Offset of field: tagMQCXP::ExitNumber"][::std::mem::offset_of!(tagMQCXP, ExitNumber) - 152usize];
-    ["Offset of field: tagMQCXP::ExitSpace"][::std::mem::offset_of!(tagMQCXP, ExitSpace) - 156usize];
-    ["Offset of field: tagMQCXP::SSLCertUserid"][::std::mem::offset_of!(tagMQCXP, SSLCertUserid) - 160usize];
-    ["Offset of field: tagMQCXP::SSLRemCertIssNameLength"][::std::mem::offset_of!(tagMQCXP, SSLRemCertIssNameLength) - 172usize];
-    ["Offset of field: tagMQCXP::SSLRemCertIssNamePtr"][::std::mem::offset_of!(tagMQCXP, SSLRemCertIssNamePtr) - 176usize];
-    ["Offset of field: tagMQCXP::SecurityParms"][::std::mem::offset_of!(tagMQCXP, SecurityParms) - 184usize];
-    ["Offset of field: tagMQCXP::CurHdrCompression"][::std::mem::offset_of!(tagMQCXP, CurHdrCompression) - 192usize];
-    ["Offset of field: tagMQCXP::CurMsgCompression"][::std::mem::offset_of!(tagMQCXP, CurMsgCompression) - 196usize];
-    ["Offset of field: tagMQCXP::Hconn"][::std::mem::offset_of!(tagMQCXP, Hconn) - 200usize];
-    ["Offset of field: tagMQCXP::SharingConversations"][::std::mem::offset_of!(tagMQCXP, SharingConversations) - 204usize];
-    ["Offset of field: tagMQCXP::MCAUserSource"][::std::mem::offset_of!(tagMQCXP, MCAUserSource) - 208usize];
-    ["Offset of field: tagMQCXP::pEntryPoints"][::std::mem::offset_of!(tagMQCXP, pEntryPoints) - 216usize];
-    ["Offset of field: tagMQCXP::RemoteProduct"][::std::mem::offset_of!(tagMQCXP, RemoteProduct) - 224usize];
-    ["Offset of field: tagMQCXP::RemoteVersion"][::std::mem::offset_of!(tagMQCXP, RemoteVersion) - 228usize];
+    [
+        "Offset of field: tagMQCXP::StrucId",
+    ][::std::mem::offset_of!(tagMQCXP, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQCXP::Version",
+    ][::std::mem::offset_of!(tagMQCXP, Version) - 4usize];
+    [
+        "Offset of field: tagMQCXP::ExitId",
+    ][::std::mem::offset_of!(tagMQCXP, ExitId) - 8usize];
+    [
+        "Offset of field: tagMQCXP::ExitReason",
+    ][::std::mem::offset_of!(tagMQCXP, ExitReason) - 12usize];
+    [
+        "Offset of field: tagMQCXP::ExitResponse",
+    ][::std::mem::offset_of!(tagMQCXP, ExitResponse) - 16usize];
+    [
+        "Offset of field: tagMQCXP::ExitResponse2",
+    ][::std::mem::offset_of!(tagMQCXP, ExitResponse2) - 20usize];
+    [
+        "Offset of field: tagMQCXP::Feedback",
+    ][::std::mem::offset_of!(tagMQCXP, Feedback) - 24usize];
+    [
+        "Offset of field: tagMQCXP::MaxSegmentLength",
+    ][::std::mem::offset_of!(tagMQCXP, MaxSegmentLength) - 28usize];
+    [
+        "Offset of field: tagMQCXP::ExitUserArea",
+    ][::std::mem::offset_of!(tagMQCXP, ExitUserArea) - 32usize];
+    [
+        "Offset of field: tagMQCXP::ExitData",
+    ][::std::mem::offset_of!(tagMQCXP, ExitData) - 48usize];
+    [
+        "Offset of field: tagMQCXP::MsgRetryCount",
+    ][::std::mem::offset_of!(tagMQCXP, MsgRetryCount) - 80usize];
+    [
+        "Offset of field: tagMQCXP::MsgRetryInterval",
+    ][::std::mem::offset_of!(tagMQCXP, MsgRetryInterval) - 84usize];
+    [
+        "Offset of field: tagMQCXP::MsgRetryReason",
+    ][::std::mem::offset_of!(tagMQCXP, MsgRetryReason) - 88usize];
+    [
+        "Offset of field: tagMQCXP::HeaderLength",
+    ][::std::mem::offset_of!(tagMQCXP, HeaderLength) - 92usize];
+    [
+        "Offset of field: tagMQCXP::PartnerName",
+    ][::std::mem::offset_of!(tagMQCXP, PartnerName) - 96usize];
+    [
+        "Offset of field: tagMQCXP::FAPLevel",
+    ][::std::mem::offset_of!(tagMQCXP, FAPLevel) - 144usize];
+    [
+        "Offset of field: tagMQCXP::CapabilityFlags",
+    ][::std::mem::offset_of!(tagMQCXP, CapabilityFlags) - 148usize];
+    [
+        "Offset of field: tagMQCXP::ExitNumber",
+    ][::std::mem::offset_of!(tagMQCXP, ExitNumber) - 152usize];
+    [
+        "Offset of field: tagMQCXP::ExitSpace",
+    ][::std::mem::offset_of!(tagMQCXP, ExitSpace) - 156usize];
+    [
+        "Offset of field: tagMQCXP::SSLCertUserid",
+    ][::std::mem::offset_of!(tagMQCXP, SSLCertUserid) - 160usize];
+    [
+        "Offset of field: tagMQCXP::SSLRemCertIssNameLength",
+    ][::std::mem::offset_of!(tagMQCXP, SSLRemCertIssNameLength) - 172usize];
+    [
+        "Offset of field: tagMQCXP::SSLRemCertIssNamePtr",
+    ][::std::mem::offset_of!(tagMQCXP, SSLRemCertIssNamePtr) - 176usize];
+    [
+        "Offset of field: tagMQCXP::SecurityParms",
+    ][::std::mem::offset_of!(tagMQCXP, SecurityParms) - 184usize];
+    [
+        "Offset of field: tagMQCXP::CurHdrCompression",
+    ][::std::mem::offset_of!(tagMQCXP, CurHdrCompression) - 192usize];
+    [
+        "Offset of field: tagMQCXP::CurMsgCompression",
+    ][::std::mem::offset_of!(tagMQCXP, CurMsgCompression) - 196usize];
+    [
+        "Offset of field: tagMQCXP::Hconn",
+    ][::std::mem::offset_of!(tagMQCXP, Hconn) - 200usize];
+    [
+        "Offset of field: tagMQCXP::SharingConversations",
+    ][::std::mem::offset_of!(tagMQCXP, SharingConversations) - 204usize];
+    [
+        "Offset of field: tagMQCXP::MCAUserSource",
+    ][::std::mem::offset_of!(tagMQCXP, MCAUserSource) - 208usize];
+    [
+        "Offset of field: tagMQCXP::pEntryPoints",
+    ][::std::mem::offset_of!(tagMQCXP, pEntryPoints) - 216usize];
+    [
+        "Offset of field: tagMQCXP::RemoteProduct",
+    ][::std::mem::offset_of!(tagMQCXP, RemoteProduct) - 224usize];
+    [
+        "Offset of field: tagMQCXP::RemoteVersion",
+    ][::std::mem::offset_of!(tagMQCXP, RemoteVersion) - 228usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQDXP"][::std::mem::size_of::<tagMQDXP>() - 56usize];
     ["Alignment of tagMQDXP"][::std::mem::align_of::<tagMQDXP>() - 8usize];
-    ["Offset of field: tagMQDXP::StrucId"][::std::mem::offset_of!(tagMQDXP, StrucId) - 0usize];
-    ["Offset of field: tagMQDXP::Version"][::std::mem::offset_of!(tagMQDXP, Version) - 4usize];
-    ["Offset of field: tagMQDXP::ExitOptions"][::std::mem::offset_of!(tagMQDXP, ExitOptions) - 8usize];
-    ["Offset of field: tagMQDXP::AppOptions"][::std::mem::offset_of!(tagMQDXP, AppOptions) - 12usize];
-    ["Offset of field: tagMQDXP::Encoding"][::std::mem::offset_of!(tagMQDXP, Encoding) - 16usize];
-    ["Offset of field: tagMQDXP::CodedCharSetId"][::std::mem::offset_of!(tagMQDXP, CodedCharSetId) - 20usize];
-    ["Offset of field: tagMQDXP::DataLength"][::std::mem::offset_of!(tagMQDXP, DataLength) - 24usize];
-    ["Offset of field: tagMQDXP::CompCode"][::std::mem::offset_of!(tagMQDXP, CompCode) - 28usize];
-    ["Offset of field: tagMQDXP::Reason"][::std::mem::offset_of!(tagMQDXP, Reason) - 32usize];
-    ["Offset of field: tagMQDXP::ExitResponse"][::std::mem::offset_of!(tagMQDXP, ExitResponse) - 36usize];
-    ["Offset of field: tagMQDXP::Hconn"][::std::mem::offset_of!(tagMQDXP, Hconn) - 40usize];
-    ["Offset of field: tagMQDXP::pEntryPoints"][::std::mem::offset_of!(tagMQDXP, pEntryPoints) - 48usize];
+    [
+        "Offset of field: tagMQDXP::StrucId",
+    ][::std::mem::offset_of!(tagMQDXP, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQDXP::Version",
+    ][::std::mem::offset_of!(tagMQDXP, Version) - 4usize];
+    [
+        "Offset of field: tagMQDXP::ExitOptions",
+    ][::std::mem::offset_of!(tagMQDXP, ExitOptions) - 8usize];
+    [
+        "Offset of field: tagMQDXP::AppOptions",
+    ][::std::mem::offset_of!(tagMQDXP, AppOptions) - 12usize];
+    [
+        "Offset of field: tagMQDXP::Encoding",
+    ][::std::mem::offset_of!(tagMQDXP, Encoding) - 16usize];
+    [
+        "Offset of field: tagMQDXP::CodedCharSetId",
+    ][::std::mem::offset_of!(tagMQDXP, CodedCharSetId) - 20usize];
+    [
+        "Offset of field: tagMQDXP::DataLength",
+    ][::std::mem::offset_of!(tagMQDXP, DataLength) - 24usize];
+    [
+        "Offset of field: tagMQDXP::CompCode",
+    ][::std::mem::offset_of!(tagMQDXP, CompCode) - 28usize];
+    [
+        "Offset of field: tagMQDXP::Reason",
+    ][::std::mem::offset_of!(tagMQDXP, Reason) - 32usize];
+    [
+        "Offset of field: tagMQDXP::ExitResponse",
+    ][::std::mem::offset_of!(tagMQDXP, ExitResponse) - 36usize];
+    [
+        "Offset of field: tagMQDXP::Hconn",
+    ][::std::mem::offset_of!(tagMQDXP, Hconn) - 40usize];
+    [
+        "Offset of field: tagMQDXP::pEntryPoints",
+    ][::std::mem::offset_of!(tagMQDXP, pEntryPoints) - 48usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQNXP"][::std::mem::size_of::<tagMQNXP>() - 72usize];
     ["Alignment of tagMQNXP"][::std::mem::align_of::<tagMQNXP>() - 8usize];
-    ["Offset of field: tagMQNXP::StrucId"][::std::mem::offset_of!(tagMQNXP, StrucId) - 0usize];
-    ["Offset of field: tagMQNXP::Version"][::std::mem::offset_of!(tagMQNXP, Version) - 4usize];
-    ["Offset of field: tagMQNXP::ExitId"][::std::mem::offset_of!(tagMQNXP, ExitId) - 8usize];
-    ["Offset of field: tagMQNXP::ExitReason"][::std::mem::offset_of!(tagMQNXP, ExitReason) - 12usize];
-    ["Offset of field: tagMQNXP::ExitResponse"][::std::mem::offset_of!(tagMQNXP, ExitResponse) - 16usize];
-    ["Offset of field: tagMQNXP::ExitResponse2"][::std::mem::offset_of!(tagMQNXP, ExitResponse2) - 20usize];
-    ["Offset of field: tagMQNXP::Feedback"][::std::mem::offset_of!(tagMQNXP, Feedback) - 24usize];
-    ["Offset of field: tagMQNXP::ExitDataLength"][::std::mem::offset_of!(tagMQNXP, ExitDataLength) - 28usize];
-    ["Offset of field: tagMQNXP::pExitDataPtr"][::std::mem::offset_of!(tagMQNXP, pExitDataPtr) - 32usize];
-    ["Offset of field: tagMQNXP::pExitUserAreaPtr"][::std::mem::offset_of!(tagMQNXP, pExitUserAreaPtr) - 40usize];
-    ["Offset of field: tagMQNXP::ppMQCDArrayPtr"][::std::mem::offset_of!(tagMQNXP, ppMQCDArrayPtr) - 48usize];
-    ["Offset of field: tagMQNXP::MQCDArrayCount"][::std::mem::offset_of!(tagMQNXP, MQCDArrayCount) - 56usize];
-    ["Offset of field: tagMQNXP::MaxMQCDVersion"][::std::mem::offset_of!(tagMQNXP, MaxMQCDVersion) - 60usize];
-    ["Offset of field: tagMQNXP::pEntryPoints"][::std::mem::offset_of!(tagMQNXP, pEntryPoints) - 64usize];
+    [
+        "Offset of field: tagMQNXP::StrucId",
+    ][::std::mem::offset_of!(tagMQNXP, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQNXP::Version",
+    ][::std::mem::offset_of!(tagMQNXP, Version) - 4usize];
+    [
+        "Offset of field: tagMQNXP::ExitId",
+    ][::std::mem::offset_of!(tagMQNXP, ExitId) - 8usize];
+    [
+        "Offset of field: tagMQNXP::ExitReason",
+    ][::std::mem::offset_of!(tagMQNXP, ExitReason) - 12usize];
+    [
+        "Offset of field: tagMQNXP::ExitResponse",
+    ][::std::mem::offset_of!(tagMQNXP, ExitResponse) - 16usize];
+    [
+        "Offset of field: tagMQNXP::ExitResponse2",
+    ][::std::mem::offset_of!(tagMQNXP, ExitResponse2) - 20usize];
+    [
+        "Offset of field: tagMQNXP::Feedback",
+    ][::std::mem::offset_of!(tagMQNXP, Feedback) - 24usize];
+    [
+        "Offset of field: tagMQNXP::ExitDataLength",
+    ][::std::mem::offset_of!(tagMQNXP, ExitDataLength) - 28usize];
+    [
+        "Offset of field: tagMQNXP::pExitDataPtr",
+    ][::std::mem::offset_of!(tagMQNXP, pExitDataPtr) - 32usize];
+    [
+        "Offset of field: tagMQNXP::pExitUserAreaPtr",
+    ][::std::mem::offset_of!(tagMQNXP, pExitUserAreaPtr) - 40usize];
+    [
+        "Offset of field: tagMQNXP::ppMQCDArrayPtr",
+    ][::std::mem::offset_of!(tagMQNXP, ppMQCDArrayPtr) - 48usize];
+    [
+        "Offset of field: tagMQNXP::MQCDArrayCount",
+    ][::std::mem::offset_of!(tagMQNXP, MQCDArrayCount) - 56usize];
+    [
+        "Offset of field: tagMQNXP::MaxMQCDVersion",
+    ][::std::mem::offset_of!(tagMQNXP, MaxMQCDVersion) - 60usize];
+    [
+        "Offset of field: tagMQNXP::pEntryPoints",
+    ][::std::mem::offset_of!(tagMQNXP, pEntryPoints) - 64usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQPBC"][::std::mem::size_of::<tagMQPBC>() - 40usize];
     ["Alignment of tagMQPBC"][::std::mem::align_of::<tagMQPBC>() - 8usize];
-    ["Offset of field: tagMQPBC::StrucId"][::std::mem::offset_of!(tagMQPBC, StrucId) - 0usize];
-    ["Offset of field: tagMQPBC::Version"][::std::mem::offset_of!(tagMQPBC, Version) - 4usize];
-    ["Offset of field: tagMQPBC::PubTopicString"][::std::mem::offset_of!(tagMQPBC, PubTopicString) - 8usize];
-    ["Offset of field: tagMQPBC::MsgDescPtr"][::std::mem::offset_of!(tagMQPBC, MsgDescPtr) - 32usize];
+    [
+        "Offset of field: tagMQPBC::StrucId",
+    ][::std::mem::offset_of!(tagMQPBC, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQPBC::Version",
+    ][::std::mem::offset_of!(tagMQPBC, Version) - 4usize];
+    [
+        "Offset of field: tagMQPBC::PubTopicString",
+    ][::std::mem::offset_of!(tagMQPBC, PubTopicString) - 8usize];
+    [
+        "Offset of field: tagMQPBC::MsgDescPtr",
+    ][::std::mem::offset_of!(tagMQPBC, MsgDescPtr) - 32usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQPSXP"][::std::mem::size_of::<tagMQPSXP>() - 184usize];
     ["Alignment of tagMQPSXP"][::std::mem::align_of::<tagMQPSXP>() - 8usize];
-    ["Offset of field: tagMQPSXP::StrucId"][::std::mem::offset_of!(tagMQPSXP, StrucId) - 0usize];
-    ["Offset of field: tagMQPSXP::Version"][::std::mem::offset_of!(tagMQPSXP, Version) - 4usize];
-    ["Offset of field: tagMQPSXP::ExitId"][::std::mem::offset_of!(tagMQPSXP, ExitId) - 8usize];
-    ["Offset of field: tagMQPSXP::ExitReason"][::std::mem::offset_of!(tagMQPSXP, ExitReason) - 12usize];
-    ["Offset of field: tagMQPSXP::ExitResponse"][::std::mem::offset_of!(tagMQPSXP, ExitResponse) - 16usize];
-    ["Offset of field: tagMQPSXP::ExitResponse2"][::std::mem::offset_of!(tagMQPSXP, ExitResponse2) - 20usize];
-    ["Offset of field: tagMQPSXP::Feedback"][::std::mem::offset_of!(tagMQPSXP, Feedback) - 24usize];
-    ["Offset of field: tagMQPSXP::Hconn"][::std::mem::offset_of!(tagMQPSXP, Hconn) - 28usize];
-    ["Offset of field: tagMQPSXP::ExitUserArea"][::std::mem::offset_of!(tagMQPSXP, ExitUserArea) - 32usize];
-    ["Offset of field: tagMQPSXP::ExitData"][::std::mem::offset_of!(tagMQPSXP, ExitData) - 48usize];
-    ["Offset of field: tagMQPSXP::QMgrName"][::std::mem::offset_of!(tagMQPSXP, QMgrName) - 80usize];
-    ["Offset of field: tagMQPSXP::MsgHandle"][::std::mem::offset_of!(tagMQPSXP, MsgHandle) - 128usize];
-    ["Offset of field: tagMQPSXP::MsgDescPtr"][::std::mem::offset_of!(tagMQPSXP, MsgDescPtr) - 136usize];
-    ["Offset of field: tagMQPSXP::MsgInPtr"][::std::mem::offset_of!(tagMQPSXP, MsgInPtr) - 144usize];
-    ["Offset of field: tagMQPSXP::MsgInLength"][::std::mem::offset_of!(tagMQPSXP, MsgInLength) - 152usize];
-    ["Offset of field: tagMQPSXP::MsgOutPtr"][::std::mem::offset_of!(tagMQPSXP, MsgOutPtr) - 160usize];
-    ["Offset of field: tagMQPSXP::MsgOutLength"][::std::mem::offset_of!(tagMQPSXP, MsgOutLength) - 168usize];
-    ["Offset of field: tagMQPSXP::pEntryPoints"][::std::mem::offset_of!(tagMQPSXP, pEntryPoints) - 176usize];
+    [
+        "Offset of field: tagMQPSXP::StrucId",
+    ][::std::mem::offset_of!(tagMQPSXP, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQPSXP::Version",
+    ][::std::mem::offset_of!(tagMQPSXP, Version) - 4usize];
+    [
+        "Offset of field: tagMQPSXP::ExitId",
+    ][::std::mem::offset_of!(tagMQPSXP, ExitId) - 8usize];
+    [
+        "Offset of field: tagMQPSXP::ExitReason",
+    ][::std::mem::offset_of!(tagMQPSXP, ExitReason) - 12usize];
+    [
+        "Offset of field: tagMQPSXP::ExitResponse",
+    ][::std::mem::offset_of!(tagMQPSXP, ExitResponse) - 16usize];
+    [
+        "Offset of field: tagMQPSXP::ExitResponse2",
+    ][::std::mem::offset_of!(tagMQPSXP, ExitResponse2) - 20usize];
+    [
+        "Offset of field: tagMQPSXP::Feedback",
+    ][::std::mem::offset_of!(tagMQPSXP, Feedback) - 24usize];
+    [
+        "Offset of field: tagMQPSXP::Hconn",
+    ][::std::mem::offset_of!(tagMQPSXP, Hconn) - 28usize];
+    [
+        "Offset of field: tagMQPSXP::ExitUserArea",
+    ][::std::mem::offset_of!(tagMQPSXP, ExitUserArea) - 32usize];
+    [
+        "Offset of field: tagMQPSXP::ExitData",
+    ][::std::mem::offset_of!(tagMQPSXP, ExitData) - 48usize];
+    [
+        "Offset of field: tagMQPSXP::QMgrName",
+    ][::std::mem::offset_of!(tagMQPSXP, QMgrName) - 80usize];
+    [
+        "Offset of field: tagMQPSXP::MsgHandle",
+    ][::std::mem::offset_of!(tagMQPSXP, MsgHandle) - 128usize];
+    [
+        "Offset of field: tagMQPSXP::MsgDescPtr",
+    ][::std::mem::offset_of!(tagMQPSXP, MsgDescPtr) - 136usize];
+    [
+        "Offset of field: tagMQPSXP::MsgInPtr",
+    ][::std::mem::offset_of!(tagMQPSXP, MsgInPtr) - 144usize];
+    [
+        "Offset of field: tagMQPSXP::MsgInLength",
+    ][::std::mem::offset_of!(tagMQPSXP, MsgInLength) - 152usize];
+    [
+        "Offset of field: tagMQPSXP::MsgOutPtr",
+    ][::std::mem::offset_of!(tagMQPSXP, MsgOutPtr) - 160usize];
+    [
+        "Offset of field: tagMQPSXP::MsgOutLength",
+    ][::std::mem::offset_of!(tagMQPSXP, MsgOutLength) - 168usize];
+    [
+        "Offset of field: tagMQPSXP::pEntryPoints",
+    ][::std::mem::offset_of!(tagMQPSXP, pEntryPoints) - 176usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQSBC"][::std::mem::size_of::<tagMQSBC>() - 288usize];
     ["Alignment of tagMQSBC"][::std::mem::align_of::<tagMQSBC>() - 8usize];
-    ["Offset of field: tagMQSBC::StrucId"][::std::mem::offset_of!(tagMQSBC, StrucId) - 0usize];
-    ["Offset of field: tagMQSBC::Version"][::std::mem::offset_of!(tagMQSBC, Version) - 4usize];
-    ["Offset of field: tagMQSBC::DestinationQMgrName"][::std::mem::offset_of!(tagMQSBC, DestinationQMgrName) - 8usize];
-    ["Offset of field: tagMQSBC::DestinationQName"][::std::mem::offset_of!(tagMQSBC, DestinationQName) - 56usize];
-    ["Offset of field: tagMQSBC::SubType"][::std::mem::offset_of!(tagMQSBC, SubType) - 104usize];
-    ["Offset of field: tagMQSBC::SubOptions"][::std::mem::offset_of!(tagMQSBC, SubOptions) - 108usize];
-    ["Offset of field: tagMQSBC::ObjectName"][::std::mem::offset_of!(tagMQSBC, ObjectName) - 112usize];
-    ["Offset of field: tagMQSBC::ObjectString"][::std::mem::offset_of!(tagMQSBC, ObjectString) - 160usize];
-    ["Offset of field: tagMQSBC::SubTopicString"][::std::mem::offset_of!(tagMQSBC, SubTopicString) - 184usize];
-    ["Offset of field: tagMQSBC::SubName"][::std::mem::offset_of!(tagMQSBC, SubName) - 208usize];
-    ["Offset of field: tagMQSBC::SubId"][::std::mem::offset_of!(tagMQSBC, SubId) - 232usize];
-    ["Offset of field: tagMQSBC::SelectionString"][::std::mem::offset_of!(tagMQSBC, SelectionString) - 256usize];
-    ["Offset of field: tagMQSBC::SubLevel"][::std::mem::offset_of!(tagMQSBC, SubLevel) - 280usize];
-    ["Offset of field: tagMQSBC::PSProperties"][::std::mem::offset_of!(tagMQSBC, PSProperties) - 284usize];
+    [
+        "Offset of field: tagMQSBC::StrucId",
+    ][::std::mem::offset_of!(tagMQSBC, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQSBC::Version",
+    ][::std::mem::offset_of!(tagMQSBC, Version) - 4usize];
+    [
+        "Offset of field: tagMQSBC::DestinationQMgrName",
+    ][::std::mem::offset_of!(tagMQSBC, DestinationQMgrName) - 8usize];
+    [
+        "Offset of field: tagMQSBC::DestinationQName",
+    ][::std::mem::offset_of!(tagMQSBC, DestinationQName) - 56usize];
+    [
+        "Offset of field: tagMQSBC::SubType",
+    ][::std::mem::offset_of!(tagMQSBC, SubType) - 104usize];
+    [
+        "Offset of field: tagMQSBC::SubOptions",
+    ][::std::mem::offset_of!(tagMQSBC, SubOptions) - 108usize];
+    [
+        "Offset of field: tagMQSBC::ObjectName",
+    ][::std::mem::offset_of!(tagMQSBC, ObjectName) - 112usize];
+    [
+        "Offset of field: tagMQSBC::ObjectString",
+    ][::std::mem::offset_of!(tagMQSBC, ObjectString) - 160usize];
+    [
+        "Offset of field: tagMQSBC::SubTopicString",
+    ][::std::mem::offset_of!(tagMQSBC, SubTopicString) - 184usize];
+    [
+        "Offset of field: tagMQSBC::SubName",
+    ][::std::mem::offset_of!(tagMQSBC, SubName) - 208usize];
+    [
+        "Offset of field: tagMQSBC::SubId",
+    ][::std::mem::offset_of!(tagMQSBC, SubId) - 232usize];
+    [
+        "Offset of field: tagMQSBC::SelectionString",
+    ][::std::mem::offset_of!(tagMQSBC, SelectionString) - 256usize];
+    [
+        "Offset of field: tagMQSBC::SubLevel",
+    ][::std::mem::offset_of!(tagMQSBC, SubLevel) - 280usize];
+    [
+        "Offset of field: tagMQSBC::PSProperties",
+    ][::std::mem::offset_of!(tagMQSBC, PSProperties) - 284usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQWCR"][::std::mem::size_of::<tagMQWCR>() - 56usize];
     ["Alignment of tagMQWCR"][::std::mem::align_of::<tagMQWCR>() - 4usize];
-    ["Offset of field: tagMQWCR::ClusterName"][::std::mem::offset_of!(tagMQWCR, ClusterName) - 0usize];
-    ["Offset of field: tagMQWCR::ClusterRecOffset"][::std::mem::offset_of!(tagMQWCR, ClusterRecOffset) - 48usize];
-    ["Offset of field: tagMQWCR::ClusterFlags"][::std::mem::offset_of!(tagMQWCR, ClusterFlags) - 52usize];
+    [
+        "Offset of field: tagMQWCR::ClusterName",
+    ][::std::mem::offset_of!(tagMQWCR, ClusterName) - 0usize];
+    [
+        "Offset of field: tagMQWCR::ClusterRecOffset",
+    ][::std::mem::offset_of!(tagMQWCR, ClusterRecOffset) - 48usize];
+    [
+        "Offset of field: tagMQWCR::ClusterFlags",
+    ][::std::mem::offset_of!(tagMQWCR, ClusterFlags) - 52usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQWDR"][::std::mem::size_of::<tagMQWDR>() - 136usize];
     ["Alignment of tagMQWDR"][::std::mem::align_of::<tagMQWDR>() - 8usize];
-    ["Offset of field: tagMQWDR::StrucId"][::std::mem::offset_of!(tagMQWDR, StrucId) - 0usize];
-    ["Offset of field: tagMQWDR::Version"][::std::mem::offset_of!(tagMQWDR, Version) - 4usize];
-    ["Offset of field: tagMQWDR::StrucLength"][::std::mem::offset_of!(tagMQWDR, StrucLength) - 8usize];
-    ["Offset of field: tagMQWDR::QMgrFlags"][::std::mem::offset_of!(tagMQWDR, QMgrFlags) - 12usize];
-    ["Offset of field: tagMQWDR::QMgrIdentifier"][::std::mem::offset_of!(tagMQWDR, QMgrIdentifier) - 16usize];
-    ["Offset of field: tagMQWDR::QMgrName"][::std::mem::offset_of!(tagMQWDR, QMgrName) - 64usize];
-    ["Offset of field: tagMQWDR::ClusterRecOffset"][::std::mem::offset_of!(tagMQWDR, ClusterRecOffset) - 112usize];
-    ["Offset of field: tagMQWDR::ChannelState"][::std::mem::offset_of!(tagMQWDR, ChannelState) - 116usize];
-    ["Offset of field: tagMQWDR::ChannelDefOffset"][::std::mem::offset_of!(tagMQWDR, ChannelDefOffset) - 120usize];
-    ["Offset of field: tagMQWDR::DestSeqNumber"][::std::mem::offset_of!(tagMQWDR, DestSeqNumber) - 124usize];
-    ["Offset of field: tagMQWDR::DestSeqFactor"][::std::mem::offset_of!(tagMQWDR, DestSeqFactor) - 128usize];
+    [
+        "Offset of field: tagMQWDR::StrucId",
+    ][::std::mem::offset_of!(tagMQWDR, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQWDR::Version",
+    ][::std::mem::offset_of!(tagMQWDR, Version) - 4usize];
+    [
+        "Offset of field: tagMQWDR::StrucLength",
+    ][::std::mem::offset_of!(tagMQWDR, StrucLength) - 8usize];
+    [
+        "Offset of field: tagMQWDR::QMgrFlags",
+    ][::std::mem::offset_of!(tagMQWDR, QMgrFlags) - 12usize];
+    [
+        "Offset of field: tagMQWDR::QMgrIdentifier",
+    ][::std::mem::offset_of!(tagMQWDR, QMgrIdentifier) - 16usize];
+    [
+        "Offset of field: tagMQWDR::QMgrName",
+    ][::std::mem::offset_of!(tagMQWDR, QMgrName) - 64usize];
+    [
+        "Offset of field: tagMQWDR::ClusterRecOffset",
+    ][::std::mem::offset_of!(tagMQWDR, ClusterRecOffset) - 112usize];
+    [
+        "Offset of field: tagMQWDR::ChannelState",
+    ][::std::mem::offset_of!(tagMQWDR, ChannelState) - 116usize];
+    [
+        "Offset of field: tagMQWDR::ChannelDefOffset",
+    ][::std::mem::offset_of!(tagMQWDR, ChannelDefOffset) - 120usize];
+    [
+        "Offset of field: tagMQWDR::DestSeqNumber",
+    ][::std::mem::offset_of!(tagMQWDR, DestSeqNumber) - 124usize];
+    [
+        "Offset of field: tagMQWDR::DestSeqFactor",
+    ][::std::mem::offset_of!(tagMQWDR, DestSeqFactor) - 128usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQWDR1"][::std::mem::size_of::<tagMQWDR1>() - 124usize];
     ["Alignment of tagMQWDR1"][::std::mem::align_of::<tagMQWDR1>() - 4usize];
-    ["Offset of field: tagMQWDR1::StrucId"][::std::mem::offset_of!(tagMQWDR1, StrucId) - 0usize];
-    ["Offset of field: tagMQWDR1::Version"][::std::mem::offset_of!(tagMQWDR1, Version) - 4usize];
-    ["Offset of field: tagMQWDR1::StrucLength"][::std::mem::offset_of!(tagMQWDR1, StrucLength) - 8usize];
-    ["Offset of field: tagMQWDR1::QMgrFlags"][::std::mem::offset_of!(tagMQWDR1, QMgrFlags) - 12usize];
-    ["Offset of field: tagMQWDR1::QMgrIdentifier"][::std::mem::offset_of!(tagMQWDR1, QMgrIdentifier) - 16usize];
-    ["Offset of field: tagMQWDR1::QMgrName"][::std::mem::offset_of!(tagMQWDR1, QMgrName) - 64usize];
-    ["Offset of field: tagMQWDR1::ClusterRecOffset"][::std::mem::offset_of!(tagMQWDR1, ClusterRecOffset) - 112usize];
-    ["Offset of field: tagMQWDR1::ChannelState"][::std::mem::offset_of!(tagMQWDR1, ChannelState) - 116usize];
-    ["Offset of field: tagMQWDR1::ChannelDefOffset"][::std::mem::offset_of!(tagMQWDR1, ChannelDefOffset) - 120usize];
+    [
+        "Offset of field: tagMQWDR1::StrucId",
+    ][::std::mem::offset_of!(tagMQWDR1, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQWDR1::Version",
+    ][::std::mem::offset_of!(tagMQWDR1, Version) - 4usize];
+    [
+        "Offset of field: tagMQWDR1::StrucLength",
+    ][::std::mem::offset_of!(tagMQWDR1, StrucLength) - 8usize];
+    [
+        "Offset of field: tagMQWDR1::QMgrFlags",
+    ][::std::mem::offset_of!(tagMQWDR1, QMgrFlags) - 12usize];
+    [
+        "Offset of field: tagMQWDR1::QMgrIdentifier",
+    ][::std::mem::offset_of!(tagMQWDR1, QMgrIdentifier) - 16usize];
+    [
+        "Offset of field: tagMQWDR1::QMgrName",
+    ][::std::mem::offset_of!(tagMQWDR1, QMgrName) - 64usize];
+    [
+        "Offset of field: tagMQWDR1::ClusterRecOffset",
+    ][::std::mem::offset_of!(tagMQWDR1, ClusterRecOffset) - 112usize];
+    [
+        "Offset of field: tagMQWDR1::ChannelState",
+    ][::std::mem::offset_of!(tagMQWDR1, ChannelState) - 116usize];
+    [
+        "Offset of field: tagMQWDR1::ChannelDefOffset",
+    ][::std::mem::offset_of!(tagMQWDR1, ChannelDefOffset) - 120usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQWDR2"][::std::mem::size_of::<tagMQWDR2>() - 136usize];
     ["Alignment of tagMQWDR2"][::std::mem::align_of::<tagMQWDR2>() - 8usize];
-    ["Offset of field: tagMQWDR2::StrucId"][::std::mem::offset_of!(tagMQWDR2, StrucId) - 0usize];
-    ["Offset of field: tagMQWDR2::Version"][::std::mem::offset_of!(tagMQWDR2, Version) - 4usize];
-    ["Offset of field: tagMQWDR2::StrucLength"][::std::mem::offset_of!(tagMQWDR2, StrucLength) - 8usize];
-    ["Offset of field: tagMQWDR2::QMgrFlags"][::std::mem::offset_of!(tagMQWDR2, QMgrFlags) - 12usize];
-    ["Offset of field: tagMQWDR2::QMgrIdentifier"][::std::mem::offset_of!(tagMQWDR2, QMgrIdentifier) - 16usize];
-    ["Offset of field: tagMQWDR2::QMgrName"][::std::mem::offset_of!(tagMQWDR2, QMgrName) - 64usize];
-    ["Offset of field: tagMQWDR2::ClusterRecOffset"][::std::mem::offset_of!(tagMQWDR2, ClusterRecOffset) - 112usize];
-    ["Offset of field: tagMQWDR2::ChannelState"][::std::mem::offset_of!(tagMQWDR2, ChannelState) - 116usize];
-    ["Offset of field: tagMQWDR2::ChannelDefOffset"][::std::mem::offset_of!(tagMQWDR2, ChannelDefOffset) - 120usize];
-    ["Offset of field: tagMQWDR2::DestSeqNumber"][::std::mem::offset_of!(tagMQWDR2, DestSeqNumber) - 124usize];
-    ["Offset of field: tagMQWDR2::DestSeqFactor"][::std::mem::offset_of!(tagMQWDR2, DestSeqFactor) - 128usize];
+    [
+        "Offset of field: tagMQWDR2::StrucId",
+    ][::std::mem::offset_of!(tagMQWDR2, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQWDR2::Version",
+    ][::std::mem::offset_of!(tagMQWDR2, Version) - 4usize];
+    [
+        "Offset of field: tagMQWDR2::StrucLength",
+    ][::std::mem::offset_of!(tagMQWDR2, StrucLength) - 8usize];
+    [
+        "Offset of field: tagMQWDR2::QMgrFlags",
+    ][::std::mem::offset_of!(tagMQWDR2, QMgrFlags) - 12usize];
+    [
+        "Offset of field: tagMQWDR2::QMgrIdentifier",
+    ][::std::mem::offset_of!(tagMQWDR2, QMgrIdentifier) - 16usize];
+    [
+        "Offset of field: tagMQWDR2::QMgrName",
+    ][::std::mem::offset_of!(tagMQWDR2, QMgrName) - 64usize];
+    [
+        "Offset of field: tagMQWDR2::ClusterRecOffset",
+    ][::std::mem::offset_of!(tagMQWDR2, ClusterRecOffset) - 112usize];
+    [
+        "Offset of field: tagMQWDR2::ChannelState",
+    ][::std::mem::offset_of!(tagMQWDR2, ChannelState) - 116usize];
+    [
+        "Offset of field: tagMQWDR2::ChannelDefOffset",
+    ][::std::mem::offset_of!(tagMQWDR2, ChannelDefOffset) - 120usize];
+    [
+        "Offset of field: tagMQWDR2::DestSeqNumber",
+    ][::std::mem::offset_of!(tagMQWDR2, DestSeqNumber) - 124usize];
+    [
+        "Offset of field: tagMQWDR2::DestSeqFactor",
+    ][::std::mem::offset_of!(tagMQWDR2, DestSeqFactor) - 128usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQWQR"][::std::mem::size_of::<tagMQWQR>() - 216usize];
     ["Alignment of tagMQWQR"][::std::mem::align_of::<tagMQWQR>() - 4usize];
-    ["Offset of field: tagMQWQR::StrucId"][::std::mem::offset_of!(tagMQWQR, StrucId) - 0usize];
-    ["Offset of field: tagMQWQR::Version"][::std::mem::offset_of!(tagMQWQR, Version) - 4usize];
-    ["Offset of field: tagMQWQR::StrucLength"][::std::mem::offset_of!(tagMQWQR, StrucLength) - 8usize];
-    ["Offset of field: tagMQWQR::QFlags"][::std::mem::offset_of!(tagMQWQR, QFlags) - 12usize];
-    ["Offset of field: tagMQWQR::QName"][::std::mem::offset_of!(tagMQWQR, QName) - 16usize];
-    ["Offset of field: tagMQWQR::QMgrIdentifier"][::std::mem::offset_of!(tagMQWQR, QMgrIdentifier) - 64usize];
-    ["Offset of field: tagMQWQR::ClusterRecOffset"][::std::mem::offset_of!(tagMQWQR, ClusterRecOffset) - 112usize];
-    ["Offset of field: tagMQWQR::QType"][::std::mem::offset_of!(tagMQWQR, QType) - 116usize];
-    ["Offset of field: tagMQWQR::QDesc"][::std::mem::offset_of!(tagMQWQR, QDesc) - 120usize];
-    ["Offset of field: tagMQWQR::DefBind"][::std::mem::offset_of!(tagMQWQR, DefBind) - 184usize];
-    ["Offset of field: tagMQWQR::DefPersistence"][::std::mem::offset_of!(tagMQWQR, DefPersistence) - 188usize];
-    ["Offset of field: tagMQWQR::DefPriority"][::std::mem::offset_of!(tagMQWQR, DefPriority) - 192usize];
-    ["Offset of field: tagMQWQR::InhibitPut"][::std::mem::offset_of!(tagMQWQR, InhibitPut) - 196usize];
-    ["Offset of field: tagMQWQR::CLWLQueuePriority"][::std::mem::offset_of!(tagMQWQR, CLWLQueuePriority) - 200usize];
-    ["Offset of field: tagMQWQR::CLWLQueueRank"][::std::mem::offset_of!(tagMQWQR, CLWLQueueRank) - 204usize];
-    ["Offset of field: tagMQWQR::DefPutResponse"][::std::mem::offset_of!(tagMQWQR, DefPutResponse) - 208usize];
-    ["Offset of field: tagMQWQR::CapExpiry"][::std::mem::offset_of!(tagMQWQR, CapExpiry) - 212usize];
+    [
+        "Offset of field: tagMQWQR::StrucId",
+    ][::std::mem::offset_of!(tagMQWQR, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQWQR::Version",
+    ][::std::mem::offset_of!(tagMQWQR, Version) - 4usize];
+    [
+        "Offset of field: tagMQWQR::StrucLength",
+    ][::std::mem::offset_of!(tagMQWQR, StrucLength) - 8usize];
+    [
+        "Offset of field: tagMQWQR::QFlags",
+    ][::std::mem::offset_of!(tagMQWQR, QFlags) - 12usize];
+    [
+        "Offset of field: tagMQWQR::QName",
+    ][::std::mem::offset_of!(tagMQWQR, QName) - 16usize];
+    [
+        "Offset of field: tagMQWQR::QMgrIdentifier",
+    ][::std::mem::offset_of!(tagMQWQR, QMgrIdentifier) - 64usize];
+    [
+        "Offset of field: tagMQWQR::ClusterRecOffset",
+    ][::std::mem::offset_of!(tagMQWQR, ClusterRecOffset) - 112usize];
+    [
+        "Offset of field: tagMQWQR::QType",
+    ][::std::mem::offset_of!(tagMQWQR, QType) - 116usize];
+    [
+        "Offset of field: tagMQWQR::QDesc",
+    ][::std::mem::offset_of!(tagMQWQR, QDesc) - 120usize];
+    [
+        "Offset of field: tagMQWQR::DefBind",
+    ][::std::mem::offset_of!(tagMQWQR, DefBind) - 184usize];
+    [
+        "Offset of field: tagMQWQR::DefPersistence",
+    ][::std::mem::offset_of!(tagMQWQR, DefPersistence) - 188usize];
+    [
+        "Offset of field: tagMQWQR::DefPriority",
+    ][::std::mem::offset_of!(tagMQWQR, DefPriority) - 192usize];
+    [
+        "Offset of field: tagMQWQR::InhibitPut",
+    ][::std::mem::offset_of!(tagMQWQR, InhibitPut) - 196usize];
+    [
+        "Offset of field: tagMQWQR::CLWLQueuePriority",
+    ][::std::mem::offset_of!(tagMQWQR, CLWLQueuePriority) - 200usize];
+    [
+        "Offset of field: tagMQWQR::CLWLQueueRank",
+    ][::std::mem::offset_of!(tagMQWQR, CLWLQueueRank) - 204usize];
+    [
+        "Offset of field: tagMQWQR::DefPutResponse",
+    ][::std::mem::offset_of!(tagMQWQR, DefPutResponse) - 208usize];
+    [
+        "Offset of field: tagMQWQR::CapExpiry",
+    ][::std::mem::offset_of!(tagMQWQR, CapExpiry) - 212usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQWQR1"][::std::mem::size_of::<tagMQWQR1>() - 200usize];
     ["Alignment of tagMQWQR1"][::std::mem::align_of::<tagMQWQR1>() - 4usize];
-    ["Offset of field: tagMQWQR1::StrucId"][::std::mem::offset_of!(tagMQWQR1, StrucId) - 0usize];
-    ["Offset of field: tagMQWQR1::Version"][::std::mem::offset_of!(tagMQWQR1, Version) - 4usize];
-    ["Offset of field: tagMQWQR1::StrucLength"][::std::mem::offset_of!(tagMQWQR1, StrucLength) - 8usize];
-    ["Offset of field: tagMQWQR1::QFlags"][::std::mem::offset_of!(tagMQWQR1, QFlags) - 12usize];
-    ["Offset of field: tagMQWQR1::QName"][::std::mem::offset_of!(tagMQWQR1, QName) - 16usize];
-    ["Offset of field: tagMQWQR1::QMgrIdentifier"][::std::mem::offset_of!(tagMQWQR1, QMgrIdentifier) - 64usize];
-    ["Offset of field: tagMQWQR1::ClusterRecOffset"][::std::mem::offset_of!(tagMQWQR1, ClusterRecOffset) - 112usize];
-    ["Offset of field: tagMQWQR1::QType"][::std::mem::offset_of!(tagMQWQR1, QType) - 116usize];
-    ["Offset of field: tagMQWQR1::QDesc"][::std::mem::offset_of!(tagMQWQR1, QDesc) - 120usize];
-    ["Offset of field: tagMQWQR1::DefBind"][::std::mem::offset_of!(tagMQWQR1, DefBind) - 184usize];
-    ["Offset of field: tagMQWQR1::DefPersistence"][::std::mem::offset_of!(tagMQWQR1, DefPersistence) - 188usize];
-    ["Offset of field: tagMQWQR1::DefPriority"][::std::mem::offset_of!(tagMQWQR1, DefPriority) - 192usize];
-    ["Offset of field: tagMQWQR1::InhibitPut"][::std::mem::offset_of!(tagMQWQR1, InhibitPut) - 196usize];
+    [
+        "Offset of field: tagMQWQR1::StrucId",
+    ][::std::mem::offset_of!(tagMQWQR1, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQWQR1::Version",
+    ][::std::mem::offset_of!(tagMQWQR1, Version) - 4usize];
+    [
+        "Offset of field: tagMQWQR1::StrucLength",
+    ][::std::mem::offset_of!(tagMQWQR1, StrucLength) - 8usize];
+    [
+        "Offset of field: tagMQWQR1::QFlags",
+    ][::std::mem::offset_of!(tagMQWQR1, QFlags) - 12usize];
+    [
+        "Offset of field: tagMQWQR1::QName",
+    ][::std::mem::offset_of!(tagMQWQR1, QName) - 16usize];
+    [
+        "Offset of field: tagMQWQR1::QMgrIdentifier",
+    ][::std::mem::offset_of!(tagMQWQR1, QMgrIdentifier) - 64usize];
+    [
+        "Offset of field: tagMQWQR1::ClusterRecOffset",
+    ][::std::mem::offset_of!(tagMQWQR1, ClusterRecOffset) - 112usize];
+    [
+        "Offset of field: tagMQWQR1::QType",
+    ][::std::mem::offset_of!(tagMQWQR1, QType) - 116usize];
+    [
+        "Offset of field: tagMQWQR1::QDesc",
+    ][::std::mem::offset_of!(tagMQWQR1, QDesc) - 120usize];
+    [
+        "Offset of field: tagMQWQR1::DefBind",
+    ][::std::mem::offset_of!(tagMQWQR1, DefBind) - 184usize];
+    [
+        "Offset of field: tagMQWQR1::DefPersistence",
+    ][::std::mem::offset_of!(tagMQWQR1, DefPersistence) - 188usize];
+    [
+        "Offset of field: tagMQWQR1::DefPriority",
+    ][::std::mem::offset_of!(tagMQWQR1, DefPriority) - 192usize];
+    [
+        "Offset of field: tagMQWQR1::InhibitPut",
+    ][::std::mem::offset_of!(tagMQWQR1, InhibitPut) - 196usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQWQR2"][::std::mem::size_of::<tagMQWQR2>() - 208usize];
     ["Alignment of tagMQWQR2"][::std::mem::align_of::<tagMQWQR2>() - 4usize];
-    ["Offset of field: tagMQWQR2::StrucId"][::std::mem::offset_of!(tagMQWQR2, StrucId) - 0usize];
-    ["Offset of field: tagMQWQR2::Version"][::std::mem::offset_of!(tagMQWQR2, Version) - 4usize];
-    ["Offset of field: tagMQWQR2::StrucLength"][::std::mem::offset_of!(tagMQWQR2, StrucLength) - 8usize];
-    ["Offset of field: tagMQWQR2::QFlags"][::std::mem::offset_of!(tagMQWQR2, QFlags) - 12usize];
-    ["Offset of field: tagMQWQR2::QName"][::std::mem::offset_of!(tagMQWQR2, QName) - 16usize];
-    ["Offset of field: tagMQWQR2::QMgrIdentifier"][::std::mem::offset_of!(tagMQWQR2, QMgrIdentifier) - 64usize];
-    ["Offset of field: tagMQWQR2::ClusterRecOffset"][::std::mem::offset_of!(tagMQWQR2, ClusterRecOffset) - 112usize];
-    ["Offset of field: tagMQWQR2::QType"][::std::mem::offset_of!(tagMQWQR2, QType) - 116usize];
-    ["Offset of field: tagMQWQR2::QDesc"][::std::mem::offset_of!(tagMQWQR2, QDesc) - 120usize];
-    ["Offset of field: tagMQWQR2::DefBind"][::std::mem::offset_of!(tagMQWQR2, DefBind) - 184usize];
-    ["Offset of field: tagMQWQR2::DefPersistence"][::std::mem::offset_of!(tagMQWQR2, DefPersistence) - 188usize];
-    ["Offset of field: tagMQWQR2::DefPriority"][::std::mem::offset_of!(tagMQWQR2, DefPriority) - 192usize];
-    ["Offset of field: tagMQWQR2::InhibitPut"][::std::mem::offset_of!(tagMQWQR2, InhibitPut) - 196usize];
-    ["Offset of field: tagMQWQR2::CLWLQueuePriority"][::std::mem::offset_of!(tagMQWQR2, CLWLQueuePriority) - 200usize];
-    ["Offset of field: tagMQWQR2::CLWLQueueRank"][::std::mem::offset_of!(tagMQWQR2, CLWLQueueRank) - 204usize];
+    [
+        "Offset of field: tagMQWQR2::StrucId",
+    ][::std::mem::offset_of!(tagMQWQR2, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQWQR2::Version",
+    ][::std::mem::offset_of!(tagMQWQR2, Version) - 4usize];
+    [
+        "Offset of field: tagMQWQR2::StrucLength",
+    ][::std::mem::offset_of!(tagMQWQR2, StrucLength) - 8usize];
+    [
+        "Offset of field: tagMQWQR2::QFlags",
+    ][::std::mem::offset_of!(tagMQWQR2, QFlags) - 12usize];
+    [
+        "Offset of field: tagMQWQR2::QName",
+    ][::std::mem::offset_of!(tagMQWQR2, QName) - 16usize];
+    [
+        "Offset of field: tagMQWQR2::QMgrIdentifier",
+    ][::std::mem::offset_of!(tagMQWQR2, QMgrIdentifier) - 64usize];
+    [
+        "Offset of field: tagMQWQR2::ClusterRecOffset",
+    ][::std::mem::offset_of!(tagMQWQR2, ClusterRecOffset) - 112usize];
+    [
+        "Offset of field: tagMQWQR2::QType",
+    ][::std::mem::offset_of!(tagMQWQR2, QType) - 116usize];
+    [
+        "Offset of field: tagMQWQR2::QDesc",
+    ][::std::mem::offset_of!(tagMQWQR2, QDesc) - 120usize];
+    [
+        "Offset of field: tagMQWQR2::DefBind",
+    ][::std::mem::offset_of!(tagMQWQR2, DefBind) - 184usize];
+    [
+        "Offset of field: tagMQWQR2::DefPersistence",
+    ][::std::mem::offset_of!(tagMQWQR2, DefPersistence) - 188usize];
+    [
+        "Offset of field: tagMQWQR2::DefPriority",
+    ][::std::mem::offset_of!(tagMQWQR2, DefPriority) - 192usize];
+    [
+        "Offset of field: tagMQWQR2::InhibitPut",
+    ][::std::mem::offset_of!(tagMQWQR2, InhibitPut) - 196usize];
+    [
+        "Offset of field: tagMQWQR2::CLWLQueuePriority",
+    ][::std::mem::offset_of!(tagMQWQR2, CLWLQueuePriority) - 200usize];
+    [
+        "Offset of field: tagMQWQR2::CLWLQueueRank",
+    ][::std::mem::offset_of!(tagMQWQR2, CLWLQueueRank) - 204usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQWQR3"][::std::mem::size_of::<tagMQWQR3>() - 212usize];
     ["Alignment of tagMQWQR3"][::std::mem::align_of::<tagMQWQR3>() - 4usize];
-    ["Offset of field: tagMQWQR3::StrucId"][::std::mem::offset_of!(tagMQWQR3, StrucId) - 0usize];
-    ["Offset of field: tagMQWQR3::Version"][::std::mem::offset_of!(tagMQWQR3, Version) - 4usize];
-    ["Offset of field: tagMQWQR3::StrucLength"][::std::mem::offset_of!(tagMQWQR3, StrucLength) - 8usize];
-    ["Offset of field: tagMQWQR3::QFlags"][::std::mem::offset_of!(tagMQWQR3, QFlags) - 12usize];
-    ["Offset of field: tagMQWQR3::QName"][::std::mem::offset_of!(tagMQWQR3, QName) - 16usize];
-    ["Offset of field: tagMQWQR3::QMgrIdentifier"][::std::mem::offset_of!(tagMQWQR3, QMgrIdentifier) - 64usize];
-    ["Offset of field: tagMQWQR3::ClusterRecOffset"][::std::mem::offset_of!(tagMQWQR3, ClusterRecOffset) - 112usize];
-    ["Offset of field: tagMQWQR3::QType"][::std::mem::offset_of!(tagMQWQR3, QType) - 116usize];
-    ["Offset of field: tagMQWQR3::QDesc"][::std::mem::offset_of!(tagMQWQR3, QDesc) - 120usize];
-    ["Offset of field: tagMQWQR3::DefBind"][::std::mem::offset_of!(tagMQWQR3, DefBind) - 184usize];
-    ["Offset of field: tagMQWQR3::DefPersistence"][::std::mem::offset_of!(tagMQWQR3, DefPersistence) - 188usize];
-    ["Offset of field: tagMQWQR3::DefPriority"][::std::mem::offset_of!(tagMQWQR3, DefPriority) - 192usize];
-    ["Offset of field: tagMQWQR3::InhibitPut"][::std::mem::offset_of!(tagMQWQR3, InhibitPut) - 196usize];
-    ["Offset of field: tagMQWQR3::CLWLQueuePriority"][::std::mem::offset_of!(tagMQWQR3, CLWLQueuePriority) - 200usize];
-    ["Offset of field: tagMQWQR3::CLWLQueueRank"][::std::mem::offset_of!(tagMQWQR3, CLWLQueueRank) - 204usize];
-    ["Offset of field: tagMQWQR3::DefPutResponse"][::std::mem::offset_of!(tagMQWQR3, DefPutResponse) - 208usize];
+    [
+        "Offset of field: tagMQWQR3::StrucId",
+    ][::std::mem::offset_of!(tagMQWQR3, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQWQR3::Version",
+    ][::std::mem::offset_of!(tagMQWQR3, Version) - 4usize];
+    [
+        "Offset of field: tagMQWQR3::StrucLength",
+    ][::std::mem::offset_of!(tagMQWQR3, StrucLength) - 8usize];
+    [
+        "Offset of field: tagMQWQR3::QFlags",
+    ][::std::mem::offset_of!(tagMQWQR3, QFlags) - 12usize];
+    [
+        "Offset of field: tagMQWQR3::QName",
+    ][::std::mem::offset_of!(tagMQWQR3, QName) - 16usize];
+    [
+        "Offset of field: tagMQWQR3::QMgrIdentifier",
+    ][::std::mem::offset_of!(tagMQWQR3, QMgrIdentifier) - 64usize];
+    [
+        "Offset of field: tagMQWQR3::ClusterRecOffset",
+    ][::std::mem::offset_of!(tagMQWQR3, ClusterRecOffset) - 112usize];
+    [
+        "Offset of field: tagMQWQR3::QType",
+    ][::std::mem::offset_of!(tagMQWQR3, QType) - 116usize];
+    [
+        "Offset of field: tagMQWQR3::QDesc",
+    ][::std::mem::offset_of!(tagMQWQR3, QDesc) - 120usize];
+    [
+        "Offset of field: tagMQWQR3::DefBind",
+    ][::std::mem::offset_of!(tagMQWQR3, DefBind) - 184usize];
+    [
+        "Offset of field: tagMQWQR3::DefPersistence",
+    ][::std::mem::offset_of!(tagMQWQR3, DefPersistence) - 188usize];
+    [
+        "Offset of field: tagMQWQR3::DefPriority",
+    ][::std::mem::offset_of!(tagMQWQR3, DefPriority) - 192usize];
+    [
+        "Offset of field: tagMQWQR3::InhibitPut",
+    ][::std::mem::offset_of!(tagMQWQR3, InhibitPut) - 196usize];
+    [
+        "Offset of field: tagMQWQR3::CLWLQueuePriority",
+    ][::std::mem::offset_of!(tagMQWQR3, CLWLQueuePriority) - 200usize];
+    [
+        "Offset of field: tagMQWQR3::CLWLQueueRank",
+    ][::std::mem::offset_of!(tagMQWQR3, CLWLQueueRank) - 204usize];
+    [
+        "Offset of field: tagMQWQR3::DefPutResponse",
+    ][::std::mem::offset_of!(tagMQWQR3, DefPutResponse) - 208usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQWQR4"][::std::mem::size_of::<tagMQWQR4>() - 216usize];
     ["Alignment of tagMQWQR4"][::std::mem::align_of::<tagMQWQR4>() - 4usize];
-    ["Offset of field: tagMQWQR4::StrucId"][::std::mem::offset_of!(tagMQWQR4, StrucId) - 0usize];
-    ["Offset of field: tagMQWQR4::Version"][::std::mem::offset_of!(tagMQWQR4, Version) - 4usize];
-    ["Offset of field: tagMQWQR4::StrucLength"][::std::mem::offset_of!(tagMQWQR4, StrucLength) - 8usize];
-    ["Offset of field: tagMQWQR4::QFlags"][::std::mem::offset_of!(tagMQWQR4, QFlags) - 12usize];
-    ["Offset of field: tagMQWQR4::QName"][::std::mem::offset_of!(tagMQWQR4, QName) - 16usize];
-    ["Offset of field: tagMQWQR4::QMgrIdentifier"][::std::mem::offset_of!(tagMQWQR4, QMgrIdentifier) - 64usize];
-    ["Offset of field: tagMQWQR4::ClusterRecOffset"][::std::mem::offset_of!(tagMQWQR4, ClusterRecOffset) - 112usize];
-    ["Offset of field: tagMQWQR4::QType"][::std::mem::offset_of!(tagMQWQR4, QType) - 116usize];
-    ["Offset of field: tagMQWQR4::QDesc"][::std::mem::offset_of!(tagMQWQR4, QDesc) - 120usize];
-    ["Offset of field: tagMQWQR4::DefBind"][::std::mem::offset_of!(tagMQWQR4, DefBind) - 184usize];
-    ["Offset of field: tagMQWQR4::DefPersistence"][::std::mem::offset_of!(tagMQWQR4, DefPersistence) - 188usize];
-    ["Offset of field: tagMQWQR4::DefPriority"][::std::mem::offset_of!(tagMQWQR4, DefPriority) - 192usize];
-    ["Offset of field: tagMQWQR4::InhibitPut"][::std::mem::offset_of!(tagMQWQR4, InhibitPut) - 196usize];
-    ["Offset of field: tagMQWQR4::CLWLQueuePriority"][::std::mem::offset_of!(tagMQWQR4, CLWLQueuePriority) - 200usize];
-    ["Offset of field: tagMQWQR4::CLWLQueueRank"][::std::mem::offset_of!(tagMQWQR4, CLWLQueueRank) - 204usize];
-    ["Offset of field: tagMQWQR4::DefPutResponse"][::std::mem::offset_of!(tagMQWQR4, DefPutResponse) - 208usize];
-    ["Offset of field: tagMQWQR4::CapExpiry"][::std::mem::offset_of!(tagMQWQR4, CapExpiry) - 212usize];
+    [
+        "Offset of field: tagMQWQR4::StrucId",
+    ][::std::mem::offset_of!(tagMQWQR4, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQWQR4::Version",
+    ][::std::mem::offset_of!(tagMQWQR4, Version) - 4usize];
+    [
+        "Offset of field: tagMQWQR4::StrucLength",
+    ][::std::mem::offset_of!(tagMQWQR4, StrucLength) - 8usize];
+    [
+        "Offset of field: tagMQWQR4::QFlags",
+    ][::std::mem::offset_of!(tagMQWQR4, QFlags) - 12usize];
+    [
+        "Offset of field: tagMQWQR4::QName",
+    ][::std::mem::offset_of!(tagMQWQR4, QName) - 16usize];
+    [
+        "Offset of field: tagMQWQR4::QMgrIdentifier",
+    ][::std::mem::offset_of!(tagMQWQR4, QMgrIdentifier) - 64usize];
+    [
+        "Offset of field: tagMQWQR4::ClusterRecOffset",
+    ][::std::mem::offset_of!(tagMQWQR4, ClusterRecOffset) - 112usize];
+    [
+        "Offset of field: tagMQWQR4::QType",
+    ][::std::mem::offset_of!(tagMQWQR4, QType) - 116usize];
+    [
+        "Offset of field: tagMQWQR4::QDesc",
+    ][::std::mem::offset_of!(tagMQWQR4, QDesc) - 120usize];
+    [
+        "Offset of field: tagMQWQR4::DefBind",
+    ][::std::mem::offset_of!(tagMQWQR4, DefBind) - 184usize];
+    [
+        "Offset of field: tagMQWQR4::DefPersistence",
+    ][::std::mem::offset_of!(tagMQWQR4, DefPersistence) - 188usize];
+    [
+        "Offset of field: tagMQWQR4::DefPriority",
+    ][::std::mem::offset_of!(tagMQWQR4, DefPriority) - 192usize];
+    [
+        "Offset of field: tagMQWQR4::InhibitPut",
+    ][::std::mem::offset_of!(tagMQWQR4, InhibitPut) - 196usize];
+    [
+        "Offset of field: tagMQWQR4::CLWLQueuePriority",
+    ][::std::mem::offset_of!(tagMQWQR4, CLWLQueuePriority) - 200usize];
+    [
+        "Offset of field: tagMQWQR4::CLWLQueueRank",
+    ][::std::mem::offset_of!(tagMQWQR4, CLWLQueueRank) - 204usize];
+    [
+        "Offset of field: tagMQWQR4::DefPutResponse",
+    ][::std::mem::offset_of!(tagMQWQR4, DefPutResponse) - 208usize];
+    [
+        "Offset of field: tagMQWQR4::CapExpiry",
+    ][::std::mem::offset_of!(tagMQWQR4, CapExpiry) - 212usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQWXP"][::std::mem::size_of::<tagMQWXP>() - 248usize];
     ["Alignment of tagMQWXP"][::std::mem::align_of::<tagMQWXP>() - 8usize];
-    ["Offset of field: tagMQWXP::StrucId"][::std::mem::offset_of!(tagMQWXP, StrucId) - 0usize];
-    ["Offset of field: tagMQWXP::Version"][::std::mem::offset_of!(tagMQWXP, Version) - 4usize];
-    ["Offset of field: tagMQWXP::ExitId"][::std::mem::offset_of!(tagMQWXP, ExitId) - 8usize];
-    ["Offset of field: tagMQWXP::ExitReason"][::std::mem::offset_of!(tagMQWXP, ExitReason) - 12usize];
-    ["Offset of field: tagMQWXP::ExitResponse"][::std::mem::offset_of!(tagMQWXP, ExitResponse) - 16usize];
-    ["Offset of field: tagMQWXP::ExitResponse2"][::std::mem::offset_of!(tagMQWXP, ExitResponse2) - 20usize];
-    ["Offset of field: tagMQWXP::Feedback"][::std::mem::offset_of!(tagMQWXP, Feedback) - 24usize];
-    ["Offset of field: tagMQWXP::Flags"][::std::mem::offset_of!(tagMQWXP, Flags) - 28usize];
-    ["Offset of field: tagMQWXP::ExitUserArea"][::std::mem::offset_of!(tagMQWXP, ExitUserArea) - 32usize];
-    ["Offset of field: tagMQWXP::ExitData"][::std::mem::offset_of!(tagMQWXP, ExitData) - 48usize];
-    ["Offset of field: tagMQWXP::MsgDescPtr"][::std::mem::offset_of!(tagMQWXP, MsgDescPtr) - 80usize];
-    ["Offset of field: tagMQWXP::MsgBufferPtr"][::std::mem::offset_of!(tagMQWXP, MsgBufferPtr) - 88usize];
-    ["Offset of field: tagMQWXP::MsgBufferLength"][::std::mem::offset_of!(tagMQWXP, MsgBufferLength) - 96usize];
-    ["Offset of field: tagMQWXP::MsgLength"][::std::mem::offset_of!(tagMQWXP, MsgLength) - 100usize];
-    ["Offset of field: tagMQWXP::QName"][::std::mem::offset_of!(tagMQWXP, QName) - 104usize];
-    ["Offset of field: tagMQWXP::QMgrName"][::std::mem::offset_of!(tagMQWXP, QMgrName) - 152usize];
-    ["Offset of field: tagMQWXP::DestinationCount"][::std::mem::offset_of!(tagMQWXP, DestinationCount) - 200usize];
-    ["Offset of field: tagMQWXP::DestinationChosen"][::std::mem::offset_of!(tagMQWXP, DestinationChosen) - 204usize];
-    ["Offset of field: tagMQWXP::DestinationArrayPtr"][::std::mem::offset_of!(tagMQWXP, DestinationArrayPtr) - 208usize];
-    ["Offset of field: tagMQWXP::QArrayPtr"][::std::mem::offset_of!(tagMQWXP, QArrayPtr) - 216usize];
-    ["Offset of field: tagMQWXP::CacheContext"][::std::mem::offset_of!(tagMQWXP, CacheContext) - 224usize];
-    ["Offset of field: tagMQWXP::CacheType"][::std::mem::offset_of!(tagMQWXP, CacheType) - 232usize];
-    ["Offset of field: tagMQWXP::CLWLMRUChannels"][::std::mem::offset_of!(tagMQWXP, CLWLMRUChannels) - 236usize];
-    ["Offset of field: tagMQWXP::pEntryPoints"][::std::mem::offset_of!(tagMQWXP, pEntryPoints) - 240usize];
+    [
+        "Offset of field: tagMQWXP::StrucId",
+    ][::std::mem::offset_of!(tagMQWXP, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQWXP::Version",
+    ][::std::mem::offset_of!(tagMQWXP, Version) - 4usize];
+    [
+        "Offset of field: tagMQWXP::ExitId",
+    ][::std::mem::offset_of!(tagMQWXP, ExitId) - 8usize];
+    [
+        "Offset of field: tagMQWXP::ExitReason",
+    ][::std::mem::offset_of!(tagMQWXP, ExitReason) - 12usize];
+    [
+        "Offset of field: tagMQWXP::ExitResponse",
+    ][::std::mem::offset_of!(tagMQWXP, ExitResponse) - 16usize];
+    [
+        "Offset of field: tagMQWXP::ExitResponse2",
+    ][::std::mem::offset_of!(tagMQWXP, ExitResponse2) - 20usize];
+    [
+        "Offset of field: tagMQWXP::Feedback",
+    ][::std::mem::offset_of!(tagMQWXP, Feedback) - 24usize];
+    [
+        "Offset of field: tagMQWXP::Flags",
+    ][::std::mem::offset_of!(tagMQWXP, Flags) - 28usize];
+    [
+        "Offset of field: tagMQWXP::ExitUserArea",
+    ][::std::mem::offset_of!(tagMQWXP, ExitUserArea) - 32usize];
+    [
+        "Offset of field: tagMQWXP::ExitData",
+    ][::std::mem::offset_of!(tagMQWXP, ExitData) - 48usize];
+    [
+        "Offset of field: tagMQWXP::MsgDescPtr",
+    ][::std::mem::offset_of!(tagMQWXP, MsgDescPtr) - 80usize];
+    [
+        "Offset of field: tagMQWXP::MsgBufferPtr",
+    ][::std::mem::offset_of!(tagMQWXP, MsgBufferPtr) - 88usize];
+    [
+        "Offset of field: tagMQWXP::MsgBufferLength",
+    ][::std::mem::offset_of!(tagMQWXP, MsgBufferLength) - 96usize];
+    [
+        "Offset of field: tagMQWXP::MsgLength",
+    ][::std::mem::offset_of!(tagMQWXP, MsgLength) - 100usize];
+    [
+        "Offset of field: tagMQWXP::QName",
+    ][::std::mem::offset_of!(tagMQWXP, QName) - 104usize];
+    [
+        "Offset of field: tagMQWXP::QMgrName",
+    ][::std::mem::offset_of!(tagMQWXP, QMgrName) - 152usize];
+    [
+        "Offset of field: tagMQWXP::DestinationCount",
+    ][::std::mem::offset_of!(tagMQWXP, DestinationCount) - 200usize];
+    [
+        "Offset of field: tagMQWXP::DestinationChosen",
+    ][::std::mem::offset_of!(tagMQWXP, DestinationChosen) - 204usize];
+    [
+        "Offset of field: tagMQWXP::DestinationArrayPtr",
+    ][::std::mem::offset_of!(tagMQWXP, DestinationArrayPtr) - 208usize];
+    [
+        "Offset of field: tagMQWXP::QArrayPtr",
+    ][::std::mem::offset_of!(tagMQWXP, QArrayPtr) - 216usize];
+    [
+        "Offset of field: tagMQWXP::CacheContext",
+    ][::std::mem::offset_of!(tagMQWXP, CacheContext) - 224usize];
+    [
+        "Offset of field: tagMQWXP::CacheType",
+    ][::std::mem::offset_of!(tagMQWXP, CacheType) - 232usize];
+    [
+        "Offset of field: tagMQWXP::CLWLMRUChannels",
+    ][::std::mem::offset_of!(tagMQWXP, CLWLMRUChannels) - 236usize];
+    [
+        "Offset of field: tagMQWXP::pEntryPoints",
+    ][::std::mem::offset_of!(tagMQWXP, pEntryPoints) - 240usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQWXP1"][::std::mem::size_of::<tagMQWXP1>() - 224usize];
     ["Alignment of tagMQWXP1"][::std::mem::align_of::<tagMQWXP1>() - 8usize];
-    ["Offset of field: tagMQWXP1::StrucId"][::std::mem::offset_of!(tagMQWXP1, StrucId) - 0usize];
-    ["Offset of field: tagMQWXP1::Version"][::std::mem::offset_of!(tagMQWXP1, Version) - 4usize];
-    ["Offset of field: tagMQWXP1::ExitId"][::std::mem::offset_of!(tagMQWXP1, ExitId) - 8usize];
-    ["Offset of field: tagMQWXP1::ExitReason"][::std::mem::offset_of!(tagMQWXP1, ExitReason) - 12usize];
-    ["Offset of field: tagMQWXP1::ExitResponse"][::std::mem::offset_of!(tagMQWXP1, ExitResponse) - 16usize];
-    ["Offset of field: tagMQWXP1::ExitResponse2"][::std::mem::offset_of!(tagMQWXP1, ExitResponse2) - 20usize];
-    ["Offset of field: tagMQWXP1::Feedback"][::std::mem::offset_of!(tagMQWXP1, Feedback) - 24usize];
-    ["Offset of field: tagMQWXP1::Flags"][::std::mem::offset_of!(tagMQWXP1, Flags) - 28usize];
-    ["Offset of field: tagMQWXP1::ExitUserArea"][::std::mem::offset_of!(tagMQWXP1, ExitUserArea) - 32usize];
-    ["Offset of field: tagMQWXP1::ExitData"][::std::mem::offset_of!(tagMQWXP1, ExitData) - 48usize];
-    ["Offset of field: tagMQWXP1::MsgDescPtr"][::std::mem::offset_of!(tagMQWXP1, MsgDescPtr) - 80usize];
-    ["Offset of field: tagMQWXP1::MsgBufferPtr"][::std::mem::offset_of!(tagMQWXP1, MsgBufferPtr) - 88usize];
-    ["Offset of field: tagMQWXP1::MsgBufferLength"][::std::mem::offset_of!(tagMQWXP1, MsgBufferLength) - 96usize];
-    ["Offset of field: tagMQWXP1::MsgLength"][::std::mem::offset_of!(tagMQWXP1, MsgLength) - 100usize];
-    ["Offset of field: tagMQWXP1::QName"][::std::mem::offset_of!(tagMQWXP1, QName) - 104usize];
-    ["Offset of field: tagMQWXP1::QMgrName"][::std::mem::offset_of!(tagMQWXP1, QMgrName) - 152usize];
-    ["Offset of field: tagMQWXP1::DestinationCount"][::std::mem::offset_of!(tagMQWXP1, DestinationCount) - 200usize];
-    ["Offset of field: tagMQWXP1::DestinationChosen"][::std::mem::offset_of!(tagMQWXP1, DestinationChosen) - 204usize];
-    ["Offset of field: tagMQWXP1::DestinationArrayPtr"][::std::mem::offset_of!(tagMQWXP1, DestinationArrayPtr) - 208usize];
-    ["Offset of field: tagMQWXP1::QArrayPtr"][::std::mem::offset_of!(tagMQWXP1, QArrayPtr) - 216usize];
+    [
+        "Offset of field: tagMQWXP1::StrucId",
+    ][::std::mem::offset_of!(tagMQWXP1, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQWXP1::Version",
+    ][::std::mem::offset_of!(tagMQWXP1, Version) - 4usize];
+    [
+        "Offset of field: tagMQWXP1::ExitId",
+    ][::std::mem::offset_of!(tagMQWXP1, ExitId) - 8usize];
+    [
+        "Offset of field: tagMQWXP1::ExitReason",
+    ][::std::mem::offset_of!(tagMQWXP1, ExitReason) - 12usize];
+    [
+        "Offset of field: tagMQWXP1::ExitResponse",
+    ][::std::mem::offset_of!(tagMQWXP1, ExitResponse) - 16usize];
+    [
+        "Offset of field: tagMQWXP1::ExitResponse2",
+    ][::std::mem::offset_of!(tagMQWXP1, ExitResponse2) - 20usize];
+    [
+        "Offset of field: tagMQWXP1::Feedback",
+    ][::std::mem::offset_of!(tagMQWXP1, Feedback) - 24usize];
+    [
+        "Offset of field: tagMQWXP1::Flags",
+    ][::std::mem::offset_of!(tagMQWXP1, Flags) - 28usize];
+    [
+        "Offset of field: tagMQWXP1::ExitUserArea",
+    ][::std::mem::offset_of!(tagMQWXP1, ExitUserArea) - 32usize];
+    [
+        "Offset of field: tagMQWXP1::ExitData",
+    ][::std::mem::offset_of!(tagMQWXP1, ExitData) - 48usize];
+    [
+        "Offset of field: tagMQWXP1::MsgDescPtr",
+    ][::std::mem::offset_of!(tagMQWXP1, MsgDescPtr) - 80usize];
+    [
+        "Offset of field: tagMQWXP1::MsgBufferPtr",
+    ][::std::mem::offset_of!(tagMQWXP1, MsgBufferPtr) - 88usize];
+    [
+        "Offset of field: tagMQWXP1::MsgBufferLength",
+    ][::std::mem::offset_of!(tagMQWXP1, MsgBufferLength) - 96usize];
+    [
+        "Offset of field: tagMQWXP1::MsgLength",
+    ][::std::mem::offset_of!(tagMQWXP1, MsgLength) - 100usize];
+    [
+        "Offset of field: tagMQWXP1::QName",
+    ][::std::mem::offset_of!(tagMQWXP1, QName) - 104usize];
+    [
+        "Offset of field: tagMQWXP1::QMgrName",
+    ][::std::mem::offset_of!(tagMQWXP1, QMgrName) - 152usize];
+    [
+        "Offset of field: tagMQWXP1::DestinationCount",
+    ][::std::mem::offset_of!(tagMQWXP1, DestinationCount) - 200usize];
+    [
+        "Offset of field: tagMQWXP1::DestinationChosen",
+    ][::std::mem::offset_of!(tagMQWXP1, DestinationChosen) - 204usize];
+    [
+        "Offset of field: tagMQWXP1::DestinationArrayPtr",
+    ][::std::mem::offset_of!(tagMQWXP1, DestinationArrayPtr) - 208usize];
+    [
+        "Offset of field: tagMQWXP1::QArrayPtr",
+    ][::std::mem::offset_of!(tagMQWXP1, QArrayPtr) - 216usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQWXP2"][::std::mem::size_of::<tagMQWXP2>() - 240usize];
     ["Alignment of tagMQWXP2"][::std::mem::align_of::<tagMQWXP2>() - 8usize];
-    ["Offset of field: tagMQWXP2::StrucId"][::std::mem::offset_of!(tagMQWXP2, StrucId) - 0usize];
-    ["Offset of field: tagMQWXP2::Version"][::std::mem::offset_of!(tagMQWXP2, Version) - 4usize];
-    ["Offset of field: tagMQWXP2::ExitId"][::std::mem::offset_of!(tagMQWXP2, ExitId) - 8usize];
-    ["Offset of field: tagMQWXP2::ExitReason"][::std::mem::offset_of!(tagMQWXP2, ExitReason) - 12usize];
-    ["Offset of field: tagMQWXP2::ExitResponse"][::std::mem::offset_of!(tagMQWXP2, ExitResponse) - 16usize];
-    ["Offset of field: tagMQWXP2::ExitResponse2"][::std::mem::offset_of!(tagMQWXP2, ExitResponse2) - 20usize];
-    ["Offset of field: tagMQWXP2::Feedback"][::std::mem::offset_of!(tagMQWXP2, Feedback) - 24usize];
-    ["Offset of field: tagMQWXP2::Flags"][::std::mem::offset_of!(tagMQWXP2, Flags) - 28usize];
-    ["Offset of field: tagMQWXP2::ExitUserArea"][::std::mem::offset_of!(tagMQWXP2, ExitUserArea) - 32usize];
-    ["Offset of field: tagMQWXP2::ExitData"][::std::mem::offset_of!(tagMQWXP2, ExitData) - 48usize];
-    ["Offset of field: tagMQWXP2::MsgDescPtr"][::std::mem::offset_of!(tagMQWXP2, MsgDescPtr) - 80usize];
-    ["Offset of field: tagMQWXP2::MsgBufferPtr"][::std::mem::offset_of!(tagMQWXP2, MsgBufferPtr) - 88usize];
-    ["Offset of field: tagMQWXP2::MsgBufferLength"][::std::mem::offset_of!(tagMQWXP2, MsgBufferLength) - 96usize];
-    ["Offset of field: tagMQWXP2::MsgLength"][::std::mem::offset_of!(tagMQWXP2, MsgLength) - 100usize];
-    ["Offset of field: tagMQWXP2::QName"][::std::mem::offset_of!(tagMQWXP2, QName) - 104usize];
-    ["Offset of field: tagMQWXP2::QMgrName"][::std::mem::offset_of!(tagMQWXP2, QMgrName) - 152usize];
-    ["Offset of field: tagMQWXP2::DestinationCount"][::std::mem::offset_of!(tagMQWXP2, DestinationCount) - 200usize];
-    ["Offset of field: tagMQWXP2::DestinationChosen"][::std::mem::offset_of!(tagMQWXP2, DestinationChosen) - 204usize];
-    ["Offset of field: tagMQWXP2::DestinationArrayPtr"][::std::mem::offset_of!(tagMQWXP2, DestinationArrayPtr) - 208usize];
-    ["Offset of field: tagMQWXP2::QArrayPtr"][::std::mem::offset_of!(tagMQWXP2, QArrayPtr) - 216usize];
-    ["Offset of field: tagMQWXP2::CacheContext"][::std::mem::offset_of!(tagMQWXP2, CacheContext) - 224usize];
-    ["Offset of field: tagMQWXP2::CacheType"][::std::mem::offset_of!(tagMQWXP2, CacheType) - 232usize];
+    [
+        "Offset of field: tagMQWXP2::StrucId",
+    ][::std::mem::offset_of!(tagMQWXP2, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQWXP2::Version",
+    ][::std::mem::offset_of!(tagMQWXP2, Version) - 4usize];
+    [
+        "Offset of field: tagMQWXP2::ExitId",
+    ][::std::mem::offset_of!(tagMQWXP2, ExitId) - 8usize];
+    [
+        "Offset of field: tagMQWXP2::ExitReason",
+    ][::std::mem::offset_of!(tagMQWXP2, ExitReason) - 12usize];
+    [
+        "Offset of field: tagMQWXP2::ExitResponse",
+    ][::std::mem::offset_of!(tagMQWXP2, ExitResponse) - 16usize];
+    [
+        "Offset of field: tagMQWXP2::ExitResponse2",
+    ][::std::mem::offset_of!(tagMQWXP2, ExitResponse2) - 20usize];
+    [
+        "Offset of field: tagMQWXP2::Feedback",
+    ][::std::mem::offset_of!(tagMQWXP2, Feedback) - 24usize];
+    [
+        "Offset of field: tagMQWXP2::Flags",
+    ][::std::mem::offset_of!(tagMQWXP2, Flags) - 28usize];
+    [
+        "Offset of field: tagMQWXP2::ExitUserArea",
+    ][::std::mem::offset_of!(tagMQWXP2, ExitUserArea) - 32usize];
+    [
+        "Offset of field: tagMQWXP2::ExitData",
+    ][::std::mem::offset_of!(tagMQWXP2, ExitData) - 48usize];
+    [
+        "Offset of field: tagMQWXP2::MsgDescPtr",
+    ][::std::mem::offset_of!(tagMQWXP2, MsgDescPtr) - 80usize];
+    [
+        "Offset of field: tagMQWXP2::MsgBufferPtr",
+    ][::std::mem::offset_of!(tagMQWXP2, MsgBufferPtr) - 88usize];
+    [
+        "Offset of field: tagMQWXP2::MsgBufferLength",
+    ][::std::mem::offset_of!(tagMQWXP2, MsgBufferLength) - 96usize];
+    [
+        "Offset of field: tagMQWXP2::MsgLength",
+    ][::std::mem::offset_of!(tagMQWXP2, MsgLength) - 100usize];
+    [
+        "Offset of field: tagMQWXP2::QName",
+    ][::std::mem::offset_of!(tagMQWXP2, QName) - 104usize];
+    [
+        "Offset of field: tagMQWXP2::QMgrName",
+    ][::std::mem::offset_of!(tagMQWXP2, QMgrName) - 152usize];
+    [
+        "Offset of field: tagMQWXP2::DestinationCount",
+    ][::std::mem::offset_of!(tagMQWXP2, DestinationCount) - 200usize];
+    [
+        "Offset of field: tagMQWXP2::DestinationChosen",
+    ][::std::mem::offset_of!(tagMQWXP2, DestinationChosen) - 204usize];
+    [
+        "Offset of field: tagMQWXP2::DestinationArrayPtr",
+    ][::std::mem::offset_of!(tagMQWXP2, DestinationArrayPtr) - 208usize];
+    [
+        "Offset of field: tagMQWXP2::QArrayPtr",
+    ][::std::mem::offset_of!(tagMQWXP2, QArrayPtr) - 216usize];
+    [
+        "Offset of field: tagMQWXP2::CacheContext",
+    ][::std::mem::offset_of!(tagMQWXP2, CacheContext) - 224usize];
+    [
+        "Offset of field: tagMQWXP2::CacheType",
+    ][::std::mem::offset_of!(tagMQWXP2, CacheType) - 232usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQWXP3"][::std::mem::size_of::<tagMQWXP3>() - 240usize];
     ["Alignment of tagMQWXP3"][::std::mem::align_of::<tagMQWXP3>() - 8usize];
-    ["Offset of field: tagMQWXP3::StrucId"][::std::mem::offset_of!(tagMQWXP3, StrucId) - 0usize];
-    ["Offset of field: tagMQWXP3::Version"][::std::mem::offset_of!(tagMQWXP3, Version) - 4usize];
-    ["Offset of field: tagMQWXP3::ExitId"][::std::mem::offset_of!(tagMQWXP3, ExitId) - 8usize];
-    ["Offset of field: tagMQWXP3::ExitReason"][::std::mem::offset_of!(tagMQWXP3, ExitReason) - 12usize];
-    ["Offset of field: tagMQWXP3::ExitResponse"][::std::mem::offset_of!(tagMQWXP3, ExitResponse) - 16usize];
-    ["Offset of field: tagMQWXP3::ExitResponse2"][::std::mem::offset_of!(tagMQWXP3, ExitResponse2) - 20usize];
-    ["Offset of field: tagMQWXP3::Feedback"][::std::mem::offset_of!(tagMQWXP3, Feedback) - 24usize];
-    ["Offset of field: tagMQWXP3::Flags"][::std::mem::offset_of!(tagMQWXP3, Flags) - 28usize];
-    ["Offset of field: tagMQWXP3::ExitUserArea"][::std::mem::offset_of!(tagMQWXP3, ExitUserArea) - 32usize];
-    ["Offset of field: tagMQWXP3::ExitData"][::std::mem::offset_of!(tagMQWXP3, ExitData) - 48usize];
-    ["Offset of field: tagMQWXP3::MsgDescPtr"][::std::mem::offset_of!(tagMQWXP3, MsgDescPtr) - 80usize];
-    ["Offset of field: tagMQWXP3::MsgBufferPtr"][::std::mem::offset_of!(tagMQWXP3, MsgBufferPtr) - 88usize];
-    ["Offset of field: tagMQWXP3::MsgBufferLength"][::std::mem::offset_of!(tagMQWXP3, MsgBufferLength) - 96usize];
-    ["Offset of field: tagMQWXP3::MsgLength"][::std::mem::offset_of!(tagMQWXP3, MsgLength) - 100usize];
-    ["Offset of field: tagMQWXP3::QName"][::std::mem::offset_of!(tagMQWXP3, QName) - 104usize];
-    ["Offset of field: tagMQWXP3::QMgrName"][::std::mem::offset_of!(tagMQWXP3, QMgrName) - 152usize];
-    ["Offset of field: tagMQWXP3::DestinationCount"][::std::mem::offset_of!(tagMQWXP3, DestinationCount) - 200usize];
-    ["Offset of field: tagMQWXP3::DestinationChosen"][::std::mem::offset_of!(tagMQWXP3, DestinationChosen) - 204usize];
-    ["Offset of field: tagMQWXP3::DestinationArrayPtr"][::std::mem::offset_of!(tagMQWXP3, DestinationArrayPtr) - 208usize];
-    ["Offset of field: tagMQWXP3::QArrayPtr"][::std::mem::offset_of!(tagMQWXP3, QArrayPtr) - 216usize];
-    ["Offset of field: tagMQWXP3::CacheContext"][::std::mem::offset_of!(tagMQWXP3, CacheContext) - 224usize];
-    ["Offset of field: tagMQWXP3::CacheType"][::std::mem::offset_of!(tagMQWXP3, CacheType) - 232usize];
-    ["Offset of field: tagMQWXP3::CLWLMRUChannels"][::std::mem::offset_of!(tagMQWXP3, CLWLMRUChannels) - 236usize];
+    [
+        "Offset of field: tagMQWXP3::StrucId",
+    ][::std::mem::offset_of!(tagMQWXP3, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQWXP3::Version",
+    ][::std::mem::offset_of!(tagMQWXP3, Version) - 4usize];
+    [
+        "Offset of field: tagMQWXP3::ExitId",
+    ][::std::mem::offset_of!(tagMQWXP3, ExitId) - 8usize];
+    [
+        "Offset of field: tagMQWXP3::ExitReason",
+    ][::std::mem::offset_of!(tagMQWXP3, ExitReason) - 12usize];
+    [
+        "Offset of field: tagMQWXP3::ExitResponse",
+    ][::std::mem::offset_of!(tagMQWXP3, ExitResponse) - 16usize];
+    [
+        "Offset of field: tagMQWXP3::ExitResponse2",
+    ][::std::mem::offset_of!(tagMQWXP3, ExitResponse2) - 20usize];
+    [
+        "Offset of field: tagMQWXP3::Feedback",
+    ][::std::mem::offset_of!(tagMQWXP3, Feedback) - 24usize];
+    [
+        "Offset of field: tagMQWXP3::Flags",
+    ][::std::mem::offset_of!(tagMQWXP3, Flags) - 28usize];
+    [
+        "Offset of field: tagMQWXP3::ExitUserArea",
+    ][::std::mem::offset_of!(tagMQWXP3, ExitUserArea) - 32usize];
+    [
+        "Offset of field: tagMQWXP3::ExitData",
+    ][::std::mem::offset_of!(tagMQWXP3, ExitData) - 48usize];
+    [
+        "Offset of field: tagMQWXP3::MsgDescPtr",
+    ][::std::mem::offset_of!(tagMQWXP3, MsgDescPtr) - 80usize];
+    [
+        "Offset of field: tagMQWXP3::MsgBufferPtr",
+    ][::std::mem::offset_of!(tagMQWXP3, MsgBufferPtr) - 88usize];
+    [
+        "Offset of field: tagMQWXP3::MsgBufferLength",
+    ][::std::mem::offset_of!(tagMQWXP3, MsgBufferLength) - 96usize];
+    [
+        "Offset of field: tagMQWXP3::MsgLength",
+    ][::std::mem::offset_of!(tagMQWXP3, MsgLength) - 100usize];
+    [
+        "Offset of field: tagMQWXP3::QName",
+    ][::std::mem::offset_of!(tagMQWXP3, QName) - 104usize];
+    [
+        "Offset of field: tagMQWXP3::QMgrName",
+    ][::std::mem::offset_of!(tagMQWXP3, QMgrName) - 152usize];
+    [
+        "Offset of field: tagMQWXP3::DestinationCount",
+    ][::std::mem::offset_of!(tagMQWXP3, DestinationCount) - 200usize];
+    [
+        "Offset of field: tagMQWXP3::DestinationChosen",
+    ][::std::mem::offset_of!(tagMQWXP3, DestinationChosen) - 204usize];
+    [
+        "Offset of field: tagMQWXP3::DestinationArrayPtr",
+    ][::std::mem::offset_of!(tagMQWXP3, DestinationArrayPtr) - 208usize];
+    [
+        "Offset of field: tagMQWXP3::QArrayPtr",
+    ][::std::mem::offset_of!(tagMQWXP3, QArrayPtr) - 216usize];
+    [
+        "Offset of field: tagMQWXP3::CacheContext",
+    ][::std::mem::offset_of!(tagMQWXP3, CacheContext) - 224usize];
+    [
+        "Offset of field: tagMQWXP3::CacheType",
+    ][::std::mem::offset_of!(tagMQWXP3, CacheType) - 232usize];
+    [
+        "Offset of field: tagMQWXP3::CLWLMRUChannels",
+    ][::std::mem::offset_of!(tagMQWXP3, CLWLMRUChannels) - 236usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQWXP4"][::std::mem::size_of::<tagMQWXP4>() - 248usize];
     ["Alignment of tagMQWXP4"][::std::mem::align_of::<tagMQWXP4>() - 8usize];
-    ["Offset of field: tagMQWXP4::StrucId"][::std::mem::offset_of!(tagMQWXP4, StrucId) - 0usize];
-    ["Offset of field: tagMQWXP4::Version"][::std::mem::offset_of!(tagMQWXP4, Version) - 4usize];
-    ["Offset of field: tagMQWXP4::ExitId"][::std::mem::offset_of!(tagMQWXP4, ExitId) - 8usize];
-    ["Offset of field: tagMQWXP4::ExitReason"][::std::mem::offset_of!(tagMQWXP4, ExitReason) - 12usize];
-    ["Offset of field: tagMQWXP4::ExitResponse"][::std::mem::offset_of!(tagMQWXP4, ExitResponse) - 16usize];
-    ["Offset of field: tagMQWXP4::ExitResponse2"][::std::mem::offset_of!(tagMQWXP4, ExitResponse2) - 20usize];
-    ["Offset of field: tagMQWXP4::Feedback"][::std::mem::offset_of!(tagMQWXP4, Feedback) - 24usize];
-    ["Offset of field: tagMQWXP4::Flags"][::std::mem::offset_of!(tagMQWXP4, Flags) - 28usize];
-    ["Offset of field: tagMQWXP4::ExitUserArea"][::std::mem::offset_of!(tagMQWXP4, ExitUserArea) - 32usize];
-    ["Offset of field: tagMQWXP4::ExitData"][::std::mem::offset_of!(tagMQWXP4, ExitData) - 48usize];
-    ["Offset of field: tagMQWXP4::MsgDescPtr"][::std::mem::offset_of!(tagMQWXP4, MsgDescPtr) - 80usize];
-    ["Offset of field: tagMQWXP4::MsgBufferPtr"][::std::mem::offset_of!(tagMQWXP4, MsgBufferPtr) - 88usize];
-    ["Offset of field: tagMQWXP4::MsgBufferLength"][::std::mem::offset_of!(tagMQWXP4, MsgBufferLength) - 96usize];
-    ["Offset of field: tagMQWXP4::MsgLength"][::std::mem::offset_of!(tagMQWXP4, MsgLength) - 100usize];
-    ["Offset of field: tagMQWXP4::QName"][::std::mem::offset_of!(tagMQWXP4, QName) - 104usize];
-    ["Offset of field: tagMQWXP4::QMgrName"][::std::mem::offset_of!(tagMQWXP4, QMgrName) - 152usize];
-    ["Offset of field: tagMQWXP4::DestinationCount"][::std::mem::offset_of!(tagMQWXP4, DestinationCount) - 200usize];
-    ["Offset of field: tagMQWXP4::DestinationChosen"][::std::mem::offset_of!(tagMQWXP4, DestinationChosen) - 204usize];
-    ["Offset of field: tagMQWXP4::DestinationArrayPtr"][::std::mem::offset_of!(tagMQWXP4, DestinationArrayPtr) - 208usize];
-    ["Offset of field: tagMQWXP4::QArrayPtr"][::std::mem::offset_of!(tagMQWXP4, QArrayPtr) - 216usize];
-    ["Offset of field: tagMQWXP4::CacheContext"][::std::mem::offset_of!(tagMQWXP4, CacheContext) - 224usize];
-    ["Offset of field: tagMQWXP4::CacheType"][::std::mem::offset_of!(tagMQWXP4, CacheType) - 232usize];
-    ["Offset of field: tagMQWXP4::CLWLMRUChannels"][::std::mem::offset_of!(tagMQWXP4, CLWLMRUChannels) - 236usize];
-    ["Offset of field: tagMQWXP4::pEntryPoints"][::std::mem::offset_of!(tagMQWXP4, pEntryPoints) - 240usize];
+    [
+        "Offset of field: tagMQWXP4::StrucId",
+    ][::std::mem::offset_of!(tagMQWXP4, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQWXP4::Version",
+    ][::std::mem::offset_of!(tagMQWXP4, Version) - 4usize];
+    [
+        "Offset of field: tagMQWXP4::ExitId",
+    ][::std::mem::offset_of!(tagMQWXP4, ExitId) - 8usize];
+    [
+        "Offset of field: tagMQWXP4::ExitReason",
+    ][::std::mem::offset_of!(tagMQWXP4, ExitReason) - 12usize];
+    [
+        "Offset of field: tagMQWXP4::ExitResponse",
+    ][::std::mem::offset_of!(tagMQWXP4, ExitResponse) - 16usize];
+    [
+        "Offset of field: tagMQWXP4::ExitResponse2",
+    ][::std::mem::offset_of!(tagMQWXP4, ExitResponse2) - 20usize];
+    [
+        "Offset of field: tagMQWXP4::Feedback",
+    ][::std::mem::offset_of!(tagMQWXP4, Feedback) - 24usize];
+    [
+        "Offset of field: tagMQWXP4::Flags",
+    ][::std::mem::offset_of!(tagMQWXP4, Flags) - 28usize];
+    [
+        "Offset of field: tagMQWXP4::ExitUserArea",
+    ][::std::mem::offset_of!(tagMQWXP4, ExitUserArea) - 32usize];
+    [
+        "Offset of field: tagMQWXP4::ExitData",
+    ][::std::mem::offset_of!(tagMQWXP4, ExitData) - 48usize];
+    [
+        "Offset of field: tagMQWXP4::MsgDescPtr",
+    ][::std::mem::offset_of!(tagMQWXP4, MsgDescPtr) - 80usize];
+    [
+        "Offset of field: tagMQWXP4::MsgBufferPtr",
+    ][::std::mem::offset_of!(tagMQWXP4, MsgBufferPtr) - 88usize];
+    [
+        "Offset of field: tagMQWXP4::MsgBufferLength",
+    ][::std::mem::offset_of!(tagMQWXP4, MsgBufferLength) - 96usize];
+    [
+        "Offset of field: tagMQWXP4::MsgLength",
+    ][::std::mem::offset_of!(tagMQWXP4, MsgLength) - 100usize];
+    [
+        "Offset of field: tagMQWXP4::QName",
+    ][::std::mem::offset_of!(tagMQWXP4, QName) - 104usize];
+    [
+        "Offset of field: tagMQWXP4::QMgrName",
+    ][::std::mem::offset_of!(tagMQWXP4, QMgrName) - 152usize];
+    [
+        "Offset of field: tagMQWXP4::DestinationCount",
+    ][::std::mem::offset_of!(tagMQWXP4, DestinationCount) - 200usize];
+    [
+        "Offset of field: tagMQWXP4::DestinationChosen",
+    ][::std::mem::offset_of!(tagMQWXP4, DestinationChosen) - 204usize];
+    [
+        "Offset of field: tagMQWXP4::DestinationArrayPtr",
+    ][::std::mem::offset_of!(tagMQWXP4, DestinationArrayPtr) - 208usize];
+    [
+        "Offset of field: tagMQWXP4::QArrayPtr",
+    ][::std::mem::offset_of!(tagMQWXP4, QArrayPtr) - 216usize];
+    [
+        "Offset of field: tagMQWXP4::CacheContext",
+    ][::std::mem::offset_of!(tagMQWXP4, CacheContext) - 224usize];
+    [
+        "Offset of field: tagMQWXP4::CacheType",
+    ][::std::mem::offset_of!(tagMQWXP4, CacheType) - 232usize];
+    [
+        "Offset of field: tagMQWXP4::CLWLMRUChannels",
+    ][::std::mem::offset_of!(tagMQWXP4, CLWLMRUChannels) - 236usize];
+    [
+        "Offset of field: tagMQWXP4::pEntryPoints",
+    ][::std::mem::offset_of!(tagMQWXP4, pEntryPoints) - 240usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQXEPO"][::std::mem::size_of::<tagMQXEPO>() - 40usize];
     ["Alignment of tagMQXEPO"][::std::mem::align_of::<tagMQXEPO>() - 8usize];
-    ["Offset of field: tagMQXEPO::StrucId"][::std::mem::offset_of!(tagMQXEPO, StrucId) - 0usize];
-    ["Offset of field: tagMQXEPO::Version"][::std::mem::offset_of!(tagMQXEPO, Version) - 4usize];
-    ["Offset of field: tagMQXEPO::Options"][::std::mem::offset_of!(tagMQXEPO, Options) - 8usize];
-    ["Offset of field: tagMQXEPO::ExitProperties"][::std::mem::offset_of!(tagMQXEPO, ExitProperties) - 16usize];
+    [
+        "Offset of field: tagMQXEPO::StrucId",
+    ][::std::mem::offset_of!(tagMQXEPO, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQXEPO::Version",
+    ][::std::mem::offset_of!(tagMQXEPO, Version) - 4usize];
+    [
+        "Offset of field: tagMQXEPO::Options",
+    ][::std::mem::offset_of!(tagMQXEPO, Options) - 8usize];
+    [
+        "Offset of field: tagMQXEPO::ExitProperties",
+    ][::std::mem::offset_of!(tagMQXEPO, ExitProperties) - 16usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQCFH"][::std::mem::size_of::<tagMQCFH>() - 36usize];
     ["Alignment of tagMQCFH"][::std::mem::align_of::<tagMQCFH>() - 4usize];
     ["Offset of field: tagMQCFH::Type"][::std::mem::offset_of!(tagMQCFH, Type) - 0usize];
-    ["Offset of field: tagMQCFH::StrucLength"][::std::mem::offset_of!(tagMQCFH, StrucLength) - 4usize];
-    ["Offset of field: tagMQCFH::Version"][::std::mem::offset_of!(tagMQCFH, Version) - 8usize];
-    ["Offset of field: tagMQCFH::Command"][::std::mem::offset_of!(tagMQCFH, Command) - 12usize];
-    ["Offset of field: tagMQCFH::MsgSeqNumber"][::std::mem::offset_of!(tagMQCFH, MsgSeqNumber) - 16usize];
-    ["Offset of field: tagMQCFH::Control"][::std::mem::offset_of!(tagMQCFH, Control) - 20usize];
-    ["Offset of field: tagMQCFH::CompCode"][::std::mem::offset_of!(tagMQCFH, CompCode) - 24usize];
-    ["Offset of field: tagMQCFH::Reason"][::std::mem::offset_of!(tagMQCFH, Reason) - 28usize];
-    ["Offset of field: tagMQCFH::ParameterCount"][::std::mem::offset_of!(tagMQCFH, ParameterCount) - 32usize];
+    [
+        "Offset of field: tagMQCFH::StrucLength",
+    ][::std::mem::offset_of!(tagMQCFH, StrucLength) - 4usize];
+    [
+        "Offset of field: tagMQCFH::Version",
+    ][::std::mem::offset_of!(tagMQCFH, Version) - 8usize];
+    [
+        "Offset of field: tagMQCFH::Command",
+    ][::std::mem::offset_of!(tagMQCFH, Command) - 12usize];
+    [
+        "Offset of field: tagMQCFH::MsgSeqNumber",
+    ][::std::mem::offset_of!(tagMQCFH, MsgSeqNumber) - 16usize];
+    [
+        "Offset of field: tagMQCFH::Control",
+    ][::std::mem::offset_of!(tagMQCFH, Control) - 20usize];
+    [
+        "Offset of field: tagMQCFH::CompCode",
+    ][::std::mem::offset_of!(tagMQCFH, CompCode) - 24usize];
+    [
+        "Offset of field: tagMQCFH::Reason",
+    ][::std::mem::offset_of!(tagMQCFH, Reason) - 28usize];
+    [
+        "Offset of field: tagMQCFH::ParameterCount",
+    ][::std::mem::offset_of!(tagMQCFH, ParameterCount) - 32usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQCFBF"][::std::mem::size_of::<tagMQCFBF>() - 24usize];
     ["Alignment of tagMQCFBF"][::std::mem::align_of::<tagMQCFBF>() - 4usize];
-    ["Offset of field: tagMQCFBF::Type"][::std::mem::offset_of!(tagMQCFBF, Type) - 0usize];
-    ["Offset of field: tagMQCFBF::StrucLength"][::std::mem::offset_of!(tagMQCFBF, StrucLength) - 4usize];
-    ["Offset of field: tagMQCFBF::Parameter"][::std::mem::offset_of!(tagMQCFBF, Parameter) - 8usize];
-    ["Offset of field: tagMQCFBF::Operator"][::std::mem::offset_of!(tagMQCFBF, Operator) - 12usize];
-    ["Offset of field: tagMQCFBF::FilterValueLength"][::std::mem::offset_of!(tagMQCFBF, FilterValueLength) - 16usize];
-    ["Offset of field: tagMQCFBF::FilterValue"][::std::mem::offset_of!(tagMQCFBF, FilterValue) - 20usize];
+    [
+        "Offset of field: tagMQCFBF::Type",
+    ][::std::mem::offset_of!(tagMQCFBF, Type) - 0usize];
+    [
+        "Offset of field: tagMQCFBF::StrucLength",
+    ][::std::mem::offset_of!(tagMQCFBF, StrucLength) - 4usize];
+    [
+        "Offset of field: tagMQCFBF::Parameter",
+    ][::std::mem::offset_of!(tagMQCFBF, Parameter) - 8usize];
+    [
+        "Offset of field: tagMQCFBF::Operator",
+    ][::std::mem::offset_of!(tagMQCFBF, Operator) - 12usize];
+    [
+        "Offset of field: tagMQCFBF::FilterValueLength",
+    ][::std::mem::offset_of!(tagMQCFBF, FilterValueLength) - 16usize];
+    [
+        "Offset of field: tagMQCFBF::FilterValue",
+    ][::std::mem::offset_of!(tagMQCFBF, FilterValue) - 20usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQCFBS"][::std::mem::size_of::<tagMQCFBS>() - 20usize];
     ["Alignment of tagMQCFBS"][::std::mem::align_of::<tagMQCFBS>() - 4usize];
-    ["Offset of field: tagMQCFBS::Type"][::std::mem::offset_of!(tagMQCFBS, Type) - 0usize];
-    ["Offset of field: tagMQCFBS::StrucLength"][::std::mem::offset_of!(tagMQCFBS, StrucLength) - 4usize];
-    ["Offset of field: tagMQCFBS::Parameter"][::std::mem::offset_of!(tagMQCFBS, Parameter) - 8usize];
-    ["Offset of field: tagMQCFBS::StringLength"][::std::mem::offset_of!(tagMQCFBS, StringLength) - 12usize];
-    ["Offset of field: tagMQCFBS::String"][::std::mem::offset_of!(tagMQCFBS, String) - 16usize];
+    [
+        "Offset of field: tagMQCFBS::Type",
+    ][::std::mem::offset_of!(tagMQCFBS, Type) - 0usize];
+    [
+        "Offset of field: tagMQCFBS::StrucLength",
+    ][::std::mem::offset_of!(tagMQCFBS, StrucLength) - 4usize];
+    [
+        "Offset of field: tagMQCFBS::Parameter",
+    ][::std::mem::offset_of!(tagMQCFBS, Parameter) - 8usize];
+    [
+        "Offset of field: tagMQCFBS::StringLength",
+    ][::std::mem::offset_of!(tagMQCFBS, StringLength) - 12usize];
+    [
+        "Offset of field: tagMQCFBS::String",
+    ][::std::mem::offset_of!(tagMQCFBS, String) - 16usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQCFGR"][::std::mem::size_of::<tagMQCFGR>() - 16usize];
     ["Alignment of tagMQCFGR"][::std::mem::align_of::<tagMQCFGR>() - 4usize];
-    ["Offset of field: tagMQCFGR::Type"][::std::mem::offset_of!(tagMQCFGR, Type) - 0usize];
-    ["Offset of field: tagMQCFGR::StrucLength"][::std::mem::offset_of!(tagMQCFGR, StrucLength) - 4usize];
-    ["Offset of field: tagMQCFGR::Parameter"][::std::mem::offset_of!(tagMQCFGR, Parameter) - 8usize];
-    ["Offset of field: tagMQCFGR::ParameterCount"][::std::mem::offset_of!(tagMQCFGR, ParameterCount) - 12usize];
+    [
+        "Offset of field: tagMQCFGR::Type",
+    ][::std::mem::offset_of!(tagMQCFGR, Type) - 0usize];
+    [
+        "Offset of field: tagMQCFGR::StrucLength",
+    ][::std::mem::offset_of!(tagMQCFGR, StrucLength) - 4usize];
+    [
+        "Offset of field: tagMQCFGR::Parameter",
+    ][::std::mem::offset_of!(tagMQCFGR, Parameter) - 8usize];
+    [
+        "Offset of field: tagMQCFGR::ParameterCount",
+    ][::std::mem::offset_of!(tagMQCFGR, ParameterCount) - 12usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQCFIF"][::std::mem::size_of::<tagMQCFIF>() - 20usize];
     ["Alignment of tagMQCFIF"][::std::mem::align_of::<tagMQCFIF>() - 4usize];
-    ["Offset of field: tagMQCFIF::Type"][::std::mem::offset_of!(tagMQCFIF, Type) - 0usize];
-    ["Offset of field: tagMQCFIF::StrucLength"][::std::mem::offset_of!(tagMQCFIF, StrucLength) - 4usize];
-    ["Offset of field: tagMQCFIF::Parameter"][::std::mem::offset_of!(tagMQCFIF, Parameter) - 8usize];
-    ["Offset of field: tagMQCFIF::Operator"][::std::mem::offset_of!(tagMQCFIF, Operator) - 12usize];
-    ["Offset of field: tagMQCFIF::FilterValue"][::std::mem::offset_of!(tagMQCFIF, FilterValue) - 16usize];
+    [
+        "Offset of field: tagMQCFIF::Type",
+    ][::std::mem::offset_of!(tagMQCFIF, Type) - 0usize];
+    [
+        "Offset of field: tagMQCFIF::StrucLength",
+    ][::std::mem::offset_of!(tagMQCFIF, StrucLength) - 4usize];
+    [
+        "Offset of field: tagMQCFIF::Parameter",
+    ][::std::mem::offset_of!(tagMQCFIF, Parameter) - 8usize];
+    [
+        "Offset of field: tagMQCFIF::Operator",
+    ][::std::mem::offset_of!(tagMQCFIF, Operator) - 12usize];
+    [
+        "Offset of field: tagMQCFIF::FilterValue",
+    ][::std::mem::offset_of!(tagMQCFIF, FilterValue) - 16usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQCFIL"][::std::mem::size_of::<tagMQCFIL>() - 20usize];
     ["Alignment of tagMQCFIL"][::std::mem::align_of::<tagMQCFIL>() - 4usize];
-    ["Offset of field: tagMQCFIL::Type"][::std::mem::offset_of!(tagMQCFIL, Type) - 0usize];
-    ["Offset of field: tagMQCFIL::StrucLength"][::std::mem::offset_of!(tagMQCFIL, StrucLength) - 4usize];
-    ["Offset of field: tagMQCFIL::Parameter"][::std::mem::offset_of!(tagMQCFIL, Parameter) - 8usize];
-    ["Offset of field: tagMQCFIL::Count"][::std::mem::offset_of!(tagMQCFIL, Count) - 12usize];
-    ["Offset of field: tagMQCFIL::Values"][::std::mem::offset_of!(tagMQCFIL, Values) - 16usize];
+    [
+        "Offset of field: tagMQCFIL::Type",
+    ][::std::mem::offset_of!(tagMQCFIL, Type) - 0usize];
+    [
+        "Offset of field: tagMQCFIL::StrucLength",
+    ][::std::mem::offset_of!(tagMQCFIL, StrucLength) - 4usize];
+    [
+        "Offset of field: tagMQCFIL::Parameter",
+    ][::std::mem::offset_of!(tagMQCFIL, Parameter) - 8usize];
+    [
+        "Offset of field: tagMQCFIL::Count",
+    ][::std::mem::offset_of!(tagMQCFIL, Count) - 12usize];
+    [
+        "Offset of field: tagMQCFIL::Values",
+    ][::std::mem::offset_of!(tagMQCFIL, Values) - 16usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQCFIL64"][::std::mem::size_of::<tagMQCFIL64>() - 24usize];
     ["Alignment of tagMQCFIL64"][::std::mem::align_of::<tagMQCFIL64>() - 8usize];
-    ["Offset of field: tagMQCFIL64::Type"][::std::mem::offset_of!(tagMQCFIL64, Type) - 0usize];
-    ["Offset of field: tagMQCFIL64::StrucLength"][::std::mem::offset_of!(tagMQCFIL64, StrucLength) - 4usize];
-    ["Offset of field: tagMQCFIL64::Parameter"][::std::mem::offset_of!(tagMQCFIL64, Parameter) - 8usize];
-    ["Offset of field: tagMQCFIL64::Count"][::std::mem::offset_of!(tagMQCFIL64, Count) - 12usize];
-    ["Offset of field: tagMQCFIL64::Values"][::std::mem::offset_of!(tagMQCFIL64, Values) - 16usize];
+    [
+        "Offset of field: tagMQCFIL64::Type",
+    ][::std::mem::offset_of!(tagMQCFIL64, Type) - 0usize];
+    [
+        "Offset of field: tagMQCFIL64::StrucLength",
+    ][::std::mem::offset_of!(tagMQCFIL64, StrucLength) - 4usize];
+    [
+        "Offset of field: tagMQCFIL64::Parameter",
+    ][::std::mem::offset_of!(tagMQCFIL64, Parameter) - 8usize];
+    [
+        "Offset of field: tagMQCFIL64::Count",
+    ][::std::mem::offset_of!(tagMQCFIL64, Count) - 12usize];
+    [
+        "Offset of field: tagMQCFIL64::Values",
+    ][::std::mem::offset_of!(tagMQCFIL64, Values) - 16usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQCFIN"][::std::mem::size_of::<tagMQCFIN>() - 16usize];
     ["Alignment of tagMQCFIN"][::std::mem::align_of::<tagMQCFIN>() - 4usize];
-    ["Offset of field: tagMQCFIN::Type"][::std::mem::offset_of!(tagMQCFIN, Type) - 0usize];
-    ["Offset of field: tagMQCFIN::StrucLength"][::std::mem::offset_of!(tagMQCFIN, StrucLength) - 4usize];
-    ["Offset of field: tagMQCFIN::Parameter"][::std::mem::offset_of!(tagMQCFIN, Parameter) - 8usize];
-    ["Offset of field: tagMQCFIN::Value"][::std::mem::offset_of!(tagMQCFIN, Value) - 12usize];
+    [
+        "Offset of field: tagMQCFIN::Type",
+    ][::std::mem::offset_of!(tagMQCFIN, Type) - 0usize];
+    [
+        "Offset of field: tagMQCFIN::StrucLength",
+    ][::std::mem::offset_of!(tagMQCFIN, StrucLength) - 4usize];
+    [
+        "Offset of field: tagMQCFIN::Parameter",
+    ][::std::mem::offset_of!(tagMQCFIN, Parameter) - 8usize];
+    [
+        "Offset of field: tagMQCFIN::Value",
+    ][::std::mem::offset_of!(tagMQCFIN, Value) - 12usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQCFIN64"][::std::mem::size_of::<tagMQCFIN64>() - 24usize];
     ["Alignment of tagMQCFIN64"][::std::mem::align_of::<tagMQCFIN64>() - 8usize];
-    ["Offset of field: tagMQCFIN64::Type"][::std::mem::offset_of!(tagMQCFIN64, Type) - 0usize];
-    ["Offset of field: tagMQCFIN64::StrucLength"][::std::mem::offset_of!(tagMQCFIN64, StrucLength) - 4usize];
-    ["Offset of field: tagMQCFIN64::Parameter"][::std::mem::offset_of!(tagMQCFIN64, Parameter) - 8usize];
-    ["Offset of field: tagMQCFIN64::Reserved"][::std::mem::offset_of!(tagMQCFIN64, Reserved) - 12usize];
-    ["Offset of field: tagMQCFIN64::Value"][::std::mem::offset_of!(tagMQCFIN64, Value) - 16usize];
+    [
+        "Offset of field: tagMQCFIN64::Type",
+    ][::std::mem::offset_of!(tagMQCFIN64, Type) - 0usize];
+    [
+        "Offset of field: tagMQCFIN64::StrucLength",
+    ][::std::mem::offset_of!(tagMQCFIN64, StrucLength) - 4usize];
+    [
+        "Offset of field: tagMQCFIN64::Parameter",
+    ][::std::mem::offset_of!(tagMQCFIN64, Parameter) - 8usize];
+    [
+        "Offset of field: tagMQCFIN64::Reserved",
+    ][::std::mem::offset_of!(tagMQCFIN64, Reserved) - 12usize];
+    [
+        "Offset of field: tagMQCFIN64::Value",
+    ][::std::mem::offset_of!(tagMQCFIN64, Value) - 16usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQCFSF"][::std::mem::size_of::<tagMQCFSF>() - 28usize];
     ["Alignment of tagMQCFSF"][::std::mem::align_of::<tagMQCFSF>() - 4usize];
-    ["Offset of field: tagMQCFSF::Type"][::std::mem::offset_of!(tagMQCFSF, Type) - 0usize];
-    ["Offset of field: tagMQCFSF::StrucLength"][::std::mem::offset_of!(tagMQCFSF, StrucLength) - 4usize];
-    ["Offset of field: tagMQCFSF::Parameter"][::std::mem::offset_of!(tagMQCFSF, Parameter) - 8usize];
-    ["Offset of field: tagMQCFSF::Operator"][::std::mem::offset_of!(tagMQCFSF, Operator) - 12usize];
-    ["Offset of field: tagMQCFSF::CodedCharSetId"][::std::mem::offset_of!(tagMQCFSF, CodedCharSetId) - 16usize];
-    ["Offset of field: tagMQCFSF::FilterValueLength"][::std::mem::offset_of!(tagMQCFSF, FilterValueLength) - 20usize];
-    ["Offset of field: tagMQCFSF::FilterValue"][::std::mem::offset_of!(tagMQCFSF, FilterValue) - 24usize];
+    [
+        "Offset of field: tagMQCFSF::Type",
+    ][::std::mem::offset_of!(tagMQCFSF, Type) - 0usize];
+    [
+        "Offset of field: tagMQCFSF::StrucLength",
+    ][::std::mem::offset_of!(tagMQCFSF, StrucLength) - 4usize];
+    [
+        "Offset of field: tagMQCFSF::Parameter",
+    ][::std::mem::offset_of!(tagMQCFSF, Parameter) - 8usize];
+    [
+        "Offset of field: tagMQCFSF::Operator",
+    ][::std::mem::offset_of!(tagMQCFSF, Operator) - 12usize];
+    [
+        "Offset of field: tagMQCFSF::CodedCharSetId",
+    ][::std::mem::offset_of!(tagMQCFSF, CodedCharSetId) - 16usize];
+    [
+        "Offset of field: tagMQCFSF::FilterValueLength",
+    ][::std::mem::offset_of!(tagMQCFSF, FilterValueLength) - 20usize];
+    [
+        "Offset of field: tagMQCFSF::FilterValue",
+    ][::std::mem::offset_of!(tagMQCFSF, FilterValue) - 24usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQCFSL"][::std::mem::size_of::<tagMQCFSL>() - 28usize];
     ["Alignment of tagMQCFSL"][::std::mem::align_of::<tagMQCFSL>() - 4usize];
-    ["Offset of field: tagMQCFSL::Type"][::std::mem::offset_of!(tagMQCFSL, Type) - 0usize];
-    ["Offset of field: tagMQCFSL::StrucLength"][::std::mem::offset_of!(tagMQCFSL, StrucLength) - 4usize];
-    ["Offset of field: tagMQCFSL::Parameter"][::std::mem::offset_of!(tagMQCFSL, Parameter) - 8usize];
-    ["Offset of field: tagMQCFSL::CodedCharSetId"][::std::mem::offset_of!(tagMQCFSL, CodedCharSetId) - 12usize];
-    ["Offset of field: tagMQCFSL::Count"][::std::mem::offset_of!(tagMQCFSL, Count) - 16usize];
-    ["Offset of field: tagMQCFSL::StringLength"][::std::mem::offset_of!(tagMQCFSL, StringLength) - 20usize];
-    ["Offset of field: tagMQCFSL::Strings"][::std::mem::offset_of!(tagMQCFSL, Strings) - 24usize];
+    [
+        "Offset of field: tagMQCFSL::Type",
+    ][::std::mem::offset_of!(tagMQCFSL, Type) - 0usize];
+    [
+        "Offset of field: tagMQCFSL::StrucLength",
+    ][::std::mem::offset_of!(tagMQCFSL, StrucLength) - 4usize];
+    [
+        "Offset of field: tagMQCFSL::Parameter",
+    ][::std::mem::offset_of!(tagMQCFSL, Parameter) - 8usize];
+    [
+        "Offset of field: tagMQCFSL::CodedCharSetId",
+    ][::std::mem::offset_of!(tagMQCFSL, CodedCharSetId) - 12usize];
+    [
+        "Offset of field: tagMQCFSL::Count",
+    ][::std::mem::offset_of!(tagMQCFSL, Count) - 16usize];
+    [
+        "Offset of field: tagMQCFSL::StringLength",
+    ][::std::mem::offset_of!(tagMQCFSL, StringLength) - 20usize];
+    [
+        "Offset of field: tagMQCFSL::Strings",
+    ][::std::mem::offset_of!(tagMQCFSL, Strings) - 24usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQCFST"][::std::mem::size_of::<tagMQCFST>() - 24usize];
     ["Alignment of tagMQCFST"][::std::mem::align_of::<tagMQCFST>() - 4usize];
-    ["Offset of field: tagMQCFST::Type"][::std::mem::offset_of!(tagMQCFST, Type) - 0usize];
-    ["Offset of field: tagMQCFST::StrucLength"][::std::mem::offset_of!(tagMQCFST, StrucLength) - 4usize];
-    ["Offset of field: tagMQCFST::Parameter"][::std::mem::offset_of!(tagMQCFST, Parameter) - 8usize];
-    ["Offset of field: tagMQCFST::CodedCharSetId"][::std::mem::offset_of!(tagMQCFST, CodedCharSetId) - 12usize];
-    ["Offset of field: tagMQCFST::StringLength"][::std::mem::offset_of!(tagMQCFST, StringLength) - 16usize];
-    ["Offset of field: tagMQCFST::String"][::std::mem::offset_of!(tagMQCFST, String) - 20usize];
+    [
+        "Offset of field: tagMQCFST::Type",
+    ][::std::mem::offset_of!(tagMQCFST, Type) - 0usize];
+    [
+        "Offset of field: tagMQCFST::StrucLength",
+    ][::std::mem::offset_of!(tagMQCFST, StrucLength) - 4usize];
+    [
+        "Offset of field: tagMQCFST::Parameter",
+    ][::std::mem::offset_of!(tagMQCFST, Parameter) - 8usize];
+    [
+        "Offset of field: tagMQCFST::CodedCharSetId",
+    ][::std::mem::offset_of!(tagMQCFST, CodedCharSetId) - 12usize];
+    [
+        "Offset of field: tagMQCFST::StringLength",
+    ][::std::mem::offset_of!(tagMQCFST, StringLength) - 16usize];
+    [
+        "Offset of field: tagMQCFST::String",
+    ][::std::mem::offset_of!(tagMQCFST, String) - 20usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQEPH"][::std::mem::size_of::<tagMQEPH>() - 68usize];
     ["Alignment of tagMQEPH"][::std::mem::align_of::<tagMQEPH>() - 4usize];
-    ["Offset of field: tagMQEPH::StrucId"][::std::mem::offset_of!(tagMQEPH, StrucId) - 0usize];
-    ["Offset of field: tagMQEPH::Version"][::std::mem::offset_of!(tagMQEPH, Version) - 4usize];
-    ["Offset of field: tagMQEPH::StrucLength"][::std::mem::offset_of!(tagMQEPH, StrucLength) - 8usize];
-    ["Offset of field: tagMQEPH::Encoding"][::std::mem::offset_of!(tagMQEPH, Encoding) - 12usize];
-    ["Offset of field: tagMQEPH::CodedCharSetId"][::std::mem::offset_of!(tagMQEPH, CodedCharSetId) - 16usize];
-    ["Offset of field: tagMQEPH::Format"][::std::mem::offset_of!(tagMQEPH, Format) - 20usize];
-    ["Offset of field: tagMQEPH::Flags"][::std::mem::offset_of!(tagMQEPH, Flags) - 28usize];
-    ["Offset of field: tagMQEPH::PCFHeader"][::std::mem::offset_of!(tagMQEPH, PCFHeader) - 32usize];
+    [
+        "Offset of field: tagMQEPH::StrucId",
+    ][::std::mem::offset_of!(tagMQEPH, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQEPH::Version",
+    ][::std::mem::offset_of!(tagMQEPH, Version) - 4usize];
+    [
+        "Offset of field: tagMQEPH::StrucLength",
+    ][::std::mem::offset_of!(tagMQEPH, StrucLength) - 8usize];
+    [
+        "Offset of field: tagMQEPH::Encoding",
+    ][::std::mem::offset_of!(tagMQEPH, Encoding) - 12usize];
+    [
+        "Offset of field: tagMQEPH::CodedCharSetId",
+    ][::std::mem::offset_of!(tagMQEPH, CodedCharSetId) - 16usize];
+    [
+        "Offset of field: tagMQEPH::Format",
+    ][::std::mem::offset_of!(tagMQEPH, Format) - 20usize];
+    [
+        "Offset of field: tagMQEPH::Flags",
+    ][::std::mem::offset_of!(tagMQEPH, Flags) - 28usize];
+    [
+        "Offset of field: tagMQEPH::PCFHeader",
+    ][::std::mem::offset_of!(tagMQEPH, PCFHeader) - 32usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQZED"][::std::mem::size_of::<tagMQZED>() - 72usize];
     ["Alignment of tagMQZED"][::std::mem::align_of::<tagMQZED>() - 8usize];
-    ["Offset of field: tagMQZED::StrucId"][::std::mem::offset_of!(tagMQZED, StrucId) - 0usize];
-    ["Offset of field: tagMQZED::Version"][::std::mem::offset_of!(tagMQZED, Version) - 4usize];
-    ["Offset of field: tagMQZED::EntityNamePtr"][::std::mem::offset_of!(tagMQZED, EntityNamePtr) - 8usize];
-    ["Offset of field: tagMQZED::EntityDomainPtr"][::std::mem::offset_of!(tagMQZED, EntityDomainPtr) - 16usize];
-    ["Offset of field: tagMQZED::SecurityId"][::std::mem::offset_of!(tagMQZED, SecurityId) - 24usize];
-    ["Offset of field: tagMQZED::CorrelationPtr"][::std::mem::offset_of!(tagMQZED, CorrelationPtr) - 64usize];
+    [
+        "Offset of field: tagMQZED::StrucId",
+    ][::std::mem::offset_of!(tagMQZED, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQZED::Version",
+    ][::std::mem::offset_of!(tagMQZED, Version) - 4usize];
+    [
+        "Offset of field: tagMQZED::EntityNamePtr",
+    ][::std::mem::offset_of!(tagMQZED, EntityNamePtr) - 8usize];
+    [
+        "Offset of field: tagMQZED::EntityDomainPtr",
+    ][::std::mem::offset_of!(tagMQZED, EntityDomainPtr) - 16usize];
+    [
+        "Offset of field: tagMQZED::SecurityId",
+    ][::std::mem::offset_of!(tagMQZED, SecurityId) - 24usize];
+    [
+        "Offset of field: tagMQZED::CorrelationPtr",
+    ][::std::mem::offset_of!(tagMQZED, CorrelationPtr) - 64usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQZAC"][::std::mem::size_of::<tagMQZAC>() - 84usize];
     ["Alignment of tagMQZAC"][::std::mem::align_of::<tagMQZAC>() - 4usize];
-    ["Offset of field: tagMQZAC::StrucId"][::std::mem::offset_of!(tagMQZAC, StrucId) - 0usize];
-    ["Offset of field: tagMQZAC::Version"][::std::mem::offset_of!(tagMQZAC, Version) - 4usize];
-    ["Offset of field: tagMQZAC::ProcessId"][::std::mem::offset_of!(tagMQZAC, ProcessId) - 8usize];
-    ["Offset of field: tagMQZAC::ThreadId"][::std::mem::offset_of!(tagMQZAC, ThreadId) - 12usize];
-    ["Offset of field: tagMQZAC::ApplName"][::std::mem::offset_of!(tagMQZAC, ApplName) - 16usize];
-    ["Offset of field: tagMQZAC::UserID"][::std::mem::offset_of!(tagMQZAC, UserID) - 44usize];
-    ["Offset of field: tagMQZAC::EffectiveUserID"][::std::mem::offset_of!(tagMQZAC, EffectiveUserID) - 56usize];
-    ["Offset of field: tagMQZAC::Environment"][::std::mem::offset_of!(tagMQZAC, Environment) - 68usize];
-    ["Offset of field: tagMQZAC::CallerType"][::std::mem::offset_of!(tagMQZAC, CallerType) - 72usize];
-    ["Offset of field: tagMQZAC::AuthenticationType"][::std::mem::offset_of!(tagMQZAC, AuthenticationType) - 76usize];
-    ["Offset of field: tagMQZAC::BindType"][::std::mem::offset_of!(tagMQZAC, BindType) - 80usize];
+    [
+        "Offset of field: tagMQZAC::StrucId",
+    ][::std::mem::offset_of!(tagMQZAC, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQZAC::Version",
+    ][::std::mem::offset_of!(tagMQZAC, Version) - 4usize];
+    [
+        "Offset of field: tagMQZAC::ProcessId",
+    ][::std::mem::offset_of!(tagMQZAC, ProcessId) - 8usize];
+    [
+        "Offset of field: tagMQZAC::ThreadId",
+    ][::std::mem::offset_of!(tagMQZAC, ThreadId) - 12usize];
+    [
+        "Offset of field: tagMQZAC::ApplName",
+    ][::std::mem::offset_of!(tagMQZAC, ApplName) - 16usize];
+    [
+        "Offset of field: tagMQZAC::UserID",
+    ][::std::mem::offset_of!(tagMQZAC, UserID) - 44usize];
+    [
+        "Offset of field: tagMQZAC::EffectiveUserID",
+    ][::std::mem::offset_of!(tagMQZAC, EffectiveUserID) - 56usize];
+    [
+        "Offset of field: tagMQZAC::Environment",
+    ][::std::mem::offset_of!(tagMQZAC, Environment) - 68usize];
+    [
+        "Offset of field: tagMQZAC::CallerType",
+    ][::std::mem::offset_of!(tagMQZAC, CallerType) - 72usize];
+    [
+        "Offset of field: tagMQZAC::AuthenticationType",
+    ][::std::mem::offset_of!(tagMQZAC, AuthenticationType) - 76usize];
+    [
+        "Offset of field: tagMQZAC::BindType",
+    ][::std::mem::offset_of!(tagMQZAC, BindType) - 80usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQZAD"][::std::mem::size_of::<tagMQZAD>() - 80usize];
     ["Alignment of tagMQZAD"][::std::mem::align_of::<tagMQZAD>() - 8usize];
-    ["Offset of field: tagMQZAD::StrucId"][::std::mem::offset_of!(tagMQZAD, StrucId) - 0usize];
-    ["Offset of field: tagMQZAD::Version"][::std::mem::offset_of!(tagMQZAD, Version) - 4usize];
-    ["Offset of field: tagMQZAD::ProfileName"][::std::mem::offset_of!(tagMQZAD, ProfileName) - 8usize];
-    ["Offset of field: tagMQZAD::ObjectType"][::std::mem::offset_of!(tagMQZAD, ObjectType) - 56usize];
-    ["Offset of field: tagMQZAD::Authority"][::std::mem::offset_of!(tagMQZAD, Authority) - 60usize];
-    ["Offset of field: tagMQZAD::EntityDataPtr"][::std::mem::offset_of!(tagMQZAD, EntityDataPtr) - 64usize];
-    ["Offset of field: tagMQZAD::EntityType"][::std::mem::offset_of!(tagMQZAD, EntityType) - 72usize];
-    ["Offset of field: tagMQZAD::Options"][::std::mem::offset_of!(tagMQZAD, Options) - 76usize];
+    [
+        "Offset of field: tagMQZAD::StrucId",
+    ][::std::mem::offset_of!(tagMQZAD, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQZAD::Version",
+    ][::std::mem::offset_of!(tagMQZAD, Version) - 4usize];
+    [
+        "Offset of field: tagMQZAD::ProfileName",
+    ][::std::mem::offset_of!(tagMQZAD, ProfileName) - 8usize];
+    [
+        "Offset of field: tagMQZAD::ObjectType",
+    ][::std::mem::offset_of!(tagMQZAD, ObjectType) - 56usize];
+    [
+        "Offset of field: tagMQZAD::Authority",
+    ][::std::mem::offset_of!(tagMQZAD, Authority) - 60usize];
+    [
+        "Offset of field: tagMQZAD::EntityDataPtr",
+    ][::std::mem::offset_of!(tagMQZAD, EntityDataPtr) - 64usize];
+    [
+        "Offset of field: tagMQZAD::EntityType",
+    ][::std::mem::offset_of!(tagMQZAD, EntityType) - 72usize];
+    [
+        "Offset of field: tagMQZAD::Options",
+    ][::std::mem::offset_of!(tagMQZAD, Options) - 76usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQZFP"][::std::mem::size_of::<tagMQZFP>() - 24usize];
     ["Alignment of tagMQZFP"][::std::mem::align_of::<tagMQZFP>() - 8usize];
-    ["Offset of field: tagMQZFP::StrucId"][::std::mem::offset_of!(tagMQZFP, StrucId) - 0usize];
-    ["Offset of field: tagMQZFP::Version"][::std::mem::offset_of!(tagMQZFP, Version) - 4usize];
-    ["Offset of field: tagMQZFP::Reserved"][::std::mem::offset_of!(tagMQZFP, Reserved) - 8usize];
-    ["Offset of field: tagMQZFP::CorrelationPtr"][::std::mem::offset_of!(tagMQZFP, CorrelationPtr) - 16usize];
+    [
+        "Offset of field: tagMQZFP::StrucId",
+    ][::std::mem::offset_of!(tagMQZFP, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQZFP::Version",
+    ][::std::mem::offset_of!(tagMQZFP, Version) - 4usize];
+    [
+        "Offset of field: tagMQZFP::Reserved",
+    ][::std::mem::offset_of!(tagMQZFP, Reserved) - 8usize];
+    [
+        "Offset of field: tagMQZFP::CorrelationPtr",
+    ][::std::mem::offset_of!(tagMQZFP, CorrelationPtr) - 16usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQZIC"][::std::mem::size_of::<tagMQZIC>() - 84usize];
     ["Alignment of tagMQZIC"][::std::mem::align_of::<tagMQZIC>() - 4usize];
-    ["Offset of field: tagMQZIC::StrucId"][::std::mem::offset_of!(tagMQZIC, StrucId) - 0usize];
-    ["Offset of field: tagMQZIC::Version"][::std::mem::offset_of!(tagMQZIC, Version) - 4usize];
-    ["Offset of field: tagMQZIC::UserIdentifier"][::std::mem::offset_of!(tagMQZIC, UserIdentifier) - 8usize];
-    ["Offset of field: tagMQZIC::AccountingToken"][::std::mem::offset_of!(tagMQZIC, AccountingToken) - 20usize];
-    ["Offset of field: tagMQZIC::ApplIdentityData"][::std::mem::offset_of!(tagMQZIC, ApplIdentityData) - 52usize];
+    [
+        "Offset of field: tagMQZIC::StrucId",
+    ][::std::mem::offset_of!(tagMQZIC, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQZIC::Version",
+    ][::std::mem::offset_of!(tagMQZIC, Version) - 4usize];
+    [
+        "Offset of field: tagMQZIC::UserIdentifier",
+    ][::std::mem::offset_of!(tagMQZIC, UserIdentifier) - 8usize];
+    [
+        "Offset of field: tagMQZIC::AccountingToken",
+    ][::std::mem::offset_of!(tagMQZIC, AccountingToken) - 20usize];
+    [
+        "Offset of field: tagMQZIC::ApplIdentityData",
+    ][::std::mem::offset_of!(tagMQZIC, ApplIdentityData) - 52usize];
 };
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of tagMQIEP"][::std::mem::size_of::<tagMQIEP>() - 264usize];
     ["Alignment of tagMQIEP"][::std::mem::align_of::<tagMQIEP>() - 8usize];
-    ["Offset of field: tagMQIEP::StrucId"][::std::mem::offset_of!(tagMQIEP, StrucId) - 0usize];
-    ["Offset of field: tagMQIEP::Version"][::std::mem::offset_of!(tagMQIEP, Version) - 4usize];
-    ["Offset of field: tagMQIEP::StrucLength"][::std::mem::offset_of!(tagMQIEP, StrucLength) - 8usize];
-    ["Offset of field: tagMQIEP::Flags"][::std::mem::offset_of!(tagMQIEP, Flags) - 12usize];
-    ["Offset of field: tagMQIEP::Reserved"][::std::mem::offset_of!(tagMQIEP, Reserved) - 16usize];
-    ["Offset of field: tagMQIEP::MQBACK_Call"][::std::mem::offset_of!(tagMQIEP, MQBACK_Call) - 24usize];
-    ["Offset of field: tagMQIEP::MQBEGIN_Call"][::std::mem::offset_of!(tagMQIEP, MQBEGIN_Call) - 32usize];
-    ["Offset of field: tagMQIEP::MQBUFMH_Call"][::std::mem::offset_of!(tagMQIEP, MQBUFMH_Call) - 40usize];
-    ["Offset of field: tagMQIEP::MQCB_Call"][::std::mem::offset_of!(tagMQIEP, MQCB_Call) - 48usize];
-    ["Offset of field: tagMQIEP::MQCLOSE_Call"][::std::mem::offset_of!(tagMQIEP, MQCLOSE_Call) - 56usize];
-    ["Offset of field: tagMQIEP::MQCMIT_Call"][::std::mem::offset_of!(tagMQIEP, MQCMIT_Call) - 64usize];
-    ["Offset of field: tagMQIEP::MQCONN_Call"][::std::mem::offset_of!(tagMQIEP, MQCONN_Call) - 72usize];
-    ["Offset of field: tagMQIEP::MQCONNX_Call"][::std::mem::offset_of!(tagMQIEP, MQCONNX_Call) - 80usize];
-    ["Offset of field: tagMQIEP::MQCRTMH_Call"][::std::mem::offset_of!(tagMQIEP, MQCRTMH_Call) - 88usize];
-    ["Offset of field: tagMQIEP::MQCTL_Call"][::std::mem::offset_of!(tagMQIEP, MQCTL_Call) - 96usize];
-    ["Offset of field: tagMQIEP::MQDISC_Call"][::std::mem::offset_of!(tagMQIEP, MQDISC_Call) - 104usize];
-    ["Offset of field: tagMQIEP::MQDLTMH_Call"][::std::mem::offset_of!(tagMQIEP, MQDLTMH_Call) - 112usize];
-    ["Offset of field: tagMQIEP::MQDLTMP_Call"][::std::mem::offset_of!(tagMQIEP, MQDLTMP_Call) - 120usize];
-    ["Offset of field: tagMQIEP::MQGET_Call"][::std::mem::offset_of!(tagMQIEP, MQGET_Call) - 128usize];
-    ["Offset of field: tagMQIEP::MQINQ_Call"][::std::mem::offset_of!(tagMQIEP, MQINQ_Call) - 136usize];
-    ["Offset of field: tagMQIEP::MQINQMP_Call"][::std::mem::offset_of!(tagMQIEP, MQINQMP_Call) - 144usize];
-    ["Offset of field: tagMQIEP::MQMHBUF_Call"][::std::mem::offset_of!(tagMQIEP, MQMHBUF_Call) - 152usize];
-    ["Offset of field: tagMQIEP::MQOPEN_Call"][::std::mem::offset_of!(tagMQIEP, MQOPEN_Call) - 160usize];
-    ["Offset of field: tagMQIEP::MQPUT_Call"][::std::mem::offset_of!(tagMQIEP, MQPUT_Call) - 168usize];
-    ["Offset of field: tagMQIEP::MQPUT1_Call"][::std::mem::offset_of!(tagMQIEP, MQPUT1_Call) - 176usize];
-    ["Offset of field: tagMQIEP::MQSET_Call"][::std::mem::offset_of!(tagMQIEP, MQSET_Call) - 184usize];
-    ["Offset of field: tagMQIEP::MQSETMP_Call"][::std::mem::offset_of!(tagMQIEP, MQSETMP_Call) - 192usize];
-    ["Offset of field: tagMQIEP::MQSTAT_Call"][::std::mem::offset_of!(tagMQIEP, MQSTAT_Call) - 200usize];
-    ["Offset of field: tagMQIEP::MQSUB_Call"][::std::mem::offset_of!(tagMQIEP, MQSUB_Call) - 208usize];
-    ["Offset of field: tagMQIEP::MQSUBRQ_Call"][::std::mem::offset_of!(tagMQIEP, MQSUBRQ_Call) - 216usize];
-    ["Offset of field: tagMQIEP::MQXCLWLN_Call"][::std::mem::offset_of!(tagMQIEP, MQXCLWLN_Call) - 224usize];
-    ["Offset of field: tagMQIEP::MQXCNVC_Call"][::std::mem::offset_of!(tagMQIEP, MQXCNVC_Call) - 232usize];
-    ["Offset of field: tagMQIEP::MQXDX_Call"][::std::mem::offset_of!(tagMQIEP, MQXDX_Call) - 240usize];
-    ["Offset of field: tagMQIEP::MQXEP_Call"][::std::mem::offset_of!(tagMQIEP, MQXEP_Call) - 248usize];
-    ["Offset of field: tagMQIEP::MQZEP_Call"][::std::mem::offset_of!(tagMQIEP, MQZEP_Call) - 256usize];
+    [
+        "Offset of field: tagMQIEP::StrucId",
+    ][::std::mem::offset_of!(tagMQIEP, StrucId) - 0usize];
+    [
+        "Offset of field: tagMQIEP::Version",
+    ][::std::mem::offset_of!(tagMQIEP, Version) - 4usize];
+    [
+        "Offset of field: tagMQIEP::StrucLength",
+    ][::std::mem::offset_of!(tagMQIEP, StrucLength) - 8usize];
+    [
+        "Offset of field: tagMQIEP::Flags",
+    ][::std::mem::offset_of!(tagMQIEP, Flags) - 12usize];
+    [
+        "Offset of field: tagMQIEP::Reserved",
+    ][::std::mem::offset_of!(tagMQIEP, Reserved) - 16usize];
+    [
+        "Offset of field: tagMQIEP::MQBACK_Call",
+    ][::std::mem::offset_of!(tagMQIEP, MQBACK_Call) - 24usize];
+    [
+        "Offset of field: tagMQIEP::MQBEGIN_Call",
+    ][::std::mem::offset_of!(tagMQIEP, MQBEGIN_Call) - 32usize];
+    [
+        "Offset of field: tagMQIEP::MQBUFMH_Call",
+    ][::std::mem::offset_of!(tagMQIEP, MQBUFMH_Call) - 40usize];
+    [
+        "Offset of field: tagMQIEP::MQCB_Call",
+    ][::std::mem::offset_of!(tagMQIEP, MQCB_Call) - 48usize];
+    [
+        "Offset of field: tagMQIEP::MQCLOSE_Call",
+    ][::std::mem::offset_of!(tagMQIEP, MQCLOSE_Call) - 56usize];
+    [
+        "Offset of field: tagMQIEP::MQCMIT_Call",
+    ][::std::mem::offset_of!(tagMQIEP, MQCMIT_Call) - 64usize];
+    [
+        "Offset of field: tagMQIEP::MQCONN_Call",
+    ][::std::mem::offset_of!(tagMQIEP, MQCONN_Call) - 72usize];
+    [
+        "Offset of field: tagMQIEP::MQCONNX_Call",
+    ][::std::mem::offset_of!(tagMQIEP, MQCONNX_Call) - 80usize];
+    [
+        "Offset of field: tagMQIEP::MQCRTMH_Call",
+    ][::std::mem::offset_of!(tagMQIEP, MQCRTMH_Call) - 88usize];
+    [
+        "Offset of field: tagMQIEP::MQCTL_Call",
+    ][::std::mem::offset_of!(tagMQIEP, MQCTL_Call) - 96usize];
+    [
+        "Offset of field: tagMQIEP::MQDISC_Call",
+    ][::std::mem::offset_of!(tagMQIEP, MQDISC_Call) - 104usize];
+    [
+        "Offset of field: tagMQIEP::MQDLTMH_Call",
+    ][::std::mem::offset_of!(tagMQIEP, MQDLTMH_Call) - 112usize];
+    [
+        "Offset of field: tagMQIEP::MQDLTMP_Call",
+    ][::std::mem::offset_of!(tagMQIEP, MQDLTMP_Call) - 120usize];
+    [
+        "Offset of field: tagMQIEP::MQGET_Call",
+    ][::std::mem::offset_of!(tagMQIEP, MQGET_Call) - 128usize];
+    [
+        "Offset of field: tagMQIEP::MQINQ_Call",
+    ][::std::mem::offset_of!(tagMQIEP, MQINQ_Call) - 136usize];
+    [
+        "Offset of field: tagMQIEP::MQINQMP_Call",
+    ][::std::mem::offset_of!(tagMQIEP, MQINQMP_Call) - 144usize];
+    [
+        "Offset of field: tagMQIEP::MQMHBUF_Call",
+    ][::std::mem::offset_of!(tagMQIEP, MQMHBUF_Call) - 152usize];
+    [
+        "Offset of field: tagMQIEP::MQOPEN_Call",
+    ][::std::mem::offset_of!(tagMQIEP, MQOPEN_Call) - 160usize];
+    [
+        "Offset of field: tagMQIEP::MQPUT_Call",
+    ][::std::mem::offset_of!(tagMQIEP, MQPUT_Call) - 168usize];
+    [
+        "Offset of field: tagMQIEP::MQPUT1_Call",
+    ][::std::mem::offset_of!(tagMQIEP, MQPUT1_Call) - 176usize];
+    [
+        "Offset of field: tagMQIEP::MQSET_Call",
+    ][::std::mem::offset_of!(tagMQIEP, MQSET_Call) - 184usize];
+    [
+        "Offset of field: tagMQIEP::MQSETMP_Call",
+    ][::std::mem::offset_of!(tagMQIEP, MQSETMP_Call) - 192usize];
+    [
+        "Offset of field: tagMQIEP::MQSTAT_Call",
+    ][::std::mem::offset_of!(tagMQIEP, MQSTAT_Call) - 200usize];
+    [
+        "Offset of field: tagMQIEP::MQSUB_Call",
+    ][::std::mem::offset_of!(tagMQIEP, MQSUB_Call) - 208usize];
+    [
+        "Offset of field: tagMQIEP::MQSUBRQ_Call",
+    ][::std::mem::offset_of!(tagMQIEP, MQSUBRQ_Call) - 216usize];
+    [
+        "Offset of field: tagMQIEP::MQXCLWLN_Call",
+    ][::std::mem::offset_of!(tagMQIEP, MQXCLWLN_Call) - 224usize];
+    [
+        "Offset of field: tagMQIEP::MQXCNVC_Call",
+    ][::std::mem::offset_of!(tagMQIEP, MQXCNVC_Call) - 232usize];
+    [
+        "Offset of field: tagMQIEP::MQXDX_Call",
+    ][::std::mem::offset_of!(tagMQIEP, MQXDX_Call) - 240usize];
+    [
+        "Offset of field: tagMQIEP::MQXEP_Call",
+    ][::std::mem::offset_of!(tagMQIEP, MQXEP_Call) - 248usize];
+    [
+        "Offset of field: tagMQIEP::MQZEP_Call",
+    ][::std::mem::offset_of!(tagMQIEP, MQZEP_Call) - 256usize];
 };
 unsafe extern "C" {
     pub fn MQBACK(Hconn: MQHCONN, pCompCode: PMQLONG, pReason: PMQLONG);
-    pub fn MQBEGIN(Hconn: MQHCONN, pBeginOptions: PMQVOID, pCompCode: PMQLONG, pReason: PMQLONG);
+    pub fn MQBEGIN(
+        Hconn: MQHCONN,
+        pBeginOptions: PMQVOID,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
     pub fn MQBUFMH(
         Hconn: MQHCONN,
         Hmsg: MQHMSG,
@@ -8614,15 +10844,57 @@ unsafe extern "C" {
         pCompCode: PMQLONG,
         pReason: PMQLONG,
     );
-    pub fn MQCLOSE(Hconn: MQHCONN, pHobj: PMQHOBJ, Options: MQLONG, pCompCode: PMQLONG, pReason: PMQLONG);
+    pub fn MQCLOSE(
+        Hconn: MQHCONN,
+        pHobj: PMQHOBJ,
+        Options: MQLONG,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
     pub fn MQCMIT(Hconn: MQHCONN, pCompCode: PMQLONG, pReason: PMQLONG);
-    pub fn MQCONN(pQMgrName: PMQCHAR, pHconn: PMQHCONN, pCompCode: PMQLONG, pReason: PMQLONG);
-    pub fn MQCONNX(pQMgrName: PMQCHAR, pConnectOpts: PMQCNO, pHconn: PMQHCONN, pCompCode: PMQLONG, pReason: PMQLONG);
-    pub fn MQCRTMH(Hconn: MQHCONN, pCrtMsgHOpts: PMQVOID, pHmsg: PMQHMSG, pCompCode: PMQLONG, pReason: PMQLONG);
-    pub fn MQCTL(Hconn: MQHCONN, Operation: MQLONG, pControlOpts: PMQVOID, pCompCode: PMQLONG, pReason: PMQLONG);
+    pub fn MQCONN(
+        pQMgrName: PMQCHAR,
+        pHconn: PMQHCONN,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
+    pub fn MQCONNX(
+        pQMgrName: PMQCHAR,
+        pConnectOpts: PMQCNO,
+        pHconn: PMQHCONN,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
+    pub fn MQCRTMH(
+        Hconn: MQHCONN,
+        pCrtMsgHOpts: PMQVOID,
+        pHmsg: PMQHMSG,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
+    pub fn MQCTL(
+        Hconn: MQHCONN,
+        Operation: MQLONG,
+        pControlOpts: PMQVOID,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
     pub fn MQDISC(pHconn: PMQHCONN, pCompCode: PMQLONG, pReason: PMQLONG);
-    pub fn MQDLTMH(Hconn: MQHCONN, pHmsg: PMQHMSG, pDltMsgHOpts: PMQVOID, pCompCode: PMQLONG, pReason: PMQLONG);
-    pub fn MQDLTMP(Hconn: MQHCONN, Hmsg: MQHMSG, pDltPropOpts: PMQVOID, pName: PMQVOID, pCompCode: PMQLONG, pReason: PMQLONG);
+    pub fn MQDLTMH(
+        Hconn: MQHCONN,
+        pHmsg: PMQHMSG,
+        pDltMsgHOpts: PMQVOID,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
+    pub fn MQDLTMP(
+        Hconn: MQHCONN,
+        Hmsg: MQHMSG,
+        pDltPropOpts: PMQVOID,
+        pName: PMQVOID,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
     pub fn MQGET(
         Hconn: MQHCONN,
         Hobj: MQHOBJ,
@@ -8671,7 +10943,14 @@ unsafe extern "C" {
         pCompCode: PMQLONG,
         pReason: PMQLONG,
     );
-    pub fn MQOPEN(Hconn: MQHCONN, pObjDesc: PMQVOID, Options: MQLONG, pHobj: PMQHOBJ, pCompCode: PMQLONG, pReason: PMQLONG);
+    pub fn MQOPEN(
+        Hconn: MQHCONN,
+        pObjDesc: PMQVOID,
+        Options: MQLONG,
+        pHobj: PMQHOBJ,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
     pub fn MQPUT(
         Hconn: MQHCONN,
         Hobj: MQHOBJ,
@@ -8716,9 +10995,29 @@ unsafe extern "C" {
         pCompCode: PMQLONG,
         pReason: PMQLONG,
     );
-    pub fn MQSTAT(Hconn: MQHCONN, Type: MQLONG, pStatus: PMQVOID, pCompCode: PMQLONG, pReason: PMQLONG);
-    pub fn MQSUB(Hconn: MQHCONN, pSubDesc: PMQVOID, pHobj: PMQHOBJ, pHsub: PMQHOBJ, pCompCode: PMQLONG, pReason: PMQLONG);
-    pub fn MQSUBRQ(Hconn: MQHCONN, Hsub: MQHOBJ, Action: MQLONG, pSubRqOpts: PMQVOID, pCompCode: PMQLONG, pReason: PMQLONG);
+    pub fn MQSTAT(
+        Hconn: MQHCONN,
+        Type: MQLONG,
+        pStatus: PMQVOID,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
+    pub fn MQSUB(
+        Hconn: MQHCONN,
+        pSubDesc: PMQVOID,
+        pHobj: PMQHOBJ,
+        pHsub: PMQHOBJ,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
+    pub fn MQSUBRQ(
+        Hconn: MQHCONN,
+        Hsub: MQHOBJ,
+        Action: MQLONG,
+        pSubRqOpts: PMQVOID,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
     pub fn MQXEP(
         Hconfig: MQHCONFIG,
         ExitReason: MQLONG,
@@ -8757,7 +11056,13 @@ unsafe extern "C" {
         OutBufferLength: MQLONG,
         pOutBuffer: PMQVOID,
     );
-    pub fn mqAddBag(Bag: MQHBAG, Selector: MQLONG, ItemValue: MQHBAG, pCompCode: PMQLONG, pReason: PMQLONG);
+    pub fn mqAddBag(
+        Bag: MQHBAG,
+        Selector: MQLONG,
+        ItemValue: MQHBAG,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
     pub fn mqAddByteString(
         Bag: MQHBAG,
         Selector: MQLONG,
@@ -8775,9 +11080,26 @@ unsafe extern "C" {
         pCompCode: PMQLONG,
         pReason: PMQLONG,
     );
-    pub fn mqAddInquiry(Bag: MQHBAG, Selector: MQLONG, pCompCode: PMQLONG, pReason: PMQLONG);
-    pub fn mqAddInteger(Bag: MQHBAG, Selector: MQLONG, ItemValue: MQLONG, pCompCode: PMQLONG, pReason: PMQLONG);
-    pub fn mqAddInteger64(Bag: MQHBAG, Selector: MQLONG, ItemValue: MQINT64, pCompCode: PMQLONG, pReason: PMQLONG);
+    pub fn mqAddInquiry(
+        Bag: MQHBAG,
+        Selector: MQLONG,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
+    pub fn mqAddInteger(
+        Bag: MQHBAG,
+        Selector: MQLONG,
+        ItemValue: MQLONG,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
+    pub fn mqAddInteger64(
+        Bag: MQHBAG,
+        Selector: MQLONG,
+        ItemValue: MQINT64,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
     pub fn mqAddIntegerFilter(
         Bag: MQHBAG,
         Selector: MQLONG,
@@ -8821,10 +11143,27 @@ unsafe extern "C" {
         pReason: PMQLONG,
     );
     pub fn mqClearBag(Bag: MQHBAG, pCompCode: PMQLONG, pReason: PMQLONG);
-    pub fn mqCountItems(Bag: MQHBAG, Selector: MQLONG, pItemCount: PMQLONG, pCompCode: PMQLONG, pReason: PMQLONG);
-    pub fn mqCreateBag(Options: MQLONG, pBag: PMQHBAG, pCompCode: PMQLONG, pReason: PMQLONG);
+    pub fn mqCountItems(
+        Bag: MQHBAG,
+        Selector: MQLONG,
+        pItemCount: PMQLONG,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
+    pub fn mqCreateBag(
+        Options: MQLONG,
+        pBag: PMQHBAG,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
     pub fn mqDeleteBag(pBag: PMQHBAG, pCompCode: PMQLONG, pReason: PMQLONG);
-    pub fn mqDeleteItem(Bag: MQHBAG, Selector: MQLONG, ItemIndex: MQLONG, pCompCode: PMQLONG, pReason: PMQLONG);
+    pub fn mqDeleteItem(
+        Bag: MQHBAG,
+        Selector: MQLONG,
+        ItemIndex: MQLONG,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
     pub fn mqExecute(
         Hconn: MQHCONN,
         Command: MQLONG,
@@ -8931,7 +11270,13 @@ unsafe extern "C" {
         pCompCode: PMQLONG,
         pReason: PMQLONG,
     );
-    pub fn mqPad(pString: PMQCHAR, BufferLength: MQLONG, pBuffer: PMQCHAR, pCompCode: PMQLONG, pReason: PMQLONG);
+    pub fn mqPad(
+        pString: PMQCHAR,
+        BufferLength: MQLONG,
+        pBuffer: PMQCHAR,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
     pub fn mqPutBag(
         Hconn: MQHCONN,
         Hobj: MQHOBJ,
@@ -9004,7 +11349,24 @@ unsafe extern "C" {
         pCompCode: PMQLONG,
         pReason: PMQLONG,
     );
-    pub fn mqTrim(BufferLength: MQLONG, pBuffer: PMQCHAR, pString: PMQCHAR, pCompCode: PMQLONG, pReason: PMQLONG);
-    pub fn mqTruncateBag(Bag: MQHBAG, ItemCount: MQLONG, pCompCode: PMQLONG, pReason: PMQLONG);
-    pub fn MQZEP(Hconfig: MQHCONFIG, Function: MQLONG, pEntryPoint: PMQFUNC, pCompCode: PMQLONG, pReason: PMQLONG);
+    pub fn mqTrim(
+        BufferLength: MQLONG,
+        pBuffer: PMQCHAR,
+        pString: PMQCHAR,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
+    pub fn mqTruncateBag(
+        Bag: MQHBAG,
+        ItemCount: MQLONG,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
+    pub fn MQZEP(
+        Hconfig: MQHCONFIG,
+        Function: MQLONG,
+        pEntryPoint: PMQFUNC,
+        pCompCode: PMQLONG,
+        pReason: PMQLONG,
+    );
 }
