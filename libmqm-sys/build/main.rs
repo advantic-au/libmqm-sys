@@ -199,36 +199,37 @@ fn main() -> Result<(), io::Error> {
         {
             use io::Write as _;
 
-            let out_bindings = out_path.join("bindings.rs");
-
-            let mut bindings_buf = Vec::<u8>::new();
             let mq_inc_path = mq_path::mq_inc_path();
+            let builder = mqi_bindgen::bindgen_builder(&mq_inc_path, &mqc_version);
             // Generate and write the bindings file
-            mqi_bindgen::mqi::mqi_bindgen_builder(mqi_bindgen::bindgen_builder(&mq_inc_path, &mqc_version), &mq_inc_path)
-                .generate()
+            for (name, generated) in mqi_bindgen::mqi::mqi_bindgen_generate(&builder, &mq_inc_path)
                 .map_err(|e| io::Error::new(io::ErrorKind::InvalidData, e))?
-                .write(Box::new(&mut bindings_buf))?;
-            let bindings_str = String::from_utf8_lossy(&bindings_buf);
+            {
+                let bindings_str = prettyplease::unparse(&generated);
 
-            // Replace MQLONGs that are too large with wrapped equivalent MQLONG's.
-            let mqlong_replace = regex_lite::Regex::new(r"(:\s*MQLONG\s*=\s*)(\d+)\s*;").unwrap();
-            let bindings_str = mqlong_replace.replace_all(&bindings_str, |caps: &regex_lite::Captures| {
-                if caps[2].parse::<i32>().is_err() {
-                    let i = caps[2].parse::<u32>().unwrap();
-                    #[allow(clippy::cast_possible_wrap)]
-                    let wrapped = i as i32;
-                    format!("{}{};", &caps[1], wrapped)
-                } else {
-                    caps[0].to_string()
-                }
-            });
+                // Replace MQLONGs that are too large with wrapped equivalent MQLONG's.
+                let mqlong_replace = regex_lite::Regex::new(r"(:\s*MQLONG\s*=\s*)(\d+)\s*;").unwrap();
+                let bindings_str = mqlong_replace.replace_all(&bindings_str, |caps: &regex_lite::Captures| {
+                    if caps[2].parse::<i32>().is_err() {
+                        let i = caps[2].parse::<u32>().unwrap();
+                        #[allow(clippy::cast_possible_wrap)]
+                        let wrapped = i as i32;
+                        format!("{}{};", &caps[1], wrapped)
+                    } else {
+                        caps[0].to_string()
+                    }
+                });
 
-            let mut out_file = io::BufWriter::new(std::fs::File::create(&out_bindings)?);
-            out_file.write_all(bindings_str.as_bytes())?;
-            drop(out_file);
 
-            #[cfg(feature = "pregen")]
-            pregen_copy(&out_bindings, &std::path::PathBuf::from("./src/lib/pregen"))?;
+                let out_bindings = out_path.join(name);
+                let mut out_file = io::BufWriter::new(std::fs::File::create(&out_bindings)?);
+                out_file.write_all(bindings_str.as_bytes())?;
+                drop(out_file);
+
+                #[cfg(feature = "pregen")]
+                pregen_copy_dir(&out_bindings, &std::path::PathBuf::from("./src/lib/pregen"))?;
+            }
+
         }
     }
 
@@ -236,10 +237,32 @@ fn main() -> Result<(), io::Error> {
 }
 
 #[cfg(feature = "pregen")]
+fn pregen_copy_dir(out_bindings: &std::path::PathBuf, target: &std::path::Path) -> Result<(), io::Error> {
+    use std::fs;
+    let target_os = std::env::var("CARGO_CFG_TARGET_OS").map_err(|e| io::Error::new(io::ErrorKind::InvalidInput, e))?;
+    let target_arch = std::env::var("CARGO_CFG_TARGET_ARCH").map_err(|e| io::Error::new(io::ErrorKind::InvalidInput, e))?;
+    fs::copy(
+        out_bindings,
+        target.join(format!(
+            "{}-{}/{}",
+            if target_os == "macos" { "any" } else { &target_arch },
+            target_os,
+            out_bindings
+                .file_name()
+                .expect("out_bindings includes filename")
+                .to_string_lossy()
+        )),
+    )?;
+    Ok(())
+
+}
+
+#[cfg(feature = "pregen")]
 fn pregen_copy(out_bindings: &std::path::PathBuf, target: &std::path::Path) -> Result<(), io::Error> {
     use std::fs;
     let target_os = std::env::var("CARGO_CFG_TARGET_OS").map_err(|e| io::Error::new(io::ErrorKind::InvalidInput, e))?;
     let target_arch = std::env::var("CARGO_CFG_TARGET_ARCH").map_err(|e| io::Error::new(io::ErrorKind::InvalidInput, e))?;
+    
     fs::copy(
         out_bindings,
         target.join(format!(
