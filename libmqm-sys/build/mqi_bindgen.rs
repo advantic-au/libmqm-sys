@@ -18,7 +18,7 @@ pub mod mqi {
     };
 
     #[derive(Debug, Clone, Copy)]
-    struct AllowList<'a> {
+    pub struct AllowList<'a> {
         functions: Option<&'a str>,
         variables: Option<&'a str>,
         types: Option<&'a str>,
@@ -30,16 +30,16 @@ pub mod mqi {
         types: Some("P?MQ.*"),
     };
 
-    struct HeaderFeature<'a> {
-        name: &'static str,
-        headers: &'a [&'static str],
-        allow_list: AllowList<'a>,
-        target_list: &'a [&'static str],
+    pub struct HeaderFeature<'a> {
+        pub name: &'static str,
+        pub headers: &'a [&'static str],
+        pub allow_list: AllowList<'a>,
+        pub target_list: &'a [&'static str],
     }
 
-    const HEADER_FEATURE: &[HeaderFeature] = &[
+    pub const HEADER_FEATURE: &[HeaderFeature] = &[
         HeaderFeature {
-            name: "base.rs",
+            name: "mqi.rs",
             headers: &["cmqc.h"],
             allow_list: ALL_ALLOW,
             target_list: &[],
@@ -171,7 +171,13 @@ pub mod mqi {
             let (new_ns, items) = filtered_items(ast.items, &items_acc);
             ast.items = items;
             items_acc.extend(new_ns);
-            assert!(result.insert(name, ast).is_none());
+            let entry = result.entry(name).or_insert_with(|| syn::File {
+                shebang: None,
+                attrs: Vec::new(),
+                items: Vec::new(),
+            });
+            entry.attrs.extend(ast.attrs);
+            entry.items.extend(ast.items);
         }
         Ok(result)
     }

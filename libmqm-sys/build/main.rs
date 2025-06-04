@@ -199,8 +199,19 @@ fn main() -> Result<(), io::Error> {
         {
             use io::Write as _;
 
+            use mqi_bindgen::mqi::{HeaderFeature, HEADER_FEATURE};
+
             let mq_inc_path = mq_path::mq_inc_path();
             let builder = mqi_bindgen::bindgen_builder(&mq_inc_path, &mqc_version);
+
+            for &HeaderFeature { name, .. } in HEADER_FEATURE {
+                use std::fs;
+                let out_bindings = out_path.join(name);
+                if fs::exists(&out_bindings)? {
+                    fs::remove_file(&out_bindings)?;
+                }
+            }
+
             // Generate and write the bindings file
             for (name, generated) in mqi_bindgen::mqi::mqi_bindgen_generate(&builder, &mq_inc_path)
                 .map_err(|e| io::Error::new(io::ErrorKind::InvalidData, e))?
