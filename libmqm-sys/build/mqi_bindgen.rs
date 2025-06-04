@@ -21,7 +21,7 @@ pub mod mqi {
     struct AllowList<'a> {
         functions: Option<&'a str>,
         variables: Option<&'a str>,
-        types: Option<&'a str>
+        types: Option<&'a str>,
     }
 
     const ALL_ALLOW: AllowList = AllowList {
@@ -47,7 +47,11 @@ pub mod mqi {
         HeaderFeature {
             name: "mqi.rs",
             headers: &["cmqc.h", "cmqxc.h"],
-            allow_list: AllowList { functions: None, variables: Some("MQCD_.*"), types: Some(".*MQCD") },
+            allow_list: AllowList {
+                functions: None,
+                variables: Some("MQCD_.*"),
+                types: Some(".*MQCD"),
+            },
             target_list: &[],
         },
         HeaderFeature {
@@ -59,7 +63,11 @@ pub mod mqi {
         HeaderFeature {
             name: "pcf.rs",
             headers: &["cmqc.h", "cmqcfc.h"],
-            allow_list: AllowList { functions: None, variables: Some(".*"), types: Some("P?MQ.*") },
+            allow_list: AllowList {
+                functions: None,
+                variables: Some(".*"),
+                types: Some("P?MQ.*"),
+            },
             target_list: &[],
         },
         HeaderFeature {
@@ -109,7 +117,7 @@ pub mod mqi {
                                     Some(name) => {
                                         hs.insert(name.clone());
                                         (!names.contains(name.as_str())).then_some(item)
-                                    },
+                                    }
                                     None => Some(item),
                                 }
                             })
@@ -156,11 +164,13 @@ pub mod mqi {
             )
             .generate()?;
             let mut gen_bytes: Vec<u8> = Vec::new();
-            generated.write(Box::new(&mut gen_bytes)).expect("write to buffer should always succeed");
+            generated
+                .write(Box::new(&mut gen_bytes))
+                .expect("write to buffer should always succeed");
             let mut ast = syn::parse_file(&String::from_utf8_lossy(&gen_bytes)).expect("bindgen generated code should parse");
             let (new_ns, items) = filtered_items(ast.items, &items_acc);
             ast.items = items;
-            items_acc.extend(new_ns); 
+            items_acc.extend(new_ns);
             assert!(result.insert(name, ast).is_none());
         }
         Ok(result)

@@ -220,7 +220,6 @@ fn main() -> Result<(), io::Error> {
                     }
                 });
 
-
                 let out_bindings = out_path.join(name);
                 let mut out_file = io::BufWriter::new(std::fs::File::create(&out_bindings)?);
                 out_file.write_all(bindings_str.as_bytes())?;
@@ -229,7 +228,6 @@ fn main() -> Result<(), io::Error> {
                 #[cfg(feature = "pregen")]
                 pregen_copy_dir(&out_bindings, &std::path::PathBuf::from("./src/lib/pregen"))?;
             }
-
         }
     }
 
@@ -254,7 +252,6 @@ fn pregen_copy_dir(out_bindings: &std::path::PathBuf, target: &std::path::Path) 
         )),
     )?;
     Ok(())
-
 }
 
 #[cfg(feature = "pregen")]
@@ -262,7 +259,7 @@ fn pregen_copy(out_bindings: &std::path::PathBuf, target: &std::path::Path) -> R
     use std::fs;
     let target_os = std::env::var("CARGO_CFG_TARGET_OS").map_err(|e| io::Error::new(io::ErrorKind::InvalidInput, e))?;
     let target_arch = std::env::var("CARGO_CFG_TARGET_ARCH").map_err(|e| io::Error::new(io::ErrorKind::InvalidInput, e))?;
-    
+
     fs::copy(
         out_bindings,
         target.join(format!(
