@@ -1,3 +1,5 @@
+/* Generated with MQ client version 9.4.2.1 */
+
 pub type PPMQCHAR = *mut PMQCHAR;
 pub type PPMQLONG = *mut PMQLONG;
 pub type MQIEP = tagMQIEP;
@@ -1617,34 +1619,6 @@ pub struct tagMQIEP {
     pub MQXEP_Call: PMQ_XEP_CALL,
     pub MQZEP_Call: PMQ_ZEP_CALL,
 }
-pub const MQCHT_SENDER: MQLONG = 1;
-pub const MQCHT_SERVER: MQLONG = 2;
-pub const MQCHT_RECEIVER: MQLONG = 3;
-pub const MQCHT_REQUESTER: MQLONG = 4;
-pub const MQCHT_ALL: MQLONG = 5;
-pub const MQCHT_CLNTCONN: MQLONG = 6;
-pub const MQCHT_SVRCONN: MQLONG = 7;
-pub const MQCHT_CLUSRCVR: MQLONG = 8;
-pub const MQCHT_CLUSSDR: MQLONG = 9;
-pub const MQCHT_MQTT: MQLONG = 10;
-pub const MQCHT_AMQP: MQLONG = 11;
-pub const MQCOMPRESS_NOT_AVAILABLE: MQLONG = -1;
-pub const MQCOMPRESS_NONE: MQLONG = 0;
-pub const MQCOMPRESS_RLE: MQLONG = 1;
-pub const MQCOMPRESS_ZLIBFAST: MQLONG = 2;
-pub const MQCOMPRESS_ZLIBHIGH: MQLONG = 4;
-pub const MQCOMPRESS_SYSTEM: MQLONG = 8;
-pub const MQCOMPRESS_LZ4FAST: MQLONG = 16;
-pub const MQCOMPRESS_LZ4HIGH: MQLONG = 32;
-pub const MQCOMPRESS_ANY: MQLONG = 268435455;
-pub const MQXPT_ALL: MQLONG = -1;
-pub const MQXPT_LOCAL: MQLONG = 0;
-pub const MQXPT_LU62: MQLONG = 1;
-pub const MQXPT_TCP: MQLONG = 2;
-pub const MQXPT_NETBIOS: MQLONG = 3;
-pub const MQXPT_SPX: MQLONG = 4;
-pub const MQXPT_DECNET: MQLONG = 5;
-pub const MQXPT_UDP: MQLONG = 6;
 pub const MQPA_DEFAULT: MQLONG = 1;
 pub const MQPA_CONTEXT: MQLONG = 2;
 pub const MQPA_ONLY_MCA: MQLONG = 3;
@@ -1659,8 +1633,6 @@ pub const MQSCA_REQUIRED: MQLONG = 0;
 pub const MQSCA_OPTIONAL: MQLONG = 1;
 pub const MQSCA_NEVER_REQUIRED: MQLONG = 2;
 pub const MQKAI_AUTO: MQLONG = -1;
-pub const MQCAFTY_NONE: MQLONG = 0;
-pub const MQCAFTY_PREFERRED: MQLONG = 1;
 pub const MQRCN_NO: MQLONG = 0;
 pub const MQRCN_YES: MQLONG = 1;
 pub const MQRCN_Q_MGR: MQLONG = 2;

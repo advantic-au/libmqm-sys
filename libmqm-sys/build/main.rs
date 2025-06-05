@@ -189,7 +189,7 @@ fn main() -> Result<(), io::Error> {
 
             let mut out_file = io::BufWriter::new(std::fs::File::create(&out_bindings)?);
             // Generate and write the bindings file
-            mqi_bindgen::str::str_bindings_builder(mqi_bindgen::bindgen_builder(&mq_inc_path, &mqc_version), &mq_inc_path)
+            mqi_bindgen::str::str_bindings_builder(mqi_bindgen::bindgen_builder(&mq_inc_path), &mq_inc_path)
                 .generate()
                 .map_err(|e| io::Error::new(io::ErrorKind::InvalidData, e))?
                 .write(Box::new(&mut out_file))?;
@@ -199,24 +199,15 @@ fn main() -> Result<(), io::Error> {
         {
             use io::Write as _;
 
-            use mqi_bindgen::mqi::{HeaderFeature, HEADER_FEATURE};
-
             let mq_inc_path = mq_path::mq_inc_path();
-            let builder = mqi_bindgen::bindgen_builder(&mq_inc_path, &mqc_version);
-
-            for &HeaderFeature { name, .. } in HEADER_FEATURE {
-                use std::fs;
-                let out_bindings = out_path.join(name);
-                if fs::exists(&out_bindings)? {
-                    fs::remove_file(&out_bindings)?;
-                }
-            }
+            let builder = mqi_bindgen::bindgen_builder(&mq_inc_path);
 
             // Generate and write the bindings file
             for (name, generated) in mqi_bindgen::mqi::mqi_bindgen_generate(&builder, &mq_inc_path)
                 .map_err(|e| io::Error::new(io::ErrorKind::InvalidData, e))?
             {
-                let bindings_str = prettyplease::unparse(&generated);
+                let mut bindings_str = format!("/* Generated with MQ client version {mqc_version} */\n\n");
+                bindings_str += &prettyplease::unparse(&generated);
 
                 // Replace MQLONGs that are too large with wrapped equivalent MQLONG's.
                 let mqlong_replace = regex_lite::Regex::new(r"(:\s*MQLONG\s*=\s*)(\d+)\s*;").unwrap();

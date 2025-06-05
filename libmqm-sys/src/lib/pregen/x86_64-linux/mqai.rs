@@ -1,3 +1,5 @@
+/* Generated with MQ client version 9.4.2.1 */
+
 pub type MQHBAG = MQLONG;
 pub type PMQHBAG = *mut MQHBAG;
 pub const MQCBO_NONE: MQLONG = 0;

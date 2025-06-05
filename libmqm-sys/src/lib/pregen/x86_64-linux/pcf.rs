@@ -1,3 +1,5 @@
+/* Generated with MQ client version 9.4.2.1 */
+
 pub type MQCFH = tagMQCFH;
 pub type PMQCFH = *mut MQCFH;
 pub type MQCFBF = tagMQCFBF;

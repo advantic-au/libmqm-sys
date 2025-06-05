@@ -19,15 +19,15 @@ pub mod mqi {
 
     #[derive(Debug, Clone, Copy)]
     pub struct AllowList<'a> {
-        functions: Option<&'a str>,
-        variables: Option<&'a str>,
-        types: Option<&'a str>,
+        functions: &'a [&'static str],
+        variables: &'a [&'static str],
+        types: &'a [&'static str],
     }
 
     const ALL_ALLOW: AllowList = AllowList {
-        functions: Some(".*"),
-        variables: Some(".*"),
-        types: Some("P?MQ.*"),
+        functions: &[".*"],
+        variables: &[".*"],
+        types: &["P?MQ.*"],
     };
 
     pub struct HeaderFeature<'a> {
@@ -48,11 +48,11 @@ pub mod mqi {
             name: "mqi.rs",
             headers: &["cmqc.h", "cmqxc.h"],
             allow_list: AllowList {
-                functions: None,
-                variables: Some("MQCD_.*"),
-                types: Some(".*MQCD"),
+                functions: &[],
+                variables: &["MQCD_.*"],
+                types: &[".*MQCD"],
             },
-            target_list: &[],
+            target_list: &["MQXPT_.*", "MQCHT_.*", "MQCAFTY_.*", "MQCOMPRESS_.*"],
         },
         HeaderFeature {
             name: "exits.rs",
@@ -64,9 +64,9 @@ pub mod mqi {
             name: "pcf.rs",
             headers: &["cmqc.h", "cmqcfc.h"],
             allow_list: AllowList {
-                functions: None,
-                variables: Some(".*"),
-                types: Some("P?MQ.*"),
+                functions: &[],
+                variables: &[".*"],
+                types: &["P?MQ.*"],
             },
             target_list: &[],
         },
@@ -211,21 +211,6 @@ pub mod mqi {
 
         let builder = blocklist_item.into_iter().fold(builder, bindgen::Builder::blocklist_item);
         let builder = allowlist_item.into_iter().fold(builder, bindgen::Builder::allowlist_item);
-
-        // .header("src/c/ccsid.h");
-
-        // let filter_mq_headers = MQI_HEADER_FILES.iter().filter(|(_, features)| match (requested, features) {
-        //     (Some(requested), Some(feature_slice)) => feature_slice.contains(&requested),
-        //     _ => true, // Required headers
-        // });
-
-        // // Choose the IBM MQI c headers
-        // let builder = filtered(filter_mq_headers)
-        //     // Add all the header files
-        //     .fold(builder, |builder, header| {
-        //         builder.header(mq_inc_path.join(header).to_str().expect("header to be valid"))
-        //     });
-
         let builder = allow.functions.iter().fold(builder, bindgen::Builder::allowlist_function);
         let builder = allow.variables.iter().fold(builder, bindgen::Builder::allowlist_var);
         let builder = allow.types.iter().fold(builder, bindgen::Builder::allowlist_type);
@@ -315,12 +300,11 @@ pub mod str {
     }
 }
 
-pub fn bindgen_builder(mq_inc_path: &Path, mq_version: &str) -> bindgen::Builder {
+pub fn bindgen_builder(mq_inc_path: &Path) -> bindgen::Builder {
     #[allow(deprecated, reason = "RustTarget::Stable_1_82 is deprecated.")]
     bindgen::builder()
         .rust_target(bindgen::RustTarget::Stable_1_82)
         .clang_arg(format!("-I{}", mq_inc_path.display()))
-        .raw_line(format!("/* Generated with MQ client version {mq_version} */"))
         .sort_semantically(true)
         .merge_extern_blocks(true)
         .generate_cstr(true)
