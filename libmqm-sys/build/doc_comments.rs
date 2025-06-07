@@ -1,7 +1,4 @@
-use std::{
-    collections::HashMap,
-    mem::swap,
-};
+use std::{collections::HashMap, mem::swap};
 
 use regex_lite::Regex;
 use syn::{visit_mut::VisitMut, Attribute};

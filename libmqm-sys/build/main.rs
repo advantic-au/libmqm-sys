@@ -207,8 +207,7 @@ fn main() -> Result<(), io::Error> {
             let mq_inc_path = mq_path::mq_inc_path();
             let builder = mqi_bindgen::bindgen_builder(&mq_inc_path);
 
-            let comments =
-                doc_comments::extract_from_headers(&mq_inc_path, &DescriptionRegex::default())?;
+            let comments = doc_comments::extract_from_headers(&mq_inc_path, &DescriptionRegex::default())?;
             assert_ne!(comments.len(), 0);
 
             let fields = doc_comments::extract_from_headers(&mq_inc_path, &StructFieldExtract::default())?;
@@ -224,11 +223,10 @@ fn main() -> Result<(), io::Error> {
                 use syn::visit_mut::VisitMut as _;
 
                 use crate::doc_comments::{DocCommentArgs, DocCommentFields, DocCommentType};
-                
+
                 DocCommentArgs(&parameters).visit_file_mut(&mut generated);
                 DocCommentType(&comments).visit_file_mut(&mut generated);
                 DocCommentFields(&fields).visit_file_mut(&mut generated);
-
 
                 let mut bindings_str = format!("/* Generated with MQ client version {mqc_version} */\n\n");
                 bindings_str += &prettyplease::unparse(&generated);
