@@ -226,8 +226,7 @@ impl VisitMut for DocCommentType<'_> {
         let names = if name.starts_with("tag") {
             let wo_tag = name.trim_start_matches("tag").to_string();
             vec![name, wo_tag]
-        }
-        else {
+        } else {
             vec![name]
         };
 
