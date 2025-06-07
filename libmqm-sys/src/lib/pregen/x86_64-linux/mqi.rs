@@ -208,6 +208,12 @@ pub type PMQWIH = *mut MQWIH;
 pub type MQXQH = tagMQXQH;
 pub type PMQXQH = *mut MQXQH;
 /// Message Consumer routine (Called by MQ)
+/// # Arguments
+/// * `Hconn`: I: Connection handle
+/// * `pMsgDesc`: I: Message descriptor
+/// * `pGetMsgOpts`: I: Area containing the MQGMO
+/// * `pBuffer`: I: Area containing the message data
+/// * `pContext`: I: Area containing the Consumer context
 pub type MQCB_FUNCTION = ::std::option::Option<
     unsafe extern "C" fn(
         Hconn: MQHCONN,
@@ -218,6 +224,7 @@ pub type MQCB_FUNCTION = ::std::option::Option<
     ),
 >;
 pub type PMQCB_FUNCTION = MQCB_FUNCTION;
+/// Authentication Information Record
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQAIR {
@@ -240,6 +247,7 @@ pub struct tagMQAIR {
     /// URL of the OCSP responder
     pub OCSPResponderURL: MQCHAR256,
 }
+/// MQ Balancing Options
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQBNO {
@@ -254,6 +262,7 @@ pub struct tagMQBNO {
     /// Additional Balancing Options
     pub Options: MQLONG,
 }
+/// Buffer To Message Handle Options
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQBMHO {
@@ -264,6 +273,7 @@ pub struct tagMQBMHO {
     /// Options that control the action of MQBUFMH
     pub Options: MQLONG,
 }
+/// Begin Options
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQBO {
@@ -274,6 +284,7 @@ pub struct tagMQBO {
     /// Options that control the action of MQBEGIN
     pub Options: MQLONG,
 }
+/// Callback Context
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQCBC {
@@ -304,6 +315,7 @@ pub struct tagMQCBC {
     /// Number of milliseconds before reconnect attempt
     pub ReconnectDelay: MQLONG,
 }
+/// Callback Data Descriptor
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQCBD {
@@ -324,6 +336,7 @@ pub struct tagMQCBD {
     /// Maximum message length
     pub MaxMsgLength: MQLONG,
 }
+/// Variable-length string
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQCHARV {
@@ -338,6 +351,7 @@ pub struct tagMQCHARV {
     /// CCSID of variable length string
     pub VSCCSID: MQLONG,
 }
+/// CICS Information Header
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQCIH {
@@ -418,6 +432,7 @@ pub struct tagMQCIH {
     /// Reserved
     pub Reserved4: MQLONG,
 }
+/// Create Message Handle Options
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQCMHO {
@@ -428,6 +443,7 @@ pub struct tagMQCMHO {
     /// Options that control the action of MQCRTMH
     pub Options: MQLONG,
 }
+/// MQCTL function options
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQCTLO {
@@ -442,6 +458,7 @@ pub struct tagMQCTLO {
     /// MQCTL Data area passed to the function
     pub ConnectionArea: MQPTR,
 }
+/// SSL Configuration Options
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQSCO {
@@ -486,6 +503,7 @@ pub struct tagMQSCO {
     /// Length of HTTPS keystore
     pub HTTPSKeyStoreLength: MQLONG,
 }
+/// Security Parameters
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQCSP {
@@ -528,6 +546,7 @@ pub struct tagMQCSP {
     /// Length of Token
     pub TokenLength: MQLONG,
 }
+/// Connect Options
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQCNO {
@@ -572,6 +591,7 @@ pub struct tagMQCNO {
     /// Reserved
     pub Reserved3: MQBYTE4,
 }
+/// Distribution Header
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQDH {
@@ -598,6 +618,7 @@ pub struct tagMQDH {
     /// Offset of first MQPMR record from start of MQDH
     pub PutMsgRecOffset: MQLONG,
 }
+/// Dead Letter Header
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQDLH {
@@ -626,6 +647,7 @@ pub struct tagMQDLH {
     /// Time when message was put on dead-letter (undelivered-message) queue
     pub PutTime: MQCHAR8,
 }
+/// Delete Message Handle Options
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQDMHO {
@@ -636,6 +658,7 @@ pub struct tagMQDMHO {
     /// Options that control the action of MQDLTMH
     pub Options: MQLONG,
 }
+/// Delete Message Property Options
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQDMPO {
@@ -646,6 +669,7 @@ pub struct tagMQDMPO {
     /// Options that control the action of MQDLTMP
     pub Options: MQLONG,
 }
+/// Get Message Options
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQGMO {
@@ -682,6 +706,7 @@ pub struct tagMQGMO {
     /// Message handle
     pub MsgHandle: MQHMSG,
 }
+/// IMS Information Header
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQIIH {
@@ -718,6 +743,7 @@ pub struct tagMQIIH {
     /// Reserved
     pub Reserved: MQCHAR,
 }
+/// Inquire Message Property Options
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQIMPO {
@@ -742,6 +768,7 @@ pub struct tagMQIMPO {
     /// Property data type as a string
     pub TypeString: MQCHAR8,
 }
+/// Message Descriptor
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQMD {
@@ -804,6 +831,7 @@ pub struct tagMQMD {
     /// Length of original message
     pub OriginalLength: MQLONG,
 }
+/// Message Descriptor Extension
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQMDE {
@@ -832,6 +860,7 @@ pub struct tagMQMDE {
     /// Length of original message
     pub OriginalLength: MQLONG,
 }
+/// Version-1 Message Descriptor
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQMD1 {
@@ -884,6 +913,7 @@ pub struct tagMQMD1 {
     /// Application data relating to origin
     pub ApplOriginData: MQCHAR4,
 }
+/// Version-2 Message Descriptor
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQMD2 {
@@ -946,6 +976,7 @@ pub struct tagMQMD2 {
     /// Length of original message
     pub OriginalLength: MQLONG,
 }
+/// Message Handle To Buffer Options
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQMHBO {
@@ -956,6 +987,7 @@ pub struct tagMQMHBO {
     /// Options that control the action of MQMHBUF
     pub Options: MQLONG,
 }
+/// Object descriptor
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQOD {
@@ -1004,6 +1036,7 @@ pub struct tagMQOD {
     /// Alias queue resolved object type
     pub ResolvedType: MQLONG,
 }
+/// Object Record
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQOR {
@@ -1012,6 +1045,7 @@ pub struct tagMQOR {
     /// Object queue manager name
     pub ObjectQMgrName: MQCHAR48,
 }
+/// Property descriptor
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQPD {
@@ -1028,6 +1062,7 @@ pub struct tagMQPD {
     /// Property copy options
     pub CopyOptions: MQLONG,
 }
+/// Put Message Options
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQPMO {
@@ -1072,6 +1107,7 @@ pub struct tagMQPMO {
     /// Publication level
     pub PubLevel: MQLONG,
 }
+/// Rules and Formatting Header
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQRFH {
@@ -1090,6 +1126,7 @@ pub struct tagMQRFH {
     /// Flags
     pub Flags: MQLONG,
 }
+/// Rules and Formatting Header 2
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQRFH2 {
@@ -1110,6 +1147,7 @@ pub struct tagMQRFH2 {
     /// Character set identifier of NameValueData
     pub NameValueCCSID: MQLONG,
 }
+/// Reference Message Header
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQRMH {
@@ -1154,6 +1192,7 @@ pub struct tagMQRMH {
     /// High offset of bulk data
     pub DataLogicalOffset2: MQLONG,
 }
+/// Response Record
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQRR {
@@ -1162,6 +1201,7 @@ pub struct tagMQRR {
     /// Reason code for queue
     pub Reason: MQLONG,
 }
+/// Subscription Descriptor
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQSD {
@@ -1200,6 +1240,7 @@ pub struct tagMQSD {
     /// Resolved long object name
     pub ResObjectString: MQCHARV,
 }
+/// Set Message Property Options
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQSMPO {
@@ -1214,6 +1255,7 @@ pub struct tagMQSMPO {
     /// Character set identifier of Value
     pub ValueCCSID: MQLONG,
 }
+/// Subscription Request Options
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQSRO {
@@ -1226,6 +1268,7 @@ pub struct tagMQSRO {
     /// Number of publications sent
     pub NumPubs: MQLONG,
 }
+/// Status Information Record
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQSTS {
@@ -1262,6 +1305,7 @@ pub struct tagMQSTS {
     /// Failing subscription options
     pub SubOptions: MQLONG,
 }
+/// Trigger Message
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQTM {
@@ -1284,6 +1328,7 @@ pub struct tagMQTM {
     /// User data
     pub UserData: MQCHAR128,
 }
+/// Trigger Message 2 (Character)
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQTMC2 {
@@ -1308,6 +1353,7 @@ pub struct tagMQTMC2 {
     /// Queue manager name
     pub QMgrName: MQCHAR48,
 }
+/// Work Information Header
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQWIH {
@@ -1334,6 +1380,7 @@ pub struct tagMQWIH {
     /// Reserved
     pub Reserved: MQCHAR32,
 }
+/// Transmission Queue Header
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQXQH {
@@ -4140,6 +4187,7 @@ unsafe extern "C" {
 pub type MQCD = tagMQCD;
 pub type PMQCD = *mut MQCD;
 pub type PPMQCD = *mut PMQCD;
+/// Channel Definition
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQCD {

@@ -34,6 +34,39 @@ const PARAM_REGEX: &str = r"(?msx)
     ((?:\s+/\*.+?\*/)+)
 ";
 
+const EQUIV: &[(&str, &str)] = &[
+    ("MQBACK", "MQ_BACK_CALL"),
+    ("MQBEGIN", "MQ_BEGIN_CALL"),
+    ("MQBUFMH", "MQ_BUFMH_CALL"),
+    ("MQCB", "MQ_CB_CALL"),
+    ("MQCLOSE", "MQ_CLOSE_CALL"),
+    ("MQCMIT", "MQ_CMIT_CALL"),
+    ("MQCONN", "MQ_CONN_CALL"),
+    ("MQCONNX", "MQ_CONNX_CALL"),
+    ("MQCRTMH", "MQ_CRTMH_CALL"),
+    ("MQCTL", "MQ_CTL_CALL"),
+    ("MQDISC", "MQ_DISC_CALL"),
+    ("MQDLTMH", "MQ_DLTMH_CALL"),
+    ("MQDLTMP", "MQ_DLTMP_CALL"),
+    ("MQGET", "MQ_GET_CALL"),
+    ("MQINQ", "MQ_INQ_CALL"),
+    ("MQINQMP", "MQ_INQMP_CALL"),
+    ("MQMHBUF", "MQ_MHBUF_CALL"),
+    ("MQOPEN", "MQ_OPEN_CALL"),
+    ("MQPUT", "MQ_PUT_CALL"),
+    ("MQPUT1", "MQ_PUT1_CALL"),
+    ("MQSET", "MQ_SET_CALL"),
+    ("MQSETMP", "MQ_SETMP_CALL"),
+    ("MQSTAT", "MQ_STAT_CALL"),
+    ("MQSUB", "MQ_SUB_CALL"),
+    ("MQSUBRQ", "MQ_SUBRQ_CALL"),
+    ("MQXCLWLN", "MQ_XCLWLN_CALL"),
+    ("MQXCNVC", "MQ_XCNVC_CALL"),
+    ("MQXDX", "MQ_XDX_CALL"),
+    ("MQXEP", "MQ_XEP_CALL"),
+    ("MQZEP", "MQ_ZEP_CALL"),
+];
+
 #[derive(Debug, Clone)]
 pub struct DocCommentType<'a>(pub &'a HashMap<String, String>);
 
@@ -99,20 +132,33 @@ impl ExtractFromC for DescriptionRegex {
     type Extracted = String;
 
     fn extract(&self, file_content: &str) -> impl Iterator<Item = (String, Self::Extracted)> {
-        self.search.captures_iter(file_content).map(|c| {
-            (
-                c[1].to_string(),
-                self.delim
-                    .split(&c[2])
-                    .map(str::trim)
-                    .filter(|s| !s.is_empty())
-                    .fold(String::new(), |mut acc, s| {
-                        acc += " ";
-                        acc += &s.split_whitespace().collect::<Vec<_>>().join(" ");
-                        acc
-                    }),
-            )
-        })
+        let mut extracted = self
+            .search
+            .captures_iter(file_content)
+            .map(|c| {
+                (
+                    c[1].to_string(),
+                    self.delim
+                        .split(&c[2])
+                        .map(str::trim)
+                        .filter(|s| !s.is_empty())
+                        .fold(String::new(), |mut acc, s| {
+                            acc += " ";
+                            acc += &s.split_whitespace().collect::<Vec<_>>().join(" ");
+                            acc
+                        }),
+                )
+            })
+            .collect::<HashMap<_, _>>();
+
+        for (name, other) in EQUIV {
+            if let Some(description) = extracted.get(*name) {
+                let description = description.clone();
+                extracted.entry((*other).to_string()).or_insert(description);
+            }
+        }
+
+        extracted.into_iter()
     }
 }
 
@@ -175,6 +221,22 @@ impl VisitMut for DocCommentType<'_> {
         }
     }
 
+    fn visit_item_struct_mut(&mut self, item: &mut syn::ItemStruct) {
+        let name = format!("{}", item.ident);
+        let names = if name.starts_with("tag") {
+            let wo_tag = name.trim_start_matches("tag").to_string();
+            vec![name, wo_tag]
+        }
+        else {
+            vec![name]
+        };
+
+        if let Some(description) = names.iter().find_map(|name| self.0.get(name)) {
+            let doc_lit = syn::LitStr::new(description, proc_macro2::Span::call_site());
+            item.attrs.insert(0, syn::parse_quote!(#[doc = #doc_lit ]));
+        }
+    }
+
     fn visit_item_fn_mut(&mut self, item: &mut syn::ItemFn) {
         if let Some(description) = self.0.get(&format!("{}", item.sig.ident)) {
             let doc_lit = syn::LitStr::new(description, proc_macro2::Span::call_site());
@@ -223,6 +285,14 @@ impl VisitMut for DocCommentArgs<'_> {
 
     fn visit_foreign_item_fn_mut(&mut self, item: &mut syn::ForeignItemFn) {
         if let Some(args) = self.0.get(&format!("{}", item.sig.ident)) {
+            let mut arg_attrs = doc_comment_args(args);
+            swap(&mut item.attrs, &mut arg_attrs);
+            item.attrs.extend(arg_attrs);
+        }
+    }
+
+    fn visit_item_type_mut(&mut self, item: &mut syn::ItemType) {
+        if let Some(args) = self.0.get(&format!("{}", item.ident)) {
             let mut arg_attrs = doc_comment_args(args);
             swap(&mut item.attrs, &mut arg_attrs);
             item.attrs.extend(arg_attrs);

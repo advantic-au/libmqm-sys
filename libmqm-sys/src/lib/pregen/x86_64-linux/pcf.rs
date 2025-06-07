@@ -39,6 +39,7 @@ pub type PMQCFST = *mut MQCFST;
 /// Embedded PCF header
 pub type MQEPH = tagMQEPH;
 pub type PMQEPH = *mut MQEPH;
+/// PCF Header
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQCFH {
@@ -61,6 +62,7 @@ pub struct tagMQCFH {
     /// Count of parameter structures
     pub ParameterCount: MQLONG,
 }
+/// PCF Byte String Filter Parameter
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQCFBF {
@@ -77,6 +79,7 @@ pub struct tagMQCFBF {
     /// Filter value -- first byte
     pub FilterValue: [MQBYTE; 1usize],
 }
+/// PCF Byte String Parameter
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQCFBS {
@@ -91,6 +94,7 @@ pub struct tagMQCFBS {
     /// String value -- first byte
     pub String: [MQBYTE; 1usize],
 }
+/// PCF Group Parameter
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQCFGR {
@@ -103,6 +107,7 @@ pub struct tagMQCFGR {
     /// Count of group parameter structures
     pub ParameterCount: MQLONG,
 }
+/// PCF Integer Filter Parameter
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQCFIF {
@@ -117,6 +122,7 @@ pub struct tagMQCFIF {
     /// Filter value
     pub FilterValue: MQLONG,
 }
+/// PCF Integer-List Parameter
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQCFIL {
@@ -131,6 +137,7 @@ pub struct tagMQCFIL {
     /// Parameter values -- first element
     pub Values: [MQLONG; 1usize],
 }
+/// PCF 64-bit Integer-List Parameter
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQCFIL64 {
@@ -145,6 +152,7 @@ pub struct tagMQCFIL64 {
     /// Parameter values -- first element
     pub Values: [MQINT64; 1usize],
 }
+/// PCF Integer Parameter
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQCFIN {
@@ -157,6 +165,7 @@ pub struct tagMQCFIN {
     /// Parameter value
     pub Value: MQLONG,
 }
+/// PCF 64-bit Integer Parameter
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQCFIN64 {
@@ -171,6 +180,7 @@ pub struct tagMQCFIN64 {
     /// Parameter value
     pub Value: MQINT64,
 }
+/// PCF String Filter Parameter
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQCFSF {
@@ -189,6 +199,7 @@ pub struct tagMQCFSF {
     /// Filter value -- first character
     pub FilterValue: [MQCHAR; 1usize],
 }
+/// PCF String-List Parameter
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQCFSL {
@@ -207,6 +218,7 @@ pub struct tagMQCFSL {
     /// String values -- first character
     pub Strings: [MQCHAR; 1usize],
 }
+/// PCF String Parameter
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQCFST {
@@ -223,6 +235,7 @@ pub struct tagMQCFST {
     /// String value -- first character
     pub String: [MQCHAR; 1usize],
 }
+/// Embedded PCF header
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQEPH {
