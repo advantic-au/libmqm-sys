@@ -3,6 +3,9 @@ use std::io;
 #[cfg(any(feature = "bindgen", feature = "constant_lookup"))]
 mod mqi_bindgen;
 
+#[cfg(feature = "bindgen")]
+mod doc_comments;
+
 #[cfg(any(feature = "struct_defaults", feature = "constant_lookup", feature = "bindgen"))]
 mod features {
     use std::env;
@@ -199,13 +202,34 @@ fn main() -> Result<(), io::Error> {
         {
             use io::Write as _;
 
+            use crate::doc_comments::{DescriptionRegex, FnParamExtract, StructFieldExtract};
+
             let mq_inc_path = mq_path::mq_inc_path();
             let builder = mqi_bindgen::bindgen_builder(&mq_inc_path);
 
+            let comments =
+                doc_comments::extract_from_headers(&mq_inc_path, &DescriptionRegex::default())?;
+            assert_ne!(comments.len(), 0);
+
+            let fields = doc_comments::extract_from_headers(&mq_inc_path, &StructFieldExtract::default())?;
+            assert_ne!(fields.len(), 0);
+
+            let parameters = doc_comments::extract_from_headers(&mq_inc_path, &FnParamExtract::default())?;
+            assert_ne!(parameters.len(), 0);
+
             // Generate and write the bindings file
-            for (name, generated) in mqi_bindgen::mqi::mqi_bindgen_generate(&builder, &mq_inc_path)
+            for (name, mut generated) in mqi_bindgen::mqi::mqi_bindgen_generate(&builder, &mq_inc_path)
                 .map_err(|e| io::Error::new(io::ErrorKind::InvalidData, e))?
             {
+                use syn::visit_mut::VisitMut as _;
+
+                use crate::doc_comments::{DocCommentArgs, DocCommentFields, DocCommentType};
+                
+                DocCommentArgs(&parameters).visit_file_mut(&mut generated);
+                DocCommentType(&comments).visit_file_mut(&mut generated);
+                DocCommentFields(&fields).visit_file_mut(&mut generated);
+
+
                 let mut bindings_str = format!("/* Generated with MQ client version {mqc_version} */\n\n");
                 bindings_str += &prettyplease::unparse(&generated);
 

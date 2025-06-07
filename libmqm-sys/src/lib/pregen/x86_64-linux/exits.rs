@@ -2,6 +2,7 @@
 
 pub type PPMQCHAR = *mut PMQCHAR;
 pub type PPMQLONG = *mut PMQLONG;
+/// Interface Entry Points
 pub type MQIEP = tagMQIEP;
 pub type PMQIEP = *mut MQIEP;
 pub type PPMQIEP = *mut PMQIEP;
@@ -301,52 +302,75 @@ pub type MQ_SUBRQ_CALL = ::std::option::Option<
 pub type PMQ_SUBRQ_CALL = MQ_SUBRQ_CALL;
 pub type MQACH = tagMQACH;
 pub type PMQACH = *mut MQACH;
+/// API Exit Context
 pub type MQAXC = tagMQAXC;
 pub type PMQAXC = *mut MQAXC;
+/// API Exit Parameter
 pub type MQAXP = tagMQAXP;
 pub type PMQAXP = *mut MQAXP;
+/// Channel Exit Parameter
 pub type MQCXP = tagMQCXP;
 pub type PMQCXP = *mut MQCXP;
+/// Data Conversion Exit Parameter
 pub type MQDXP = tagMQDXP;
 pub type PMQDXP = *mut MQDXP;
+/// PreConnect Exit options
 pub type MQNXP = tagMQNXP;
 pub type PMQNXP = *mut MQNXP;
+/// Publish Exit Publication Context
 pub type MQPBC = tagMQPBC;
 pub type PMQPBC = *mut MQPBC;
+/// Publish Exit Parameter
 pub type MQPSXP = tagMQPSXP;
 pub type PMQPSXP = *mut MQPSXP;
+/// Publish Exit Subscription Context
 pub type MQSBC = tagMQSBC;
 pub type PMQSBC = *mut MQSBC;
+/// Cluster Workload Exit Cluster Record
 pub type MQWCR = tagMQWCR;
 pub type PMQWCR = *mut MQWCR;
+/// Cluster Workload Exit Destination Record
 pub type MQWDR = tagMQWDR;
 pub type PMQWDR = *mut MQWDR;
 pub type PPMQWDR = *mut PMQWDR;
+/// Version-1 CLWL Exit Destination Record
 pub type MQWDR1 = tagMQWDR1;
 pub type PMQWDR1 = *mut MQWDR1;
+/// Version-2 CLWL Exit Destination Record
 pub type MQWDR2 = tagMQWDR2;
 pub type PMQWDR2 = *mut MQWDR2;
+/// Cluster Workload Exit Queue Record
 pub type MQWQR = tagMQWQR;
 pub type PMQWQR = *mut MQWQR;
 pub type PPMQWQR = *mut PMQWQR;
+/// Version-1 CLWL Exit Queue Record
 pub type MQWQR1 = tagMQWQR1;
 pub type PMQWQR1 = *mut MQWQR1;
+/// Version-2 CLWL Exit Queue Record
 pub type MQWQR2 = tagMQWQR2;
 pub type PMQWQR2 = *mut MQWQR2;
+/// Version-3 CLWL Exit Queue Record
 pub type MQWQR3 = tagMQWQR3;
 pub type PMQWQR3 = *mut MQWQR3;
+/// Version-4 CLWL Exit Queue Record
 pub type MQWQR4 = tagMQWQR4;
 pub type PMQWQR4 = *mut MQWQR4;
+/// Cluster Workload Exit Parameter
 pub type MQWXP = tagMQWXP;
 pub type PMQWXP = *mut MQWXP;
+/// Version-1 CLWL Exit Parameter
 pub type MQWXP1 = tagMQWXP1;
 pub type PMQWXP1 = *mut MQWXP1;
+/// Version-2 CLWL Exit Parameter
 pub type MQWXP2 = tagMQWXP2;
 pub type PMQWXP2 = *mut MQWXP2;
+/// Version-3 CLWL Exit Parameter
 pub type MQWXP3 = tagMQWXP3;
 pub type PMQWXP3 = *mut MQWXP3;
+/// Version-4 CLWL Exit Parameter
 pub type MQWXP4 = tagMQWXP4;
 pub type PMQWXP4 = *mut MQWXP4;
+/// Register entry point options
 pub type MQXEPO = tagMQXEPO;
 pub type PMQXEPO = *mut MQXEPO;
 pub type MQ_XEP_CALL = ::std::option::Option<
@@ -361,6 +385,7 @@ pub type MQ_XEP_CALL = ::std::option::Option<
     ),
 >;
 pub type PMQ_XEP_CALL = MQ_XEP_CALL;
+/// Back Out Changes Exit
 pub type MQ_BACK_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: PMQAXP,
@@ -371,6 +396,7 @@ pub type MQ_BACK_EXIT = ::std::option::Option<
     ),
 >;
 pub type PMQ_BACK_EXIT = MQ_BACK_EXIT;
+/// Begin Unit of Work Exit
 pub type MQ_BEGIN_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: PMQAXP,
@@ -382,6 +408,7 @@ pub type MQ_BEGIN_EXIT = ::std::option::Option<
     ),
 >;
 pub type PMQ_BEGIN_EXIT = MQ_BEGIN_EXIT;
+/// Callback Function Exit
 pub type MQ_CALLBACK_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: PMQAXP,
@@ -394,6 +421,7 @@ pub type MQ_CALLBACK_EXIT = ::std::option::Option<
     ),
 >;
 pub type PMQ_CALLBACK_EXIT = MQ_CALLBACK_EXIT;
+/// Register Callback Exit
 pub type MQ_CB_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: PMQAXP,
@@ -409,6 +437,7 @@ pub type MQ_CB_EXIT = ::std::option::Option<
     ),
 >;
 pub type PMQ_CB_EXIT = MQ_CB_EXIT;
+/// Close Object Exit
 pub type MQ_CLOSE_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: PMQAXP,
@@ -421,6 +450,7 @@ pub type MQ_CLOSE_EXIT = ::std::option::Option<
     ),
 >;
 pub type PMQ_CLOSE_EXIT = MQ_CLOSE_EXIT;
+/// Commit Changes Exit
 pub type MQ_CMIT_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: PMQAXP,
@@ -431,6 +461,7 @@ pub type MQ_CMIT_EXIT = ::std::option::Option<
     ),
 >;
 pub type PMQ_CMIT_EXIT = MQ_CMIT_EXIT;
+/// Connect Queue Manager Exit
 pub type MQ_CONNX_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: PMQAXP,
@@ -443,6 +474,7 @@ pub type MQ_CONNX_EXIT = ::std::option::Option<
     ),
 >;
 pub type PMQ_CONNX_EXIT = MQ_CONNX_EXIT;
+/// Control Asynchronous Operations Exit
 pub type MQ_CTL_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: PMQAXP,
@@ -455,6 +487,7 @@ pub type MQ_CTL_EXIT = ::std::option::Option<
     ),
 >;
 pub type PMQ_CTL_EXIT = MQ_CTL_EXIT;
+/// Disconnect Queue Manager Exit
 pub type MQ_DISC_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: PMQAXP,
@@ -465,6 +498,7 @@ pub type MQ_DISC_EXIT = ::std::option::Option<
     ),
 >;
 pub type PMQ_DISC_EXIT = MQ_DISC_EXIT;
+/// Get Message Exit
 pub type MQ_GET_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: PMQAXP,
@@ -481,6 +515,7 @@ pub type MQ_GET_EXIT = ::std::option::Option<
     ),
 >;
 pub type PMQ_GET_EXIT = MQ_GET_EXIT;
+/// Initialization Exit
 pub type MQ_INIT_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: PMQAXP,
@@ -490,6 +525,7 @@ pub type MQ_INIT_EXIT = ::std::option::Option<
     ),
 >;
 pub type PMQ_INIT_EXIT = MQ_INIT_EXIT;
+/// Inquire Object Attributes Exit
 pub type MQ_INQ_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: PMQAXP,
@@ -507,6 +543,7 @@ pub type MQ_INQ_EXIT = ::std::option::Option<
     ),
 >;
 pub type PMQ_INQ_EXIT = MQ_INQ_EXIT;
+/// Open Object Exit
 pub type MQ_OPEN_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: PMQAXP,
@@ -520,6 +557,7 @@ pub type MQ_OPEN_EXIT = ::std::option::Option<
     ),
 >;
 pub type PMQ_OPEN_EXIT = MQ_OPEN_EXIT;
+/// Put Message Exit
 pub type MQ_PUT_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: PMQAXP,
@@ -535,6 +573,7 @@ pub type MQ_PUT_EXIT = ::std::option::Option<
     ),
 >;
 pub type PMQ_PUT_EXIT = MQ_PUT_EXIT;
+/// Put One Message Exit
 pub type MQ_PUT1_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: PMQAXP,
@@ -550,6 +589,7 @@ pub type MQ_PUT1_EXIT = ::std::option::Option<
     ),
 >;
 pub type PMQ_PUT1_EXIT = MQ_PUT1_EXIT;
+/// Set Object Attributes Exit
 pub type MQ_SET_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: PMQAXP,
@@ -567,6 +607,7 @@ pub type MQ_SET_EXIT = ::std::option::Option<
     ),
 >;
 pub type PMQ_SET_EXIT = MQ_SET_EXIT;
+/// Get Status Exit
 pub type MQ_STAT_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: PMQAXP,
@@ -579,6 +620,7 @@ pub type MQ_STAT_EXIT = ::std::option::Option<
     ),
 >;
 pub type PMQ_STAT_EXIT = MQ_STAT_EXIT;
+/// Subscribe Exit
 pub type MQ_SUBRQ_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: PMQAXP,
@@ -592,6 +634,7 @@ pub type MQ_SUBRQ_EXIT = ::std::option::Option<
     ),
 >;
 pub type PMQ_SUBRQ_EXIT = MQ_SUBRQ_EXIT;
+/// Subscribe Exit
 pub type MQ_SUB_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: PMQAXP,
@@ -605,6 +648,7 @@ pub type MQ_SUB_EXIT = ::std::option::Option<
     ),
 >;
 pub type PMQ_SUB_EXIT = MQ_SUB_EXIT;
+/// Termination Exit
 pub type MQ_TERM_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: PMQAXP,
@@ -614,6 +658,7 @@ pub type MQ_TERM_EXIT = ::std::option::Option<
     ),
 >;
 pub type PMQ_TERM_EXIT = MQ_TERM_EXIT;
+/// Channel Exit
 pub type MQ_CHANNEL_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pChannelExitParms: PMQVOID,
@@ -626,14 +671,17 @@ pub type MQ_CHANNEL_EXIT = ::std::option::Option<
     ),
 >;
 pub type PMQ_CHANNEL_EXIT = MQ_CHANNEL_EXIT;
+/// Channel Auto Definition Exit
 pub type MQ_CHANNEL_AUTO_DEF_EXIT = ::std::option::Option<
     unsafe extern "C" fn(pChannelExitParms: PMQVOID, pChannelDefinition: PMQVOID),
 >;
 pub type PMQ_CHANNEL_AUTO_DEF_EXIT = MQ_CHANNEL_AUTO_DEF_EXIT;
+/// Cluster Workload Exit
 pub type MQ_CLUSTER_WORKLOAD_EXIT = ::std::option::Option<
     unsafe extern "C" fn(pExitParms: PMQWXP),
 >;
 pub type PMQ_CLUSTER_WORKLOAD_EXIT = MQ_CLUSTER_WORKLOAD_EXIT;
+/// Data Conversion Exit
 pub type MQ_DATA_CONV_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pDataConvExitParms: PMQDXP,
@@ -645,10 +693,12 @@ pub type MQ_DATA_CONV_EXIT = ::std::option::Option<
     ),
 >;
 pub type PMQ_DATA_CONV_EXIT = MQ_DATA_CONV_EXIT;
+/// Publish Exit
 pub type MQ_PUBLISH_EXIT = ::std::option::Option<
     unsafe extern "C" fn(pExitParms: PMQPSXP, pPubContext: PMQPBC, pSubContext: PMQSBC),
 >;
 pub type PMQ_PUBLISH_EXIT = MQ_PUBLISH_EXIT;
+/// Transport Retry Exit
 pub type MQ_TRANSPORT_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: PMQVOID,
@@ -657,6 +707,7 @@ pub type MQ_TRANSPORT_EXIT = ::std::option::Option<
     ),
 >;
 pub type PMQ_TRANSPORT_EXIT = MQ_TRANSPORT_EXIT;
+/// Preconnect Exit
 pub type MQ_PRECONNECT_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: PMQNXP,
@@ -705,14 +756,19 @@ pub type MQ_XDX_CALL = ::std::option::Option<
     ),
 >;
 pub type PMQ_XDX_CALL = MQ_XDX_CALL;
+/// Entity Data
 pub type MQZED = tagMQZED;
 pub type PMQZED = *mut MQZED;
+/// Application Context
 pub type MQZAC = tagMQZAC;
 pub type PMQZAC = *mut MQZAC;
+/// Authority Data
 pub type MQZAD = tagMQZAD;
 pub type PMQZAD = *mut MQZAD;
+/// Free Parameters
 pub type MQZFP = tagMQZFP;
 pub type PMQZFP = *mut MQZFP;
+/// Identity Context
 pub type MQZIC = tagMQZIC;
 pub type PMQZIC = *mut MQZIC;
 pub type MQ_ZEP_CALL = ::std::option::Option<
@@ -725,6 +781,7 @@ pub type MQ_ZEP_CALL = ::std::option::Option<
     ),
 >;
 pub type PMQ_ZEP_CALL = MQ_ZEP_CALL;
+/// Initialize Authority-Services
 pub type MQZ_INIT_AUTHORITY = ::std::option::Option<
     unsafe extern "C" fn(
         Hconfig: MQHCONFIG,
@@ -738,6 +795,7 @@ pub type MQZ_INIT_AUTHORITY = ::std::option::Option<
     ),
 >;
 pub type PMQZ_INIT_AUTHORITY = MQZ_INIT_AUTHORITY;
+/// Terminate Authority-Services
 pub type MQZ_TERM_AUTHORITY = ::std::option::Option<
     unsafe extern "C" fn(
         Hconfig: MQHCONFIG,
@@ -749,6 +807,7 @@ pub type MQZ_TERM_AUTHORITY = ::std::option::Option<
     ),
 >;
 pub type PMQZ_TERM_AUTHORITY = MQZ_TERM_AUTHORITY;
+/// Delete Authority
 pub type MQZ_DELETE_AUTHORITY = ::std::option::Option<
     unsafe extern "C" fn(
         pQMgrName: PMQCHAR,
@@ -761,6 +820,7 @@ pub type MQZ_DELETE_AUTHORITY = ::std::option::Option<
     ),
 >;
 pub type PMQZ_DELETE_AUTHORITY = MQZ_DELETE_AUTHORITY;
+/// Get Authority
 pub type MQZ_GET_AUTHORITY = ::std::option::Option<
     unsafe extern "C" fn(
         pQMgrName: PMQCHAR,
@@ -776,6 +836,7 @@ pub type MQZ_GET_AUTHORITY = ::std::option::Option<
     ),
 >;
 pub type PMQZ_GET_AUTHORITY = MQZ_GET_AUTHORITY;
+/// Get Authority Version 2
 pub type MQZ_GET_AUTHORITY_2 = ::std::option::Option<
     unsafe extern "C" fn(
         pQMgrName: PMQCHAR,
@@ -791,6 +852,7 @@ pub type MQZ_GET_AUTHORITY_2 = ::std::option::Option<
     ),
 >;
 pub type PMQZ_GET_AUTHORITY_2 = MQZ_GET_AUTHORITY_2;
+/// Get Explicit Authority
 pub type MQZ_GET_EXPLICIT_AUTHORITY = ::std::option::Option<
     unsafe extern "C" fn(
         pQMgrName: PMQCHAR,
@@ -806,6 +868,7 @@ pub type MQZ_GET_EXPLICIT_AUTHORITY = ::std::option::Option<
     ),
 >;
 pub type PMQZ_GET_EXPLICIT_AUTHORITY = MQZ_GET_EXPLICIT_AUTHORITY;
+/// Get Explicit Authority Version 2
 pub type MQZ_GET_EXPLICIT_AUTHORITY_2 = ::std::option::Option<
     unsafe extern "C" fn(
         pQMgrName: PMQCHAR,
@@ -821,6 +884,7 @@ pub type MQZ_GET_EXPLICIT_AUTHORITY_2 = ::std::option::Option<
     ),
 >;
 pub type PMQZ_GET_EXPLICIT_AUTHORITY_2 = MQZ_GET_EXPLICIT_AUTHORITY_2;
+/// Enumerate Authority Data
 pub type MQZ_ENUMERATE_AUTHORITY_DATA = ::std::option::Option<
     unsafe extern "C" fn(
         pQMgrName: PMQCHAR,
@@ -836,6 +900,7 @@ pub type MQZ_ENUMERATE_AUTHORITY_DATA = ::std::option::Option<
     ),
 >;
 pub type PMQZ_ENUMERATE_AUTHORITY_DATA = MQZ_ENUMERATE_AUTHORITY_DATA;
+/// Set Authority
 pub type MQZ_SET_AUTHORITY = ::std::option::Option<
     unsafe extern "C" fn(
         pQMgrName: PMQCHAR,
@@ -851,6 +916,7 @@ pub type MQZ_SET_AUTHORITY = ::std::option::Option<
     ),
 >;
 pub type PMQZ_SET_AUTHORITY = MQZ_SET_AUTHORITY;
+/// Set Authority Version 2
 pub type MQZ_SET_AUTHORITY_2 = ::std::option::Option<
     unsafe extern "C" fn(
         pQMgrName: PMQCHAR,
@@ -866,6 +932,7 @@ pub type MQZ_SET_AUTHORITY_2 = ::std::option::Option<
     ),
 >;
 pub type PMQZ_SET_AUTHORITY_2 = MQZ_SET_AUTHORITY_2;
+/// Copy All Authority
 pub type MQZ_COPY_ALL_AUTHORITY = ::std::option::Option<
     unsafe extern "C" fn(
         pQMgrName: PMQCHAR,
@@ -879,6 +946,7 @@ pub type MQZ_COPY_ALL_AUTHORITY = ::std::option::Option<
     ),
 >;
 pub type PMQZ_COPY_ALL_AUTHORITY = MQZ_COPY_ALL_AUTHORITY;
+/// Check Authority
 pub type MQZ_CHECK_AUTHORITY = ::std::option::Option<
     unsafe extern "C" fn(
         pQMgrName: PMQCHAR,
@@ -894,6 +962,7 @@ pub type MQZ_CHECK_AUTHORITY = ::std::option::Option<
     ),
 >;
 pub type PMQZ_CHECK_AUTHORITY = MQZ_CHECK_AUTHORITY;
+/// Check Authority Version 2
 pub type MQZ_CHECK_AUTHORITY_2 = ::std::option::Option<
     unsafe extern "C" fn(
         pQMgrName: PMQCHAR,
@@ -909,6 +978,7 @@ pub type MQZ_CHECK_AUTHORITY_2 = ::std::option::Option<
     ),
 >;
 pub type PMQZ_CHECK_AUTHORITY_2 = MQZ_CHECK_AUTHORITY_2;
+/// Authenticate User
 pub type MQZ_AUTHENTICATE_USER = ::std::option::Option<
     unsafe extern "C" fn(
         pQMgrName: PMQCHAR,
@@ -923,6 +993,7 @@ pub type MQZ_AUTHENTICATE_USER = ::std::option::Option<
     ),
 >;
 pub type PMQZ_AUTHENTICATE_USER = MQZ_AUTHENTICATE_USER;
+/// Free User
 pub type MQZ_FREE_USER = ::std::option::Option<
     unsafe extern "C" fn(
         pQMgrName: PMQCHAR,
@@ -934,6 +1005,7 @@ pub type MQZ_FREE_USER = ::std::option::Option<
     ),
 >;
 pub type PMQZ_FREE_USER = MQZ_FREE_USER;
+/// Inquire
 pub type MQZ_INQUIRE = ::std::option::Option<
     unsafe extern "C" fn(
         pQMgrName: PMQCHAR,
@@ -951,6 +1023,7 @@ pub type MQZ_INQUIRE = ::std::option::Option<
     ),
 >;
 pub type PMQZ_INQUIRE = MQZ_INQUIRE;
+/// Refresh Cache
 pub type MQZ_REFRESH_CACHE = ::std::option::Option<
     unsafe extern "C" fn(
         pQMgrName: PMQCHAR,
@@ -961,6 +1034,7 @@ pub type MQZ_REFRESH_CACHE = ::std::option::Option<
     ),
 >;
 pub type PMQZ_REFRESH_CACHE = MQZ_REFRESH_CACHE;
+/// Check if User is Privileged
 pub type MQZ_CHECK_PRIVILEGED = ::std::option::Option<
     unsafe extern "C" fn(
         pQMgrName: PMQCHAR,
@@ -973,6 +1047,7 @@ pub type MQZ_CHECK_PRIVILEGED = ::std::option::Option<
     ),
 >;
 pub type PMQZ_CHECK_PRIVILEGED = MQZ_CHECK_PRIVILEGED;
+/// Initialize Name-Services
 pub type MQZ_INIT_NAME = ::std::option::Option<
     unsafe extern "C" fn(
         Hconfig: MQHCONFIG,
@@ -986,6 +1061,7 @@ pub type MQZ_INIT_NAME = ::std::option::Option<
     ),
 >;
 pub type PMQZ_INIT_NAME = MQZ_INIT_NAME;
+/// Terminate Name-Services
 pub type MQZ_TERM_NAME = ::std::option::Option<
     unsafe extern "C" fn(
         Hconfig: MQHCONFIG,
@@ -997,6 +1073,7 @@ pub type MQZ_TERM_NAME = ::std::option::Option<
     ),
 >;
 pub type PMQZ_TERM_NAME = MQZ_TERM_NAME;
+/// Look-Up Name
 pub type MQZ_LOOKUP_NAME = ::std::option::Option<
     unsafe extern "C" fn(
         pQMgrName: PMQCHAR,
@@ -1009,6 +1086,7 @@ pub type MQZ_LOOKUP_NAME = ::std::option::Option<
     ),
 >;
 pub type PMQZ_LOOKUP_NAME = MQZ_LOOKUP_NAME;
+/// Insert Name
 pub type MQZ_INSERT_NAME = ::std::option::Option<
     unsafe extern "C" fn(
         pQMgrName: PMQCHAR,
@@ -1021,6 +1099,7 @@ pub type MQZ_INSERT_NAME = ::std::option::Option<
     ),
 >;
 pub type PMQZ_INSERT_NAME = MQZ_INSERT_NAME;
+/// Delete Name
 pub type MQZ_DELETE_NAME = ::std::option::Option<
     unsafe extern "C" fn(
         pQMgrName: PMQCHAR,
@@ -1032,6 +1111,7 @@ pub type MQZ_DELETE_NAME = ::std::option::Option<
     ),
 >;
 pub type PMQZ_DELETE_NAME = MQZ_DELETE_NAME;
+/// Initialize Userid-Services
 pub type MQZ_INIT_USERID = ::std::option::Option<
     unsafe extern "C" fn(
         Hconfig: MQHCONFIG,
@@ -1045,6 +1125,7 @@ pub type MQZ_INIT_USERID = ::std::option::Option<
     ),
 >;
 pub type PMQZ_INIT_USERID = MQZ_INIT_USERID;
+/// Terminate Userid-Services
 pub type MQZ_TERM_USERID = ::std::option::Option<
     unsafe extern "C" fn(
         Hconfig: MQHCONFIG,
@@ -1056,6 +1137,7 @@ pub type MQZ_TERM_USERID = ::std::option::Option<
     ),
 >;
 pub type PMQZ_TERM_USERID = MQZ_TERM_USERID;
+/// Find Userid
 pub type MQZ_FIND_USERID = ::std::option::Option<
     unsafe extern "C" fn(
         pQMgrName: PMQCHAR,
@@ -1071,552 +1153,983 @@ pub type PMQZ_FIND_USERID = MQZ_FIND_USERID;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQACH {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Length of MQACH structure
     pub StrucLength: MQLONG,
+    /// Total length of chain area
     pub ChainAreaLength: MQLONG,
+    /// Exit information name
     pub ExitInfoName: MQCHAR48,
+    /// Address of next MQACH structure in chain
     pub NextChainAreaPtr: PMQACH,
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQAXC {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Environment
     pub Environment: MQLONG,
+    /// User identifier
     pub UserId: MQCHAR12,
+    /// Security identifier
     pub SecurityId: MQBYTE40,
+    /// Connection name
     pub ConnectionName: [MQCHAR; 264usize],
+    /// Length of long MCA user identifier
     pub LongMCAUserIdLength: MQLONG,
+    /// Length of long remote user identifier
     pub LongRemoteUserIdLength: MQLONG,
+    /// Address of long MCA user identifier
     pub LongMCAUserIdPtr: MQPTR,
+    /// Address of long remote user identifier
     pub LongRemoteUserIdPtr: MQPTR,
+    /// Application name
     pub ApplName: MQCHAR28,
+    /// Application type
     pub ApplType: MQLONG,
+    /// Process identifier
     pub ProcessId: MQPID,
+    /// Thread identifier
     pub ThreadId: MQTID,
+    /// Channel Name
     pub ChannelName: [MQCHAR; 20usize],
+    /// Reserved
     pub Reserved1: MQBYTE4,
+    /// Pointer to Channel Definition
     pub pChannelDefinition: PMQCD,
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQAXP {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Type of exit
     pub ExitId: MQLONG,
+    /// Reason for invoking exit
     pub ExitReason: MQLONG,
+    /// Response from exit
     pub ExitResponse: MQLONG,
+    /// Secondary response from exit
     pub ExitResponse2: MQLONG,
+    /// Feedback
     pub Feedback: MQLONG,
+    /// API caller type
     pub APICallerType: MQLONG,
+    /// Exit user area
     pub ExitUserArea: MQBYTE16,
+    /// Exit data
     pub ExitData: MQCHAR32,
+    /// Exit information name
     pub ExitInfoName: MQCHAR48,
+    /// Problem determination area
     pub ExitPDArea: MQBYTE48,
+    /// Name of local queue manager
     pub QMgrName: MQCHAR48,
+    /// Address of first MQACH structure in chain
     pub ExitChainAreaPtr: PMQACH,
+    /// Configuration handle
     pub Hconfig: MQHCONFIG,
+    /// API function identifier
     pub Function: MQLONG,
+    /// Exit message handle
     pub ExitMsgHandle: MQHMSG,
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQCXP {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Type of exit
     pub ExitId: MQLONG,
+    /// Reason for invoking exit
     pub ExitReason: MQLONG,
+    /// Response from exit
     pub ExitResponse: MQLONG,
+    /// Secondary response from exit
     pub ExitResponse2: MQLONG,
+    /// Feedback code
     pub Feedback: MQLONG,
+    /// Maximum segment length
     pub MaxSegmentLength: MQLONG,
+    /// Exit user area
     pub ExitUserArea: MQBYTE16,
+    /// Exit data
     pub ExitData: MQCHAR32,
+    /// Number of times the message has been retried
     pub MsgRetryCount: MQLONG,
+    /// Minimum interval in milliseconds after which the put operation should be retried
     pub MsgRetryInterval: MQLONG,
+    /// Reason code from previous attempt to put the message
     pub MsgRetryReason: MQLONG,
+    /// Length of header information
     pub HeaderLength: MQLONG,
+    /// Partner Name
     pub PartnerName: MQCHAR48,
+    /// Negotiated Formats and Protocols level
     pub FAPLevel: MQLONG,
+    /// Capability flags
     pub CapabilityFlags: MQLONG,
+    /// Exit number
     pub ExitNumber: MQLONG,
+    /// Number of bytes in transmission buffer reserved for exit to use
     pub ExitSpace: MQLONG,
+    /// User identifier associated with remote SSL certificate
     pub SSLCertUserid: MQCHAR12,
+    /// Length of distinguished name of issuer of remote SSL certificate
     pub SSLRemCertIssNameLength: MQLONG,
+    /// Address of distinguished name of issuer of remote SSL certificate
     pub SSLRemCertIssNamePtr: MQPTR,
+    /// Address of security parameters
     pub SecurityParms: PMQCSP,
+    /// Header data compression used for current message
     pub CurHdrCompression: MQLONG,
+    /// Message data compression used for current message
     pub CurMsgCompression: MQLONG,
+    /// Connection handle
     pub Hconn: MQHCONN,
+    /// Multiple conversations allowed
     pub SharingConversations: MQBOOL,
+    /// The source of the run-time user ID
     pub MCAUserSource: MQLONG,
+    /// Interface entry points
     pub pEntryPoints: PMQIEP,
+    /// The identifier for the remote product
     pub RemoteProduct: MQCHAR4,
+    /// The version of the remote product
     pub RemoteVersion: MQCHAR8,
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQDXP {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Reserved
     pub ExitOptions: MQLONG,
+    /// Application options
     pub AppOptions: MQLONG,
+    /// Numeric encoding required by application
     pub Encoding: MQLONG,
+    /// Character set required by application
     pub CodedCharSetId: MQLONG,
+    /// Length in bytes of message data
     pub DataLength: MQLONG,
+    /// Completion code
     pub CompCode: MQLONG,
+    /// Reason code qualifying CompCode
     pub Reason: MQLONG,
+    /// Response from exit
     pub ExitResponse: MQLONG,
+    /// Connection handle
     pub Hconn: MQHCONN,
+    /// Interface entry points
     pub pEntryPoints: PMQIEP,
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQNXP {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Type of exit
     pub ExitId: MQLONG,
+    /// Reason for invoking exit
     pub ExitReason: MQLONG,
+    /// Response from exit
     pub ExitResponse: MQLONG,
+    /// Secondary response from exit
     pub ExitResponse2: MQLONG,
+    /// Feedback
     pub Feedback: MQLONG,
+    /// Length of exit data
     pub ExitDataLength: MQLONG,
+    /// Address of exit data
     pub pExitDataPtr: PMQCHAR,
+    /// Address of exit user area
     pub pExitUserAreaPtr: MQPTR,
+    /// Address of pointers referencing MQCDs
     pub ppMQCDArrayPtr: PPMQCD,
+    /// Count of MQCDs referenced
     pub MQCDArrayCount: MQLONG,
+    /// Maximum MQCD version requested
     pub MaxMQCDVersion: MQLONG,
+    /// Interface entry points
     pub pEntryPoints: PMQIEP,
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQPBC {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Publish topic string
     pub PubTopicString: MQCHARV,
+    /// Address of publisher message descriptor
     pub MsgDescPtr: PMQMD,
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQPSXP {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Type of exit
     pub ExitId: MQLONG,
+    /// Reason for invoking exit
     pub ExitReason: MQLONG,
+    /// Response from exit
     pub ExitResponse: MQLONG,
+    /// Reserved
     pub ExitResponse2: MQLONG,
+    /// Feedback code
     pub Feedback: MQLONG,
+    /// Connection handle
     pub Hconn: MQHCONN,
+    /// Exit user area
     pub ExitUserArea: MQBYTE16,
+    /// Exit data
     pub ExitData: MQCHAR32,
+    /// Name of local queue manager
     pub QMgrName: MQCHAR48,
+    /// Handle to message properties
     pub MsgHandle: MQHMSG,
+    /// Address of message descriptor
     pub MsgDescPtr: PMQMD,
+    /// Address of input message data
     pub MsgInPtr: PMQVOID,
+    /// Length of input message data
     pub MsgInLength: MQLONG,
+    /// Address of output message data
     pub MsgOutPtr: PMQVOID,
+    /// Length of output message data
     pub MsgOutLength: MQLONG,
+    /// Interface entry points
     pub pEntryPoints: PMQIEP,
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQSBC {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Destination queue manager
     pub DestinationQMgrName: MQCHAR48,
+    /// Destination queue name
     pub DestinationQName: MQCHAR48,
+    /// Type of subscription
     pub SubType: MQLONG,
+    /// Subscription options
     pub SubOptions: MQLONG,
+    /// Object name
     pub ObjectName: MQCHAR48,
+    /// Object string
     pub ObjectString: MQCHARV,
+    /// Subscription topic string
     pub SubTopicString: MQCHARV,
+    /// Subscription name
     pub SubName: MQCHARV,
+    /// Subscription identifier
     pub SubId: MQBYTE24,
+    /// Subscription selection string
     pub SelectionString: MQCHARV,
+    /// Subscription level
     pub SubLevel: MQLONG,
+    /// Publish/subscribe properties
     pub PSProperties: MQLONG,
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQWCR {
+    /// Cluster name
     pub ClusterName: MQCHAR48,
+    /// Offset of next cluster record
     pub ClusterRecOffset: MQLONG,
+    /// Cluster flags
     pub ClusterFlags: MQLONG,
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQWDR {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Length of MQWDR structure
     pub StrucLength: MQLONG,
+    /// Queue-manager flags
     pub QMgrFlags: MQLONG,
+    /// Queue-manager identifier
     pub QMgrIdentifier: MQCHAR48,
+    /// Queue-manager name
     pub QMgrName: MQCHAR48,
+    /// Offset of first cluster record
     pub ClusterRecOffset: MQLONG,
+    /// Channel state
     pub ChannelState: MQLONG,
+    /// Offset of channel definition structure
     pub ChannelDefOffset: MQLONG,
+    /// Cluster channel destination sequence number
     pub DestSeqNumber: MQLONG,
+    /// Cluster channel destination sequence factor
     pub DestSeqFactor: MQINT64,
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQWDR1 {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Length of MQWDR structure
     pub StrucLength: MQLONG,
+    /// Queue-manager flags
     pub QMgrFlags: MQLONG,
+    /// Queue-manager identifier
     pub QMgrIdentifier: MQCHAR48,
+    /// Queue-manager name
     pub QMgrName: MQCHAR48,
+    /// Offset of first cluster record
     pub ClusterRecOffset: MQLONG,
+    /// Channel state
     pub ChannelState: MQLONG,
+    /// Offset of channel definition structure
     pub ChannelDefOffset: MQLONG,
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQWDR2 {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Length of MQWDR structure
     pub StrucLength: MQLONG,
+    /// Queue-manager flags
     pub QMgrFlags: MQLONG,
+    /// Queue-manager identifier
     pub QMgrIdentifier: MQCHAR48,
+    /// Queue-manager name
     pub QMgrName: MQCHAR48,
+    /// Offset of first cluster record
     pub ClusterRecOffset: MQLONG,
+    /// Channel state
     pub ChannelState: MQLONG,
+    /// Offset of channel definition structure
     pub ChannelDefOffset: MQLONG,
+    /// Cluster channel destination sequence number
     pub DestSeqNumber: MQLONG,
+    /// Cluster channel destination sequence factor
     pub DestSeqFactor: MQINT64,
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQWQR {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Length of MQWQR structure
     pub StrucLength: MQLONG,
+    /// Queue flags
     pub QFlags: MQLONG,
+    /// Queue name
     pub QName: MQCHAR48,
+    /// Queue-manager identifier
     pub QMgrIdentifier: MQCHAR48,
+    /// Offset of first cluster record
     pub ClusterRecOffset: MQLONG,
+    /// Queue type
     pub QType: MQLONG,
+    /// Queue description
     pub QDesc: MQCHAR64,
+    /// Default binding
     pub DefBind: MQLONG,
+    /// Default message persistence
     pub DefPersistence: MQLONG,
+    /// Default message priority
     pub DefPriority: MQLONG,
+    /// Whether put operations on the queue are allowed
     pub InhibitPut: MQLONG,
+    /// Queue priority
     pub CLWLQueuePriority: MQLONG,
+    /// Queue rank
     pub CLWLQueueRank: MQLONG,
+    /// Default put response
     pub DefPutResponse: MQLONG,
+    /// CapExpiry
     pub CapExpiry: MQLONG,
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQWQR1 {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Length of MQWQR structure
     pub StrucLength: MQLONG,
+    /// Queue flags
     pub QFlags: MQLONG,
+    /// Queue name
     pub QName: MQCHAR48,
+    /// Queue-manager identifier
     pub QMgrIdentifier: MQCHAR48,
+    /// Offset of first cluster record
     pub ClusterRecOffset: MQLONG,
+    /// Queue type
     pub QType: MQLONG,
+    /// Queue description
     pub QDesc: MQCHAR64,
+    /// Default binding
     pub DefBind: MQLONG,
+    /// Default message persistence
     pub DefPersistence: MQLONG,
+    /// Default message priority
     pub DefPriority: MQLONG,
+    /// Whether put operations on the queue are allowed
     pub InhibitPut: MQLONG,
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQWQR2 {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Length of MQWQR structure
     pub StrucLength: MQLONG,
+    /// Queue flags
     pub QFlags: MQLONG,
+    /// Queue name
     pub QName: MQCHAR48,
+    /// Queue-manager identifier
     pub QMgrIdentifier: MQCHAR48,
+    /// Offset of first cluster record
     pub ClusterRecOffset: MQLONG,
+    /// Queue type
     pub QType: MQLONG,
+    /// Queue description
     pub QDesc: MQCHAR64,
+    /// Default binding
     pub DefBind: MQLONG,
+    /// Default message persistence
     pub DefPersistence: MQLONG,
+    /// Default message priority
     pub DefPriority: MQLONG,
+    /// Whether put operations on the queue are allowed
     pub InhibitPut: MQLONG,
+    /// Queue priority
     pub CLWLQueuePriority: MQLONG,
+    /// Queue rank
     pub CLWLQueueRank: MQLONG,
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQWQR3 {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Length of MQWQR structure
     pub StrucLength: MQLONG,
+    /// Queue flags
     pub QFlags: MQLONG,
+    /// Queue name
     pub QName: MQCHAR48,
+    /// Queue-manager identifier
     pub QMgrIdentifier: MQCHAR48,
+    /// Offset of first cluster record
     pub ClusterRecOffset: MQLONG,
+    /// Queue type
     pub QType: MQLONG,
+    /// Queue description
     pub QDesc: MQCHAR64,
+    /// Default binding
     pub DefBind: MQLONG,
+    /// Default message persistence
     pub DefPersistence: MQLONG,
+    /// Default message priority
     pub DefPriority: MQLONG,
+    /// Whether put operations on the queue are allowed
     pub InhibitPut: MQLONG,
+    /// Queue priority
     pub CLWLQueuePriority: MQLONG,
+    /// Queue rank
     pub CLWLQueueRank: MQLONG,
+    /// Default put response
     pub DefPutResponse: MQLONG,
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQWQR4 {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Length of MQWQR structure
     pub StrucLength: MQLONG,
+    /// Queue flags
     pub QFlags: MQLONG,
+    /// Queue name
     pub QName: MQCHAR48,
+    /// Queue-manager identifier
     pub QMgrIdentifier: MQCHAR48,
+    /// Offset of first cluster record
     pub ClusterRecOffset: MQLONG,
+    /// Queue type
     pub QType: MQLONG,
+    /// Queue description
     pub QDesc: MQCHAR64,
+    /// Default binding
     pub DefBind: MQLONG,
+    /// Default message persistence
     pub DefPersistence: MQLONG,
+    /// Default message priority
     pub DefPriority: MQLONG,
+    /// Whether put operations on the queue are allowed
     pub InhibitPut: MQLONG,
+    /// Queue priority
     pub CLWLQueuePriority: MQLONG,
+    /// Queue rank
     pub CLWLQueueRank: MQLONG,
+    /// Default put response
     pub DefPutResponse: MQLONG,
+    /// CapExpiry
     pub CapExpiry: MQLONG,
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQWXP {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Type of exit
     pub ExitId: MQLONG,
+    /// Reason for invoking exit
     pub ExitReason: MQLONG,
+    /// Response from exit
     pub ExitResponse: MQLONG,
+    /// Secondary response from exit
     pub ExitResponse2: MQLONG,
+    /// Reserved
     pub Feedback: MQLONG,
+    /// Flags
     pub Flags: MQLONG,
+    /// Exit user area
     pub ExitUserArea: MQBYTE16,
+    /// Exit data
     pub ExitData: MQCHAR32,
+    /// Address of message descriptor
     pub MsgDescPtr: PMQMD,
+    /// Address of buffer containing some or all of the message data
     pub MsgBufferPtr: PMQVOID,
+    /// Length of buffer containing message data
     pub MsgBufferLength: MQLONG,
+    /// Length of complete message
     pub MsgLength: MQLONG,
+    /// Queue name
     pub QName: MQCHAR48,
+    /// Name of local queue manager
     pub QMgrName: MQCHAR48,
+    /// Number of possible destinations
     pub DestinationCount: MQLONG,
+    /// Destination chosen
     pub DestinationChosen: MQLONG,
+    /// Address of an array of pointers to destination records
     pub DestinationArrayPtr: PPMQWDR,
+    /// Address of an array of pointers to queue records
     pub QArrayPtr: PPMQWQR,
+    /// Context information
     pub CacheContext: MQPTR,
+    /// Type of cluster cache
     pub CacheType: MQLONG,
+    /// Number of allowed active outbound channels
     pub CLWLMRUChannels: MQLONG,
+    /// Interface entry points
     pub pEntryPoints: PMQIEP,
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQWXP1 {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Type of exit
     pub ExitId: MQLONG,
+    /// Reason for invoking exit
     pub ExitReason: MQLONG,
+    /// Response from exit
     pub ExitResponse: MQLONG,
+    /// Secondary response from exit
     pub ExitResponse2: MQLONG,
+    /// Reserved
     pub Feedback: MQLONG,
+    /// Flags
     pub Flags: MQLONG,
+    /// Exit user area
     pub ExitUserArea: MQBYTE16,
+    /// Exit data
     pub ExitData: MQCHAR32,
+    /// Address of message descriptor
     pub MsgDescPtr: PMQMD,
+    /// Address of buffer containing some or all of the message data
     pub MsgBufferPtr: PMQVOID,
+    /// Length of buffer containing message data
     pub MsgBufferLength: MQLONG,
+    /// Length of complete message
     pub MsgLength: MQLONG,
+    /// Queue name
     pub QName: MQCHAR48,
+    /// Name of local queue manager
     pub QMgrName: MQCHAR48,
+    /// Number of possible destinations
     pub DestinationCount: MQLONG,
+    /// Destination chosen
     pub DestinationChosen: MQLONG,
+    /// Address of an array of pointers to destination records
     pub DestinationArrayPtr: PPMQWDR,
+    /// Address of an array of pointers to queue records
     pub QArrayPtr: PPMQWQR,
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQWXP2 {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Type of exit
     pub ExitId: MQLONG,
+    /// Reason for invoking exit
     pub ExitReason: MQLONG,
+    /// Response from exit
     pub ExitResponse: MQLONG,
+    /// Secondary response from exit
     pub ExitResponse2: MQLONG,
+    /// Reserved
     pub Feedback: MQLONG,
+    /// Flags
     pub Flags: MQLONG,
+    /// Exit user area
     pub ExitUserArea: MQBYTE16,
+    /// Exit data
     pub ExitData: MQCHAR32,
+    /// Address of message descriptor
     pub MsgDescPtr: PMQMD,
+    /// Address of buffer containing some or all of the message data
     pub MsgBufferPtr: PMQVOID,
+    /// Length of buffer containing message data
     pub MsgBufferLength: MQLONG,
+    /// Length of complete message
     pub MsgLength: MQLONG,
+    /// Queue name
     pub QName: MQCHAR48,
+    /// Name of local queue manager
     pub QMgrName: MQCHAR48,
+    /// Number of possible destinations
     pub DestinationCount: MQLONG,
+    /// Destination chosen
     pub DestinationChosen: MQLONG,
+    /// Address of an array of pointers to destination records
     pub DestinationArrayPtr: PPMQWDR,
+    /// Address of an array of pointers to queue records
     pub QArrayPtr: PPMQWQR,
+    /// Context information
     pub CacheContext: MQPTR,
+    /// Type of cluster cache
     pub CacheType: MQLONG,
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQWXP3 {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Type of exit
     pub ExitId: MQLONG,
+    /// Reason for invoking exit
     pub ExitReason: MQLONG,
+    /// Response from exit
     pub ExitResponse: MQLONG,
+    /// Secondary response from exit
     pub ExitResponse2: MQLONG,
+    /// Reserved
     pub Feedback: MQLONG,
+    /// Flags
     pub Flags: MQLONG,
+    /// Exit user area
     pub ExitUserArea: MQBYTE16,
+    /// Exit data
     pub ExitData: MQCHAR32,
+    /// Address of message descriptor
     pub MsgDescPtr: PMQMD,
+    /// Address of buffer containing some or all of the message data
     pub MsgBufferPtr: PMQVOID,
+    /// Length of buffer containing message data
     pub MsgBufferLength: MQLONG,
+    /// Length of complete message
     pub MsgLength: MQLONG,
+    /// Queue name
     pub QName: MQCHAR48,
+    /// Name of local queue manager
     pub QMgrName: MQCHAR48,
+    /// Number of possible destinations
     pub DestinationCount: MQLONG,
+    /// Destination chosen
     pub DestinationChosen: MQLONG,
+    /// Address of an array of pointers to destination records
     pub DestinationArrayPtr: PPMQWDR,
+    /// Address of an array of pointers to queue records
     pub QArrayPtr: PPMQWQR,
+    /// Context information
     pub CacheContext: MQPTR,
+    /// Type of cluster cache
     pub CacheType: MQLONG,
+    /// Number of allowed active outbound channels
     pub CLWLMRUChannels: MQLONG,
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQWXP4 {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Type of exit
     pub ExitId: MQLONG,
+    /// Reason for invoking exit
     pub ExitReason: MQLONG,
+    /// Response from exit
     pub ExitResponse: MQLONG,
+    /// Secondary response from exit
     pub ExitResponse2: MQLONG,
+    /// Reserved
     pub Feedback: MQLONG,
+    /// Flags
     pub Flags: MQLONG,
+    /// Exit user area
     pub ExitUserArea: MQBYTE16,
+    /// Exit data
     pub ExitData: MQCHAR32,
+    /// Address of message descriptor
     pub MsgDescPtr: PMQMD,
+    /// Address of buffer containing some or all of the message data
     pub MsgBufferPtr: PMQVOID,
+    /// Length of buffer containing message data
     pub MsgBufferLength: MQLONG,
+    /// Length of complete message
     pub MsgLength: MQLONG,
+    /// Queue name
     pub QName: MQCHAR48,
+    /// Name of local queue manager
     pub QMgrName: MQCHAR48,
+    /// Number of possible destinations
     pub DestinationCount: MQLONG,
+    /// Destination chosen
     pub DestinationChosen: MQLONG,
+    /// Address of an array of pointers to destination records
     pub DestinationArrayPtr: PPMQWDR,
+    /// Address of an array of pointers to queue records
     pub QArrayPtr: PPMQWQR,
+    /// Context information
     pub CacheContext: MQPTR,
+    /// Type of cluster cache
     pub CacheType: MQLONG,
+    /// Number of allowed active outbound channels
     pub CLWLMRUChannels: MQLONG,
+    /// Interface entry points
     pub pEntryPoints: PMQIEP,
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQXEPO {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Options that control the action of MQXEP
     pub Options: MQLONG,
+    /// Exit properties
     pub ExitProperties: MQCHARV,
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQZED {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Address of entity name
     pub EntityNamePtr: PMQCHAR,
+    /// Address of entity domain name
     pub EntityDomainPtr: PMQCHAR,
+    /// Security identifier
     pub SecurityId: MQBYTE40,
+    /// Address of correlational data
     pub CorrelationPtr: MQPTR,
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQZAC {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Process identifier of application
     pub ProcessId: MQPID,
+    /// Thread identifier of application
     pub ThreadId: MQTID,
+    /// Application name
     pub ApplName: MQCHAR28,
+    /// User ID of application
     pub UserID: MQCHAR12,
+    /// Effective user ID of application
     pub EffectiveUserID: MQCHAR12,
+    /// Environment of caller
     pub Environment: MQLONG,
+    /// Type of caller
     pub CallerType: MQLONG,
+    /// Type of authentication being performed
     pub AuthenticationType: MQLONG,
+    /// Type of bindings in use
     pub BindType: MQLONG,
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQZAD {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Profile name
     pub ProfileName: MQCHAR48,
+    /// Object type
     pub ObjectType: MQLONG,
+    /// Authority
     pub Authority: MQLONG,
+    /// Address of MQZED structure identifying an entity
     pub EntityDataPtr: PMQZED,
+    /// Entity type
     pub EntityType: MQLONG,
+    /// Options
     pub Options: MQLONG,
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQZFP {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Reserved
     pub Reserved: MQBYTE8,
+    /// Address of correlational data
     pub CorrelationPtr: MQPTR,
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQZIC {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// User identifier
     pub UserIdentifier: MQCHAR12,
+    /// Accounting token
     pub AccountingToken: MQBYTE32,
+    /// Application data relating to identity
     pub ApplIdentityData: MQCHAR32,
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQIEP {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Length of MQIEP structure
     pub StrucLength: MQLONG,
+    /// Flags containing information about the interface entry points
     pub Flags: MQLONG,
+    /// Reserved
     pub Reserved: MQPTR,
+    /// MQBACK entry point
     pub MQBACK_Call: PMQ_BACK_CALL,
+    /// MQBEGIN entry point
     pub MQBEGIN_Call: PMQ_BEGIN_CALL,
+    /// MQBUFMH entry point
     pub MQBUFMH_Call: PMQ_BUFMH_CALL,
+    /// MQCB entry point
     pub MQCB_Call: PMQ_CB_CALL,
+    /// MQCLOSE entry point
     pub MQCLOSE_Call: PMQ_CLOSE_CALL,
+    /// MQCMIT entry point
     pub MQCMIT_Call: PMQ_CMIT_CALL,
+    /// MQCONN entry point
     pub MQCONN_Call: PMQ_CONN_CALL,
+    /// MQCONNX entry point
     pub MQCONNX_Call: PMQ_CONNX_CALL,
+    /// MQCRTMH entry point
     pub MQCRTMH_Call: PMQ_CRTMH_CALL,
+    /// MQCTL entry point
     pub MQCTL_Call: PMQ_CTL_CALL,
+    /// MQDISC entry point
     pub MQDISC_Call: PMQ_DISC_CALL,
+    /// MQDLTMH entry point
     pub MQDLTMH_Call: PMQ_DLTMH_CALL,
+    /// MQDLTMP entry point
     pub MQDLTMP_Call: PMQ_DLTMP_CALL,
+    /// MQGET entry point
     pub MQGET_Call: PMQ_GET_CALL,
+    /// MQINQ entry point
     pub MQINQ_Call: PMQ_INQ_CALL,
+    /// MQINQMP entry point
     pub MQINQMP_Call: PMQ_INQMP_CALL,
+    /// MQMHBUF entry point
     pub MQMHBUF_Call: PMQ_MHBUF_CALL,
+    /// MQOPEN entry point
     pub MQOPEN_Call: PMQ_OPEN_CALL,
+    /// MQPUT entry point
     pub MQPUT_Call: PMQ_PUT_CALL,
+    /// MQPUT1 entry point
     pub MQPUT1_Call: PMQ_PUT1_CALL,
+    /// MQSET entry point
     pub MQSET_Call: PMQ_SET_CALL,
+    /// MQSETMP entry point
     pub MQSETMP_Call: PMQ_SETMP_CALL,
+    /// MQSTAT entry point
     pub MQSTAT_Call: PMQ_STAT_CALL,
+    /// MQSUB entry point
     pub MQSUB_Call: PMQ_SUB_CALL,
+    /// MQSUBRQ entry point
     pub MQSUBRQ_Call: PMQ_SUBRQ_CALL,
+    /// MQXCLWLN entry point
     pub MQXCLWLN_Call: PMQ_XCLWLN_CALL,
+    /// MQXCNVC entry point
     pub MQXCNVC_Call: PMQ_XCNVC_CALL,
+    /// MQXDX entry point
     pub MQXDX_Call: PMQ_XDX_CALL,
+    /// MQXEP entry point
     pub MQXEP_Call: PMQ_XEP_CALL,
+    /// MQZEP entry point
     pub MQZEP_Call: PMQ_ZEP_CALL,
 }
 pub const MQPA_DEFAULT: MQLONG = 1;
@@ -2067,6 +2580,15 @@ pub const MQIEPF_THREADED_LIBRARY: MQLONG = 1;
 pub const MQIEPF_CLIENT_LIBRARY: MQLONG = 0;
 pub const MQIEPF_LOCAL_LIBRARY: MQLONG = 2;
 unsafe extern "C" {
+    /// Register Entry Point
+    /// # Arguments
+    /// * `Hconfig`: I: Configuration handle
+    /// * `ExitReason`: I: Exit reason
+    /// * `Function`: I: Function identifier
+    /// * `pEntryPoint`: I: Exit function entry point
+    /// * `pExitOpts`: I: Options that control the action of MQXEP
+    /// * `pCompCode`: O: Completion code
+    /// * `pReason`: O: Reason code qualifying CompCode
     pub fn MQXEP(
         Hconfig: MQHCONFIG,
         ExitReason: MQLONG,
@@ -2076,6 +2598,14 @@ unsafe extern "C" {
         pCompCode: PMQLONG,
         pReason: PMQLONG,
     );
+    /// Cluster Workload Navigate Records
+    /// # Arguments
+    /// * `pExitParms`: IO: Exit parameter structure
+    /// * `CurrentRecord`: I: Address of current record
+    /// * `NextOffset`: I: Offset of next record
+    /// * `pNextRecord`: O: Address of next record or structure
+    /// * `pCompCode`: OC: Completion code
+    /// * `pReason`: OR: Reason code qualifying CompCode
     pub fn MQXCLWLN(
         pExitParms: PMQWXP,
         CurrentRecord: MQPTR,
@@ -2084,6 +2614,19 @@ unsafe extern "C" {
         pCompCode: PMQLONG,
         pReason: PMQLONG,
     );
+    /// Convert Characters
+    /// # Arguments
+    /// * `Hconn`: I: Connection handle
+    /// * `Options`: I: Options that control the action of MQXCNVC
+    /// * `SourceCCSID`: I: Coded character set identifier of string before conversion
+    /// * `SourceLength`: IL: Length of string before conversion
+    /// * `pSourceBuffer`: IB: String to be converted
+    /// * `TargetCCSID`: I: Coded character set identifier of string after conversion
+    /// * `TargetLength`: IL: Length of output buffer
+    /// * `pTargetBuffer`: OB: String after conversion
+    /// * `pDataLength`: O: Length of output string
+    /// * `pCompCode`: OC: Completion code
+    /// * `pReason`: OR: Reason code qualifying CompCode
     pub fn MQXCNVC(
         Hconn: MQHCONN,
         Options: MQLONG,
@@ -2097,6 +2640,14 @@ unsafe extern "C" {
         pCompCode: PMQLONG,
         pReason: PMQLONG,
     );
+    /// Convert Message Data
+    /// # Arguments
+    /// * `pDataConvExitParms`: IO: Data-conversion exit parameter block
+    /// * `pMsgDesc`: IO: Message descriptor
+    /// * `InBufferLength`: IL: Length in bytes of InBuffer
+    /// * `pInBuffer`: IB: Buffer containing the unconverted message
+    /// * `OutBufferLength`: IL: Length in bytes of OutBuffer
+    /// * `pOutBuffer`: OB: Buffer containing the converted message
     pub fn MQXDX(
         pDataConvExitParms: PMQDXP,
         pMsgDesc: PMQMD,
@@ -2105,6 +2656,13 @@ unsafe extern "C" {
         OutBufferLength: MQLONG,
         pOutBuffer: PMQVOID,
     );
+    /// Add Component Entry Point
+    /// # Arguments
+    /// * `Hconfig`: I: Configuration handle
+    /// * `Function`: I: Function identifier
+    /// * `pEntryPoint`: I: Function entry point
+    /// * `pCompCode`: OC: Completion code
+    /// * `pReason`: OR: Reason code qualifying CompCode
     pub fn MQZEP(
         Hconfig: MQHCONFIG,
         Function: MQLONG,

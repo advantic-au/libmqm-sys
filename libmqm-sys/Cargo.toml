@@ -49,7 +49,7 @@ mqai = []
 docsrs = ["link_api", "pcf", "exits", "mqai", "dlopen2", "mqc_latest", "dep:document-features"]
 
 ## Use [`bindgen`](https://docs.rs/bindgen/latest/bindgen/) to generate bindings
-bindgen = ["versiongen", "dep:bindgen", "dep:regex-lite", "dep:syn", "dep:prettyplease"]
+bindgen = ["versiongen", "dep:bindgen", "dep:regex-lite", "dep:syn", "dep:proc-macro2", "dep:prettyplease"]
 
 ## Generate version file from MQC library
 versiongen = [ "dep:regex-lite" ]
@@ -79,6 +79,7 @@ document-features = { version = "0.2.10", optional = true }
 regex-lite = { version = "0.1.6", optional = true }
 bindgen = { version = "0.71.1", optional = true }
 syn = { version = "2.0.101", optional = true, features = [ "parsing"] }
+proc-macro2 = { version = "1.0", optional = true }
 prettyplease = { version = "0.2", optional = true }
 cc = { version = "1.1.18", optional = true }
 
