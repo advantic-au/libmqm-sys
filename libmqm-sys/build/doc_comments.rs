@@ -1,4 +1,4 @@
-use std::{collections::HashMap, mem::swap};
+use std::{borrow::Cow, collections::HashMap};
 
 use regex_lite::Regex;
 use syn::{visit_mut::VisitMut, Attribute};
@@ -267,7 +267,13 @@ impl VisitMut for DocCommentFields<'_> {
 fn doc_comment_args(args: &[(String, String)]) -> Vec<Attribute> {
     let mut arg_attrs: Vec<Attribute> = vec![syn::parse_quote!(#[doc = " # Arguments"])];
     arg_attrs.extend(args.iter().map(|(name, description)| {
-        let doc_lit = syn::LitStr::new(&format!(" * `{name}`: {description}"), proc_macro2::Span::call_site());
+        let dir_desc = match description.split_once(':') {
+            Some(("O" | "OC" | "OR" | "OB" | "OL", desc)) => Cow::Owned(format!(" (Output):{desc}")),
+            Some(("IO" | "IOB" | "IOL", desc)) => Cow::Owned(format!(" (Input/Output):{desc}")),
+            Some((_, desc)) => Cow::Owned(format!(":{desc}")),
+            _ => Cow::Borrowed(&**description),
+        };
+        let doc_lit = syn::LitStr::new(&format!(" * `{name}`{dir_desc}"), proc_macro2::Span::call_site());
         syn::parse_quote!(#[doc = #doc_lit])
     }));
     arg_attrs
@@ -277,7 +283,7 @@ impl VisitMut for DocCommentArgs<'_> {
     fn visit_item_fn_mut(&mut self, item: &mut syn::ItemFn) {
         if let Some(args) = self.0.get(&format!("{}", item.sig.ident)) {
             let mut arg_attrs = doc_comment_args(args);
-            swap(&mut item.attrs, &mut arg_attrs);
+            std::mem::swap(&mut item.attrs, &mut arg_attrs);
             item.attrs.extend(arg_attrs);
         }
     }
@@ -285,7 +291,7 @@ impl VisitMut for DocCommentArgs<'_> {
     fn visit_foreign_item_fn_mut(&mut self, item: &mut syn::ForeignItemFn) {
         if let Some(args) = self.0.get(&format!("{}", item.sig.ident)) {
             let mut arg_attrs = doc_comment_args(args);
-            swap(&mut item.attrs, &mut arg_attrs);
+            std::mem::swap(&mut item.attrs, &mut arg_attrs);
             item.attrs.extend(arg_attrs);
         }
     }
@@ -293,7 +299,7 @@ impl VisitMut for DocCommentArgs<'_> {
     fn visit_item_type_mut(&mut self, item: &mut syn::ItemType) {
         if let Some(args) = self.0.get(&format!("{}", item.ident)) {
             let mut arg_attrs = doc_comment_args(args);
-            swap(&mut item.attrs, &mut arg_attrs);
+            std::mem::swap(&mut item.attrs, &mut arg_attrs);
             item.attrs.extend(arg_attrs);
         }
     }

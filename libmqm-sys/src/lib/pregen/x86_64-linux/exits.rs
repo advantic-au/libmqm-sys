@@ -25,19 +25,19 @@ pub type PPMQSRO = *mut PMQSRO;
 pub type PPMQSTS = *mut PMQSTS;
 /// Back Out Changes
 /// # Arguments
-/// * `Hconn`: I: Connection handle
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `Hconn`: Connection handle
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_BACK_CALL = ::std::option::Option<
     unsafe extern "C" fn(Hconn: MQHCONN, pCompCode: PMQLONG, pReason: PMQLONG),
 >;
 pub type PMQ_BACK_CALL = MQ_BACK_CALL;
 /// Begin Unit of Work
 /// # Arguments
-/// * `Hconn`: I: Connection handle
-/// * `pBeginOptions`: IO: Options that control the action of MQBEGIN
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `Hconn`: Connection handle
+/// * `pBeginOptions` (Input/Output): Options that control the action of MQBEGIN
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_BEGIN_CALL = ::std::option::Option<
     unsafe extern "C" fn(
         Hconn: MQHCONN,
@@ -49,15 +49,15 @@ pub type MQ_BEGIN_CALL = ::std::option::Option<
 pub type PMQ_BEGIN_CALL = MQ_BEGIN_CALL;
 /// Buffer To Message Handle
 /// # Arguments
-/// * `Hconn`: I: Connection handle
-/// * `Hmsg`: I: Message handle
-/// * `pBufMsgHOpts`: I: Options that control the action of MQBUFMH
-/// * `pMsgDesc`: IO: Message descriptor
-/// * `BufferLength`: IL: Length in bytes of the Buffer area
-/// * `pBuffer`: IOB: Area to contain the message buffer
-/// * `pDataLength`: O: Length of the output buffer
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `Hconn`: Connection handle
+/// * `Hmsg`: Message handle
+/// * `pBufMsgHOpts`: Options that control the action of MQBUFMH
+/// * `pMsgDesc` (Input/Output): Message descriptor
+/// * `BufferLength`: Length in bytes of the Buffer area
+/// * `pBuffer` (Input/Output): Area to contain the message buffer
+/// * `pDataLength` (Output): Length of the output buffer
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_BUFMH_CALL = ::std::option::Option<
     unsafe extern "C" fn(
         Hconn: MQHCONN,
@@ -74,14 +74,14 @@ pub type MQ_BUFMH_CALL = ::std::option::Option<
 pub type PMQ_BUFMH_CALL = MQ_BUFMH_CALL;
 /// Register Message consumer
 /// # Arguments
-/// * `Hconn`: I: Connection handle
-/// * `Operation`: I: Operation
-/// * `pCallbackDesc`: I: Callback descriptor
-/// * `Hobj`: I: Object handle
-/// * `pMsgDesc`: I: Message Descriptor
-/// * `pGetMsgOpts`: I: Get options
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `Hconn`: Connection handle
+/// * `Operation`: Operation
+/// * `pCallbackDesc`: Callback descriptor
+/// * `Hobj`: Object handle
+/// * `pMsgDesc`: Message Descriptor
+/// * `pGetMsgOpts`: Get options
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_CB_CALL = ::std::option::Option<
     unsafe extern "C" fn(
         Hconn: MQHCONN,
@@ -97,11 +97,11 @@ pub type MQ_CB_CALL = ::std::option::Option<
 pub type PMQ_CB_CALL = MQ_CB_CALL;
 /// Close Object
 /// # Arguments
-/// * `Hconn`: I: Connection handle
-/// * `pHobj`: IO: Object handle
-/// * `Options`: I: Options that control the action of MQCLOSE
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `Hconn`: Connection handle
+/// * `pHobj` (Input/Output): Object handle
+/// * `Options`: Options that control the action of MQCLOSE
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_CLOSE_CALL = ::std::option::Option<
     unsafe extern "C" fn(
         Hconn: MQHCONN,
@@ -114,19 +114,19 @@ pub type MQ_CLOSE_CALL = ::std::option::Option<
 pub type PMQ_CLOSE_CALL = MQ_CLOSE_CALL;
 /// Commit Changes
 /// # Arguments
-/// * `Hconn`: I: Connection handle
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `Hconn`: Connection handle
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_CMIT_CALL = ::std::option::Option<
     unsafe extern "C" fn(Hconn: MQHCONN, pCompCode: PMQLONG, pReason: PMQLONG),
 >;
 pub type PMQ_CMIT_CALL = MQ_CMIT_CALL;
 /// Connect Queue Manager
 /// # Arguments
-/// * `pQMgrName`: I: Name of queue manager
-/// * `pHconn`: O: Connection handle
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `pQMgrName`: Name of queue manager
+/// * `pHconn` (Output): Connection handle
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_CONN_CALL = ::std::option::Option<
     unsafe extern "C" fn(
         pQMgrName: PMQCHAR,
@@ -138,11 +138,11 @@ pub type MQ_CONN_CALL = ::std::option::Option<
 pub type PMQ_CONN_CALL = MQ_CONN_CALL;
 /// Connect Queue Manager (Extended)
 /// # Arguments
-/// * `pQMgrName`: I: Name of queue manager
-/// * `pConnectOpts`: IO: Options that control the action of MQCONNX
-/// * `pHconn`: O: Connection handle
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `pQMgrName`: Name of queue manager
+/// * `pConnectOpts` (Input/Output): Options that control the action of MQCONNX
+/// * `pHconn` (Output): Connection handle
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_CONNX_CALL = ::std::option::Option<
     unsafe extern "C" fn(
         pQMgrName: PMQCHAR,
@@ -155,11 +155,11 @@ pub type MQ_CONNX_CALL = ::std::option::Option<
 pub type PMQ_CONNX_CALL = MQ_CONNX_CALL;
 /// Create Message Handle
 /// # Arguments
-/// * `Hconn`: I: Connection handle
-/// * `pCrtMsgHOpts`: I: Options that control the action of MQCRTMH
-/// * `pHmsg`: O: Message handle
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `Hconn`: Connection handle
+/// * `pCrtMsgHOpts`: Options that control the action of MQCRTMH
+/// * `pHmsg` (Output): Message handle
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_CRTMH_CALL = ::std::option::Option<
     unsafe extern "C" fn(
         Hconn: MQHCONN,
@@ -172,11 +172,11 @@ pub type MQ_CRTMH_CALL = ::std::option::Option<
 pub type PMQ_CRTMH_CALL = MQ_CRTMH_CALL;
 /// Control Consumer
 /// # Arguments
-/// * `Hconn`: I: Connection handle
-/// * `Operation`: I: Operation
-/// * `pControlOpts`: I: Control options
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `Hconn`: Connection handle
+/// * `Operation`: Operation
+/// * `pControlOpts`: Control options
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_CTL_CALL = ::std::option::Option<
     unsafe extern "C" fn(
         Hconn: MQHCONN,
@@ -189,20 +189,20 @@ pub type MQ_CTL_CALL = ::std::option::Option<
 pub type PMQ_CTL_CALL = MQ_CTL_CALL;
 /// Disconnect Queue Manager
 /// # Arguments
-/// * `pHconn`: IO: Connection handle
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `pHconn` (Input/Output): Connection handle
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_DISC_CALL = ::std::option::Option<
     unsafe extern "C" fn(pHconn: PMQHCONN, pCompCode: PMQLONG, pReason: PMQLONG),
 >;
 pub type PMQ_DISC_CALL = MQ_DISC_CALL;
 /// Delete Message Handle
 /// # Arguments
-/// * `Hconn`: I: Connection handle
-/// * `pHmsg`: IO: Message handle
-/// * `pDltMsgHOpts`: I: Options that control the action of MQDLTMH
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `Hconn`: Connection handle
+/// * `pHmsg` (Input/Output): Message handle
+/// * `pDltMsgHOpts`: Options that control the action of MQDLTMH
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_DLTMH_CALL = ::std::option::Option<
     unsafe extern "C" fn(
         Hconn: MQHCONN,
@@ -215,12 +215,12 @@ pub type MQ_DLTMH_CALL = ::std::option::Option<
 pub type PMQ_DLTMH_CALL = MQ_DLTMH_CALL;
 /// Delete Message Property
 /// # Arguments
-/// * `Hconn`: I: Connection handle
-/// * `Hmsg`: I: Message handle
-/// * `pDltPropOpts`: I: Options that control the action of MQDLTMP
-/// * `pName`: I: Property name
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `Hconn`: Connection handle
+/// * `Hmsg`: Message handle
+/// * `pDltPropOpts`: Options that control the action of MQDLTMP
+/// * `pName`: Property name
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_DLTMP_CALL = ::std::option::Option<
     unsafe extern "C" fn(
         Hconn: MQHCONN,
@@ -234,15 +234,15 @@ pub type MQ_DLTMP_CALL = ::std::option::Option<
 pub type PMQ_DLTMP_CALL = MQ_DLTMP_CALL;
 /// Get Message
 /// # Arguments
-/// * `Hconn`: I: Connection handle
-/// * `Hobj`: I: Object handle
-/// * `pMsgDesc`: IO: Message descriptor
-/// * `pGetMsgOpts`: IO: Options that control the action of MQGET
-/// * `BufferLength`: IL: Length in bytes of the Buffer area
-/// * `pBuffer`: OB: Area to contain the message data
-/// * `pDataLength`: O: Length of the message
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `Hconn`: Connection handle
+/// * `Hobj`: Object handle
+/// * `pMsgDesc` (Input/Output): Message descriptor
+/// * `pGetMsgOpts` (Input/Output): Options that control the action of MQGET
+/// * `BufferLength`: Length in bytes of the Buffer area
+/// * `pBuffer` (Output): Area to contain the message data
+/// * `pDataLength` (Output): Length of the message
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_GET_CALL = ::std::option::Option<
     unsafe extern "C" fn(
         Hconn: MQHCONN,
@@ -259,16 +259,16 @@ pub type MQ_GET_CALL = ::std::option::Option<
 pub type PMQ_GET_CALL = MQ_GET_CALL;
 /// Inquire Object Attributes
 /// # Arguments
-/// * `Hconn`: I: Connection handle
-/// * `Hobj`: I: Object handle
-/// * `SelectorCount`: I: Count of selectors
-/// * `pSelectors`: I: Array of attribute selectors
-/// * `IntAttrCount`: I: Count of integer attributes
-/// * `pIntAttrs`: O: Array of integer attributes
-/// * `CharAttrLength`: IL: Length of character attributes buffer
-/// * `pCharAttrs`: OB: Character attributes
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `Hconn`: Connection handle
+/// * `Hobj`: Object handle
+/// * `SelectorCount`: Count of selectors
+/// * `pSelectors`: Array of attribute selectors
+/// * `IntAttrCount`: Count of integer attributes
+/// * `pIntAttrs` (Output): Array of integer attributes
+/// * `CharAttrLength`: Length of character attributes buffer
+/// * `pCharAttrs` (Output): Character attributes
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_INQ_CALL = ::std::option::Option<
     unsafe extern "C" fn(
         Hconn: MQHCONN,
@@ -286,17 +286,17 @@ pub type MQ_INQ_CALL = ::std::option::Option<
 pub type PMQ_INQ_CALL = MQ_INQ_CALL;
 /// Inquire Message Property
 /// # Arguments
-/// * `Hconn`: I: Connection handle
-/// * `Hmsg`: I: Message handle
-/// * `pInqPropOpts`: I: Options that control the action of MQINQMP
-/// * `pName`: I: Property name
-/// * `pPropDesc`: O: Property descriptor
-/// * `pType`: IO: Property data type
-/// * `ValueLength`: IL: Length in bytes of the Value area
-/// * `pValue`: OB: Property value
-/// * `pDataLength`: O: Length of the property value
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `Hconn`: Connection handle
+/// * `Hmsg`: Message handle
+/// * `pInqPropOpts`: Options that control the action of MQINQMP
+/// * `pName`: Property name
+/// * `pPropDesc` (Output): Property descriptor
+/// * `pType` (Input/Output): Property data type
+/// * `ValueLength`: Length in bytes of the Value area
+/// * `pValue` (Output): Property value
+/// * `pDataLength` (Output): Length of the property value
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_INQMP_CALL = ::std::option::Option<
     unsafe extern "C" fn(
         Hconn: MQHCONN,
@@ -315,16 +315,16 @@ pub type MQ_INQMP_CALL = ::std::option::Option<
 pub type PMQ_INQMP_CALL = MQ_INQMP_CALL;
 /// Message Handle To Buffer
 /// # Arguments
-/// * `Hconn`: I: Connection handle
-/// * `Hmsg`: I: Message handle
-/// * `pMsgHBufOpts`: I: Options that control the action of MQMHBUF
-/// * `pName`: I: Property name
-/// * `pMsgDesc`: IO: Message descriptor
-/// * `BufferLength`: IL: Length in bytes of the Buffer area
-/// * `pBuffer`: OB: Area to contain the properties
-/// * `pDataLength`: O: Length of the properties
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `Hconn`: Connection handle
+/// * `Hmsg`: Message handle
+/// * `pMsgHBufOpts`: Options that control the action of MQMHBUF
+/// * `pName`: Property name
+/// * `pMsgDesc` (Input/Output): Message descriptor
+/// * `BufferLength`: Length in bytes of the Buffer area
+/// * `pBuffer` (Output): Area to contain the properties
+/// * `pDataLength` (Output): Length of the properties
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_MHBUF_CALL = ::std::option::Option<
     unsafe extern "C" fn(
         Hconn: MQHCONN,
@@ -342,12 +342,12 @@ pub type MQ_MHBUF_CALL = ::std::option::Option<
 pub type PMQ_MHBUF_CALL = MQ_MHBUF_CALL;
 /// Open Object
 /// # Arguments
-/// * `Hconn`: I: Connection handle
-/// * `pObjDesc`: IO: Object descriptor
-/// * `Options`: I: Options that control the action of MQOPEN
-/// * `pHobj`: O: Object handle
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `Hconn`: Connection handle
+/// * `pObjDesc` (Input/Output): Object descriptor
+/// * `Options`: Options that control the action of MQOPEN
+/// * `pHobj` (Output): Object handle
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_OPEN_CALL = ::std::option::Option<
     unsafe extern "C" fn(
         Hconn: MQHCONN,
@@ -361,14 +361,14 @@ pub type MQ_OPEN_CALL = ::std::option::Option<
 pub type PMQ_OPEN_CALL = MQ_OPEN_CALL;
 /// Put Message
 /// # Arguments
-/// * `Hconn`: I: Connection handle
-/// * `Hobj`: I: Object handle
-/// * `pMsgDesc`: IO: Message descriptor
-/// * `pPutMsgOpts`: IO: Options that control the action of MQPUT
-/// * `BufferLength`: IL: Length of the message in Buffer
-/// * `pBuffer`: IB: Message data
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `Hconn`: Connection handle
+/// * `Hobj`: Object handle
+/// * `pMsgDesc` (Input/Output): Message descriptor
+/// * `pPutMsgOpts` (Input/Output): Options that control the action of MQPUT
+/// * `BufferLength`: Length of the message in Buffer
+/// * `pBuffer`: Message data
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_PUT_CALL = ::std::option::Option<
     unsafe extern "C" fn(
         Hconn: MQHCONN,
@@ -384,14 +384,14 @@ pub type MQ_PUT_CALL = ::std::option::Option<
 pub type PMQ_PUT_CALL = MQ_PUT_CALL;
 /// Put One Message
 /// # Arguments
-/// * `Hconn`: I: Connection handle
-/// * `pObjDesc`: IO: Object descriptor
-/// * `pMsgDesc`: IO: Message descriptor
-/// * `pPutMsgOpts`: IO: Options that control the action of MQPUT1
-/// * `BufferLength`: IL: Length of the message in Buffer
-/// * `pBuffer`: IB: Message data
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `Hconn`: Connection handle
+/// * `pObjDesc` (Input/Output): Object descriptor
+/// * `pMsgDesc` (Input/Output): Message descriptor
+/// * `pPutMsgOpts` (Input/Output): Options that control the action of MQPUT1
+/// * `BufferLength`: Length of the message in Buffer
+/// * `pBuffer`: Message data
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_PUT1_CALL = ::std::option::Option<
     unsafe extern "C" fn(
         Hconn: MQHCONN,
@@ -407,16 +407,16 @@ pub type MQ_PUT1_CALL = ::std::option::Option<
 pub type PMQ_PUT1_CALL = MQ_PUT1_CALL;
 /// Set Object Attributes
 /// # Arguments
-/// * `Hconn`: I: Connection handle
-/// * `Hobj`: I: Object handle
-/// * `SelectorCount`: I: Count of selectors
-/// * `pSelectors`: I: Array of attribute selectors
-/// * `IntAttrCount`: I: Count of integer attributes
-/// * `pIntAttrs`: I: Array of integer attributes
-/// * `CharAttrLength`: IL: Length of character attributes buffer
-/// * `pCharAttrs`: IB: Character attributes
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `Hconn`: Connection handle
+/// * `Hobj`: Object handle
+/// * `SelectorCount`: Count of selectors
+/// * `pSelectors`: Array of attribute selectors
+/// * `IntAttrCount`: Count of integer attributes
+/// * `pIntAttrs`: Array of integer attributes
+/// * `CharAttrLength`: Length of character attributes buffer
+/// * `pCharAttrs`: Character attributes
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_SET_CALL = ::std::option::Option<
     unsafe extern "C" fn(
         Hconn: MQHCONN,
@@ -434,16 +434,16 @@ pub type MQ_SET_CALL = ::std::option::Option<
 pub type PMQ_SET_CALL = MQ_SET_CALL;
 /// Set Message Property
 /// # Arguments
-/// * `Hconn`: I: Connection handle
-/// * `Hmsg`: I: Message handle
-/// * `pSetPropOpts`: I: Options that control the action of MQSETMP
-/// * `pName`: I: Property name
-/// * `pPropDesc`: IO: Property descriptor
-/// * `Type`: I: Property data type
-/// * `ValueLength`: IL: Length of the Value area
-/// * `pValue`: IB: Property value
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `Hconn`: Connection handle
+/// * `Hmsg`: Message handle
+/// * `pSetPropOpts`: Options that control the action of MQSETMP
+/// * `pName`: Property name
+/// * `pPropDesc` (Input/Output): Property descriptor
+/// * `Type`: Property data type
+/// * `ValueLength`: Length of the Value area
+/// * `pValue`: Property value
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_SETMP_CALL = ::std::option::Option<
     unsafe extern "C" fn(
         Hconn: MQHCONN,
@@ -461,11 +461,11 @@ pub type MQ_SETMP_CALL = ::std::option::Option<
 pub type PMQ_SETMP_CALL = MQ_SETMP_CALL;
 /// Get Status Information
 /// # Arguments
-/// * `Hconn`: I: Connection handle
-/// * `Type`: I: Status information type
-/// * `pStatus`: IO: Status information
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `Hconn`: Connection handle
+/// * `Type`: Status information type
+/// * `pStatus` (Input/Output): Status information
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_STAT_CALL = ::std::option::Option<
     unsafe extern "C" fn(
         Hconn: MQHCONN,
@@ -478,12 +478,12 @@ pub type MQ_STAT_CALL = ::std::option::Option<
 pub type PMQ_STAT_CALL = MQ_STAT_CALL;
 /// Subscribe to topic
 /// # Arguments
-/// * `Hconn`: I: Connection handle
-/// * `pSubDesc`: IO: Subscription descriptor
-/// * `pHobj`: IO: Object handle for queue
-/// * `pHsub`: O: Subscription object handle
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `Hconn`: Connection handle
+/// * `pSubDesc` (Input/Output): Subscription descriptor
+/// * `pHobj` (Input/Output): Object handle for queue
+/// * `pHsub` (Output): Subscription object handle
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_SUB_CALL = ::std::option::Option<
     unsafe extern "C" fn(
         Hconn: MQHCONN,
@@ -497,12 +497,12 @@ pub type MQ_SUB_CALL = ::std::option::Option<
 pub type PMQ_SUB_CALL = MQ_SUB_CALL;
 /// Subscription Request
 /// # Arguments
-/// * `Hconn`: I: Connection handle
-/// * `Hsub`: I: Subscription handle
-/// * `Action`: I: Action requested on the subscription
-/// * `pSubRqOpts`: IO: Subscription Request Options
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `Hconn`: Connection handle
+/// * `Hsub`: Subscription handle
+/// * `Action`: Action requested on the subscription
+/// * `pSubRqOpts` (Input/Output): Subscription Request Options
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_SUBRQ_CALL = ::std::option::Option<
     unsafe extern "C" fn(
         Hconn: MQHCONN,
@@ -589,13 +589,13 @@ pub type MQXEPO = tagMQXEPO;
 pub type PMQXEPO = *mut MQXEPO;
 /// Register Entry Point
 /// # Arguments
-/// * `Hconfig`: I: Configuration handle
-/// * `ExitReason`: I: Exit reason
-/// * `Function`: I: Function identifier
-/// * `pEntryPoint`: I: Exit function entry point
-/// * `pExitOpts`: I: Options that control the action of MQXEP
-/// * `pCompCode`: O: Completion code
-/// * `pReason`: O: Reason code qualifying CompCode
+/// * `Hconfig`: Configuration handle
+/// * `ExitReason`: Exit reason
+/// * `Function`: Function identifier
+/// * `pEntryPoint`: Exit function entry point
+/// * `pExitOpts`: Options that control the action of MQXEP
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_XEP_CALL = ::std::option::Option<
     unsafe extern "C" fn(
         Hconfig: MQHCONFIG,
@@ -610,11 +610,11 @@ pub type MQ_XEP_CALL = ::std::option::Option<
 pub type PMQ_XEP_CALL = MQ_XEP_CALL;
 /// Back Out Changes Exit
 /// # Arguments
-/// * `pExitParms`: IO: Exit parameter structure
-/// * `pExitContext`: IO: Exit context structure
-/// * `pHconn`: IO: Connection handle
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `pExitParms` (Input/Output): Exit parameter structure
+/// * `pExitContext` (Input/Output): Exit context structure
+/// * `pHconn` (Input/Output): Connection handle
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_BACK_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: PMQAXP,
@@ -627,12 +627,12 @@ pub type MQ_BACK_EXIT = ::std::option::Option<
 pub type PMQ_BACK_EXIT = MQ_BACK_EXIT;
 /// Begin Unit of Work Exit
 /// # Arguments
-/// * `pExitParms`: IO: Exit parameter structure
-/// * `pExitContext`: IO: Exit context structure
-/// * `pHconn`: IO: Connection handle
-/// * `ppBeginOptions`: IO: Options that control the action of MQBEGIN
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `pExitParms` (Input/Output): Exit parameter structure
+/// * `pExitContext` (Input/Output): Exit context structure
+/// * `pHconn` (Input/Output): Connection handle
+/// * `ppBeginOptions` (Input/Output): Options that control the action of MQBEGIN
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_BEGIN_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: PMQAXP,
@@ -646,13 +646,13 @@ pub type MQ_BEGIN_EXIT = ::std::option::Option<
 pub type PMQ_BEGIN_EXIT = MQ_BEGIN_EXIT;
 /// Callback Function Exit
 /// # Arguments
-/// * `pExitParms`: IO: Exit parameter structure
-/// * `pExitContext`: IO: Exit context structure
-/// * `pHconn`: IO: Connection handle
-/// * `ppMsgDesc`: IO: Message descriptor
-/// * `ppGetMsgOpts`: IO: Options that define the operation of the consumer
-/// * `ppBuffer`: IO: Area to contain the message data
-/// * `ppMQCBContext`: IO: Context data for the callback
+/// * `pExitParms` (Input/Output): Exit parameter structure
+/// * `pExitContext` (Input/Output): Exit context structure
+/// * `pHconn` (Input/Output): Connection handle
+/// * `ppMsgDesc` (Input/Output): Message descriptor
+/// * `ppGetMsgOpts` (Input/Output): Options that define the operation of the consumer
+/// * `ppBuffer` (Input/Output): Area to contain the message data
+/// * `ppMQCBContext` (Input/Output): Context data for the callback
 pub type MQ_CALLBACK_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: PMQAXP,
@@ -667,16 +667,16 @@ pub type MQ_CALLBACK_EXIT = ::std::option::Option<
 pub type PMQ_CALLBACK_EXIT = MQ_CALLBACK_EXIT;
 /// Register Callback Exit
 /// # Arguments
-/// * `pExitParms`: IO: Exit parameter structure
-/// * `pExitContext`: IO: Exit context structure
-/// * `pHconn`: IO: Connection handle
-/// * `pOperation`: IO: Operation
-/// * `ppCallbackDesc`: IO: Callback descriptor
-/// * `pHobj`: IO: Object handle
-/// * `ppMsgDesc`: IO: Message descriptor
-/// * `ppGetMsgOpts`: IO: Get message options
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `pExitParms` (Input/Output): Exit parameter structure
+/// * `pExitContext` (Input/Output): Exit context structure
+/// * `pHconn` (Input/Output): Connection handle
+/// * `pOperation` (Input/Output): Operation
+/// * `ppCallbackDesc` (Input/Output): Callback descriptor
+/// * `pHobj` (Input/Output): Object handle
+/// * `ppMsgDesc` (Input/Output): Message descriptor
+/// * `ppGetMsgOpts` (Input/Output): Get message options
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_CB_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: PMQAXP,
@@ -694,13 +694,13 @@ pub type MQ_CB_EXIT = ::std::option::Option<
 pub type PMQ_CB_EXIT = MQ_CB_EXIT;
 /// Close Object Exit
 /// # Arguments
-/// * `pExitParms`: IO: Exit parameter structure
-/// * `pExitContext`: IO: Exit context structure
-/// * `pHconn`: IO: Connection handle
-/// * `ppHobj`: IO: Object handle
-/// * `pOptions`: IO: Options that control the action of MQCLOSE
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `pExitParms` (Input/Output): Exit parameter structure
+/// * `pExitContext` (Input/Output): Exit context structure
+/// * `pHconn` (Input/Output): Connection handle
+/// * `ppHobj` (Input/Output): Object handle
+/// * `pOptions` (Input/Output): Options that control the action of MQCLOSE
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_CLOSE_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: PMQAXP,
@@ -715,11 +715,11 @@ pub type MQ_CLOSE_EXIT = ::std::option::Option<
 pub type PMQ_CLOSE_EXIT = MQ_CLOSE_EXIT;
 /// Commit Changes Exit
 /// # Arguments
-/// * `pExitParms`: IO: Exit parameter structure
-/// * `pExitContext`: IO: Exit context structure
-/// * `pHconn`: IO: Connection handle
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `pExitParms` (Input/Output): Exit parameter structure
+/// * `pExitContext` (Input/Output): Exit context structure
+/// * `pHconn` (Input/Output): Connection handle
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_CMIT_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: PMQAXP,
@@ -732,13 +732,13 @@ pub type MQ_CMIT_EXIT = ::std::option::Option<
 pub type PMQ_CMIT_EXIT = MQ_CMIT_EXIT;
 /// Connect Queue Manager Exit
 /// # Arguments
-/// * `pExitParms`: IO: Exit parameter structure
-/// * `pExitContext`: IO: Exit context structure
-/// * `pQMgrName`: IO: Name of queue manager
-/// * `ppConnectOpts`: IO: Options that control the action of MQCONNX
-/// * `ppHconn`: IO: Connection handle
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `pExitParms` (Input/Output): Exit parameter structure
+/// * `pExitContext` (Input/Output): Exit context structure
+/// * `pQMgrName` (Input/Output): Name of queue manager
+/// * `ppConnectOpts` (Input/Output): Options that control the action of MQCONNX
+/// * `ppHconn` (Input/Output): Connection handle
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_CONNX_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: PMQAXP,
@@ -753,13 +753,13 @@ pub type MQ_CONNX_EXIT = ::std::option::Option<
 pub type PMQ_CONNX_EXIT = MQ_CONNX_EXIT;
 /// Control Asynchronous Operations Exit
 /// # Arguments
-/// * `pExitParms`: IO: Exit parameter structure
-/// * `pExitContext`: IO: Exit context structure
-/// * `pHconn`: IO: Connection handle
-/// * `pOperation`: IO: Operation
-/// * `ppCtlOpts`: IO: Control options
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `pExitParms` (Input/Output): Exit parameter structure
+/// * `pExitContext` (Input/Output): Exit context structure
+/// * `pHconn` (Input/Output): Connection handle
+/// * `pOperation` (Input/Output): Operation
+/// * `ppCtlOpts` (Input/Output): Control options
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_CTL_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: PMQAXP,
@@ -774,11 +774,11 @@ pub type MQ_CTL_EXIT = ::std::option::Option<
 pub type PMQ_CTL_EXIT = MQ_CTL_EXIT;
 /// Disconnect Queue Manager Exit
 /// # Arguments
-/// * `pExitParms`: IO: Exit parameter structure
-/// * `pExitContext`: IO: Exit context structure
-/// * `ppHconn`: IO: Connection handle
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `pExitParms` (Input/Output): Exit parameter structure
+/// * `pExitContext` (Input/Output): Exit context structure
+/// * `ppHconn` (Input/Output): Connection handle
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_DISC_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: PMQAXP,
@@ -791,17 +791,17 @@ pub type MQ_DISC_EXIT = ::std::option::Option<
 pub type PMQ_DISC_EXIT = MQ_DISC_EXIT;
 /// Get Message Exit
 /// # Arguments
-/// * `pExitParms`: IO: Exit parameter structure
-/// * `pExitContext`: IO: Exit context structure
-/// * `pHconn`: IO: Connection handle
-/// * `pHobj`: IO: Object handle
-/// * `ppMsgDesc`: IO: Message descriptor
-/// * `ppGetMsgOpts`: IO: Options that control the action of MQGET
-/// * `pBufferLength`: IO: Length in bytes of pBuffer area
-/// * `ppBuffer`: IO: Area to contain the message data
-/// * `ppDataLength`: OC: Length of the message
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `pExitParms` (Input/Output): Exit parameter structure
+/// * `pExitContext` (Input/Output): Exit context structure
+/// * `pHconn` (Input/Output): Connection handle
+/// * `pHobj` (Input/Output): Object handle
+/// * `ppMsgDesc` (Input/Output): Message descriptor
+/// * `ppGetMsgOpts` (Input/Output): Options that control the action of MQGET
+/// * `pBufferLength` (Input/Output): Length in bytes of pBuffer area
+/// * `ppBuffer` (Input/Output): Area to contain the message data
+/// * `ppDataLength` (Output): Length of the message
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_GET_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: PMQAXP,
@@ -820,10 +820,10 @@ pub type MQ_GET_EXIT = ::std::option::Option<
 pub type PMQ_GET_EXIT = MQ_GET_EXIT;
 /// Initialization Exit
 /// # Arguments
-/// * `pExitParms`: IO: Exit parameter structure
-/// * `pExitContext`: IO: Exit context structure
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `pExitParms` (Input/Output): Exit parameter structure
+/// * `pExitContext` (Input/Output): Exit context structure
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_INIT_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: PMQAXP,
@@ -835,18 +835,18 @@ pub type MQ_INIT_EXIT = ::std::option::Option<
 pub type PMQ_INIT_EXIT = MQ_INIT_EXIT;
 /// Inquire Object Attributes Exit
 /// # Arguments
-/// * `pExitParms`: IO: Exit parameter structure
-/// * `pExitContext`: IO: Exit context structure
-/// * `pHconn`: IO: Connection handle
-/// * `pHobj`: IO: Object handle
-/// * `pSelectorCount`: IO: Count of selectors
-/// * `ppSelectors`: IO: Array of attribute selectors
-/// * `pIntAttrCount`: IO: Count of integer attributes
-/// * `ppIntAttrs`: IO: Array of integer attributes
-/// * `pCharAttrLength`: OC: Length of character attributes
-/// * `ppCharAttrs`: OC: Character attributes
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `pExitParms` (Input/Output): Exit parameter structure
+/// * `pExitContext` (Input/Output): Exit context structure
+/// * `pHconn` (Input/Output): Connection handle
+/// * `pHobj` (Input/Output): Object handle
+/// * `pSelectorCount` (Input/Output): Count of selectors
+/// * `ppSelectors` (Input/Output): Array of attribute selectors
+/// * `pIntAttrCount` (Input/Output): Count of integer attributes
+/// * `ppIntAttrs` (Input/Output): Array of integer attributes
+/// * `pCharAttrLength` (Output): Length of character attributes
+/// * `ppCharAttrs` (Output): Character attributes
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_INQ_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: PMQAXP,
@@ -866,14 +866,14 @@ pub type MQ_INQ_EXIT = ::std::option::Option<
 pub type PMQ_INQ_EXIT = MQ_INQ_EXIT;
 /// Open Object Exit
 /// # Arguments
-/// * `pExitParms`: IO: Exit parameter structure
-/// * `pExitContext`: IO: Exit context structure
-/// * `pHconn`: IO: Connection handle
-/// * `ppObjDesc`: IO: Object descriptor
-/// * `pOptions`: IO: Options that control the action of MQOPEN
-/// * `ppHobj`: IO: Object handle
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `pExitParms` (Input/Output): Exit parameter structure
+/// * `pExitContext` (Input/Output): Exit context structure
+/// * `pHconn` (Input/Output): Connection handle
+/// * `ppObjDesc` (Input/Output): Object descriptor
+/// * `pOptions` (Input/Output): Options that control the action of MQOPEN
+/// * `ppHobj` (Input/Output): Object handle
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_OPEN_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: PMQAXP,
@@ -889,16 +889,16 @@ pub type MQ_OPEN_EXIT = ::std::option::Option<
 pub type PMQ_OPEN_EXIT = MQ_OPEN_EXIT;
 /// Put Message Exit
 /// # Arguments
-/// * `pExitParms`: IO: Exit parameter structure
-/// * `pExitContext`: IO: Exit context structure
-/// * `pHconn`: IO: Connection handle
-/// * `pHobj`: IO: Object handle
-/// * `ppMsgDesc`: IO: Message descriptor
-/// * `ppPutMsgOpts`: IO: Options that control the action of MQPUT
-/// * `pBufferLength`: IO: Length of the message in pBuffer
-/// * `ppBuffer`: IO: Message data
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `pExitParms` (Input/Output): Exit parameter structure
+/// * `pExitContext` (Input/Output): Exit context structure
+/// * `pHconn` (Input/Output): Connection handle
+/// * `pHobj` (Input/Output): Object handle
+/// * `ppMsgDesc` (Input/Output): Message descriptor
+/// * `ppPutMsgOpts` (Input/Output): Options that control the action of MQPUT
+/// * `pBufferLength` (Input/Output): Length of the message in pBuffer
+/// * `ppBuffer` (Input/Output): Message data
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_PUT_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: PMQAXP,
@@ -916,16 +916,16 @@ pub type MQ_PUT_EXIT = ::std::option::Option<
 pub type PMQ_PUT_EXIT = MQ_PUT_EXIT;
 /// Put One Message Exit
 /// # Arguments
-/// * `pExitParms`: IO: Exit parameter structure
-/// * `pExitContext`: IO: Exit context structure
-/// * `pHconn`: IO: Connection handle
-/// * `ppObjDesc`: IO: Object descriptor
-/// * `ppMsgDesc`: IO: Message descriptor
-/// * `ppPutMsgOpts`: IO: Options that control the action of MQPUT1
-/// * `pBufferLength`: IO: Length of the message in pBuffer
-/// * `ppBuffer`: IO: Message data
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `pExitParms` (Input/Output): Exit parameter structure
+/// * `pExitContext` (Input/Output): Exit context structure
+/// * `pHconn` (Input/Output): Connection handle
+/// * `ppObjDesc` (Input/Output): Object descriptor
+/// * `ppMsgDesc` (Input/Output): Message descriptor
+/// * `ppPutMsgOpts` (Input/Output): Options that control the action of MQPUT1
+/// * `pBufferLength` (Input/Output): Length of the message in pBuffer
+/// * `ppBuffer` (Input/Output): Message data
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_PUT1_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: PMQAXP,
@@ -943,18 +943,18 @@ pub type MQ_PUT1_EXIT = ::std::option::Option<
 pub type PMQ_PUT1_EXIT = MQ_PUT1_EXIT;
 /// Set Object Attributes Exit
 /// # Arguments
-/// * `pExitParms`: IO: Exit parameter structure
-/// * `pExitContext`: IO: Exit context structure
-/// * `pHconn`: IO: Connection handle
-/// * `pHobj`: IO: Object handle
-/// * `pSelectorCount`: IO: Count of selectors
-/// * `ppSelectors`: IO: Array of attribute selectors
-/// * `pIntAttrCount`: IO: Count of integer attributes
-/// * `ppIntAttrs`: IO: Array of integer attributes
-/// * `pCharAttrLength`: OC: Length of character attributes buffer
-/// * `ppCharAttrs`: OC: Character attributes
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `pExitParms` (Input/Output): Exit parameter structure
+/// * `pExitContext` (Input/Output): Exit context structure
+/// * `pHconn` (Input/Output): Connection handle
+/// * `pHobj` (Input/Output): Object handle
+/// * `pSelectorCount` (Input/Output): Count of selectors
+/// * `ppSelectors` (Input/Output): Array of attribute selectors
+/// * `pIntAttrCount` (Input/Output): Count of integer attributes
+/// * `ppIntAttrs` (Input/Output): Array of integer attributes
+/// * `pCharAttrLength` (Output): Length of character attributes buffer
+/// * `ppCharAttrs` (Output): Character attributes
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_SET_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: PMQAXP,
@@ -974,13 +974,13 @@ pub type MQ_SET_EXIT = ::std::option::Option<
 pub type PMQ_SET_EXIT = MQ_SET_EXIT;
 /// Get Status Exit
 /// # Arguments
-/// * `pExitParms`: IO: Exit parameter structure
-/// * `pExitContext`: IO: Exit context structure
-/// * `pHconn`: IO: Connection handle
-/// * `pType`: IO: Status Type
-/// * `ppStatus`: IO: Status Buffer
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `pExitParms` (Input/Output): Exit parameter structure
+/// * `pExitContext` (Input/Output): Exit context structure
+/// * `pHconn` (Input/Output): Connection handle
+/// * `pType` (Input/Output): Status Type
+/// * `ppStatus` (Input/Output): Status Buffer
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_STAT_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: PMQAXP,
@@ -995,14 +995,14 @@ pub type MQ_STAT_EXIT = ::std::option::Option<
 pub type PMQ_STAT_EXIT = MQ_STAT_EXIT;
 /// Subscribe Exit
 /// # Arguments
-/// * `pExitParms`: IO: Exit parameter structure
-/// * `pExitContext`: IO: Exit context structure
-/// * `pHconn`: IO: Connection handle
-/// * `pHsub`: IO: Subscription handle
-/// * `pAction`: IO: Request action
-/// * `ppSubRqOpts`: IO: Subscription Request options
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `pExitParms` (Input/Output): Exit parameter structure
+/// * `pExitContext` (Input/Output): Exit context structure
+/// * `pHconn` (Input/Output): Connection handle
+/// * `pHsub` (Input/Output): Subscription handle
+/// * `pAction` (Input/Output): Request action
+/// * `ppSubRqOpts` (Input/Output): Subscription Request options
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_SUBRQ_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: PMQAXP,
@@ -1018,14 +1018,14 @@ pub type MQ_SUBRQ_EXIT = ::std::option::Option<
 pub type PMQ_SUBRQ_EXIT = MQ_SUBRQ_EXIT;
 /// Subscribe Exit
 /// # Arguments
-/// * `pExitParms`: IO: Exit parameter structure
-/// * `pExitContext`: IO: Exit context structure
-/// * `pHconn`: IO: Connection handle
-/// * `ppSubDesc`: IO: Subscription descriptor
-/// * `ppHobj`: IO: Queue object handle
-/// * `ppHsub`: IO: Subscription object handle
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `pExitParms` (Input/Output): Exit parameter structure
+/// * `pExitContext` (Input/Output): Exit context structure
+/// * `pHconn` (Input/Output): Connection handle
+/// * `ppSubDesc` (Input/Output): Subscription descriptor
+/// * `ppHobj` (Input/Output): Queue object handle
+/// * `ppHsub` (Input/Output): Subscription object handle
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_SUB_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: PMQAXP,
@@ -1041,10 +1041,10 @@ pub type MQ_SUB_EXIT = ::std::option::Option<
 pub type PMQ_SUB_EXIT = MQ_SUB_EXIT;
 /// Termination Exit
 /// # Arguments
-/// * `pExitParms`: IO: Exit parameter structure
-/// * `pExitContext`: IO: Exit context structure
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `pExitParms` (Input/Output): Exit parameter structure
+/// * `pExitContext` (Input/Output): Exit context structure
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_TERM_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: PMQAXP,
@@ -1056,13 +1056,13 @@ pub type MQ_TERM_EXIT = ::std::option::Option<
 pub type PMQ_TERM_EXIT = MQ_TERM_EXIT;
 /// Channel Exit
 /// # Arguments
-/// * `pChannelExitParms`: IO: Channel exit parameter block
-/// * `pChannelDefinition`: IO: Channel definition
-/// * `pDataLength`: IO: Length of data
-/// * `pAgentBufferLength`: IL: Length of agent buffer
-/// * `pAgentBuffer`: IOB: Agent buffer
-/// * `pExitBufferLength`: IOL: Length of exit buffer
-/// * `pExitBufferAddr`: IOB: Address of exit buffer
+/// * `pChannelExitParms` (Input/Output): Channel exit parameter block
+/// * `pChannelDefinition` (Input/Output): Channel definition
+/// * `pDataLength` (Input/Output): Length of data
+/// * `pAgentBufferLength`: Length of agent buffer
+/// * `pAgentBuffer` (Input/Output): Agent buffer
+/// * `pExitBufferLength` (Input/Output): Length of exit buffer
+/// * `pExitBufferAddr` (Input/Output): Address of exit buffer
 pub type MQ_CHANNEL_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pChannelExitParms: PMQVOID,
@@ -1077,27 +1077,27 @@ pub type MQ_CHANNEL_EXIT = ::std::option::Option<
 pub type PMQ_CHANNEL_EXIT = MQ_CHANNEL_EXIT;
 /// Channel Auto Definition Exit
 /// # Arguments
-/// * `pChannelExitParms`: IO: Channel exit parameter block
-/// * `pChannelDefinition`: IO: Channel definition
+/// * `pChannelExitParms` (Input/Output): Channel exit parameter block
+/// * `pChannelDefinition` (Input/Output): Channel definition
 pub type MQ_CHANNEL_AUTO_DEF_EXIT = ::std::option::Option<
     unsafe extern "C" fn(pChannelExitParms: PMQVOID, pChannelDefinition: PMQVOID),
 >;
 pub type PMQ_CHANNEL_AUTO_DEF_EXIT = MQ_CHANNEL_AUTO_DEF_EXIT;
 /// Cluster Workload Exit
 /// # Arguments
-/// * `pExitParms`: IO: Exit parameter block
+/// * `pExitParms` (Input/Output): Exit parameter block
 pub type MQ_CLUSTER_WORKLOAD_EXIT = ::std::option::Option<
     unsafe extern "C" fn(pExitParms: PMQWXP),
 >;
 pub type PMQ_CLUSTER_WORKLOAD_EXIT = MQ_CLUSTER_WORKLOAD_EXIT;
 /// Data Conversion Exit
 /// # Arguments
-/// * `pDataConvExitParms`: IO: Data-conversion exit parameter block
-/// * `pMsgDesc`: IO: Message descriptor
-/// * `InBufferLength`: IL: Length in bytes of InBuffer
-/// * `pInBuffer`: IB: Buffer containing the unconverted message
-/// * `OutBufferLength`: IL: Length in bytes of OutBuffer
-/// * `pOutBuffer`: OB: Buffer containing the converted message
+/// * `pDataConvExitParms` (Input/Output): Data-conversion exit parameter block
+/// * `pMsgDesc` (Input/Output): Message descriptor
+/// * `InBufferLength`: Length in bytes of InBuffer
+/// * `pInBuffer`: Buffer containing the unconverted message
+/// * `OutBufferLength`: Length in bytes of OutBuffer
+/// * `pOutBuffer` (Output): Buffer containing the converted message
 pub type MQ_DATA_CONV_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pDataConvExitParms: PMQDXP,
@@ -1111,18 +1111,18 @@ pub type MQ_DATA_CONV_EXIT = ::std::option::Option<
 pub type PMQ_DATA_CONV_EXIT = MQ_DATA_CONV_EXIT;
 /// Publish Exit
 /// # Arguments
-/// * `pExitParms`: IO: Exit parameter block
-/// * `pPubContext`: I: Publication context structure
-/// * `pSubContext`: I: Subscription context structure
+/// * `pExitParms` (Input/Output): Exit parameter block
+/// * `pPubContext`: Publication context structure
+/// * `pSubContext`: Subscription context structure
 pub type MQ_PUBLISH_EXIT = ::std::option::Option<
     unsafe extern "C" fn(pExitParms: PMQPSXP, pPubContext: PMQPBC, pSubContext: PMQSBC),
 >;
 pub type PMQ_PUBLISH_EXIT = MQ_PUBLISH_EXIT;
 /// Transport Retry Exit
 /// # Arguments
-/// * `pExitParms`: IO: Exit parameter block
-/// * `DestAddressLength`: IL: Length in bytes of destination IP address
-/// * `pDestAddress`: IB: Destination IP address
+/// * `pExitParms` (Input/Output): Exit parameter block
+/// * `DestAddressLength`: Length in bytes of destination IP address
+/// * `pDestAddress`: Destination IP address
 pub type MQ_TRANSPORT_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: PMQVOID,
@@ -1133,11 +1133,11 @@ pub type MQ_TRANSPORT_EXIT = ::std::option::Option<
 pub type PMQ_TRANSPORT_EXIT = MQ_TRANSPORT_EXIT;
 /// Preconnect Exit
 /// # Arguments
-/// * `pExitParms`: IO: Exit parameter structure
-/// * `pQMgrName`: IO: Name of queue manager
-/// * `ppConnectOpts`: IO: Options that control the action of MQCONNX
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `pExitParms` (Input/Output): Exit parameter structure
+/// * `pQMgrName` (Input/Output): Name of queue manager
+/// * `ppConnectOpts` (Input/Output): Options that control the action of MQCONNX
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_PRECONNECT_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: PMQNXP,
@@ -1150,12 +1150,12 @@ pub type MQ_PRECONNECT_EXIT = ::std::option::Option<
 pub type PMQ_PRECONNECT_EXIT = MQ_PRECONNECT_EXIT;
 /// Cluster Workload Navigate Records
 /// # Arguments
-/// * `pExitParms`: IO: Exit parameter structure
-/// * `CurrentRecord`: I: Address of current record
-/// * `NextOffset`: I: Offset of next record
-/// * `pNextRecord`: O: Address of next record or structure
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `pExitParms` (Input/Output): Exit parameter structure
+/// * `CurrentRecord`: Address of current record
+/// * `NextOffset`: Offset of next record
+/// * `pNextRecord` (Output): Address of next record or structure
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_XCLWLN_CALL = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: PMQWXP,
@@ -1169,17 +1169,17 @@ pub type MQ_XCLWLN_CALL = ::std::option::Option<
 pub type PMQ_XCLWLN_CALL = MQ_XCLWLN_CALL;
 /// Convert Characters
 /// # Arguments
-/// * `Hconn`: I: Connection handle
-/// * `Options`: I: Options that control the action of MQXCNVC
-/// * `SourceCCSID`: I: Coded character set identifier of string before conversion
-/// * `SourceLength`: IL: Length of string before conversion
-/// * `pSourceBuffer`: IB: String to be converted
-/// * `TargetCCSID`: I: Coded character set identifier of string after conversion
-/// * `TargetLength`: IL: Length of output buffer
-/// * `pTargetBuffer`: OB: String after conversion
-/// * `pDataLength`: O: Length of output string
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `Hconn`: Connection handle
+/// * `Options`: Options that control the action of MQXCNVC
+/// * `SourceCCSID`: Coded character set identifier of string before conversion
+/// * `SourceLength`: Length of string before conversion
+/// * `pSourceBuffer`: String to be converted
+/// * `TargetCCSID`: Coded character set identifier of string after conversion
+/// * `TargetLength`: Length of output buffer
+/// * `pTargetBuffer` (Output): String after conversion
+/// * `pDataLength` (Output): Length of output string
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_XCNVC_CALL = ::std::option::Option<
     unsafe extern "C" fn(
         Hconn: MQHCONN,
@@ -1198,12 +1198,12 @@ pub type MQ_XCNVC_CALL = ::std::option::Option<
 pub type PMQ_XCNVC_CALL = MQ_XCNVC_CALL;
 /// Convert Message Data
 /// # Arguments
-/// * `pDataConvExitParms`: IO: Data-conversion exit parameter block
-/// * `pMsgDesc`: IO: Message descriptor
-/// * `InBufferLength`: IL: Length in bytes of InBuffer
-/// * `pInBuffer`: IB: Buffer containing the unconverted message
-/// * `OutBufferLength`: IL: Length in bytes of OutBuffer
-/// * `pOutBuffer`: OB: Buffer containing the converted message
+/// * `pDataConvExitParms` (Input/Output): Data-conversion exit parameter block
+/// * `pMsgDesc` (Input/Output): Message descriptor
+/// * `InBufferLength`: Length in bytes of InBuffer
+/// * `pInBuffer`: Buffer containing the unconverted message
+/// * `OutBufferLength`: Length in bytes of OutBuffer
+/// * `pOutBuffer` (Output): Buffer containing the converted message
 pub type MQ_XDX_CALL = ::std::option::Option<
     unsafe extern "C" fn(
         pDataConvExitParms: PMQDXP,
@@ -1232,11 +1232,11 @@ pub type MQZIC = tagMQZIC;
 pub type PMQZIC = *mut MQZIC;
 /// Add Component Entry Point
 /// # Arguments
-/// * `Hconfig`: I: Configuration handle
-/// * `Function`: I: Function identifier
-/// * `pEntryPoint`: I: Function entry point
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `Hconfig`: Configuration handle
+/// * `Function`: Function identifier
+/// * `pEntryPoint`: Function entry point
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_ZEP_CALL = ::std::option::Option<
     unsafe extern "C" fn(
         Hconfig: MQHCONFIG,
@@ -1249,14 +1249,14 @@ pub type MQ_ZEP_CALL = ::std::option::Option<
 pub type PMQ_ZEP_CALL = MQ_ZEP_CALL;
 /// Initialize Authority-Services
 /// # Arguments
-/// * `Hconfig`: I: Configuration handle
-/// * `Options`: I: Initialization options
-/// * `pQMgrName`: I: Queue manager name
-/// * `ComponentDataLength`: I: Length of component data
-/// * `pComponentData`: IO: Component data
-/// * `pVersion`: I: Version number
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `Hconfig`: Configuration handle
+/// * `Options`: Initialization options
+/// * `pQMgrName`: Queue manager name
+/// * `ComponentDataLength`: Length of component data
+/// * `pComponentData` (Input/Output): Component data
+/// * `pVersion`: Version number
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQZ_INIT_AUTHORITY = ::std::option::Option<
     unsafe extern "C" fn(
         Hconfig: MQHCONFIG,
@@ -1272,12 +1272,12 @@ pub type MQZ_INIT_AUTHORITY = ::std::option::Option<
 pub type PMQZ_INIT_AUTHORITY = MQZ_INIT_AUTHORITY;
 /// Terminate Authority-Services
 /// # Arguments
-/// * `Hconfig`: I: Configuration handle
-/// * `Options`: I: Termination options
-/// * `pQMgrName`: I: Queue manager name
-/// * `pComponentData`: I: Component data
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `Hconfig`: Configuration handle
+/// * `Options`: Termination options
+/// * `pQMgrName`: Queue manager name
+/// * `pComponentData`: Component data
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQZ_TERM_AUTHORITY = ::std::option::Option<
     unsafe extern "C" fn(
         Hconfig: MQHCONFIG,
@@ -1291,13 +1291,13 @@ pub type MQZ_TERM_AUTHORITY = ::std::option::Option<
 pub type PMQZ_TERM_AUTHORITY = MQZ_TERM_AUTHORITY;
 /// Delete Authority
 /// # Arguments
-/// * `pQMgrName`: I: Queue manager name
-/// * `pObjectName`: I: Object name
-/// * `ObjectType`: I: Object type
-/// * `pComponentData`: IO: Component data
-/// * `pContinuation`: O: Continuation indicator set by component
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `pQMgrName`: Queue manager name
+/// * `pObjectName`: Object name
+/// * `ObjectType`: Object type
+/// * `pComponentData` (Input/Output): Component data
+/// * `pContinuation` (Output): Continuation indicator set by component
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQZ_DELETE_AUTHORITY = ::std::option::Option<
     unsafe extern "C" fn(
         pQMgrName: PMQCHAR,
@@ -1312,16 +1312,16 @@ pub type MQZ_DELETE_AUTHORITY = ::std::option::Option<
 pub type PMQZ_DELETE_AUTHORITY = MQZ_DELETE_AUTHORITY;
 /// Get Authority
 /// # Arguments
-/// * `pQMgrName`: I: Queue manager name
-/// * `pEntityName`: I: Entity name
-/// * `EntityType`: I: Entity type
-/// * `pObjectName`: I: Object name
-/// * `ObjectType`: I: Object type
-/// * `pAuthority`: O: Authority of entity
-/// * `pComponentData`: IO: Component data
-/// * `pContinuation`: O: Continuation indicator set by component
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `pQMgrName`: Queue manager name
+/// * `pEntityName`: Entity name
+/// * `EntityType`: Entity type
+/// * `pObjectName`: Object name
+/// * `ObjectType`: Object type
+/// * `pAuthority` (Output): Authority of entity
+/// * `pComponentData` (Input/Output): Component data
+/// * `pContinuation` (Output): Continuation indicator set by component
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQZ_GET_AUTHORITY = ::std::option::Option<
     unsafe extern "C" fn(
         pQMgrName: PMQCHAR,
@@ -1339,16 +1339,16 @@ pub type MQZ_GET_AUTHORITY = ::std::option::Option<
 pub type PMQZ_GET_AUTHORITY = MQZ_GET_AUTHORITY;
 /// Get Authority Version 2
 /// # Arguments
-/// * `pQMgrName`: I: Queue manager name
-/// * `pEntityData`: I: Entity data
-/// * `EntityType`: I: Entity type
-/// * `pObjectName`: I: Object name
-/// * `ObjectType`: I: Object type
-/// * `pAuthority`: O: Authority of entity
-/// * `pComponentData`: IO: Component data
-/// * `pContinuation`: O: Continuation indicator set by component
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `pQMgrName`: Queue manager name
+/// * `pEntityData`: Entity data
+/// * `EntityType`: Entity type
+/// * `pObjectName`: Object name
+/// * `ObjectType`: Object type
+/// * `pAuthority` (Output): Authority of entity
+/// * `pComponentData` (Input/Output): Component data
+/// * `pContinuation` (Output): Continuation indicator set by component
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQZ_GET_AUTHORITY_2 = ::std::option::Option<
     unsafe extern "C" fn(
         pQMgrName: PMQCHAR,
@@ -1366,16 +1366,16 @@ pub type MQZ_GET_AUTHORITY_2 = ::std::option::Option<
 pub type PMQZ_GET_AUTHORITY_2 = MQZ_GET_AUTHORITY_2;
 /// Get Explicit Authority
 /// # Arguments
-/// * `pQMgrName`: I: Queue manager name
-/// * `pEntityName`: I: Entity name
-/// * `EntityType`: I: Entity type
-/// * `pObjectName`: I: Object name
-/// * `ObjectType`: I: Object type
-/// * `pAuthority`: O: Authority of entity
-/// * `pComponentData`: IO: Component data
-/// * `pContinuation`: O: Continuation indicator set by component
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `pQMgrName`: Queue manager name
+/// * `pEntityName`: Entity name
+/// * `EntityType`: Entity type
+/// * `pObjectName`: Object name
+/// * `ObjectType`: Object type
+/// * `pAuthority` (Output): Authority of entity
+/// * `pComponentData` (Input/Output): Component data
+/// * `pContinuation` (Output): Continuation indicator set by component
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQZ_GET_EXPLICIT_AUTHORITY = ::std::option::Option<
     unsafe extern "C" fn(
         pQMgrName: PMQCHAR,
@@ -1393,16 +1393,16 @@ pub type MQZ_GET_EXPLICIT_AUTHORITY = ::std::option::Option<
 pub type PMQZ_GET_EXPLICIT_AUTHORITY = MQZ_GET_EXPLICIT_AUTHORITY;
 /// Get Explicit Authority Version 2
 /// # Arguments
-/// * `pQMgrName`: I: Queue manager name
-/// * `pEntityData`: I: Entity data
-/// * `EntityType`: I: Entity type
-/// * `pObjectName`: I: Object name
-/// * `ObjectType`: I: Object type
-/// * `pAuthority`: O: Authority of entity
-/// * `pComponentData`: IO: Component data
-/// * `pContinuation`: O: Continuation indicator set by component
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `pQMgrName`: Queue manager name
+/// * `pEntityData`: Entity data
+/// * `EntityType`: Entity type
+/// * `pObjectName`: Object name
+/// * `ObjectType`: Object type
+/// * `pAuthority` (Output): Authority of entity
+/// * `pComponentData` (Input/Output): Component data
+/// * `pContinuation` (Output): Continuation indicator set by component
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQZ_GET_EXPLICIT_AUTHORITY_2 = ::std::option::Option<
     unsafe extern "C" fn(
         pQMgrName: PMQCHAR,
@@ -1420,16 +1420,16 @@ pub type MQZ_GET_EXPLICIT_AUTHORITY_2 = ::std::option::Option<
 pub type PMQZ_GET_EXPLICIT_AUTHORITY_2 = MQZ_GET_EXPLICIT_AUTHORITY_2;
 /// Enumerate Authority Data
 /// # Arguments
-/// * `pQMgrName`: I: Queue manager name
-/// * `StartEnumeration`: I: Flag indicating whether call should start enumeration
-/// * `pFilter`: I: Filter
-/// * `AuthorityBufferLength`: I: Length of AuthorityBuffer
-/// * `pAuthorityBuffer`: O: Authority data
-/// * `pAuthorityDataLength`: O: Length of data returned in AuthorityBuffer
-/// * `pComponentData`: IO: Component data
-/// * `pContinuation`: O: Continuation indicator set by component
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `pQMgrName`: Queue manager name
+/// * `StartEnumeration`: Flag indicating whether call should start enumeration
+/// * `pFilter`: Filter
+/// * `AuthorityBufferLength`: Length of AuthorityBuffer
+/// * `pAuthorityBuffer` (Output): Authority data
+/// * `pAuthorityDataLength` (Output): Length of data returned in AuthorityBuffer
+/// * `pComponentData` (Input/Output): Component data
+/// * `pContinuation` (Output): Continuation indicator set by component
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQZ_ENUMERATE_AUTHORITY_DATA = ::std::option::Option<
     unsafe extern "C" fn(
         pQMgrName: PMQCHAR,
@@ -1447,16 +1447,16 @@ pub type MQZ_ENUMERATE_AUTHORITY_DATA = ::std::option::Option<
 pub type PMQZ_ENUMERATE_AUTHORITY_DATA = MQZ_ENUMERATE_AUTHORITY_DATA;
 /// Set Authority
 /// # Arguments
-/// * `pQMgrName`: I: Queue manager name
-/// * `pEntityName`: I: Entity name
-/// * `EntityType`: I: Entity type
-/// * `pObjectName`: I: Object name
-/// * `ObjectType`: I: Object type
-/// * `Authority`: I: Authority to be checked
-/// * `pComponentData`: IO: Component data
-/// * `pContinuation`: O: Continuation indicator set by component
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `pQMgrName`: Queue manager name
+/// * `pEntityName`: Entity name
+/// * `EntityType`: Entity type
+/// * `pObjectName`: Object name
+/// * `ObjectType`: Object type
+/// * `Authority`: Authority to be checked
+/// * `pComponentData` (Input/Output): Component data
+/// * `pContinuation` (Output): Continuation indicator set by component
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQZ_SET_AUTHORITY = ::std::option::Option<
     unsafe extern "C" fn(
         pQMgrName: PMQCHAR,
@@ -1474,16 +1474,16 @@ pub type MQZ_SET_AUTHORITY = ::std::option::Option<
 pub type PMQZ_SET_AUTHORITY = MQZ_SET_AUTHORITY;
 /// Set Authority Version 2
 /// # Arguments
-/// * `pQMgrName`: I: Queue manager name
-/// * `pEntityData`: I: Entity data
-/// * `EntityType`: I: Entity type
-/// * `pObjectName`: I: Object name
-/// * `ObjectType`: I: Object type
-/// * `Authority`: I: Authority to be checked
-/// * `pComponentData`: IO: Component data
-/// * `pContinuation`: O: Continuation indicator set by component
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `pQMgrName`: Queue manager name
+/// * `pEntityData`: Entity data
+/// * `EntityType`: Entity type
+/// * `pObjectName`: Object name
+/// * `ObjectType`: Object type
+/// * `Authority`: Authority to be checked
+/// * `pComponentData` (Input/Output): Component data
+/// * `pContinuation` (Output): Continuation indicator set by component
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQZ_SET_AUTHORITY_2 = ::std::option::Option<
     unsafe extern "C" fn(
         pQMgrName: PMQCHAR,
@@ -1501,14 +1501,14 @@ pub type MQZ_SET_AUTHORITY_2 = ::std::option::Option<
 pub type PMQZ_SET_AUTHORITY_2 = MQZ_SET_AUTHORITY_2;
 /// Copy All Authority
 /// # Arguments
-/// * `pQMgrName`: I: Queue manager name
-/// * `pRefObjectName`: I: Reference object name
-/// * `pObjectName`: I: Object name
-/// * `ObjectType`: I: Object type
-/// * `pComponentData`: IO: Component data
-/// * `pContinuation`: O: Continuation indicator set by component
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `pQMgrName`: Queue manager name
+/// * `pRefObjectName`: Reference object name
+/// * `pObjectName`: Object name
+/// * `ObjectType`: Object type
+/// * `pComponentData` (Input/Output): Component data
+/// * `pContinuation` (Output): Continuation indicator set by component
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQZ_COPY_ALL_AUTHORITY = ::std::option::Option<
     unsafe extern "C" fn(
         pQMgrName: PMQCHAR,
@@ -1524,16 +1524,16 @@ pub type MQZ_COPY_ALL_AUTHORITY = ::std::option::Option<
 pub type PMQZ_COPY_ALL_AUTHORITY = MQZ_COPY_ALL_AUTHORITY;
 /// Check Authority
 /// # Arguments
-/// * `pQMgrName`: I: Queue manager name
-/// * `pEntityName`: I: Entity name
-/// * `EntityType`: I: Entity type
-/// * `pObjectName`: I: Object name
-/// * `ObjectType`: I: Object type
-/// * `Authority`: I: Authority to be checked
-/// * `pComponentData`: IO: Component data
-/// * `pContinuation`: O: Continuation indicator set by component
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `pQMgrName`: Queue manager name
+/// * `pEntityName`: Entity name
+/// * `EntityType`: Entity type
+/// * `pObjectName`: Object name
+/// * `ObjectType`: Object type
+/// * `Authority`: Authority to be checked
+/// * `pComponentData` (Input/Output): Component data
+/// * `pContinuation` (Output): Continuation indicator set by component
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQZ_CHECK_AUTHORITY = ::std::option::Option<
     unsafe extern "C" fn(
         pQMgrName: PMQCHAR,
@@ -1551,16 +1551,16 @@ pub type MQZ_CHECK_AUTHORITY = ::std::option::Option<
 pub type PMQZ_CHECK_AUTHORITY = MQZ_CHECK_AUTHORITY;
 /// Check Authority Version 2
 /// # Arguments
-/// * `pQMgrName`: I: Queue manager name
-/// * `pEntityData`: I: Entity data
-/// * `EntityType`: I: Entity type
-/// * `pObjectName`: I: Object name
-/// * `ObjectType`: I: Object type
-/// * `Authority`: I: Authority to be checked
-/// * `pComponentData`: IO: Component data
-/// * `pContinuation`: O: Continuation indicator set by component
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `pQMgrName`: Queue manager name
+/// * `pEntityData`: Entity data
+/// * `EntityType`: Entity type
+/// * `pObjectName`: Object name
+/// * `ObjectType`: Object type
+/// * `Authority`: Authority to be checked
+/// * `pComponentData` (Input/Output): Component data
+/// * `pContinuation` (Output): Continuation indicator set by component
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQZ_CHECK_AUTHORITY_2 = ::std::option::Option<
     unsafe extern "C" fn(
         pQMgrName: PMQCHAR,
@@ -1578,15 +1578,15 @@ pub type MQZ_CHECK_AUTHORITY_2 = ::std::option::Option<
 pub type PMQZ_CHECK_AUTHORITY_2 = MQZ_CHECK_AUTHORITY_2;
 /// Authenticate User
 /// # Arguments
-/// * `pQMgrName`: I: Queue manager name
-/// * `pSecurityParms`: I: Security parameters
-/// * `pApplicationContext`: I: Application context
-/// * `pIdentityContext`: I: Identity context
-/// * `pCorrelationPtr`: I: Correlation data
-/// * `pComponentData`: IO: Component data
-/// * `pContinuation`: O: Continuation indicator set by component
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `pQMgrName`: Queue manager name
+/// * `pSecurityParms`: Security parameters
+/// * `pApplicationContext`: Application context
+/// * `pIdentityContext`: Identity context
+/// * `pCorrelationPtr`: Correlation data
+/// * `pComponentData` (Input/Output): Component data
+/// * `pContinuation` (Output): Continuation indicator set by component
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQZ_AUTHENTICATE_USER = ::std::option::Option<
     unsafe extern "C" fn(
         pQMgrName: PMQCHAR,
@@ -1603,12 +1603,12 @@ pub type MQZ_AUTHENTICATE_USER = ::std::option::Option<
 pub type PMQZ_AUTHENTICATE_USER = MQZ_AUTHENTICATE_USER;
 /// Free User
 /// # Arguments
-/// * `pQMgrName`: I: Queue manager name
-/// * `pFreeParms`: I: Free parameters
-/// * `pComponentData`: IO: Component data
-/// * `pContinuation`: O: Continuation indicator set by component
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `pQMgrName`: Queue manager name
+/// * `pFreeParms`: Free parameters
+/// * `pComponentData` (Input/Output): Component data
+/// * `pContinuation` (Output): Continuation indicator set by component
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQZ_FREE_USER = ::std::option::Option<
     unsafe extern "C" fn(
         pQMgrName: PMQCHAR,
@@ -1622,18 +1622,18 @@ pub type MQZ_FREE_USER = ::std::option::Option<
 pub type PMQZ_FREE_USER = MQZ_FREE_USER;
 /// Inquire
 /// # Arguments
-/// * `pQMgrName`: I: Queue manager name
-/// * `SelectorCount`: I: Count of selectors
-/// * `pSelectors`: I: Array of attribute selectors
-/// * `IntAttrCount`: I: Count of integer attributes
-/// * `pIntAttrs`: I: Array of integer attributes
-/// * `CharAttrLength`: I: Length of character attributes buffer
-/// * `pCharAttrs`: I: Character attributes
-/// * `pSelectorReturned`: O: Array of returned selector indicators
-/// * `pComponentData`: IO: Component data
-/// * `pContinuation`: O: Continuation indicator set by component
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `pQMgrName`: Queue manager name
+/// * `SelectorCount`: Count of selectors
+/// * `pSelectors`: Array of attribute selectors
+/// * `IntAttrCount`: Count of integer attributes
+/// * `pIntAttrs`: Array of integer attributes
+/// * `CharAttrLength`: Length of character attributes buffer
+/// * `pCharAttrs`: Character attributes
+/// * `pSelectorReturned` (Output): Array of returned selector indicators
+/// * `pComponentData` (Input/Output): Component data
+/// * `pContinuation` (Output): Continuation indicator set by component
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQZ_INQUIRE = ::std::option::Option<
     unsafe extern "C" fn(
         pQMgrName: PMQCHAR,
@@ -1653,11 +1653,11 @@ pub type MQZ_INQUIRE = ::std::option::Option<
 pub type PMQZ_INQUIRE = MQZ_INQUIRE;
 /// Refresh Cache
 /// # Arguments
-/// * `pQMgrName`: I: Queue manager name
-/// * `pComponentData`: IO: Component data
-/// * `pContinuation`: O: Continuation indicator set by component
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `pQMgrName`: Queue manager name
+/// * `pComponentData` (Input/Output): Component data
+/// * `pContinuation` (Output): Continuation indicator set by component
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQZ_REFRESH_CACHE = ::std::option::Option<
     unsafe extern "C" fn(
         pQMgrName: PMQCHAR,
@@ -1670,13 +1670,13 @@ pub type MQZ_REFRESH_CACHE = ::std::option::Option<
 pub type PMQZ_REFRESH_CACHE = MQZ_REFRESH_CACHE;
 /// Check if User is Privileged
 /// # Arguments
-/// * `pQMgrName`: I: Queue manager name
-/// * `pEntityData`: I: Entity data
-/// * `EntityType`: I: Entity type
-/// * `pComponentData`: IO: Component data
-/// * `pContinuation`: O: Continuation indicator set by component
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `pQMgrName`: Queue manager name
+/// * `pEntityData`: Entity data
+/// * `EntityType`: Entity type
+/// * `pComponentData` (Input/Output): Component data
+/// * `pContinuation` (Output): Continuation indicator set by component
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQZ_CHECK_PRIVILEGED = ::std::option::Option<
     unsafe extern "C" fn(
         pQMgrName: PMQCHAR,
@@ -1691,14 +1691,14 @@ pub type MQZ_CHECK_PRIVILEGED = ::std::option::Option<
 pub type PMQZ_CHECK_PRIVILEGED = MQZ_CHECK_PRIVILEGED;
 /// Initialize Name-Services
 /// # Arguments
-/// * `Hconfig`: I: Configuration handle
-/// * `Options`: I: Initialization options
-/// * `pQMgrName`: I: Queue manager name
-/// * `ComponentDataLength`: I: Length of component data
-/// * `pComponentData`: IO: Component data
-/// * `pVersion`: I: Version number
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `Hconfig`: Configuration handle
+/// * `Options`: Initialization options
+/// * `pQMgrName`: Queue manager name
+/// * `ComponentDataLength`: Length of component data
+/// * `pComponentData` (Input/Output): Component data
+/// * `pVersion`: Version number
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQZ_INIT_NAME = ::std::option::Option<
     unsafe extern "C" fn(
         Hconfig: MQHCONFIG,
@@ -1714,12 +1714,12 @@ pub type MQZ_INIT_NAME = ::std::option::Option<
 pub type PMQZ_INIT_NAME = MQZ_INIT_NAME;
 /// Terminate Name-Services
 /// # Arguments
-/// * `Hconfig`: I: Configuration handle
-/// * `Options`: I: Termination options
-/// * `pQMgrName`: I: Queue manager name
-/// * `pComponentData`: I: Component data
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `Hconfig`: Configuration handle
+/// * `Options`: Termination options
+/// * `pQMgrName`: Queue manager name
+/// * `pComponentData`: Component data
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQZ_TERM_NAME = ::std::option::Option<
     unsafe extern "C" fn(
         Hconfig: MQHCONFIG,
@@ -1733,13 +1733,13 @@ pub type MQZ_TERM_NAME = ::std::option::Option<
 pub type PMQZ_TERM_NAME = MQZ_TERM_NAME;
 /// Look-Up Name
 /// # Arguments
-/// * `pQMgrName`: I: Queue manager name
-/// * `pQName`: I: Queue name
-/// * `pResolvedQMgrName`: I: Resolved queue manager name
-/// * `pComponentData`: IO: Component data
-/// * `pContinuation`: O: Continuation indicator set by component
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `pQMgrName`: Queue manager name
+/// * `pQName`: Queue name
+/// * `pResolvedQMgrName`: Resolved queue manager name
+/// * `pComponentData` (Input/Output): Component data
+/// * `pContinuation` (Output): Continuation indicator set by component
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQZ_LOOKUP_NAME = ::std::option::Option<
     unsafe extern "C" fn(
         pQMgrName: PMQCHAR,
@@ -1754,13 +1754,13 @@ pub type MQZ_LOOKUP_NAME = ::std::option::Option<
 pub type PMQZ_LOOKUP_NAME = MQZ_LOOKUP_NAME;
 /// Insert Name
 /// # Arguments
-/// * `pQMgrName`: I: Queue manager name
-/// * `pQName`: I: Queue name
-/// * `pResolvedQMgrName`: I: Resolved queue manager name
-/// * `pComponentData`: IO: Component data
-/// * `pContinuation`: O: Continuation indicator set by component
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `pQMgrName`: Queue manager name
+/// * `pQName`: Queue name
+/// * `pResolvedQMgrName`: Resolved queue manager name
+/// * `pComponentData` (Input/Output): Component data
+/// * `pContinuation` (Output): Continuation indicator set by component
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQZ_INSERT_NAME = ::std::option::Option<
     unsafe extern "C" fn(
         pQMgrName: PMQCHAR,
@@ -1775,12 +1775,12 @@ pub type MQZ_INSERT_NAME = ::std::option::Option<
 pub type PMQZ_INSERT_NAME = MQZ_INSERT_NAME;
 /// Delete Name
 /// # Arguments
-/// * `pQMgrName`: I: Queue manager name
-/// * `pQName`: I: Queue name
-/// * `pComponentData`: IO: Component data
-/// * `pContinuation`: O: Continuation indicator set by component
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `pQMgrName`: Queue manager name
+/// * `pQName`: Queue name
+/// * `pComponentData` (Input/Output): Component data
+/// * `pContinuation` (Output): Continuation indicator set by component
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQZ_DELETE_NAME = ::std::option::Option<
     unsafe extern "C" fn(
         pQMgrName: PMQCHAR,
@@ -1794,14 +1794,14 @@ pub type MQZ_DELETE_NAME = ::std::option::Option<
 pub type PMQZ_DELETE_NAME = MQZ_DELETE_NAME;
 /// Initialize Userid-Services
 /// # Arguments
-/// * `Hconfig`: I: Configuration handle
-/// * `Options`: I: Initialization options
-/// * `pQMgrName`: I: Queue manager name
-/// * `ComponentDataLength`: I: Length of component data
-/// * `pComponentData`: IO: Component data
-/// * `pVersion`: I: Version number
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `Hconfig`: Configuration handle
+/// * `Options`: Initialization options
+/// * `pQMgrName`: Queue manager name
+/// * `ComponentDataLength`: Length of component data
+/// * `pComponentData` (Input/Output): Component data
+/// * `pVersion`: Version number
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQZ_INIT_USERID = ::std::option::Option<
     unsafe extern "C" fn(
         Hconfig: MQHCONFIG,
@@ -1817,12 +1817,12 @@ pub type MQZ_INIT_USERID = ::std::option::Option<
 pub type PMQZ_INIT_USERID = MQZ_INIT_USERID;
 /// Terminate Userid-Services
 /// # Arguments
-/// * `Hconfig`: I: Configuration handle
-/// * `Options`: I: Termination options
-/// * `pQMgrName`: I: Queue manager name
-/// * `pComponentData`: I: Component data
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `Hconfig`: Configuration handle
+/// * `Options`: Termination options
+/// * `pQMgrName`: Queue manager name
+/// * `pComponentData`: Component data
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQZ_TERM_USERID = ::std::option::Option<
     unsafe extern "C" fn(
         Hconfig: MQHCONFIG,
@@ -1836,13 +1836,13 @@ pub type MQZ_TERM_USERID = ::std::option::Option<
 pub type PMQZ_TERM_USERID = MQZ_TERM_USERID;
 /// Find Userid
 /// # Arguments
-/// * `pQMgrName`: I: Queue manager name
-/// * `pUserId`: I: User identifier
-/// * `pPassword`: I: Password
-/// * `pComponentData`: IO: Component data
-/// * `pContinuation`: O: Continuation indicator set by component
-/// * `pCompCode`: OC: Completion code
-/// * `pReason`: OR: Reason code qualifying CompCode
+/// * `pQMgrName`: Queue manager name
+/// * `pUserId`: User identifier
+/// * `pPassword`: Password
+/// * `pComponentData` (Input/Output): Component data
+/// * `pContinuation` (Output): Continuation indicator set by component
+/// * `pCompCode` (Output): Completion code
+/// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQZ_FIND_USERID = ::std::option::Option<
     unsafe extern "C" fn(
         pQMgrName: PMQCHAR,
@@ -3316,13 +3316,13 @@ pub const MQIEPF_LOCAL_LIBRARY: MQLONG = 2;
 unsafe extern "C" {
     /// Register Entry Point
     /// # Arguments
-    /// * `Hconfig`: I: Configuration handle
-    /// * `ExitReason`: I: Exit reason
-    /// * `Function`: I: Function identifier
-    /// * `pEntryPoint`: I: Exit function entry point
-    /// * `pExitOpts`: I: Options that control the action of MQXEP
-    /// * `pCompCode`: O: Completion code
-    /// * `pReason`: O: Reason code qualifying CompCode
+    /// * `Hconfig`: Configuration handle
+    /// * `ExitReason`: Exit reason
+    /// * `Function`: Function identifier
+    /// * `pEntryPoint`: Exit function entry point
+    /// * `pExitOpts`: Options that control the action of MQXEP
+    /// * `pCompCode` (Output): Completion code
+    /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQXEP(
         Hconfig: MQHCONFIG,
         ExitReason: MQLONG,
@@ -3334,12 +3334,12 @@ unsafe extern "C" {
     );
     /// Cluster Workload Navigate Records
     /// # Arguments
-    /// * `pExitParms`: IO: Exit parameter structure
-    /// * `CurrentRecord`: I: Address of current record
-    /// * `NextOffset`: I: Offset of next record
-    /// * `pNextRecord`: O: Address of next record or structure
-    /// * `pCompCode`: OC: Completion code
-    /// * `pReason`: OR: Reason code qualifying CompCode
+    /// * `pExitParms` (Input/Output): Exit parameter structure
+    /// * `CurrentRecord`: Address of current record
+    /// * `NextOffset`: Offset of next record
+    /// * `pNextRecord` (Output): Address of next record or structure
+    /// * `pCompCode` (Output): Completion code
+    /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQXCLWLN(
         pExitParms: PMQWXP,
         CurrentRecord: MQPTR,
@@ -3350,17 +3350,17 @@ unsafe extern "C" {
     );
     /// Convert Characters
     /// # Arguments
-    /// * `Hconn`: I: Connection handle
-    /// * `Options`: I: Options that control the action of MQXCNVC
-    /// * `SourceCCSID`: I: Coded character set identifier of string before conversion
-    /// * `SourceLength`: IL: Length of string before conversion
-    /// * `pSourceBuffer`: IB: String to be converted
-    /// * `TargetCCSID`: I: Coded character set identifier of string after conversion
-    /// * `TargetLength`: IL: Length of output buffer
-    /// * `pTargetBuffer`: OB: String after conversion
-    /// * `pDataLength`: O: Length of output string
-    /// * `pCompCode`: OC: Completion code
-    /// * `pReason`: OR: Reason code qualifying CompCode
+    /// * `Hconn`: Connection handle
+    /// * `Options`: Options that control the action of MQXCNVC
+    /// * `SourceCCSID`: Coded character set identifier of string before conversion
+    /// * `SourceLength`: Length of string before conversion
+    /// * `pSourceBuffer`: String to be converted
+    /// * `TargetCCSID`: Coded character set identifier of string after conversion
+    /// * `TargetLength`: Length of output buffer
+    /// * `pTargetBuffer` (Output): String after conversion
+    /// * `pDataLength` (Output): Length of output string
+    /// * `pCompCode` (Output): Completion code
+    /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQXCNVC(
         Hconn: MQHCONN,
         Options: MQLONG,
@@ -3376,12 +3376,12 @@ unsafe extern "C" {
     );
     /// Convert Message Data
     /// # Arguments
-    /// * `pDataConvExitParms`: IO: Data-conversion exit parameter block
-    /// * `pMsgDesc`: IO: Message descriptor
-    /// * `InBufferLength`: IL: Length in bytes of InBuffer
-    /// * `pInBuffer`: IB: Buffer containing the unconverted message
-    /// * `OutBufferLength`: IL: Length in bytes of OutBuffer
-    /// * `pOutBuffer`: OB: Buffer containing the converted message
+    /// * `pDataConvExitParms` (Input/Output): Data-conversion exit parameter block
+    /// * `pMsgDesc` (Input/Output): Message descriptor
+    /// * `InBufferLength`: Length in bytes of InBuffer
+    /// * `pInBuffer`: Buffer containing the unconverted message
+    /// * `OutBufferLength`: Length in bytes of OutBuffer
+    /// * `pOutBuffer` (Output): Buffer containing the converted message
     pub fn MQXDX(
         pDataConvExitParms: PMQDXP,
         pMsgDesc: PMQMD,
@@ -3392,11 +3392,11 @@ unsafe extern "C" {
     );
     /// Add Component Entry Point
     /// # Arguments
-    /// * `Hconfig`: I: Configuration handle
-    /// * `Function`: I: Function identifier
-    /// * `pEntryPoint`: I: Function entry point
-    /// * `pCompCode`: OC: Completion code
-    /// * `pReason`: OR: Reason code qualifying CompCode
+    /// * `Hconfig`: Configuration handle
+    /// * `Function`: Function identifier
+    /// * `pEntryPoint`: Function entry point
+    /// * `pCompCode` (Output): Completion code
+    /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQZEP(
         Hconfig: MQHCONFIG,
         Function: MQLONG,

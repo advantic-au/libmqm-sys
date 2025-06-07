@@ -209,11 +209,11 @@ pub type MQXQH = tagMQXQH;
 pub type PMQXQH = *mut MQXQH;
 /// Message Consumer routine (Called by MQ)
 /// # Arguments
-/// * `Hconn`: I: Connection handle
-/// * `pMsgDesc`: I: Message descriptor
-/// * `pGetMsgOpts`: I: Area containing the MQGMO
-/// * `pBuffer`: I: Area containing the message data
-/// * `pContext`: I: Area containing the Consumer context
+/// * `Hconn`: Connection handle
+/// * `pMsgDesc`: Message descriptor
+/// * `pGetMsgOpts`: Area containing the MQGMO
+/// * `pBuffer`: Area containing the message data
+/// * `pContext`: Area containing the Consumer context
 pub type MQCB_FUNCTION = ::std::option::Option<
     unsafe extern "C" fn(
         Hconn: MQHCONN,
@@ -3768,16 +3768,16 @@ pub const MQSR_ACTION_PUBLICATION: MQLONG = 1;
 unsafe extern "C" {
     /// Back Out Changes
     /// # Arguments
-    /// * `Hconn`: I: Connection handle
-    /// * `pCompCode`: OC: Completion code
-    /// * `pReason`: OR: Reason code qualifying CompCode
+    /// * `Hconn`: Connection handle
+    /// * `pCompCode` (Output): Completion code
+    /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQBACK(Hconn: MQHCONN, pCompCode: PMQLONG, pReason: PMQLONG);
     /// Begin Unit of Work
     /// # Arguments
-    /// * `Hconn`: I: Connection handle
-    /// * `pBeginOptions`: IO: Options that control the action of MQBEGIN
-    /// * `pCompCode`: OC: Completion code
-    /// * `pReason`: OR: Reason code qualifying CompCode
+    /// * `Hconn`: Connection handle
+    /// * `pBeginOptions` (Input/Output): Options that control the action of MQBEGIN
+    /// * `pCompCode` (Output): Completion code
+    /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQBEGIN(
         Hconn: MQHCONN,
         pBeginOptions: PMQVOID,
@@ -3786,15 +3786,15 @@ unsafe extern "C" {
     );
     /// Buffer To Message Handle
     /// # Arguments
-    /// * `Hconn`: I: Connection handle
-    /// * `Hmsg`: I: Message handle
-    /// * `pBufMsgHOpts`: I: Options that control the action of MQBUFMH
-    /// * `pMsgDesc`: IO: Message descriptor
-    /// * `BufferLength`: IL: Length in bytes of the Buffer area
-    /// * `pBuffer`: IOB: Area to contain the message buffer
-    /// * `pDataLength`: O: Length of the output buffer
-    /// * `pCompCode`: OC: Completion code
-    /// * `pReason`: OR: Reason code qualifying CompCode
+    /// * `Hconn`: Connection handle
+    /// * `Hmsg`: Message handle
+    /// * `pBufMsgHOpts`: Options that control the action of MQBUFMH
+    /// * `pMsgDesc` (Input/Output): Message descriptor
+    /// * `BufferLength`: Length in bytes of the Buffer area
+    /// * `pBuffer` (Input/Output): Area to contain the message buffer
+    /// * `pDataLength` (Output): Length of the output buffer
+    /// * `pCompCode` (Output): Completion code
+    /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQBUFMH(
         Hconn: MQHCONN,
         Hmsg: MQHMSG,
@@ -3808,14 +3808,14 @@ unsafe extern "C" {
     );
     /// Register Message consumer
     /// # Arguments
-    /// * `Hconn`: I: Connection handle
-    /// * `Operation`: I: Operation
-    /// * `pCallbackDesc`: I: Callback descriptor
-    /// * `Hobj`: I: Object handle
-    /// * `pMsgDesc`: I: Message Descriptor
-    /// * `pGetMsgOpts`: I: Get options
-    /// * `pCompCode`: OC: Completion code
-    /// * `pReason`: OR: Reason code qualifying CompCode
+    /// * `Hconn`: Connection handle
+    /// * `Operation`: Operation
+    /// * `pCallbackDesc`: Callback descriptor
+    /// * `Hobj`: Object handle
+    /// * `pMsgDesc`: Message Descriptor
+    /// * `pGetMsgOpts`: Get options
+    /// * `pCompCode` (Output): Completion code
+    /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQCB(
         Hconn: MQHCONN,
         Operation: MQLONG,
@@ -3828,11 +3828,11 @@ unsafe extern "C" {
     );
     /// Close Object
     /// # Arguments
-    /// * `Hconn`: I: Connection handle
-    /// * `pHobj`: IO: Object handle
-    /// * `Options`: I: Options that control the action of MQCLOSE
-    /// * `pCompCode`: OC: Completion code
-    /// * `pReason`: OR: Reason code qualifying CompCode
+    /// * `Hconn`: Connection handle
+    /// * `pHobj` (Input/Output): Object handle
+    /// * `Options`: Options that control the action of MQCLOSE
+    /// * `pCompCode` (Output): Completion code
+    /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQCLOSE(
         Hconn: MQHCONN,
         pHobj: PMQHOBJ,
@@ -3842,16 +3842,16 @@ unsafe extern "C" {
     );
     /// Commit Changes
     /// # Arguments
-    /// * `Hconn`: I: Connection handle
-    /// * `pCompCode`: OC: Completion code
-    /// * `pReason`: OR: Reason code qualifying CompCode
+    /// * `Hconn`: Connection handle
+    /// * `pCompCode` (Output): Completion code
+    /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQCMIT(Hconn: MQHCONN, pCompCode: PMQLONG, pReason: PMQLONG);
     /// Connect Queue Manager
     /// # Arguments
-    /// * `pQMgrName`: I: Name of queue manager
-    /// * `pHconn`: O: Connection handle
-    /// * `pCompCode`: OC: Completion code
-    /// * `pReason`: OR: Reason code qualifying CompCode
+    /// * `pQMgrName`: Name of queue manager
+    /// * `pHconn` (Output): Connection handle
+    /// * `pCompCode` (Output): Completion code
+    /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQCONN(
         pQMgrName: PMQCHAR,
         pHconn: PMQHCONN,
@@ -3860,11 +3860,11 @@ unsafe extern "C" {
     );
     /// Connect Queue Manager (Extended)
     /// # Arguments
-    /// * `pQMgrName`: I: Name of queue manager
-    /// * `pConnectOpts`: IO: Options that control the action of MQCONNX
-    /// * `pHconn`: O: Connection handle
-    /// * `pCompCode`: OC: Completion code
-    /// * `pReason`: OR: Reason code qualifying CompCode
+    /// * `pQMgrName`: Name of queue manager
+    /// * `pConnectOpts` (Input/Output): Options that control the action of MQCONNX
+    /// * `pHconn` (Output): Connection handle
+    /// * `pCompCode` (Output): Completion code
+    /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQCONNX(
         pQMgrName: PMQCHAR,
         pConnectOpts: PMQCNO,
@@ -3874,11 +3874,11 @@ unsafe extern "C" {
     );
     /// Create Message Handle
     /// # Arguments
-    /// * `Hconn`: I: Connection handle
-    /// * `pCrtMsgHOpts`: I: Options that control the action of MQCRTMH
-    /// * `pHmsg`: O: Message handle
-    /// * `pCompCode`: OC: Completion code
-    /// * `pReason`: OR: Reason code qualifying CompCode
+    /// * `Hconn`: Connection handle
+    /// * `pCrtMsgHOpts`: Options that control the action of MQCRTMH
+    /// * `pHmsg` (Output): Message handle
+    /// * `pCompCode` (Output): Completion code
+    /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQCRTMH(
         Hconn: MQHCONN,
         pCrtMsgHOpts: PMQVOID,
@@ -3888,11 +3888,11 @@ unsafe extern "C" {
     );
     /// Control Consumer
     /// # Arguments
-    /// * `Hconn`: I: Connection handle
-    /// * `Operation`: I: Operation
-    /// * `pControlOpts`: I: Control options
-    /// * `pCompCode`: OC: Completion code
-    /// * `pReason`: OR: Reason code qualifying CompCode
+    /// * `Hconn`: Connection handle
+    /// * `Operation`: Operation
+    /// * `pControlOpts`: Control options
+    /// * `pCompCode` (Output): Completion code
+    /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQCTL(
         Hconn: MQHCONN,
         Operation: MQLONG,
@@ -3902,17 +3902,17 @@ unsafe extern "C" {
     );
     /// Disconnect Queue Manager
     /// # Arguments
-    /// * `pHconn`: IO: Connection handle
-    /// * `pCompCode`: OC: Completion code
-    /// * `pReason`: OR: Reason code qualifying CompCode
+    /// * `pHconn` (Input/Output): Connection handle
+    /// * `pCompCode` (Output): Completion code
+    /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQDISC(pHconn: PMQHCONN, pCompCode: PMQLONG, pReason: PMQLONG);
     /// Delete Message Handle
     /// # Arguments
-    /// * `Hconn`: I: Connection handle
-    /// * `pHmsg`: IO: Message handle
-    /// * `pDltMsgHOpts`: I: Options that control the action of MQDLTMH
-    /// * `pCompCode`: OC: Completion code
-    /// * `pReason`: OR: Reason code qualifying CompCode
+    /// * `Hconn`: Connection handle
+    /// * `pHmsg` (Input/Output): Message handle
+    /// * `pDltMsgHOpts`: Options that control the action of MQDLTMH
+    /// * `pCompCode` (Output): Completion code
+    /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQDLTMH(
         Hconn: MQHCONN,
         pHmsg: PMQHMSG,
@@ -3922,12 +3922,12 @@ unsafe extern "C" {
     );
     /// Delete Message Property
     /// # Arguments
-    /// * `Hconn`: I: Connection handle
-    /// * `Hmsg`: I: Message handle
-    /// * `pDltPropOpts`: I: Options that control the action of MQDLTMP
-    /// * `pName`: I: Property name
-    /// * `pCompCode`: OC: Completion code
-    /// * `pReason`: OR: Reason code qualifying CompCode
+    /// * `Hconn`: Connection handle
+    /// * `Hmsg`: Message handle
+    /// * `pDltPropOpts`: Options that control the action of MQDLTMP
+    /// * `pName`: Property name
+    /// * `pCompCode` (Output): Completion code
+    /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQDLTMP(
         Hconn: MQHCONN,
         Hmsg: MQHMSG,
@@ -3938,15 +3938,15 @@ unsafe extern "C" {
     );
     /// Get Message
     /// # Arguments
-    /// * `Hconn`: I: Connection handle
-    /// * `Hobj`: I: Object handle
-    /// * `pMsgDesc`: IO: Message descriptor
-    /// * `pGetMsgOpts`: IO: Options that control the action of MQGET
-    /// * `BufferLength`: IL: Length in bytes of the Buffer area
-    /// * `pBuffer`: OB: Area to contain the message data
-    /// * `pDataLength`: O: Length of the message
-    /// * `pCompCode`: OC: Completion code
-    /// * `pReason`: OR: Reason code qualifying CompCode
+    /// * `Hconn`: Connection handle
+    /// * `Hobj`: Object handle
+    /// * `pMsgDesc` (Input/Output): Message descriptor
+    /// * `pGetMsgOpts` (Input/Output): Options that control the action of MQGET
+    /// * `BufferLength`: Length in bytes of the Buffer area
+    /// * `pBuffer` (Output): Area to contain the message data
+    /// * `pDataLength` (Output): Length of the message
+    /// * `pCompCode` (Output): Completion code
+    /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQGET(
         Hconn: MQHCONN,
         Hobj: MQHOBJ,
@@ -3960,16 +3960,16 @@ unsafe extern "C" {
     );
     /// Inquire Object Attributes
     /// # Arguments
-    /// * `Hconn`: I: Connection handle
-    /// * `Hobj`: I: Object handle
-    /// * `SelectorCount`: I: Count of selectors
-    /// * `pSelectors`: I: Array of attribute selectors
-    /// * `IntAttrCount`: I: Count of integer attributes
-    /// * `pIntAttrs`: O: Array of integer attributes
-    /// * `CharAttrLength`: IL: Length of character attributes buffer
-    /// * `pCharAttrs`: OB: Character attributes
-    /// * `pCompCode`: OC: Completion code
-    /// * `pReason`: OR: Reason code qualifying CompCode
+    /// * `Hconn`: Connection handle
+    /// * `Hobj`: Object handle
+    /// * `SelectorCount`: Count of selectors
+    /// * `pSelectors`: Array of attribute selectors
+    /// * `IntAttrCount`: Count of integer attributes
+    /// * `pIntAttrs` (Output): Array of integer attributes
+    /// * `CharAttrLength`: Length of character attributes buffer
+    /// * `pCharAttrs` (Output): Character attributes
+    /// * `pCompCode` (Output): Completion code
+    /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQINQ(
         Hconn: MQHCONN,
         Hobj: MQHOBJ,
@@ -3984,17 +3984,17 @@ unsafe extern "C" {
     );
     /// Inquire Message Property
     /// # Arguments
-    /// * `Hconn`: I: Connection handle
-    /// * `Hmsg`: I: Message handle
-    /// * `pInqPropOpts`: I: Options that control the action of MQINQMP
-    /// * `pName`: I: Property name
-    /// * `pPropDesc`: O: Property descriptor
-    /// * `pType`: IO: Property data type
-    /// * `ValueLength`: IL: Length in bytes of the Value area
-    /// * `pValue`: OB: Property value
-    /// * `pDataLength`: O: Length of the property value
-    /// * `pCompCode`: OC: Completion code
-    /// * `pReason`: OR: Reason code qualifying CompCode
+    /// * `Hconn`: Connection handle
+    /// * `Hmsg`: Message handle
+    /// * `pInqPropOpts`: Options that control the action of MQINQMP
+    /// * `pName`: Property name
+    /// * `pPropDesc` (Output): Property descriptor
+    /// * `pType` (Input/Output): Property data type
+    /// * `ValueLength`: Length in bytes of the Value area
+    /// * `pValue` (Output): Property value
+    /// * `pDataLength` (Output): Length of the property value
+    /// * `pCompCode` (Output): Completion code
+    /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQINQMP(
         Hconn: MQHCONN,
         Hmsg: MQHMSG,
@@ -4010,16 +4010,16 @@ unsafe extern "C" {
     );
     /// Message Handle To Buffer
     /// # Arguments
-    /// * `Hconn`: I: Connection handle
-    /// * `Hmsg`: I: Message handle
-    /// * `pMsgHBufOpts`: I: Options that control the action of MQMHBUF
-    /// * `pName`: I: Property name
-    /// * `pMsgDesc`: IO: Message descriptor
-    /// * `BufferLength`: IL: Length in bytes of the Buffer area
-    /// * `pBuffer`: OB: Area to contain the properties
-    /// * `pDataLength`: O: Length of the properties
-    /// * `pCompCode`: OC: Completion code
-    /// * `pReason`: OR: Reason code qualifying CompCode
+    /// * `Hconn`: Connection handle
+    /// * `Hmsg`: Message handle
+    /// * `pMsgHBufOpts`: Options that control the action of MQMHBUF
+    /// * `pName`: Property name
+    /// * `pMsgDesc` (Input/Output): Message descriptor
+    /// * `BufferLength`: Length in bytes of the Buffer area
+    /// * `pBuffer` (Output): Area to contain the properties
+    /// * `pDataLength` (Output): Length of the properties
+    /// * `pCompCode` (Output): Completion code
+    /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQMHBUF(
         Hconn: MQHCONN,
         Hmsg: MQHMSG,
@@ -4034,12 +4034,12 @@ unsafe extern "C" {
     );
     /// Open Object
     /// # Arguments
-    /// * `Hconn`: I: Connection handle
-    /// * `pObjDesc`: IO: Object descriptor
-    /// * `Options`: I: Options that control the action of MQOPEN
-    /// * `pHobj`: O: Object handle
-    /// * `pCompCode`: OC: Completion code
-    /// * `pReason`: OR: Reason code qualifying CompCode
+    /// * `Hconn`: Connection handle
+    /// * `pObjDesc` (Input/Output): Object descriptor
+    /// * `Options`: Options that control the action of MQOPEN
+    /// * `pHobj` (Output): Object handle
+    /// * `pCompCode` (Output): Completion code
+    /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQOPEN(
         Hconn: MQHCONN,
         pObjDesc: PMQVOID,
@@ -4050,14 +4050,14 @@ unsafe extern "C" {
     );
     /// Put Message
     /// # Arguments
-    /// * `Hconn`: I: Connection handle
-    /// * `Hobj`: I: Object handle
-    /// * `pMsgDesc`: IO: Message descriptor
-    /// * `pPutMsgOpts`: IO: Options that control the action of MQPUT
-    /// * `BufferLength`: IL: Length of the message in Buffer
-    /// * `pBuffer`: IB: Message data
-    /// * `pCompCode`: OC: Completion code
-    /// * `pReason`: OR: Reason code qualifying CompCode
+    /// * `Hconn`: Connection handle
+    /// * `Hobj`: Object handle
+    /// * `pMsgDesc` (Input/Output): Message descriptor
+    /// * `pPutMsgOpts` (Input/Output): Options that control the action of MQPUT
+    /// * `BufferLength`: Length of the message in Buffer
+    /// * `pBuffer`: Message data
+    /// * `pCompCode` (Output): Completion code
+    /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQPUT(
         Hconn: MQHCONN,
         Hobj: MQHOBJ,
@@ -4070,14 +4070,14 @@ unsafe extern "C" {
     );
     /// Put One Message
     /// # Arguments
-    /// * `Hconn`: I: Connection handle
-    /// * `pObjDesc`: IO: Object descriptor
-    /// * `pMsgDesc`: IO: Message descriptor
-    /// * `pPutMsgOpts`: IO: Options that control the action of MQPUT1
-    /// * `BufferLength`: IL: Length of the message in Buffer
-    /// * `pBuffer`: IB: Message data
-    /// * `pCompCode`: OC: Completion code
-    /// * `pReason`: OR: Reason code qualifying CompCode
+    /// * `Hconn`: Connection handle
+    /// * `pObjDesc` (Input/Output): Object descriptor
+    /// * `pMsgDesc` (Input/Output): Message descriptor
+    /// * `pPutMsgOpts` (Input/Output): Options that control the action of MQPUT1
+    /// * `BufferLength`: Length of the message in Buffer
+    /// * `pBuffer`: Message data
+    /// * `pCompCode` (Output): Completion code
+    /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQPUT1(
         Hconn: MQHCONN,
         pObjDesc: PMQVOID,
@@ -4090,16 +4090,16 @@ unsafe extern "C" {
     );
     /// Set Object Attributes
     /// # Arguments
-    /// * `Hconn`: I: Connection handle
-    /// * `Hobj`: I: Object handle
-    /// * `SelectorCount`: I: Count of selectors
-    /// * `pSelectors`: I: Array of attribute selectors
-    /// * `IntAttrCount`: I: Count of integer attributes
-    /// * `pIntAttrs`: I: Array of integer attributes
-    /// * `CharAttrLength`: IL: Length of character attributes buffer
-    /// * `pCharAttrs`: IB: Character attributes
-    /// * `pCompCode`: OC: Completion code
-    /// * `pReason`: OR: Reason code qualifying CompCode
+    /// * `Hconn`: Connection handle
+    /// * `Hobj`: Object handle
+    /// * `SelectorCount`: Count of selectors
+    /// * `pSelectors`: Array of attribute selectors
+    /// * `IntAttrCount`: Count of integer attributes
+    /// * `pIntAttrs`: Array of integer attributes
+    /// * `CharAttrLength`: Length of character attributes buffer
+    /// * `pCharAttrs`: Character attributes
+    /// * `pCompCode` (Output): Completion code
+    /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQSET(
         Hconn: MQHCONN,
         Hobj: MQHOBJ,
@@ -4114,16 +4114,16 @@ unsafe extern "C" {
     );
     /// Set Message Property
     /// # Arguments
-    /// * `Hconn`: I: Connection handle
-    /// * `Hmsg`: I: Message handle
-    /// * `pSetPropOpts`: I: Options that control the action of MQSETMP
-    /// * `pName`: I: Property name
-    /// * `pPropDesc`: IO: Property descriptor
-    /// * `Type`: I: Property data type
-    /// * `ValueLength`: IL: Length of the Value area
-    /// * `pValue`: IB: Property value
-    /// * `pCompCode`: OC: Completion code
-    /// * `pReason`: OR: Reason code qualifying CompCode
+    /// * `Hconn`: Connection handle
+    /// * `Hmsg`: Message handle
+    /// * `pSetPropOpts`: Options that control the action of MQSETMP
+    /// * `pName`: Property name
+    /// * `pPropDesc` (Input/Output): Property descriptor
+    /// * `Type`: Property data type
+    /// * `ValueLength`: Length of the Value area
+    /// * `pValue`: Property value
+    /// * `pCompCode` (Output): Completion code
+    /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQSETMP(
         Hconn: MQHCONN,
         Hmsg: MQHMSG,
@@ -4138,11 +4138,11 @@ unsafe extern "C" {
     );
     /// Get Status Information
     /// # Arguments
-    /// * `Hconn`: I: Connection handle
-    /// * `Type`: I: Status information type
-    /// * `pStatus`: IO: Status information
-    /// * `pCompCode`: OC: Completion code
-    /// * `pReason`: OR: Reason code qualifying CompCode
+    /// * `Hconn`: Connection handle
+    /// * `Type`: Status information type
+    /// * `pStatus` (Input/Output): Status information
+    /// * `pCompCode` (Output): Completion code
+    /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQSTAT(
         Hconn: MQHCONN,
         Type: MQLONG,
@@ -4152,12 +4152,12 @@ unsafe extern "C" {
     );
     /// Subscribe to topic
     /// # Arguments
-    /// * `Hconn`: I: Connection handle
-    /// * `pSubDesc`: IO: Subscription descriptor
-    /// * `pHobj`: IO: Object handle for queue
-    /// * `pHsub`: O: Subscription object handle
-    /// * `pCompCode`: OC: Completion code
-    /// * `pReason`: OR: Reason code qualifying CompCode
+    /// * `Hconn`: Connection handle
+    /// * `pSubDesc` (Input/Output): Subscription descriptor
+    /// * `pHobj` (Input/Output): Object handle for queue
+    /// * `pHsub` (Output): Subscription object handle
+    /// * `pCompCode` (Output): Completion code
+    /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQSUB(
         Hconn: MQHCONN,
         pSubDesc: PMQVOID,
@@ -4168,12 +4168,12 @@ unsafe extern "C" {
     );
     /// Subscription Request
     /// # Arguments
-    /// * `Hconn`: I: Connection handle
-    /// * `Hsub`: I: Subscription handle
-    /// * `Action`: I: Action requested on the subscription
-    /// * `pSubRqOpts`: IO: Subscription Request Options
-    /// * `pCompCode`: OC: Completion code
-    /// * `pReason`: OR: Reason code qualifying CompCode
+    /// * `Hconn`: Connection handle
+    /// * `Hsub`: Subscription handle
+    /// * `Action`: Action requested on the subscription
+    /// * `pSubRqOpts` (Input/Output): Subscription Request Options
+    /// * `pCompCode` (Output): Completion code
+    /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQSUBRQ(
         Hconn: MQHCONN,
         Hsub: MQHOBJ,
