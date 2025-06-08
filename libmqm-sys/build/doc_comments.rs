@@ -261,7 +261,7 @@ impl VisitMut for DocCommentFields<'_> {
 }
 
 fn doc_comment_args(args: &[(String, String)]) -> Vec<Attribute> {
-    let mut arg_attrs: Vec<Attribute> = vec![syn::parse_quote!(#[doc = " # Arguments"])];
+    let mut arg_attrs: Vec<Attribute> = vec![syn::parse_quote!(#[doc = ""]), syn::parse_quote!(#[doc = " # Arguments"])];
     arg_attrs.extend(args.iter().map(|(name, description)| {
         let dir_desc = match description.split_once(':') {
             Some(("O" | "OC" | "OR" | "OB" | "OL", desc)) => Cow::Owned(format!(" (Output):{desc}")),

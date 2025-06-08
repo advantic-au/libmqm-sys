@@ -56,6 +56,7 @@ pub const MQHB_UNUSABLE_HBAG: MQLONG = -1;
 pub const MQHB_NONE: MQLONG = -2;
 unsafe extern "C" {
     /// Add Nested Bag to Bag
+    ///
     /// # Arguments
     /// * `Bag`: Bag handle
     /// * `Selector`: Item selector
@@ -66,10 +67,11 @@ unsafe extern "C" {
         Bag: MQHBAG,
         Selector: MQLONG,
         ItemValue: MQHBAG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Add Byte String to Bag
+    ///
     /// # Arguments
     /// * `Bag`: Bag handle
     /// * `Selector`: Item selector
@@ -82,10 +84,11 @@ unsafe extern "C" {
         Selector: MQLONG,
         BufferLength: MQLONG,
         pBuffer: PMQBYTE,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Add Byte String Filter to Bag
+    ///
     /// # Arguments
     /// * `Bag`: Bag handle
     /// * `Selector`: Item selector
@@ -100,10 +103,11 @@ unsafe extern "C" {
         BufferLength: MQLONG,
         pBuffer: PMQBYTE,
         Operator: MQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Add an Inquiry Item to Bag
+    ///
     /// # Arguments
     /// * `Bag`: Bag handle
     /// * `Selector`: Attribute selector
@@ -112,10 +116,11 @@ unsafe extern "C" {
     pub fn mqAddInquiry(
         Bag: MQHBAG,
         Selector: MQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Add Integer to Bag
+    ///
     /// # Arguments
     /// * `Bag`: Bag handle
     /// * `Selector`: Item selector
@@ -126,10 +131,11 @@ unsafe extern "C" {
         Bag: MQHBAG,
         Selector: MQLONG,
         ItemValue: MQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Add 64-bit Integer to Bag
+    ///
     /// # Arguments
     /// * `Bag`: Bag handle
     /// * `Selector`: Item selector
@@ -140,10 +146,11 @@ unsafe extern "C" {
         Bag: MQHBAG,
         Selector: MQLONG,
         ItemValue: MQINT64,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Add Integer Filter to Bag
+    ///
     /// # Arguments
     /// * `Bag`: Bag handle
     /// * `Selector`: Item selector
@@ -156,10 +163,11 @@ unsafe extern "C" {
         Selector: MQLONG,
         ItemValue: MQLONG,
         Operator: MQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Add String to Bag
+    ///
     /// # Arguments
     /// * `Bag`: Bag handle
     /// * `Selector`: Item selector
@@ -172,10 +180,11 @@ unsafe extern "C" {
         Selector: MQLONG,
         BufferLength: MQLONG,
         pBuffer: PMQCHAR,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Add String Filter to Bag
+    ///
     /// # Arguments
     /// * `Bag`: Bag handle
     /// * `Selector`: Item selector
@@ -190,10 +199,11 @@ unsafe extern "C" {
         BufferLength: MQLONG,
         pBuffer: PMQCHAR,
         Operator: MQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Convert Bag to PCF
+    ///
     /// # Arguments
     /// * `OptionsBag`: Handle of options bag
     /// * `DataBag`: Handle of data bag
@@ -208,10 +218,11 @@ unsafe extern "C" {
         BufferLength: MQLONG,
         pBuffer: PMQVOID,
         pDataLength: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Convert PCF to Bag
+    ///
     /// # Arguments
     /// * `OptionsBag`: Handle of options bag
     /// * `BufferLength`: Length of buffer
@@ -224,16 +235,18 @@ unsafe extern "C" {
         BufferLength: MQLONG,
         pBuffer: PMQVOID,
         DataBag: MQHBAG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Delete All Items in Bag
+    ///
     /// # Arguments
     /// * `Bag`: Bag handle
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying CompCode
-    pub fn mqClearBag(Bag: MQHBAG, pCompCode: PMQLONG, pReason: PMQLONG);
+    pub fn mqClearBag(Bag: MQHBAG, pCompCode: &mut MQLONG, pReason: &mut MQLONG);
     /// Count Items in Bag
+    ///
     /// # Arguments
     /// * `Bag`: Bag handle
     /// * `Selector`: Item selector
@@ -244,10 +257,11 @@ unsafe extern "C" {
         Bag: MQHBAG,
         Selector: MQLONG,
         pItemCount: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Create Bag
+    ///
     /// # Arguments
     /// * `Options`: Bag options
     /// * `pBag` (Output): Handle of bag created
@@ -256,16 +270,18 @@ unsafe extern "C" {
     pub fn mqCreateBag(
         Options: MQLONG,
         pBag: PMQHBAG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Delete Bag
+    ///
     /// # Arguments
     /// * `pBag` (Input/Output): Bag handle
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying CompCode
-    pub fn mqDeleteBag(pBag: PMQHBAG, pCompCode: PMQLONG, pReason: PMQLONG);
+    pub fn mqDeleteBag(pBag: PMQHBAG, pCompCode: &mut MQLONG, pReason: &mut MQLONG);
     /// Delete Item in Bag
+    ///
     /// # Arguments
     /// * `Bag`: Bag handle
     /// * `Selector`: Item selector
@@ -276,10 +292,11 @@ unsafe extern "C" {
         Bag: MQHBAG,
         Selector: MQLONG,
         ItemIndex: MQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Send Admin Command and Receive Reponse
+    ///
     /// # Arguments
     /// * `Hconn`: Connection handle
     /// * `Command`: Command identifier
@@ -298,10 +315,11 @@ unsafe extern "C" {
         ResponseBag: MQHBAG,
         AdminQ: MQHOBJ,
         ResponseQ: MQHOBJ,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Receive PCF Message into Bag
+    ///
     /// # Arguments
     /// * `Hconn`: Connection handle
     /// * `Hobj`: Queue handle
@@ -316,10 +334,11 @@ unsafe extern "C" {
         pMsgDesc: PMQVOID,
         pGetMsgOpts: PMQVOID,
         Bag: MQHBAG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Inquire Handle in Bag
+    ///
     /// # Arguments
     /// * `Bag`: Bag handle
     /// * `Selector`: Item selector
@@ -332,10 +351,11 @@ unsafe extern "C" {
         Selector: MQLONG,
         ItemIndex: MQLONG,
         pItemValue: PMQHBAG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Inquire Byte String in Bag
+    ///
     /// # Arguments
     /// * `Bag`: Bag handle
     /// * `Selector`: Item selector
@@ -352,10 +372,11 @@ unsafe extern "C" {
         BufferLength: MQLONG,
         pBuffer: PMQBYTE,
         pByteStringLength: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Inquire Byte String Filter in Bag
+    ///
     /// # Arguments
     /// * `Bag`: Bag handle
     /// * `Selector`: Item selector
@@ -374,10 +395,11 @@ unsafe extern "C" {
         pBuffer: PMQBYTE,
         pByteStringLength: PMQLONG,
         pOperator: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Inquire Integer in Bag
+    ///
     /// # Arguments
     /// * `Bag`: Bag handle
     /// * `Selector`: Item selector
@@ -390,10 +412,11 @@ unsafe extern "C" {
         Selector: MQLONG,
         ItemIndex: MQLONG,
         pItemValue: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Inquire 64-bit Integer in Bag
+    ///
     /// # Arguments
     /// * `Bag`: Bag handle
     /// * `Selector`: Item selector
@@ -406,10 +429,11 @@ unsafe extern "C" {
         Selector: MQLONG,
         ItemIndex: MQLONG,
         pItemValue: PMQINT64,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Inquire Integer Filter in Bag
+    ///
     /// # Arguments
     /// * `Bag`: Bag handle
     /// * `Selector`: Item selector
@@ -424,10 +448,11 @@ unsafe extern "C" {
         ItemIndex: MQLONG,
         pItemValue: PMQLONG,
         pOperator: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Inquire Attributes of Item in Bag
+    ///
     /// # Arguments
     /// * `Bag`: Bag handle
     /// * `Selector`: Item selector
@@ -442,10 +467,11 @@ unsafe extern "C" {
         ItemIndex: MQLONG,
         pOutSelector: PMQLONG,
         pItemType: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Inquire String in Bag
+    ///
     /// # Arguments
     /// * `Bag`: Bag handle
     /// * `Selector`: Item selector
@@ -464,10 +490,11 @@ unsafe extern "C" {
         pBuffer: PMQCHAR,
         pStringLength: PMQLONG,
         pCodedCharSetId: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Inquire String Filter in Bag
+    ///
     /// # Arguments
     /// * `Bag`: Bag handle
     /// * `Selector`: Item selector
@@ -488,10 +515,11 @@ unsafe extern "C" {
         pStringLength: PMQLONG,
         pCodedCharSetId: PMQLONG,
         pOperator: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Pad Null-terminated String with Blanks
+    ///
     /// # Arguments
     /// * `pString`: Null-terminated string to be padded
     /// * `BufferLength`: Length of buffer
@@ -502,10 +530,11 @@ unsafe extern "C" {
         pString: PMQCHAR,
         BufferLength: MQLONG,
         pBuffer: PMQCHAR,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Send Bag as PCF Message
+    ///
     /// # Arguments
     /// * `Hconn`: Connection handle
     /// * `Hobj`: Queue handle
@@ -520,10 +549,11 @@ unsafe extern "C" {
         pMsgDesc: PMQVOID,
         pPutMsgOpts: PMQVOID,
         Bag: MQHBAG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Modify Byte String in Bag
+    ///
     /// # Arguments
     /// * `Bag`: Bag handle
     /// * `Selector`: Item selector
@@ -538,10 +568,11 @@ unsafe extern "C" {
         ItemIndex: MQLONG,
         BufferLength: MQLONG,
         pBuffer: PMQBYTE,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Modify Byte String Filter in Bag
+    ///
     /// # Arguments
     /// * `Bag`: Bag handle
     /// * `Selector`: Item selector
@@ -558,10 +589,11 @@ unsafe extern "C" {
         BufferLength: MQLONG,
         pBuffer: PMQBYTE,
         Operator: MQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Modify Integer in Bag
+    ///
     /// # Arguments
     /// * `Bag`: Bag handle
     /// * `Selector`: Item selector
@@ -574,10 +606,11 @@ unsafe extern "C" {
         Selector: MQLONG,
         ItemIndex: MQLONG,
         ItemValue: MQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Modify 64-bit Integer in Bag
+    ///
     /// # Arguments
     /// * `Bag`: Bag handle
     /// * `Selector`: Item selector
@@ -590,10 +623,11 @@ unsafe extern "C" {
         Selector: MQLONG,
         ItemIndex: MQLONG,
         ItemValue: MQINT64,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Modify Integer Filter in Bag
+    ///
     /// # Arguments
     /// * `Bag`: Bag handle
     /// * `Selector`: Item selector
@@ -608,10 +642,11 @@ unsafe extern "C" {
         ItemIndex: MQLONG,
         ItemValue: MQLONG,
         Operator: MQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Modify String in Bag
+    ///
     /// # Arguments
     /// * `Bag`: Bag handle
     /// * `Selector`: Item selector
@@ -626,10 +661,11 @@ unsafe extern "C" {
         ItemIndex: MQLONG,
         BufferLength: MQLONG,
         pBuffer: PMQCHAR,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Modify String Filter in Bag
+    ///
     /// # Arguments
     /// * `Bag`: Bag handle
     /// * `Selector`: Item selector
@@ -646,10 +682,11 @@ unsafe extern "C" {
         BufferLength: MQLONG,
         pBuffer: PMQCHAR,
         Operator: MQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Replace Trailing Blanks with Null Character
+    ///
     /// # Arguments
     /// * `BufferLength`: Length of buffer
     /// * `pBuffer`: Buffer containing blank-padded string
@@ -660,10 +697,11 @@ unsafe extern "C" {
         BufferLength: MQLONG,
         pBuffer: PMQCHAR,
         pString: PMQCHAR,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Delete Trailing Items in Bag
+    ///
     /// # Arguments
     /// * `Bag`: Bag handle
     /// * `ItemCount`: Number of items to remain in bag
@@ -672,7 +710,7 @@ unsafe extern "C" {
     pub fn mqTruncateBag(
         Bag: MQHBAG,
         ItemCount: MQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
 }

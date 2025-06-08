@@ -208,6 +208,7 @@ pub type PMQWIH = *mut MQWIH;
 pub type MQXQH = tagMQXQH;
 pub type PMQXQH = *mut MQXQH;
 /// Message Consumer routine (Called by MQ)
+///
 /// # Arguments
 /// * `Hconn`: Connection handle
 /// * `pMsgDesc`: Message descriptor
@@ -3767,12 +3768,14 @@ pub const MQSO_READ_AHEAD: MQLONG = 268435456;
 pub const MQSR_ACTION_PUBLICATION: MQLONG = 1;
 unsafe extern "C" {
     /// Back Out Changes
+    ///
     /// # Arguments
     /// * `Hconn`: Connection handle
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying CompCode
-    pub fn MQBACK(Hconn: MQHCONN, pCompCode: PMQLONG, pReason: PMQLONG);
+    pub fn MQBACK(Hconn: MQHCONN, pCompCode: &mut MQLONG, pReason: &mut MQLONG);
     /// Begin Unit of Work
+    ///
     /// # Arguments
     /// * `Hconn`: Connection handle
     /// * `pBeginOptions` (Input/Output): Options that control the action of MQBEGIN
@@ -3781,10 +3784,11 @@ unsafe extern "C" {
     pub fn MQBEGIN(
         Hconn: MQHCONN,
         pBeginOptions: PMQVOID,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Buffer To Message Handle
+    ///
     /// # Arguments
     /// * `Hconn`: Connection handle
     /// * `Hmsg`: Message handle
@@ -3803,10 +3807,11 @@ unsafe extern "C" {
         BufferLength: MQLONG,
         pBuffer: PMQVOID,
         pDataLength: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Register Message consumer
+    ///
     /// # Arguments
     /// * `Hconn`: Connection handle
     /// * `Operation`: Operation
@@ -3823,10 +3828,11 @@ unsafe extern "C" {
         Hobj: MQHOBJ,
         pMsgDesc: PMQVOID,
         pGetMsgOpts: PMQVOID,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Close Object
+    ///
     /// # Arguments
     /// * `Hconn`: Connection handle
     /// * `pHobj` (Input/Output): Object handle
@@ -3837,16 +3843,18 @@ unsafe extern "C" {
         Hconn: MQHCONN,
         pHobj: PMQHOBJ,
         Options: MQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Commit Changes
+    ///
     /// # Arguments
     /// * `Hconn`: Connection handle
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying CompCode
-    pub fn MQCMIT(Hconn: MQHCONN, pCompCode: PMQLONG, pReason: PMQLONG);
+    pub fn MQCMIT(Hconn: MQHCONN, pCompCode: &mut MQLONG, pReason: &mut MQLONG);
     /// Connect Queue Manager
+    ///
     /// # Arguments
     /// * `pQMgrName`: Name of queue manager
     /// * `pHconn` (Output): Connection handle
@@ -3855,10 +3863,11 @@ unsafe extern "C" {
     pub fn MQCONN(
         pQMgrName: PMQCHAR,
         pHconn: PMQHCONN,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Connect Queue Manager (Extended)
+    ///
     /// # Arguments
     /// * `pQMgrName`: Name of queue manager
     /// * `pConnectOpts` (Input/Output): Options that control the action of MQCONNX
@@ -3869,10 +3878,11 @@ unsafe extern "C" {
         pQMgrName: PMQCHAR,
         pConnectOpts: PMQCNO,
         pHconn: PMQHCONN,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Create Message Handle
+    ///
     /// # Arguments
     /// * `Hconn`: Connection handle
     /// * `pCrtMsgHOpts`: Options that control the action of MQCRTMH
@@ -3883,10 +3893,11 @@ unsafe extern "C" {
         Hconn: MQHCONN,
         pCrtMsgHOpts: PMQVOID,
         pHmsg: PMQHMSG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Control Consumer
+    ///
     /// # Arguments
     /// * `Hconn`: Connection handle
     /// * `Operation`: Operation
@@ -3897,16 +3908,18 @@ unsafe extern "C" {
         Hconn: MQHCONN,
         Operation: MQLONG,
         pControlOpts: PMQVOID,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Disconnect Queue Manager
+    ///
     /// # Arguments
     /// * `pHconn` (Input/Output): Connection handle
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying CompCode
-    pub fn MQDISC(pHconn: PMQHCONN, pCompCode: PMQLONG, pReason: PMQLONG);
+    pub fn MQDISC(pHconn: PMQHCONN, pCompCode: &mut MQLONG, pReason: &mut MQLONG);
     /// Delete Message Handle
+    ///
     /// # Arguments
     /// * `Hconn`: Connection handle
     /// * `pHmsg` (Input/Output): Message handle
@@ -3917,10 +3930,11 @@ unsafe extern "C" {
         Hconn: MQHCONN,
         pHmsg: PMQHMSG,
         pDltMsgHOpts: PMQVOID,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Delete Message Property
+    ///
     /// # Arguments
     /// * `Hconn`: Connection handle
     /// * `Hmsg`: Message handle
@@ -3933,10 +3947,11 @@ unsafe extern "C" {
         Hmsg: MQHMSG,
         pDltPropOpts: PMQVOID,
         pName: PMQVOID,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Get Message
+    ///
     /// # Arguments
     /// * `Hconn`: Connection handle
     /// * `Hobj`: Object handle
@@ -3955,10 +3970,11 @@ unsafe extern "C" {
         BufferLength: MQLONG,
         pBuffer: PMQVOID,
         pDataLength: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Inquire Object Attributes
+    ///
     /// # Arguments
     /// * `Hconn`: Connection handle
     /// * `Hobj`: Object handle
@@ -3979,10 +3995,11 @@ unsafe extern "C" {
         pIntAttrs: PMQLONG,
         CharAttrLength: MQLONG,
         pCharAttrs: PMQCHAR,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Inquire Message Property
+    ///
     /// # Arguments
     /// * `Hconn`: Connection handle
     /// * `Hmsg`: Message handle
@@ -4005,10 +4022,11 @@ unsafe extern "C" {
         ValueLength: MQLONG,
         pValue: PMQVOID,
         pDataLength: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Message Handle To Buffer
+    ///
     /// # Arguments
     /// * `Hconn`: Connection handle
     /// * `Hmsg`: Message handle
@@ -4029,10 +4047,11 @@ unsafe extern "C" {
         BufferLength: MQLONG,
         pBuffer: PMQVOID,
         pDataLength: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Open Object
+    ///
     /// # Arguments
     /// * `Hconn`: Connection handle
     /// * `pObjDesc` (Input/Output): Object descriptor
@@ -4045,10 +4064,11 @@ unsafe extern "C" {
         pObjDesc: PMQVOID,
         Options: MQLONG,
         pHobj: PMQHOBJ,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Put Message
+    ///
     /// # Arguments
     /// * `Hconn`: Connection handle
     /// * `Hobj`: Object handle
@@ -4065,10 +4085,11 @@ unsafe extern "C" {
         pPutMsgOpts: PMQVOID,
         BufferLength: MQLONG,
         pBuffer: PMQVOID,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Put One Message
+    ///
     /// # Arguments
     /// * `Hconn`: Connection handle
     /// * `pObjDesc` (Input/Output): Object descriptor
@@ -4085,10 +4106,11 @@ unsafe extern "C" {
         pPutMsgOpts: PMQVOID,
         BufferLength: MQLONG,
         pBuffer: PMQVOID,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Set Object Attributes
+    ///
     /// # Arguments
     /// * `Hconn`: Connection handle
     /// * `Hobj`: Object handle
@@ -4109,10 +4131,11 @@ unsafe extern "C" {
         pIntAttrs: PMQLONG,
         CharAttrLength: MQLONG,
         pCharAttrs: PMQCHAR,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Set Message Property
+    ///
     /// # Arguments
     /// * `Hconn`: Connection handle
     /// * `Hmsg`: Message handle
@@ -4133,10 +4156,11 @@ unsafe extern "C" {
         Type: MQLONG,
         ValueLength: MQLONG,
         pValue: PMQVOID,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Get Status Information
+    ///
     /// # Arguments
     /// * `Hconn`: Connection handle
     /// * `Type`: Status information type
@@ -4147,10 +4171,11 @@ unsafe extern "C" {
         Hconn: MQHCONN,
         Type: MQLONG,
         pStatus: PMQVOID,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Subscribe to topic
+    ///
     /// # Arguments
     /// * `Hconn`: Connection handle
     /// * `pSubDesc` (Input/Output): Subscription descriptor
@@ -4163,10 +4188,11 @@ unsafe extern "C" {
         pSubDesc: PMQVOID,
         pHobj: PMQHOBJ,
         pHsub: PMQHOBJ,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Subscription Request
+    ///
     /// # Arguments
     /// * `Hconn`: Connection handle
     /// * `Hsub`: Subscription handle
@@ -4179,8 +4205,8 @@ unsafe extern "C" {
         Hsub: MQHOBJ,
         Action: MQLONG,
         pSubRqOpts: PMQVOID,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
 }
 /// Channel Definition

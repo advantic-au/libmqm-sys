@@ -42,7 +42,7 @@ impl function::Mqi for LinkedMq {
         pQMgrName: lib::PMQCHAR,
         pConnectOpts: lib::PMQCNO,
         pHconn: lib::PMQHCONN,
-        pCompCode: lib::PMQLONG,
+        pCompCode: &mut lib::MQLONG,
         pReason: lib::PMQLONG,
     ) {
         unsafe {

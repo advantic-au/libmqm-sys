@@ -24,6 +24,7 @@ pub type PPMQSD = *mut PMQSD;
 pub type PPMQSRO = *mut PMQSRO;
 pub type PPMQSTS = *mut PMQSTS;
 /// Back Out Changes
+///
 /// # Arguments
 /// * `Hconn`: Connection handle
 /// * `pCompCode` (Output): Completion code
@@ -33,6 +34,7 @@ pub type MQ_BACK_CALL = ::std::option::Option<
 >;
 pub type PMQ_BACK_CALL = MQ_BACK_CALL;
 /// Begin Unit of Work
+///
 /// # Arguments
 /// * `Hconn`: Connection handle
 /// * `pBeginOptions` (Input/Output): Options that control the action of MQBEGIN
@@ -48,6 +50,7 @@ pub type MQ_BEGIN_CALL = ::std::option::Option<
 >;
 pub type PMQ_BEGIN_CALL = MQ_BEGIN_CALL;
 /// Buffer To Message Handle
+///
 /// # Arguments
 /// * `Hconn`: Connection handle
 /// * `Hmsg`: Message handle
@@ -73,6 +76,7 @@ pub type MQ_BUFMH_CALL = ::std::option::Option<
 >;
 pub type PMQ_BUFMH_CALL = MQ_BUFMH_CALL;
 /// Register Message consumer
+///
 /// # Arguments
 /// * `Hconn`: Connection handle
 /// * `Operation`: Operation
@@ -96,6 +100,7 @@ pub type MQ_CB_CALL = ::std::option::Option<
 >;
 pub type PMQ_CB_CALL = MQ_CB_CALL;
 /// Close Object
+///
 /// # Arguments
 /// * `Hconn`: Connection handle
 /// * `pHobj` (Input/Output): Object handle
@@ -113,6 +118,7 @@ pub type MQ_CLOSE_CALL = ::std::option::Option<
 >;
 pub type PMQ_CLOSE_CALL = MQ_CLOSE_CALL;
 /// Commit Changes
+///
 /// # Arguments
 /// * `Hconn`: Connection handle
 /// * `pCompCode` (Output): Completion code
@@ -122,6 +128,7 @@ pub type MQ_CMIT_CALL = ::std::option::Option<
 >;
 pub type PMQ_CMIT_CALL = MQ_CMIT_CALL;
 /// Connect Queue Manager
+///
 /// # Arguments
 /// * `pQMgrName`: Name of queue manager
 /// * `pHconn` (Output): Connection handle
@@ -137,6 +144,7 @@ pub type MQ_CONN_CALL = ::std::option::Option<
 >;
 pub type PMQ_CONN_CALL = MQ_CONN_CALL;
 /// Connect Queue Manager (Extended)
+///
 /// # Arguments
 /// * `pQMgrName`: Name of queue manager
 /// * `pConnectOpts` (Input/Output): Options that control the action of MQCONNX
@@ -154,6 +162,7 @@ pub type MQ_CONNX_CALL = ::std::option::Option<
 >;
 pub type PMQ_CONNX_CALL = MQ_CONNX_CALL;
 /// Create Message Handle
+///
 /// # Arguments
 /// * `Hconn`: Connection handle
 /// * `pCrtMsgHOpts`: Options that control the action of MQCRTMH
@@ -171,6 +180,7 @@ pub type MQ_CRTMH_CALL = ::std::option::Option<
 >;
 pub type PMQ_CRTMH_CALL = MQ_CRTMH_CALL;
 /// Control Consumer
+///
 /// # Arguments
 /// * `Hconn`: Connection handle
 /// * `Operation`: Operation
@@ -188,6 +198,7 @@ pub type MQ_CTL_CALL = ::std::option::Option<
 >;
 pub type PMQ_CTL_CALL = MQ_CTL_CALL;
 /// Disconnect Queue Manager
+///
 /// # Arguments
 /// * `pHconn` (Input/Output): Connection handle
 /// * `pCompCode` (Output): Completion code
@@ -197,6 +208,7 @@ pub type MQ_DISC_CALL = ::std::option::Option<
 >;
 pub type PMQ_DISC_CALL = MQ_DISC_CALL;
 /// Delete Message Handle
+///
 /// # Arguments
 /// * `Hconn`: Connection handle
 /// * `pHmsg` (Input/Output): Message handle
@@ -214,6 +226,7 @@ pub type MQ_DLTMH_CALL = ::std::option::Option<
 >;
 pub type PMQ_DLTMH_CALL = MQ_DLTMH_CALL;
 /// Delete Message Property
+///
 /// # Arguments
 /// * `Hconn`: Connection handle
 /// * `Hmsg`: Message handle
@@ -233,6 +246,7 @@ pub type MQ_DLTMP_CALL = ::std::option::Option<
 >;
 pub type PMQ_DLTMP_CALL = MQ_DLTMP_CALL;
 /// Get Message
+///
 /// # Arguments
 /// * `Hconn`: Connection handle
 /// * `Hobj`: Object handle
@@ -258,6 +272,7 @@ pub type MQ_GET_CALL = ::std::option::Option<
 >;
 pub type PMQ_GET_CALL = MQ_GET_CALL;
 /// Inquire Object Attributes
+///
 /// # Arguments
 /// * `Hconn`: Connection handle
 /// * `Hobj`: Object handle
@@ -285,6 +300,7 @@ pub type MQ_INQ_CALL = ::std::option::Option<
 >;
 pub type PMQ_INQ_CALL = MQ_INQ_CALL;
 /// Inquire Message Property
+///
 /// # Arguments
 /// * `Hconn`: Connection handle
 /// * `Hmsg`: Message handle
@@ -314,6 +330,7 @@ pub type MQ_INQMP_CALL = ::std::option::Option<
 >;
 pub type PMQ_INQMP_CALL = MQ_INQMP_CALL;
 /// Message Handle To Buffer
+///
 /// # Arguments
 /// * `Hconn`: Connection handle
 /// * `Hmsg`: Message handle
@@ -341,6 +358,7 @@ pub type MQ_MHBUF_CALL = ::std::option::Option<
 >;
 pub type PMQ_MHBUF_CALL = MQ_MHBUF_CALL;
 /// Open Object
+///
 /// # Arguments
 /// * `Hconn`: Connection handle
 /// * `pObjDesc` (Input/Output): Object descriptor
@@ -360,6 +378,7 @@ pub type MQ_OPEN_CALL = ::std::option::Option<
 >;
 pub type PMQ_OPEN_CALL = MQ_OPEN_CALL;
 /// Put Message
+///
 /// # Arguments
 /// * `Hconn`: Connection handle
 /// * `Hobj`: Object handle
@@ -383,6 +402,7 @@ pub type MQ_PUT_CALL = ::std::option::Option<
 >;
 pub type PMQ_PUT_CALL = MQ_PUT_CALL;
 /// Put One Message
+///
 /// # Arguments
 /// * `Hconn`: Connection handle
 /// * `pObjDesc` (Input/Output): Object descriptor
@@ -406,6 +426,7 @@ pub type MQ_PUT1_CALL = ::std::option::Option<
 >;
 pub type PMQ_PUT1_CALL = MQ_PUT1_CALL;
 /// Set Object Attributes
+///
 /// # Arguments
 /// * `Hconn`: Connection handle
 /// * `Hobj`: Object handle
@@ -433,6 +454,7 @@ pub type MQ_SET_CALL = ::std::option::Option<
 >;
 pub type PMQ_SET_CALL = MQ_SET_CALL;
 /// Set Message Property
+///
 /// # Arguments
 /// * `Hconn`: Connection handle
 /// * `Hmsg`: Message handle
@@ -460,6 +482,7 @@ pub type MQ_SETMP_CALL = ::std::option::Option<
 >;
 pub type PMQ_SETMP_CALL = MQ_SETMP_CALL;
 /// Get Status Information
+///
 /// # Arguments
 /// * `Hconn`: Connection handle
 /// * `Type`: Status information type
@@ -477,6 +500,7 @@ pub type MQ_STAT_CALL = ::std::option::Option<
 >;
 pub type PMQ_STAT_CALL = MQ_STAT_CALL;
 /// Subscribe to topic
+///
 /// # Arguments
 /// * `Hconn`: Connection handle
 /// * `pSubDesc` (Input/Output): Subscription descriptor
@@ -496,6 +520,7 @@ pub type MQ_SUB_CALL = ::std::option::Option<
 >;
 pub type PMQ_SUB_CALL = MQ_SUB_CALL;
 /// Subscription Request
+///
 /// # Arguments
 /// * `Hconn`: Connection handle
 /// * `Hsub`: Subscription handle
@@ -588,6 +613,7 @@ pub type PMQWXP4 = *mut MQWXP4;
 pub type MQXEPO = tagMQXEPO;
 pub type PMQXEPO = *mut MQXEPO;
 /// Register Entry Point
+///
 /// # Arguments
 /// * `Hconfig`: Configuration handle
 /// * `ExitReason`: Exit reason
@@ -609,6 +635,7 @@ pub type MQ_XEP_CALL = ::std::option::Option<
 >;
 pub type PMQ_XEP_CALL = MQ_XEP_CALL;
 /// Back Out Changes Exit
+///
 /// # Arguments
 /// * `pExitParms` (Input/Output): Exit parameter structure
 /// * `pExitContext` (Input/Output): Exit context structure
@@ -626,6 +653,7 @@ pub type MQ_BACK_EXIT = ::std::option::Option<
 >;
 pub type PMQ_BACK_EXIT = MQ_BACK_EXIT;
 /// Begin Unit of Work Exit
+///
 /// # Arguments
 /// * `pExitParms` (Input/Output): Exit parameter structure
 /// * `pExitContext` (Input/Output): Exit context structure
@@ -645,6 +673,7 @@ pub type MQ_BEGIN_EXIT = ::std::option::Option<
 >;
 pub type PMQ_BEGIN_EXIT = MQ_BEGIN_EXIT;
 /// Callback Function Exit
+///
 /// # Arguments
 /// * `pExitParms` (Input/Output): Exit parameter structure
 /// * `pExitContext` (Input/Output): Exit context structure
@@ -666,6 +695,7 @@ pub type MQ_CALLBACK_EXIT = ::std::option::Option<
 >;
 pub type PMQ_CALLBACK_EXIT = MQ_CALLBACK_EXIT;
 /// Register Callback Exit
+///
 /// # Arguments
 /// * `pExitParms` (Input/Output): Exit parameter structure
 /// * `pExitContext` (Input/Output): Exit context structure
@@ -693,6 +723,7 @@ pub type MQ_CB_EXIT = ::std::option::Option<
 >;
 pub type PMQ_CB_EXIT = MQ_CB_EXIT;
 /// Close Object Exit
+///
 /// # Arguments
 /// * `pExitParms` (Input/Output): Exit parameter structure
 /// * `pExitContext` (Input/Output): Exit context structure
@@ -714,6 +745,7 @@ pub type MQ_CLOSE_EXIT = ::std::option::Option<
 >;
 pub type PMQ_CLOSE_EXIT = MQ_CLOSE_EXIT;
 /// Commit Changes Exit
+///
 /// # Arguments
 /// * `pExitParms` (Input/Output): Exit parameter structure
 /// * `pExitContext` (Input/Output): Exit context structure
@@ -731,6 +763,7 @@ pub type MQ_CMIT_EXIT = ::std::option::Option<
 >;
 pub type PMQ_CMIT_EXIT = MQ_CMIT_EXIT;
 /// Connect Queue Manager Exit
+///
 /// # Arguments
 /// * `pExitParms` (Input/Output): Exit parameter structure
 /// * `pExitContext` (Input/Output): Exit context structure
@@ -752,6 +785,7 @@ pub type MQ_CONNX_EXIT = ::std::option::Option<
 >;
 pub type PMQ_CONNX_EXIT = MQ_CONNX_EXIT;
 /// Control Asynchronous Operations Exit
+///
 /// # Arguments
 /// * `pExitParms` (Input/Output): Exit parameter structure
 /// * `pExitContext` (Input/Output): Exit context structure
@@ -773,6 +807,7 @@ pub type MQ_CTL_EXIT = ::std::option::Option<
 >;
 pub type PMQ_CTL_EXIT = MQ_CTL_EXIT;
 /// Disconnect Queue Manager Exit
+///
 /// # Arguments
 /// * `pExitParms` (Input/Output): Exit parameter structure
 /// * `pExitContext` (Input/Output): Exit context structure
@@ -790,6 +825,7 @@ pub type MQ_DISC_EXIT = ::std::option::Option<
 >;
 pub type PMQ_DISC_EXIT = MQ_DISC_EXIT;
 /// Get Message Exit
+///
 /// # Arguments
 /// * `pExitParms` (Input/Output): Exit parameter structure
 /// * `pExitContext` (Input/Output): Exit context structure
@@ -819,6 +855,7 @@ pub type MQ_GET_EXIT = ::std::option::Option<
 >;
 pub type PMQ_GET_EXIT = MQ_GET_EXIT;
 /// Initialization Exit
+///
 /// # Arguments
 /// * `pExitParms` (Input/Output): Exit parameter structure
 /// * `pExitContext` (Input/Output): Exit context structure
@@ -834,6 +871,7 @@ pub type MQ_INIT_EXIT = ::std::option::Option<
 >;
 pub type PMQ_INIT_EXIT = MQ_INIT_EXIT;
 /// Inquire Object Attributes Exit
+///
 /// # Arguments
 /// * `pExitParms` (Input/Output): Exit parameter structure
 /// * `pExitContext` (Input/Output): Exit context structure
@@ -865,6 +903,7 @@ pub type MQ_INQ_EXIT = ::std::option::Option<
 >;
 pub type PMQ_INQ_EXIT = MQ_INQ_EXIT;
 /// Open Object Exit
+///
 /// # Arguments
 /// * `pExitParms` (Input/Output): Exit parameter structure
 /// * `pExitContext` (Input/Output): Exit context structure
@@ -888,6 +927,7 @@ pub type MQ_OPEN_EXIT = ::std::option::Option<
 >;
 pub type PMQ_OPEN_EXIT = MQ_OPEN_EXIT;
 /// Put Message Exit
+///
 /// # Arguments
 /// * `pExitParms` (Input/Output): Exit parameter structure
 /// * `pExitContext` (Input/Output): Exit context structure
@@ -915,6 +955,7 @@ pub type MQ_PUT_EXIT = ::std::option::Option<
 >;
 pub type PMQ_PUT_EXIT = MQ_PUT_EXIT;
 /// Put One Message Exit
+///
 /// # Arguments
 /// * `pExitParms` (Input/Output): Exit parameter structure
 /// * `pExitContext` (Input/Output): Exit context structure
@@ -942,6 +983,7 @@ pub type MQ_PUT1_EXIT = ::std::option::Option<
 >;
 pub type PMQ_PUT1_EXIT = MQ_PUT1_EXIT;
 /// Set Object Attributes Exit
+///
 /// # Arguments
 /// * `pExitParms` (Input/Output): Exit parameter structure
 /// * `pExitContext` (Input/Output): Exit context structure
@@ -973,6 +1015,7 @@ pub type MQ_SET_EXIT = ::std::option::Option<
 >;
 pub type PMQ_SET_EXIT = MQ_SET_EXIT;
 /// Get Status Exit
+///
 /// # Arguments
 /// * `pExitParms` (Input/Output): Exit parameter structure
 /// * `pExitContext` (Input/Output): Exit context structure
@@ -994,6 +1037,7 @@ pub type MQ_STAT_EXIT = ::std::option::Option<
 >;
 pub type PMQ_STAT_EXIT = MQ_STAT_EXIT;
 /// Subscribe Exit
+///
 /// # Arguments
 /// * `pExitParms` (Input/Output): Exit parameter structure
 /// * `pExitContext` (Input/Output): Exit context structure
@@ -1017,6 +1061,7 @@ pub type MQ_SUBRQ_EXIT = ::std::option::Option<
 >;
 pub type PMQ_SUBRQ_EXIT = MQ_SUBRQ_EXIT;
 /// Subscribe Exit
+///
 /// # Arguments
 /// * `pExitParms` (Input/Output): Exit parameter structure
 /// * `pExitContext` (Input/Output): Exit context structure
@@ -1040,6 +1085,7 @@ pub type MQ_SUB_EXIT = ::std::option::Option<
 >;
 pub type PMQ_SUB_EXIT = MQ_SUB_EXIT;
 /// Termination Exit
+///
 /// # Arguments
 /// * `pExitParms` (Input/Output): Exit parameter structure
 /// * `pExitContext` (Input/Output): Exit context structure
@@ -1055,6 +1101,7 @@ pub type MQ_TERM_EXIT = ::std::option::Option<
 >;
 pub type PMQ_TERM_EXIT = MQ_TERM_EXIT;
 /// Channel Exit
+///
 /// # Arguments
 /// * `pChannelExitParms` (Input/Output): Channel exit parameter block
 /// * `pChannelDefinition` (Input/Output): Channel definition
@@ -1076,6 +1123,7 @@ pub type MQ_CHANNEL_EXIT = ::std::option::Option<
 >;
 pub type PMQ_CHANNEL_EXIT = MQ_CHANNEL_EXIT;
 /// Channel Auto Definition Exit
+///
 /// # Arguments
 /// * `pChannelExitParms` (Input/Output): Channel exit parameter block
 /// * `pChannelDefinition` (Input/Output): Channel definition
@@ -1084,6 +1132,7 @@ pub type MQ_CHANNEL_AUTO_DEF_EXIT = ::std::option::Option<
 >;
 pub type PMQ_CHANNEL_AUTO_DEF_EXIT = MQ_CHANNEL_AUTO_DEF_EXIT;
 /// Cluster Workload Exit
+///
 /// # Arguments
 /// * `pExitParms` (Input/Output): Exit parameter block
 pub type MQ_CLUSTER_WORKLOAD_EXIT = ::std::option::Option<
@@ -1091,6 +1140,7 @@ pub type MQ_CLUSTER_WORKLOAD_EXIT = ::std::option::Option<
 >;
 pub type PMQ_CLUSTER_WORKLOAD_EXIT = MQ_CLUSTER_WORKLOAD_EXIT;
 /// Data Conversion Exit
+///
 /// # Arguments
 /// * `pDataConvExitParms` (Input/Output): Data-conversion exit parameter block
 /// * `pMsgDesc` (Input/Output): Message descriptor
@@ -1110,6 +1160,7 @@ pub type MQ_DATA_CONV_EXIT = ::std::option::Option<
 >;
 pub type PMQ_DATA_CONV_EXIT = MQ_DATA_CONV_EXIT;
 /// Publish Exit
+///
 /// # Arguments
 /// * `pExitParms` (Input/Output): Exit parameter block
 /// * `pPubContext`: Publication context structure
@@ -1119,6 +1170,7 @@ pub type MQ_PUBLISH_EXIT = ::std::option::Option<
 >;
 pub type PMQ_PUBLISH_EXIT = MQ_PUBLISH_EXIT;
 /// Transport Retry Exit
+///
 /// # Arguments
 /// * `pExitParms` (Input/Output): Exit parameter block
 /// * `DestAddressLength`: Length in bytes of destination IP address
@@ -1132,6 +1184,7 @@ pub type MQ_TRANSPORT_EXIT = ::std::option::Option<
 >;
 pub type PMQ_TRANSPORT_EXIT = MQ_TRANSPORT_EXIT;
 /// Preconnect Exit
+///
 /// # Arguments
 /// * `pExitParms` (Input/Output): Exit parameter structure
 /// * `pQMgrName` (Input/Output): Name of queue manager
@@ -1149,6 +1202,7 @@ pub type MQ_PRECONNECT_EXIT = ::std::option::Option<
 >;
 pub type PMQ_PRECONNECT_EXIT = MQ_PRECONNECT_EXIT;
 /// Cluster Workload Navigate Records
+///
 /// # Arguments
 /// * `pExitParms` (Input/Output): Exit parameter structure
 /// * `CurrentRecord`: Address of current record
@@ -1168,6 +1222,7 @@ pub type MQ_XCLWLN_CALL = ::std::option::Option<
 >;
 pub type PMQ_XCLWLN_CALL = MQ_XCLWLN_CALL;
 /// Convert Characters
+///
 /// # Arguments
 /// * `Hconn`: Connection handle
 /// * `Options`: Options that control the action of MQXCNVC
@@ -1197,6 +1252,7 @@ pub type MQ_XCNVC_CALL = ::std::option::Option<
 >;
 pub type PMQ_XCNVC_CALL = MQ_XCNVC_CALL;
 /// Convert Message Data
+///
 /// # Arguments
 /// * `pDataConvExitParms` (Input/Output): Data-conversion exit parameter block
 /// * `pMsgDesc` (Input/Output): Message descriptor
@@ -1231,6 +1287,7 @@ pub type PMQZFP = *mut MQZFP;
 pub type MQZIC = tagMQZIC;
 pub type PMQZIC = *mut MQZIC;
 /// Add Component Entry Point
+///
 /// # Arguments
 /// * `Hconfig`: Configuration handle
 /// * `Function`: Function identifier
@@ -1248,6 +1305,7 @@ pub type MQ_ZEP_CALL = ::std::option::Option<
 >;
 pub type PMQ_ZEP_CALL = MQ_ZEP_CALL;
 /// Initialize Authority-Services
+///
 /// # Arguments
 /// * `Hconfig`: Configuration handle
 /// * `Options`: Initialization options
@@ -1271,6 +1329,7 @@ pub type MQZ_INIT_AUTHORITY = ::std::option::Option<
 >;
 pub type PMQZ_INIT_AUTHORITY = MQZ_INIT_AUTHORITY;
 /// Terminate Authority-Services
+///
 /// # Arguments
 /// * `Hconfig`: Configuration handle
 /// * `Options`: Termination options
@@ -1290,6 +1349,7 @@ pub type MQZ_TERM_AUTHORITY = ::std::option::Option<
 >;
 pub type PMQZ_TERM_AUTHORITY = MQZ_TERM_AUTHORITY;
 /// Delete Authority
+///
 /// # Arguments
 /// * `pQMgrName`: Queue manager name
 /// * `pObjectName`: Object name
@@ -1311,6 +1371,7 @@ pub type MQZ_DELETE_AUTHORITY = ::std::option::Option<
 >;
 pub type PMQZ_DELETE_AUTHORITY = MQZ_DELETE_AUTHORITY;
 /// Get Authority
+///
 /// # Arguments
 /// * `pQMgrName`: Queue manager name
 /// * `pEntityName`: Entity name
@@ -1338,6 +1399,7 @@ pub type MQZ_GET_AUTHORITY = ::std::option::Option<
 >;
 pub type PMQZ_GET_AUTHORITY = MQZ_GET_AUTHORITY;
 /// Get Authority Version 2
+///
 /// # Arguments
 /// * `pQMgrName`: Queue manager name
 /// * `pEntityData`: Entity data
@@ -1365,6 +1427,7 @@ pub type MQZ_GET_AUTHORITY_2 = ::std::option::Option<
 >;
 pub type PMQZ_GET_AUTHORITY_2 = MQZ_GET_AUTHORITY_2;
 /// Get Explicit Authority
+///
 /// # Arguments
 /// * `pQMgrName`: Queue manager name
 /// * `pEntityName`: Entity name
@@ -1392,6 +1455,7 @@ pub type MQZ_GET_EXPLICIT_AUTHORITY = ::std::option::Option<
 >;
 pub type PMQZ_GET_EXPLICIT_AUTHORITY = MQZ_GET_EXPLICIT_AUTHORITY;
 /// Get Explicit Authority Version 2
+///
 /// # Arguments
 /// * `pQMgrName`: Queue manager name
 /// * `pEntityData`: Entity data
@@ -1419,6 +1483,7 @@ pub type MQZ_GET_EXPLICIT_AUTHORITY_2 = ::std::option::Option<
 >;
 pub type PMQZ_GET_EXPLICIT_AUTHORITY_2 = MQZ_GET_EXPLICIT_AUTHORITY_2;
 /// Enumerate Authority Data
+///
 /// # Arguments
 /// * `pQMgrName`: Queue manager name
 /// * `StartEnumeration`: Flag indicating whether call should start enumeration
@@ -1446,6 +1511,7 @@ pub type MQZ_ENUMERATE_AUTHORITY_DATA = ::std::option::Option<
 >;
 pub type PMQZ_ENUMERATE_AUTHORITY_DATA = MQZ_ENUMERATE_AUTHORITY_DATA;
 /// Set Authority
+///
 /// # Arguments
 /// * `pQMgrName`: Queue manager name
 /// * `pEntityName`: Entity name
@@ -1473,6 +1539,7 @@ pub type MQZ_SET_AUTHORITY = ::std::option::Option<
 >;
 pub type PMQZ_SET_AUTHORITY = MQZ_SET_AUTHORITY;
 /// Set Authority Version 2
+///
 /// # Arguments
 /// * `pQMgrName`: Queue manager name
 /// * `pEntityData`: Entity data
@@ -1500,6 +1567,7 @@ pub type MQZ_SET_AUTHORITY_2 = ::std::option::Option<
 >;
 pub type PMQZ_SET_AUTHORITY_2 = MQZ_SET_AUTHORITY_2;
 /// Copy All Authority
+///
 /// # Arguments
 /// * `pQMgrName`: Queue manager name
 /// * `pRefObjectName`: Reference object name
@@ -1523,6 +1591,7 @@ pub type MQZ_COPY_ALL_AUTHORITY = ::std::option::Option<
 >;
 pub type PMQZ_COPY_ALL_AUTHORITY = MQZ_COPY_ALL_AUTHORITY;
 /// Check Authority
+///
 /// # Arguments
 /// * `pQMgrName`: Queue manager name
 /// * `pEntityName`: Entity name
@@ -1550,6 +1619,7 @@ pub type MQZ_CHECK_AUTHORITY = ::std::option::Option<
 >;
 pub type PMQZ_CHECK_AUTHORITY = MQZ_CHECK_AUTHORITY;
 /// Check Authority Version 2
+///
 /// # Arguments
 /// * `pQMgrName`: Queue manager name
 /// * `pEntityData`: Entity data
@@ -1577,6 +1647,7 @@ pub type MQZ_CHECK_AUTHORITY_2 = ::std::option::Option<
 >;
 pub type PMQZ_CHECK_AUTHORITY_2 = MQZ_CHECK_AUTHORITY_2;
 /// Authenticate User
+///
 /// # Arguments
 /// * `pQMgrName`: Queue manager name
 /// * `pSecurityParms`: Security parameters
@@ -1602,6 +1673,7 @@ pub type MQZ_AUTHENTICATE_USER = ::std::option::Option<
 >;
 pub type PMQZ_AUTHENTICATE_USER = MQZ_AUTHENTICATE_USER;
 /// Free User
+///
 /// # Arguments
 /// * `pQMgrName`: Queue manager name
 /// * `pFreeParms`: Free parameters
@@ -1621,6 +1693,7 @@ pub type MQZ_FREE_USER = ::std::option::Option<
 >;
 pub type PMQZ_FREE_USER = MQZ_FREE_USER;
 /// Inquire
+///
 /// # Arguments
 /// * `pQMgrName`: Queue manager name
 /// * `SelectorCount`: Count of selectors
@@ -1652,6 +1725,7 @@ pub type MQZ_INQUIRE = ::std::option::Option<
 >;
 pub type PMQZ_INQUIRE = MQZ_INQUIRE;
 /// Refresh Cache
+///
 /// # Arguments
 /// * `pQMgrName`: Queue manager name
 /// * `pComponentData` (Input/Output): Component data
@@ -1669,6 +1743,7 @@ pub type MQZ_REFRESH_CACHE = ::std::option::Option<
 >;
 pub type PMQZ_REFRESH_CACHE = MQZ_REFRESH_CACHE;
 /// Check if User is Privileged
+///
 /// # Arguments
 /// * `pQMgrName`: Queue manager name
 /// * `pEntityData`: Entity data
@@ -1690,6 +1765,7 @@ pub type MQZ_CHECK_PRIVILEGED = ::std::option::Option<
 >;
 pub type PMQZ_CHECK_PRIVILEGED = MQZ_CHECK_PRIVILEGED;
 /// Initialize Name-Services
+///
 /// # Arguments
 /// * `Hconfig`: Configuration handle
 /// * `Options`: Initialization options
@@ -1713,6 +1789,7 @@ pub type MQZ_INIT_NAME = ::std::option::Option<
 >;
 pub type PMQZ_INIT_NAME = MQZ_INIT_NAME;
 /// Terminate Name-Services
+///
 /// # Arguments
 /// * `Hconfig`: Configuration handle
 /// * `Options`: Termination options
@@ -1732,6 +1809,7 @@ pub type MQZ_TERM_NAME = ::std::option::Option<
 >;
 pub type PMQZ_TERM_NAME = MQZ_TERM_NAME;
 /// Look-Up Name
+///
 /// # Arguments
 /// * `pQMgrName`: Queue manager name
 /// * `pQName`: Queue name
@@ -1753,6 +1831,7 @@ pub type MQZ_LOOKUP_NAME = ::std::option::Option<
 >;
 pub type PMQZ_LOOKUP_NAME = MQZ_LOOKUP_NAME;
 /// Insert Name
+///
 /// # Arguments
 /// * `pQMgrName`: Queue manager name
 /// * `pQName`: Queue name
@@ -1774,6 +1853,7 @@ pub type MQZ_INSERT_NAME = ::std::option::Option<
 >;
 pub type PMQZ_INSERT_NAME = MQZ_INSERT_NAME;
 /// Delete Name
+///
 /// # Arguments
 /// * `pQMgrName`: Queue manager name
 /// * `pQName`: Queue name
@@ -1793,6 +1873,7 @@ pub type MQZ_DELETE_NAME = ::std::option::Option<
 >;
 pub type PMQZ_DELETE_NAME = MQZ_DELETE_NAME;
 /// Initialize Userid-Services
+///
 /// # Arguments
 /// * `Hconfig`: Configuration handle
 /// * `Options`: Initialization options
@@ -1816,6 +1897,7 @@ pub type MQZ_INIT_USERID = ::std::option::Option<
 >;
 pub type PMQZ_INIT_USERID = MQZ_INIT_USERID;
 /// Terminate Userid-Services
+///
 /// # Arguments
 /// * `Hconfig`: Configuration handle
 /// * `Options`: Termination options
@@ -1835,6 +1917,7 @@ pub type MQZ_TERM_USERID = ::std::option::Option<
 >;
 pub type PMQZ_TERM_USERID = MQZ_TERM_USERID;
 /// Find Userid
+///
 /// # Arguments
 /// * `pQMgrName`: Queue manager name
 /// * `pUserId`: User identifier
@@ -3315,6 +3398,7 @@ pub const MQIEPF_CLIENT_LIBRARY: MQLONG = 0;
 pub const MQIEPF_LOCAL_LIBRARY: MQLONG = 2;
 unsafe extern "C" {
     /// Register Entry Point
+    ///
     /// # Arguments
     /// * `Hconfig`: Configuration handle
     /// * `ExitReason`: Exit reason
@@ -3329,10 +3413,11 @@ unsafe extern "C" {
         Function: MQLONG,
         pEntryPoint: PMQFUNC,
         pExitOpts: PMQXEPO,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Cluster Workload Navigate Records
+    ///
     /// # Arguments
     /// * `pExitParms` (Input/Output): Exit parameter structure
     /// * `CurrentRecord`: Address of current record
@@ -3345,10 +3430,11 @@ unsafe extern "C" {
         CurrentRecord: MQPTR,
         NextOffset: MQLONG,
         pNextRecord: PMQPTR,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Convert Characters
+    ///
     /// # Arguments
     /// * `Hconn`: Connection handle
     /// * `Options`: Options that control the action of MQXCNVC
@@ -3371,10 +3457,11 @@ unsafe extern "C" {
         TargetLength: MQLONG,
         pTargetBuffer: PMQCHAR,
         pDataLength: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
     /// Convert Message Data
+    ///
     /// # Arguments
     /// * `pDataConvExitParms` (Input/Output): Data-conversion exit parameter block
     /// * `pMsgDesc` (Input/Output): Message descriptor
@@ -3391,6 +3478,7 @@ unsafe extern "C" {
         pOutBuffer: PMQVOID,
     );
     /// Add Component Entry Point
+    ///
     /// # Arguments
     /// * `Hconfig`: Configuration handle
     /// * `Function`: Function identifier
@@ -3401,7 +3489,7 @@ unsafe extern "C" {
         Hconfig: MQHCONFIG,
         Function: MQLONG,
         pEntryPoint: PMQFUNC,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
 }

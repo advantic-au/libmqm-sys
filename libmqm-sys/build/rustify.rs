@@ -13,8 +13,10 @@ impl FnArgType<'_> {
 }
 
 impl<'a> FnArgType<'a> {
-    pub fn add(&mut self, arg_name: &'a str, fn_name: Option<&'a str>, ty: Type) {
-        self.0.insert((arg_name, fn_name), ty);
+    pub fn replace_type(self, arg_name: &'a str, fn_name: Option<&'a str>, ty: Type) -> Self {
+        let mut own = self;
+        own.0.insert((arg_name, fn_name), ty);
+        own
     }
 }
 

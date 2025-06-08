@@ -15,7 +15,7 @@ pub trait Mqi {
         pQMgrName: mqsys::PMQCHAR,
         pConnectOpts: mqsys::PMQCNO,
         pHconn: mqsys::PMQHCONN,
-        pCompCode: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
         pReason: mqsys::PMQLONG,
     );
 

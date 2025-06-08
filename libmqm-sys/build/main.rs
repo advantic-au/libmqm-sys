@@ -223,17 +223,22 @@ fn main() -> Result<(), io::Error> {
             for (name, mut generated) in mqi_bindgen::mqi::mqi_bindgen_generate(&builder, &mq_inc_path)
                 .map_err(|e| io::Error::new(io::ErrorKind::InvalidData, e))?
             {
-                use syn::visit_mut::VisitMut as _;
+                use syn::{parse_quote, visit_mut::VisitMut as _};
 
                 use crate::{
                     doc_comments::{DocCommentArgs, DocCommentFields, DocCommentType},
-                    rustify::MqLongConstWrap,
+                    rustify::{FnArgType, MqLongConstWrap},
                 };
+
+                let mut arg_type = FnArgType::new()
+                    .replace_type("pCompCode", None, parse_quote!(&mut MQLONG))
+                    .replace_type("pReason", None, parse_quote!(&mut MQLONG));
 
                 DocCommentArgs(&parameters).visit_file_mut(&mut generated);
                 DocCommentType(&comments).visit_file_mut(&mut generated);
                 DocCommentFields(&fields).visit_file_mut(&mut generated);
                 MqLongConstWrap.visit_file_mut(&mut generated);
+                arg_type.visit_file_mut(&mut generated);
 
                 let mut bindings_str = format!("/* Generated with MQ client version {mqc_version} */\n\n");
                 bindings_str += &prettyplease::unparse(&generated);
