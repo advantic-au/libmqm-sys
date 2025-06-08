@@ -223,14 +223,10 @@ impl VisitMut for DocCommentType<'_> {
 
     fn visit_item_struct_mut(&mut self, item: &mut syn::ItemStruct) {
         let name = format!("{}", item.ident);
-        let names = if name.starts_with("tag") {
-            let wo_tag = name.trim_start_matches("tag").to_string();
-            vec![name, wo_tag]
-        } else {
-            vec![name]
-        };
+        let mut names = vec![&*name, name.trim_start_matches("tag")];
+        names.dedup();
 
-        if let Some(description) = names.iter().find_map(|name| self.0.get(name)) {
+        if let Some(description) = names.iter().find_map(|name| self.0.get(*name)) {
             let doc_lit = syn::LitStr::new(description, proc_macro2::Span::call_site());
             item.attrs.insert(0, syn::parse_quote!(#[doc = #doc_lit ]));
         }

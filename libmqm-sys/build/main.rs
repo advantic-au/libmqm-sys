@@ -6,6 +6,9 @@ mod mqi_bindgen;
 #[cfg(feature = "bindgen")]
 mod doc_comments;
 
+#[cfg(feature = "bindgen")]
+mod rustify;
+
 #[cfg(any(feature = "struct_defaults", feature = "constant_lookup", feature = "bindgen"))]
 mod features {
     use std::env;
@@ -222,27 +225,18 @@ fn main() -> Result<(), io::Error> {
             {
                 use syn::visit_mut::VisitMut as _;
 
-                use crate::doc_comments::{DocCommentArgs, DocCommentFields, DocCommentType};
+                use crate::{
+                    doc_comments::{DocCommentArgs, DocCommentFields, DocCommentType},
+                    rustify::MqLongConstWrap,
+                };
 
                 DocCommentArgs(&parameters).visit_file_mut(&mut generated);
                 DocCommentType(&comments).visit_file_mut(&mut generated);
                 DocCommentFields(&fields).visit_file_mut(&mut generated);
+                MqLongConstWrap.visit_file_mut(&mut generated);
 
                 let mut bindings_str = format!("/* Generated with MQ client version {mqc_version} */\n\n");
                 bindings_str += &prettyplease::unparse(&generated);
-
-                // Replace MQLONGs that are too large with wrapped equivalent MQLONG's.
-                let mqlong_replace = regex_lite::Regex::new(r"(:\s*MQLONG\s*=\s*)(\d+)\s*;").unwrap();
-                let bindings_str = mqlong_replace.replace_all(&bindings_str, |caps: &regex_lite::Captures| {
-                    if caps[2].parse::<i32>().is_err() {
-                        let i = caps[2].parse::<u32>().unwrap();
-                        #[allow(clippy::cast_possible_wrap)]
-                        let wrapped = i as i32;
-                        format!("{}{};", &caps[1], wrapped)
-                    } else {
-                        caps[0].to_string()
-                    }
-                });
 
                 let out_bindings = out_path.join(name);
                 let mut out_file = io::BufWriter::new(std::fs::File::create(&out_bindings)?);
