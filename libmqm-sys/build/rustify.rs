@@ -29,8 +29,10 @@ impl VisitMut for FnArgType<'_> {
                     let arg_name = ident.ident.to_string();
                     if let Some(ty) = self
                         .0
-                        .get(&(&arg_name, None)) // Match on just arg name
-                        .or_else(|| self.0.get(&(&arg_name, Some(&fn_name)))) // Match on arg name and fn name
+                        // Match on just arg name
+                        .get(&(&arg_name, None))
+                        // .. or match on arg name and fn name
+                        .or_else(|| self.0.get(&(&arg_name, Some(&fn_name))))
                     {
                         pat.ty = Box::new(ty.clone()); // Set the new type
                     }

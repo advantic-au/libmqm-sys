@@ -16,7 +16,7 @@ pub trait Mqi {
         pConnectOpts: mqsys::PMQCNO,
         pHconn: mqsys::PMQHCONN,
         pCompCode: &mut mqsys::MQLONG,
-        pReason: mqsys::PMQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 
     /// Connect to a queue manager
@@ -27,15 +27,15 @@ pub trait Mqi {
         &self,
         pQMgrName: mqsys::PMQCHAR,
         pHconn: mqsys::PMQHCONN,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 
     /// Disconnect from a queue manager
     ///
     /// References
     /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqdisc-disconnect-queue-manager)
-    unsafe fn MQDISC(&self, pHconn: mqsys::PMQHCONN, pCompCode: mqsys::PMQLONG, pReason: mqsys::PMQLONG);
+    unsafe fn MQDISC(&self, pHconn: mqsys::PMQHCONN, pCompCode: &mut mqsys::MQLONG, pReason: &mut mqsys::MQLONG);
 
     /// Opens a queue or topic for access
     ///
@@ -47,8 +47,8 @@ pub trait Mqi {
         pObjDesc: mqsys::PMQVOID,
         Options: mqsys::MQLONG,
         pHobj: mqsys::PMQHOBJ,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 
     /// Put a single message on a queue (combines [`MQOPEN`](Mqi::MQOPEN), [`MQPUT`](Mqi::MQPUT), and [`MQCLOSE`](Mqi::MQCLOSE))
@@ -63,8 +63,8 @@ pub trait Mqi {
         pPutMsgOpts: mqsys::PMQVOID,
         BufferLength: mqsys::MQLONG,
         pBuffer: mqsys::PMQVOID,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 
     /// Close a queue or topic
@@ -76,15 +76,15 @@ pub trait Mqi {
         Hconn: mqsys::MQHCONN,
         pHobj: mqsys::PMQHOBJ,
         Options: mqsys::MQLONG,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 
     /// Commit changes
     ///
     /// References
     /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqcmit-commit-changes)
-    unsafe fn MQCMIT(&self, Hconn: mqsys::MQHCONN, pCompCode: mqsys::PMQLONG, pReason: mqsys::PMQLONG);
+    unsafe fn MQCMIT(&self, Hconn: mqsys::MQHCONN, pCompCode: &mut mqsys::MQLONG, pReason: &mut mqsys::MQLONG);
 
     /// Get a message from a queue
     ///
@@ -99,8 +99,8 @@ pub trait Mqi {
         BufferLength: mqsys::MQLONG,
         pBuffer: mqsys::PMQVOID,
         pDataLength: mqsys::PMQLONG,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 
     /// Put a message on a queue
@@ -115,8 +115,8 @@ pub trait Mqi {
         pPutMsgOpts: mqsys::PMQVOID,
         BufferLength: mqsys::MQLONG,
         pBuffer: mqsys::PMQVOID,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 
     /// Inquire about object attributes
@@ -133,8 +133,8 @@ pub trait Mqi {
         pIntAttrs: mqsys::PMQLONG,
         CharAttrLength: mqsys::MQLONG,
         pCharAttrs: mqsys::PMQCHAR,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 
     /// Create a subscription to a topic
@@ -147,8 +147,8 @@ pub trait Mqi {
         pSubDesc: mqsys::PMQVOID,
         pHobj: mqsys::PMQHOBJ,
         pHsub: mqsys::PMQHOBJ,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 
     /// Request a retained publication
@@ -161,8 +161,8 @@ pub trait Mqi {
         Hsub: mqsys::MQHOBJ,
         Action: mqsys::MQLONG,
         pSubRqOpts: mqsys::PMQVOID,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 
     /// Begin a unit of work
@@ -173,15 +173,15 @@ pub trait Mqi {
         &self,
         Hconn: mqsys::MQHCONN,
         pBeginOptions: mqsys::PMQVOID,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 
     /// Back out changes
     ///
     /// References
     /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqback-back-out-changes)
-    unsafe fn MQBACK(&self, Hconn: mqsys::MQHCONN, pCompCode: mqsys::PMQLONG, pReason: mqsys::PMQLONG);
+    unsafe fn MQBACK(&self, Hconn: mqsys::MQHCONN, pCompCode: &mut mqsys::MQLONG, pReason: &mut mqsys::MQLONG);
 
     /// Create a message handle
     ///
@@ -192,8 +192,8 @@ pub trait Mqi {
         Hconn: mqsys::MQHCONN,
         pCrtMsgHOpts: mqsys::PMQVOID,
         pHmsg: mqsys::PMQHMSG,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 
     /// Delete a message handle and is the inverse of the [`MQCRTMH`](Mqi::MQCRTMH) call.
@@ -205,8 +205,8 @@ pub trait Mqi {
         Hconn: mqsys::MQHCONN,
         pHmsg: mqsys::PMQHMSG,
         pDltMsgHOpts: mqsys::PMQVOID,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 
     /// Convert a message handle into a buffer and is the inverse of the MQBUFMH call
@@ -223,8 +223,8 @@ pub trait Mqi {
         BufferLength: mqsys::MQLONG,
         pBuffer: mqsys::PMQVOID,
         pDataLength: mqsys::PMQLONG,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 
     /// Convert a buffer into a message handle and is the inverse of the MQMHBUF call
@@ -240,8 +240,8 @@ pub trait Mqi {
         BufferLength: mqsys::MQLONG,
         pBuffer: mqsys::PMQVOID,
         pDataLength: mqsys::PMQLONG,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 
     /// Manage callback
@@ -256,8 +256,8 @@ pub trait Mqi {
         Hobj: mqsys::MQHOBJ,
         pMsgDesc: mqsys::PMQVOID,
         pGetMsgOpts: mqsys::PMQVOID,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 
     /// Perform controlling actions on callbacks and the object handles opened for a connection
@@ -269,8 +269,8 @@ pub trait Mqi {
         Hconn: mqsys::MQHCONN,
         Operation: mqsys::MQLONG,
         pControlOpts: mqsys::PMQVOID,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 
     /// Set object attributes
@@ -287,8 +287,8 @@ pub trait Mqi {
         pIntAttrs: mqsys::PMQLONG,
         CharAttrLength: mqsys::MQLONG,
         pCharAttrs: mqsys::PMQCHAR,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 
     /// Set or modify a property of a message handle
@@ -305,8 +305,8 @@ pub trait Mqi {
         Type: mqsys::MQLONG,
         ValueLength: mqsys::MQLONG,
         pValue: mqsys::PMQVOID,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 
     /// Retrieve status information
@@ -318,8 +318,8 @@ pub trait Mqi {
         Hconn: mqsys::MQHCONN,
         Type: mqsys::MQLONG,
         pStatus: mqsys::PMQVOID,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 
     /// Return the value of a property of a message
@@ -337,8 +337,8 @@ pub trait Mqi {
         ValueLength: mqsys::MQLONG,
         pValue: mqsys::PMQVOID,
         pDataLength: mqsys::PMQLONG,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 
     /// Delete a property from a message handle and is the inverse of the [`MQSETMP`](Mqi::MQSETMP) call
@@ -351,8 +351,8 @@ pub trait Mqi {
         Hmsg: mqsys::MQHMSG,
         pDltPropOpts: mqsys::PMQVOID,
         pName: mqsys::PMQVOID,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 }
 
@@ -374,8 +374,8 @@ pub trait Exits {
         TargetLength: mqsys::MQLONG,
         pTargetBuffer: mqsys::PMQCHAR,
         pDataLength: mqsys::PMQLONG,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 }
 
@@ -394,21 +394,21 @@ pub trait Mqai {
         &self,
         Options: mqsys::MQLONG,
         pBag: mqsys::PMQHBAG,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 
     /// Delete all user items from the bag, and resets system items to their initial values
     ///
     /// References
     /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/9.4?topic=calls-mqclearbag)
-    unsafe fn mqClearBag(&self, Bag: mqsys::MQHBAG, pCompCode: mqsys::PMQLONG, pReason: mqsys::PMQLONG);
+    unsafe fn mqClearBag(&self, Bag: mqsys::MQHBAG, pCompCode: &mut mqsys::MQLONG, pReason: &mut mqsys::MQLONG);
 
     /// Delete the specified bag
     ///
     /// References
     /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/9.4?topic=calls-mqdeletebag)
-    unsafe fn mqDeleteBag(&self, pBag: mqsys::PMQHBAG, pCompCode: mqsys::PMQLONG, pReason: mqsys::PMQLONG);
+    unsafe fn mqDeleteBag(&self, pBag: mqsys::PMQHBAG, pCompCode: &mut mqsys::MQLONG, pReason: &mut mqsys::MQLONG);
 
     /// Remove a message from the specified queue and converts the message data into a data bag
     ///
@@ -421,8 +421,8 @@ pub trait Mqai {
         pMsgDesc: mqsys::PMQVOID,
         pGetMsgOpts: mqsys::PMQVOID,
         Bag: mqsys::MQHBAG,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 
     /// Convert the contents of the specified bag into a PCF message and sends the message to the specified queue
@@ -436,8 +436,8 @@ pub trait Mqai {
         pMsgDesc: mqsys::PMQVOID,
         pPutMsgOpts: mqsys::PMQVOID,
         Bag: mqsys::MQHBAG,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 
     /// Reduce the number of user items in a user bag to the specified value, by deleting user items from the end of the bag
@@ -448,8 +448,8 @@ pub trait Mqai {
         &self,
         Bag: mqsys::MQHBAG,
         ItemCount: mqsys::MQLONG,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 
     /// Add a selector to an administration bag
@@ -460,8 +460,8 @@ pub trait Mqai {
         &self,
         Bag: mqsys::MQHBAG,
         Selector: mqsys::MQLONG,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 
     /// Remove one or more user items from a bag
@@ -473,8 +473,8 @@ pub trait Mqai {
         Bag: mqsys::MQHBAG,
         Selector: mqsys::MQLONG,
         ItemIndex: mqsys::MQLONG,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 
     /// Add an integer item identified by a user selector to the end of a specified bag
@@ -486,8 +486,8 @@ pub trait Mqai {
         Bag: mqsys::MQHBAG,
         Selector: mqsys::MQLONG,
         ItemValue: mqsys::MQLONG,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 
     /// Add an integer filter identified by a user selector to the end of a specified bag
@@ -500,8 +500,8 @@ pub trait Mqai {
         Selector: mqsys::MQLONG,
         ItemValue: mqsys::MQLONG,
         Operator: mqsys::MQLONG,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 
     /// Add a 64-bit integer item identified by a user selector to the end of a specified bag
@@ -513,8 +513,8 @@ pub trait Mqai {
         Bag: mqsys::MQHBAG,
         Selector: mqsys::MQLONG,
         ItemValue: mqsys::MQINT64,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 
     /// Add a character data item identified by a user selector to the end of a specified bag
@@ -527,8 +527,8 @@ pub trait Mqai {
         Selector: mqsys::MQLONG,
         BufferLength: mqsys::MQLONG,
         pBuffer: mqsys::PMQCHAR,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 
     /// Add a string filter identified by a user selector to the end of a specified bag
@@ -542,8 +542,8 @@ pub trait Mqai {
         BufferLength: mqsys::MQLONG,
         pBuffer: mqsys::PMQCHAR,
         Operator: mqsys::MQLONG,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 
     /// Add a byte string identified by a user selector to the end of a specified bag
@@ -556,8 +556,8 @@ pub trait Mqai {
         Selector: mqsys::MQLONG,
         BufferLength: mqsys::MQLONG,
         pBuffer: mqsys::PMQBYTE,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 
     /// Add a byte string filter identified by a user selector to the end of a specified bag
@@ -571,8 +571,8 @@ pub trait Mqai {
         BufferLength: mqsys::MQLONG,
         pBuffer: mqsys::PMQBYTE,
         Operator: mqsys::MQLONG,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 
     /// Either modify an integer item that is already present in the bag, or delete all existing occurrences of the specified selector and adds a new occurrence at the end of the bag
@@ -585,8 +585,8 @@ pub trait Mqai {
         Selector: mqsys::MQLONG,
         ItemIndex: mqsys::MQLONG,
         ItemValue: mqsys::MQLONG,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 
     /// Either modify an integer filter item that is already present in the bag, or delete all existing occurrences of the specified selector and adds a new occurrence at the end of the bag
@@ -600,8 +600,8 @@ pub trait Mqai {
         ItemIndex: mqsys::MQLONG,
         ItemValue: mqsys::MQLONG,
         Operator: mqsys::MQLONG,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 
     /// Either modify a 64-bit integer item that is already present in the bag, or delete all existing occurrences of the specified selector and adds a new occurrence at the end of the bag
@@ -614,8 +614,8 @@ pub trait Mqai {
         Selector: mqsys::MQLONG,
         ItemIndex: mqsys::MQLONG,
         ItemValue: mqsys::MQINT64,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 
     /// Nest a bag in another bag
@@ -627,8 +627,8 @@ pub trait Mqai {
         Bag: mqsys::MQHBAG,
         Selector: mqsys::MQLONG,
         ItemValue: mqsys::MQHBAG,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 
     /// Either modify a character data item that is already present in the bag, or delete all existing occurrences of the specified selector and adds a new occurrence at the end of the bag
@@ -642,8 +642,8 @@ pub trait Mqai {
         ItemIndex: mqsys::MQLONG,
         BufferLength: mqsys::MQLONG,
         pBuffer: mqsys::PMQCHAR,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 
     /// Either modify a string filter item that is already present in the bag, or delete all existing occurrences of the specified selector and adds a new occurrence at the end of the bag
@@ -658,8 +658,8 @@ pub trait Mqai {
         BufferLength: mqsys::MQLONG,
         pBuffer: mqsys::PMQCHAR,
         Operator: mqsys::MQLONG,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 
     /// Either modify a byte string data item that is already present in the bag, or delete all existing occurrences of the specified selector and adds a new occurrence at the end of the bag
@@ -673,8 +673,8 @@ pub trait Mqai {
         ItemIndex: mqsys::MQLONG,
         BufferLength: mqsys::MQLONG,
         pBuffer: mqsys::PMQBYTE,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 
     /// Either modify a byte string filter item that is already present in the bag, or delete all existing occurrences of the specified selector and adds a new occurrence at the end of the bag
@@ -689,8 +689,8 @@ pub trait Mqai {
         BufferLength: mqsys::MQLONG,
         pBuffer: mqsys::PMQBYTE,
         Operator: mqsys::MQLONG,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 
     /// Request the value of an integer data item that is present in the bag
@@ -703,8 +703,8 @@ pub trait Mqai {
         Selector: mqsys::MQLONG,
         ItemIndex: mqsys::MQLONG,
         pItemValue: mqsys::PMQLONG,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 
     /// Request the value and operator of an integer filter item that is present in the bag
@@ -718,8 +718,8 @@ pub trait Mqai {
         ItemIndex: mqsys::MQLONG,
         pItemValue: mqsys::PMQLONG,
         pOperator: mqsys::PMQLONG,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 
     /// Request the value of a 64-bit integer data item that is present in the bag
@@ -732,8 +732,8 @@ pub trait Mqai {
         Selector: mqsys::MQLONG,
         ItemIndex: mqsys::MQLONG,
         pItemValue: mqsys::PMQINT64,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 
     /// Requests the value of a byte string data item that is present in the bag
@@ -748,8 +748,8 @@ pub trait Mqai {
         BufferLength: mqsys::MQLONG,
         pBuffer: mqsys::PMQBYTE,
         pByteStringLength: mqsys::PMQLONG,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 
     /// Request the value of a character data item that is present in the bag
@@ -765,8 +765,8 @@ pub trait Mqai {
         pBuffer: mqsys::PMQCHAR,
         pStringLength: mqsys::PMQLONG,
         pCodedCharSetId: mqsys::PMQLONG,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 
     /// Request the value and operator of a string filter item that is present in the bag
@@ -783,8 +783,8 @@ pub trait Mqai {
         pStringLength: mqsys::PMQLONG,
         pCodedCharSetId: mqsys::PMQLONG,
         pOperator: mqsys::PMQLONG,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 
     /// Request the value and operator of a byte string filter item that is present in the bag
@@ -800,8 +800,8 @@ pub trait Mqai {
         pBuffer: mqsys::PMQBYTE,
         pByteStringLength: mqsys::PMQLONG,
         pOperator: mqsys::PMQLONG,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 
     /// Inquire the value of a bag handle that is present in the bag. The data item can be a user item or a system item
@@ -814,8 +814,8 @@ pub trait Mqai {
         Selector: mqsys::MQLONG,
         ItemIndex: mqsys::MQLONG,
         pItemValue: mqsys::PMQHBAG,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 
     /// Return the number of occurrences of user items, system items, or both, that are stored in a bag with the same specific selector
@@ -827,8 +827,8 @@ pub trait Mqai {
         Bag: mqsys::MQHBAG,
         Selector: mqsys::MQLONG,
         pItemCount: mqsys::PMQLONG,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 
     /// Send an administration command message and wait for the reply (if expected)
@@ -843,8 +843,8 @@ pub trait Mqai {
         ResponseBag: mqsys::MQHBAG,
         AdminQ: mqsys::MQHOBJ,
         ResponseQ: mqsys::MQHOBJ,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 
     /// Convert the bag into a PCF message in the supplied buffer
@@ -858,8 +858,8 @@ pub trait Mqai {
         BufferLength: mqsys::MQLONG,
         pBuffer: mqsys::PMQVOID,
         pDataLength: mqsys::PMQLONG,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 
     /// Convert the supplied buffer into bag form
@@ -872,8 +872,8 @@ pub trait Mqai {
         BufferLength: mqsys::MQLONG,
         pBuffer: mqsys::PMQVOID,
         DataBag: mqsys::MQHBAG,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 
     /// Return information about a specified item in a bag
@@ -887,7 +887,7 @@ pub trait Mqai {
         ItemIndex: mqsys::MQLONG,
         pOutSelector: mqsys::PMQLONG,
         pItemType: mqsys::PMQLONG,
-        pCompCode: mqsys::PMQLONG,
-        pReason: mqsys::PMQLONG,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
     );
 }
