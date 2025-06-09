@@ -126,7 +126,7 @@ jobs:
       - uses: dtolnay/rust-toolchain@b3b07ba8b418998c39fb20f53e8b695cdcc8de1b
         with:
           toolchain: nightly
-      - uses: taiki-e/install-action@83254c543806f3224380bf1001d6fac8feaf2d0b # v2.50.10
+      - uses: taiki-e/install-action@92f69c195229fe62d58b4d697ab4bc75def98e76 # v2.52.7
         with:
           tool: cargo-docs-rs
       - run: cargo docs-rs -p libmqm-sys --target x86_64-unknown-linux-gnu
