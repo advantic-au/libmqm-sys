@@ -13,9 +13,17 @@ impl FnArgType<'_> {
 }
 
 impl<'a> FnArgType<'a> {
-    pub fn replace_type(self, arg_name: &'a str, fn_name: Option<&'a str>, ty: Type) -> Self {
+    pub fn replace_all(self, arg_name: &'a str, ty: Type) -> Self {
         let mut own = self;
-        own.0.insert((arg_name, fn_name), ty);
+        own.0.insert((arg_name, None), ty);
+        own
+    }
+
+    pub fn replace_fns(self, fn_names: impl IntoIterator<Item = &'a str>, arg_name: &'a str, ty: &Type) -> Self {
+        let mut own = self;
+        for fn_name in fn_names {
+            own.0.insert((arg_name, Some(fn_name)), ty.clone());
+        }
         own
     }
 }

@@ -3862,7 +3862,7 @@ unsafe extern "C" {
     /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQCONN(
         pQMgrName: PMQCHAR,
-        pHconn: PMQHCONN,
+        pHconn: &mut MQHCONN,
         pCompCode: &mut MQLONG,
         pReason: &mut MQLONG,
     );
@@ -3877,7 +3877,7 @@ unsafe extern "C" {
     pub fn MQCONNX(
         pQMgrName: PMQCHAR,
         pConnectOpts: PMQCNO,
-        pHconn: PMQHCONN,
+        pHconn: &mut MQHCONN,
         pCompCode: &mut MQLONG,
         pReason: &mut MQLONG,
     );
@@ -3917,7 +3917,7 @@ unsafe extern "C" {
     /// * `pHconn` (Input/Output): Connection handle
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying CompCode
-    pub fn MQDISC(pHconn: PMQHCONN, pCompCode: &mut MQLONG, pReason: &mut MQLONG);
+    pub fn MQDISC(pHconn: &mut MQHCONN, pCompCode: &mut MQLONG, pReason: &mut MQLONG);
     /// Delete Message Handle
     ///
     /// # Arguments

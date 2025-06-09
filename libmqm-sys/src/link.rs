@@ -41,7 +41,7 @@ impl function::Mqi for LinkedMq {
         &self,
         pQMgrName: lib::PMQCHAR,
         pConnectOpts: lib::PMQCNO,
-        pHconn: lib::PMQHCONN,
+        pHconn: &mut lib::MQHCONN,
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ) {
@@ -53,7 +53,7 @@ impl function::Mqi for LinkedMq {
     unsafe fn MQCONN(
         &self,
         pQMgrName: lib::PMQCHAR,
-        pHconn: lib::PMQHCONN,
+        pHconn: &mut lib::MQHCONN,
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ) {
@@ -62,7 +62,7 @@ impl function::Mqi for LinkedMq {
         }
     }
 
-    unsafe fn MQDISC(&self, pHconn: lib::PMQHCONN, pCompCode: &mut lib::MQLONG, pReason: &mut lib::MQLONG) {
+    unsafe fn MQDISC(&self, pHconn: &mut lib::MQHCONN, pCompCode: &mut lib::MQLONG, pReason: &mut lib::MQLONG) {
         unsafe {
             lib::MQDISC(pHconn, pCompCode, pReason);
         }

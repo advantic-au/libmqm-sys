@@ -623,7 +623,7 @@ impl function::Mqi for MqmContainer {
         &self,
         pQMgrName: mqsys::PMQCHAR,
         pConnectOpts: mqsys::PMQCNO,
-        pHconn: mqsys::PMQHCONN,
+        pHconn: &mut mqsys::MQHCONN,
         pCompCode: &mut mqsys::MQLONG,
         pReason: &mut mqsys::MQLONG,
     ) {
@@ -635,7 +635,7 @@ impl function::Mqi for MqmContainer {
     unsafe fn MQCONN(
         &self,
         pQMgrName: mqsys::PMQCHAR,
-        pHconn: mqsys::PMQHCONN,
+        pHconn: &mut mqsys::MQHCONN,
         pCompCode: &mut mqsys::MQLONG,
         pReason: &mut mqsys::MQLONG,
     ) {
@@ -644,7 +644,7 @@ impl function::Mqi for MqmContainer {
         }
     }
 
-    unsafe fn MQDISC(&self, pHconn: mqsys::PMQHCONN, pCompCode: &mut mqsys::MQLONG, pReason: &mut mqsys::MQLONG) {
+    unsafe fn MQDISC(&self, pHconn: &mut mqsys::MQHCONN, pCompCode: &mut mqsys::MQLONG, pReason: &mut mqsys::MQLONG) {
         unsafe {
             MqWrapper::MQDISC(self, pHconn, pCompCode, pReason);
         }

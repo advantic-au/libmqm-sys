@@ -231,8 +231,9 @@ fn main() -> Result<(), io::Error> {
                 };
 
                 let mut arg_type = FnArgType::new()
-                    .replace_type("pCompCode", None, parse_quote!(&mut MQLONG))
-                    .replace_type("pReason", None, parse_quote!(&mut MQLONG));
+                    .replace_all("pCompCode", parse_quote!(&mut MQLONG))
+                    .replace_all("pReason", parse_quote!(&mut MQLONG))
+                    .replace_fns(["MQCONN", "MQCONNX", "MQDISC"], "pHconn", &parse_quote!(&mut MQHCONN));
 
                 DocCommentArgs(&parameters).visit_file_mut(&mut generated);
                 DocCommentType(&comments).visit_file_mut(&mut generated);

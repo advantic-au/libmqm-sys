@@ -14,7 +14,7 @@ pub trait Mqi {
         &self,
         pQMgrName: mqsys::PMQCHAR,
         pConnectOpts: mqsys::PMQCNO,
-        pHconn: mqsys::PMQHCONN,
+        pHconn: &mut mqsys::MQHCONN,
         pCompCode: &mut mqsys::MQLONG,
         pReason: &mut mqsys::MQLONG,
     );
@@ -26,7 +26,7 @@ pub trait Mqi {
     unsafe fn MQCONN(
         &self,
         pQMgrName: mqsys::PMQCHAR,
-        pHconn: mqsys::PMQHCONN,
+        pHconn: &mut mqsys::MQHCONN,
         pCompCode: &mut mqsys::MQLONG,
         pReason: &mut mqsys::MQLONG,
     );
@@ -35,7 +35,7 @@ pub trait Mqi {
     ///
     /// References
     /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqdisc-disconnect-queue-manager)
-    unsafe fn MQDISC(&self, pHconn: mqsys::PMQHCONN, pCompCode: &mut mqsys::MQLONG, pReason: &mut mqsys::MQLONG);
+    unsafe fn MQDISC(&self, pHconn: &mut mqsys::MQHCONN, pCompCode: &mut mqsys::MQLONG, pReason: &mut mqsys::MQLONG);
 
     /// Opens a queue or topic for access
     ///
