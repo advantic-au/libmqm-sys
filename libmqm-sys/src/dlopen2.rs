@@ -71,15 +71,15 @@ impl LoadMqm for MqmContainer {
 #[derive(WrapperApi, Debug)]
 pub struct MqWrapper {
     MQCONNX: unsafe extern "C" fn(
-        pQMgrName: mqsys::PMQCHAR,
-        pConnectOpts: mqsys::PMQCNO,
-        pHconn: mqsys::PMQHCONN,
+        pQMgrName: &mqsys::MQCHAR48,
+        pConnectOpts: &mut mqsys::MQCNO,
+        pHconn: &mut mqsys::MQHCONN,
         pCompCode: &mut mqsys::MQLONG,
         pReason: &mut mqsys::MQLONG,
     ),
     MQCONN: unsafe extern "C" fn(
-        pQMgrName: mqsys::PMQCHAR,
-        pHconn: mqsys::PMQHCONN,
+        pQMgrName: &mqsys::MQCHAR48,
+        pHconn: &mut mqsys::MQHCONN,
         pCompCode: &mut mqsys::MQLONG,
         pReason: &mut mqsys::MQLONG,
     ),
@@ -621,8 +621,8 @@ pub struct MqWrapper {
 impl function::Mqi for MqmContainer {
     unsafe fn MQCONNX(
         &self,
-        pQMgrName: mqsys::PMQCHAR,
-        pConnectOpts: mqsys::PMQCNO,
+        pQMgrName: &mqsys::MQCHAR48,
+        pConnectOpts: &mut mqsys::MQCNO,
         pHconn: &mut mqsys::MQHCONN,
         pCompCode: &mut mqsys::MQLONG,
         pReason: &mut mqsys::MQLONG,
@@ -634,7 +634,7 @@ impl function::Mqi for MqmContainer {
 
     unsafe fn MQCONN(
         &self,
-        pQMgrName: mqsys::PMQCHAR,
+        pQMgrName: &mqsys::MQCHAR48,
         pHconn: &mut mqsys::MQHCONN,
         pCompCode: &mut mqsys::MQLONG,
         pReason: &mut mqsys::MQLONG,
@@ -1727,9 +1727,9 @@ mod tests {
         let mut hconn = lib::MQHC_DEF_HCONN;
         let mut comp_code = lib::MQCC_UNKNOWN;
         let mut reason = lib::MQRC_NONE;
-        let mut qmgr: [lib::MQCHAR; 48] = [32; 48]; // All spaces
+        let qmgr: [lib::MQCHAR; 48] = [32; 48]; // All spaces
         unsafe {
-            mq.MQCONN((&raw mut qmgr).cast(), &raw mut hconn, &mut comp_code, &mut reason);
+            mq.MQCONN(&qmgr, &mut hconn, &mut comp_code, &mut reason);
         }
 
         Ok(())

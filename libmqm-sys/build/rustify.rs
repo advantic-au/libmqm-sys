@@ -6,6 +6,14 @@ use syn::{visit_mut::VisitMut, Expr, Ident, Lit, Type, TypePath};
 pub struct MqLongConstWrap;
 pub struct FnArgType<'a>(HashMap<(&'a str, Option<&'a str>), Type>);
 
+struct BareFnArgType<T>(pub T);
+
+impl<T: Fn(&mut syn::BareFnArg)> VisitMut for BareFnArgType<T> {
+    fn visit_bare_fn_arg_mut(&mut self, item: &mut syn::BareFnArg) {
+        self.0(item);
+    }
+}
+
 impl FnArgType<'_> {
     pub fn new() -> Self {
         Self(HashMap::new())
@@ -29,6 +37,25 @@ impl<'a> FnArgType<'a> {
 }
 
 impl VisitMut for FnArgType<'_> {
+    fn visit_item_type_mut(&mut self, item: &mut syn::ItemType) {
+        let fn_name = item.ident.to_string();
+        BareFnArgType(|bare_arg: &mut syn::BareFnArg| {
+            if let Some((arg_name, _)) = &bare_arg.name {
+                let arg_name = arg_name.to_string();
+                if let Some(ty) = self
+                    .0
+                    // Match on just arg name
+                    .get(&(&arg_name, None))
+                    // .. or match on arg name and fn name
+                    .or_else(|| self.0.get(&(&arg_name, Some(&fn_name))))
+                {
+                    bare_arg.ty = ty.clone(); // Set the new type
+                }
+            }
+        })
+        .visit_item_type_mut(item);
+    }
+
     fn visit_foreign_item_fn_mut(&mut self, item: &mut syn::ForeignItemFn) {
         let fn_name = item.sig.ident.to_string();
         for arg in &mut item.sig.inputs {

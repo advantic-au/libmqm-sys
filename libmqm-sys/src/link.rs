@@ -39,8 +39,8 @@ pub struct LinkedMq;
 impl function::Mqi for LinkedMq {
     unsafe fn MQCONNX(
         &self,
-        pQMgrName: lib::PMQCHAR,
-        pConnectOpts: lib::PMQCNO,
+        pQMgrName: &lib::MQCHAR48,
+        pConnectOpts: &mut lib::MQCNO,
         pHconn: &mut lib::MQHCONN,
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
@@ -52,7 +52,7 @@ impl function::Mqi for LinkedMq {
 
     unsafe fn MQCONN(
         &self,
-        pQMgrName: lib::PMQCHAR,
+        pQMgrName: &lib::MQCHAR48,
         pHconn: &mut lib::MQHCONN,
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,

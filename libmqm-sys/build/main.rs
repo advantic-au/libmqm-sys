@@ -233,7 +233,17 @@ fn main() -> Result<(), io::Error> {
                 let mut arg_type = FnArgType::new()
                     .replace_all("pCompCode", parse_quote!(&mut MQLONG))
                     .replace_all("pReason", parse_quote!(&mut MQLONG))
-                    .replace_fns(["MQCONN", "MQCONNX", "MQDISC"], "pHconn", &parse_quote!(&mut MQHCONN));
+                    .replace_fns(
+                        ["MQCONN", "MQCONNX", "MQDISC", "MQ_CONN_CALL", "MQ_CONNX_CALL", "MQ_DISC_CALL"],
+                        "pHconn",
+                        &parse_quote!(&mut MQHCONN),
+                    )
+                    .replace_fns(
+                        ["MQCONN", "MQCONNX", "MQ_CONN_CALL", "MQ_CONNX_CALL"],
+                        "pQMgrName",
+                        &parse_quote!(&MQCHAR48),
+                    )
+                    .replace_fns(["MQCONNX", "MQ_CONNX_CALL"], "pConnectOpts", &parse_quote!(&mut MQCNO));
 
                 DocCommentArgs(&parameters).visit_file_mut(&mut generated);
                 DocCommentType(&comments).visit_file_mut(&mut generated);

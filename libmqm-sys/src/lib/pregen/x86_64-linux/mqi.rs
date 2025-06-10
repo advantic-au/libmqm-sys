@@ -3861,7 +3861,7 @@ unsafe extern "C" {
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQCONN(
-        pQMgrName: PMQCHAR,
+        pQMgrName: &MQCHAR48,
         pHconn: &mut MQHCONN,
         pCompCode: &mut MQLONG,
         pReason: &mut MQLONG,
@@ -3875,8 +3875,8 @@ unsafe extern "C" {
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQCONNX(
-        pQMgrName: PMQCHAR,
-        pConnectOpts: PMQCNO,
+        pQMgrName: &MQCHAR48,
+        pConnectOpts: &mut MQCNO,
         pHconn: &mut MQHCONN,
         pCompCode: &mut MQLONG,
         pReason: &mut MQLONG,

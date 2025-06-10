@@ -215,14 +215,14 @@ impl ExtractFromC for FnParamExtract {
 
 impl VisitMut for DocCommentType<'_> {
     fn visit_item_type_mut(&mut self, item: &mut syn::ItemType) {
-        if let Some(description) = self.0.get(&format!("{}", item.ident)) {
+        if let Some(description) = self.0.get(&item.ident.to_string()) {
             let doc_lit = syn::LitStr::new(description, proc_macro2::Span::call_site());
             item.attrs.insert(0, syn::parse_quote!(#[doc = #doc_lit ]));
         }
     }
 
     fn visit_item_struct_mut(&mut self, item: &mut syn::ItemStruct) {
-        let name = format!("{}", item.ident);
+        let name = item.ident.to_string();
         let mut names = vec![&*name, name.trim_start_matches("tag")];
         names.dedup();
 
@@ -233,14 +233,14 @@ impl VisitMut for DocCommentType<'_> {
     }
 
     fn visit_item_fn_mut(&mut self, item: &mut syn::ItemFn) {
-        if let Some(description) = self.0.get(&format!("{}", item.sig.ident)) {
+        if let Some(description) = self.0.get(&item.sig.ident.to_string()) {
             let doc_lit = syn::LitStr::new(description, proc_macro2::Span::call_site());
             item.attrs.insert(0, syn::parse_quote!(#[doc = #doc_lit ]));
         }
     }
 
     fn visit_foreign_item_fn_mut(&mut self, item: &mut syn::ForeignItemFn) {
-        if let Some(description) = self.0.get(&format!("{}", item.sig.ident)) {
+        if let Some(description) = self.0.get(&item.sig.ident.to_string()) {
             let doc_lit = syn::LitStr::new(description, proc_macro2::Span::call_site());
             item.attrs.insert(0, syn::parse_quote!(#[doc = #doc_lit ]));
         }
@@ -249,9 +249,9 @@ impl VisitMut for DocCommentType<'_> {
 
 impl VisitMut for DocCommentFields<'_> {
     fn visit_item_struct_mut(&mut self, item: &mut syn::ItemStruct) {
-        if let Some(fields) = self.0.get(&format!("{}", item.ident)) {
+        if let Some(fields) = self.0.get(&item.ident.to_string()) {
             for field in &mut item.fields {
-                if let Some(description) = fields.get(&format!("{}", field.ident.as_ref().unwrap())) {
+                if let Some(description) = fields.get(&field.ident.as_ref().unwrap().to_string()) {
                     let doc_lit = syn::LitStr::new(&format!(" {description}"), proc_macro2::Span::call_site());
                     field.attrs.insert(0, syn::parse_quote!(#[doc = #doc_lit ]));
                 }
@@ -277,7 +277,7 @@ fn doc_comment_args(args: &[(String, String)]) -> Vec<Attribute> {
 
 impl VisitMut for DocCommentArgs<'_> {
     fn visit_item_fn_mut(&mut self, item: &mut syn::ItemFn) {
-        if let Some(args) = self.0.get(&format!("{}", item.sig.ident)) {
+        if let Some(args) = self.0.get(&item.sig.ident.to_string()) {
             let mut arg_attrs = doc_comment_args(args);
             std::mem::swap(&mut item.attrs, &mut arg_attrs);
             item.attrs.extend(arg_attrs);
@@ -285,7 +285,7 @@ impl VisitMut for DocCommentArgs<'_> {
     }
 
     fn visit_foreign_item_fn_mut(&mut self, item: &mut syn::ForeignItemFn) {
-        if let Some(args) = self.0.get(&format!("{}", item.sig.ident)) {
+        if let Some(args) = self.0.get(&item.sig.ident.to_string()) {
             let mut arg_attrs = doc_comment_args(args);
             std::mem::swap(&mut item.attrs, &mut arg_attrs);
             item.attrs.extend(arg_attrs);
@@ -293,7 +293,7 @@ impl VisitMut for DocCommentArgs<'_> {
     }
 
     fn visit_item_type_mut(&mut self, item: &mut syn::ItemType) {
-        if let Some(args) = self.0.get(&format!("{}", item.ident)) {
+        if let Some(args) = self.0.get(&item.ident.to_string()) {
             let mut arg_attrs = doc_comment_args(args);
             std::mem::swap(&mut item.attrs, &mut arg_attrs);
             item.attrs.extend(arg_attrs);

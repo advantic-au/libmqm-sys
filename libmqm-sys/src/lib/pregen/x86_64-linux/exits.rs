@@ -30,7 +30,7 @@ pub type PPMQSTS = *mut PMQSTS;
 /// * `pCompCode` (Output): Completion code
 /// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_BACK_CALL = ::std::option::Option<
-    unsafe extern "C" fn(Hconn: MQHCONN, pCompCode: PMQLONG, pReason: PMQLONG),
+    unsafe extern "C" fn(Hconn: MQHCONN, pCompCode: &mut MQLONG, pReason: &mut MQLONG),
 >;
 pub type PMQ_BACK_CALL = MQ_BACK_CALL;
 /// Begin Unit of Work
@@ -44,8 +44,8 @@ pub type MQ_BEGIN_CALL = ::std::option::Option<
     unsafe extern "C" fn(
         Hconn: MQHCONN,
         pBeginOptions: PMQVOID,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQ_BEGIN_CALL = MQ_BEGIN_CALL;
@@ -70,8 +70,8 @@ pub type MQ_BUFMH_CALL = ::std::option::Option<
         BufferLength: MQLONG,
         pBuffer: PMQVOID,
         pDataLength: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQ_BUFMH_CALL = MQ_BUFMH_CALL;
@@ -94,8 +94,8 @@ pub type MQ_CB_CALL = ::std::option::Option<
         Hobj: MQHOBJ,
         pMsgDesc: PMQVOID,
         pGetMsgOpts: PMQVOID,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQ_CB_CALL = MQ_CB_CALL;
@@ -112,8 +112,8 @@ pub type MQ_CLOSE_CALL = ::std::option::Option<
         Hconn: MQHCONN,
         pHobj: PMQHOBJ,
         Options: MQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQ_CLOSE_CALL = MQ_CLOSE_CALL;
@@ -124,7 +124,7 @@ pub type PMQ_CLOSE_CALL = MQ_CLOSE_CALL;
 /// * `pCompCode` (Output): Completion code
 /// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_CMIT_CALL = ::std::option::Option<
-    unsafe extern "C" fn(Hconn: MQHCONN, pCompCode: PMQLONG, pReason: PMQLONG),
+    unsafe extern "C" fn(Hconn: MQHCONN, pCompCode: &mut MQLONG, pReason: &mut MQLONG),
 >;
 pub type PMQ_CMIT_CALL = MQ_CMIT_CALL;
 /// Connect Queue Manager
@@ -136,10 +136,10 @@ pub type PMQ_CMIT_CALL = MQ_CMIT_CALL;
 /// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_CONN_CALL = ::std::option::Option<
     unsafe extern "C" fn(
-        pQMgrName: PMQCHAR,
-        pHconn: PMQHCONN,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pQMgrName: &MQCHAR48,
+        pHconn: &mut MQHCONN,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQ_CONN_CALL = MQ_CONN_CALL;
@@ -153,11 +153,11 @@ pub type PMQ_CONN_CALL = MQ_CONN_CALL;
 /// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_CONNX_CALL = ::std::option::Option<
     unsafe extern "C" fn(
-        pQMgrName: PMQCHAR,
-        pConnectOpts: PMQCNO,
-        pHconn: PMQHCONN,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pQMgrName: &MQCHAR48,
+        pConnectOpts: &mut MQCNO,
+        pHconn: &mut MQHCONN,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQ_CONNX_CALL = MQ_CONNX_CALL;
@@ -174,8 +174,8 @@ pub type MQ_CRTMH_CALL = ::std::option::Option<
         Hconn: MQHCONN,
         pCrtMsgHOpts: PMQVOID,
         pHmsg: PMQHMSG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQ_CRTMH_CALL = MQ_CRTMH_CALL;
@@ -192,8 +192,8 @@ pub type MQ_CTL_CALL = ::std::option::Option<
         Hconn: MQHCONN,
         Operation: MQLONG,
         pControlOpts: PMQVOID,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQ_CTL_CALL = MQ_CTL_CALL;
@@ -204,7 +204,11 @@ pub type PMQ_CTL_CALL = MQ_CTL_CALL;
 /// * `pCompCode` (Output): Completion code
 /// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_DISC_CALL = ::std::option::Option<
-    unsafe extern "C" fn(pHconn: PMQHCONN, pCompCode: PMQLONG, pReason: PMQLONG),
+    unsafe extern "C" fn(
+        pHconn: &mut MQHCONN,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
+    ),
 >;
 pub type PMQ_DISC_CALL = MQ_DISC_CALL;
 /// Delete Message Handle
@@ -220,8 +224,8 @@ pub type MQ_DLTMH_CALL = ::std::option::Option<
         Hconn: MQHCONN,
         pHmsg: PMQHMSG,
         pDltMsgHOpts: PMQVOID,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQ_DLTMH_CALL = MQ_DLTMH_CALL;
@@ -240,8 +244,8 @@ pub type MQ_DLTMP_CALL = ::std::option::Option<
         Hmsg: MQHMSG,
         pDltPropOpts: PMQVOID,
         pName: PMQVOID,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQ_DLTMP_CALL = MQ_DLTMP_CALL;
@@ -266,8 +270,8 @@ pub type MQ_GET_CALL = ::std::option::Option<
         BufferLength: MQLONG,
         pBuffer: PMQVOID,
         pDataLength: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQ_GET_CALL = MQ_GET_CALL;
@@ -294,8 +298,8 @@ pub type MQ_INQ_CALL = ::std::option::Option<
         pIntAttrs: PMQLONG,
         CharAttrLength: MQLONG,
         pCharAttrs: PMQCHAR,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQ_INQ_CALL = MQ_INQ_CALL;
@@ -324,8 +328,8 @@ pub type MQ_INQMP_CALL = ::std::option::Option<
         ValueLength: MQLONG,
         pValue: PMQVOID,
         pDataLength: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQ_INQMP_CALL = MQ_INQMP_CALL;
@@ -352,8 +356,8 @@ pub type MQ_MHBUF_CALL = ::std::option::Option<
         BufferLength: MQLONG,
         pBuffer: PMQVOID,
         pDataLength: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQ_MHBUF_CALL = MQ_MHBUF_CALL;
@@ -372,8 +376,8 @@ pub type MQ_OPEN_CALL = ::std::option::Option<
         pObjDesc: PMQVOID,
         Options: MQLONG,
         pHobj: PMQHOBJ,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQ_OPEN_CALL = MQ_OPEN_CALL;
@@ -396,8 +400,8 @@ pub type MQ_PUT_CALL = ::std::option::Option<
         pPutMsgOpts: PMQVOID,
         BufferLength: MQLONG,
         pBuffer: PMQVOID,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQ_PUT_CALL = MQ_PUT_CALL;
@@ -420,8 +424,8 @@ pub type MQ_PUT1_CALL = ::std::option::Option<
         pPutMsgOpts: PMQVOID,
         BufferLength: MQLONG,
         pBuffer: PMQVOID,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQ_PUT1_CALL = MQ_PUT1_CALL;
@@ -448,8 +452,8 @@ pub type MQ_SET_CALL = ::std::option::Option<
         pIntAttrs: PMQLONG,
         CharAttrLength: MQLONG,
         pCharAttrs: PMQCHAR,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQ_SET_CALL = MQ_SET_CALL;
@@ -476,8 +480,8 @@ pub type MQ_SETMP_CALL = ::std::option::Option<
         Type: MQLONG,
         ValueLength: MQLONG,
         pValue: PMQVOID,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQ_SETMP_CALL = MQ_SETMP_CALL;
@@ -494,8 +498,8 @@ pub type MQ_STAT_CALL = ::std::option::Option<
         Hconn: MQHCONN,
         Type: MQLONG,
         pStatus: PMQVOID,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQ_STAT_CALL = MQ_STAT_CALL;
@@ -514,8 +518,8 @@ pub type MQ_SUB_CALL = ::std::option::Option<
         pSubDesc: PMQVOID,
         pHobj: PMQHOBJ,
         pHsub: PMQHOBJ,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQ_SUB_CALL = MQ_SUB_CALL;
@@ -534,8 +538,8 @@ pub type MQ_SUBRQ_CALL = ::std::option::Option<
         Hsub: MQHOBJ,
         Action: MQLONG,
         pSubRqOpts: PMQVOID,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQ_SUBRQ_CALL = MQ_SUBRQ_CALL;
@@ -629,8 +633,8 @@ pub type MQ_XEP_CALL = ::std::option::Option<
         Function: MQLONG,
         pEntryPoint: PMQFUNC,
         pExitOpts: PMQXEPO,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQ_XEP_CALL = MQ_XEP_CALL;
@@ -647,8 +651,8 @@ pub type MQ_BACK_EXIT = ::std::option::Option<
         pExitParms: PMQAXP,
         pExitContext: PMQAXC,
         pHconn: PMQHCONN,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQ_BACK_EXIT = MQ_BACK_EXIT;
@@ -667,8 +671,8 @@ pub type MQ_BEGIN_EXIT = ::std::option::Option<
         pExitContext: PMQAXC,
         pHconn: PMQHCONN,
         ppBeginOptions: PPMQBO,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQ_BEGIN_EXIT = MQ_BEGIN_EXIT;
@@ -717,8 +721,8 @@ pub type MQ_CB_EXIT = ::std::option::Option<
         pHobj: PMQHOBJ,
         ppMsgDesc: PPMQMD,
         ppGetMsgOpts: PPMQGMO,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQ_CB_EXIT = MQ_CB_EXIT;
@@ -739,8 +743,8 @@ pub type MQ_CLOSE_EXIT = ::std::option::Option<
         pHconn: PMQHCONN,
         ppHobj: PPMQHOBJ,
         pOptions: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQ_CLOSE_EXIT = MQ_CLOSE_EXIT;
@@ -757,8 +761,8 @@ pub type MQ_CMIT_EXIT = ::std::option::Option<
         pExitParms: PMQAXP,
         pExitContext: PMQAXC,
         pHconn: PMQHCONN,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQ_CMIT_EXIT = MQ_CMIT_EXIT;
@@ -779,8 +783,8 @@ pub type MQ_CONNX_EXIT = ::std::option::Option<
         pQMgrName: PMQCHAR,
         ppConnectOpts: PPMQCNO,
         ppHconn: PPMQHCONN,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQ_CONNX_EXIT = MQ_CONNX_EXIT;
@@ -801,8 +805,8 @@ pub type MQ_CTL_EXIT = ::std::option::Option<
         pHconn: PMQHCONN,
         pOperation: PMQLONG,
         ppCtlOpts: PPMQCTLO,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQ_CTL_EXIT = MQ_CTL_EXIT;
@@ -819,8 +823,8 @@ pub type MQ_DISC_EXIT = ::std::option::Option<
         pExitParms: PMQAXP,
         pExitContext: PMQAXC,
         ppHconn: PPMQHCONN,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQ_DISC_EXIT = MQ_DISC_EXIT;
@@ -849,8 +853,8 @@ pub type MQ_GET_EXIT = ::std::option::Option<
         pBufferLength: PMQLONG,
         ppBuffer: PPMQVOID,
         ppDataLength: PPMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQ_GET_EXIT = MQ_GET_EXIT;
@@ -865,8 +869,8 @@ pub type MQ_INIT_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: PMQAXP,
         pExitContext: PMQAXC,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQ_INIT_EXIT = MQ_INIT_EXIT;
@@ -897,8 +901,8 @@ pub type MQ_INQ_EXIT = ::std::option::Option<
         ppIntAttrs: PPMQLONG,
         pCharAttrLength: PMQLONG,
         ppCharAttrs: PPMQCHAR,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQ_INQ_EXIT = MQ_INQ_EXIT;
@@ -921,8 +925,8 @@ pub type MQ_OPEN_EXIT = ::std::option::Option<
         ppObjDesc: PPMQOD,
         pOptions: PMQLONG,
         ppHobj: PPMQHOBJ,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQ_OPEN_EXIT = MQ_OPEN_EXIT;
@@ -949,8 +953,8 @@ pub type MQ_PUT_EXIT = ::std::option::Option<
         ppPutMsgOpts: PPMQPMO,
         pBufferLength: PMQLONG,
         ppBuffer: PPMQVOID,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQ_PUT_EXIT = MQ_PUT_EXIT;
@@ -977,8 +981,8 @@ pub type MQ_PUT1_EXIT = ::std::option::Option<
         ppPutMsgOpts: PPMQPMO,
         pBufferLength: PMQLONG,
         ppBuffer: PPMQVOID,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQ_PUT1_EXIT = MQ_PUT1_EXIT;
@@ -1009,8 +1013,8 @@ pub type MQ_SET_EXIT = ::std::option::Option<
         ppIntAttrs: PPMQLONG,
         pCharAttrLength: PMQLONG,
         ppCharAttrs: PPMQCHAR,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQ_SET_EXIT = MQ_SET_EXIT;
@@ -1031,8 +1035,8 @@ pub type MQ_STAT_EXIT = ::std::option::Option<
         pHconn: PMQHCONN,
         pType: PMQLONG,
         ppStatus: PPMQSTS,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQ_STAT_EXIT = MQ_STAT_EXIT;
@@ -1055,8 +1059,8 @@ pub type MQ_SUBRQ_EXIT = ::std::option::Option<
         pHsub: PMQHOBJ,
         pAction: PMQLONG,
         ppSubRqOpts: PPMQSRO,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQ_SUBRQ_EXIT = MQ_SUBRQ_EXIT;
@@ -1079,8 +1083,8 @@ pub type MQ_SUB_EXIT = ::std::option::Option<
         ppSubDesc: PPMQSD,
         ppHobj: PPMQHOBJ,
         ppHsub: PPMQHOBJ,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQ_SUB_EXIT = MQ_SUB_EXIT;
@@ -1095,8 +1099,8 @@ pub type MQ_TERM_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: PMQAXP,
         pExitContext: PMQAXC,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQ_TERM_EXIT = MQ_TERM_EXIT;
@@ -1196,8 +1200,8 @@ pub type MQ_PRECONNECT_EXIT = ::std::option::Option<
         pExitParms: PMQNXP,
         pQMgrName: PMQCHAR,
         ppConnectOpts: PPMQCNO,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQ_PRECONNECT_EXIT = MQ_PRECONNECT_EXIT;
@@ -1216,8 +1220,8 @@ pub type MQ_XCLWLN_CALL = ::std::option::Option<
         CurrentRecord: MQPTR,
         NextOffset: MQLONG,
         pNextRecord: PMQPTR,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQ_XCLWLN_CALL = MQ_XCLWLN_CALL;
@@ -1246,8 +1250,8 @@ pub type MQ_XCNVC_CALL = ::std::option::Option<
         TargetLength: MQLONG,
         pTargetBuffer: PMQCHAR,
         pDataLength: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQ_XCNVC_CALL = MQ_XCNVC_CALL;
@@ -1299,8 +1303,8 @@ pub type MQ_ZEP_CALL = ::std::option::Option<
         Hconfig: MQHCONFIG,
         Function: MQLONG,
         pEntryPoint: PMQFUNC,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQ_ZEP_CALL = MQ_ZEP_CALL;
@@ -1323,8 +1327,8 @@ pub type MQZ_INIT_AUTHORITY = ::std::option::Option<
         ComponentDataLength: MQLONG,
         pComponentData: PMQBYTE,
         pVersion: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQZ_INIT_AUTHORITY = MQZ_INIT_AUTHORITY;
@@ -1343,8 +1347,8 @@ pub type MQZ_TERM_AUTHORITY = ::std::option::Option<
         Options: MQLONG,
         pQMgrName: PMQCHAR,
         pComponentData: PMQBYTE,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQZ_TERM_AUTHORITY = MQZ_TERM_AUTHORITY;
@@ -1365,8 +1369,8 @@ pub type MQZ_DELETE_AUTHORITY = ::std::option::Option<
         ObjectType: MQLONG,
         pComponentData: PMQBYTE,
         pContinuation: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQZ_DELETE_AUTHORITY = MQZ_DELETE_AUTHORITY;
@@ -1393,8 +1397,8 @@ pub type MQZ_GET_AUTHORITY = ::std::option::Option<
         pAuthority: PMQLONG,
         pComponentData: PMQBYTE,
         pContinuation: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQZ_GET_AUTHORITY = MQZ_GET_AUTHORITY;
@@ -1421,8 +1425,8 @@ pub type MQZ_GET_AUTHORITY_2 = ::std::option::Option<
         pAuthority: PMQLONG,
         pComponentData: PMQBYTE,
         pContinuation: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQZ_GET_AUTHORITY_2 = MQZ_GET_AUTHORITY_2;
@@ -1449,8 +1453,8 @@ pub type MQZ_GET_EXPLICIT_AUTHORITY = ::std::option::Option<
         pAuthority: PMQLONG,
         pComponentData: PMQBYTE,
         pContinuation: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQZ_GET_EXPLICIT_AUTHORITY = MQZ_GET_EXPLICIT_AUTHORITY;
@@ -1477,8 +1481,8 @@ pub type MQZ_GET_EXPLICIT_AUTHORITY_2 = ::std::option::Option<
         pAuthority: PMQLONG,
         pComponentData: PMQBYTE,
         pContinuation: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQZ_GET_EXPLICIT_AUTHORITY_2 = MQZ_GET_EXPLICIT_AUTHORITY_2;
@@ -1505,8 +1509,8 @@ pub type MQZ_ENUMERATE_AUTHORITY_DATA = ::std::option::Option<
         pAuthorityDataLength: PMQLONG,
         pComponentData: PMQBYTE,
         pContinuation: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQZ_ENUMERATE_AUTHORITY_DATA = MQZ_ENUMERATE_AUTHORITY_DATA;
@@ -1533,8 +1537,8 @@ pub type MQZ_SET_AUTHORITY = ::std::option::Option<
         Authority: MQLONG,
         pComponentData: PMQBYTE,
         pContinuation: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQZ_SET_AUTHORITY = MQZ_SET_AUTHORITY;
@@ -1561,8 +1565,8 @@ pub type MQZ_SET_AUTHORITY_2 = ::std::option::Option<
         Authority: MQLONG,
         pComponentData: PMQBYTE,
         pContinuation: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQZ_SET_AUTHORITY_2 = MQZ_SET_AUTHORITY_2;
@@ -1585,8 +1589,8 @@ pub type MQZ_COPY_ALL_AUTHORITY = ::std::option::Option<
         ObjectType: MQLONG,
         pComponentData: PMQBYTE,
         pContinuation: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQZ_COPY_ALL_AUTHORITY = MQZ_COPY_ALL_AUTHORITY;
@@ -1613,8 +1617,8 @@ pub type MQZ_CHECK_AUTHORITY = ::std::option::Option<
         Authority: MQLONG,
         pComponentData: PMQBYTE,
         pContinuation: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQZ_CHECK_AUTHORITY = MQZ_CHECK_AUTHORITY;
@@ -1641,8 +1645,8 @@ pub type MQZ_CHECK_AUTHORITY_2 = ::std::option::Option<
         Authority: MQLONG,
         pComponentData: PMQBYTE,
         pContinuation: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQZ_CHECK_AUTHORITY_2 = MQZ_CHECK_AUTHORITY_2;
@@ -1667,8 +1671,8 @@ pub type MQZ_AUTHENTICATE_USER = ::std::option::Option<
         pCorrelationPtr: PMQPTR,
         pComponentData: PMQBYTE,
         pContinuation: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQZ_AUTHENTICATE_USER = MQZ_AUTHENTICATE_USER;
@@ -1687,8 +1691,8 @@ pub type MQZ_FREE_USER = ::std::option::Option<
         pFreeParms: PMQZFP,
         pComponentData: PMQBYTE,
         pContinuation: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQZ_FREE_USER = MQZ_FREE_USER;
@@ -1719,8 +1723,8 @@ pub type MQZ_INQUIRE = ::std::option::Option<
         pSelectorReturned: PMQLONG,
         pComponentData: PMQBYTE,
         pContinuation: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQZ_INQUIRE = MQZ_INQUIRE;
@@ -1737,8 +1741,8 @@ pub type MQZ_REFRESH_CACHE = ::std::option::Option<
         pQMgrName: PMQCHAR,
         pComponentData: PMQBYTE,
         pContinuation: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQZ_REFRESH_CACHE = MQZ_REFRESH_CACHE;
@@ -1759,8 +1763,8 @@ pub type MQZ_CHECK_PRIVILEGED = ::std::option::Option<
         EntityType: MQLONG,
         pComponentData: PMQBYTE,
         pContinuation: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQZ_CHECK_PRIVILEGED = MQZ_CHECK_PRIVILEGED;
@@ -1783,8 +1787,8 @@ pub type MQZ_INIT_NAME = ::std::option::Option<
         ComponentDataLength: MQLONG,
         pComponentData: PMQBYTE,
         pVersion: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQZ_INIT_NAME = MQZ_INIT_NAME;
@@ -1803,8 +1807,8 @@ pub type MQZ_TERM_NAME = ::std::option::Option<
         Options: MQLONG,
         pQMgrName: PMQCHAR,
         pComponentData: PMQBYTE,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQZ_TERM_NAME = MQZ_TERM_NAME;
@@ -1825,8 +1829,8 @@ pub type MQZ_LOOKUP_NAME = ::std::option::Option<
         pResolvedQMgrName: PMQCHAR,
         pComponentData: PMQBYTE,
         pContinuation: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQZ_LOOKUP_NAME = MQZ_LOOKUP_NAME;
@@ -1847,8 +1851,8 @@ pub type MQZ_INSERT_NAME = ::std::option::Option<
         pResolvedQMgrName: PMQCHAR,
         pComponentData: PMQBYTE,
         pContinuation: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQZ_INSERT_NAME = MQZ_INSERT_NAME;
@@ -1867,8 +1871,8 @@ pub type MQZ_DELETE_NAME = ::std::option::Option<
         pQName: PMQCHAR,
         pComponentData: PMQBYTE,
         pContinuation: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQZ_DELETE_NAME = MQZ_DELETE_NAME;
@@ -1891,8 +1895,8 @@ pub type MQZ_INIT_USERID = ::std::option::Option<
         ComponentDataLength: MQLONG,
         pComponentData: PMQBYTE,
         pVersion: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQZ_INIT_USERID = MQZ_INIT_USERID;
@@ -1911,8 +1915,8 @@ pub type MQZ_TERM_USERID = ::std::option::Option<
         Options: MQLONG,
         pQMgrName: PMQCHAR,
         pComponentData: PMQBYTE,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQZ_TERM_USERID = MQZ_TERM_USERID;
@@ -1933,8 +1937,8 @@ pub type MQZ_FIND_USERID = ::std::option::Option<
         pPassword: PMQCHAR,
         pComponentData: PMQBYTE,
         pContinuation: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     ),
 >;
 pub type PMQZ_FIND_USERID = MQZ_FIND_USERID;

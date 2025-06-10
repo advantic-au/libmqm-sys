@@ -12,8 +12,8 @@ pub trait Mqi {
     /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqconnx-connect-queue-manager-extended)
     unsafe fn MQCONNX(
         &self,
-        pQMgrName: mqsys::PMQCHAR,
-        pConnectOpts: mqsys::PMQCNO,
+        pQMgrName: &mqsys::MQCHAR48,
+        pConnectOpts: &mut mqsys::MQCNO,
         pHconn: &mut mqsys::MQHCONN,
         pCompCode: &mut mqsys::MQLONG,
         pReason: &mut mqsys::MQLONG,
@@ -25,7 +25,7 @@ pub trait Mqi {
     /// * [IBM documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqconn-connect-queue-manager)
     unsafe fn MQCONN(
         &self,
-        pQMgrName: mqsys::PMQCHAR,
+        pQMgrName: &mqsys::MQCHAR48,
         pHconn: &mut mqsys::MQHCONN,
         pCompCode: &mut mqsys::MQLONG,
         pReason: &mut mqsys::MQLONG,
