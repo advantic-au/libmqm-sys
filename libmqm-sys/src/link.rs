@@ -19,8 +19,8 @@
  * let mut qmgr: [lib::MQCHAR; 48] = [32; 48]; // All spaces
  * unsafe {
  *    mq.MQCONN(
- *      (&raw mut qmgr).cast(),
- *      &raw mut hconn,
+ *      &qmgr,
+ *      &mut hconn,
  *      &mut comp_code,
  *      &mut reason,
  *    );
