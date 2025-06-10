@@ -1,155 +1,259 @@
+/* Generated with MQ client version 9.4.2.1 */
+
+/// PCF Header
 pub type MQCFH = tagMQCFH;
 pub type PMQCFH = *mut MQCFH;
+/// PCF Byte String Filter Parameter
 pub type MQCFBF = tagMQCFBF;
 pub type PMQCFBF = *mut MQCFBF;
+/// PCF Byte String Parameter
 pub type MQCFBS = tagMQCFBS;
 pub type PMQCFBS = *mut MQCFBS;
+/// PCF Group Parameter
 pub type MQCFGR = tagMQCFGR;
 pub type PMQCFGR = *mut MQCFGR;
+/// PCF Integer Filter Parameter
 pub type MQCFIF = tagMQCFIF;
 pub type PMQCFIF = *mut MQCFIF;
+/// PCF Integer-List Parameter
 pub type MQCFIL = tagMQCFIL;
 pub type PMQCFIL = *mut MQCFIL;
+/// PCF 64-bit Integer-List Parameter
 pub type MQCFIL64 = tagMQCFIL64;
 pub type PMQCFIL64 = *mut MQCFIL64;
+/// PCF Integer Parameter
 pub type MQCFIN = tagMQCFIN;
 pub type PMQCFIN = *mut MQCFIN;
+/// PCF 64-bit Integer Parameter
 pub type MQCFIN64 = tagMQCFIN64;
 pub type PMQCFIN64 = *mut MQCFIN64;
+/// PCF String Filter Parameter
 pub type MQCFSF = tagMQCFSF;
 pub type PMQCFSF = *mut MQCFSF;
+/// PCF String-List Parameter
 pub type MQCFSL = tagMQCFSL;
 pub type PMQCFSL = *mut MQCFSL;
+/// PCF String Parameter
 pub type MQCFST = tagMQCFST;
 pub type PMQCFST = *mut MQCFST;
+/// Embedded PCF header
 pub type MQEPH = tagMQEPH;
 pub type PMQEPH = *mut MQEPH;
+/// PCF Header
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQCFH {
+    /// Structure type
     pub Type: MQLONG,
+    /// Structure length
     pub StrucLength: MQLONG,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Command identifier
     pub Command: MQLONG,
+    /// Message sequence number
     pub MsgSeqNumber: MQLONG,
+    /// Control options
     pub Control: MQLONG,
+    /// Completion code
     pub CompCode: MQLONG,
+    /// Reason code qualifying completion code
     pub Reason: MQLONG,
+    /// Count of parameter structures
     pub ParameterCount: MQLONG,
 }
+/// PCF Byte String Filter Parameter
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQCFBF {
+    /// Structure type
     pub Type: MQLONG,
+    /// Structure length
     pub StrucLength: MQLONG,
+    /// Parameter identifier
     pub Parameter: MQLONG,
+    /// Operator identifier
     pub Operator: MQLONG,
+    /// Filter value length
     pub FilterValueLength: MQLONG,
+    /// Filter value -- first byte
     pub FilterValue: [MQBYTE; 1usize],
 }
+/// PCF Byte String Parameter
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQCFBS {
+    /// Structure type
     pub Type: MQLONG,
+    /// Structure length
     pub StrucLength: MQLONG,
+    /// Parameter identifier
     pub Parameter: MQLONG,
+    /// Length of string
     pub StringLength: MQLONG,
+    /// String value -- first byte
     pub String: [MQBYTE; 1usize],
 }
+/// PCF Group Parameter
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQCFGR {
+    /// Structure type
     pub Type: MQLONG,
+    /// Structure length
     pub StrucLength: MQLONG,
+    /// Parameter identifier
     pub Parameter: MQLONG,
+    /// Count of group parameter structures
     pub ParameterCount: MQLONG,
 }
+/// PCF Integer Filter Parameter
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQCFIF {
+    /// Structure type
     pub Type: MQLONG,
+    /// Structure length
     pub StrucLength: MQLONG,
+    /// Parameter identifier
     pub Parameter: MQLONG,
+    /// Operator identifier
     pub Operator: MQLONG,
+    /// Filter value
     pub FilterValue: MQLONG,
 }
+/// PCF Integer-List Parameter
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQCFIL {
+    /// Structure type
     pub Type: MQLONG,
+    /// Structure length
     pub StrucLength: MQLONG,
+    /// Parameter identifier
     pub Parameter: MQLONG,
+    /// Count of parameter values
     pub Count: MQLONG,
+    /// Parameter values -- first element
     pub Values: [MQLONG; 1usize],
 }
+/// PCF 64-bit Integer-List Parameter
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQCFIL64 {
+    /// Structure type
     pub Type: MQLONG,
+    /// Structure length
     pub StrucLength: MQLONG,
+    /// Parameter identifier
     pub Parameter: MQLONG,
+    /// Count of parameter values
     pub Count: MQLONG,
+    /// Parameter values -- first element
     pub Values: [MQINT64; 1usize],
 }
+/// PCF Integer Parameter
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQCFIN {
+    /// Structure type
     pub Type: MQLONG,
+    /// Structure length
     pub StrucLength: MQLONG,
+    /// Parameter identifier
     pub Parameter: MQLONG,
+    /// Parameter value
     pub Value: MQLONG,
 }
+/// PCF 64-bit Integer Parameter
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQCFIN64 {
+    /// Structure type
     pub Type: MQLONG,
+    /// Structure length
     pub StrucLength: MQLONG,
+    /// Parameter identifier
     pub Parameter: MQLONG,
+    /// Reserved
     pub Reserved: MQLONG,
+    /// Parameter value
     pub Value: MQINT64,
 }
+/// PCF String Filter Parameter
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQCFSF {
+    /// Structure type
     pub Type: MQLONG,
+    /// Structure length
     pub StrucLength: MQLONG,
+    /// Parameter identifier
     pub Parameter: MQLONG,
+    /// Operator identifier
     pub Operator: MQLONG,
+    /// Coded character set identifier
     pub CodedCharSetId: MQLONG,
+    /// Filter value length
     pub FilterValueLength: MQLONG,
+    /// Filter value -- first character
     pub FilterValue: [MQCHAR; 1usize],
 }
+/// PCF String-List Parameter
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQCFSL {
+    /// Structure type
     pub Type: MQLONG,
+    /// Structure length
     pub StrucLength: MQLONG,
+    /// Parameter identifier
     pub Parameter: MQLONG,
+    /// Coded character set identifier
     pub CodedCharSetId: MQLONG,
+    /// Count of parameter values
     pub Count: MQLONG,
+    /// Length of one string
     pub StringLength: MQLONG,
+    /// String values -- first character
     pub Strings: [MQCHAR; 1usize],
 }
+/// PCF String Parameter
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQCFST {
+    /// Structure type
     pub Type: MQLONG,
+    /// Structure length
     pub StrucLength: MQLONG,
+    /// Parameter identifier
     pub Parameter: MQLONG,
+    /// Coded character set identifier
     pub CodedCharSetId: MQLONG,
+    /// Length of string
     pub StringLength: MQLONG,
+    /// String value -- first character
     pub String: [MQCHAR; 1usize],
 }
+/// Embedded PCF header
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQEPH {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Total length of MQEPH including MQCFH and parameter structures that follow
     pub StrucLength: MQLONG,
+    /// Numeric encoding of data that follows last PCF parameter structure
     pub Encoding: MQLONG,
+    /// Character set identifier of data that follows last PCF parameter structure
     pub CodedCharSetId: MQLONG,
+    /// Format name of data that follows last PCF parameter structure
     pub Format: MQCHAR8,
+    /// Flags
     pub Flags: MQLONG,
+    /// Programmable Command Format Header
     pub PCFHeader: MQCFH,
 }
 pub const MQCFH_STRUC_LENGTH: usize = 36;
