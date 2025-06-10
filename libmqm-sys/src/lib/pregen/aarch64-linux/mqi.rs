@@ -1,3 +1,5 @@
+/* Generated with MQ client version 9.4.2.1 */
+
 pub type MQBYTE = ::std::os::raw::c_uchar;
 pub type PMQBYTE = *mut MQBYTE;
 pub type MQBYTE4 = [MQBYTE; 4usize];
@@ -82,88 +84,137 @@ pub type MQPID = MQLONG;
 pub type PMQPID = *mut MQPID;
 pub type MQTID = MQLONG;
 pub type PMQTID = *mut MQTID;
+/// Authentication Information Record
 pub type MQAIR = tagMQAIR;
 pub type PMQAIR = *mut MQAIR;
+/// MQ Balancing Options
 pub type MQBNO = tagMQBNO;
 pub type PMQBNO = *mut MQBNO;
+/// Buffer To Message Handle Options
 pub type MQBMHO = tagMQBMHO;
 pub type PMQBMHO = *mut MQBMHO;
+/// Begin Options
 pub type MQBO = tagMQBO;
 pub type PMQBO = *mut MQBO;
+/// Callback Context
 pub type MQCBC = tagMQCBC;
 pub type PMQCBC = *mut MQCBC;
+/// Callback Data Descriptor
 pub type MQCBD = tagMQCBD;
 pub type PMQCBD = *mut MQCBD;
+/// Variable-length string
 pub type MQCHARV = tagMQCHARV;
 pub type PMQCHARV = *mut MQCHARV;
+/// CICS Information Header
 pub type MQCIH = tagMQCIH;
 pub type PMQCIH = *mut MQCIH;
+/// Create Message Handle Options
 pub type MQCMHO = tagMQCMHO;
 pub type PMQCMHO = *mut MQCMHO;
+/// MQCTL function options
 pub type MQCTLO = tagMQCTLO;
 pub type PMQCTLO = *mut MQCTLO;
+/// SSL Configuration Options
 pub type MQSCO = tagMQSCO;
 pub type PMQSCO = *mut MQSCO;
+/// Security Parameters
 pub type MQCSP = tagMQCSP;
 pub type PMQCSP = *mut MQCSP;
+/// Connect Options
 pub type MQCNO = tagMQCNO;
 pub type PMQCNO = *mut MQCNO;
+/// Distribution Header
 pub type MQDH = tagMQDH;
 pub type PMQDH = *mut MQDH;
+/// Dead Letter Header
 pub type MQDLH = tagMQDLH;
 pub type PMQDLH = *mut MQDLH;
+/// Delete Message Handle Options
 pub type MQDMHO = tagMQDMHO;
 pub type PMQDMHO = *mut MQDMHO;
+/// Delete Message Property Options
 pub type MQDMPO = tagMQDMPO;
 pub type PMQDMPO = *mut MQDMPO;
+/// Get Message Options
 pub type MQGMO = tagMQGMO;
 pub type PMQGMO = *mut MQGMO;
+/// IMS Information Header
 pub type MQIIH = tagMQIIH;
 pub type PMQIIH = *mut MQIIH;
+/// Inquire Message Property Options
 pub type MQIMPO = tagMQIMPO;
 pub type PMQIMPO = *mut MQIMPO;
+/// Message Descriptor
 pub type MQMD = tagMQMD;
 pub type PMQMD = *mut MQMD;
+/// Message Descriptor Extension
 pub type MQMDE = tagMQMDE;
 pub type PMQMDE = *mut MQMDE;
+/// Version-1 Message Descriptor
 pub type MQMD1 = tagMQMD1;
 pub type PMQMD1 = *mut MQMD1;
+/// Version-2 Message Descriptor
 pub type MQMD2 = tagMQMD2;
 pub type PMQMD2 = *mut MQMD2;
+/// Message Handle To Buffer Options
 pub type MQMHBO = tagMQMHBO;
 pub type PMQMHBO = *mut MQMHBO;
+/// Object descriptor
 pub type MQOD = tagMQOD;
 pub type PMQOD = *mut MQOD;
+/// Object Record
 pub type MQOR = tagMQOR;
 pub type PMQOR = *mut MQOR;
+/// Property descriptor
 pub type MQPD = tagMQPD;
 pub type PMQPD = *mut MQPD;
+/// Put Message Options
 pub type MQPMO = tagMQPMO;
 pub type PMQPMO = *mut MQPMO;
+/// Rules and Formatting Header
 pub type MQRFH = tagMQRFH;
 pub type PMQRFH = *mut MQRFH;
+/// Rules and Formatting Header 2
 pub type MQRFH2 = tagMQRFH2;
 pub type PMQRFH2 = *mut MQRFH2;
+/// Reference Message Header
 pub type MQRMH = tagMQRMH;
 pub type PMQRMH = *mut MQRMH;
+/// Response Record
 pub type MQRR = tagMQRR;
 pub type PMQRR = *mut MQRR;
+/// Subscription Descriptor
 pub type MQSD = tagMQSD;
 pub type PMQSD = *mut MQSD;
+/// Set Message Property Options
 pub type MQSMPO = tagMQSMPO;
 pub type PMQSMPO = *mut MQSMPO;
+/// Subscription Request Options
 pub type MQSRO = tagMQSRO;
 pub type PMQSRO = *mut MQSRO;
+/// Status Information Record
 pub type MQSTS = tagMQSTS;
 pub type PMQSTS = *mut MQSTS;
+/// Trigger Message
 pub type MQTM = tagMQTM;
 pub type PMQTM = *mut MQTM;
+/// Trigger Message 2 (Character)
 pub type MQTMC2 = tagMQTMC2;
 pub type PMQTMC2 = *mut MQTMC2;
+/// Work Information Header
 pub type MQWIH = tagMQWIH;
 pub type PMQWIH = *mut MQWIH;
+/// Transmission Queue Header
 pub type MQXQH = tagMQXQH;
 pub type PMQXQH = *mut MQXQH;
+/// Message Consumer routine (Called by MQ)
+///
+/// # Arguments
+/// * `Hconn`: Connection handle
+/// * `pMsgDesc`: Message descriptor
+/// * `pGetMsgOpts`: Area containing the MQGMO
+/// * `pBuffer`: Area containing the message data
+/// * `pContext`: Area containing the Consumer context
 pub type MQCB_FUNCTION = ::std::option::Option<
     unsafe extern "C" fn(
         Hconn: MQHCONN,
@@ -174,651 +225,1175 @@ pub type MQCB_FUNCTION = ::std::option::Option<
     ),
 >;
 pub type PMQCB_FUNCTION = MQCB_FUNCTION;
+/// Authentication Information Record
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQAIR {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Type of authentication information
     pub AuthInfoType: MQLONG,
+    /// Connection name of CRL LDAP server
     pub AuthInfoConnName: [MQCHAR; 264usize],
+    /// Address of LDAP user name
     pub LDAPUserNamePtr: PMQCHAR,
+    /// Offset of LDAP user name from start of MQAIR structure
     pub LDAPUserNameOffset: MQLONG,
+    /// Length of LDAP user name
     pub LDAPUserNameLength: MQLONG,
+    /// Password to access LDAP server
     pub LDAPPassword: MQCHAR32,
+    /// URL of the OCSP responder
     pub OCSPResponderURL: MQCHAR256,
 }
+/// MQ Balancing Options
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQBNO {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Application Balancing Type
     pub ApplType: MQLONG,
+    /// Timeout value in seconds
     pub Timeout: MQLONG,
+    /// Additional Balancing Options
     pub Options: MQLONG,
 }
+/// Buffer To Message Handle Options
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQBMHO {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Options that control the action of MQBUFMH
     pub Options: MQLONG,
 }
+/// Begin Options
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQBO {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Options that control the action of MQBEGIN
     pub Options: MQLONG,
 }
+/// Callback Context
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQCBC {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Why Function was called
     pub CallType: MQLONG,
+    /// Object Handle
     pub Hobj: MQHOBJ,
+    /// Callback data passed to the function
     pub CallbackArea: MQPTR,
+    /// MQCTL Data area passed to the function
     pub ConnectionArea: MQPTR,
+    /// Completion Code
     pub CompCode: MQLONG,
+    /// Reason Code
     pub Reason: MQLONG,
+    /// Consumer State
     pub State: MQLONG,
+    /// Message Data Length
     pub DataLength: MQLONG,
+    /// Buffer Length
     pub BufferLength: MQLONG,
+    /// Flags containing information about this consumer
     pub Flags: MQLONG,
+    /// Number of milliseconds before reconnect attempt
     pub ReconnectDelay: MQLONG,
 }
+/// Callback Data Descriptor
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQCBD {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Callback function type
     pub CallbackType: MQLONG,
+    /// Options controlling message consumption
     pub Options: MQLONG,
+    /// User data passed to the function
     pub CallbackArea: MQPTR,
+    /// Callback function pointer
     pub CallbackFunction: MQPTR,
+    /// Callback name
     pub CallbackName: MQCHAR128,
+    /// Maximum message length
     pub MaxMsgLength: MQLONG,
 }
+/// Variable-length string
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQCHARV {
+    /// Address of variable length string
     pub VSPtr: MQPTR,
+    /// Offset of variable length string
     pub VSOffset: MQLONG,
+    /// Size of buffer
     pub VSBufSize: MQLONG,
+    /// Length of variable length string
     pub VSLength: MQLONG,
+    /// CCSID of variable length string
     pub VSCCSID: MQLONG,
 }
+/// CICS Information Header
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQCIH {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Length of MQCIH structure
     pub StrucLength: MQLONG,
+    /// Reserved
     pub Encoding: MQLONG,
+    /// Reserved
     pub CodedCharSetId: MQLONG,
+    /// MQ format name of data that follows MQCIH
     pub Format: MQCHAR8,
+    /// Flags
     pub Flags: MQLONG,
+    /// Return code from bridge
     pub ReturnCode: MQLONG,
+    /// MQ completion code or CICS EIBRESP
     pub CompCode: MQLONG,
+    /// MQ reason or feedback code, or CICS EIBRESP2
     pub Reason: MQLONG,
+    /// Unit-of-work control
     pub UOWControl: MQLONG,
+    /// Wait interval for MQGET call issued by bridge task
     pub GetWaitInterval: MQLONG,
+    /// Link type
     pub LinkType: MQLONG,
+    /// Output COMMAREA data length
     pub OutputDataLength: MQLONG,
+    /// Bridge facility release time
     pub FacilityKeepTime: MQLONG,
+    /// Send/receive ADS descriptor
     pub ADSDescriptor: MQLONG,
+    /// Whether task can be conversational
     pub ConversationalTask: MQLONG,
+    /// Status at end of task
     pub TaskEndStatus: MQLONG,
+    /// Bridge facility token
     pub Facility: MQBYTE8,
+    /// MQ call name or CICS EIBFN function
     pub Function: MQCHAR4,
+    /// Abend code
     pub AbendCode: MQCHAR4,
+    /// Password or passticket
     pub Authenticator: MQCHAR8,
+    /// Reserved
     pub Reserved1: MQCHAR8,
+    /// MQ format name of reply message
     pub ReplyToFormat: MQCHAR8,
+    /// Remote CICS system id to use
     pub RemoteSysId: MQCHAR4,
+    /// CICS RTRANSID to use
     pub RemoteTransId: MQCHAR4,
+    /// Transaction to attach
     pub TransactionId: MQCHAR4,
+    /// Terminal emulated attributes
     pub FacilityLike: MQCHAR4,
+    /// AID key
     pub AttentionId: MQCHAR4,
+    /// Transaction start code
     pub StartCode: MQCHAR4,
+    /// Abend transaction code
     pub CancelCode: MQCHAR4,
+    /// Next transaction to attach
     pub NextTransactionId: MQCHAR4,
+    /// Reserved
     pub Reserved2: MQCHAR8,
+    /// Reserved
     pub Reserved3: MQCHAR8,
+    /// Cursor position
     pub CursorPosition: MQLONG,
+    /// Offset of error in message
     pub ErrorOffset: MQLONG,
+    /// Reserved
     pub InputItem: MQLONG,
+    /// Reserved
     pub Reserved4: MQLONG,
 }
+/// Create Message Handle Options
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQCMHO {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Options that control the action of MQCRTMH
     pub Options: MQLONG,
 }
+/// MQCTL function options
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQCTLO {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Options that control the action of MQCTL
     pub Options: MQLONG,
+    /// Reserved
     pub Reserved: MQLONG,
+    /// MQCTL Data area passed to the function
     pub ConnectionArea: MQPTR,
 }
+/// SSL Configuration Options
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQSCO {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Location of SSL key repository
     pub KeyRepository: MQCHAR256,
+    /// Cryptographic hardware configuration string
     pub CryptoHardware: MQCHAR256,
+    /// Number of MQAIR records present
     pub AuthInfoRecCount: MQLONG,
+    /// Offset of first MQAIR record from start of MQSCO structure
     pub AuthInfoRecOffset: MQLONG,
+    /// Address of first MQAIR record
     pub AuthInfoRecPtr: PMQAIR,
+    /// Number of unencrypted bytes sent/received before secret key is reset
     pub KeyResetCount: MQLONG,
+    /// Using FIPS-certified algorithms
     pub FipsRequired: MQLONG,
+    /// Use only Suite B cryptographic algorithms
     pub EncryptionPolicySuiteB: [MQLONG; 4usize],
+    /// Certificate validation policy
     pub CertificateValPolicy: MQLONG,
+    /// SSL/TLS certificate label
     pub CertificateLabel: MQCHAR64,
+    /// Address of key repository password
     pub KeyRepoPasswordPtr: MQPTR,
+    /// Offset of key repository password
     pub KeyRepoPasswordOffset: MQLONG,
+    /// Length of key repository password
     pub KeyRepoPasswordLength: MQLONG,
+    /// HTTPS certificate validation level
     pub HTTPSCertValidation: MQLONG,
+    /// HTTPS certificate revocation level
     pub HTTPSCertRevocation: MQLONG,
+    /// Address of HTTPS Keystore
     pub HTTPSKeyStorePtr: MQPTR,
+    /// Offset of HTTPS Keystore
     pub HTTPSKeyStoreOffset: MQLONG,
+    /// Length of HTTPS keystore
     pub HTTPSKeyStoreLength: MQLONG,
 }
+/// Security Parameters
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQCSP {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Type of authentication
     pub AuthenticationType: MQLONG,
+    /// Reserved
     pub Reserved1: MQBYTE4,
+    /// Address of user ID
     pub CSPUserIdPtr: MQPTR,
+    /// Offset of user ID
     pub CSPUserIdOffset: MQLONG,
+    /// Length of user ID
     pub CSPUserIdLength: MQLONG,
+    /// Reserved
     pub Reserved2: MQBYTE8,
+    /// Address of password
     pub CSPPasswordPtr: MQPTR,
+    /// Offset of password
     pub CSPPasswordOffset: MQLONG,
+    /// Length of password
     pub CSPPasswordLength: MQLONG,
+    /// Reserved
     pub Reserved3: MQBYTE8,
+    /// Address of initial key
     pub InitialKeyPtr: MQPTR,
+    /// Offset of initial key
     pub InitialKeyOffset: MQLONG,
+    /// Length of initial key
     pub InitialKeyLength: MQLONG,
+    /// Reserved
     pub Reserved4: MQBYTE8,
+    /// Address of Token
     pub TokenPtr: MQPTR,
+    /// Offset of Token
     pub TokenOffset: MQLONG,
+    /// Length of Token
     pub TokenLength: MQLONG,
 }
+/// Connect Options
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQCNO {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Options that control the action of MQCONNX
     pub Options: MQLONG,
+    /// Offset of MQCD structure for client connection
     pub ClientConnOffset: MQLONG,
+    /// Address of MQCD structure for client connection
     pub ClientConnPtr: MQPTR,
+    /// Queue-manager connection tag
     pub ConnTag: MQBYTE128,
+    /// Address of MQSCO structure for client connection
     pub SSLConfigPtr: PMQSCO,
+    /// Offset of MQSCO structure for client connection
     pub SSLConfigOffset: MQLONG,
+    /// Unique Connection Identifier
     pub ConnectionId: MQBYTE24,
+    /// Offset of MQCSP structure
     pub SecurityParmsOffset: MQLONG,
+    /// Address of MQCSP structure
     pub SecurityParmsPtr: PMQCSP,
+    /// Address of CCDT URL string
     pub CCDTUrlPtr: PMQCHAR,
+    /// Offset of CCDT URL string
     pub CCDTUrlOffset: MQLONG,
+    /// Length of CCDT URL
     pub CCDTUrlLength: MQLONG,
+    /// Reserved
     pub Reserved: MQBYTE8,
+    /// Application name
     pub ApplName: MQCHAR28,
+    /// Reserved
     pub Reserved2: MQBYTE4,
+    /// Balance Parameter Pointer
     pub BalanceParmsPtr: PMQBNO,
+    /// Balance Parameter Offset
     pub BalanceParmsOffset: MQLONG,
+    /// Reserved
     pub Reserved3: MQBYTE4,
 }
+/// Distribution Header
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQDH {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Length of MQDH structure plus following MQOR and MQPMR records
     pub StrucLength: MQLONG,
+    /// Numeric encoding of data that follows the MQOR and MQPMR records
     pub Encoding: MQLONG,
+    /// Character set identifier of data that follows the MQOR and MQPMR records
     pub CodedCharSetId: MQLONG,
+    /// Format name of data that follows the MQOR and MQPMR records
     pub Format: MQCHAR8,
+    /// General flags
     pub Flags: MQLONG,
+    /// Flags indicating which MQPMR fields are present
     pub PutMsgRecFields: MQLONG,
+    /// Number of MQOR records present
     pub RecsPresent: MQLONG,
+    /// Offset of first MQOR record from start of MQDH
     pub ObjectRecOffset: MQLONG,
+    /// Offset of first MQPMR record from start of MQDH
     pub PutMsgRecOffset: MQLONG,
 }
+/// Dead Letter Header
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQDLH {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Reason message arrived on dead-letter (undelivered-message) queue
     pub Reason: MQLONG,
+    /// Name of original destination queue
     pub DestQName: MQCHAR48,
+    /// Name of original destination queue manager
     pub DestQMgrName: MQCHAR48,
+    /// Numeric encoding of data that follows MQDLH
     pub Encoding: MQLONG,
+    /// Character set identifier of data that follows MQDLH
     pub CodedCharSetId: MQLONG,
+    /// Format name of data that follows MQDLH
     pub Format: MQCHAR8,
+    /// Type of application that put message on dead-letter (undelivered-message) queue
     pub PutApplType: MQLONG,
+    /// Name of application that put message on dead-letter (undelivered-message) queue
     pub PutApplName: MQCHAR28,
+    /// Date when message was put on dead-letter (undelivered-message) queue
     pub PutDate: MQCHAR8,
+    /// Time when message was put on dead-letter (undelivered-message) queue
     pub PutTime: MQCHAR8,
 }
+/// Delete Message Handle Options
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQDMHO {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Options that control the action of MQDLTMH
     pub Options: MQLONG,
 }
+/// Delete Message Property Options
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQDMPO {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Options that control the action of MQDLTMP
     pub Options: MQLONG,
 }
+/// Get Message Options
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQGMO {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Options that control the action of MQGET
     pub Options: MQLONG,
+    /// Wait interval
     pub WaitInterval: MQLONG,
+    /// Signal
     pub Signal1: MQLONG,
+    /// Signal identifier
     pub Signal2: MQLONG,
+    /// Resolved name of destination queue
     pub ResolvedQName: MQCHAR48,
+    /// Options controlling selection criteria used for MQGET
     pub MatchOptions: MQLONG,
+    /// Flag indicating whether message retrieved is in a group
     pub GroupStatus: MQCHAR,
+    /// Flag indicating whether message retrieved is a segment of a logical message
     pub SegmentStatus: MQCHAR,
+    /// Flag indicating whether further segmentation is allowed for the message retrieved
     pub Segmentation: MQCHAR,
+    /// Reserved
     pub Reserved1: MQCHAR,
+    /// Message token
     pub MsgToken: MQBYTE16,
+    /// Length of message data returned (bytes)
     pub ReturnedLength: MQLONG,
+    /// Reserved
     pub Reserved2: MQLONG,
+    /// Message handle
     pub MsgHandle: MQHMSG,
 }
+/// IMS Information Header
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQIIH {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Length of MQIIH structure
     pub StrucLength: MQLONG,
+    /// Reserved
     pub Encoding: MQLONG,
+    /// Reserved
     pub CodedCharSetId: MQLONG,
+    /// MQ format name of data that follows MQIIH
     pub Format: MQCHAR8,
+    /// Flags
     pub Flags: MQLONG,
+    /// Logical terminal override
     pub LTermOverride: MQCHAR8,
+    /// Message format services map name
     pub MFSMapName: MQCHAR8,
+    /// MQ format name of reply message
     pub ReplyToFormat: MQCHAR8,
+    /// RACF password or passticket
     pub Authenticator: MQCHAR8,
+    /// Transaction instance identifier
     pub TranInstanceId: MQBYTE16,
+    /// Transaction state
     pub TranState: MQCHAR,
+    /// Commit mode
     pub CommitMode: MQCHAR,
+    /// Security scope
     pub SecurityScope: MQCHAR,
+    /// Reserved
     pub Reserved: MQCHAR,
 }
+/// Inquire Message Property Options
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQIMPO {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Options that control the action of MQINQMP
     pub Options: MQLONG,
+    /// Requested encoding of Value
     pub RequestedEncoding: MQLONG,
+    /// Requested character set identifier of Value
     pub RequestedCCSID: MQLONG,
+    /// Returned encoding of Value
     pub ReturnedEncoding: MQLONG,
+    /// Returned character set identifier of Value
     pub ReturnedCCSID: MQLONG,
+    /// Reserved
     pub Reserved1: MQLONG,
+    /// Returned property name
     pub ReturnedName: MQCHARV,
+    /// Property data type as a string
     pub TypeString: MQCHAR8,
 }
+/// Message Descriptor
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQMD {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Options for report messages
     pub Report: MQLONG,
+    /// Message type
     pub MsgType: MQLONG,
+    /// Message lifetime
     pub Expiry: MQLONG,
+    /// Feedback or reason code
     pub Feedback: MQLONG,
+    /// Numeric encoding of message data
     pub Encoding: MQLONG,
+    /// Character set identifier of message data
     pub CodedCharSetId: MQLONG,
+    /// Format name of message data
     pub Format: MQCHAR8,
+    /// Message priority
     pub Priority: MQLONG,
+    /// Message persistence
     pub Persistence: MQLONG,
+    /// Message identifier
     pub MsgId: MQBYTE24,
+    /// Correlation identifier
     pub CorrelId: MQBYTE24,
+    /// Backout counter
     pub BackoutCount: MQLONG,
+    /// Name of reply queue
     pub ReplyToQ: MQCHAR48,
+    /// Name of reply queue manager
     pub ReplyToQMgr: MQCHAR48,
+    /// User identifier
     pub UserIdentifier: MQCHAR12,
+    /// Accounting token
     pub AccountingToken: MQBYTE32,
+    /// Application data relating to identity
     pub ApplIdentityData: MQCHAR32,
+    /// Type of application that put the message
     pub PutApplType: MQLONG,
+    /// Name of application that put the message
     pub PutApplName: MQCHAR28,
+    /// Date when message was put
     pub PutDate: MQCHAR8,
+    /// Time when message was put
     pub PutTime: MQCHAR8,
+    /// Application data relating to origin
     pub ApplOriginData: MQCHAR4,
+    /// Group identifier
     pub GroupId: MQBYTE24,
+    /// Sequence number of logical message within group
     pub MsgSeqNumber: MQLONG,
+    /// Offset of data in physical message from start of logical message
     pub Offset: MQLONG,
+    /// Message flags
     pub MsgFlags: MQLONG,
+    /// Length of original message
     pub OriginalLength: MQLONG,
 }
+/// Message Descriptor Extension
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQMDE {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Length of MQMDE structure
     pub StrucLength: MQLONG,
+    /// Numeric encoding of data that follows MQMDE
     pub Encoding: MQLONG,
+    /// Character-set identifier of data that follows MQMDE
     pub CodedCharSetId: MQLONG,
+    /// Format name of data that follows MQMDE
     pub Format: MQCHAR8,
+    /// General flags
     pub Flags: MQLONG,
+    /// Group identifier
     pub GroupId: MQBYTE24,
+    /// Sequence number of logical message within group
     pub MsgSeqNumber: MQLONG,
+    /// Offset of data in physical message from start of logical message
     pub Offset: MQLONG,
+    /// Message flags
     pub MsgFlags: MQLONG,
+    /// Length of original message
     pub OriginalLength: MQLONG,
 }
+/// Version-1 Message Descriptor
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQMD1 {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Options for report messages
     pub Report: MQLONG,
+    /// Message type
     pub MsgType: MQLONG,
+    /// Message lifetime
     pub Expiry: MQLONG,
+    /// Feedback or reason code
     pub Feedback: MQLONG,
+    /// Numeric encoding of message data
     pub Encoding: MQLONG,
+    /// Character set identifier of message data
     pub CodedCharSetId: MQLONG,
+    /// Format name of message data
     pub Format: MQCHAR8,
+    /// Message priority
     pub Priority: MQLONG,
+    /// Message persistence
     pub Persistence: MQLONG,
+    /// Message identifier
     pub MsgId: MQBYTE24,
+    /// Correlation identifier
     pub CorrelId: MQBYTE24,
+    /// Backout counter
     pub BackoutCount: MQLONG,
+    /// Name of reply queue
     pub ReplyToQ: MQCHAR48,
+    /// Name of reply queue manager
     pub ReplyToQMgr: MQCHAR48,
+    /// User identifier
     pub UserIdentifier: MQCHAR12,
+    /// Accounting token
     pub AccountingToken: MQBYTE32,
+    /// Application data relating to identity
     pub ApplIdentityData: MQCHAR32,
+    /// Type of application that put the message
     pub PutApplType: MQLONG,
+    /// Name of application that put the message
     pub PutApplName: MQCHAR28,
+    /// Date when message was put
     pub PutDate: MQCHAR8,
+    /// Time when message was put
     pub PutTime: MQCHAR8,
+    /// Application data relating to origin
     pub ApplOriginData: MQCHAR4,
 }
+/// Version-2 Message Descriptor
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQMD2 {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Options for report messages
     pub Report: MQLONG,
+    /// Message type
     pub MsgType: MQLONG,
+    /// Message lifetime
     pub Expiry: MQLONG,
+    /// Feedback or reason code
     pub Feedback: MQLONG,
+    /// Numeric encoding of message data
     pub Encoding: MQLONG,
+    /// Character set identifier of message data
     pub CodedCharSetId: MQLONG,
+    /// Format name of message data
     pub Format: MQCHAR8,
+    /// Message priority
     pub Priority: MQLONG,
+    /// Message persistence
     pub Persistence: MQLONG,
+    /// Message identifier
     pub MsgId: MQBYTE24,
+    /// Correlation identifier
     pub CorrelId: MQBYTE24,
+    /// Backout counter
     pub BackoutCount: MQLONG,
+    /// Name of reply queue
     pub ReplyToQ: MQCHAR48,
+    /// Name of reply queue manager
     pub ReplyToQMgr: MQCHAR48,
+    /// User identifier
     pub UserIdentifier: MQCHAR12,
+    /// Accounting token
     pub AccountingToken: MQBYTE32,
+    /// Application data relating to identity
     pub ApplIdentityData: MQCHAR32,
+    /// Type of application that put the message
     pub PutApplType: MQLONG,
+    /// Name of application that put the message
     pub PutApplName: MQCHAR28,
+    /// Date when message was put
     pub PutDate: MQCHAR8,
+    /// Time when message was put
     pub PutTime: MQCHAR8,
+    /// Application data relating to origin
     pub ApplOriginData: MQCHAR4,
+    /// Group identifier
     pub GroupId: MQBYTE24,
+    /// Sequence number of logical message within group
     pub MsgSeqNumber: MQLONG,
+    /// Offset of data in physical message from start of logical message
     pub Offset: MQLONG,
+    /// Message flags
     pub MsgFlags: MQLONG,
+    /// Length of original message
     pub OriginalLength: MQLONG,
 }
+/// Message Handle To Buffer Options
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQMHBO {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Options that control the action of MQMHBUF
     pub Options: MQLONG,
 }
+/// Object descriptor
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQOD {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Object type
     pub ObjectType: MQLONG,
+    /// Object name
     pub ObjectName: MQCHAR48,
+    /// Object queue manager name
     pub ObjectQMgrName: MQCHAR48,
+    /// Dynamic queue name
     pub DynamicQName: MQCHAR48,
+    /// Alternate user identifier
     pub AlternateUserId: MQCHAR12,
+    /// Number of object records present
     pub RecsPresent: MQLONG,
+    /// Number of local queues opened successfully
     pub KnownDestCount: MQLONG,
+    /// Number of remote queues opened
     pub UnknownDestCount: MQLONG,
+    /// Number of queues that failed to open
     pub InvalidDestCount: MQLONG,
+    /// Offset of first object record from start of MQOD
     pub ObjectRecOffset: MQLONG,
+    /// Offset of first response record from start of MQOD
     pub ResponseRecOffset: MQLONG,
+    /// Address of first object record
     pub ObjectRecPtr: MQPTR,
+    /// Address of first response record
     pub ResponseRecPtr: MQPTR,
+    /// Alternate security identifier
     pub AlternateSecurityId: MQBYTE40,
+    /// Resolved queue name
     pub ResolvedQName: MQCHAR48,
+    /// Resolved queue manager name
     pub ResolvedQMgrName: MQCHAR48,
+    /// Object long name
     pub ObjectString: MQCHARV,
+    /// Message Selector
     pub SelectionString: MQCHARV,
+    /// Resolved long object name
     pub ResObjectString: MQCHARV,
+    /// Alias queue resolved object type
     pub ResolvedType: MQLONG,
 }
+/// Object Record
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQOR {
+    /// Object name
     pub ObjectName: MQCHAR48,
+    /// Object queue manager name
     pub ObjectQMgrName: MQCHAR48,
 }
+/// Property descriptor
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQPD {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Options that control the action of MQSETMP and MQINQMP
     pub Options: MQLONG,
+    /// Property support option
     pub Support: MQLONG,
+    /// Property context
     pub Context: MQLONG,
+    /// Property copy options
     pub CopyOptions: MQLONG,
 }
+/// Put Message Options
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQPMO {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Options that control the action of MQPUT and MQPUT1
     pub Options: MQLONG,
+    /// Reserved
     pub Timeout: MQLONG,
+    /// Object handle of input queue
     pub Context: MQHOBJ,
+    /// Number of messages sent successfully to local queues
     pub KnownDestCount: MQLONG,
+    /// Number of messages sent successfully to remote queues
     pub UnknownDestCount: MQLONG,
+    /// Number of messages that could not be sent
     pub InvalidDestCount: MQLONG,
+    /// Resolved name of destination queue
     pub ResolvedQName: MQCHAR48,
+    /// Resolved name of destination queue manager
     pub ResolvedQMgrName: MQCHAR48,
+    /// Number of put message records or response records present
     pub RecsPresent: MQLONG,
+    /// Flags indicating which MQPMR fields are present
     pub PutMsgRecFields: MQLONG,
+    /// Offset of first put message record from start of MQPMO
     pub PutMsgRecOffset: MQLONG,
+    /// Offset of first response record from start of MQPMO
     pub ResponseRecOffset: MQLONG,
+    /// Address of first put message record
     pub PutMsgRecPtr: MQPTR,
+    /// Address of first response record
     pub ResponseRecPtr: MQPTR,
+    /// Original message handle
     pub OriginalMsgHandle: MQHMSG,
+    /// New message handle
     pub NewMsgHandle: MQHMSG,
+    /// The action being performed
     pub Action: MQLONG,
+    /// Publication level
     pub PubLevel: MQLONG,
 }
+/// Rules and Formatting Header
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQRFH {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Total length of MQRFH including NameValueString
     pub StrucLength: MQLONG,
+    /// Numeric encoding of data that follows NameValueString
     pub Encoding: MQLONG,
+    /// Character set identifier of data that follows NameValueString
     pub CodedCharSetId: MQLONG,
+    /// Format name of data that follows NameValueString
     pub Format: MQCHAR8,
+    /// Flags
     pub Flags: MQLONG,
 }
+/// Rules and Formatting Header 2
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQRFH2 {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Total length of MQRFH2 including all NameValueLength and NameValueData fields
     pub StrucLength: MQLONG,
+    /// Numeric encoding of data that follows last NameValueData field
     pub Encoding: MQLONG,
+    /// Character set identifier of data that follows last NameValueData field
     pub CodedCharSetId: MQLONG,
+    /// Format name of data that follows last NameValueData field
     pub Format: MQCHAR8,
+    /// Flags
     pub Flags: MQLONG,
+    /// Character set identifier of NameValueData
     pub NameValueCCSID: MQLONG,
 }
+/// Reference Message Header
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQRMH {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Total length of MQRMH, including strings at end of fixed fields, but not the bulk data
     pub StrucLength: MQLONG,
+    /// Numeric encoding of bulk data
     pub Encoding: MQLONG,
+    /// Character set identifier of bulk data
     pub CodedCharSetId: MQLONG,
+    /// Format name of bulk data
     pub Format: MQCHAR8,
+    /// Reference message flags
     pub Flags: MQLONG,
+    /// Object type
     pub ObjectType: MQCHAR8,
+    /// Object instance identifier
     pub ObjectInstanceId: MQBYTE24,
+    /// Length of source environment data
     pub SrcEnvLength: MQLONG,
+    /// Offset of source environment data
     pub SrcEnvOffset: MQLONG,
+    /// Length of source object name
     pub SrcNameLength: MQLONG,
+    /// Offset of source object name
     pub SrcNameOffset: MQLONG,
+    /// Length of destination environment data
     pub DestEnvLength: MQLONG,
+    /// Offset of destination environment
     pub DestEnvOffset: MQLONG,
+    /// Length of destination object name
     pub DestNameLength: MQLONG,
+    /// Offset of destination object name
     pub DestNameOffset: MQLONG,
+    /// Length of bulk data
     pub DataLogicalLength: MQLONG,
+    /// Low offset of bulk data
     pub DataLogicalOffset: MQLONG,
+    /// High offset of bulk data
     pub DataLogicalOffset2: MQLONG,
 }
+/// Response Record
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQRR {
+    /// Completion code for queue
     pub CompCode: MQLONG,
+    /// Reason code for queue
     pub Reason: MQLONG,
 }
+/// Subscription Descriptor
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQSD {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Options associated with subscribing
     pub Options: MQLONG,
+    /// Object name
     pub ObjectName: MQCHAR48,
+    /// Alternate user identifier
     pub AlternateUserId: MQCHAR12,
+    /// Alternate security identifier
     pub AlternateSecurityId: MQBYTE40,
+    /// Expiry of Subscription
     pub SubExpiry: MQLONG,
+    /// Object long name
     pub ObjectString: MQCHARV,
+    /// Subscription name
     pub SubName: MQCHARV,
+    /// Subscription user data
     pub SubUserData: MQCHARV,
+    /// Correlation Id related to this subscription
     pub SubCorrelId: MQBYTE24,
+    /// Priority set in publications
     pub PubPriority: MQLONG,
+    /// Accounting Token set in publications
     pub PubAccountingToken: MQBYTE32,
+    /// Appl Identity Data set in publications
     pub PubApplIdentityData: MQCHAR32,
+    /// Message selector structure
     pub SelectionString: MQCHARV,
+    /// Subscription level
     pub SubLevel: MQLONG,
+    /// Resolved long object name
     pub ResObjectString: MQCHARV,
 }
+/// Set Message Property Options
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQSMPO {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Options that control the action of MQSETMP
     pub Options: MQLONG,
+    /// Encoding of Value
     pub ValueEncoding: MQLONG,
+    /// Character set identifier of Value
     pub ValueCCSID: MQLONG,
 }
+/// Subscription Request Options
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQSRO {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Options that control the action of MQSUBRQ
     pub Options: MQLONG,
+    /// Number of publications sent
     pub NumPubs: MQLONG,
 }
+/// Status Information Record
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQSTS {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Completion Code of first error
     pub CompCode: MQLONG,
+    /// Reason Code of first error
     pub Reason: MQLONG,
+    /// Number of Async put calls succeeded
     pub PutSuccessCount: MQLONG,
+    /// Number of Async put calls had warnings
     pub PutWarningCount: MQLONG,
+    /// Number of Async put calls had failures
     pub PutFailureCount: MQLONG,
+    /// Failing object type
     pub ObjectType: MQLONG,
+    /// Failing object name
     pub ObjectName: MQCHAR48,
+    /// Failing object queue manager
     pub ObjectQMgrName: MQCHAR48,
+    /// Resolved name of destination queue
     pub ResolvedObjectName: MQCHAR48,
+    /// Resolved name of destination qmgr
     pub ResolvedQMgrName: MQCHAR48,
+    /// Failing object long name
     pub ObjectString: MQCHARV,
+    /// Failing subscription name
     pub SubName: MQCHARV,
+    /// Failing open options
     pub OpenOptions: MQLONG,
+    /// Failing subscription options
     pub SubOptions: MQLONG,
 }
+/// Trigger Message
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQTM {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Name of triggered queue
     pub QName: MQCHAR48,
+    /// Name of process object
     pub ProcessName: MQCHAR48,
+    /// Trigger data
     pub TriggerData: MQCHAR64,
+    /// Application type
     pub ApplType: MQLONG,
+    /// Application identifier
     pub ApplId: MQCHAR256,
+    /// Environment data
     pub EnvData: MQCHAR128,
+    /// User data
     pub UserData: MQCHAR128,
 }
+/// Trigger Message 2 (Character)
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQTMC2 {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQCHAR4,
+    /// Name of triggered queue
     pub QName: MQCHAR48,
+    /// Name of process object
     pub ProcessName: MQCHAR48,
+    /// Trigger data
     pub TriggerData: MQCHAR64,
+    /// Application type
     pub ApplType: MQCHAR4,
+    /// Application identifier
     pub ApplId: MQCHAR256,
+    /// Environment data
     pub EnvData: MQCHAR128,
+    /// User data
     pub UserData: MQCHAR128,
+    /// Queue manager name
     pub QMgrName: MQCHAR48,
 }
+/// Work Information Header
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQWIH {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Length of MQWIH structure
     pub StrucLength: MQLONG,
+    /// Numeric encoding of data that follows MQWIH
     pub Encoding: MQLONG,
+    /// Character-set identifier of data that follows MQWIH
     pub CodedCharSetId: MQLONG,
+    /// Format name of data that follows MQWIH
     pub Format: MQCHAR8,
+    /// Flags
     pub Flags: MQLONG,
+    /// Service name
     pub ServiceName: MQCHAR32,
+    /// Service step name
     pub ServiceStep: MQCHAR8,
+    /// Message token
     pub MsgToken: MQBYTE16,
+    /// Reserved
     pub Reserved: MQCHAR32,
 }
+/// Transmission Queue Header
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQXQH {
+    /// Structure identifier
     pub StrucId: MQCHAR4,
+    /// Structure version number
     pub Version: MQLONG,
+    /// Name of destination queue
     pub RemoteQName: MQCHAR48,
+    /// Name of destination queue manager
     pub RemoteQMgrName: MQCHAR48,
+    /// Original message descriptor
     pub MsgDesc: MQMD1,
 }
 pub const MQAIR_STRUC_ID: &::std::ffi::CStr = c"AIR ";
@@ -3192,13 +3767,38 @@ pub const MQSO_NO_READ_AHEAD: MQLONG = 134217728;
 pub const MQSO_READ_AHEAD: MQLONG = 268435456;
 pub const MQSR_ACTION_PUBLICATION: MQLONG = 1;
 unsafe extern "C" {
-    pub fn MQBACK(Hconn: MQHCONN, pCompCode: PMQLONG, pReason: PMQLONG);
+    /// Back Out Changes
+    ///
+    /// # Arguments
+    /// * `Hconn`: Connection handle
+    /// * `pCompCode` (Output): Completion code
+    /// * `pReason` (Output): Reason code qualifying CompCode
+    pub fn MQBACK(Hconn: MQHCONN, pCompCode: &mut MQLONG, pReason: &mut MQLONG);
+    /// Begin Unit of Work
+    ///
+    /// # Arguments
+    /// * `Hconn`: Connection handle
+    /// * `pBeginOptions` (Input/Output): Options that control the action of MQBEGIN
+    /// * `pCompCode` (Output): Completion code
+    /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQBEGIN(
         Hconn: MQHCONN,
         pBeginOptions: PMQVOID,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
+    /// Buffer To Message Handle
+    ///
+    /// # Arguments
+    /// * `Hconn`: Connection handle
+    /// * `Hmsg`: Message handle
+    /// * `pBufMsgHOpts`: Options that control the action of MQBUFMH
+    /// * `pMsgDesc` (Input/Output): Message descriptor
+    /// * `BufferLength`: Length in bytes of the Buffer area
+    /// * `pBuffer` (Input/Output): Area to contain the message buffer
+    /// * `pDataLength` (Output): Length of the output buffer
+    /// * `pCompCode` (Output): Completion code
+    /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQBUFMH(
         Hconn: MQHCONN,
         Hmsg: MQHMSG,
@@ -3207,9 +3807,20 @@ unsafe extern "C" {
         BufferLength: MQLONG,
         pBuffer: PMQVOID,
         pDataLength: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
+    /// Register Message consumer
+    ///
+    /// # Arguments
+    /// * `Hconn`: Connection handle
+    /// * `Operation`: Operation
+    /// * `pCallbackDesc`: Callback descriptor
+    /// * `Hobj`: Object handle
+    /// * `pMsgDesc`: Message Descriptor
+    /// * `pGetMsgOpts`: Get options
+    /// * `pCompCode` (Output): Completion code
+    /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQCB(
         Hconn: MQHCONN,
         Operation: MQLONG,
@@ -3217,60 +3828,140 @@ unsafe extern "C" {
         Hobj: MQHOBJ,
         pMsgDesc: PMQVOID,
         pGetMsgOpts: PMQVOID,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
+    /// Close Object
+    ///
+    /// # Arguments
+    /// * `Hconn`: Connection handle
+    /// * `pHobj` (Input/Output): Object handle
+    /// * `Options`: Options that control the action of MQCLOSE
+    /// * `pCompCode` (Output): Completion code
+    /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQCLOSE(
         Hconn: MQHCONN,
         pHobj: PMQHOBJ,
         Options: MQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
-    pub fn MQCMIT(Hconn: MQHCONN, pCompCode: PMQLONG, pReason: PMQLONG);
+    /// Commit Changes
+    ///
+    /// # Arguments
+    /// * `Hconn`: Connection handle
+    /// * `pCompCode` (Output): Completion code
+    /// * `pReason` (Output): Reason code qualifying CompCode
+    pub fn MQCMIT(Hconn: MQHCONN, pCompCode: &mut MQLONG, pReason: &mut MQLONG);
+    /// Connect Queue Manager
+    ///
+    /// # Arguments
+    /// * `pQMgrName`: Name of queue manager
+    /// * `pHconn` (Output): Connection handle
+    /// * `pCompCode` (Output): Completion code
+    /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQCONN(
-        pQMgrName: PMQCHAR,
-        pHconn: PMQHCONN,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pQMgrName: &MQCHAR48,
+        pHconn: &mut MQHCONN,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
+    /// Connect Queue Manager (Extended)
+    ///
+    /// # Arguments
+    /// * `pQMgrName`: Name of queue manager
+    /// * `pConnectOpts` (Input/Output): Options that control the action of MQCONNX
+    /// * `pHconn` (Output): Connection handle
+    /// * `pCompCode` (Output): Completion code
+    /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQCONNX(
-        pQMgrName: PMQCHAR,
-        pConnectOpts: PMQCNO,
-        pHconn: PMQHCONN,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pQMgrName: &MQCHAR48,
+        pConnectOpts: &mut MQCNO,
+        pHconn: &mut MQHCONN,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
+    /// Create Message Handle
+    ///
+    /// # Arguments
+    /// * `Hconn`: Connection handle
+    /// * `pCrtMsgHOpts`: Options that control the action of MQCRTMH
+    /// * `pHmsg` (Output): Message handle
+    /// * `pCompCode` (Output): Completion code
+    /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQCRTMH(
         Hconn: MQHCONN,
         pCrtMsgHOpts: PMQVOID,
         pHmsg: PMQHMSG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
+    /// Control Consumer
+    ///
+    /// # Arguments
+    /// * `Hconn`: Connection handle
+    /// * `Operation`: Operation
+    /// * `pControlOpts`: Control options
+    /// * `pCompCode` (Output): Completion code
+    /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQCTL(
         Hconn: MQHCONN,
         Operation: MQLONG,
         pControlOpts: PMQVOID,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
-    pub fn MQDISC(pHconn: PMQHCONN, pCompCode: PMQLONG, pReason: PMQLONG);
+    /// Disconnect Queue Manager
+    ///
+    /// # Arguments
+    /// * `pHconn` (Input/Output): Connection handle
+    /// * `pCompCode` (Output): Completion code
+    /// * `pReason` (Output): Reason code qualifying CompCode
+    pub fn MQDISC(pHconn: &mut MQHCONN, pCompCode: &mut MQLONG, pReason: &mut MQLONG);
+    /// Delete Message Handle
+    ///
+    /// # Arguments
+    /// * `Hconn`: Connection handle
+    /// * `pHmsg` (Input/Output): Message handle
+    /// * `pDltMsgHOpts`: Options that control the action of MQDLTMH
+    /// * `pCompCode` (Output): Completion code
+    /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQDLTMH(
         Hconn: MQHCONN,
         pHmsg: PMQHMSG,
         pDltMsgHOpts: PMQVOID,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
+    /// Delete Message Property
+    ///
+    /// # Arguments
+    /// * `Hconn`: Connection handle
+    /// * `Hmsg`: Message handle
+    /// * `pDltPropOpts`: Options that control the action of MQDLTMP
+    /// * `pName`: Property name
+    /// * `pCompCode` (Output): Completion code
+    /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQDLTMP(
         Hconn: MQHCONN,
         Hmsg: MQHMSG,
         pDltPropOpts: PMQVOID,
         pName: PMQVOID,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
+    /// Get Message
+    ///
+    /// # Arguments
+    /// * `Hconn`: Connection handle
+    /// * `Hobj`: Object handle
+    /// * `pMsgDesc` (Input/Output): Message descriptor
+    /// * `pGetMsgOpts` (Input/Output): Options that control the action of MQGET
+    /// * `BufferLength`: Length in bytes of the Buffer area
+    /// * `pBuffer` (Output): Area to contain the message data
+    /// * `pDataLength` (Output): Length of the message
+    /// * `pCompCode` (Output): Completion code
+    /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQGET(
         Hconn: MQHCONN,
         Hobj: MQHOBJ,
@@ -3279,9 +3970,22 @@ unsafe extern "C" {
         BufferLength: MQLONG,
         pBuffer: PMQVOID,
         pDataLength: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
+    /// Inquire Object Attributes
+    ///
+    /// # Arguments
+    /// * `Hconn`: Connection handle
+    /// * `Hobj`: Object handle
+    /// * `SelectorCount`: Count of selectors
+    /// * `pSelectors`: Array of attribute selectors
+    /// * `IntAttrCount`: Count of integer attributes
+    /// * `pIntAttrs` (Output): Array of integer attributes
+    /// * `CharAttrLength`: Length of character attributes buffer
+    /// * `pCharAttrs` (Output): Character attributes
+    /// * `pCompCode` (Output): Completion code
+    /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQINQ(
         Hconn: MQHCONN,
         Hobj: MQHOBJ,
@@ -3291,9 +3995,23 @@ unsafe extern "C" {
         pIntAttrs: PMQLONG,
         CharAttrLength: MQLONG,
         pCharAttrs: PMQCHAR,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
+    /// Inquire Message Property
+    ///
+    /// # Arguments
+    /// * `Hconn`: Connection handle
+    /// * `Hmsg`: Message handle
+    /// * `pInqPropOpts`: Options that control the action of MQINQMP
+    /// * `pName`: Property name
+    /// * `pPropDesc` (Output): Property descriptor
+    /// * `pType` (Input/Output): Property data type
+    /// * `ValueLength`: Length in bytes of the Value area
+    /// * `pValue` (Output): Property value
+    /// * `pDataLength` (Output): Length of the property value
+    /// * `pCompCode` (Output): Completion code
+    /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQINQMP(
         Hconn: MQHCONN,
         Hmsg: MQHMSG,
@@ -3304,9 +4022,22 @@ unsafe extern "C" {
         ValueLength: MQLONG,
         pValue: PMQVOID,
         pDataLength: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
+    /// Message Handle To Buffer
+    ///
+    /// # Arguments
+    /// * `Hconn`: Connection handle
+    /// * `Hmsg`: Message handle
+    /// * `pMsgHBufOpts`: Options that control the action of MQMHBUF
+    /// * `pName`: Property name
+    /// * `pMsgDesc` (Input/Output): Message descriptor
+    /// * `BufferLength`: Length in bytes of the Buffer area
+    /// * `pBuffer` (Output): Area to contain the properties
+    /// * `pDataLength` (Output): Length of the properties
+    /// * `pCompCode` (Output): Completion code
+    /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQMHBUF(
         Hconn: MQHCONN,
         Hmsg: MQHMSG,
@@ -3316,17 +4047,37 @@ unsafe extern "C" {
         BufferLength: MQLONG,
         pBuffer: PMQVOID,
         pDataLength: PMQLONG,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
+    /// Open Object
+    ///
+    /// # Arguments
+    /// * `Hconn`: Connection handle
+    /// * `pObjDesc` (Input/Output): Object descriptor
+    /// * `Options`: Options that control the action of MQOPEN
+    /// * `pHobj` (Output): Object handle
+    /// * `pCompCode` (Output): Completion code
+    /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQOPEN(
         Hconn: MQHCONN,
         pObjDesc: PMQVOID,
         Options: MQLONG,
         pHobj: PMQHOBJ,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
+    /// Put Message
+    ///
+    /// # Arguments
+    /// * `Hconn`: Connection handle
+    /// * `Hobj`: Object handle
+    /// * `pMsgDesc` (Input/Output): Message descriptor
+    /// * `pPutMsgOpts` (Input/Output): Options that control the action of MQPUT
+    /// * `BufferLength`: Length of the message in Buffer
+    /// * `pBuffer`: Message data
+    /// * `pCompCode` (Output): Completion code
+    /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQPUT(
         Hconn: MQHCONN,
         Hobj: MQHOBJ,
@@ -3334,9 +4085,20 @@ unsafe extern "C" {
         pPutMsgOpts: PMQVOID,
         BufferLength: MQLONG,
         pBuffer: PMQVOID,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
+    /// Put One Message
+    ///
+    /// # Arguments
+    /// * `Hconn`: Connection handle
+    /// * `pObjDesc` (Input/Output): Object descriptor
+    /// * `pMsgDesc` (Input/Output): Message descriptor
+    /// * `pPutMsgOpts` (Input/Output): Options that control the action of MQPUT1
+    /// * `BufferLength`: Length of the message in Buffer
+    /// * `pBuffer`: Message data
+    /// * `pCompCode` (Output): Completion code
+    /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQPUT1(
         Hconn: MQHCONN,
         pObjDesc: PMQVOID,
@@ -3344,9 +4106,22 @@ unsafe extern "C" {
         pPutMsgOpts: PMQVOID,
         BufferLength: MQLONG,
         pBuffer: PMQVOID,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
+    /// Set Object Attributes
+    ///
+    /// # Arguments
+    /// * `Hconn`: Connection handle
+    /// * `Hobj`: Object handle
+    /// * `SelectorCount`: Count of selectors
+    /// * `pSelectors`: Array of attribute selectors
+    /// * `IntAttrCount`: Count of integer attributes
+    /// * `pIntAttrs`: Array of integer attributes
+    /// * `CharAttrLength`: Length of character attributes buffer
+    /// * `pCharAttrs`: Character attributes
+    /// * `pCompCode` (Output): Completion code
+    /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQSET(
         Hconn: MQHCONN,
         Hobj: MQHOBJ,
@@ -3356,9 +4131,22 @@ unsafe extern "C" {
         pIntAttrs: PMQLONG,
         CharAttrLength: MQLONG,
         pCharAttrs: PMQCHAR,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
+    /// Set Message Property
+    ///
+    /// # Arguments
+    /// * `Hconn`: Connection handle
+    /// * `Hmsg`: Message handle
+    /// * `pSetPropOpts`: Options that control the action of MQSETMP
+    /// * `pName`: Property name
+    /// * `pPropDesc` (Input/Output): Property descriptor
+    /// * `Type`: Property data type
+    /// * `ValueLength`: Length of the Value area
+    /// * `pValue`: Property value
+    /// * `pCompCode` (Output): Completion code
+    /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQSETMP(
         Hconn: MQHCONN,
         Hmsg: MQHMSG,
@@ -3368,127 +4156,244 @@ unsafe extern "C" {
         Type: MQLONG,
         ValueLength: MQLONG,
         pValue: PMQVOID,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
+    /// Get Status Information
+    ///
+    /// # Arguments
+    /// * `Hconn`: Connection handle
+    /// * `Type`: Status information type
+    /// * `pStatus` (Input/Output): Status information
+    /// * `pCompCode` (Output): Completion code
+    /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQSTAT(
         Hconn: MQHCONN,
         Type: MQLONG,
         pStatus: PMQVOID,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
+    /// Subscribe to topic
+    ///
+    /// # Arguments
+    /// * `Hconn`: Connection handle
+    /// * `pSubDesc` (Input/Output): Subscription descriptor
+    /// * `pHobj` (Input/Output): Object handle for queue
+    /// * `pHsub` (Output): Subscription object handle
+    /// * `pCompCode` (Output): Completion code
+    /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQSUB(
         Hconn: MQHCONN,
         pSubDesc: PMQVOID,
         pHobj: PMQHOBJ,
         pHsub: PMQHOBJ,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
+    /// Subscription Request
+    ///
+    /// # Arguments
+    /// * `Hconn`: Connection handle
+    /// * `Hsub`: Subscription handle
+    /// * `Action`: Action requested on the subscription
+    /// * `pSubRqOpts` (Input/Output): Subscription Request Options
+    /// * `pCompCode` (Output): Completion code
+    /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQSUBRQ(
         Hconn: MQHCONN,
         Hsub: MQHOBJ,
         Action: MQLONG,
         pSubRqOpts: PMQVOID,
-        pCompCode: PMQLONG,
-        pReason: PMQLONG,
+        pCompCode: &mut MQLONG,
+        pReason: &mut MQLONG,
     );
 }
+/// Channel Definition
 pub type MQCD = tagMQCD;
 pub type PMQCD = *mut MQCD;
 pub type PPMQCD = *mut PMQCD;
+/// Channel Definition
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tagMQCD {
+    /// Channel definition name
     pub ChannelName: [MQCHAR; 20usize],
+    /// Structure version number
     pub Version: MQLONG,
+    /// Channel type
     pub ChannelType: MQLONG,
+    /// Transport type
     pub TransportType: MQLONG,
+    /// Channel description
     pub Desc: [MQCHAR; 64usize],
+    /// Queue-manager name
     pub QMgrName: [MQCHAR; 48usize],
+    /// Transmission queue name
     pub XmitQName: [MQCHAR; 48usize],
+    /// First 20 bytes of connection name
     pub ShortConnectionName: [MQCHAR; 20usize],
+    /// Reserved
     pub MCAName: [MQCHAR; 20usize],
+    /// LU 6.2 Mode name
     pub ModeName: [MQCHAR; 8usize],
+    /// LU 6.2 transaction program name
     pub TpName: [MQCHAR; 64usize],
+    /// Batch size
     pub BatchSize: MQLONG,
+    /// Disconnect interval
     pub DiscInterval: MQLONG,
+    /// Short retry count
     pub ShortRetryCount: MQLONG,
+    /// Short retry wait interval
     pub ShortRetryInterval: MQLONG,
+    /// Long retry count
     pub LongRetryCount: MQLONG,
+    /// Long retry wait interval
     pub LongRetryInterval: MQLONG,
+    /// Channel security exit name
     pub SecurityExit: [MQCHAR; 128usize],
+    /// Channel message exit name
     pub MsgExit: [MQCHAR; 128usize],
+    /// Channel send exit name
     pub SendExit: [MQCHAR; 128usize],
+    /// Channel receive exit name
     pub ReceiveExit: [MQCHAR; 128usize],
+    /// Highest allowable message sequence number
     pub SeqNumberWrap: MQLONG,
+    /// Maximum message length
     pub MaxMsgLength: MQLONG,
+    /// Put authority
     pub PutAuthority: MQLONG,
+    /// Data conversion
     pub DataConversion: MQLONG,
+    /// Channel security exit user data
     pub SecurityUserData: [MQCHAR; 32usize],
+    /// Channel message exit user data
     pub MsgUserData: [MQCHAR; 32usize],
+    /// Channel send exit user data
     pub SendUserData: [MQCHAR; 32usize],
+    /// Channel receive exit user data
     pub ReceiveUserData: [MQCHAR; 32usize],
+    /// User identifier
     pub UserIdentifier: [MQCHAR; 12usize],
+    /// Password
     pub Password: [MQCHAR; 12usize],
+    /// First 12 bytes of MCA user identifier
     pub MCAUserIdentifier: [MQCHAR; 12usize],
+    /// Message channel agent type
     pub MCAType: MQLONG,
+    /// Connection name
     pub ConnectionName: [MQCHAR; 264usize],
+    /// First 12 bytes of user identifier from partner
     pub RemoteUserIdentifier: [MQCHAR; 12usize],
+    /// Password from partner
     pub RemotePassword: [MQCHAR; 12usize],
+    /// Channel message retry exit name
     pub MsgRetryExit: [MQCHAR; 128usize],
+    /// Channel message retry exit user data
     pub MsgRetryUserData: [MQCHAR; 32usize],
+    /// Number of times MCA will try to put the message, after first attempt has failed
     pub MsgRetryCount: MQLONG,
+    /// Minimum interval in milliseconds after which the open or put operation will be retried
     pub MsgRetryInterval: MQLONG,
+    /// Time in seconds between heartbeat flows
     pub HeartbeatInterval: MQLONG,
+    /// Batch duration
     pub BatchInterval: MQLONG,
+    /// Speed at which nonpersistent messages are sent
     pub NonPersistentMsgSpeed: MQLONG,
+    /// Length of MQCD structure
     pub StrucLength: MQLONG,
+    /// Length of exit name
     pub ExitNameLength: MQLONG,
+    /// Length of exit user data
     pub ExitDataLength: MQLONG,
+    /// Number of message exits defined
     pub MsgExitsDefined: MQLONG,
+    /// Number of send exits defined
     pub SendExitsDefined: MQLONG,
+    /// Number of receive exits defined
     pub ReceiveExitsDefined: MQLONG,
+    /// Address of first MsgExit field
     pub MsgExitPtr: MQPTR,
+    /// Address of first MsgUserData field
     pub MsgUserDataPtr: MQPTR,
+    /// Address of first SendExit field
     pub SendExitPtr: MQPTR,
+    /// Address of first SendUserData field
     pub SendUserDataPtr: MQPTR,
+    /// Address of first ReceiveExit field
     pub ReceiveExitPtr: MQPTR,
+    /// Address of first ReceiveUserData field
     pub ReceiveUserDataPtr: MQPTR,
+    /// Address of a list of cluster names
     pub ClusterPtr: MQPTR,
+    /// Number of clusters to which the channel belongs
     pub ClustersDefined: MQLONG,
+    /// Network priority
     pub NetworkPriority: MQLONG,
+    /// Length of long MCA user identifier
     pub LongMCAUserIdLength: MQLONG,
+    /// Length of long remote user identifier
     pub LongRemoteUserIdLength: MQLONG,
+    /// Address of long MCA user identifier
     pub LongMCAUserIdPtr: MQPTR,
+    /// Address of long remote user identifier
     pub LongRemoteUserIdPtr: MQPTR,
+    /// MCA security identifier
     pub MCASecurityId: MQBYTE40,
+    /// Remote security identifier
     pub RemoteSecurityId: MQBYTE40,
+    /// SSL CipherSpec
     pub SSLCipherSpec: [MQCHAR; 32usize],
+    /// Address of SSL peer name
     pub SSLPeerNamePtr: MQPTR,
+    /// Length of SSL peer name
     pub SSLPeerNameLength: MQLONG,
+    /// Whether SSL client authentication is required
     pub SSLClientAuth: MQLONG,
+    /// Keepalive interval
     pub KeepAliveInterval: MQLONG,
+    /// Local communications address
     pub LocalAddress: [MQCHAR; 48usize],
+    /// Batch heartbeat interval
     pub BatchHeartbeat: MQLONG,
+    /// Header data compression list
     pub HdrCompList: [MQLONG; 2usize],
+    /// Message data compression list
     pub MsgCompList: [MQLONG; 16usize],
+    /// Channel rank
     pub CLWLChannelRank: MQLONG,
+    /// Channel priority
     pub CLWLChannelPriority: MQLONG,
+    /// Channel weight
     pub CLWLChannelWeight: MQLONG,
+    /// Channel monitoring
     pub ChannelMonitoring: MQLONG,
+    /// Channel statistics
     pub ChannelStatistics: MQLONG,
+    /// Limit on sharing conversations
     pub SharingConversations: MQLONG,
+    /// Message property control
     pub PropertyControl: MQLONG,
+    /// Limit on SVRCONN channel instances
     pub MaxInstances: MQLONG,
+    /// Limit on SVRCONN channel instances per client
     pub MaxInstancesPerClient: MQLONG,
+    /// Client channel weight
     pub ClientChannelWeight: MQLONG,
+    /// Connection affinity
     pub ConnectionAffinity: MQLONG,
+    /// Batch data limit
     pub BatchDataLimit: MQLONG,
+    /// Use Dead Letter Queue
     pub UseDLQ: MQLONG,
+    /// Default client reconnect option
     pub DefReconnect: MQLONG,
+    /// Certificate label
     pub CertificateLabel: [MQCHAR; 64usize],
+    /// SPL Protection
     pub SPLProtection: MQLONG,
 }
 pub const MQCD_VERSION_1: MQLONG = 1;
@@ -3517,3 +4422,33 @@ pub const MQCD_LENGTH_10: usize = 1920;
 pub const MQCD_LENGTH_11: usize = 1984;
 pub const MQCD_LENGTH_12: usize = 1992;
 pub const MQCD_CURRENT_LENGTH: usize = 1992;
+pub const MQCHT_SENDER: MQLONG = 1;
+pub const MQCHT_SERVER: MQLONG = 2;
+pub const MQCHT_RECEIVER: MQLONG = 3;
+pub const MQCHT_REQUESTER: MQLONG = 4;
+pub const MQCHT_ALL: MQLONG = 5;
+pub const MQCHT_CLNTCONN: MQLONG = 6;
+pub const MQCHT_SVRCONN: MQLONG = 7;
+pub const MQCHT_CLUSRCVR: MQLONG = 8;
+pub const MQCHT_CLUSSDR: MQLONG = 9;
+pub const MQCHT_MQTT: MQLONG = 10;
+pub const MQCHT_AMQP: MQLONG = 11;
+pub const MQCOMPRESS_NOT_AVAILABLE: MQLONG = -1;
+pub const MQCOMPRESS_NONE: MQLONG = 0;
+pub const MQCOMPRESS_RLE: MQLONG = 1;
+pub const MQCOMPRESS_ZLIBFAST: MQLONG = 2;
+pub const MQCOMPRESS_ZLIBHIGH: MQLONG = 4;
+pub const MQCOMPRESS_SYSTEM: MQLONG = 8;
+pub const MQCOMPRESS_LZ4FAST: MQLONG = 16;
+pub const MQCOMPRESS_LZ4HIGH: MQLONG = 32;
+pub const MQCOMPRESS_ANY: MQLONG = 268435455;
+pub const MQXPT_ALL: MQLONG = -1;
+pub const MQXPT_LOCAL: MQLONG = 0;
+pub const MQXPT_LU62: MQLONG = 1;
+pub const MQXPT_TCP: MQLONG = 2;
+pub const MQXPT_NETBIOS: MQLONG = 3;
+pub const MQXPT_SPX: MQLONG = 4;
+pub const MQXPT_DECNET: MQLONG = 5;
+pub const MQXPT_UDP: MQLONG = 6;
+pub const MQCAFTY_NONE: MQLONG = 0;
+pub const MQCAFTY_PREFERRED: MQLONG = 1;
