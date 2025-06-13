@@ -3783,7 +3783,7 @@ unsafe extern "C" {
     /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQBEGIN(
         Hconn: MQHCONN,
-        pBeginOptions: PMQVOID,
+        pBeginOptions: Option<&mut MQBO>,
         pCompCode: &mut MQLONG,
         pReason: &mut MQLONG,
     );
@@ -3802,11 +3802,11 @@ unsafe extern "C" {
     pub fn MQBUFMH(
         Hconn: MQHCONN,
         Hmsg: MQHMSG,
-        pBufMsgHOpts: PMQVOID,
+        pBufMsgHOpts: &MQBMHO,
         pMsgDesc: PMQVOID,
         BufferLength: MQLONG,
         pBuffer: PMQVOID,
-        pDataLength: PMQLONG,
+        pDataLength: &mut MQLONG,
         pCompCode: &mut MQLONG,
         pReason: &mut MQLONG,
     );
@@ -3824,10 +3824,10 @@ unsafe extern "C" {
     pub fn MQCB(
         Hconn: MQHCONN,
         Operation: MQLONG,
-        pCallbackDesc: PMQVOID,
+        pCallbackDesc: Option<&MQCBD>,
         Hobj: MQHOBJ,
         pMsgDesc: PMQVOID,
-        pGetMsgOpts: PMQVOID,
+        pGetMsgOpts: Option<&MQGMO>,
         pCompCode: &mut MQLONG,
         pReason: &mut MQLONG,
     );
@@ -3841,7 +3841,7 @@ unsafe extern "C" {
     /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQCLOSE(
         Hconn: MQHCONN,
-        pHobj: PMQHOBJ,
+        pHobj: &mut MQHOBJ,
         Options: MQLONG,
         pCompCode: &mut MQLONG,
         pReason: &mut MQLONG,
@@ -3892,7 +3892,7 @@ unsafe extern "C" {
     pub fn MQCRTMH(
         Hconn: MQHCONN,
         pCrtMsgHOpts: PMQVOID,
-        pHmsg: PMQHMSG,
+        pHmsg: &mut MQHMSG,
         pCompCode: &mut MQLONG,
         pReason: &mut MQLONG,
     );
@@ -3928,7 +3928,7 @@ unsafe extern "C" {
     /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQDLTMH(
         Hconn: MQHCONN,
-        pHmsg: PMQHMSG,
+        pHmsg: &mut MQHMSG,
         pDltMsgHOpts: PMQVOID,
         pCompCode: &mut MQLONG,
         pReason: &mut MQLONG,
@@ -3969,7 +3969,7 @@ unsafe extern "C" {
         pGetMsgOpts: PMQVOID,
         BufferLength: MQLONG,
         pBuffer: PMQVOID,
-        pDataLength: PMQLONG,
+        pDataLength: &mut MQLONG,
         pCompCode: &mut MQLONG,
         pReason: &mut MQLONG,
     );
@@ -4021,7 +4021,7 @@ unsafe extern "C" {
         pType: PMQLONG,
         ValueLength: MQLONG,
         pValue: PMQVOID,
-        pDataLength: PMQLONG,
+        pDataLength: &mut MQLONG,
         pCompCode: &mut MQLONG,
         pReason: &mut MQLONG,
     );
@@ -4046,7 +4046,7 @@ unsafe extern "C" {
         pMsgDesc: PMQVOID,
         BufferLength: MQLONG,
         pBuffer: PMQVOID,
-        pDataLength: PMQLONG,
+        pDataLength: &mut MQLONG,
         pCompCode: &mut MQLONG,
         pReason: &mut MQLONG,
     );
@@ -4063,7 +4063,7 @@ unsafe extern "C" {
         Hconn: MQHCONN,
         pObjDesc: PMQVOID,
         Options: MQLONG,
-        pHobj: PMQHOBJ,
+        pHobj: &mut MQHOBJ,
         pCompCode: &mut MQLONG,
         pReason: &mut MQLONG,
     );
@@ -4186,7 +4186,7 @@ unsafe extern "C" {
     pub fn MQSUB(
         Hconn: MQHCONN,
         pSubDesc: PMQVOID,
-        pHobj: PMQHOBJ,
+        pHobj: Option<&mut MQHOBJ>,
         pHsub: PMQHOBJ,
         pCompCode: &mut MQLONG,
         pReason: &mut MQLONG,

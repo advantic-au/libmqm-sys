@@ -172,7 +172,7 @@ pub trait Mqi {
     unsafe fn MQBEGIN(
         &self,
         Hconn: mqsys::MQHCONN,
-        pBeginOptions: mqsys::PMQVOID,
+        pBeginOptions: Option<&mut mqsys::MQBO>,
         pCompCode: &mut mqsys::MQLONG,
         pReason: &mut mqsys::MQLONG,
     );
@@ -235,7 +235,7 @@ pub trait Mqi {
         &self,
         Hconn: mqsys::MQHCONN,
         Hmsg: mqsys::MQHMSG,
-        pBufMsgHOpts: mqsys::PMQVOID,
+        pBufMsgHOpts: &mqsys::MQBMHO,
         pMsgDesc: mqsys::PMQVOID,
         BufferLength: mqsys::MQLONG,
         pBuffer: mqsys::PMQVOID,

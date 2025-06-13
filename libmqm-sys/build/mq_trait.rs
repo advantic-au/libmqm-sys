@@ -1,0 +1,157 @@
+use proc_macro2::Span;
+use syn::{
+    parse_quote,
+    punctuated::Punctuated,
+    token::Colon,
+    visit::Visit,
+    visit_mut::{visit_pat_type_mut, visit_type_mut, VisitMut},
+    BareFnArg, ForeignItemFn, Ident, ImplItem, ImplItemFn, Lifetime, PatIdent, Path, TraitItem, TraitItemFn, TypeReference,
+};
+
+#[derive(Debug, Default)]
+pub struct TraitGenerator {
+    foreign_fn: Vec<TraitItem>,
+}
+
+#[derive(Debug, Default)]
+pub struct MockFnGenerator {
+    foreign_fn: Vec<ImplItem>,
+}
+
+pub struct WrapperGenerator(pub Vec<syn::Field>);
+
+pub struct PrefixMqTypes(pub syn::Path);
+
+impl TraitGenerator {
+    #[must_use]
+    pub fn generate(&self, ident: &Ident) -> syn::ItemTrait {
+        let trait_fns = &self.foreign_fn;
+        parse_quote!(pub trait #ident {
+            #(#trait_fns)*
+        })
+    }
+}
+
+pub struct DesugarForMockall;
+
+struct DesugarFn<T>(T);
+impl<T: FnMut(&mut syn::Type)> VisitMut for DesugarFn<T> {
+    fn visit_type_mut(&mut self, item: &mut syn::Type) {
+        self.0(item);
+        visit_type_mut(self, item);
+    }
+}
+impl VisitMut for DesugarForMockall {
+    fn visit_impl_item_fn_mut(&mut self, item: &mut syn::ImplItemFn) {
+        let mut generics = item.sig.generics.clone();
+        let mut add_lifetime = DesugarFn(|item: &mut syn::Type| {
+            if let syn::Type::Reference(tr @ TypeReference { lifetime: None, .. }) = item {
+                if let Some(lt_char) = ('a'..='z').find(|c| !generics.lifetimes().any(|lt| lt.lifetime.ident == c.to_string())) {
+                    let lt = Lifetime::new(&format!("'{lt_char}"), Span::call_site());
+                    tr.lifetime = Some(lt.clone());
+                    generics.params.insert(0, parse_quote!(#lt));
+                }
+            }
+        });
+        for mut input in item.sig.inputs.pairs_mut() {
+            match input.value_mut() {
+                syn::FnArg::Receiver(_) => (),
+                syn::FnArg::Typed(pat_type) => visit_pat_type_mut(&mut add_lifetime, pat_type),
+            }
+        }
+        item.sig.generics = generics;
+    }
+}
+
+impl VisitMut for PrefixMqTypes {
+    fn visit_path_mut(&mut self, item: &mut syn::Path) {
+        if item.segments.len() == 1 {
+            let ident_str = item.segments[0].ident.to_string();
+            if ident_str.starts_with("MQ") || ident_str.starts_with("PMQ") {
+                let mut path: Path = self.0.clone();
+                path.segments.extend(item.segments.iter().cloned());
+                std::mem::swap(&mut path.segments, &mut item.segments);
+            }
+        }
+        for mut el in Punctuated::pairs_mut(&mut item.segments) {
+            let it = el.value_mut();
+            self.visit_path_segment_mut(it);
+        }
+    }
+}
+
+impl Visit<'_> for TraitGenerator {
+    fn visit_foreign_item_fn(
+        &mut self,
+        ForeignItemFn {
+            attrs, sig, semi_token, ..
+        }: &syn::ForeignItemFn,
+    ) {
+        let mut sig = sig.clone();
+        let self_arg = parse_quote!(&self);
+        sig.inputs.insert(0, syn::FnArg::Receiver(self_arg));
+        sig.unsafety = Some(parse_quote!(unsafe));
+        self.foreign_fn.push(TraitItem::Fn(TraitItemFn {
+            attrs: attrs.clone(),
+            sig,
+            default: None,
+            semi_token: Some(*semi_token),
+        }));
+    }
+}
+
+impl Visit<'_> for WrapperGenerator {
+    fn visit_foreign_item_fn(&mut self, item: &'_ syn::ForeignItemFn) {
+        let field_name = &item.sig.ident;
+        let fn_args = item.sig.inputs.iter().filter_map(|arg| match arg {
+            syn::FnArg::Receiver(_) => None?,
+            syn::FnArg::Typed(pat_type) => Some(BareFnArg {
+                attrs: vec![],
+                name: Some(match &*pat_type.pat {
+                    syn::Pat::Ident(PatIdent { ident, .. }) => (ident.clone(), Colon(Span::call_site())),
+                    _ => None?,
+                }),
+                ty: *pat_type.ty.clone(),
+            }),
+        });
+
+        self.0.push(parse_quote!(
+            #field_name: unsafe extern "C" fn(#( #fn_args,)*)
+        ));
+    }
+}
+
+impl WrapperGenerator {
+    pub fn generate(&self, ident: &Ident) -> syn::ItemStruct {
+        let fields = self.0.iter().cloned();
+        parse_quote!(
+            #[derive(::dlopen2::wrapper::WrapperApi, Debug)]
+            pub struct #ident {
+                #(#fields,)*
+            }
+        )
+    }
+}
+
+impl Visit<'_> for MockFnGenerator {
+    fn visit_trait_item_fn(&mut self, item: &'_ syn::TraitItemFn) {
+        self.foreign_fn.push(ImplItem::Fn(ImplItemFn {
+            attrs: vec![],
+            vis: syn::Visibility::Inherited,
+            defaultness: None,
+            sig: item.sig.clone(),
+            block: parse_quote!({}),
+        }));
+    }
+}
+
+impl MockFnGenerator {
+    pub fn generate(self, tr: &Path, st: &Path) -> syn::ItemImpl {
+        let fn_sig = self.foreign_fn;
+        parse_quote!(
+            impl #tr for #st {
+                #(#fn_sig)*
+            }
+        )
+    }
+}

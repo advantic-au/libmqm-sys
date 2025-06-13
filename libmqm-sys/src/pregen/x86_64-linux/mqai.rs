@@ -217,7 +217,7 @@ unsafe extern "C" {
         DataBag: MQHBAG,
         BufferLength: MQLONG,
         pBuffer: PMQVOID,
-        pDataLength: PMQLONG,
+        pDataLength: &mut MQLONG,
         pCompCode: &mut MQLONG,
         pReason: &mut MQLONG,
     );

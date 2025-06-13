@@ -1,6 +1,6 @@
 #![allow(non_snake_case)]
 #![allow(clippy::too_many_arguments)]
-
+#![allow(unused_variables)]
 /*!
  * Dynamic loading of the MQI library using dlopen2
  *
@@ -37,9 +37,12 @@
  * ```
  */
 
-use dlopen2::wrapper::{Container, WrapperApi};
+use dlopen2::wrapper::Container;
 
-use crate::{function, lib as mqsys};
+use crate::lib as mqsys;
+
+/// A dlopen2 [`WrapperApi`] implementation for MQI and MQAI function calls
+pub use super::generated::dlopen2::MqWrapper;
 
 /// Name of the platform dependent MQM dynamic library
 pub const MQM_LIB: &str = if cfg!(windows) { "mqm.dll" } else { "libmqm_r.so" };
@@ -67,558 +70,7 @@ impl LoadMqm for MqmContainer {
     }
 }
 
-/// A dlopen2 [`WrapperApi`] implementation for MQI and MQAI function calls
-#[derive(WrapperApi, Debug)]
-pub struct MqWrapper {
-    MQCONNX: unsafe extern "C" fn(
-        pQMgrName: &mqsys::MQCHAR48,
-        pConnectOpts: &mut mqsys::MQCNO,
-        pHconn: &mut mqsys::MQHCONN,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-    MQCONN: unsafe extern "C" fn(
-        pQMgrName: &mqsys::MQCHAR48,
-        pHconn: &mut mqsys::MQHCONN,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-    MQDISC: unsafe extern "C" fn(pHconn: mqsys::PMQHCONN, pCompCode: &mut mqsys::MQLONG, pReason: &mut mqsys::MQLONG),
-    MQOPEN: unsafe extern "C" fn(
-        Hconn: mqsys::MQHCONN,
-        pObjDesc: mqsys::PMQVOID,
-        Options: mqsys::MQLONG,
-        pHobj: mqsys::PMQHOBJ,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-    MQPUT: unsafe extern "C" fn(
-        Hconn: mqsys::MQHCONN,
-        Hobj: mqsys::MQHOBJ,
-        pMsgDesc: mqsys::PMQVOID,
-        pPutMsgOpts: mqsys::PMQVOID,
-        BufferLength: mqsys::MQLONG,
-        pBuffer: mqsys::PMQVOID,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-    MQPUT1: unsafe extern "C" fn(
-        Hconn: mqsys::MQHCONN,
-        pObjDesc: mqsys::PMQVOID,
-        pMsgDesc: mqsys::PMQVOID,
-        pPutMsgOpts: mqsys::PMQVOID,
-        BufferLength: mqsys::MQLONG,
-        pBuffer: mqsys::PMQVOID,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-    MQCLOSE: unsafe extern "C" fn(
-        Hconn: mqsys::MQHCONN,
-        pHobj: mqsys::PMQHOBJ,
-        Options: mqsys::MQLONG,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-    MQCMIT: unsafe extern "C" fn(Hconn: mqsys::MQHCONN, pCompCode: &mut mqsys::MQLONG, pReason: &mut mqsys::MQLONG),
-    MQGET: unsafe extern "C" fn(
-        Hconn: mqsys::MQHCONN,
-        Hobj: mqsys::MQHOBJ,
-        pMsgDesc: mqsys::PMQVOID,
-        pGetMsgOpts: mqsys::PMQVOID,
-        BufferLength: mqsys::MQLONG,
-        pBuffer: mqsys::PMQVOID,
-        pDataLength: mqsys::PMQLONG,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-    MQINQ: unsafe extern "C" fn(
-        Hconn: mqsys::MQHCONN,
-        Hobj: mqsys::MQHOBJ,
-        SelectorCount: mqsys::MQLONG,
-        pSelectors: mqsys::PMQLONG,
-        IntAttrCount: mqsys::MQLONG,
-        pIntAttrs: mqsys::PMQLONG,
-        CharAttrLength: mqsys::MQLONG,
-        pCharAttrs: mqsys::PMQCHAR,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-    MQCRTMH: unsafe extern "C" fn(
-        Hconn: mqsys::MQHCONN,
-        pCrtMsgHOpts: mqsys::PMQVOID,
-        pHmsg: mqsys::PMQHMSG,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-    MQDLTMH: unsafe extern "C" fn(
-        Hconn: mqsys::MQHCONN,
-        pHmsg: mqsys::PMQHMSG,
-        pDltMsgHOpts: mqsys::PMQVOID,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-    MQINQMP: unsafe extern "C" fn(
-        Hconn: mqsys::MQHCONN,
-        Hmsg: mqsys::MQHMSG,
-        pInqPropOpts: mqsys::PMQVOID,
-        pName: mqsys::PMQVOID,
-        pPropDesc: mqsys::PMQVOID,
-        pType: mqsys::PMQLONG,
-        ValueLength: mqsys::MQLONG,
-        pValue: mqsys::PMQVOID,
-        pDataLength: mqsys::PMQLONG,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-    MQSUB: unsafe extern "C" fn(
-        Hconn: mqsys::MQHCONN,
-        pSubDesc: mqsys::PMQVOID,
-        pHobj: mqsys::PMQHOBJ,
-        pHsub: mqsys::PMQHOBJ,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-    MQSUBRQ: unsafe extern "C" fn(
-        Hconn: mqsys::MQHCONN,
-        Hsub: mqsys::MQHOBJ,
-        Action: mqsys::MQLONG,
-        pSubRqOpts: mqsys::PMQVOID,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-    MQBEGIN: unsafe extern "C" fn(
-        Hconn: mqsys::MQHCONN,
-        pBeginOptions: mqsys::PMQVOID,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-    MQBACK: unsafe extern "C" fn(Hconn: mqsys::MQHCONN, pCompCode: &mut mqsys::MQLONG, pReason: &mut mqsys::MQLONG),
-    MQMHBUF: unsafe extern "C" fn(
-        Hconn: mqsys::MQHCONN,
-        Hmsg: mqsys::MQHMSG,
-        pMsgHBufOpts: mqsys::PMQVOID,
-        pName: mqsys::PMQVOID,
-        pMsgDesc: mqsys::PMQVOID,
-        BufferLength: mqsys::MQLONG,
-        pBuffer: mqsys::PMQVOID,
-        pDataLength: mqsys::PMQLONG,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-    MQBUFMH: unsafe extern "C" fn(
-        Hconn: mqsys::MQHCONN,
-        Hmsg: mqsys::MQHMSG,
-        pBufMsgHOpts: mqsys::PMQVOID,
-        pMsgDesc: mqsys::PMQVOID,
-        BufferLength: mqsys::MQLONG,
-        pBuffer: mqsys::PMQVOID,
-        pDataLength: mqsys::PMQLONG,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-    MQCB: unsafe extern "C" fn(
-        Hconn: mqsys::MQHCONN,
-        Operation: mqsys::MQLONG,
-        pCallbackDesc: mqsys::PMQVOID,
-        Hobj: mqsys::MQHOBJ,
-        pMsgDesc: mqsys::PMQVOID,
-        pGetMsgOpts: mqsys::PMQVOID,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-    MQCTL: unsafe extern "C" fn(
-        Hconn: mqsys::MQHCONN,
-        Operation: mqsys::MQLONG,
-        pControlOpts: mqsys::PMQVOID,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-    MQSET: unsafe extern "C" fn(
-        Hconn: mqsys::MQHCONN,
-        Hobj: mqsys::MQHOBJ,
-        SelectorCount: mqsys::MQLONG,
-        pSelectors: mqsys::PMQLONG,
-        IntAttrCount: mqsys::MQLONG,
-        pIntAttrs: mqsys::PMQLONG,
-        CharAttrLength: mqsys::MQLONG,
-        pCharAttrs: mqsys::PMQCHAR,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-    MQSETMP: unsafe extern "C" fn(
-        Hconn: mqsys::MQHCONN,
-        Hmsg: mqsys::MQHMSG,
-        pSetPropOpts: mqsys::PMQVOID,
-        pName: mqsys::PMQVOID,
-        pPropDesc: mqsys::PMQVOID,
-        Type: mqsys::MQLONG,
-        ValueLength: mqsys::MQLONG,
-        pValue: mqsys::PMQVOID,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-    MQSTAT: unsafe extern "C" fn(
-        Hconn: mqsys::MQHCONN,
-        Type: mqsys::MQLONG,
-        pStatus: mqsys::PMQVOID,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-    MQDLTMP: unsafe extern "C" fn(
-        Hconn: mqsys::MQHCONN,
-        Hmsg: mqsys::MQHMSG,
-        pDltPropOpts: mqsys::PMQVOID,
-        pName: mqsys::PMQVOID,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-    MQXCNVC: unsafe extern "C" fn(
-        Hconn: mqsys::MQHCONN,
-        Options: mqsys::MQLONG,
-        SourceCCSID: mqsys::MQLONG,
-        SourceLength: mqsys::MQLONG,
-        pSourceBuffer: mqsys::PMQCHAR,
-        TargetCCSID: mqsys::MQLONG,
-        TargetLength: mqsys::MQLONG,
-        pTargetBuffer: mqsys::PMQCHAR,
-        pDataLength: mqsys::PMQLONG,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-    #[cfg(feature = "mqai")]
-    mqCreateBag: unsafe extern "C" fn(
-        Options: mqsys::MQLONG,
-        pBag: mqsys::PMQHBAG,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-    #[cfg(feature = "mqai")]
-    mqDeleteBag: unsafe extern "C" fn(pBag: mqsys::PMQHBAG, pCompCode: &mut mqsys::MQLONG, pReason: &mut mqsys::MQLONG),
-    #[cfg(feature = "mqai")]
-    mqClearBag: unsafe extern "C" fn(Bag: mqsys::MQHBAG, pCompCode: &mut mqsys::MQLONG, pReason: &mut mqsys::MQLONG),
-    #[cfg(feature = "mqai")]
-    mqGetBag: unsafe extern "C" fn(
-        Hconn: mqsys::MQHCONN,
-        Hobj: mqsys::MQHOBJ,
-        pMsgDesc: mqsys::PMQVOID,
-        pGetMsgOpts: mqsys::PMQVOID,
-        Bag: mqsys::MQHBAG,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-    #[cfg(feature = "mqai")]
-    mqPutBag: unsafe extern "C" fn(
-        Hconn: mqsys::MQHCONN,
-        Hobj: mqsys::MQHOBJ,
-        pMsgDesc: mqsys::PMQVOID,
-        pPutMsgOpts: mqsys::PMQVOID,
-        Bag: mqsys::MQHBAG,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-    #[cfg(feature = "mqai")]
-    mqAddInquiry: unsafe extern "C" fn(
-        Bag: mqsys::MQHBAG,
-        Selector: mqsys::MQLONG,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-    #[cfg(feature = "mqai")]
-    mqDeleteItem: unsafe extern "C" fn(
-        Bag: mqsys::MQHBAG,
-        Selector: mqsys::MQLONG,
-        ItemIndex: mqsys::MQLONG,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-    #[cfg(feature = "mqai")]
-    mqAddInteger: unsafe extern "C" fn(
-        Bag: mqsys::MQHBAG,
-        Selector: mqsys::MQLONG,
-        ItemValue: mqsys::MQLONG,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-    #[cfg(feature = "mqai")]
-    mqAddIntegerFilter: unsafe extern "C" fn(
-        Bag: mqsys::MQHBAG,
-        Selector: mqsys::MQLONG,
-        ItemValue: mqsys::MQLONG,
-        Operator: mqsys::MQLONG,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-    #[cfg(feature = "mqai")]
-    mqSetInteger: unsafe extern "C" fn(
-        Bag: mqsys::MQHBAG,
-        Selector: mqsys::MQLONG,
-        ItemIndex: mqsys::MQLONG,
-        ItemValue: mqsys::MQLONG,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-    #[cfg(feature = "mqai")]
-    mqInquireInteger: unsafe extern "C" fn(
-        Bag: mqsys::MQHBAG,
-        Selector: mqsys::MQLONG,
-        ItemIndex: mqsys::MQLONG,
-        pItemValue: mqsys::PMQLONG,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-    #[cfg(feature = "mqai")]
-    mqAddString: unsafe extern "C" fn(
-        Bag: mqsys::MQHBAG,
-        Selector: mqsys::MQLONG,
-        BufferLength: mqsys::MQLONG,
-        pBuffer: mqsys::PMQCHAR,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-    #[cfg(feature = "mqai")]
-    mqExecute: unsafe extern "C" fn(
-        Hconn: mqsys::MQHCONN,
-        Command: mqsys::MQLONG,
-        OptionsBag: mqsys::MQHBAG,
-        AdminBag: mqsys::MQHBAG,
-        ResponseBag: mqsys::MQHBAG,
-        AdminQ: mqsys::MQHOBJ,
-        ResponseQ: mqsys::MQHOBJ,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-    #[cfg(feature = "mqai")]
-    mqCountItems: unsafe extern "C" fn(
-        Bag: mqsys::MQHBAG,
-        Selector: mqsys::MQLONG,
-        pItemCount: mqsys::PMQLONG,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-    #[cfg(feature = "mqai")]
-    mqInquireBag: unsafe extern "C" fn(
-        Bag: mqsys::MQHBAG,
-        Selector: mqsys::MQLONG,
-        ItemIndex: mqsys::MQLONG,
-        pItemValue: mqsys::PMQHBAG,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-    #[cfg(feature = "mqai")]
-    mqInquireString: unsafe extern "C" fn(
-        Bag: mqsys::MQHBAG,
-        Selector: mqsys::MQLONG,
-        ItemIndex: mqsys::MQLONG,
-        BufferLength: mqsys::MQLONG,
-        pBuffer: mqsys::PMQCHAR,
-        pStringLength: mqsys::PMQLONG,
-        pCodedCharSetId: mqsys::PMQLONG,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-    #[cfg(feature = "mqai")]
-    mqAddBag: unsafe extern "C" fn(
-        Bag: mqsys::MQHBAG,
-        Selector: mqsys::MQLONG,
-        ItemValue: mqsys::MQHBAG,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-    #[cfg(feature = "mqai")]
-    mqAddInteger64: unsafe extern "C" fn(
-        Bag: mqsys::MQHBAG,
-        Selector: mqsys::MQLONG,
-        ItemValue: mqsys::MQINT64,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-    #[cfg(feature = "mqai")]
-    mqAddStringFilter: unsafe extern "C" fn(
-        Bag: mqsys::MQHBAG,
-        Selector: mqsys::MQLONG,
-        BufferLength: mqsys::MQLONG,
-        pBuffer: mqsys::PMQCHAR,
-        Operator: mqsys::MQLONG,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-    #[cfg(feature = "mqai")]
-    mqAddByteString: unsafe extern "C" fn(
-        Bag: mqsys::MQHBAG,
-        Selector: mqsys::MQLONG,
-        BufferLength: mqsys::MQLONG,
-        pBuffer: mqsys::PMQBYTE,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-    #[cfg(feature = "mqai")]
-    mqAddByteStringFilter: unsafe extern "C" fn(
-        Bag: mqsys::MQHBAG,
-        Selector: mqsys::MQLONG,
-        BufferLength: mqsys::MQLONG,
-        pBuffer: mqsys::PMQBYTE,
-        Operator: mqsys::MQLONG,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-    #[cfg(feature = "mqai")]
-    mqSetIntegerFilter: unsafe extern "C" fn(
-        Bag: mqsys::MQHBAG,
-        Selector: mqsys::MQLONG,
-        ItemIndex: mqsys::MQLONG,
-        ItemValue: mqsys::MQLONG,
-        Operator: mqsys::MQLONG,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-    #[cfg(feature = "mqai")]
-    mqSetString: unsafe extern "C" fn(
-        Bag: mqsys::MQHBAG,
-        Selector: mqsys::MQLONG,
-        ItemIndex: mqsys::MQLONG,
-        BufferLength: mqsys::MQLONG,
-        pBuffer: mqsys::PMQCHAR,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-    #[cfg(feature = "mqai")]
-    mqSetStringFilter: unsafe extern "C" fn(
-        Bag: mqsys::MQHBAG,
-        Selector: mqsys::MQLONG,
-        ItemIndex: mqsys::MQLONG,
-        BufferLength: mqsys::MQLONG,
-        pBuffer: mqsys::PMQCHAR,
-        Operator: mqsys::MQLONG,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-    #[cfg(feature = "mqai")]
-    mqSetByteString: unsafe extern "C" fn(
-        Bag: mqsys::MQHBAG,
-        Selector: mqsys::MQLONG,
-        ItemIndex: mqsys::MQLONG,
-        BufferLength: mqsys::MQLONG,
-        pBuffer: mqsys::PMQBYTE,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-    #[cfg(feature = "mqai")]
-    mqSetByteStringFilter: unsafe extern "C" fn(
-        Bag: mqsys::MQHBAG,
-        Selector: mqsys::MQLONG,
-        ItemIndex: mqsys::MQLONG,
-        BufferLength: mqsys::MQLONG,
-        pBuffer: mqsys::PMQBYTE,
-        Operator: mqsys::MQLONG,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-    #[cfg(feature = "mqai")]
-    mqInquireIntegerFilter: unsafe extern "C" fn(
-        Bag: mqsys::MQHBAG,
-        Selector: mqsys::MQLONG,
-        ItemIndex: mqsys::MQLONG,
-        pItemValue: mqsys::PMQLONG,
-        pOperator: mqsys::PMQLONG,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-    #[cfg(feature = "mqai")]
-    mqInquireInteger64: unsafe extern "C" fn(
-        Bag: mqsys::MQHBAG,
-        Selector: mqsys::MQLONG,
-        ItemIndex: mqsys::MQLONG,
-        pItemValue: mqsys::PMQINT64,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-    #[cfg(feature = "mqai")]
-    mqInquireByteString: unsafe extern "C" fn(
-        Bag: mqsys::MQHBAG,
-        Selector: mqsys::MQLONG,
-        ItemIndex: mqsys::MQLONG,
-        BufferLength: mqsys::MQLONG,
-        pBuffer: mqsys::PMQBYTE,
-        pByteStringLength: mqsys::PMQLONG,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-    #[cfg(feature = "mqai")]
-    mqInquireStringFilter: unsafe extern "C" fn(
-        Bag: mqsys::MQHBAG,
-        Selector: mqsys::MQLONG,
-        ItemIndex: mqsys::MQLONG,
-        BufferLength: mqsys::MQLONG,
-        pBuffer: mqsys::PMQCHAR,
-        pStringLength: mqsys::PMQLONG,
-        pCodedCharSetId: mqsys::PMQLONG,
-        pOperator: mqsys::PMQLONG,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-    #[cfg(feature = "mqai")]
-    mqInquireByteStringFilter: unsafe extern "C" fn(
-        Bag: mqsys::MQHBAG,
-        Selector: mqsys::MQLONG,
-        ItemIndex: mqsys::MQLONG,
-        BufferLength: mqsys::MQLONG,
-        pBuffer: mqsys::PMQBYTE,
-        pByteStringLength: mqsys::PMQLONG,
-        pOperator: mqsys::PMQLONG,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-    #[cfg(feature = "mqai")]
-    mqSetInteger64: unsafe extern "C" fn(
-        Bag: mqsys::MQHBAG,
-        Selector: mqsys::MQLONG,
-        ItemIndex: mqsys::MQLONG,
-        ItemValue: mqsys::MQINT64,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-    #[cfg(feature = "mqai")]
-    mqTruncateBag: unsafe extern "C" fn(
-        Bag: mqsys::MQHBAG,
-        ItemCount: mqsys::MQLONG,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-
-    #[cfg(feature = "mqai")]
-    mqBagToBuffer: unsafe extern "C" fn(
-        OptionsBag: mqsys::MQHBAG,
-        DataBag: mqsys::MQHBAG,
-        BufferLength: mqsys::MQLONG,
-        pBuffer: mqsys::PMQVOID,
-        pDataLength: mqsys::PMQLONG,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-
-    #[cfg(feature = "mqai")]
-    mqBufferToBag: unsafe extern "C" fn(
-        OptionsBag: mqsys::MQHBAG,
-        BufferLength: mqsys::MQLONG,
-        pBuffer: mqsys::PMQVOID,
-        DataBag: mqsys::MQHBAG,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-
-    #[cfg(feature = "mqai")]
-    mqInquireItemInfo: unsafe extern "C" fn(
-        Bag: mqsys::MQHBAG,
-        Selector: mqsys::MQLONG,
-        ItemIndex: mqsys::MQLONG,
-        pOutSelector: mqsys::PMQLONG,
-        pItemType: mqsys::PMQLONG,
-        pCompCode: &mut mqsys::MQLONG,
-        pReason: &mut mqsys::MQLONG,
-    ),
-}
-
-impl function::Mqi for MqmContainer {
+impl crate::Mqi for MqmContainer {
     unsafe fn MQCONNX(
         &self,
         pQMgrName: &mqsys::MQCHAR48,
@@ -655,7 +107,7 @@ impl function::Mqi for MqmContainer {
         Hconn: mqsys::MQHCONN,
         pObjDesc: mqsys::PMQVOID,
         Options: mqsys::MQLONG,
-        pHobj: mqsys::PMQHOBJ,
+        pHobj: &mut mqsys::MQHOBJ,
         pCompCode: &mut mqsys::MQLONG,
         pReason: &mut mqsys::MQLONG,
     ) {
@@ -697,7 +149,7 @@ impl function::Mqi for MqmContainer {
     unsafe fn MQCLOSE(
         &self,
         Hconn: mqsys::MQHCONN,
-        pHobj: mqsys::PMQHOBJ,
+        pHobj: &mut mqsys::MQHOBJ,
         Options: mqsys::MQLONG,
         pCompCode: &mut mqsys::MQLONG,
         pReason: &mut mqsys::MQLONG,
@@ -713,7 +165,7 @@ impl function::Mqi for MqmContainer {
         pGetMsgOpts: mqsys::PMQVOID,
         BufferLength: mqsys::MQLONG,
         pBuffer: mqsys::PMQVOID,
-        pDataLength: mqsys::PMQLONG,
+        pDataLength: &mut mqsys::MQLONG,
         pCompCode: &mut mqsys::MQLONG,
         pReason: &mut mqsys::MQLONG,
     ) {
@@ -793,7 +245,7 @@ impl function::Mqi for MqmContainer {
         &self,
         Hconn: mqsys::MQHCONN,
         pSubDesc: mqsys::PMQVOID,
-        pHobj: mqsys::PMQHOBJ,
+        pHobj: Option<&mut mqsys::MQHOBJ>,
         pHsub: mqsys::PMQHOBJ,
         pCompCode: &mut mqsys::MQLONG,
         pReason: &mut mqsys::MQLONG,
@@ -820,7 +272,7 @@ impl function::Mqi for MqmContainer {
     unsafe fn MQBEGIN(
         &self,
         Hconn: mqsys::MQHCONN,
-        pBeginOptions: mqsys::PMQVOID,
+        pBeginOptions: Option<&mut mqsys::MQBO>,
         pCompCode: &mut mqsys::MQLONG,
         pReason: &mut mqsys::MQLONG,
     ) {
@@ -839,7 +291,7 @@ impl function::Mqi for MqmContainer {
         &self,
         Hconn: mqsys::MQHCONN,
         pCrtMsgHOpts: mqsys::PMQVOID,
-        pHmsg: mqsys::PMQHMSG,
+        pHmsg: &mut mqsys::MQHMSG,
         pCompCode: &mut mqsys::MQLONG,
         pReason: &mut mqsys::MQLONG,
     ) {
@@ -851,7 +303,7 @@ impl function::Mqi for MqmContainer {
     unsafe fn MQDLTMH(
         &self,
         Hconn: mqsys::MQHCONN,
-        pHmsg: mqsys::PMQHMSG,
+        pHmsg: &mut mqsys::MQHMSG,
         pDltMsgHOpts: mqsys::PMQVOID,
         pCompCode: &mut mqsys::MQLONG,
         pReason: &mut mqsys::MQLONG,
@@ -871,7 +323,7 @@ impl function::Mqi for MqmContainer {
         pType: mqsys::PMQLONG,
         ValueLength: mqsys::MQLONG,
         pValue: mqsys::PMQVOID,
-        pDataLength: mqsys::PMQLONG,
+        pDataLength: &mut mqsys::MQLONG,
         pCompCode: &mut mqsys::MQLONG,
         pReason: &mut mqsys::MQLONG,
     ) {
@@ -902,7 +354,7 @@ impl function::Mqi for MqmContainer {
         pMsgDesc: mqsys::PMQVOID,
         BufferLength: mqsys::MQLONG,
         pBuffer: mqsys::PMQVOID,
-        pDataLength: mqsys::PMQLONG,
+        pDataLength: &mut mqsys::MQLONG,
         pCompCode: &mut mqsys::MQLONG,
         pReason: &mut mqsys::MQLONG,
     ) {
@@ -927,11 +379,11 @@ impl function::Mqi for MqmContainer {
         &self,
         Hconn: mqsys::MQHCONN,
         Hmsg: mqsys::MQHMSG,
-        pBufMsgHOpts: mqsys::PMQVOID,
+        pBufMsgHOpts: &mqsys::MQBMHO,
         pMsgDesc: mqsys::PMQVOID,
         BufferLength: mqsys::MQLONG,
         pBuffer: mqsys::PMQVOID,
-        pDataLength: mqsys::PMQLONG,
+        pDataLength: &mut mqsys::MQLONG,
         pCompCode: &mut mqsys::MQLONG,
         pReason: &mut mqsys::MQLONG,
     ) {
@@ -955,10 +407,10 @@ impl function::Mqi for MqmContainer {
         &self,
         Hconn: mqsys::MQHCONN,
         Operation: mqsys::MQLONG,
-        pCallbackDesc: mqsys::PMQVOID,
+        pCallbackDesc: Option<&mqsys::MQCBD>,
         Hobj: mqsys::MQHOBJ,
         pMsgDesc: mqsys::PMQVOID,
-        pGetMsgOpts: mqsys::PMQVOID,
+        pGetMsgOpts: Option<&mqsys::MQGMO>,
         pCompCode: &mut mqsys::MQLONG,
         pReason: &mut mqsys::MQLONG,
     ) {
@@ -1079,7 +531,7 @@ impl function::Mqi for MqmContainer {
 }
 
 #[cfg(feature = "exits")]
-impl function::Exits for MqmContainer {
+impl crate::Exits for MqmContainer {
     unsafe fn MQXCNVC(
         &self,
         Hconn: mqsys::MQHCONN,
@@ -1090,7 +542,7 @@ impl function::Exits for MqmContainer {
         TargetCCSID: mqsys::MQLONG,
         TargetLength: mqsys::MQLONG,
         pTargetBuffer: mqsys::PMQCHAR,
-        pDataLength: mqsys::PMQLONG,
+        pDataLength: &mut mqsys::MQLONG,
         pCompCode: &mut mqsys::MQLONG,
         pReason: &mut mqsys::MQLONG,
     ) {
@@ -1111,10 +563,58 @@ impl function::Exits for MqmContainer {
             );
         }
     }
+
+    unsafe fn MQXEP(
+        &self,
+        Hconfig: mqsys::MQHCONFIG,
+        ExitReason: mqsys::MQLONG,
+        Function: mqsys::MQLONG,
+        pEntryPoint: mqsys::PMQFUNC,
+        pExitOpts: mqsys::PMQXEPO,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
+    ) {
+        todo!()
+    }
+
+    unsafe fn MQXCLWLN(
+        &self,
+        pExitParms: mqsys::PMQWXP,
+        CurrentRecord: mqsys::MQPTR,
+        NextOffset: mqsys::MQLONG,
+        pNextRecord: mqsys::PMQPTR,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
+    ) {
+        todo!()
+    }
+
+    unsafe fn MQXDX(
+        &self,
+        pDataConvExitParms: mqsys::PMQDXP,
+        pMsgDesc: mqsys::PMQMD,
+        InBufferLength: mqsys::MQLONG,
+        pInBuffer: mqsys::PMQVOID,
+        OutBufferLength: mqsys::MQLONG,
+        pOutBuffer: mqsys::PMQVOID,
+    ) {
+        todo!()
+    }
+
+    unsafe fn MQZEP(
+        &self,
+        Hconfig: mqsys::MQHCONFIG,
+        Function: mqsys::MQLONG,
+        pEntryPoint: mqsys::PMQFUNC,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
+    ) {
+        todo!()
+    }
 }
 
 #[cfg(feature = "mqai")]
-impl function::Mqai for MqmContainer {
+impl crate::Mqai for MqmContainer {
     unsafe fn mqCreateBag(
         &self,
         Options: mqsys::MQLONG,
@@ -1658,7 +1158,7 @@ impl function::Mqai for MqmContainer {
         DataBag: mqsys::MQHBAG,
         BufferLength: mqsys::MQLONG,
         pBuffer: mqsys::PMQVOID,
-        pDataLength: mqsys::PMQLONG,
+        pDataLength: &mut mqsys::MQLONG,
         pCompCode: &mut mqsys::MQLONG,
         pReason: &mut mqsys::MQLONG,
     ) {
@@ -1703,6 +1203,28 @@ impl function::Mqai for MqmContainer {
         unsafe {
             MqWrapper::mqInquireItemInfo(self, Bag, Selector, ItemIndex, pOutSelector, pItemType, pCompCode, pReason);
         }
+    }
+
+    unsafe fn mqPad(
+        &self,
+        pString: mqsys::PMQCHAR,
+        BufferLength: mqsys::MQLONG,
+        pBuffer: mqsys::PMQCHAR,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
+    ) {
+        todo!()
+    }
+
+    unsafe fn mqTrim(
+        &self,
+        BufferLength: mqsys::MQLONG,
+        pBuffer: mqsys::PMQCHAR,
+        pString: mqsys::PMQCHAR,
+        pCompCode: &mut mqsys::MQLONG,
+        pReason: &mut mqsys::MQLONG,
+    ) {
+        todo!()
     }
 }
 

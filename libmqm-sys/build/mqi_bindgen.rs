@@ -3,7 +3,7 @@ use std::path::Path;
 #[cfg(feature = "bindgen")]
 pub mod mqi {
     use std::{
-        collections::{HashMap, HashSet},
+        collections::{BTreeMap, HashSet},
         path::Path,
     };
 
@@ -134,8 +134,8 @@ pub mod mqi {
     pub fn mqi_bindgen_generate(
         builder: &bindgen::Builder,
         mq_inc_path: &Path,
-    ) -> Result<HashMap<&'static str, syn::File>, BindgenError> {
-        let mut result = HashMap::new();
+    ) -> Result<BTreeMap<&'static str, syn::File>, BindgenError> {
+        let mut result = BTreeMap::new();
         let mut items_acc = HashSet::new();
 
         for (
@@ -301,14 +301,12 @@ pub mod str {
 }
 
 pub fn bindgen_builder(mq_inc_path: &Path) -> bindgen::Builder {
-    #[allow(deprecated, reason = "RustTarget::Stable_1_82 is deprecated.")]
     bindgen::builder()
-        .rust_target(bindgen::RustTarget::Stable_1_82)
+        .rust_target(bindgen::RustTarget::stable(82, 0).expect("rust target should exist"))
         .clang_arg(format!("-I{}", mq_inc_path.display()))
         .sort_semantically(true)
         .merge_extern_blocks(true)
         .generate_cstr(true)
         .parse_callbacks(Box::new(bindgen::CargoCallbacks::new()))
         .layout_tests(false)
-    // .formatter(bindgen::Formatter::Prettyplease)
 }

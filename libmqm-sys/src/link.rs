@@ -29,14 +29,16 @@
  *
  */
 
-use crate::function;
+#![allow(non_snake_case)]
+#![allow(unused_variables)]
+
 use crate::lib;
 
 /// Provides access to compile time linked MQI and MQAI functions
 #[derive(Debug, Clone, Copy)]
 pub struct LinkedMq;
 
-impl function::Mqi for LinkedMq {
+impl crate::Mqi for LinkedMq {
     unsafe fn MQCONNX(
         &self,
         pQMgrName: &lib::MQCHAR48,
@@ -73,7 +75,7 @@ impl function::Mqi for LinkedMq {
         Hconn: lib::MQHCONN,
         pObjDesc: lib::PMQVOID,
         Options: lib::MQLONG,
-        pHobj: lib::PMQHOBJ,
+        pHobj: &mut lib::MQHOBJ,
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ) {
@@ -110,7 +112,7 @@ impl function::Mqi for LinkedMq {
     unsafe fn MQCLOSE(
         &self,
         Hconn: lib::MQHCONN,
-        pHobj: lib::PMQHOBJ,
+        pHobj: &mut lib::MQHOBJ,
         Options: lib::MQLONG,
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
@@ -134,7 +136,7 @@ impl function::Mqi for LinkedMq {
         pGetMsgOpts: lib::PMQVOID,
         BufferLength: lib::MQLONG,
         pBuffer: lib::PMQVOID,
-        pDataLength: lib::PMQLONG,
+        pDataLength: &mut lib::MQLONG,
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ) {
@@ -202,7 +204,7 @@ impl function::Mqi for LinkedMq {
         &self,
         Hconn: lib::MQHCONN,
         pSubDesc: lib::PMQVOID,
-        pHobj: lib::PMQHOBJ,
+        pHobj: Option<&mut lib::MQHOBJ>,
         pHsub: lib::PMQHOBJ,
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
@@ -229,7 +231,7 @@ impl function::Mqi for LinkedMq {
     unsafe fn MQBEGIN(
         &self,
         Hconn: lib::MQHCONN,
-        pBeginOptions: lib::PMQVOID,
+        pBeginOptions: Option<&mut lib::MQBO>,
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ) {
@@ -248,7 +250,7 @@ impl function::Mqi for LinkedMq {
         &self,
         Hconn: lib::MQHCONN,
         pCrtMsgHOpts: lib::PMQVOID,
-        pHmsg: lib::PMQHMSG,
+        pHmsg: &mut lib::MQHMSG,
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ) {
@@ -260,7 +262,7 @@ impl function::Mqi for LinkedMq {
     unsafe fn MQDLTMH(
         &self,
         Hconn: lib::MQHCONN,
-        pHmsg: lib::PMQHMSG,
+        pHmsg: &mut lib::MQHMSG,
         pDltMsgHOpts: lib::PMQVOID,
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
@@ -280,7 +282,7 @@ impl function::Mqi for LinkedMq {
         pType: lib::PMQLONG,
         ValueLength: lib::MQLONG,
         pValue: lib::PMQVOID,
-        pDataLength: lib::PMQLONG,
+        pDataLength: &mut lib::MQLONG,
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ) {
@@ -310,7 +312,7 @@ impl function::Mqi for LinkedMq {
         pMsgDesc: lib::PMQVOID,
         BufferLength: lib::MQLONG,
         pBuffer: lib::PMQVOID,
-        pDataLength: lib::PMQLONG,
+        pDataLength: &mut lib::MQLONG,
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ) {
@@ -334,11 +336,11 @@ impl function::Mqi for LinkedMq {
         &self,
         Hconn: lib::MQHCONN,
         Hmsg: lib::MQHMSG,
-        pBufMsgHOpts: lib::PMQVOID,
+        pBufMsgHOpts: &lib::MQBMHO,
         pMsgDesc: lib::PMQVOID,
         BufferLength: lib::MQLONG,
         pBuffer: lib::PMQVOID,
-        pDataLength: lib::PMQLONG,
+        pDataLength: &mut lib::MQLONG,
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ) {
@@ -361,10 +363,10 @@ impl function::Mqi for LinkedMq {
         &self,
         Hconn: lib::MQHCONN,
         Operation: lib::MQLONG,
-        pCallbackDesc: lib::PMQVOID,
+        pCallbackDesc: Option<&lib::MQCBD>,
         Hobj: lib::MQHOBJ,
         pMsgDesc: lib::PMQVOID,
-        pGetMsgOpts: lib::PMQVOID,
+        pGetMsgOpts: Option<&lib::MQGMO>,
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ) {
@@ -482,7 +484,7 @@ impl function::Mqi for LinkedMq {
 }
 
 #[cfg(feature = "exits")]
-impl function::Exits for LinkedMq {
+impl crate::Exits for LinkedMq {
     unsafe fn MQXCNVC(
         &self,
         Hconn: lib::MQHCONN,
@@ -493,7 +495,7 @@ impl function::Exits for LinkedMq {
         TargetCCSID: lib::MQLONG,
         TargetLength: lib::MQLONG,
         pTargetBuffer: lib::PMQCHAR,
-        pDataLength: lib::PMQLONG,
+        pDataLength: &mut lib::MQLONG,
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ) {
@@ -513,10 +515,58 @@ impl function::Exits for LinkedMq {
             );
         }
     }
+
+    unsafe fn MQXEP(
+        &self,
+        Hconfig: lib::MQHCONFIG,
+        ExitReason: lib::MQLONG,
+        Function: lib::MQLONG,
+        pEntryPoint: lib::PMQFUNC,
+        pExitOpts: lib::PMQXEPO,
+        pCompCode: &mut lib::MQLONG,
+        pReason: &mut lib::MQLONG,
+    ) {
+        todo!()
+    }
+
+    unsafe fn MQXCLWLN(
+        &self,
+        pExitParms: lib::PMQWXP,
+        CurrentRecord: lib::MQPTR,
+        NextOffset: lib::MQLONG,
+        pNextRecord: lib::PMQPTR,
+        pCompCode: &mut lib::MQLONG,
+        pReason: &mut lib::MQLONG,
+    ) {
+        todo!()
+    }
+
+    unsafe fn MQXDX(
+        &self,
+        pDataConvExitParms: lib::PMQDXP,
+        pMsgDesc: lib::PMQMD,
+        InBufferLength: lib::MQLONG,
+        pInBuffer: lib::PMQVOID,
+        OutBufferLength: lib::MQLONG,
+        pOutBuffer: lib::PMQVOID,
+    ) {
+        todo!()
+    }
+
+    unsafe fn MQZEP(
+        &self,
+        Hconfig: lib::MQHCONFIG,
+        Function: lib::MQLONG,
+        pEntryPoint: lib::PMQFUNC,
+        pCompCode: &mut lib::MQLONG,
+        pReason: &mut lib::MQLONG,
+    ) {
+        todo!()
+    }
 }
 
 #[cfg(feature = "mqai")]
-impl function::Mqai for LinkedMq {
+impl crate::Mqai for LinkedMq {
     unsafe fn mqCreateBag(
         &self,
         Options: lib::MQLONG,
@@ -1035,7 +1085,7 @@ impl function::Mqai for LinkedMq {
         DataBag: lib::MQHBAG,
         BufferLength: lib::MQLONG,
         pBuffer: lib::PMQVOID,
-        pDataLength: lib::PMQLONG,
+        pDataLength: &mut lib::MQLONG,
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ) {
@@ -1071,5 +1121,27 @@ impl function::Mqai for LinkedMq {
         unsafe {
             lib::mqInquireItemInfo(Bag, Selector, ItemIndex, pOutSelector, pItemType, pCompCode, pReason);
         }
+    }
+
+    unsafe fn mqPad(
+        &self,
+        pString: lib::PMQCHAR,
+        BufferLength: lib::MQLONG,
+        pBuffer: lib::PMQCHAR,
+        pCompCode: &mut lib::MQLONG,
+        pReason: &mut lib::MQLONG,
+    ) {
+        todo!()
+    }
+
+    unsafe fn mqTrim(
+        &self,
+        BufferLength: lib::MQLONG,
+        pBuffer: lib::PMQCHAR,
+        pString: lib::PMQCHAR,
+        pCompCode: &mut lib::MQLONG,
+        pReason: &mut lib::MQLONG,
+    ) {
+        todo!()
     }
 }

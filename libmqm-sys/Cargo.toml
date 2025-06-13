@@ -20,6 +20,8 @@ workspace = true
 [features]
 default = ["link", "mqc_9_2_0_0"]
 
+mock = ["dep:mockall"]
+
 ## Generate the bindings and save them in the src folder
 pregen = ["pcf", "exits", "mqai", "bindgen", "mqc_latest"]
 
@@ -74,11 +76,12 @@ mqc_latest = ["mqc_9_4_2_0"]
 dlopen2 = { version = "0.8.0", optional = true }
 libc = { version = "0.2.155", optional = true }
 document-features = { version = "0.2.10", optional = true }
+mockall = { version = "0.13.1", optional = true }
 
 [build-dependencies]
 regex-lite = { version = "0.1.6", optional = true }
 bindgen = { version = "0.72.0", optional = true }
-syn = { version = "2.0.101", optional = true, features = [ "parsing"] }
+syn = { version = "2.0.101", optional = true, features = [ "parsing", "visit"] }
 proc-macro2 = { version = "1.0", optional = true }
 prettyplease = { version = "0.2", optional = true }
 cc = { version = "1.1.18", optional = true }

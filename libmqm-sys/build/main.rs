@@ -9,6 +9,9 @@ mod doc_comments;
 #[cfg(feature = "bindgen")]
 mod rustify;
 
+#[cfg(feature = "bindgen")]
+mod mq_trait;
+
 #[cfg(any(feature = "struct_defaults", feature = "constant_lookup", feature = "bindgen"))]
 mod features {
     use std::env;
@@ -186,7 +189,7 @@ fn main() -> Result<(), io::Error> {
         drop(version_writer);
 
         #[cfg(feature = "pregen")]
-        pregen_copy(&out_version, &std::path::PathBuf::from("./src/version/pregen"))?;
+        pregen_copy_dir(&out_version, &std::path::PathBuf::from("./src/pregen"))?;
 
         #[cfg(feature = "constant_lookup")]
         {
@@ -204,8 +207,22 @@ fn main() -> Result<(), io::Error> {
         #[cfg(feature = "bindgen")]
         {
             use io::Write as _;
+            use syn::{parse_quote, visit_mut::VisitMut};
 
-            use crate::doc_comments::{DescriptionRegex, FnParamExtract, StructFieldExtract};
+            use crate::{
+                doc_comments::{DescriptionRegex, FnParamExtract, StructFieldExtract},
+                mq_trait::{PrefixMqTypes, WrapperGenerator},
+            };
+
+            let source_trait: &[(_, syn::Ident)] = &[
+                ("mqi.rs", syn::parse_quote!(Mqi)),
+                ("mqai.rs", syn::parse_quote!(Mqai)),
+                ("exits.rs", syn::parse_quote!(Exits)),
+            ];
+
+            let mut traits = vec![];
+            let mut mock_impls = vec![];
+            let mock_name = parse_quote!(Mq);
 
             let mq_inc_path = mq_path::mq_inc_path();
             let builder = mqi_bindgen::bindgen_builder(&mq_inc_path);
@@ -219,37 +236,73 @@ fn main() -> Result<(), io::Error> {
             let parameters = doc_comments::extract_from_headers(&mq_inc_path, &FnParamExtract::default())?;
             assert_ne!(parameters.len(), 0);
 
+            let mut wrapper = WrapperGenerator(vec![]);
+
             // Generate and write the bindings file
             for (name, mut generated) in mqi_bindgen::mqi::mqi_bindgen_generate(&builder, &mq_inc_path)
                 .map_err(|e| io::Error::new(io::ErrorKind::InvalidData, e))?
             {
-                use syn::{parse_quote, visit_mut::VisitMut as _};
+                use syn::{parse_quote, visit::Visit, visit_mut::VisitMut as _};
 
                 use crate::{
                     doc_comments::{DocCommentArgs, DocCommentFields, DocCommentType},
+                    mq_trait::TraitGenerator,
                     rustify::{FnArgType, MqLongConstWrap},
                 };
 
                 let mut arg_type = FnArgType::new()
                     .replace_all("pCompCode", parse_quote!(&mut MQLONG))
                     .replace_all("pReason", parse_quote!(&mut MQLONG))
-                    .replace_fns(
-                        ["MQCONN", "MQCONNX", "MQDISC", "MQ_CONN_CALL", "MQ_CONNX_CALL", "MQ_DISC_CALL"],
-                        "pHconn",
-                        &parse_quote!(&mut MQHCONN),
-                    )
+                    .replace_all("pHconn", parse_quote!(&mut MQHCONN))
+                    .replace_all("pHobj", parse_quote!(&mut MQHOBJ))
+                    .replace_all("pHmsg", parse_quote!(&mut MQHMSG))
+                    .replace_all("pDataLength", parse_quote!(&mut MQLONG))
                     .replace_fns(
                         ["MQCONN", "MQCONNX", "MQ_CONN_CALL", "MQ_CONNX_CALL"],
                         "pQMgrName",
                         &parse_quote!(&MQCHAR48),
                     )
-                    .replace_fns(["MQCONNX", "MQ_CONNX_CALL"], "pConnectOpts", &parse_quote!(&mut MQCNO));
+                    .replace_fns(["MQSUB", "MQ_SUB_CALL"], "pHobj", &parse_quote!(Option<&mut MQHOBJ>))
+                    .replace_fns(["MQCONNX", "MQ_CONNX_CALL"], "pConnectOpts", &parse_quote!(&mut MQCNO))
+                    .replace_fns(
+                        ["MQBEGIN", "MQ_BEGIN_CALL"],
+                        "pBeginOptions",
+                        &parse_quote!(Option<&mut MQBO>),
+                    )
+                    .replace_fns(["MQBUFMH", "MQ_BUFMH_CALL"], "pBufMsgHOpts", &parse_quote!(&MQBMHO))
+                    .replace_fns(["MQCB", "MQ_CB_CALL"], "pCallbackDesc", &parse_quote!(Option<&MQCBD>))
+                    .replace_fns(["MQCB", "MQ_CB_CALL"], "pGetMsgOpts", &parse_quote!(Option<&MQGMO>));
 
                 DocCommentArgs(&parameters).visit_file_mut(&mut generated);
                 DocCommentType(&comments).visit_file_mut(&mut generated);
                 DocCommentFields(&fields).visit_file_mut(&mut generated);
                 MqLongConstWrap.visit_file_mut(&mut generated);
                 arg_type.visit_file_mut(&mut generated);
+                wrapper.visit_file(&generated);
+
+                if let Some(trait_name) = source_trait
+                    .iter()
+                    .find_map(|(source, trait_name)| (*source == name).then_some(trait_name))
+                {
+                    // Generate the trait
+
+                    use crate::mq_trait::{DesugarForMockall, MockFnGenerator};
+
+                    let mut tg = TraitGenerator::default();
+                    tg.visit_file(&generated);
+                    let mut item_trait = tg.generate(trait_name);
+                    PrefixMqTypes(parse_quote!(lib)).visit_item_trait_mut(&mut item_trait);
+
+                    // Generate the Mock struct
+                    let mut mg = MockFnGenerator::default();
+                    mg.visit_item_trait(&item_trait);
+                    let mut mock_impl_trait = mg.generate(&parse_quote!(crate::#trait_name), &mock_name);
+                    PrefixMqTypes(parse_quote!(lib)).visit_item_impl_mut(&mut mock_impl_trait);
+                    DesugarForMockall.visit_item_impl_mut(&mut mock_impl_trait);
+
+                    mock_impls.push(mock_impl_trait);
+                    traits.push(item_trait);
+                }
 
                 let mut bindings_str = format!("/* Generated with MQ client version {mqc_version} */\n\n");
                 bindings_str += &prettyplease::unparse(&generated);
@@ -260,7 +313,56 @@ fn main() -> Result<(), io::Error> {
                 drop(out_file);
 
                 #[cfg(feature = "pregen")]
-                pregen_copy_dir(&out_bindings, &std::path::PathBuf::from("./src/lib/pregen"))?;
+                pregen_copy_dir(&out_bindings, &std::path::PathBuf::from("./src/pregen"))?;
+            }
+
+            let trait_file: syn::File = parse_quote!(
+
+                use crate::lib;
+                #(
+                    #[allow(clippy::missing_safety_doc, clippy::too_many_arguments, non_snake_case)]
+                    #traits
+                )*
+            );
+
+            let mock_file: syn::File = parse_quote!(
+                use crate::lib;
+                mockall::mock! {
+                    pub #mock_name {}
+                    #(
+                        #mock_impls
+                    )*
+                }
+            );
+
+            let out_mock = out_path.join("mock.rs");
+            let mut out_file = io::BufWriter::new(std::fs::File::create(&out_mock)?);
+            out_file.write_all(prettyplease::unparse(&mock_file).as_bytes())?;
+            drop(out_file);
+
+            let out_function = out_path.join("function.rs");
+            let mut out_file = io::BufWriter::new(std::fs::File::create(&out_function)?);
+            out_file.write_all(prettyplease::unparse(&trait_file).as_bytes())?;
+            drop(out_file);
+
+            let wrapper_gen = wrapper.generate(&parse_quote!(MqWrapper));
+            let mut wrapper_file = parse_quote!(
+                use crate::lib;
+                use ::dlopen2::wrapper::WrapperApi;
+
+                #wrapper_gen
+            );
+            PrefixMqTypes(parse_quote!(lib)).visit_file_mut(&mut wrapper_file);
+            let out_wrapper = out_path.join("dlopen2.rs");
+            let mut out_file = io::BufWriter::new(std::fs::File::create(&out_wrapper)?);
+            out_file.write_all(prettyplease::unparse(&wrapper_file).as_bytes())?;
+            drop(out_file);
+
+            #[cfg(feature = "pregen")]
+            {
+                std::fs::copy(out_function, std::path::PathBuf::from("./src/pregen/function.rs"))?;
+                std::fs::copy(out_mock, std::path::PathBuf::from("./src/pregen/mock.rs"))?;
+                std::fs::copy(out_wrapper, std::path::PathBuf::from("./src/pregen/dlopen2.rs"))?;
             }
         }
     }
@@ -277,27 +379,6 @@ fn pregen_copy_dir(out_bindings: &std::path::PathBuf, target: &std::path::Path) 
         out_bindings,
         target.join(format!(
             "{}-{}/{}",
-            if target_os == "macos" { "any" } else { &target_arch },
-            target_os,
-            out_bindings
-                .file_name()
-                .expect("out_bindings includes filename")
-                .to_string_lossy()
-        )),
-    )?;
-    Ok(())
-}
-
-#[cfg(feature = "pregen")]
-fn pregen_copy(out_bindings: &std::path::PathBuf, target: &std::path::Path) -> Result<(), io::Error> {
-    use std::fs;
-    let target_os = std::env::var("CARGO_CFG_TARGET_OS").map_err(|e| io::Error::new(io::ErrorKind::InvalidInput, e))?;
-    let target_arch = std::env::var("CARGO_CFG_TARGET_ARCH").map_err(|e| io::Error::new(io::ErrorKind::InvalidInput, e))?;
-
-    fs::copy(
-        out_bindings,
-        target.join(format!(
-            "{}-{}-{}",
             if target_os == "macos" { "any" } else { &target_arch },
             target_os,
             out_bindings

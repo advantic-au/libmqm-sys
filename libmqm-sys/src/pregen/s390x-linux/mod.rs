@@ -11,3 +11,5 @@ include!("exits.rs");
 include!("mqai.rs");
 #[cfg(feature = "pcf")]
 include!("pcf.rs");
+
+pub mod version;

@@ -4,7 +4,6 @@
 #![allow(non_camel_case_types)]
 #![allow(non_snake_case)]
 
-include!("base.rs");
 include!("mqi.rs");
 #[cfg(feature = "exits")]
 include!("exits.rs");
@@ -12,3 +11,5 @@ include!("exits.rs");
 include!("mqai.rs");
 #[cfg(feature = "pcf")]
 include!("pcf.rs");
+
+pub mod version;
