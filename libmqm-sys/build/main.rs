@@ -222,7 +222,14 @@ fn main() -> Result<(), io::Error> {
 
             let mut traits = vec![];
             let mut mock_impls = vec![];
+            let mut dlopen_impls = vec![];
+            let mut link_impls = vec![];
+
+            let mq_mod = parse_quote!(lib);
             let mock_name = parse_quote!(Mq);
+            let link_name = parse_quote!(LinkedMq);
+            let wrapper_name = parse_quote!(MqWrapper);
+            let dlopen2_name = parse_quote!(::dlopen2::wrapper::Container<#wrapper_name>);
 
             let mq_inc_path = mq_path::mq_inc_path();
             let builder = mqi_bindgen::bindgen_builder(&mq_inc_path);
@@ -257,11 +264,27 @@ fn main() -> Result<(), io::Error> {
                     .replace_all("pHobj", parse_quote!(&mut MQHOBJ))
                     .replace_all("pHmsg", parse_quote!(&mut MQHMSG))
                     .replace_all("pDataLength", parse_quote!(&mut MQLONG))
+                    .replace_all("pName", parse_quote!(&MQCHARV)) // TODO: fix pName mutability
+                    .replace_all("pObjDesc", parse_quote!(&mut MQOD))
+                    .replace_all("pPutMsgOpts", parse_quote!(&mut MQPMO))
+                    .replace_all("pGetMsgOpts", parse_quote!(&mut MQGMO))
+                    .replace_all("pPropDesc", parse_quote!(&mut MQPD))
+                    .replace_all("pBag", parse_quote!(&mut MQHBAG))
+                    .replace_all("pByteStringLength", parse_quote!(&mut MQLONG))
+                    .replace_all("pStringLength", parse_quote!(&mut MQLONG))
+                    .replace_all("pOperator", parse_quote!(&mut MQLONG))
+                    .replace_all("pCodedCharSetId", parse_quote!(&mut MQLONG))
+                    .replace_all("pExitOpts", parse_quote!(Option<&MQXEPO>))
+                    .replace_all("pExitParms", parse_quote!(&mut MQAXP))
                     .replace_fns(
                         ["MQCONN", "MQCONNX", "MQ_CONN_CALL", "MQ_CONNX_CALL"],
                         "pQMgrName",
                         &parse_quote!(&MQCHAR48),
                     )
+                    .replace_fns(["MQCTL", "MQ_CTL_CALL"], "pControlOpts", &parse_quote!(&MQCTLO))
+                    .replace_fns(["MQCRTMH", "MQ_CRTMH_CALL"], "pCrtMsgHOpts", &parse_quote!(&MQCMHO))
+                    .replace_fns(["MQDLTMH", "MQ_DLTMH_CALL"], "pDltMsgHOpts", &parse_quote!(&MQDMHO))
+                    .replace_fns(["MQDLTMP", "MQ_DLTMP_CALL"], "pDltPropOpts", &parse_quote!(&MQDMPO))
                     .replace_fns(["MQSUB", "MQ_SUB_CALL"], "pHobj", &parse_quote!(Option<&mut MQHOBJ>))
                     .replace_fns(["MQCONNX", "MQ_CONNX_CALL"], "pConnectOpts", &parse_quote!(&mut MQCNO))
                     .replace_fns(
@@ -271,7 +294,28 @@ fn main() -> Result<(), io::Error> {
                     )
                     .replace_fns(["MQBUFMH", "MQ_BUFMH_CALL"], "pBufMsgHOpts", &parse_quote!(&MQBMHO))
                     .replace_fns(["MQCB", "MQ_CB_CALL"], "pCallbackDesc", &parse_quote!(Option<&MQCBD>))
-                    .replace_fns(["MQCB", "MQ_CB_CALL"], "pGetMsgOpts", &parse_quote!(Option<&MQGMO>));
+                    .replace_fns(["MQCB", "MQ_CB_CALL"], "pGetMsgOpts", &parse_quote!(Option<&MQGMO>))
+                    .replace_fns(["MQINQMP", "MQ_INQMP_CALL"], "pType", &parse_quote!(&mut MQLONG))
+                    .replace_fns(["MQINQMP", "MQ_INQMP_CALL"], "pInqPropOpts", &parse_quote!(&mut MQIMPO)) // TODO: inconsistent (header says input only, but doc says input/output
+                    .replace_fns(["MQINQMP", "MQ_INQMP_CALL"], "pPropDesc", &parse_quote!(&mut MQPD))
+                    .replace_fns(["MQMHBUF", "MQ_MHBUF_CALL"], "pMsgHBufOpts", &parse_quote!(&MQMHBO))
+                    .replace_fns(["MQSETMP", "MQ_SETMP_CALL"], "pSetPropOpts", &parse_quote!(&MQSMPO))
+                    .replace_fns(["MQSTAT", "MQ_STAT_CALL"], "pStatus", &parse_quote!(&mut MQSTS))
+                    .replace_fns(["MQSUB", "MQ_SUB_CALL"], "pSubDesc", &parse_quote!(&mut MQSD))
+                    .replace_fns(["MQSUB", "MQ_SUB_CALL"], "pHsub", &parse_quote!(&mut MQHOBJ))
+                    .replace_fns(["MQSUBRQ", "MQ_SUBRQ_CALL"], "pSubRqOpts", &parse_quote!(Option<&mut MQSRO>))
+                    .replace_fns(["mqCountItems"], "pItemCount", &parse_quote!(&mut MQLONG))
+                    .replace_fns(["mqInquireInteger64"], "pItemValue", &parse_quote!(&mut MQINT64))
+                    .replace_fns(["mqInquireInteger", "mqInquireIntegerFilter"], "pItemValue", &parse_quote!(&mut MQLONG))
+                    .replace_fns(["mqInquireItemInfo"], "pOutSelector", &parse_quote!(&mut MQLONG))
+                    .replace_fns(["mqInquireItemInfo"], "pItemType", &parse_quote!(&mut MQLONG))
+                    .replace_fns(["mqInquireBag"], "pItemValue", &parse_quote!(&mut MQHBAG))
+                    .replace_fns(["MQXCLWLN", "MQ_XCLWLN_CALL", "MQ_CLUSTER_WORKLOAD_EXIT"], "pExitParms", &parse_quote!(&mut MQWXP))
+                    .replace_fns(["MQXCLWLN", "MQ_XCLWLN_CALL"], "pNextRecord", &parse_quote!(&mut MQPTR)) // TODO: MQPTR can be improved
+                    .replace_fns(["MQXDX"], "pDataConvExitParms", &parse_quote!(&mut MQDXP))
+                    .replace_fns(["MQ_PUBLISH_EXIT"], "pExitParms", &parse_quote!(&mut MQPSXP))
+                    .replace_fns(["MQ_TRANSPORT_EXIT"], "pExitParms", &parse_quote!(PMQVOID))
+                    .replace_fns(["MQ_PRECONNECT_EXIT"], "pExitParms", &parse_quote!(&mut MQNXP));
 
                 DocCommentArgs(&parameters).visit_file_mut(&mut generated);
                 DocCommentType(&comments).visit_file_mut(&mut generated);
@@ -286,22 +330,38 @@ fn main() -> Result<(), io::Error> {
                 {
                     // Generate the trait
 
-                    use crate::mq_trait::{DesugarForMockall, MockFnGenerator};
+                    use syn::TraitItemFn;
+
+                    use crate::mq_trait::{impl_dlopen2_fn, impl_link_fn, DesugarForMockall, ImplFnGenerator};
 
                     let mut tg = TraitGenerator::default();
                     tg.visit_file(&generated);
                     let mut item_trait = tg.generate(trait_name);
-                    PrefixMqTypes(parse_quote!(lib)).visit_item_trait_mut(&mut item_trait);
+                    PrefixMqTypes(&mq_mod).visit_item_trait_mut(&mut item_trait);
 
                     // Generate the Mock struct
-                    let mut mg = MockFnGenerator::default();
+                    let mut mg = ImplFnGenerator::new(|_: &TraitItemFn| parse_quote!({}));
                     mg.visit_item_trait(&item_trait);
                     let mut mock_impl_trait = mg.generate(&parse_quote!(crate::#trait_name), &mock_name);
-                    PrefixMqTypes(parse_quote!(lib)).visit_item_impl_mut(&mut mock_impl_trait);
+                    PrefixMqTypes(&mq_mod).visit_item_impl_mut(&mut mock_impl_trait);
                     DesugarForMockall.visit_item_impl_mut(&mut mock_impl_trait);
+
+                    // Generate the dlopen2 struct
+                    let mut dg = ImplFnGenerator::new(impl_dlopen2_fn(&wrapper_name));
+                    dg.visit_item_trait(&item_trait);
+                    let mut dlopen2_impl_trait = dg.generate(&parse_quote!(crate::#trait_name), &dlopen2_name);
+                    PrefixMqTypes(&mq_mod).visit_item_impl_mut(&mut dlopen2_impl_trait);
+
+                    // Generate the link struct
+                    let mut lg = ImplFnGenerator::new(impl_link_fn(&mq_mod));
+                    lg.visit_item_trait(&item_trait);
+                    let mut link_impl_trait = lg.generate(&parse_quote!(crate::#trait_name), &link_name);
+                    PrefixMqTypes(&mq_mod).visit_item_impl_mut(&mut link_impl_trait);
 
                     mock_impls.push(mock_impl_trait);
                     traits.push(item_trait);
+                    dlopen_impls.push(dlopen2_impl_trait);
+                    link_impls.push(link_impl_trait);
                 }
 
                 let mut bindings_str = format!("/* Generated with MQ client version {mqc_version} */\n\n");
@@ -316,7 +376,7 @@ fn main() -> Result<(), io::Error> {
                 pregen_copy_dir(&out_bindings, &std::path::PathBuf::from("./src/pregen"))?;
             }
 
-            let trait_file: syn::File = parse_quote!(
+            let trait_file = parse_quote!(
 
                 use crate::lib;
                 #(
@@ -325,7 +385,7 @@ fn main() -> Result<(), io::Error> {
                 )*
             );
 
-            let mock_file: syn::File = parse_quote!(
+            let mock_file = parse_quote!(
                 use crate::lib;
                 mockall::mock! {
                     pub #mock_name {}
@@ -334,6 +394,33 @@ fn main() -> Result<(), io::Error> {
                     )*
                 }
             );
+
+            let link_file = parse_quote!(
+                use crate::lib;
+
+                /// Provides access to compile time linked MQI and MQAI functions
+                #[derive(Debug, Clone, Copy)]
+                pub struct #link_name;
+
+                #(
+                    #link_impls
+                )*
+
+            );
+
+            let wrapper_gen = wrapper.generate(&parse_quote!(#wrapper_name));
+            let mut wrapper_file = parse_quote!(
+                use crate::lib;
+                use ::dlopen2::wrapper::WrapperApi;
+
+                #wrapper_gen
+
+                #(
+                    #dlopen_impls
+                )*
+
+            );
+            PrefixMqTypes(&mq_mod).visit_file_mut(&mut wrapper_file);
 
             let out_mock = out_path.join("mock.rs");
             let mut out_file = io::BufWriter::new(std::fs::File::create(&out_mock)?);
@@ -345,14 +432,11 @@ fn main() -> Result<(), io::Error> {
             out_file.write_all(prettyplease::unparse(&trait_file).as_bytes())?;
             drop(out_file);
 
-            let wrapper_gen = wrapper.generate(&parse_quote!(MqWrapper));
-            let mut wrapper_file = parse_quote!(
-                use crate::lib;
-                use ::dlopen2::wrapper::WrapperApi;
-
-                #wrapper_gen
-            );
-            PrefixMqTypes(parse_quote!(lib)).visit_file_mut(&mut wrapper_file);
+            let out_link = out_path.join("link.rs");
+            let mut out_file = io::BufWriter::new(std::fs::File::create(&out_link)?);
+            out_file.write_all(prettyplease::unparse(&link_file).as_bytes())?;
+            drop(out_file);
+            
             let out_wrapper = out_path.join("dlopen2.rs");
             let mut out_file = io::BufWriter::new(std::fs::File::create(&out_wrapper)?);
             out_file.write_all(prettyplease::unparse(&wrapper_file).as_bytes())?;
@@ -363,6 +447,8 @@ fn main() -> Result<(), io::Error> {
                 std::fs::copy(out_function, std::path::PathBuf::from("./src/pregen/function.rs"))?;
                 std::fs::copy(out_mock, std::path::PathBuf::from("./src/pregen/mock.rs"))?;
                 std::fs::copy(out_wrapper, std::path::PathBuf::from("./src/pregen/dlopen2.rs"))?;
+                std::fs::copy(out_link, std::path::PathBuf::from("./src/pregen/link.rs"))?;
+
             }
         }
     }

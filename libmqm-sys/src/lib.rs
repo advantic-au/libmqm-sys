@@ -132,4 +132,4 @@ mod default;
 pub mod dlopen2;
 
 #[cfg(feature = "link_api")]
-pub mod link;
+pub use generated::link;

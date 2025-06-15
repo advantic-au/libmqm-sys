@@ -13,3 +13,6 @@ pub mod dlopen2;
 
 #[cfg(feature = "mock")]
 pub mod mock;
+
+#[cfg(feature = "link_api")]
+pub mod link;

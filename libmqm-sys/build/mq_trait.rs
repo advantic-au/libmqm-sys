@@ -5,7 +5,8 @@ use syn::{
     token::Colon,
     visit::Visit,
     visit_mut::{visit_pat_type_mut, visit_type_mut, VisitMut},
-    BareFnArg, ForeignItemFn, Ident, ImplItem, ImplItemFn, Lifetime, PatIdent, Path, TraitItem, TraitItemFn, TypeReference,
+    BareFnArg, FnArg, ForeignItemFn, Ident, ImplItem, ImplItemFn, Lifetime, PatIdent, PatType, Path, TraitItem, TraitItemFn,
+    TypeReference,
 };
 
 #[derive(Debug, Default)]
@@ -13,14 +14,15 @@ pub struct TraitGenerator {
     foreign_fn: Vec<TraitItem>,
 }
 
-#[derive(Debug, Default)]
-pub struct MockFnGenerator {
+#[derive(Debug)]
+pub struct ImplFnGenerator<F> {
     foreign_fn: Vec<ImplItem>,
+    block_fn: F,
 }
 
 pub struct WrapperGenerator(pub Vec<syn::Field>);
 
-pub struct PrefixMqTypes(pub syn::Path);
+pub struct PrefixMqTypes<'a>(pub &'a syn::Path);
 
 impl TraitGenerator {
     #[must_use]
@@ -63,7 +65,7 @@ impl VisitMut for DesugarForMockall {
     }
 }
 
-impl VisitMut for PrefixMqTypes {
+impl VisitMut for PrefixMqTypes<'_> {
     fn visit_path_mut(&mut self, item: &mut syn::Path) {
         if item.segments.len() == 1 {
             let ident_str = item.segments[0].ident.to_string();
@@ -133,19 +135,27 @@ impl WrapperGenerator {
     }
 }
 
-impl Visit<'_> for MockFnGenerator {
+impl<F: Fn(&TraitItemFn) -> syn::Block> Visit<'_> for ImplFnGenerator<F> {
     fn visit_trait_item_fn(&mut self, item: &'_ syn::TraitItemFn) {
+        let bf = &self.block_fn;
         self.foreign_fn.push(ImplItem::Fn(ImplItemFn {
             attrs: vec![],
             vis: syn::Visibility::Inherited,
             defaultness: None,
             sig: item.sig.clone(),
-            block: parse_quote!({}),
+            block: bf(item),
         }));
     }
 }
 
-impl MockFnGenerator {
+impl<F> ImplFnGenerator<F> {
+    pub const fn new(block_fn: F) -> Self {
+        Self {
+            foreign_fn: vec![],
+            block_fn,
+        }
+    }
+
     pub fn generate(self, tr: &Path, st: &Path) -> syn::ItemImpl {
         let fn_sig = self.foreign_fn;
         parse_quote!(
@@ -153,5 +163,40 @@ impl MockFnGenerator {
                 #(#fn_sig)*
             }
         )
+    }
+}
+
+pub fn impl_dlopen2_fn(wrapper_name: &Path) -> impl Fn(&TraitItemFn) -> syn::Block + use<'_> {
+    move |trait_fn| {
+        let fn_name = &trait_fn.sig.ident;
+        let inputs = trait_fn.sig.inputs.iter().map(|f: &FnArg| -> syn::Expr {
+            match f {
+                syn::FnArg::Receiver(_) => parse_quote!(self),
+                syn::FnArg::Typed(PatType { pat, .. }) => parse_quote!(#pat),
+            }
+        });
+        parse_quote!({
+            unsafe {
+                #wrapper_name::#fn_name(#(#inputs), *)
+            }
+        })
+    }
+}
+
+pub fn impl_link_fn(mod_path: &Path) -> impl Fn(&TraitItemFn) -> syn::Block + use<'_> {
+    move |trait_fn| {
+        let fn_name = &trait_fn.sig.ident;
+        let inputs = trait_fn.sig.inputs.iter().filter_map(|arg: &FnArg| -> Option<syn::Expr> {
+            if let syn::FnArg::Typed(PatType { pat, .. }) = arg {
+                Some(parse_quote!(#pat))
+            } else {
+                None
+            }
+        });
+        parse_quote!({
+            unsafe {
+               #mod_path::#fn_name(#(#inputs), *)
+            }
+        })
     }
 }

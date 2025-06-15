@@ -388,7 +388,7 @@ impl crate::Mqi for LinkedMq {
         &self,
         Hconn: lib::MQHCONN,
         Operation: lib::MQLONG,
-        pControlOpts: lib::PMQVOID,
+        pControlOpts: &lib::MQCTLO,
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ) {

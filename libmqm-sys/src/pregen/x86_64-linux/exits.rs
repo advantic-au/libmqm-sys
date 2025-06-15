@@ -172,7 +172,7 @@ pub type PMQ_CONNX_CALL = MQ_CONNX_CALL;
 pub type MQ_CRTMH_CALL = ::std::option::Option<
     unsafe extern "C" fn(
         Hconn: MQHCONN,
-        pCrtMsgHOpts: PMQVOID,
+        pCrtMsgHOpts: &MQCMHO,
         pHmsg: &mut MQHMSG,
         pCompCode: &mut MQLONG,
         pReason: &mut MQLONG,
@@ -191,7 +191,7 @@ pub type MQ_CTL_CALL = ::std::option::Option<
     unsafe extern "C" fn(
         Hconn: MQHCONN,
         Operation: MQLONG,
-        pControlOpts: PMQVOID,
+        pControlOpts: &MQCTLO,
         pCompCode: &mut MQLONG,
         pReason: &mut MQLONG,
     ),
@@ -223,7 +223,7 @@ pub type MQ_DLTMH_CALL = ::std::option::Option<
     unsafe extern "C" fn(
         Hconn: MQHCONN,
         pHmsg: &mut MQHMSG,
-        pDltMsgHOpts: PMQVOID,
+        pDltMsgHOpts: &MQDMHO,
         pCompCode: &mut MQLONG,
         pReason: &mut MQLONG,
     ),
@@ -242,8 +242,8 @@ pub type MQ_DLTMP_CALL = ::std::option::Option<
     unsafe extern "C" fn(
         Hconn: MQHCONN,
         Hmsg: MQHMSG,
-        pDltPropOpts: PMQVOID,
-        pName: PMQVOID,
+        pDltPropOpts: &MQDMPO,
+        pName: &MQCHARV,
         pCompCode: &mut MQLONG,
         pReason: &mut MQLONG,
     ),
@@ -266,7 +266,7 @@ pub type MQ_GET_CALL = ::std::option::Option<
         Hconn: MQHCONN,
         Hobj: MQHOBJ,
         pMsgDesc: PMQVOID,
-        pGetMsgOpts: PMQVOID,
+        pGetMsgOpts: &mut MQGMO,
         BufferLength: MQLONG,
         pBuffer: PMQVOID,
         pDataLength: &mut MQLONG,
@@ -321,10 +321,10 @@ pub type MQ_INQMP_CALL = ::std::option::Option<
     unsafe extern "C" fn(
         Hconn: MQHCONN,
         Hmsg: MQHMSG,
-        pInqPropOpts: PMQVOID,
-        pName: PMQVOID,
-        pPropDesc: PMQVOID,
-        pType: PMQLONG,
+        pInqPropOpts: &mut MQIMPO,
+        pName: &MQCHARV,
+        pPropDesc: &mut MQPD,
+        pType: &mut MQLONG,
         ValueLength: MQLONG,
         pValue: PMQVOID,
         pDataLength: &mut MQLONG,
@@ -350,8 +350,8 @@ pub type MQ_MHBUF_CALL = ::std::option::Option<
     unsafe extern "C" fn(
         Hconn: MQHCONN,
         Hmsg: MQHMSG,
-        pMsgHBufOpts: PMQVOID,
-        pName: PMQVOID,
+        pMsgHBufOpts: &MQMHBO,
+        pName: &MQCHARV,
         pMsgDesc: PMQVOID,
         BufferLength: MQLONG,
         pBuffer: PMQVOID,
@@ -373,7 +373,7 @@ pub type PMQ_MHBUF_CALL = MQ_MHBUF_CALL;
 pub type MQ_OPEN_CALL = ::std::option::Option<
     unsafe extern "C" fn(
         Hconn: MQHCONN,
-        pObjDesc: PMQVOID,
+        pObjDesc: &mut MQOD,
         Options: MQLONG,
         pHobj: &mut MQHOBJ,
         pCompCode: &mut MQLONG,
@@ -397,7 +397,7 @@ pub type MQ_PUT_CALL = ::std::option::Option<
         Hconn: MQHCONN,
         Hobj: MQHOBJ,
         pMsgDesc: PMQVOID,
-        pPutMsgOpts: PMQVOID,
+        pPutMsgOpts: &mut MQPMO,
         BufferLength: MQLONG,
         pBuffer: PMQVOID,
         pCompCode: &mut MQLONG,
@@ -419,9 +419,9 @@ pub type PMQ_PUT_CALL = MQ_PUT_CALL;
 pub type MQ_PUT1_CALL = ::std::option::Option<
     unsafe extern "C" fn(
         Hconn: MQHCONN,
-        pObjDesc: PMQVOID,
+        pObjDesc: &mut MQOD,
         pMsgDesc: PMQVOID,
-        pPutMsgOpts: PMQVOID,
+        pPutMsgOpts: &mut MQPMO,
         BufferLength: MQLONG,
         pBuffer: PMQVOID,
         pCompCode: &mut MQLONG,
@@ -474,9 +474,9 @@ pub type MQ_SETMP_CALL = ::std::option::Option<
     unsafe extern "C" fn(
         Hconn: MQHCONN,
         Hmsg: MQHMSG,
-        pSetPropOpts: PMQVOID,
-        pName: PMQVOID,
-        pPropDesc: PMQVOID,
+        pSetPropOpts: &MQSMPO,
+        pName: &MQCHARV,
+        pPropDesc: &mut MQPD,
         Type: MQLONG,
         ValueLength: MQLONG,
         pValue: PMQVOID,
@@ -497,7 +497,7 @@ pub type MQ_STAT_CALL = ::std::option::Option<
     unsafe extern "C" fn(
         Hconn: MQHCONN,
         Type: MQLONG,
-        pStatus: PMQVOID,
+        pStatus: &mut MQSTS,
         pCompCode: &mut MQLONG,
         pReason: &mut MQLONG,
     ),
@@ -515,9 +515,9 @@ pub type PMQ_STAT_CALL = MQ_STAT_CALL;
 pub type MQ_SUB_CALL = ::std::option::Option<
     unsafe extern "C" fn(
         Hconn: MQHCONN,
-        pSubDesc: PMQVOID,
-        pHobj: &mut MQHOBJ,
-        pHsub: PMQHOBJ,
+        pSubDesc: &mut MQSD,
+        pHobj: Option<&mut MQHOBJ>,
+        pHsub: &mut MQHOBJ,
         pCompCode: &mut MQLONG,
         pReason: &mut MQLONG,
     ),
@@ -537,7 +537,7 @@ pub type MQ_SUBRQ_CALL = ::std::option::Option<
         Hconn: MQHCONN,
         Hsub: MQHOBJ,
         Action: MQLONG,
-        pSubRqOpts: PMQVOID,
+        pSubRqOpts: Option<&mut MQSRO>,
         pCompCode: &mut MQLONG,
         pReason: &mut MQLONG,
     ),
@@ -632,7 +632,7 @@ pub type MQ_XEP_CALL = ::std::option::Option<
         ExitReason: MQLONG,
         Function: MQLONG,
         pEntryPoint: PMQFUNC,
-        pExitOpts: PMQXEPO,
+        pExitOpts: Option<&MQXEPO>,
         pCompCode: &mut MQLONG,
         pReason: &mut MQLONG,
     ),
@@ -648,7 +648,7 @@ pub type PMQ_XEP_CALL = MQ_XEP_CALL;
 /// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_BACK_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
-        pExitParms: PMQAXP,
+        pExitParms: &mut MQAXP,
         pExitContext: PMQAXC,
         pHconn: &mut MQHCONN,
         pCompCode: &mut MQLONG,
@@ -667,7 +667,7 @@ pub type PMQ_BACK_EXIT = MQ_BACK_EXIT;
 /// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_BEGIN_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
-        pExitParms: PMQAXP,
+        pExitParms: &mut MQAXP,
         pExitContext: PMQAXC,
         pHconn: &mut MQHCONN,
         ppBeginOptions: PPMQBO,
@@ -688,7 +688,7 @@ pub type PMQ_BEGIN_EXIT = MQ_BEGIN_EXIT;
 /// * `ppMQCBContext` (Input/Output): Context data for the callback
 pub type MQ_CALLBACK_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
-        pExitParms: PMQAXP,
+        pExitParms: &mut MQAXP,
         pExitContext: PMQAXC,
         pHconn: &mut MQHCONN,
         ppMsgDesc: PPMQMD,
@@ -713,7 +713,7 @@ pub type PMQ_CALLBACK_EXIT = MQ_CALLBACK_EXIT;
 /// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_CB_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
-        pExitParms: PMQAXP,
+        pExitParms: &mut MQAXP,
         pExitContext: PMQAXC,
         pHconn: &mut MQHCONN,
         pOperation: PMQLONG,
@@ -738,7 +738,7 @@ pub type PMQ_CB_EXIT = MQ_CB_EXIT;
 /// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_CLOSE_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
-        pExitParms: PMQAXP,
+        pExitParms: &mut MQAXP,
         pExitContext: PMQAXC,
         pHconn: &mut MQHCONN,
         ppHobj: PPMQHOBJ,
@@ -758,7 +758,7 @@ pub type PMQ_CLOSE_EXIT = MQ_CLOSE_EXIT;
 /// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_CMIT_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
-        pExitParms: PMQAXP,
+        pExitParms: &mut MQAXP,
         pExitContext: PMQAXC,
         pHconn: &mut MQHCONN,
         pCompCode: &mut MQLONG,
@@ -778,7 +778,7 @@ pub type PMQ_CMIT_EXIT = MQ_CMIT_EXIT;
 /// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_CONNX_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
-        pExitParms: PMQAXP,
+        pExitParms: &mut MQAXP,
         pExitContext: PMQAXC,
         pQMgrName: PMQCHAR,
         ppConnectOpts: PPMQCNO,
@@ -800,7 +800,7 @@ pub type PMQ_CONNX_EXIT = MQ_CONNX_EXIT;
 /// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_CTL_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
-        pExitParms: PMQAXP,
+        pExitParms: &mut MQAXP,
         pExitContext: PMQAXC,
         pHconn: &mut MQHCONN,
         pOperation: PMQLONG,
@@ -820,7 +820,7 @@ pub type PMQ_CTL_EXIT = MQ_CTL_EXIT;
 /// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_DISC_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
-        pExitParms: PMQAXP,
+        pExitParms: &mut MQAXP,
         pExitContext: PMQAXC,
         ppHconn: PPMQHCONN,
         pCompCode: &mut MQLONG,
@@ -844,7 +844,7 @@ pub type PMQ_DISC_EXIT = MQ_DISC_EXIT;
 /// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_GET_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
-        pExitParms: PMQAXP,
+        pExitParms: &mut MQAXP,
         pExitContext: PMQAXC,
         pHconn: &mut MQHCONN,
         pHobj: &mut MQHOBJ,
@@ -867,7 +867,7 @@ pub type PMQ_GET_EXIT = MQ_GET_EXIT;
 /// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_INIT_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
-        pExitParms: PMQAXP,
+        pExitParms: &mut MQAXP,
         pExitContext: PMQAXC,
         pCompCode: &mut MQLONG,
         pReason: &mut MQLONG,
@@ -891,7 +891,7 @@ pub type PMQ_INIT_EXIT = MQ_INIT_EXIT;
 /// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_INQ_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
-        pExitParms: PMQAXP,
+        pExitParms: &mut MQAXP,
         pExitContext: PMQAXC,
         pHconn: &mut MQHCONN,
         pHobj: &mut MQHOBJ,
@@ -919,7 +919,7 @@ pub type PMQ_INQ_EXIT = MQ_INQ_EXIT;
 /// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_OPEN_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
-        pExitParms: PMQAXP,
+        pExitParms: &mut MQAXP,
         pExitContext: PMQAXC,
         pHconn: &mut MQHCONN,
         ppObjDesc: PPMQOD,
@@ -945,7 +945,7 @@ pub type PMQ_OPEN_EXIT = MQ_OPEN_EXIT;
 /// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_PUT_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
-        pExitParms: PMQAXP,
+        pExitParms: &mut MQAXP,
         pExitContext: PMQAXC,
         pHconn: &mut MQHCONN,
         pHobj: &mut MQHOBJ,
@@ -973,7 +973,7 @@ pub type PMQ_PUT_EXIT = MQ_PUT_EXIT;
 /// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_PUT1_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
-        pExitParms: PMQAXP,
+        pExitParms: &mut MQAXP,
         pExitContext: PMQAXC,
         pHconn: &mut MQHCONN,
         ppObjDesc: PPMQOD,
@@ -1003,7 +1003,7 @@ pub type PMQ_PUT1_EXIT = MQ_PUT1_EXIT;
 /// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_SET_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
-        pExitParms: PMQAXP,
+        pExitParms: &mut MQAXP,
         pExitContext: PMQAXC,
         pHconn: &mut MQHCONN,
         pHobj: &mut MQHOBJ,
@@ -1030,7 +1030,7 @@ pub type PMQ_SET_EXIT = MQ_SET_EXIT;
 /// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_STAT_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
-        pExitParms: PMQAXP,
+        pExitParms: &mut MQAXP,
         pExitContext: PMQAXC,
         pHconn: &mut MQHCONN,
         pType: PMQLONG,
@@ -1053,7 +1053,7 @@ pub type PMQ_STAT_EXIT = MQ_STAT_EXIT;
 /// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_SUBRQ_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
-        pExitParms: PMQAXP,
+        pExitParms: &mut MQAXP,
         pExitContext: PMQAXC,
         pHconn: &mut MQHCONN,
         pHsub: PMQHOBJ,
@@ -1077,7 +1077,7 @@ pub type PMQ_SUBRQ_EXIT = MQ_SUBRQ_EXIT;
 /// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_SUB_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
-        pExitParms: PMQAXP,
+        pExitParms: &mut MQAXP,
         pExitContext: PMQAXC,
         pHconn: &mut MQHCONN,
         ppSubDesc: PPMQSD,
@@ -1097,7 +1097,7 @@ pub type PMQ_SUB_EXIT = MQ_SUB_EXIT;
 /// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_TERM_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
-        pExitParms: PMQAXP,
+        pExitParms: &mut MQAXP,
         pExitContext: PMQAXC,
         pCompCode: &mut MQLONG,
         pReason: &mut MQLONG,
@@ -1140,7 +1140,7 @@ pub type PMQ_CHANNEL_AUTO_DEF_EXIT = MQ_CHANNEL_AUTO_DEF_EXIT;
 /// # Arguments
 /// * `pExitParms` (Input/Output): Exit parameter block
 pub type MQ_CLUSTER_WORKLOAD_EXIT = ::std::option::Option<
-    unsafe extern "C" fn(pExitParms: PMQWXP),
+    unsafe extern "C" fn(pExitParms: &mut MQWXP),
 >;
 pub type PMQ_CLUSTER_WORKLOAD_EXIT = MQ_CLUSTER_WORKLOAD_EXIT;
 /// Data Conversion Exit
@@ -1170,7 +1170,11 @@ pub type PMQ_DATA_CONV_EXIT = MQ_DATA_CONV_EXIT;
 /// * `pPubContext`: Publication context structure
 /// * `pSubContext`: Subscription context structure
 pub type MQ_PUBLISH_EXIT = ::std::option::Option<
-    unsafe extern "C" fn(pExitParms: PMQPSXP, pPubContext: PMQPBC, pSubContext: PMQSBC),
+    unsafe extern "C" fn(
+        pExitParms: &mut MQPSXP,
+        pPubContext: PMQPBC,
+        pSubContext: PMQSBC,
+    ),
 >;
 pub type PMQ_PUBLISH_EXIT = MQ_PUBLISH_EXIT;
 /// Transport Retry Exit
@@ -1197,7 +1201,7 @@ pub type PMQ_TRANSPORT_EXIT = MQ_TRANSPORT_EXIT;
 /// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_PRECONNECT_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
-        pExitParms: PMQNXP,
+        pExitParms: &mut MQNXP,
         pQMgrName: PMQCHAR,
         ppConnectOpts: PPMQCNO,
         pCompCode: &mut MQLONG,
@@ -1216,10 +1220,10 @@ pub type PMQ_PRECONNECT_EXIT = MQ_PRECONNECT_EXIT;
 /// * `pReason` (Output): Reason code qualifying CompCode
 pub type MQ_XCLWLN_CALL = ::std::option::Option<
     unsafe extern "C" fn(
-        pExitParms: PMQWXP,
+        pExitParms: &mut MQWXP,
         CurrentRecord: MQPTR,
         NextOffset: MQLONG,
-        pNextRecord: PMQPTR,
+        pNextRecord: &mut MQPTR,
         pCompCode: &mut MQLONG,
         pReason: &mut MQLONG,
     ),
@@ -3416,7 +3420,7 @@ unsafe extern "C" {
         ExitReason: MQLONG,
         Function: MQLONG,
         pEntryPoint: PMQFUNC,
-        pExitOpts: PMQXEPO,
+        pExitOpts: Option<&MQXEPO>,
         pCompCode: &mut MQLONG,
         pReason: &mut MQLONG,
     );
@@ -3430,10 +3434,10 @@ unsafe extern "C" {
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn MQXCLWLN(
-        pExitParms: PMQWXP,
+        pExitParms: &mut MQWXP,
         CurrentRecord: MQPTR,
         NextOffset: MQLONG,
-        pNextRecord: PMQPTR,
+        pNextRecord: &mut MQPTR,
         pCompCode: &mut MQLONG,
         pReason: &mut MQLONG,
     );
@@ -3474,7 +3478,7 @@ unsafe extern "C" {
     /// * `OutBufferLength`: Length in bytes of OutBuffer
     /// * `pOutBuffer` (Output): Buffer containing the converted message
     pub fn MQXDX(
-        pDataConvExitParms: PMQDXP,
+        pDataConvExitParms: &mut MQDXP,
         pMsgDesc: PMQMD,
         InBufferLength: MQLONG,
         pInBuffer: PMQVOID,

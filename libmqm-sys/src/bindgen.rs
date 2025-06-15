@@ -37,3 +37,8 @@ pub mod dlopen2 {
 pub mod mock {
     include!(concat!(env!("OUT_DIR"), "/mock.rs"));
 }
+
+#[cfg(feature = "link_api")]
+pub mod link {
+    include!(concat!(env!("OUT_DIR"), "/link.rs"));
+}
