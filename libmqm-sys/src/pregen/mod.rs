@@ -7,7 +7,7 @@
 #[cfg_attr(target_os = "macos", path = "any-macos")]
 pub mod bindings;
 
-pub mod functions;
+pub mod function;
 #[cfg(feature = "dlopen2")]
 pub mod dlopen2;
 

@@ -276,6 +276,7 @@ fn main() -> Result<(), io::Error> {
                     .replace_all("pCodedCharSetId", parse_quote!(&mut MQLONG))
                     .replace_all("pExitOpts", parse_quote!(Option<&MQXEPO>))
                     .replace_all("pExitParms", parse_quote!(&mut MQAXP))
+                    .replace_all("pExitContext", parse_quote!(&mut MQAXC))
                     .replace_fns(
                         ["MQCONN", "MQCONNX", "MQ_CONN_CALL", "MQ_CONNX_CALL"],
                         "pQMgrName",
@@ -306,11 +307,19 @@ fn main() -> Result<(), io::Error> {
                     .replace_fns(["MQSUBRQ", "MQ_SUBRQ_CALL"], "pSubRqOpts", &parse_quote!(Option<&mut MQSRO>))
                     .replace_fns(["mqCountItems"], "pItemCount", &parse_quote!(&mut MQLONG))
                     .replace_fns(["mqInquireInteger64"], "pItemValue", &parse_quote!(&mut MQINT64))
-                    .replace_fns(["mqInquireInteger", "mqInquireIntegerFilter"], "pItemValue", &parse_quote!(&mut MQLONG))
+                    .replace_fns(
+                        ["mqInquireInteger", "mqInquireIntegerFilter"],
+                        "pItemValue",
+                        &parse_quote!(&mut MQLONG),
+                    )
                     .replace_fns(["mqInquireItemInfo"], "pOutSelector", &parse_quote!(&mut MQLONG))
                     .replace_fns(["mqInquireItemInfo"], "pItemType", &parse_quote!(&mut MQLONG))
                     .replace_fns(["mqInquireBag"], "pItemValue", &parse_quote!(&mut MQHBAG))
-                    .replace_fns(["MQXCLWLN", "MQ_XCLWLN_CALL", "MQ_CLUSTER_WORKLOAD_EXIT"], "pExitParms", &parse_quote!(&mut MQWXP))
+                    .replace_fns(
+                        ["MQXCLWLN", "MQ_XCLWLN_CALL", "MQ_CLUSTER_WORKLOAD_EXIT"],
+                        "pExitParms",
+                        &parse_quote!(&mut MQWXP),
+                    )
                     .replace_fns(["MQXCLWLN", "MQ_XCLWLN_CALL"], "pNextRecord", &parse_quote!(&mut MQPTR)) // TODO: MQPTR can be improved
                     .replace_fns(["MQXDX"], "pDataConvExitParms", &parse_quote!(&mut MQDXP))
                     .replace_fns(["MQ_PUBLISH_EXIT"], "pExitParms", &parse_quote!(&mut MQPSXP))
@@ -385,6 +394,7 @@ fn main() -> Result<(), io::Error> {
                 )*
             );
 
+            #[rustfmt::skip]
             let mock_file = parse_quote!(
                 use crate::lib;
                 mockall::mock! {
@@ -436,7 +446,7 @@ fn main() -> Result<(), io::Error> {
             let mut out_file = io::BufWriter::new(std::fs::File::create(&out_link)?);
             out_file.write_all(prettyplease::unparse(&link_file).as_bytes())?;
             drop(out_file);
-            
+
             let out_wrapper = out_path.join("dlopen2.rs");
             let mut out_file = io::BufWriter::new(std::fs::File::create(&out_wrapper)?);
             out_file.write_all(prettyplease::unparse(&wrapper_file).as_bytes())?;
@@ -448,7 +458,6 @@ fn main() -> Result<(), io::Error> {
                 std::fs::copy(out_mock, std::path::PathBuf::from("./src/pregen/mock.rs"))?;
                 std::fs::copy(out_wrapper, std::path::PathBuf::from("./src/pregen/dlopen2.rs"))?;
                 std::fs::copy(out_link, std::path::PathBuf::from("./src/pregen/link.rs"))?;
-
             }
         }
     }

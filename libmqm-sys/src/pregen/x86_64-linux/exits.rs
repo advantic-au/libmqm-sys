@@ -649,7 +649,7 @@ pub type PMQ_XEP_CALL = MQ_XEP_CALL;
 pub type MQ_BACK_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: &mut MQAXP,
-        pExitContext: PMQAXC,
+        pExitContext: &mut MQAXC,
         pHconn: &mut MQHCONN,
         pCompCode: &mut MQLONG,
         pReason: &mut MQLONG,
@@ -668,7 +668,7 @@ pub type PMQ_BACK_EXIT = MQ_BACK_EXIT;
 pub type MQ_BEGIN_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: &mut MQAXP,
-        pExitContext: PMQAXC,
+        pExitContext: &mut MQAXC,
         pHconn: &mut MQHCONN,
         ppBeginOptions: PPMQBO,
         pCompCode: &mut MQLONG,
@@ -689,7 +689,7 @@ pub type PMQ_BEGIN_EXIT = MQ_BEGIN_EXIT;
 pub type MQ_CALLBACK_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: &mut MQAXP,
-        pExitContext: PMQAXC,
+        pExitContext: &mut MQAXC,
         pHconn: &mut MQHCONN,
         ppMsgDesc: PPMQMD,
         ppGetMsgOpts: PPMQGMO,
@@ -714,7 +714,7 @@ pub type PMQ_CALLBACK_EXIT = MQ_CALLBACK_EXIT;
 pub type MQ_CB_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: &mut MQAXP,
-        pExitContext: PMQAXC,
+        pExitContext: &mut MQAXC,
         pHconn: &mut MQHCONN,
         pOperation: PMQLONG,
         ppCallbackDesc: PPMQCBD,
@@ -739,7 +739,7 @@ pub type PMQ_CB_EXIT = MQ_CB_EXIT;
 pub type MQ_CLOSE_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: &mut MQAXP,
-        pExitContext: PMQAXC,
+        pExitContext: &mut MQAXC,
         pHconn: &mut MQHCONN,
         ppHobj: PPMQHOBJ,
         pOptions: PMQLONG,
@@ -759,7 +759,7 @@ pub type PMQ_CLOSE_EXIT = MQ_CLOSE_EXIT;
 pub type MQ_CMIT_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: &mut MQAXP,
-        pExitContext: PMQAXC,
+        pExitContext: &mut MQAXC,
         pHconn: &mut MQHCONN,
         pCompCode: &mut MQLONG,
         pReason: &mut MQLONG,
@@ -779,7 +779,7 @@ pub type PMQ_CMIT_EXIT = MQ_CMIT_EXIT;
 pub type MQ_CONNX_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: &mut MQAXP,
-        pExitContext: PMQAXC,
+        pExitContext: &mut MQAXC,
         pQMgrName: PMQCHAR,
         ppConnectOpts: PPMQCNO,
         ppHconn: PPMQHCONN,
@@ -801,7 +801,7 @@ pub type PMQ_CONNX_EXIT = MQ_CONNX_EXIT;
 pub type MQ_CTL_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: &mut MQAXP,
-        pExitContext: PMQAXC,
+        pExitContext: &mut MQAXC,
         pHconn: &mut MQHCONN,
         pOperation: PMQLONG,
         ppCtlOpts: PPMQCTLO,
@@ -821,7 +821,7 @@ pub type PMQ_CTL_EXIT = MQ_CTL_EXIT;
 pub type MQ_DISC_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: &mut MQAXP,
-        pExitContext: PMQAXC,
+        pExitContext: &mut MQAXC,
         ppHconn: PPMQHCONN,
         pCompCode: &mut MQLONG,
         pReason: &mut MQLONG,
@@ -845,7 +845,7 @@ pub type PMQ_DISC_EXIT = MQ_DISC_EXIT;
 pub type MQ_GET_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: &mut MQAXP,
-        pExitContext: PMQAXC,
+        pExitContext: &mut MQAXC,
         pHconn: &mut MQHCONN,
         pHobj: &mut MQHOBJ,
         ppMsgDesc: PPMQMD,
@@ -868,7 +868,7 @@ pub type PMQ_GET_EXIT = MQ_GET_EXIT;
 pub type MQ_INIT_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: &mut MQAXP,
-        pExitContext: PMQAXC,
+        pExitContext: &mut MQAXC,
         pCompCode: &mut MQLONG,
         pReason: &mut MQLONG,
     ),
@@ -892,7 +892,7 @@ pub type PMQ_INIT_EXIT = MQ_INIT_EXIT;
 pub type MQ_INQ_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: &mut MQAXP,
-        pExitContext: PMQAXC,
+        pExitContext: &mut MQAXC,
         pHconn: &mut MQHCONN,
         pHobj: &mut MQHOBJ,
         pSelectorCount: PMQLONG,
@@ -920,7 +920,7 @@ pub type PMQ_INQ_EXIT = MQ_INQ_EXIT;
 pub type MQ_OPEN_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: &mut MQAXP,
-        pExitContext: PMQAXC,
+        pExitContext: &mut MQAXC,
         pHconn: &mut MQHCONN,
         ppObjDesc: PPMQOD,
         pOptions: PMQLONG,
@@ -946,7 +946,7 @@ pub type PMQ_OPEN_EXIT = MQ_OPEN_EXIT;
 pub type MQ_PUT_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: &mut MQAXP,
-        pExitContext: PMQAXC,
+        pExitContext: &mut MQAXC,
         pHconn: &mut MQHCONN,
         pHobj: &mut MQHOBJ,
         ppMsgDesc: PPMQMD,
@@ -974,7 +974,7 @@ pub type PMQ_PUT_EXIT = MQ_PUT_EXIT;
 pub type MQ_PUT1_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: &mut MQAXP,
-        pExitContext: PMQAXC,
+        pExitContext: &mut MQAXC,
         pHconn: &mut MQHCONN,
         ppObjDesc: PPMQOD,
         ppMsgDesc: PPMQMD,
@@ -1004,7 +1004,7 @@ pub type PMQ_PUT1_EXIT = MQ_PUT1_EXIT;
 pub type MQ_SET_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: &mut MQAXP,
-        pExitContext: PMQAXC,
+        pExitContext: &mut MQAXC,
         pHconn: &mut MQHCONN,
         pHobj: &mut MQHOBJ,
         pSelectorCount: PMQLONG,
@@ -1031,7 +1031,7 @@ pub type PMQ_SET_EXIT = MQ_SET_EXIT;
 pub type MQ_STAT_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: &mut MQAXP,
-        pExitContext: PMQAXC,
+        pExitContext: &mut MQAXC,
         pHconn: &mut MQHCONN,
         pType: PMQLONG,
         ppStatus: PPMQSTS,
@@ -1054,7 +1054,7 @@ pub type PMQ_STAT_EXIT = MQ_STAT_EXIT;
 pub type MQ_SUBRQ_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: &mut MQAXP,
-        pExitContext: PMQAXC,
+        pExitContext: &mut MQAXC,
         pHconn: &mut MQHCONN,
         pHsub: PMQHOBJ,
         pAction: PMQLONG,
@@ -1078,7 +1078,7 @@ pub type PMQ_SUBRQ_EXIT = MQ_SUBRQ_EXIT;
 pub type MQ_SUB_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: &mut MQAXP,
-        pExitContext: PMQAXC,
+        pExitContext: &mut MQAXC,
         pHconn: &mut MQHCONN,
         ppSubDesc: PPMQSD,
         ppHobj: PPMQHOBJ,
@@ -1098,7 +1098,7 @@ pub type PMQ_SUB_EXIT = MQ_SUB_EXIT;
 pub type MQ_TERM_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         pExitParms: &mut MQAXP,
-        pExitContext: PMQAXC,
+        pExitContext: &mut MQAXC,
         pCompCode: &mut MQLONG,
         pReason: &mut MQLONG,
     ),
