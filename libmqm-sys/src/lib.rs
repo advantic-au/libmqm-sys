@@ -96,7 +96,6 @@ mod generated;
 
 pub use generated::bindings as lib;
 pub use generated::function::*;
-pub use generated::version;
 
 #[cfg(feature = "mock")]
 pub use generated::mock;

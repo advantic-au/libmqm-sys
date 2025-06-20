@@ -2,6 +2,7 @@ use crate::lib;
 use ::dlopen2::wrapper::WrapperApi;
 #[derive(::dlopen2::wrapper::WrapperApi, Debug)]
 pub struct MqWrapper {
+    #[cfg(feature = "exits")]
     MQXEP: unsafe extern "C" fn(
         Hconfig: lib::MQHCONFIG,
         ExitReason: lib::MQLONG,
@@ -11,6 +12,7 @@ pub struct MqWrapper {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ),
+    #[cfg(feature = "exits")]
     MQXCLWLN: unsafe extern "C" fn(
         pExitParms: &mut lib::MQWXP,
         CurrentRecord: lib::MQPTR,
@@ -19,6 +21,7 @@ pub struct MqWrapper {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ),
+    #[cfg(feature = "exits")]
     MQXCNVC: unsafe extern "C" fn(
         Hconn: lib::MQHCONN,
         Options: lib::MQLONG,
@@ -32,6 +35,7 @@ pub struct MqWrapper {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ),
+    #[cfg(feature = "exits")]
     MQXDX: unsafe extern "C" fn(
         pDataConvExitParms: &mut lib::MQDXP,
         pMsgDesc: lib::PMQMD,
@@ -40,6 +44,7 @@ pub struct MqWrapper {
         OutBufferLength: lib::MQLONG,
         pOutBuffer: lib::PMQVOID,
     ),
+    #[cfg(feature = "exits")]
     MQZEP: unsafe extern "C" fn(
         Hconfig: lib::MQHCONFIG,
         Function: lib::MQLONG,
@@ -47,6 +52,7 @@ pub struct MqWrapper {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ),
+    #[cfg(feature = "mqai")]
     mqAddBag: unsafe extern "C" fn(
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
@@ -54,6 +60,7 @@ pub struct MqWrapper {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ),
+    #[cfg(feature = "mqai")]
     mqAddByteString: unsafe extern "C" fn(
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
@@ -62,6 +69,7 @@ pub struct MqWrapper {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ),
+    #[cfg(feature = "mqai")]
     mqAddByteStringFilter: unsafe extern "C" fn(
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
@@ -71,12 +79,14 @@ pub struct MqWrapper {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ),
+    #[cfg(feature = "mqai")]
     mqAddInquiry: unsafe extern "C" fn(
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ),
+    #[cfg(feature = "mqai")]
     mqAddInteger: unsafe extern "C" fn(
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
@@ -84,6 +94,7 @@ pub struct MqWrapper {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ),
+    #[cfg(feature = "mqai")]
     mqAddInteger64: unsafe extern "C" fn(
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
@@ -91,6 +102,7 @@ pub struct MqWrapper {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ),
+    #[cfg(feature = "mqai")]
     mqAddIntegerFilter: unsafe extern "C" fn(
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
@@ -99,6 +111,7 @@ pub struct MqWrapper {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ),
+    #[cfg(feature = "mqai")]
     mqAddString: unsafe extern "C" fn(
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
@@ -107,6 +120,7 @@ pub struct MqWrapper {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ),
+    #[cfg(feature = "mqai")]
     mqAddStringFilter: unsafe extern "C" fn(
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
@@ -116,6 +130,7 @@ pub struct MqWrapper {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ),
+    #[cfg(feature = "mqai")]
     mqBagToBuffer: unsafe extern "C" fn(
         OptionsBag: lib::MQHBAG,
         DataBag: lib::MQHBAG,
@@ -125,6 +140,7 @@ pub struct MqWrapper {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ),
+    #[cfg(feature = "mqai")]
     mqBufferToBag: unsafe extern "C" fn(
         OptionsBag: lib::MQHBAG,
         BufferLength: lib::MQLONG,
@@ -133,11 +149,13 @@ pub struct MqWrapper {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ),
+    #[cfg(feature = "mqai")]
     mqClearBag: unsafe extern "C" fn(
         Bag: lib::MQHBAG,
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ),
+    #[cfg(feature = "mqai")]
     mqCountItems: unsafe extern "C" fn(
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
@@ -145,17 +163,20 @@ pub struct MqWrapper {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ),
+    #[cfg(feature = "mqai")]
     mqCreateBag: unsafe extern "C" fn(
         Options: lib::MQLONG,
         pBag: &mut lib::MQHBAG,
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ),
+    #[cfg(feature = "mqai")]
     mqDeleteBag: unsafe extern "C" fn(
         pBag: &mut lib::MQHBAG,
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ),
+    #[cfg(feature = "mqai")]
     mqDeleteItem: unsafe extern "C" fn(
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
@@ -163,6 +184,7 @@ pub struct MqWrapper {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ),
+    #[cfg(feature = "mqai")]
     mqExecute: unsafe extern "C" fn(
         Hconn: lib::MQHCONN,
         Command: lib::MQLONG,
@@ -174,6 +196,7 @@ pub struct MqWrapper {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ),
+    #[cfg(feature = "mqai")]
     mqGetBag: unsafe extern "C" fn(
         Hconn: lib::MQHCONN,
         Hobj: lib::MQHOBJ,
@@ -183,6 +206,7 @@ pub struct MqWrapper {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ),
+    #[cfg(feature = "mqai")]
     mqInquireBag: unsafe extern "C" fn(
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
@@ -191,6 +215,7 @@ pub struct MqWrapper {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ),
+    #[cfg(feature = "mqai")]
     mqInquireByteString: unsafe extern "C" fn(
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
@@ -201,6 +226,7 @@ pub struct MqWrapper {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ),
+    #[cfg(feature = "mqai")]
     mqInquireByteStringFilter: unsafe extern "C" fn(
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
@@ -212,6 +238,7 @@ pub struct MqWrapper {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ),
+    #[cfg(feature = "mqai")]
     mqInquireInteger: unsafe extern "C" fn(
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
@@ -220,6 +247,7 @@ pub struct MqWrapper {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ),
+    #[cfg(feature = "mqai")]
     mqInquireInteger64: unsafe extern "C" fn(
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
@@ -228,6 +256,7 @@ pub struct MqWrapper {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ),
+    #[cfg(feature = "mqai")]
     mqInquireIntegerFilter: unsafe extern "C" fn(
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
@@ -237,6 +266,7 @@ pub struct MqWrapper {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ),
+    #[cfg(feature = "mqai")]
     mqInquireItemInfo: unsafe extern "C" fn(
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
@@ -246,6 +276,7 @@ pub struct MqWrapper {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ),
+    #[cfg(feature = "mqai")]
     mqInquireString: unsafe extern "C" fn(
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
@@ -257,6 +288,7 @@ pub struct MqWrapper {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ),
+    #[cfg(feature = "mqai")]
     mqInquireStringFilter: unsafe extern "C" fn(
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
@@ -269,6 +301,7 @@ pub struct MqWrapper {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ),
+    #[cfg(feature = "mqai")]
     mqPad: unsafe extern "C" fn(
         pString: lib::PMQCHAR,
         BufferLength: lib::MQLONG,
@@ -276,6 +309,7 @@ pub struct MqWrapper {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ),
+    #[cfg(feature = "mqai")]
     mqPutBag: unsafe extern "C" fn(
         Hconn: lib::MQHCONN,
         Hobj: lib::MQHOBJ,
@@ -285,6 +319,7 @@ pub struct MqWrapper {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ),
+    #[cfg(feature = "mqai")]
     mqSetByteString: unsafe extern "C" fn(
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
@@ -294,6 +329,7 @@ pub struct MqWrapper {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ),
+    #[cfg(feature = "mqai")]
     mqSetByteStringFilter: unsafe extern "C" fn(
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
@@ -304,6 +340,7 @@ pub struct MqWrapper {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ),
+    #[cfg(feature = "mqai")]
     mqSetInteger: unsafe extern "C" fn(
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
@@ -312,6 +349,7 @@ pub struct MqWrapper {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ),
+    #[cfg(feature = "mqai")]
     mqSetInteger64: unsafe extern "C" fn(
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
@@ -320,6 +358,7 @@ pub struct MqWrapper {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ),
+    #[cfg(feature = "mqai")]
     mqSetIntegerFilter: unsafe extern "C" fn(
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
@@ -329,6 +368,7 @@ pub struct MqWrapper {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ),
+    #[cfg(feature = "mqai")]
     mqSetString: unsafe extern "C" fn(
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
@@ -338,6 +378,7 @@ pub struct MqWrapper {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ),
+    #[cfg(feature = "mqai")]
     mqSetStringFilter: unsafe extern "C" fn(
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
@@ -348,6 +389,7 @@ pub struct MqWrapper {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ),
+    #[cfg(feature = "mqai")]
     mqTrim: unsafe extern "C" fn(
         BufferLength: lib::MQLONG,
         pBuffer: lib::PMQCHAR,
@@ -355,6 +397,7 @@ pub struct MqWrapper {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ),
+    #[cfg(feature = "mqai")]
     mqTruncateBag: unsafe extern "C" fn(
         Bag: lib::MQHBAG,
         ItemCount: lib::MQLONG,
@@ -576,6 +619,7 @@ pub struct MqWrapper {
         pReason: &mut lib::MQLONG,
     ),
 }
+#[cfg(feature = "exits")]
 impl crate::Exits for ::dlopen2::wrapper::Container<MqWrapper> {
     unsafe fn MQXEP(
         &self,
@@ -686,6 +730,7 @@ impl crate::Exits for ::dlopen2::wrapper::Container<MqWrapper> {
         }
     }
 }
+#[cfg(feature = "mqai")]
 impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
     unsafe fn mqAddBag(
         &self,

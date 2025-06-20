@@ -1,7 +1,6 @@
 #![allow(clippy::all)]
 #![allow(clippy::pedantic)]
 #![allow(clippy::nursery)]
-
 #![allow(non_camel_case_types)]
 #![allow(non_snake_case)]
 
@@ -13,6 +12,10 @@ pub mod bindings {
     include!(concat!(env!("OUT_DIR"), "/mqai.rs"));
     #[cfg(feature = "pcf")]
     include!(concat!(env!("OUT_DIR"), "/pcf.rs"));
+
+    pub mod version {
+        include!(concat!(env!("OUT_DIR"), "/version.rs"));
+    }
 }
 
 pub mod function {
@@ -32,8 +35,4 @@ pub mod mock {
 #[cfg(feature = "link_api")]
 pub mod link {
     include!(concat!(env!("OUT_DIR"), "/link.rs"));
-}
-
-pub mod version {
-    include!(concat!(env!("OUT_DIR"), "/version.rs"));
 }

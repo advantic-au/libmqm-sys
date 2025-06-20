@@ -1,5 +1,6 @@
 use crate::lib;
 #[allow(clippy::missing_safety_doc, clippy::too_many_arguments, non_snake_case)]
+#[cfg(feature = "exits")]
 pub trait Exits {
     /// Register Entry Point
     ///
@@ -103,6 +104,7 @@ pub trait Exits {
     );
 }
 #[allow(clippy::missing_safety_doc, clippy::too_many_arguments, non_snake_case)]
+#[cfg(feature = "mqai")]
 pub trait Mqai {
     /// Add Nested Bag to Bag
     ///

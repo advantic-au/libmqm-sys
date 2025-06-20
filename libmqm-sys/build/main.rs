@@ -214,10 +214,10 @@ fn main() -> Result<(), io::Error> {
                 mq_trait::{PrefixMqTypes, WrapperGenerator},
             };
 
-            let source_trait: &[(_, syn::Ident)] = &[
-                ("mqi.rs", syn::parse_quote!(Mqi)),
-                ("mqai.rs", syn::parse_quote!(Mqai)),
-                ("exits.rs", syn::parse_quote!(Exits)),
+            let source_trait: &[(_, syn::Ident, Option<syn::LitStr>)] = &[
+                ("mqi.rs", syn::parse_quote!(Mqi), None),
+                ("mqai.rs", syn::parse_quote!(Mqai), Some(syn::parse_quote!("mqai"))),
+                ("exits.rs", syn::parse_quote!(Exits), Some(syn::parse_quote!("exits"))),
             ];
 
             let mut traits = vec![];
@@ -243,7 +243,7 @@ fn main() -> Result<(), io::Error> {
             let parameters = doc_comments::extract_from_headers(&mq_inc_path, &FnParamExtract::default())?;
             assert_ne!(parameters.len(), 0);
 
-            let mut wrapper = WrapperGenerator(vec![]);
+            let mut wrapper_fields = vec![];
 
             // Generate and write the bindings file
             for (name, mut generated) in mqi_bindgen::mqi::mqi_bindgen_generate(&builder, &mq_inc_path)
@@ -331,27 +331,40 @@ fn main() -> Result<(), io::Error> {
                 DocCommentFields(&fields).visit_file_mut(&mut generated);
                 MqLongConstWrap.visit_file_mut(&mut generated);
                 arg_type.visit_file_mut(&mut generated);
-                wrapper.visit_file(&generated);
 
-                if let Some(trait_name) = source_trait
-                    .iter()
-                    .find_map(|(source, trait_name)| (*source == name).then_some(trait_name))
-                {
+                WrapperGenerator(|mut field: syn::Field| {
+                    field.attrs.extend(
+                        source_trait
+                            .iter()
+                            .find_map(|(source, .., feat)| (*source == name && feat.is_some()).then(|| feat.as_ref().unwrap()))
+                            .map(|feat| parse_quote!(#[cfg(feature = #feat)])),
+                    );
+                    wrapper_fields.push(field);
+                })
+                .visit_file(&generated);
+
+                if let Some((_, trait_name, feature)) = source_trait.iter().find(|(source, ..)| *source == name) {
                     // Generate the trait
 
-                    use syn::TraitItemFn;
+                    use syn::{ImplItemFn, TraitItemFn};
 
                     use crate::mq_trait::{impl_dlopen2_fn, impl_link_fn, DesugarForMockall, ImplFnGenerator};
+
+                    let feat_cfg = feature.as_ref().map(|feat| parse_quote!(#[cfg(feature = #feat)]));
 
                     let mut tg = TraitGenerator::default();
                     tg.visit_file(&generated);
                     let mut item_trait = tg.generate(trait_name);
+                    item_trait
+                        .attrs
+                        .extend(feature.as_ref().map(|feat| parse_quote!(#[cfg(feature = #feat)])));
                     PrefixMqTypes(&mq_mod).visit_item_trait_mut(&mut item_trait);
 
                     // Generate the Mock struct
-                    let mut mg = ImplFnGenerator::new(|_: &TraitItemFn| parse_quote!({}));
+                    let mut mg = ImplFnGenerator::new(|_: &mut ImplItemFn, _: &TraitItemFn| {});
                     mg.visit_item_trait(&item_trait);
                     let mut mock_impl_trait = mg.generate(&parse_quote!(crate::#trait_name), &mock_name);
+                    mock_impl_trait.attrs.extend(feat_cfg.clone());
                     PrefixMqTypes(&mq_mod).visit_item_impl_mut(&mut mock_impl_trait);
                     DesugarForMockall.visit_item_impl_mut(&mut mock_impl_trait);
 
@@ -359,12 +372,14 @@ fn main() -> Result<(), io::Error> {
                     let mut dg = ImplFnGenerator::new(impl_dlopen2_fn(&wrapper_name));
                     dg.visit_item_trait(&item_trait);
                     let mut dlopen2_impl_trait = dg.generate(&parse_quote!(crate::#trait_name), &dlopen2_name);
+                    dlopen2_impl_trait.attrs.extend(feat_cfg.clone());
                     PrefixMqTypes(&mq_mod).visit_item_impl_mut(&mut dlopen2_impl_trait);
 
                     // Generate the link struct
                     let mut lg = ImplFnGenerator::new(impl_link_fn(&mq_mod));
                     lg.visit_item_trait(&item_trait);
                     let mut link_impl_trait = lg.generate(&parse_quote!(crate::#trait_name), &link_name);
+                    link_impl_trait.attrs.extend(feat_cfg.clone());
                     PrefixMqTypes(&mq_mod).visit_item_impl_mut(&mut link_impl_trait);
 
                     mock_impls.push(mock_impl_trait);
@@ -418,12 +433,14 @@ fn main() -> Result<(), io::Error> {
 
             );
 
-            let wrapper_gen = wrapper.generate(&parse_quote!(#wrapper_name));
             let mut wrapper_file = parse_quote!(
                 use crate::lib;
                 use ::dlopen2::wrapper::WrapperApi;
 
-                #wrapper_gen
+                #[derive(::dlopen2::wrapper::WrapperApi, Debug)]
+                pub struct #wrapper_name {
+                    #(#wrapper_fields,)*
+                }
 
                 #(
                     #dlopen_impls

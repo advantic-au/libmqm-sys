@@ -20,7 +20,7 @@ pub struct ImplFnGenerator<F> {
     block_fn: F,
 }
 
-pub struct WrapperGenerator(pub Vec<syn::Field>);
+pub struct WrapperGenerator<F>(pub F);
 
 pub struct PrefixMqTypes<'a>(pub &'a syn::Path);
 
@@ -102,7 +102,7 @@ impl Visit<'_> for TraitGenerator {
     }
 }
 
-impl Visit<'_> for WrapperGenerator {
+impl<F: FnMut(syn::Field)> Visit<'_> for WrapperGenerator<F> {
     fn visit_foreign_item_fn(&mut self, item: &'_ syn::ForeignItemFn) {
         let field_name = &item.sig.ident;
         let fn_args = item.sig.inputs.iter().filter_map(|arg| match arg {
@@ -116,35 +116,25 @@ impl Visit<'_> for WrapperGenerator {
                 ty: *pat_type.ty.clone(),
             }),
         });
-
-        self.0.push(parse_quote!(
+        let f = &mut self.0;
+        f(parse_quote!(
             #field_name: unsafe extern "C" fn(#( #fn_args,)*)
         ));
     }
 }
 
-impl WrapperGenerator {
-    pub fn generate(&self, ident: &Ident) -> syn::ItemStruct {
-        let fields = self.0.iter().cloned();
-        parse_quote!(
-            #[derive(::dlopen2::wrapper::WrapperApi, Debug)]
-            pub struct #ident {
-                #(#fields,)*
-            }
-        )
-    }
-}
-
-impl<F: Fn(&TraitItemFn) -> syn::Block> Visit<'_> for ImplFnGenerator<F> {
+impl<F: Fn(&mut ImplItemFn, &TraitItemFn)> Visit<'_> for ImplFnGenerator<F> {
     fn visit_trait_item_fn(&mut self, item: &'_ syn::TraitItemFn) {
         let bf = &self.block_fn;
-        self.foreign_fn.push(ImplItem::Fn(ImplItemFn {
+        let mut impl_item_fn = ImplItemFn {
             attrs: vec![],
             vis: syn::Visibility::Inherited,
             defaultness: None,
             sig: item.sig.clone(),
-            block: bf(item),
-        }));
+            block: parse_quote!({}),
+        };
+        bf(&mut impl_item_fn, item);
+        self.foreign_fn.push(ImplItem::Fn(impl_item_fn));
     }
 }
 
@@ -166,8 +156,8 @@ impl<F> ImplFnGenerator<F> {
     }
 }
 
-pub fn impl_dlopen2_fn(wrapper_name: &Path) -> impl Fn(&TraitItemFn) -> syn::Block + use<'_> {
-    move |trait_fn| {
+pub fn impl_dlopen2_fn(wrapper_name: &Path) -> impl Fn(&mut ImplItemFn, &TraitItemFn) + use<'_> {
+    move |impl_item_fn, trait_fn| {
         let fn_name = &trait_fn.sig.ident;
         let inputs = trait_fn.sig.inputs.iter().map(|f: &FnArg| -> syn::Expr {
             match f {
@@ -175,16 +165,16 @@ pub fn impl_dlopen2_fn(wrapper_name: &Path) -> impl Fn(&TraitItemFn) -> syn::Blo
                 syn::FnArg::Typed(PatType { pat, .. }) => parse_quote!(#pat),
             }
         });
-        parse_quote!({
+        impl_item_fn.block = parse_quote!({
             unsafe {
                 #wrapper_name::#fn_name(#(#inputs), *)
             }
-        })
+        });
     }
 }
 
-pub fn impl_link_fn(mod_path: &Path) -> impl Fn(&TraitItemFn) -> syn::Block + use<'_> {
-    move |trait_fn| {
+pub fn impl_link_fn(mod_path: &Path) -> impl Fn(&mut ImplItemFn, &TraitItemFn) + use<'_> {
+    move |impl_item_fn, trait_fn| {
         let fn_name = &trait_fn.sig.ident;
         let inputs = trait_fn.sig.inputs.iter().filter_map(|arg: &FnArg| -> Option<syn::Expr> {
             if let syn::FnArg::Typed(PatType { pat, .. }) = arg {
@@ -193,10 +183,10 @@ pub fn impl_link_fn(mod_path: &Path) -> impl Fn(&TraitItemFn) -> syn::Block + us
                 None
             }
         });
-        parse_quote!({
+        impl_item_fn.block = parse_quote!({
             unsafe {
                #mod_path::#fn_name(#(#inputs), *)
             }
-        })
+        });
     }
 }

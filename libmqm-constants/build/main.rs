@@ -200,7 +200,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         let outdir_path = std::path::Path::new(&outdir);
         let version_stamp = format!(
             "/* Generated with MQ client version {} */",
-            libmqm_sys::version::CLIENT_BUILD_VERSION
+            libmqm_sys::lib::version::CLIENT_BUILD_VERSION
         );
         for (filename, prelude, buffer) in [
             ("mapping.rs", [&*version_stamp].as_slice(), mapping_write),

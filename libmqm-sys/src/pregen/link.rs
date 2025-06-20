@@ -2,6 +2,7 @@ use crate::lib;
 /// Provides access to compile time linked MQI and MQAI functions
 #[derive(Debug, Clone, Copy)]
 pub struct LinkedMq;
+#[cfg(feature = "exits")]
 impl crate::Exits for LinkedMq {
     unsafe fn MQXEP(
         &self,
@@ -106,6 +107,7 @@ impl crate::Exits for LinkedMq {
         unsafe { lib::MQZEP(Hconfig, Function, pEntryPoint, pCompCode, pReason) }
     }
 }
+#[cfg(feature = "mqai")]
 impl crate::Mqai for LinkedMq {
     unsafe fn mqAddBag(
         &self,

@@ -189,7 +189,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     writeln!(
         defaults_pretty_write,
         "/* Generated with MQ client version {} */",
-        libmqm_sys::version::CLIENT_BUILD_VERSION
+        libmqm_sys::lib::version::CLIENT_BUILD_VERSION
     )?;
     defaults_pretty_write.write_all(defaults_pretty.as_ref())?;
     drop(defaults_pretty_write);
