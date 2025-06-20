@@ -217,7 +217,7 @@ unsafe extern "C" {
         DataBag: MQHBAG,
         BufferLength: MQLONG,
         pBuffer: PMQVOID,
-        pDataLength: PMQLONG,
+        pDataLength: &mut MQLONG,
         pCompCode: &mut MQLONG,
         pReason: &mut MQLONG,
     );
@@ -256,7 +256,7 @@ unsafe extern "C" {
     pub fn mqCountItems(
         Bag: MQHBAG,
         Selector: MQLONG,
-        pItemCount: PMQLONG,
+        pItemCount: &mut MQLONG,
         pCompCode: &mut MQLONG,
         pReason: &mut MQLONG,
     );
@@ -269,7 +269,7 @@ unsafe extern "C" {
     /// * `pReason` (Output): Reason code qualifying CompCode
     pub fn mqCreateBag(
         Options: MQLONG,
-        pBag: PMQHBAG,
+        pBag: &mut MQHBAG,
         pCompCode: &mut MQLONG,
         pReason: &mut MQLONG,
     );
@@ -279,7 +279,7 @@ unsafe extern "C" {
     /// * `pBag` (Input/Output): Bag handle
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying CompCode
-    pub fn mqDeleteBag(pBag: PMQHBAG, pCompCode: &mut MQLONG, pReason: &mut MQLONG);
+    pub fn mqDeleteBag(pBag: &mut MQHBAG, pCompCode: &mut MQLONG, pReason: &mut MQLONG);
     /// Delete Item in Bag
     ///
     /// # Arguments
@@ -332,7 +332,7 @@ unsafe extern "C" {
         Hconn: MQHCONN,
         Hobj: MQHOBJ,
         pMsgDesc: PMQVOID,
-        pGetMsgOpts: PMQVOID,
+        pGetMsgOpts: &mut MQGMO,
         Bag: MQHBAG,
         pCompCode: &mut MQLONG,
         pReason: &mut MQLONG,
@@ -350,7 +350,7 @@ unsafe extern "C" {
         Bag: MQHBAG,
         Selector: MQLONG,
         ItemIndex: MQLONG,
-        pItemValue: PMQHBAG,
+        pItemValue: &mut MQHBAG,
         pCompCode: &mut MQLONG,
         pReason: &mut MQLONG,
     );
@@ -371,7 +371,7 @@ unsafe extern "C" {
         ItemIndex: MQLONG,
         BufferLength: MQLONG,
         pBuffer: PMQBYTE,
-        pByteStringLength: PMQLONG,
+        pByteStringLength: &mut MQLONG,
         pCompCode: &mut MQLONG,
         pReason: &mut MQLONG,
     );
@@ -393,8 +393,8 @@ unsafe extern "C" {
         ItemIndex: MQLONG,
         BufferLength: MQLONG,
         pBuffer: PMQBYTE,
-        pByteStringLength: PMQLONG,
-        pOperator: PMQLONG,
+        pByteStringLength: &mut MQLONG,
+        pOperator: &mut MQLONG,
         pCompCode: &mut MQLONG,
         pReason: &mut MQLONG,
     );
@@ -411,7 +411,7 @@ unsafe extern "C" {
         Bag: MQHBAG,
         Selector: MQLONG,
         ItemIndex: MQLONG,
-        pItemValue: PMQLONG,
+        pItemValue: &mut MQLONG,
         pCompCode: &mut MQLONG,
         pReason: &mut MQLONG,
     );
@@ -428,7 +428,7 @@ unsafe extern "C" {
         Bag: MQHBAG,
         Selector: MQLONG,
         ItemIndex: MQLONG,
-        pItemValue: PMQINT64,
+        pItemValue: &mut MQINT64,
         pCompCode: &mut MQLONG,
         pReason: &mut MQLONG,
     );
@@ -446,8 +446,8 @@ unsafe extern "C" {
         Bag: MQHBAG,
         Selector: MQLONG,
         ItemIndex: MQLONG,
-        pItemValue: PMQLONG,
-        pOperator: PMQLONG,
+        pItemValue: &mut MQLONG,
+        pOperator: &mut MQLONG,
         pCompCode: &mut MQLONG,
         pReason: &mut MQLONG,
     );
@@ -465,8 +465,8 @@ unsafe extern "C" {
         Bag: MQHBAG,
         Selector: MQLONG,
         ItemIndex: MQLONG,
-        pOutSelector: PMQLONG,
-        pItemType: PMQLONG,
+        pOutSelector: &mut MQLONG,
+        pItemType: &mut MQLONG,
         pCompCode: &mut MQLONG,
         pReason: &mut MQLONG,
     );
@@ -488,8 +488,8 @@ unsafe extern "C" {
         ItemIndex: MQLONG,
         BufferLength: MQLONG,
         pBuffer: PMQCHAR,
-        pStringLength: PMQLONG,
-        pCodedCharSetId: PMQLONG,
+        pStringLength: &mut MQLONG,
+        pCodedCharSetId: &mut MQLONG,
         pCompCode: &mut MQLONG,
         pReason: &mut MQLONG,
     );
@@ -512,9 +512,9 @@ unsafe extern "C" {
         ItemIndex: MQLONG,
         BufferLength: MQLONG,
         pBuffer: PMQCHAR,
-        pStringLength: PMQLONG,
-        pCodedCharSetId: PMQLONG,
-        pOperator: PMQLONG,
+        pStringLength: &mut MQLONG,
+        pCodedCharSetId: &mut MQLONG,
+        pOperator: &mut MQLONG,
         pCompCode: &mut MQLONG,
         pReason: &mut MQLONG,
     );
@@ -547,7 +547,7 @@ unsafe extern "C" {
         Hconn: MQHCONN,
         Hobj: MQHOBJ,
         pMsgDesc: PMQVOID,
-        pPutMsgOpts: PMQVOID,
+        pPutMsgOpts: &mut MQPMO,
         Bag: MQHBAG,
         pCompCode: &mut MQLONG,
         pReason: &mut MQLONG,
