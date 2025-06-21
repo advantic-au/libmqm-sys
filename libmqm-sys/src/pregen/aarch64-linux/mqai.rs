@@ -62,7 +62,7 @@ unsafe extern "C" {
     /// * `Selector`: Item selector
     /// * `ItemValue`: Item value
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     pub fn mqAddBag(
         Bag: MQHBAG,
         Selector: MQLONG,
@@ -78,7 +78,7 @@ unsafe extern "C" {
     /// * `BufferLength`: Length of buffer
     /// * `pBuffer`: Buffer containing item value
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     pub fn mqAddByteString(
         Bag: MQHBAG,
         Selector: MQLONG,
@@ -96,7 +96,7 @@ unsafe extern "C" {
     /// * `pBuffer`: Buffer containing item value
     /// * `Operator`: Item operator
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     pub fn mqAddByteStringFilter(
         Bag: MQHBAG,
         Selector: MQLONG,
@@ -112,7 +112,7 @@ unsafe extern "C" {
     /// * `Bag`: Bag handle
     /// * `Selector`: Attribute selector
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     pub fn mqAddInquiry(
         Bag: MQHBAG,
         Selector: MQLONG,
@@ -126,7 +126,7 @@ unsafe extern "C" {
     /// * `Selector`: Item selector
     /// * `ItemValue`: Item value
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     pub fn mqAddInteger(
         Bag: MQHBAG,
         Selector: MQLONG,
@@ -141,7 +141,7 @@ unsafe extern "C" {
     /// * `Selector`: Item selector
     /// * `ItemValue`: Item value
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     pub fn mqAddInteger64(
         Bag: MQHBAG,
         Selector: MQLONG,
@@ -157,7 +157,7 @@ unsafe extern "C" {
     /// * `ItemValue`: Item value
     /// * `Operator`: Item operator
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     pub fn mqAddIntegerFilter(
         Bag: MQHBAG,
         Selector: MQLONG,
@@ -174,7 +174,7 @@ unsafe extern "C" {
     /// * `BufferLength`: Length of buffer
     /// * `pBuffer`: Buffer containing item value
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     pub fn mqAddString(
         Bag: MQHBAG,
         Selector: MQLONG,
@@ -192,7 +192,7 @@ unsafe extern "C" {
     /// * `pBuffer`: Buffer containing item value
     /// * `Operator`: Item operator
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     pub fn mqAddStringFilter(
         Bag: MQHBAG,
         Selector: MQLONG,
@@ -211,7 +211,7 @@ unsafe extern "C" {
     /// * `pBuffer` (Output): Buffer to contain PCF
     /// * `pDataLength` (Output): Length of PCF returned in buffer
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     pub fn mqBagToBuffer(
         OptionsBag: MQHBAG,
         DataBag: MQHBAG,
@@ -229,7 +229,7 @@ unsafe extern "C" {
     /// * `pBuffer`: Buffer containing PCF
     /// * `DataBag` (Input/Output): Handle of bag to contain data
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     pub fn mqBufferToBag(
         OptionsBag: MQHBAG,
         BufferLength: MQLONG,
@@ -243,7 +243,7 @@ unsafe extern "C" {
     /// # Arguments
     /// * `Bag`: Bag handle
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     pub fn mqClearBag(Bag: MQHBAG, pCompCode: &mut MQLONG, pReason: &mut MQLONG);
     /// Count Items in Bag
     ///
@@ -252,7 +252,7 @@ unsafe extern "C" {
     /// * `Selector`: Item selector
     /// * `pItemCount` (Output): Number of items
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     pub fn mqCountItems(
         Bag: MQHBAG,
         Selector: MQLONG,
@@ -266,7 +266,7 @@ unsafe extern "C" {
     /// * `Options`: Bag options
     /// * `pBag` (Output): Handle of bag created
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     pub fn mqCreateBag(
         Options: MQLONG,
         pBag: &mut MQHBAG,
@@ -278,7 +278,7 @@ unsafe extern "C" {
     /// # Arguments
     /// * `pBag` (Input/Output): Bag handle
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     pub fn mqDeleteBag(pBag: &mut MQHBAG, pCompCode: &mut MQLONG, pReason: &mut MQLONG);
     /// Delete Item in Bag
     ///
@@ -287,7 +287,7 @@ unsafe extern "C" {
     /// * `Selector`: Item selector
     /// * `ItemIndex`: Item index
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     pub fn mqDeleteItem(
         Bag: MQHBAG,
         Selector: MQLONG,
@@ -306,7 +306,7 @@ unsafe extern "C" {
     /// * `AdminQ`: Handle of admin queue
     /// * `ResponseQ`: Handle of response queue
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     pub fn mqExecute(
         Hconn: MQHCONN,
         Command: MQLONG,
@@ -327,7 +327,7 @@ unsafe extern "C" {
     /// * `pGetMsgOpts` (Input/Output): Get-message options
     /// * `Bag` (Input/Output): Handle of bag to contain message
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     pub fn mqGetBag(
         Hconn: MQHCONN,
         Hobj: MQHOBJ,
@@ -345,7 +345,7 @@ unsafe extern "C" {
     /// * `ItemIndex`: Item index
     /// * `pItemValue` (Output): Item value
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     pub fn mqInquireBag(
         Bag: MQHBAG,
         Selector: MQLONG,
@@ -364,7 +364,7 @@ unsafe extern "C" {
     /// * `pBuffer` (Output): Buffer to contain string
     /// * `pByteStringLength` (Output): Length of byte string returned
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     pub fn mqInquireByteString(
         Bag: MQHBAG,
         Selector: MQLONG,
@@ -386,7 +386,7 @@ unsafe extern "C" {
     /// * `pByteStringLength` (Output): Length of byte string returned
     /// * `pOperator` (Output): Item operator
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     pub fn mqInquireByteStringFilter(
         Bag: MQHBAG,
         Selector: MQLONG,
@@ -406,7 +406,7 @@ unsafe extern "C" {
     /// * `ItemIndex`: Item index
     /// * `pItemValue` (Output): Item value
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     pub fn mqInquireInteger(
         Bag: MQHBAG,
         Selector: MQLONG,
@@ -423,7 +423,7 @@ unsafe extern "C" {
     /// * `ItemIndex`: Item index
     /// * `pItemValue` (Output): Item value
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     pub fn mqInquireInteger64(
         Bag: MQHBAG,
         Selector: MQLONG,
@@ -441,7 +441,7 @@ unsafe extern "C" {
     /// * `pItemValue` (Output): Item value
     /// * `pOperator` (Output): Item operator
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     pub fn mqInquireIntegerFilter(
         Bag: MQHBAG,
         Selector: MQLONG,
@@ -460,7 +460,7 @@ unsafe extern "C" {
     /// * `pOutSelector` (Output): Selector of item
     /// * `pItemType` (Output): Data type of item
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     pub fn mqInquireItemInfo(
         Bag: MQHBAG,
         Selector: MQLONG,
@@ -481,7 +481,7 @@ unsafe extern "C" {
     /// * `pStringLength` (Output): Length of string returned
     /// * `pCodedCharSetId` (Output): Character-set identifier of string
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     pub fn mqInquireString(
         Bag: MQHBAG,
         Selector: MQLONG,
@@ -505,7 +505,7 @@ unsafe extern "C" {
     /// * `pCodedCharSetId` (Output): Character-set identifier of string
     /// * `pOperator` (Output): Item operator
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     pub fn mqInquireStringFilter(
         Bag: MQHBAG,
         Selector: MQLONG,
@@ -525,7 +525,7 @@ unsafe extern "C" {
     /// * `BufferLength`: Length of buffer
     /// * `pBuffer` (Output): Buffer to contain padded string
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     pub fn mqPad(
         pString: PMQCHAR,
         BufferLength: MQLONG,
@@ -542,7 +542,7 @@ unsafe extern "C" {
     /// * `pPutMsgOpts` (Input/Output): Put-message options
     /// * `Bag`: Handle of bag containing message data
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     pub fn mqPutBag(
         Hconn: MQHCONN,
         Hobj: MQHOBJ,
@@ -561,7 +561,7 @@ unsafe extern "C" {
     /// * `BufferLength`: Length of buffer
     /// * `pBuffer`: Buffer containing item value
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     pub fn mqSetByteString(
         Bag: MQHBAG,
         Selector: MQLONG,
@@ -581,7 +581,7 @@ unsafe extern "C" {
     /// * `pBuffer`: Buffer containing item value
     /// * `Operator`: Item operator
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     pub fn mqSetByteStringFilter(
         Bag: MQHBAG,
         Selector: MQLONG,
@@ -600,7 +600,7 @@ unsafe extern "C" {
     /// * `ItemIndex`: Item index
     /// * `ItemValue`: Item value
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     pub fn mqSetInteger(
         Bag: MQHBAG,
         Selector: MQLONG,
@@ -617,7 +617,7 @@ unsafe extern "C" {
     /// * `ItemIndex`: Item index
     /// * `ItemValue`: Item value
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     pub fn mqSetInteger64(
         Bag: MQHBAG,
         Selector: MQLONG,
@@ -635,7 +635,7 @@ unsafe extern "C" {
     /// * `ItemValue`: Item value
     /// * `Operator`: Item operator
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     pub fn mqSetIntegerFilter(
         Bag: MQHBAG,
         Selector: MQLONG,
@@ -654,7 +654,7 @@ unsafe extern "C" {
     /// * `BufferLength`: Length of buffer
     /// * `pBuffer`: Buffer containing item value
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     pub fn mqSetString(
         Bag: MQHBAG,
         Selector: MQLONG,
@@ -674,7 +674,7 @@ unsafe extern "C" {
     /// * `pBuffer`: Buffer containing item value
     /// * `Operator`: Item operator
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     pub fn mqSetStringFilter(
         Bag: MQHBAG,
         Selector: MQLONG,
@@ -692,7 +692,7 @@ unsafe extern "C" {
     /// * `pBuffer`: Buffer containing blank-padded string
     /// * `pString` (Output): String with blanks discarded
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     pub fn mqTrim(
         BufferLength: MQLONG,
         pBuffer: PMQCHAR,
@@ -706,7 +706,7 @@ unsafe extern "C" {
     /// * `Bag`: Bag handle
     /// * `ItemCount`: Number of items to remain in bag
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     pub fn mqTruncateBag(
         Bag: MQHBAG,
         ItemCount: MQLONG,
