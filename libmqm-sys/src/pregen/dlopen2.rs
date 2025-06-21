@@ -2,56 +2,6 @@ use crate::lib;
 use ::dlopen2::wrapper::WrapperApi;
 #[derive(::dlopen2::wrapper::WrapperApi, Debug)]
 pub struct MqWrapper {
-    #[cfg(feature = "exits")]
-    MQXEP: unsafe extern "C" fn(
-        Hconfig: lib::MQHCONFIG,
-        ExitReason: lib::MQLONG,
-        Function: lib::MQLONG,
-        pEntryPoint: lib::PMQFUNC,
-        pExitOpts: Option<&lib::MQXEPO>,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
-    ),
-    #[cfg(feature = "exits")]
-    MQXCLWLN: unsafe extern "C" fn(
-        pExitParms: &mut lib::MQWXP,
-        CurrentRecord: lib::MQPTR,
-        NextOffset: lib::MQLONG,
-        pNextRecord: &mut lib::MQPTR,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
-    ),
-    #[cfg(feature = "exits")]
-    MQXCNVC: unsafe extern "C" fn(
-        Hconn: lib::MQHCONN,
-        Options: lib::MQLONG,
-        SourceCCSID: lib::MQLONG,
-        SourceLength: lib::MQLONG,
-        pSourceBuffer: lib::PMQCHAR,
-        TargetCCSID: lib::MQLONG,
-        TargetLength: lib::MQLONG,
-        pTargetBuffer: lib::PMQCHAR,
-        pDataLength: &mut lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
-    ),
-    #[cfg(feature = "exits")]
-    MQXDX: unsafe extern "C" fn(
-        pDataConvExitParms: &mut lib::MQDXP,
-        pMsgDesc: lib::PMQMD,
-        InBufferLength: lib::MQLONG,
-        pInBuffer: lib::PMQVOID,
-        OutBufferLength: lib::MQLONG,
-        pOutBuffer: lib::PMQVOID,
-    ),
-    #[cfg(feature = "exits")]
-    MQZEP: unsafe extern "C" fn(
-        Hconfig: lib::MQHCONFIG,
-        Function: lib::MQLONG,
-        pEntryPoint: lib::PMQFUNC,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
-    ),
     #[cfg(feature = "mqai")]
     mqAddBag: unsafe extern "C" fn(
         Bag: lib::MQHBAG,
@@ -618,55 +568,7 @@ pub struct MqWrapper {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ),
-}
-#[cfg(feature = "exits")]
-impl crate::Exits for ::dlopen2::wrapper::Container<MqWrapper> {
-    unsafe fn MQXEP(
-        &self,
-        Hconfig: lib::MQHCONFIG,
-        ExitReason: lib::MQLONG,
-        Function: lib::MQLONG,
-        pEntryPoint: lib::PMQFUNC,
-        pExitOpts: Option<&lib::MQXEPO>,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
-    ) {
-        unsafe {
-            MqWrapper::MQXEP(
-                self,
-                Hconfig,
-                ExitReason,
-                Function,
-                pEntryPoint,
-                pExitOpts,
-                pCompCode,
-                pReason,
-            )
-        }
-    }
-    unsafe fn MQXCLWLN(
-        &self,
-        pExitParms: &mut lib::MQWXP,
-        CurrentRecord: lib::MQPTR,
-        NextOffset: lib::MQLONG,
-        pNextRecord: &mut lib::MQPTR,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
-    ) {
-        unsafe {
-            MqWrapper::MQXCLWLN(
-                self,
-                pExitParms,
-                CurrentRecord,
-                NextOffset,
-                pNextRecord,
-                pCompCode,
-                pReason,
-            )
-        }
-    }
-    unsafe fn MQXCNVC(
-        &self,
+    MQXCNVC: unsafe extern "C" fn(
         Hconn: lib::MQHCONN,
         Options: lib::MQLONG,
         SourceCCSID: lib::MQLONG,
@@ -678,57 +580,7 @@ impl crate::Exits for ::dlopen2::wrapper::Container<MqWrapper> {
         pDataLength: &mut lib::MQLONG,
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
-    ) {
-        unsafe {
-            MqWrapper::MQXCNVC(
-                self,
-                Hconn,
-                Options,
-                SourceCCSID,
-                SourceLength,
-                pSourceBuffer,
-                TargetCCSID,
-                TargetLength,
-                pTargetBuffer,
-                pDataLength,
-                pCompCode,
-                pReason,
-            )
-        }
-    }
-    unsafe fn MQXDX(
-        &self,
-        pDataConvExitParms: &mut lib::MQDXP,
-        pMsgDesc: lib::PMQMD,
-        InBufferLength: lib::MQLONG,
-        pInBuffer: lib::PMQVOID,
-        OutBufferLength: lib::MQLONG,
-        pOutBuffer: lib::PMQVOID,
-    ) {
-        unsafe {
-            MqWrapper::MQXDX(
-                self,
-                pDataConvExitParms,
-                pMsgDesc,
-                InBufferLength,
-                pInBuffer,
-                OutBufferLength,
-                pOutBuffer,
-            )
-        }
-    }
-    unsafe fn MQZEP(
-        &self,
-        Hconfig: lib::MQHCONFIG,
-        Function: lib::MQLONG,
-        pEntryPoint: lib::PMQFUNC,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
-    ) {
-        unsafe {
-            MqWrapper::MQZEP(self, Hconfig, Function, pEntryPoint, pCompCode, pReason)
-        }
-    }
+    ),
 }
 #[cfg(feature = "mqai")]
 impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
@@ -1909,6 +1761,37 @@ impl crate::Mqi for ::dlopen2::wrapper::Container<MqWrapper> {
     ) {
         unsafe {
             MqWrapper::MQSUBRQ(self, Hconn, Hsub, Action, pSubRqOpts, pCompCode, pReason)
+        }
+    }
+    unsafe fn MQXCNVC(
+        &self,
+        Hconn: lib::MQHCONN,
+        Options: lib::MQLONG,
+        SourceCCSID: lib::MQLONG,
+        SourceLength: lib::MQLONG,
+        pSourceBuffer: lib::PMQCHAR,
+        TargetCCSID: lib::MQLONG,
+        TargetLength: lib::MQLONG,
+        pTargetBuffer: lib::PMQCHAR,
+        pDataLength: &mut lib::MQLONG,
+        pCompCode: &mut lib::MQLONG,
+        pReason: &mut lib::MQLONG,
+    ) {
+        unsafe {
+            MqWrapper::MQXCNVC(
+                self,
+                Hconn,
+                Options,
+                SourceCCSID,
+                SourceLength,
+                pSourceBuffer,
+                TargetCCSID,
+                TargetLength,
+                pTargetBuffer,
+                pDataLength,
+                pCompCode,
+                pReason,
+            )
         }
     }
 }

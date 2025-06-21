@@ -11,7 +11,7 @@ pub trait Exits {
     /// * `pEntryPoint`: Exit function entry point
     /// * `pExitOpts`: Options that control the action of MQXEP
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn MQXEP(
         &self,
         Hconfig: lib::MQHCONFIG,
@@ -30,41 +30,13 @@ pub trait Exits {
     /// * `NextOffset`: Offset of next record
     /// * `pNextRecord` (Output): Address of next record or structure
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn MQXCLWLN(
         &self,
         pExitParms: &mut lib::MQWXP,
         CurrentRecord: lib::MQPTR,
         NextOffset: lib::MQLONG,
         pNextRecord: &mut lib::MQPTR,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
-    );
-    /// Convert Characters
-    ///
-    /// # Arguments
-    /// * `Hconn`: Connection handle
-    /// * `Options`: Options that control the action of MQXCNVC
-    /// * `SourceCCSID`: Coded character set identifier of string before conversion
-    /// * `SourceLength`: Length of string before conversion
-    /// * `pSourceBuffer`: String to be converted
-    /// * `TargetCCSID`: Coded character set identifier of string after conversion
-    /// * `TargetLength`: Length of output buffer
-    /// * `pTargetBuffer` (Output): String after conversion
-    /// * `pDataLength` (Output): Length of output string
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
-    unsafe fn MQXCNVC(
-        &self,
-        Hconn: lib::MQHCONN,
-        Options: lib::MQLONG,
-        SourceCCSID: lib::MQLONG,
-        SourceLength: lib::MQLONG,
-        pSourceBuffer: lib::PMQCHAR,
-        TargetCCSID: lib::MQLONG,
-        TargetLength: lib::MQLONG,
-        pTargetBuffer: lib::PMQCHAR,
-        pDataLength: &mut lib::MQLONG,
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     );
@@ -93,7 +65,7 @@ pub trait Exits {
     /// * `Function`: Function identifier
     /// * `pEntryPoint`: Function entry point
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn MQZEP(
         &self,
         Hconfig: lib::MQHCONFIG,
@@ -113,7 +85,7 @@ pub trait Mqai {
     /// * `Selector`: Item selector
     /// * `ItemValue`: Item value
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn mqAddBag(
         &self,
         Bag: lib::MQHBAG,
@@ -130,7 +102,7 @@ pub trait Mqai {
     /// * `BufferLength`: Length of buffer
     /// * `pBuffer`: Buffer containing item value
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn mqAddByteString(
         &self,
         Bag: lib::MQHBAG,
@@ -149,7 +121,7 @@ pub trait Mqai {
     /// * `pBuffer`: Buffer containing item value
     /// * `Operator`: Item operator
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn mqAddByteStringFilter(
         &self,
         Bag: lib::MQHBAG,
@@ -166,7 +138,7 @@ pub trait Mqai {
     /// * `Bag`: Bag handle
     /// * `Selector`: Attribute selector
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn mqAddInquiry(
         &self,
         Bag: lib::MQHBAG,
@@ -181,7 +153,7 @@ pub trait Mqai {
     /// * `Selector`: Item selector
     /// * `ItemValue`: Item value
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn mqAddInteger(
         &self,
         Bag: lib::MQHBAG,
@@ -197,7 +169,7 @@ pub trait Mqai {
     /// * `Selector`: Item selector
     /// * `ItemValue`: Item value
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn mqAddInteger64(
         &self,
         Bag: lib::MQHBAG,
@@ -214,7 +186,7 @@ pub trait Mqai {
     /// * `ItemValue`: Item value
     /// * `Operator`: Item operator
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn mqAddIntegerFilter(
         &self,
         Bag: lib::MQHBAG,
@@ -232,7 +204,7 @@ pub trait Mqai {
     /// * `BufferLength`: Length of buffer
     /// * `pBuffer`: Buffer containing item value
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn mqAddString(
         &self,
         Bag: lib::MQHBAG,
@@ -251,7 +223,7 @@ pub trait Mqai {
     /// * `pBuffer`: Buffer containing item value
     /// * `Operator`: Item operator
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn mqAddStringFilter(
         &self,
         Bag: lib::MQHBAG,
@@ -271,7 +243,7 @@ pub trait Mqai {
     /// * `pBuffer` (Output): Buffer to contain PCF
     /// * `pDataLength` (Output): Length of PCF returned in buffer
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn mqBagToBuffer(
         &self,
         OptionsBag: lib::MQHBAG,
@@ -290,7 +262,7 @@ pub trait Mqai {
     /// * `pBuffer`: Buffer containing PCF
     /// * `DataBag` (Input/Output): Handle of bag to contain data
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn mqBufferToBag(
         &self,
         OptionsBag: lib::MQHBAG,
@@ -305,7 +277,7 @@ pub trait Mqai {
     /// # Arguments
     /// * `Bag`: Bag handle
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn mqClearBag(
         &self,
         Bag: lib::MQHBAG,
@@ -319,7 +291,7 @@ pub trait Mqai {
     /// * `Selector`: Item selector
     /// * `pItemCount` (Output): Number of items
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn mqCountItems(
         &self,
         Bag: lib::MQHBAG,
@@ -334,7 +306,7 @@ pub trait Mqai {
     /// * `Options`: Bag options
     /// * `pBag` (Output): Handle of bag created
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn mqCreateBag(
         &self,
         Options: lib::MQLONG,
@@ -347,7 +319,7 @@ pub trait Mqai {
     /// # Arguments
     /// * `pBag` (Input/Output): Bag handle
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn mqDeleteBag(
         &self,
         pBag: &mut lib::MQHBAG,
@@ -361,7 +333,7 @@ pub trait Mqai {
     /// * `Selector`: Item selector
     /// * `ItemIndex`: Item index
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn mqDeleteItem(
         &self,
         Bag: lib::MQHBAG,
@@ -381,7 +353,7 @@ pub trait Mqai {
     /// * `AdminQ`: Handle of admin queue
     /// * `ResponseQ`: Handle of response queue
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn mqExecute(
         &self,
         Hconn: lib::MQHCONN,
@@ -403,7 +375,7 @@ pub trait Mqai {
     /// * `pGetMsgOpts` (Input/Output): Get-message options
     /// * `Bag` (Input/Output): Handle of bag to contain message
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn mqGetBag(
         &self,
         Hconn: lib::MQHCONN,
@@ -422,7 +394,7 @@ pub trait Mqai {
     /// * `ItemIndex`: Item index
     /// * `pItemValue` (Output): Item value
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn mqInquireBag(
         &self,
         Bag: lib::MQHBAG,
@@ -442,7 +414,7 @@ pub trait Mqai {
     /// * `pBuffer` (Output): Buffer to contain string
     /// * `pByteStringLength` (Output): Length of byte string returned
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn mqInquireByteString(
         &self,
         Bag: lib::MQHBAG,
@@ -465,7 +437,7 @@ pub trait Mqai {
     /// * `pByteStringLength` (Output): Length of byte string returned
     /// * `pOperator` (Output): Item operator
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn mqInquireByteStringFilter(
         &self,
         Bag: lib::MQHBAG,
@@ -486,7 +458,7 @@ pub trait Mqai {
     /// * `ItemIndex`: Item index
     /// * `pItemValue` (Output): Item value
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn mqInquireInteger(
         &self,
         Bag: lib::MQHBAG,
@@ -504,7 +476,7 @@ pub trait Mqai {
     /// * `ItemIndex`: Item index
     /// * `pItemValue` (Output): Item value
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn mqInquireInteger64(
         &self,
         Bag: lib::MQHBAG,
@@ -523,7 +495,7 @@ pub trait Mqai {
     /// * `pItemValue` (Output): Item value
     /// * `pOperator` (Output): Item operator
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn mqInquireIntegerFilter(
         &self,
         Bag: lib::MQHBAG,
@@ -543,7 +515,7 @@ pub trait Mqai {
     /// * `pOutSelector` (Output): Selector of item
     /// * `pItemType` (Output): Data type of item
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn mqInquireItemInfo(
         &self,
         Bag: lib::MQHBAG,
@@ -565,7 +537,7 @@ pub trait Mqai {
     /// * `pStringLength` (Output): Length of string returned
     /// * `pCodedCharSetId` (Output): Character-set identifier of string
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn mqInquireString(
         &self,
         Bag: lib::MQHBAG,
@@ -590,7 +562,7 @@ pub trait Mqai {
     /// * `pCodedCharSetId` (Output): Character-set identifier of string
     /// * `pOperator` (Output): Item operator
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn mqInquireStringFilter(
         &self,
         Bag: lib::MQHBAG,
@@ -611,7 +583,7 @@ pub trait Mqai {
     /// * `BufferLength`: Length of buffer
     /// * `pBuffer` (Output): Buffer to contain padded string
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn mqPad(
         &self,
         pString: lib::PMQCHAR,
@@ -629,7 +601,7 @@ pub trait Mqai {
     /// * `pPutMsgOpts` (Input/Output): Put-message options
     /// * `Bag`: Handle of bag containing message data
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn mqPutBag(
         &self,
         Hconn: lib::MQHCONN,
@@ -649,7 +621,7 @@ pub trait Mqai {
     /// * `BufferLength`: Length of buffer
     /// * `pBuffer`: Buffer containing item value
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn mqSetByteString(
         &self,
         Bag: lib::MQHBAG,
@@ -670,7 +642,7 @@ pub trait Mqai {
     /// * `pBuffer`: Buffer containing item value
     /// * `Operator`: Item operator
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn mqSetByteStringFilter(
         &self,
         Bag: lib::MQHBAG,
@@ -690,7 +662,7 @@ pub trait Mqai {
     /// * `ItemIndex`: Item index
     /// * `ItemValue`: Item value
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn mqSetInteger(
         &self,
         Bag: lib::MQHBAG,
@@ -708,7 +680,7 @@ pub trait Mqai {
     /// * `ItemIndex`: Item index
     /// * `ItemValue`: Item value
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn mqSetInteger64(
         &self,
         Bag: lib::MQHBAG,
@@ -727,7 +699,7 @@ pub trait Mqai {
     /// * `ItemValue`: Item value
     /// * `Operator`: Item operator
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn mqSetIntegerFilter(
         &self,
         Bag: lib::MQHBAG,
@@ -747,7 +719,7 @@ pub trait Mqai {
     /// * `BufferLength`: Length of buffer
     /// * `pBuffer`: Buffer containing item value
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn mqSetString(
         &self,
         Bag: lib::MQHBAG,
@@ -768,7 +740,7 @@ pub trait Mqai {
     /// * `pBuffer`: Buffer containing item value
     /// * `Operator`: Item operator
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn mqSetStringFilter(
         &self,
         Bag: lib::MQHBAG,
@@ -787,7 +759,7 @@ pub trait Mqai {
     /// * `pBuffer`: Buffer containing blank-padded string
     /// * `pString` (Output): String with blanks discarded
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn mqTrim(
         &self,
         BufferLength: lib::MQLONG,
@@ -802,7 +774,7 @@ pub trait Mqai {
     /// * `Bag`: Bag handle
     /// * `ItemCount`: Number of items to remain in bag
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn mqTruncateBag(
         &self,
         Bag: lib::MQHBAG,
@@ -818,7 +790,7 @@ pub trait Mqi {
     /// # Arguments
     /// * `Hconn`: Connection handle
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn MQBACK(
         &self,
         Hconn: lib::MQHCONN,
@@ -831,7 +803,7 @@ pub trait Mqi {
     /// * `Hconn`: Connection handle
     /// * `pBeginOptions` (Input/Output): Options that control the action of MQBEGIN
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn MQBEGIN(
         &self,
         Hconn: lib::MQHCONN,
@@ -850,7 +822,7 @@ pub trait Mqi {
     /// * `pBuffer` (Input/Output): Area to contain the message buffer
     /// * `pDataLength` (Output): Length of the output buffer
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn MQBUFMH(
         &self,
         Hconn: lib::MQHCONN,
@@ -873,7 +845,7 @@ pub trait Mqi {
     /// * `pMsgDesc`: Message Descriptor
     /// * `pGetMsgOpts`: Get options
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn MQCB(
         &self,
         Hconn: lib::MQHCONN,
@@ -892,7 +864,7 @@ pub trait Mqi {
     /// * `pHobj` (Input/Output): Object handle
     /// * `Options`: Options that control the action of MQCLOSE
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn MQCLOSE(
         &self,
         Hconn: lib::MQHCONN,
@@ -906,7 +878,7 @@ pub trait Mqi {
     /// # Arguments
     /// * `Hconn`: Connection handle
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn MQCMIT(
         &self,
         Hconn: lib::MQHCONN,
@@ -919,7 +891,7 @@ pub trait Mqi {
     /// * `pQMgrName`: Name of queue manager
     /// * `pHconn` (Output): Connection handle
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn MQCONN(
         &self,
         pQMgrName: &lib::MQCHAR48,
@@ -934,7 +906,7 @@ pub trait Mqi {
     /// * `pConnectOpts` (Input/Output): Options that control the action of MQCONNX
     /// * `pHconn` (Output): Connection handle
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn MQCONNX(
         &self,
         pQMgrName: &lib::MQCHAR48,
@@ -950,7 +922,7 @@ pub trait Mqi {
     /// * `pCrtMsgHOpts`: Options that control the action of MQCRTMH
     /// * `pHmsg` (Output): Message handle
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn MQCRTMH(
         &self,
         Hconn: lib::MQHCONN,
@@ -966,7 +938,7 @@ pub trait Mqi {
     /// * `Operation`: Operation
     /// * `pControlOpts`: Control options
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn MQCTL(
         &self,
         Hconn: lib::MQHCONN,
@@ -980,7 +952,7 @@ pub trait Mqi {
     /// # Arguments
     /// * `pHconn` (Input/Output): Connection handle
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn MQDISC(
         &self,
         pHconn: &mut lib::MQHCONN,
@@ -994,7 +966,7 @@ pub trait Mqi {
     /// * `pHmsg` (Input/Output): Message handle
     /// * `pDltMsgHOpts`: Options that control the action of MQDLTMH
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn MQDLTMH(
         &self,
         Hconn: lib::MQHCONN,
@@ -1011,7 +983,7 @@ pub trait Mqi {
     /// * `pDltPropOpts`: Options that control the action of MQDLTMP
     /// * `pName`: Property name
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn MQDLTMP(
         &self,
         Hconn: lib::MQHCONN,
@@ -1032,7 +1004,7 @@ pub trait Mqi {
     /// * `pBuffer` (Output): Area to contain the message data
     /// * `pDataLength` (Output): Length of the message
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn MQGET(
         &self,
         Hconn: lib::MQHCONN,
@@ -1057,7 +1029,7 @@ pub trait Mqi {
     /// * `CharAttrLength`: Length of character attributes buffer
     /// * `pCharAttrs` (Output): Character attributes
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn MQINQ(
         &self,
         Hconn: lib::MQHCONN,
@@ -1084,7 +1056,7 @@ pub trait Mqi {
     /// * `pValue` (Output): Property value
     /// * `pDataLength` (Output): Length of the property value
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn MQINQMP(
         &self,
         Hconn: lib::MQHCONN,
@@ -1111,7 +1083,7 @@ pub trait Mqi {
     /// * `pBuffer` (Output): Area to contain the properties
     /// * `pDataLength` (Output): Length of the properties
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn MQMHBUF(
         &self,
         Hconn: lib::MQHCONN,
@@ -1133,7 +1105,7 @@ pub trait Mqi {
     /// * `Options`: Options that control the action of MQOPEN
     /// * `pHobj` (Output): Object handle
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn MQOPEN(
         &self,
         Hconn: lib::MQHCONN,
@@ -1153,7 +1125,7 @@ pub trait Mqi {
     /// * `BufferLength`: Length of the message in Buffer
     /// * `pBuffer`: Message data
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn MQPUT(
         &self,
         Hconn: lib::MQHCONN,
@@ -1175,7 +1147,7 @@ pub trait Mqi {
     /// * `BufferLength`: Length of the message in Buffer
     /// * `pBuffer`: Message data
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn MQPUT1(
         &self,
         Hconn: lib::MQHCONN,
@@ -1199,7 +1171,7 @@ pub trait Mqi {
     /// * `CharAttrLength`: Length of character attributes buffer
     /// * `pCharAttrs`: Character attributes
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn MQSET(
         &self,
         Hconn: lib::MQHCONN,
@@ -1225,7 +1197,7 @@ pub trait Mqi {
     /// * `ValueLength`: Length of the Value area
     /// * `pValue`: Property value
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn MQSETMP(
         &self,
         Hconn: lib::MQHCONN,
@@ -1246,7 +1218,7 @@ pub trait Mqi {
     /// * `Type`: Status information type
     /// * `pStatus` (Input/Output): Status information
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn MQSTAT(
         &self,
         Hconn: lib::MQHCONN,
@@ -1263,7 +1235,7 @@ pub trait Mqi {
     /// * `pHobj` (Input/Output): Object handle for queue
     /// * `pHsub` (Output): Subscription object handle
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn MQSUB(
         &self,
         Hconn: lib::MQHCONN,
@@ -1281,13 +1253,41 @@ pub trait Mqi {
     /// * `Action`: Action requested on the subscription
     /// * `pSubRqOpts` (Input/Output): Subscription Request Options
     /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying CompCode
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
     unsafe fn MQSUBRQ(
         &self,
         Hconn: lib::MQHCONN,
         Hsub: lib::MQHOBJ,
         Action: lib::MQLONG,
         pSubRqOpts: Option<&mut lib::MQSRO>,
+        pCompCode: &mut lib::MQLONG,
+        pReason: &mut lib::MQLONG,
+    );
+    /// Convert Characters
+    ///
+    /// # Arguments
+    /// * `Hconn`: Connection handle
+    /// * `Options`: Options that control the action of MQXCNVC
+    /// * `SourceCCSID`: Coded character set identifier of string before conversion
+    /// * `SourceLength`: Length of string before conversion
+    /// * `pSourceBuffer`: String to be converted
+    /// * `TargetCCSID`: Coded character set identifier of string after conversion
+    /// * `TargetLength`: Length of output buffer
+    /// * `pTargetBuffer` (Output): String after conversion
+    /// * `pDataLength` (Output): Length of output string
+    /// * `pCompCode` (Output): Completion code
+    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    unsafe fn MQXCNVC(
+        &self,
+        Hconn: lib::MQHCONN,
+        Options: lib::MQLONG,
+        SourceCCSID: lib::MQLONG,
+        SourceLength: lib::MQLONG,
+        pSourceBuffer: lib::PMQCHAR,
+        TargetCCSID: lib::MQLONG,
+        TargetLength: lib::MQLONG,
+        pTargetBuffer: lib::PMQCHAR,
+        pDataLength: &mut lib::MQLONG,
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     );

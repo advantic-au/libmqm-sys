@@ -214,10 +214,10 @@ fn main() -> Result<(), io::Error> {
                 mq_trait::{PrefixMqTypes, WrapperGenerator},
             };
 
-            let source_trait: &[(_, syn::Ident, Option<syn::LitStr>)] = &[
-                ("mqi.rs", syn::parse_quote!(Mqi), None),
-                ("mqai.rs", syn::parse_quote!(Mqai), Some(syn::parse_quote!("mqai"))),
-                ("exits.rs", syn::parse_quote!(Exits), Some(syn::parse_quote!("exits"))),
+            let source_trait: &[(_, syn::Ident, Option<syn::LitStr>, bool)] = &[
+                ("mqi.rs", syn::parse_quote!(Mqi), None, true),
+                ("mqai.rs", syn::parse_quote!(Mqai), Some(syn::parse_quote!("mqai")), true),
+                ("exits.rs", syn::parse_quote!(Exits), Some(syn::parse_quote!("exits")), false),
             ];
 
             let mut traits = vec![];
@@ -332,18 +332,22 @@ fn main() -> Result<(), io::Error> {
                 MqLongConstWrap.visit_file_mut(&mut generated);
                 arg_type.visit_file_mut(&mut generated);
 
-                WrapperGenerator(|mut field: syn::Field| {
-                    field.attrs.extend(
-                        source_trait
-                            .iter()
-                            .find_map(|(source, .., feat)| (*source == name && feat.is_some()).then(|| feat.as_ref().unwrap()))
-                            .map(|feat| parse_quote!(#[cfg(feature = #feat)])),
-                    );
-                    wrapper_fields.push(field);
-                })
-                .visit_file(&generated);
+                if !source_trait.iter().any(|(source, .., dlopen)| *source == name && !dlopen) {
+                    WrapperGenerator(|mut field: syn::Field| {
+                        field.attrs.extend(
+                            source_trait
+                                .iter()
+                                .find_map(|(source, .., feat, _)| {
+                                    (*source == name && feat.is_some()).then(|| feat.as_ref().unwrap())
+                                })
+                                .map(|feat| parse_quote!(#[cfg(feature = #feat)])),
+                        );
+                        wrapper_fields.push(field);
+                    })
+                    .visit_file(&generated);
+                }
 
-                if let Some((_, trait_name, feature)) = source_trait.iter().find(|(source, ..)| *source == name) {
+                if let Some((_, trait_name, feature, dlopen)) = source_trait.iter().find(|(source, ..)| *source == name) {
                     // Generate the trait
 
                     use syn::{ImplItemFn, TraitItemFn};
@@ -368,12 +372,15 @@ fn main() -> Result<(), io::Error> {
                     PrefixMqTypes(&mq_mod).visit_item_impl_mut(&mut mock_impl_trait);
                     DesugarForMockall.visit_item_impl_mut(&mut mock_impl_trait);
 
-                    // Generate the dlopen2 struct
-                    let mut dg = ImplFnGenerator::new(impl_dlopen2_fn(&wrapper_name));
-                    dg.visit_item_trait(&item_trait);
-                    let mut dlopen2_impl_trait = dg.generate(&parse_quote!(crate::#trait_name), &dlopen2_name);
-                    dlopen2_impl_trait.attrs.extend(feat_cfg.clone());
-                    PrefixMqTypes(&mq_mod).visit_item_impl_mut(&mut dlopen2_impl_trait);
+                    if *dlopen {
+                        // Generate the dlopen2 struct
+                        let mut dg = ImplFnGenerator::new(impl_dlopen2_fn(&wrapper_name));
+                        dg.visit_item_trait(&item_trait);
+                        let mut dlopen2_impl_trait = dg.generate(&parse_quote!(crate::#trait_name), &dlopen2_name);
+                        dlopen2_impl_trait.attrs.extend(feat_cfg.clone());
+                        PrefixMqTypes(&mq_mod).visit_item_impl_mut(&mut dlopen2_impl_trait);
+                        dlopen_impls.push(dlopen2_impl_trait);
+                    }
 
                     // Generate the link struct
                     let mut lg = ImplFnGenerator::new(impl_link_fn(&mq_mod));
@@ -384,7 +391,6 @@ fn main() -> Result<(), io::Error> {
 
                     mock_impls.push(mock_impl_trait);
                     traits.push(item_trait);
-                    dlopen_impls.push(dlopen2_impl_trait);
                     link_impls.push(link_impl_trait);
                 }
 

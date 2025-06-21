@@ -23,7 +23,7 @@ impl crate::Exits for LinkedMq {
                 pExitOpts,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn MQXCLWLN(
@@ -43,37 +43,7 @@ impl crate::Exits for LinkedMq {
                 pNextRecord,
                 pCompCode,
                 pReason,
-            )
-        }
-    }
-    unsafe fn MQXCNVC(
-        &self,
-        Hconn: lib::MQHCONN,
-        Options: lib::MQLONG,
-        SourceCCSID: lib::MQLONG,
-        SourceLength: lib::MQLONG,
-        pSourceBuffer: lib::PMQCHAR,
-        TargetCCSID: lib::MQLONG,
-        TargetLength: lib::MQLONG,
-        pTargetBuffer: lib::PMQCHAR,
-        pDataLength: &mut lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
-    ) {
-        unsafe {
-            lib::MQXCNVC(
-                Hconn,
-                Options,
-                SourceCCSID,
-                SourceLength,
-                pSourceBuffer,
-                TargetCCSID,
-                TargetLength,
-                pTargetBuffer,
-                pDataLength,
-                pCompCode,
-                pReason,
-            )
+            );
         }
     }
     unsafe fn MQXDX(
@@ -93,7 +63,7 @@ impl crate::Exits for LinkedMq {
                 pInBuffer,
                 OutBufferLength,
                 pOutBuffer,
-            )
+            );
         }
     }
     unsafe fn MQZEP(
@@ -104,7 +74,9 @@ impl crate::Exits for LinkedMq {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ) {
-        unsafe { lib::MQZEP(Hconfig, Function, pEntryPoint, pCompCode, pReason) }
+        unsafe {
+            lib::MQZEP(Hconfig, Function, pEntryPoint, pCompCode, pReason);
+        }
     }
 }
 #[cfg(feature = "mqai")]
@@ -117,7 +89,9 @@ impl crate::Mqai for LinkedMq {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ) {
-        unsafe { lib::mqAddBag(Bag, Selector, ItemValue, pCompCode, pReason) }
+        unsafe {
+            lib::mqAddBag(Bag, Selector, ItemValue, pCompCode, pReason);
+        }
     }
     unsafe fn mqAddByteString(
         &self,
@@ -136,7 +110,7 @@ impl crate::Mqai for LinkedMq {
                 pBuffer,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn mqAddByteStringFilter(
@@ -158,7 +132,7 @@ impl crate::Mqai for LinkedMq {
                 Operator,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn mqAddInquiry(
@@ -168,7 +142,9 @@ impl crate::Mqai for LinkedMq {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ) {
-        unsafe { lib::mqAddInquiry(Bag, Selector, pCompCode, pReason) }
+        unsafe {
+            lib::mqAddInquiry(Bag, Selector, pCompCode, pReason);
+        }
     }
     unsafe fn mqAddInteger(
         &self,
@@ -178,7 +154,9 @@ impl crate::Mqai for LinkedMq {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ) {
-        unsafe { lib::mqAddInteger(Bag, Selector, ItemValue, pCompCode, pReason) }
+        unsafe {
+            lib::mqAddInteger(Bag, Selector, ItemValue, pCompCode, pReason);
+        }
     }
     unsafe fn mqAddInteger64(
         &self,
@@ -188,7 +166,9 @@ impl crate::Mqai for LinkedMq {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ) {
-        unsafe { lib::mqAddInteger64(Bag, Selector, ItemValue, pCompCode, pReason) }
+        unsafe {
+            lib::mqAddInteger64(Bag, Selector, ItemValue, pCompCode, pReason);
+        }
     }
     unsafe fn mqAddIntegerFilter(
         &self,
@@ -207,7 +187,7 @@ impl crate::Mqai for LinkedMq {
                 Operator,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn mqAddString(
@@ -220,7 +200,7 @@ impl crate::Mqai for LinkedMq {
         pReason: &mut lib::MQLONG,
     ) {
         unsafe {
-            lib::mqAddString(Bag, Selector, BufferLength, pBuffer, pCompCode, pReason)
+            lib::mqAddString(Bag, Selector, BufferLength, pBuffer, pCompCode, pReason);
         }
     }
     unsafe fn mqAddStringFilter(
@@ -242,7 +222,7 @@ impl crate::Mqai for LinkedMq {
                 Operator,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn mqBagToBuffer(
@@ -264,7 +244,7 @@ impl crate::Mqai for LinkedMq {
                 pDataLength,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn mqBufferToBag(
@@ -284,7 +264,7 @@ impl crate::Mqai for LinkedMq {
                 DataBag,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn mqClearBag(
@@ -293,7 +273,9 @@ impl crate::Mqai for LinkedMq {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ) {
-        unsafe { lib::mqClearBag(Bag, pCompCode, pReason) }
+        unsafe {
+            lib::mqClearBag(Bag, pCompCode, pReason);
+        }
     }
     unsafe fn mqCountItems(
         &self,
@@ -303,7 +285,9 @@ impl crate::Mqai for LinkedMq {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ) {
-        unsafe { lib::mqCountItems(Bag, Selector, pItemCount, pCompCode, pReason) }
+        unsafe {
+            lib::mqCountItems(Bag, Selector, pItemCount, pCompCode, pReason);
+        }
     }
     unsafe fn mqCreateBag(
         &self,
@@ -312,7 +296,9 @@ impl crate::Mqai for LinkedMq {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ) {
-        unsafe { lib::mqCreateBag(Options, pBag, pCompCode, pReason) }
+        unsafe {
+            lib::mqCreateBag(Options, pBag, pCompCode, pReason);
+        }
     }
     unsafe fn mqDeleteBag(
         &self,
@@ -320,7 +306,9 @@ impl crate::Mqai for LinkedMq {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ) {
-        unsafe { lib::mqDeleteBag(pBag, pCompCode, pReason) }
+        unsafe {
+            lib::mqDeleteBag(pBag, pCompCode, pReason);
+        }
     }
     unsafe fn mqDeleteItem(
         &self,
@@ -330,7 +318,9 @@ impl crate::Mqai for LinkedMq {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ) {
-        unsafe { lib::mqDeleteItem(Bag, Selector, ItemIndex, pCompCode, pReason) }
+        unsafe {
+            lib::mqDeleteItem(Bag, Selector, ItemIndex, pCompCode, pReason);
+        }
     }
     unsafe fn mqExecute(
         &self,
@@ -355,7 +345,7 @@ impl crate::Mqai for LinkedMq {
                 ResponseQ,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn mqGetBag(
@@ -369,7 +359,7 @@ impl crate::Mqai for LinkedMq {
         pReason: &mut lib::MQLONG,
     ) {
         unsafe {
-            lib::mqGetBag(Hconn, Hobj, pMsgDesc, pGetMsgOpts, Bag, pCompCode, pReason)
+            lib::mqGetBag(Hconn, Hobj, pMsgDesc, pGetMsgOpts, Bag, pCompCode, pReason);
         }
     }
     unsafe fn mqInquireBag(
@@ -382,7 +372,7 @@ impl crate::Mqai for LinkedMq {
         pReason: &mut lib::MQLONG,
     ) {
         unsafe {
-            lib::mqInquireBag(Bag, Selector, ItemIndex, pItemValue, pCompCode, pReason)
+            lib::mqInquireBag(Bag, Selector, ItemIndex, pItemValue, pCompCode, pReason);
         }
     }
     unsafe fn mqInquireByteString(
@@ -406,7 +396,7 @@ impl crate::Mqai for LinkedMq {
                 pByteStringLength,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn mqInquireByteStringFilter(
@@ -432,7 +422,7 @@ impl crate::Mqai for LinkedMq {
                 pOperator,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn mqInquireInteger(
@@ -452,7 +442,7 @@ impl crate::Mqai for LinkedMq {
                 pItemValue,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn mqInquireInteger64(
@@ -472,7 +462,7 @@ impl crate::Mqai for LinkedMq {
                 pItemValue,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn mqInquireIntegerFilter(
@@ -494,7 +484,7 @@ impl crate::Mqai for LinkedMq {
                 pOperator,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn mqInquireItemInfo(
@@ -516,7 +506,7 @@ impl crate::Mqai for LinkedMq {
                 pItemType,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn mqInquireString(
@@ -542,7 +532,7 @@ impl crate::Mqai for LinkedMq {
                 pCodedCharSetId,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn mqInquireStringFilter(
@@ -570,7 +560,7 @@ impl crate::Mqai for LinkedMq {
                 pOperator,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn mqPad(
@@ -581,7 +571,9 @@ impl crate::Mqai for LinkedMq {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ) {
-        unsafe { lib::mqPad(pString, BufferLength, pBuffer, pCompCode, pReason) }
+        unsafe {
+            lib::mqPad(pString, BufferLength, pBuffer, pCompCode, pReason);
+        }
     }
     unsafe fn mqPutBag(
         &self,
@@ -594,7 +586,7 @@ impl crate::Mqai for LinkedMq {
         pReason: &mut lib::MQLONG,
     ) {
         unsafe {
-            lib::mqPutBag(Hconn, Hobj, pMsgDesc, pPutMsgOpts, Bag, pCompCode, pReason)
+            lib::mqPutBag(Hconn, Hobj, pMsgDesc, pPutMsgOpts, Bag, pCompCode, pReason);
         }
     }
     unsafe fn mqSetByteString(
@@ -616,7 +608,7 @@ impl crate::Mqai for LinkedMq {
                 pBuffer,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn mqSetByteStringFilter(
@@ -640,7 +632,7 @@ impl crate::Mqai for LinkedMq {
                 Operator,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn mqSetInteger(
@@ -653,7 +645,7 @@ impl crate::Mqai for LinkedMq {
         pReason: &mut lib::MQLONG,
     ) {
         unsafe {
-            lib::mqSetInteger(Bag, Selector, ItemIndex, ItemValue, pCompCode, pReason)
+            lib::mqSetInteger(Bag, Selector, ItemIndex, ItemValue, pCompCode, pReason);
         }
     }
     unsafe fn mqSetInteger64(
@@ -666,7 +658,7 @@ impl crate::Mqai for LinkedMq {
         pReason: &mut lib::MQLONG,
     ) {
         unsafe {
-            lib::mqSetInteger64(Bag, Selector, ItemIndex, ItemValue, pCompCode, pReason)
+            lib::mqSetInteger64(Bag, Selector, ItemIndex, ItemValue, pCompCode, pReason);
         }
     }
     unsafe fn mqSetIntegerFilter(
@@ -688,7 +680,7 @@ impl crate::Mqai for LinkedMq {
                 Operator,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn mqSetString(
@@ -710,7 +702,7 @@ impl crate::Mqai for LinkedMq {
                 pBuffer,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn mqSetStringFilter(
@@ -734,7 +726,7 @@ impl crate::Mqai for LinkedMq {
                 Operator,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn mqTrim(
@@ -745,7 +737,9 @@ impl crate::Mqai for LinkedMq {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ) {
-        unsafe { lib::mqTrim(BufferLength, pBuffer, pString, pCompCode, pReason) }
+        unsafe {
+            lib::mqTrim(BufferLength, pBuffer, pString, pCompCode, pReason);
+        }
     }
     unsafe fn mqTruncateBag(
         &self,
@@ -754,7 +748,9 @@ impl crate::Mqai for LinkedMq {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ) {
-        unsafe { lib::mqTruncateBag(Bag, ItemCount, pCompCode, pReason) }
+        unsafe {
+            lib::mqTruncateBag(Bag, ItemCount, pCompCode, pReason);
+        }
     }
 }
 impl crate::Mqi for LinkedMq {
@@ -764,7 +760,9 @@ impl crate::Mqi for LinkedMq {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ) {
-        unsafe { lib::MQBACK(Hconn, pCompCode, pReason) }
+        unsafe {
+            lib::MQBACK(Hconn, pCompCode, pReason);
+        }
     }
     unsafe fn MQBEGIN(
         &self,
@@ -773,7 +771,9 @@ impl crate::Mqi for LinkedMq {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ) {
-        unsafe { lib::MQBEGIN(Hconn, pBeginOptions, pCompCode, pReason) }
+        unsafe {
+            lib::MQBEGIN(Hconn, pBeginOptions, pCompCode, pReason);
+        }
     }
     unsafe fn MQBUFMH(
         &self,
@@ -798,7 +798,7 @@ impl crate::Mqi for LinkedMq {
                 pDataLength,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn MQCB(
@@ -822,7 +822,7 @@ impl crate::Mqi for LinkedMq {
                 pGetMsgOpts,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn MQCLOSE(
@@ -833,7 +833,9 @@ impl crate::Mqi for LinkedMq {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ) {
-        unsafe { lib::MQCLOSE(Hconn, pHobj, Options, pCompCode, pReason) }
+        unsafe {
+            lib::MQCLOSE(Hconn, pHobj, Options, pCompCode, pReason);
+        }
     }
     unsafe fn MQCMIT(
         &self,
@@ -841,7 +843,9 @@ impl crate::Mqi for LinkedMq {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ) {
-        unsafe { lib::MQCMIT(Hconn, pCompCode, pReason) }
+        unsafe {
+            lib::MQCMIT(Hconn, pCompCode, pReason);
+        }
     }
     unsafe fn MQCONN(
         &self,
@@ -850,7 +854,9 @@ impl crate::Mqi for LinkedMq {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ) {
-        unsafe { lib::MQCONN(pQMgrName, pHconn, pCompCode, pReason) }
+        unsafe {
+            lib::MQCONN(pQMgrName, pHconn, pCompCode, pReason);
+        }
     }
     unsafe fn MQCONNX(
         &self,
@@ -860,7 +866,9 @@ impl crate::Mqi for LinkedMq {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ) {
-        unsafe { lib::MQCONNX(pQMgrName, pConnectOpts, pHconn, pCompCode, pReason) }
+        unsafe {
+            lib::MQCONNX(pQMgrName, pConnectOpts, pHconn, pCompCode, pReason);
+        }
     }
     unsafe fn MQCRTMH(
         &self,
@@ -870,7 +878,9 @@ impl crate::Mqi for LinkedMq {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ) {
-        unsafe { lib::MQCRTMH(Hconn, pCrtMsgHOpts, pHmsg, pCompCode, pReason) }
+        unsafe {
+            lib::MQCRTMH(Hconn, pCrtMsgHOpts, pHmsg, pCompCode, pReason);
+        }
     }
     unsafe fn MQCTL(
         &self,
@@ -880,7 +890,9 @@ impl crate::Mqi for LinkedMq {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ) {
-        unsafe { lib::MQCTL(Hconn, Operation, pControlOpts, pCompCode, pReason) }
+        unsafe {
+            lib::MQCTL(Hconn, Operation, pControlOpts, pCompCode, pReason);
+        }
     }
     unsafe fn MQDISC(
         &self,
@@ -888,7 +900,9 @@ impl crate::Mqi for LinkedMq {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ) {
-        unsafe { lib::MQDISC(pHconn, pCompCode, pReason) }
+        unsafe {
+            lib::MQDISC(pHconn, pCompCode, pReason);
+        }
     }
     unsafe fn MQDLTMH(
         &self,
@@ -898,7 +912,9 @@ impl crate::Mqi for LinkedMq {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ) {
-        unsafe { lib::MQDLTMH(Hconn, pHmsg, pDltMsgHOpts, pCompCode, pReason) }
+        unsafe {
+            lib::MQDLTMH(Hconn, pHmsg, pDltMsgHOpts, pCompCode, pReason);
+        }
     }
     unsafe fn MQDLTMP(
         &self,
@@ -909,7 +925,9 @@ impl crate::Mqi for LinkedMq {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ) {
-        unsafe { lib::MQDLTMP(Hconn, Hmsg, pDltPropOpts, pName, pCompCode, pReason) }
+        unsafe {
+            lib::MQDLTMP(Hconn, Hmsg, pDltPropOpts, pName, pCompCode, pReason);
+        }
     }
     unsafe fn MQGET(
         &self,
@@ -934,7 +952,7 @@ impl crate::Mqi for LinkedMq {
                 pDataLength,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn MQINQ(
@@ -962,7 +980,7 @@ impl crate::Mqi for LinkedMq {
                 pCharAttrs,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn MQINQMP(
@@ -992,7 +1010,7 @@ impl crate::Mqi for LinkedMq {
                 pDataLength,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn MQMHBUF(
@@ -1020,7 +1038,7 @@ impl crate::Mqi for LinkedMq {
                 pDataLength,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn MQOPEN(
@@ -1032,7 +1050,9 @@ impl crate::Mqi for LinkedMq {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ) {
-        unsafe { lib::MQOPEN(Hconn, pObjDesc, Options, pHobj, pCompCode, pReason) }
+        unsafe {
+            lib::MQOPEN(Hconn, pObjDesc, Options, pHobj, pCompCode, pReason);
+        }
     }
     unsafe fn MQPUT(
         &self,
@@ -1055,7 +1075,7 @@ impl crate::Mqi for LinkedMq {
                 pBuffer,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn MQPUT1(
@@ -1079,7 +1099,7 @@ impl crate::Mqi for LinkedMq {
                 pBuffer,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn MQSET(
@@ -1107,7 +1127,7 @@ impl crate::Mqi for LinkedMq {
                 pCharAttrs,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn MQSETMP(
@@ -1135,7 +1155,7 @@ impl crate::Mqi for LinkedMq {
                 pValue,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn MQSTAT(
@@ -1146,7 +1166,9 @@ impl crate::Mqi for LinkedMq {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ) {
-        unsafe { lib::MQSTAT(Hconn, Type, pStatus, pCompCode, pReason) }
+        unsafe {
+            lib::MQSTAT(Hconn, Type, pStatus, pCompCode, pReason);
+        }
     }
     unsafe fn MQSUB(
         &self,
@@ -1157,7 +1179,9 @@ impl crate::Mqi for LinkedMq {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ) {
-        unsafe { lib::MQSUB(Hconn, pSubDesc, pHobj, pHsub, pCompCode, pReason) }
+        unsafe {
+            lib::MQSUB(Hconn, pSubDesc, pHobj, pHsub, pCompCode, pReason);
+        }
     }
     unsafe fn MQSUBRQ(
         &self,
@@ -1168,6 +1192,38 @@ impl crate::Mqi for LinkedMq {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ) {
-        unsafe { lib::MQSUBRQ(Hconn, Hsub, Action, pSubRqOpts, pCompCode, pReason) }
+        unsafe {
+            lib::MQSUBRQ(Hconn, Hsub, Action, pSubRqOpts, pCompCode, pReason);
+        }
+    }
+    unsafe fn MQXCNVC(
+        &self,
+        Hconn: lib::MQHCONN,
+        Options: lib::MQLONG,
+        SourceCCSID: lib::MQLONG,
+        SourceLength: lib::MQLONG,
+        pSourceBuffer: lib::PMQCHAR,
+        TargetCCSID: lib::MQLONG,
+        TargetLength: lib::MQLONG,
+        pTargetBuffer: lib::PMQCHAR,
+        pDataLength: &mut lib::MQLONG,
+        pCompCode: &mut lib::MQLONG,
+        pReason: &mut lib::MQLONG,
+    ) {
+        unsafe {
+            lib::MQXCNVC(
+                Hconn,
+                Options,
+                SourceCCSID,
+                SourceLength,
+                pSourceBuffer,
+                TargetCCSID,
+                TargetLength,
+                pTargetBuffer,
+                pDataLength,
+                pCompCode,
+                pReason,
+            );
+        }
     }
 }

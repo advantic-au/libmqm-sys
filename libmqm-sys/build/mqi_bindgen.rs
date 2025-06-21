@@ -48,8 +48,8 @@ pub mod mqi {
             name: "mqi.rs",
             headers: &["cmqc.h", "cmqxc.h"],
             allow_list: AllowList {
-                functions: &[],
-                variables: &["MQCD_.*"],
+                functions: &["MQXCNVC"],
+                variables: &["MQCD_.*", "MQDCC_.*"],
                 types: &[".*MQCD"],
             },
             target_list: &["MQXPT_.*", "MQCHT_.*", "MQCAFTY_.*", "MQCOMPRESS_.*"],

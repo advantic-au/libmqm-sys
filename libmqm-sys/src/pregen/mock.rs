@@ -6,91 +6,86 @@ mockall::mock! {
     pCompCode : & 'b mut lib::MQLONG, pReason : & 'c mut lib::MQLONG,) {} unsafe fn
     MQXCLWLN < 'd, 'c, 'b, 'a > (& self, pExitParms : & 'a mut lib::MQWXP, CurrentRecord
     : lib::MQPTR, NextOffset : lib::MQLONG, pNextRecord : & 'b mut lib::MQPTR, pCompCode
-    : & 'c mut lib::MQLONG, pReason : & 'd mut lib::MQLONG,) {} unsafe fn MQXCNVC < 'c,
-    'b, 'a > (& self, Hconn : lib::MQHCONN, Options : lib::MQLONG, SourceCCSID :
-    lib::MQLONG, SourceLength : lib::MQLONG, pSourceBuffer : lib::PMQCHAR, TargetCCSID :
-    lib::MQLONG, TargetLength : lib::MQLONG, pTargetBuffer : lib::PMQCHAR, pDataLength :
-    & 'a mut lib::MQLONG, pCompCode : & 'b mut lib::MQLONG, pReason : & 'c mut
-    lib::MQLONG,) {} unsafe fn MQXDX < 'a > (& self, pDataConvExitParms : & 'a mut
-    lib::MQDXP, pMsgDesc : lib::PMQMD, InBufferLength : lib::MQLONG, pInBuffer :
-    lib::PMQVOID, OutBufferLength : lib::MQLONG, pOutBuffer : lib::PMQVOID,) {} unsafe fn
-    MQZEP < 'b, 'a > (& self, Hconfig : lib::MQHCONFIG, Function : lib::MQLONG,
-    pEntryPoint : lib::PMQFUNC, pCompCode : & 'a mut lib::MQLONG, pReason : & 'b mut
-    lib::MQLONG) {} } #[cfg(feature = "mqai")] impl crate ::Mqai for Mq { unsafe fn
-    mqAddBag < 'b, 'a > (& self, Bag : lib::MQHBAG, Selector : lib::MQLONG, ItemValue :
-    lib::MQHBAG, pCompCode : & 'a mut lib::MQLONG, pReason : & 'b mut lib::MQLONG) {}
-    unsafe fn mqAddByteString < 'b, 'a > (& self, Bag : lib::MQHBAG, Selector :
-    lib::MQLONG, BufferLength : lib::MQLONG, pBuffer : lib::PMQBYTE, pCompCode : & 'a mut
-    lib::MQLONG, pReason : & 'b mut lib::MQLONG,) {} unsafe fn mqAddByteStringFilter <
-    'b, 'a > (& self, Bag : lib::MQHBAG, Selector : lib::MQLONG, BufferLength :
-    lib::MQLONG, pBuffer : lib::PMQBYTE, Operator : lib::MQLONG, pCompCode : & 'a mut
-    lib::MQLONG, pReason : & 'b mut lib::MQLONG,) {} unsafe fn mqAddInquiry < 'b, 'a > (&
-    self, Bag : lib::MQHBAG, Selector : lib::MQLONG, pCompCode : & 'a mut lib::MQLONG,
-    pReason : & 'b mut lib::MQLONG) {} unsafe fn mqAddInteger < 'b, 'a > (& self, Bag :
-    lib::MQHBAG, Selector : lib::MQLONG, ItemValue : lib::MQLONG, pCompCode : & 'a mut
-    lib::MQLONG, pReason : & 'b mut lib::MQLONG) {} unsafe fn mqAddInteger64 < 'b, 'a >
-    (& self, Bag : lib::MQHBAG, Selector : lib::MQLONG, ItemValue : lib::MQINT64,
-    pCompCode : & 'a mut lib::MQLONG, pReason : & 'b mut lib::MQLONG) {} unsafe fn
-    mqAddIntegerFilter < 'b, 'a > (& self, Bag : lib::MQHBAG, Selector : lib::MQLONG,
-    ItemValue : lib::MQLONG, Operator : lib::MQLONG, pCompCode : & 'a mut lib::MQLONG,
-    pReason : & 'b mut lib::MQLONG,) {} unsafe fn mqAddString < 'b, 'a > (& self, Bag :
+    : & 'c mut lib::MQLONG, pReason : & 'd mut lib::MQLONG,) {} unsafe fn MQXDX < 'a > (&
+    self, pDataConvExitParms : & 'a mut lib::MQDXP, pMsgDesc : lib::PMQMD, InBufferLength
+    : lib::MQLONG, pInBuffer : lib::PMQVOID, OutBufferLength : lib::MQLONG, pOutBuffer :
+    lib::PMQVOID,) {} unsafe fn MQZEP < 'b, 'a > (& self, Hconfig : lib::MQHCONFIG,
+    Function : lib::MQLONG, pEntryPoint : lib::PMQFUNC, pCompCode : & 'a mut lib::MQLONG,
+    pReason : & 'b mut lib::MQLONG) {} } #[cfg(feature = "mqai")] impl crate ::Mqai for
+    Mq { unsafe fn mqAddBag < 'b, 'a > (& self, Bag : lib::MQHBAG, Selector :
+    lib::MQLONG, ItemValue : lib::MQHBAG, pCompCode : & 'a mut lib::MQLONG, pReason : &
+    'b mut lib::MQLONG) {} unsafe fn mqAddByteString < 'b, 'a > (& self, Bag :
     lib::MQHBAG, Selector : lib::MQLONG, BufferLength : lib::MQLONG, pBuffer :
-    lib::PMQCHAR, pCompCode : & 'a mut lib::MQLONG, pReason : & 'b mut lib::MQLONG,) {}
-    unsafe fn mqAddStringFilter < 'b, 'a > (& self, Bag : lib::MQHBAG, Selector :
-    lib::MQLONG, BufferLength : lib::MQLONG, pBuffer : lib::PMQCHAR, Operator :
+    lib::PMQBYTE, pCompCode : & 'a mut lib::MQLONG, pReason : & 'b mut lib::MQLONG,) {}
+    unsafe fn mqAddByteStringFilter < 'b, 'a > (& self, Bag : lib::MQHBAG, Selector :
+    lib::MQLONG, BufferLength : lib::MQLONG, pBuffer : lib::PMQBYTE, Operator :
     lib::MQLONG, pCompCode : & 'a mut lib::MQLONG, pReason : & 'b mut lib::MQLONG,) {}
-    unsafe fn mqBagToBuffer < 'c, 'b, 'a > (& self, OptionsBag : lib::MQHBAG, DataBag :
-    lib::MQHBAG, BufferLength : lib::MQLONG, pBuffer : lib::PMQVOID, pDataLength : & 'a
-    mut lib::MQLONG, pCompCode : & 'b mut lib::MQLONG, pReason : & 'c mut lib::MQLONG,)
-    {} unsafe fn mqBufferToBag < 'b, 'a > (& self, OptionsBag : lib::MQHBAG, BufferLength
-    : lib::MQLONG, pBuffer : lib::PMQVOID, DataBag : lib::MQHBAG, pCompCode : & 'a mut
-    lib::MQLONG, pReason : & 'b mut lib::MQLONG,) {} unsafe fn mqClearBag < 'b, 'a > (&
-    self, Bag : lib::MQHBAG, pCompCode : & 'a mut lib::MQLONG, pReason : & 'b mut
-    lib::MQLONG) {} unsafe fn mqCountItems < 'c, 'b, 'a > (& self, Bag : lib::MQHBAG,
-    Selector : lib::MQLONG, pItemCount : & 'a mut lib::MQLONG, pCompCode : & 'b mut
-    lib::MQLONG, pReason : & 'c mut lib::MQLONG) {} unsafe fn mqCreateBag < 'c, 'b, 'a >
-    (& self, Options : lib::MQLONG, pBag : & 'a mut lib::MQHBAG, pCompCode : & 'b mut
-    lib::MQLONG, pReason : & 'c mut lib::MQLONG) {} unsafe fn mqDeleteBag < 'c, 'b, 'a >
-    (& self, pBag : & 'a mut lib::MQHBAG, pCompCode : & 'b mut lib::MQLONG, pReason : &
-    'c mut lib::MQLONG) {} unsafe fn mqDeleteItem < 'b, 'a > (& self, Bag : lib::MQHBAG,
-    Selector : lib::MQLONG, ItemIndex : lib::MQLONG, pCompCode : & 'a mut lib::MQLONG,
-    pReason : & 'b mut lib::MQLONG) {} unsafe fn mqExecute < 'b, 'a > (& self, Hconn :
-    lib::MQHCONN, Command : lib::MQLONG, OptionsBag : lib::MQHBAG, AdminBag :
-    lib::MQHBAG, ResponseBag : lib::MQHBAG, AdminQ : lib::MQHOBJ, ResponseQ :
-    lib::MQHOBJ, pCompCode : & 'a mut lib::MQLONG, pReason : & 'b mut lib::MQLONG,) {}
-    unsafe fn mqGetBag < 'c, 'b, 'a > (& self, Hconn : lib::MQHCONN, Hobj : lib::MQHOBJ,
-    pMsgDesc : lib::PMQVOID, pGetMsgOpts : & 'a mut lib::MQGMO, Bag : lib::MQHBAG,
-    pCompCode : & 'b mut lib::MQLONG, pReason : & 'c mut lib::MQLONG,) {} unsafe fn
-    mqInquireBag < 'c, 'b, 'a > (& self, Bag : lib::MQHBAG, Selector : lib::MQLONG,
-    ItemIndex : lib::MQLONG, pItemValue : & 'a mut lib::MQHBAG, pCompCode : & 'b mut
-    lib::MQLONG, pReason : & 'c mut lib::MQLONG,) {} unsafe fn mqInquireByteString < 'c,
+    unsafe fn mqAddInquiry < 'b, 'a > (& self, Bag : lib::MQHBAG, Selector : lib::MQLONG,
+    pCompCode : & 'a mut lib::MQLONG, pReason : & 'b mut lib::MQLONG) {} unsafe fn
+    mqAddInteger < 'b, 'a > (& self, Bag : lib::MQHBAG, Selector : lib::MQLONG, ItemValue
+    : lib::MQLONG, pCompCode : & 'a mut lib::MQLONG, pReason : & 'b mut lib::MQLONG) {}
+    unsafe fn mqAddInteger64 < 'b, 'a > (& self, Bag : lib::MQHBAG, Selector :
+    lib::MQLONG, ItemValue : lib::MQINT64, pCompCode : & 'a mut lib::MQLONG, pReason : &
+    'b mut lib::MQLONG) {} unsafe fn mqAddIntegerFilter < 'b, 'a > (& self, Bag :
+    lib::MQHBAG, Selector : lib::MQLONG, ItemValue : lib::MQLONG, Operator : lib::MQLONG,
+    pCompCode : & 'a mut lib::MQLONG, pReason : & 'b mut lib::MQLONG,) {} unsafe fn
+    mqAddString < 'b, 'a > (& self, Bag : lib::MQHBAG, Selector : lib::MQLONG,
+    BufferLength : lib::MQLONG, pBuffer : lib::PMQCHAR, pCompCode : & 'a mut lib::MQLONG,
+    pReason : & 'b mut lib::MQLONG,) {} unsafe fn mqAddStringFilter < 'b, 'a > (& self,
+    Bag : lib::MQHBAG, Selector : lib::MQLONG, BufferLength : lib::MQLONG, pBuffer :
+    lib::PMQCHAR, Operator : lib::MQLONG, pCompCode : & 'a mut lib::MQLONG, pReason : &
+    'b mut lib::MQLONG,) {} unsafe fn mqBagToBuffer < 'c, 'b, 'a > (& self, OptionsBag :
+    lib::MQHBAG, DataBag : lib::MQHBAG, BufferLength : lib::MQLONG, pBuffer :
+    lib::PMQVOID, pDataLength : & 'a mut lib::MQLONG, pCompCode : & 'b mut lib::MQLONG,
+    pReason : & 'c mut lib::MQLONG,) {} unsafe fn mqBufferToBag < 'b, 'a > (& self,
+    OptionsBag : lib::MQHBAG, BufferLength : lib::MQLONG, pBuffer : lib::PMQVOID, DataBag
+    : lib::MQHBAG, pCompCode : & 'a mut lib::MQLONG, pReason : & 'b mut lib::MQLONG,) {}
+    unsafe fn mqClearBag < 'b, 'a > (& self, Bag : lib::MQHBAG, pCompCode : & 'a mut
+    lib::MQLONG, pReason : & 'b mut lib::MQLONG) {} unsafe fn mqCountItems < 'c, 'b, 'a >
+    (& self, Bag : lib::MQHBAG, Selector : lib::MQLONG, pItemCount : & 'a mut
+    lib::MQLONG, pCompCode : & 'b mut lib::MQLONG, pReason : & 'c mut lib::MQLONG) {}
+    unsafe fn mqCreateBag < 'c, 'b, 'a > (& self, Options : lib::MQLONG, pBag : & 'a mut
+    lib::MQHBAG, pCompCode : & 'b mut lib::MQLONG, pReason : & 'c mut lib::MQLONG) {}
+    unsafe fn mqDeleteBag < 'c, 'b, 'a > (& self, pBag : & 'a mut lib::MQHBAG, pCompCode
+    : & 'b mut lib::MQLONG, pReason : & 'c mut lib::MQLONG) {} unsafe fn mqDeleteItem <
     'b, 'a > (& self, Bag : lib::MQHBAG, Selector : lib::MQLONG, ItemIndex : lib::MQLONG,
-    BufferLength : lib::MQLONG, pBuffer : lib::PMQBYTE, pByteStringLength : & 'a mut
-    lib::MQLONG, pCompCode : & 'b mut lib::MQLONG, pReason : & 'c mut lib::MQLONG,) {}
-    unsafe fn mqInquireByteStringFilter < 'd, 'c, 'b, 'a > (& self, Bag : lib::MQHBAG,
-    Selector : lib::MQLONG, ItemIndex : lib::MQLONG, BufferLength : lib::MQLONG, pBuffer
-    : lib::PMQBYTE, pByteStringLength : & 'a mut lib::MQLONG, pOperator : & 'b mut
-    lib::MQLONG, pCompCode : & 'c mut lib::MQLONG, pReason : & 'd mut lib::MQLONG,) {}
-    unsafe fn mqInquireInteger < 'c, 'b, 'a > (& self, Bag : lib::MQHBAG, Selector :
-    lib::MQLONG, ItemIndex : lib::MQLONG, pItemValue : & 'a mut lib::MQLONG, pCompCode :
-    & 'b mut lib::MQLONG, pReason : & 'c mut lib::MQLONG,) {} unsafe fn
-    mqInquireInteger64 < 'c, 'b, 'a > (& self, Bag : lib::MQHBAG, Selector : lib::MQLONG,
-    ItemIndex : lib::MQLONG, pItemValue : & 'a mut lib::MQINT64, pCompCode : & 'b mut
-    lib::MQLONG, pReason : & 'c mut lib::MQLONG,) {} unsafe fn mqInquireIntegerFilter <
-    'd, 'c, 'b, 'a > (& self, Bag : lib::MQHBAG, Selector : lib::MQLONG, ItemIndex :
-    lib::MQLONG, pItemValue : & 'a mut lib::MQLONG, pOperator : & 'b mut lib::MQLONG,
-    pCompCode : & 'c mut lib::MQLONG, pReason : & 'd mut lib::MQLONG,) {} unsafe fn
-    mqInquireItemInfo < 'd, 'c, 'b, 'a > (& self, Bag : lib::MQHBAG, Selector :
-    lib::MQLONG, ItemIndex : lib::MQLONG, pOutSelector : & 'a mut lib::MQLONG, pItemType
-    : & 'b mut lib::MQLONG, pCompCode : & 'c mut lib::MQLONG, pReason : & 'd mut
-    lib::MQLONG,) {} unsafe fn mqInquireString < 'd, 'c, 'b, 'a > (& self, Bag :
-    lib::MQHBAG, Selector : lib::MQLONG, ItemIndex : lib::MQLONG, BufferLength :
-    lib::MQLONG, pBuffer : lib::PMQCHAR, pStringLength : & 'a mut lib::MQLONG,
-    pCodedCharSetId : & 'b mut lib::MQLONG, pCompCode : & 'c mut lib::MQLONG, pReason : &
-    'd mut lib::MQLONG,) {} unsafe fn mqInquireStringFilter < 'e, 'd, 'c, 'b, 'a > (&
+    pCompCode : & 'a mut lib::MQLONG, pReason : & 'b mut lib::MQLONG) {} unsafe fn
+    mqExecute < 'b, 'a > (& self, Hconn : lib::MQHCONN, Command : lib::MQLONG, OptionsBag
+    : lib::MQHBAG, AdminBag : lib::MQHBAG, ResponseBag : lib::MQHBAG, AdminQ :
+    lib::MQHOBJ, ResponseQ : lib::MQHOBJ, pCompCode : & 'a mut lib::MQLONG, pReason : &
+    'b mut lib::MQLONG,) {} unsafe fn mqGetBag < 'c, 'b, 'a > (& self, Hconn :
+    lib::MQHCONN, Hobj : lib::MQHOBJ, pMsgDesc : lib::PMQVOID, pGetMsgOpts : & 'a mut
+    lib::MQGMO, Bag : lib::MQHBAG, pCompCode : & 'b mut lib::MQLONG, pReason : & 'c mut
+    lib::MQLONG,) {} unsafe fn mqInquireBag < 'c, 'b, 'a > (& self, Bag : lib::MQHBAG,
+    Selector : lib::MQLONG, ItemIndex : lib::MQLONG, pItemValue : & 'a mut lib::MQHBAG,
+    pCompCode : & 'b mut lib::MQLONG, pReason : & 'c mut lib::MQLONG,) {} unsafe fn
+    mqInquireByteString < 'c, 'b, 'a > (& self, Bag : lib::MQHBAG, Selector :
+    lib::MQLONG, ItemIndex : lib::MQLONG, BufferLength : lib::MQLONG, pBuffer :
+    lib::PMQBYTE, pByteStringLength : & 'a mut lib::MQLONG, pCompCode : & 'b mut
+    lib::MQLONG, pReason : & 'c mut lib::MQLONG,) {} unsafe fn mqInquireByteStringFilter
+    < 'd, 'c, 'b, 'a > (& self, Bag : lib::MQHBAG, Selector : lib::MQLONG, ItemIndex :
+    lib::MQLONG, BufferLength : lib::MQLONG, pBuffer : lib::PMQBYTE, pByteStringLength :
+    & 'a mut lib::MQLONG, pOperator : & 'b mut lib::MQLONG, pCompCode : & 'c mut
+    lib::MQLONG, pReason : & 'd mut lib::MQLONG,) {} unsafe fn mqInquireInteger < 'c, 'b,
+    'a > (& self, Bag : lib::MQHBAG, Selector : lib::MQLONG, ItemIndex : lib::MQLONG,
+    pItemValue : & 'a mut lib::MQLONG, pCompCode : & 'b mut lib::MQLONG, pReason : & 'c
+    mut lib::MQLONG,) {} unsafe fn mqInquireInteger64 < 'c, 'b, 'a > (& self, Bag :
+    lib::MQHBAG, Selector : lib::MQLONG, ItemIndex : lib::MQLONG, pItemValue : & 'a mut
+    lib::MQINT64, pCompCode : & 'b mut lib::MQLONG, pReason : & 'c mut lib::MQLONG,) {}
+    unsafe fn mqInquireIntegerFilter < 'd, 'c, 'b, 'a > (& self, Bag : lib::MQHBAG,
+    Selector : lib::MQLONG, ItemIndex : lib::MQLONG, pItemValue : & 'a mut lib::MQLONG,
+    pOperator : & 'b mut lib::MQLONG, pCompCode : & 'c mut lib::MQLONG, pReason : & 'd
+    mut lib::MQLONG,) {} unsafe fn mqInquireItemInfo < 'd, 'c, 'b, 'a > (& self, Bag :
+    lib::MQHBAG, Selector : lib::MQLONG, ItemIndex : lib::MQLONG, pOutSelector : & 'a mut
+    lib::MQLONG, pItemType : & 'b mut lib::MQLONG, pCompCode : & 'c mut lib::MQLONG,
+    pReason : & 'd mut lib::MQLONG,) {} unsafe fn mqInquireString < 'd, 'c, 'b, 'a > (&
     self, Bag : lib::MQHBAG, Selector : lib::MQLONG, ItemIndex : lib::MQLONG,
     BufferLength : lib::MQLONG, pBuffer : lib::PMQCHAR, pStringLength : & 'a mut
-    lib::MQLONG, pCodedCharSetId : & 'b mut lib::MQLONG, pOperator : & 'c mut
+    lib::MQLONG, pCodedCharSetId : & 'b mut lib::MQLONG, pCompCode : & 'c mut
+    lib::MQLONG, pReason : & 'd mut lib::MQLONG,) {} unsafe fn mqInquireStringFilter <
+    'e, 'd, 'c, 'b, 'a > (& self, Bag : lib::MQHBAG, Selector : lib::MQLONG, ItemIndex :
+    lib::MQLONG, BufferLength : lib::MQLONG, pBuffer : lib::PMQCHAR, pStringLength : & 'a
+    mut lib::MQLONG, pCodedCharSetId : & 'b mut lib::MQLONG, pOperator : & 'c mut
     lib::MQLONG, pCompCode : & 'd mut lib::MQLONG, pReason : & 'e mut lib::MQLONG,) {}
     unsafe fn mqPad < 'b, 'a > (& self, pString : lib::PMQCHAR, BufferLength :
     lib::MQLONG, pBuffer : lib::PMQCHAR, pCompCode : & 'a mut lib::MQLONG, pReason : & 'b
@@ -193,5 +188,9 @@ mockall::mock! {
     lib::MQHOBJ, pCompCode : & 'd mut lib::MQLONG, pReason : & 'e mut lib::MQLONG) {}
     unsafe fn MQSUBRQ < 'c, 'b, 'a > (& self, Hconn : lib::MQHCONN, Hsub : lib::MQHOBJ,
     Action : lib::MQLONG, pSubRqOpts : Option < & 'a mut lib::MQSRO >, pCompCode : & 'b
-    mut lib::MQLONG, pReason : & 'c mut lib::MQLONG) {} }
+    mut lib::MQLONG, pReason : & 'c mut lib::MQLONG) {} unsafe fn MQXCNVC < 'c, 'b, 'a >
+    (& self, Hconn : lib::MQHCONN, Options : lib::MQLONG, SourceCCSID : lib::MQLONG,
+    SourceLength : lib::MQLONG, pSourceBuffer : lib::PMQCHAR, TargetCCSID : lib::MQLONG,
+    TargetLength : lib::MQLONG, pTargetBuffer : lib::PMQCHAR, pDataLength : & 'a mut
+    lib::MQLONG, pCompCode : & 'b mut lib::MQLONG, pReason : & 'c mut lib::MQLONG,) {} }
 }

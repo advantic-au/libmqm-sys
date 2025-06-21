@@ -118,7 +118,7 @@ impl<F: FnMut(syn::Field)> Visit<'_> for WrapperGenerator<F> {
         });
         let f = &mut self.0;
         f(parse_quote!(
-            #field_name: unsafe extern "C" fn(#( #fn_args,)*)
+            #field_name: unsafe extern "C" fn(#(#fn_args,)*)
         ));
     }
 }
@@ -185,7 +185,7 @@ pub fn impl_link_fn(mod_path: &Path) -> impl Fn(&mut ImplItemFn, &TraitItemFn) +
         });
         impl_item_fn.block = parse_quote!({
             unsafe {
-               #mod_path::#fn_name(#(#inputs), *)
+               #mod_path::#fn_name(#(#inputs), *);
             }
         });
     }

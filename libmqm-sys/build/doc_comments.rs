@@ -67,6 +67,14 @@ const EQUIV: &[(&str, &str)] = &[
     ("MQZEP", "MQ_ZEP_CALL"),
 ];
 
+const REPLACE: &[(&str, &str)] = &[("CompCode", "`CompCode`")];
+
+fn replace_keywords(comment: &str) -> String {
+    REPLACE
+        .iter()
+        .fold(comment.to_string(), |comment, (from, to)| comment.replace(from, to))
+}
+
 #[derive(Debug, Clone)]
 pub struct DocCommentType<'a>(pub &'a HashMap<String, String>);
 
@@ -138,15 +146,14 @@ impl ExtractFromC for DescriptionRegex {
             .map(|c| {
                 (
                     c[1].to_string(),
-                    self.delim
-                        .split(&c[2])
-                        .map(str::trim)
-                        .filter(|s| !s.is_empty())
-                        .fold(String::new(), |mut acc, s| {
+                    replace_keywords(&self.delim.split(&c[2]).map(str::trim).filter(|s| !s.is_empty()).fold(
+                        String::new(),
+                        |mut acc, s| {
                             acc += " ";
                             acc += &s.split_whitespace().collect::<Vec<_>>().join(" ");
                             acc
-                        }),
+                        },
+                    )),
                 )
             })
             .collect::<HashMap<_, _>>();
@@ -174,11 +181,14 @@ impl ExtractFromC for StructFieldExtract {
                     .map(|c| {
                         (
                             c[1].to_string(), // Field name
-                            self.delim
-                                .split(&c[2])
-                                .filter(|s| !s.is_empty() && !s.starts_with("Ver:"))
-                                .collect::<Vec<_>>()
-                                .join(" "),
+                            replace_keywords(
+                                &self
+                                    .delim
+                                    .split(&c[2])
+                                    .filter(|s| !s.is_empty() && !s.starts_with("Ver:"))
+                                    .collect::<Vec<_>>()
+                                    .join(" "),
+                            ),
                         )
                     })
                     .collect(),
@@ -199,12 +209,15 @@ impl ExtractFromC for FnParamExtract {
                     .map(|c| {
                         (
                             c[1].to_string(), // Param name
-                            self.delim
-                                .split(&c[2])
-                                .filter(|s| !s.is_empty())
-                                .take_while(|s| s.chars().any(|c| c != '*'))
-                                .collect::<Vec<_>>()
-                                .join(" "),
+                            replace_keywords(
+                                &self
+                                    .delim
+                                    .split(&c[2])
+                                    .filter(|s| !s.is_empty())
+                                    .take_while(|s| s.chars().any(|c| c != '*'))
+                                    .collect::<Vec<_>>()
+                                    .join(" "),
+                            ),
                         )
                     })
                     .collect(),

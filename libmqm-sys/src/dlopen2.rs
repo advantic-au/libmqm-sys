@@ -39,7 +39,7 @@
 
 use ::dlopen2::wrapper::Container;
 
-/// A dlopen2 [`WrapperApi`] implementation for MQI and MQAI function calls
+/// A dlopen2 [`WrapperApi`](::dlopen2::wrapper::WrapperApi) implementation for MQ function calls
 pub use super::generated::dlopen2::MqWrapper;
 
 /// Name of the platform dependent MQM dynamic library
