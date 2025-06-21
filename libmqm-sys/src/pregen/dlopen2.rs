@@ -1,4 +1,3 @@
-#![allow(clippy::too_many_arguments)]
 use crate::lib;
 use ::dlopen2::wrapper::WrapperApi;
 #[derive(WrapperApi, Debug)]

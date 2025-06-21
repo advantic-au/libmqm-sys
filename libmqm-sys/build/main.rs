@@ -440,8 +440,6 @@ fn main() -> Result<(), io::Error> {
             );
 
             let mut wrapper_file = parse_quote!(
-                #![allow(clippy::too_many_arguments)]
-
                 use crate::lib;
                 use ::dlopen2::wrapper::WrapperApi;
 
