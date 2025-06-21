@@ -1,5 +1,4 @@
 use crate::lib;
-#[allow(clippy::missing_safety_doc, clippy::too_many_arguments, non_snake_case)]
 #[cfg(feature = "exits")]
 pub trait Exits {
     /// Register Entry Point
@@ -12,6 +11,9 @@ pub trait Exits {
     /// * `pExitOpts`: Options that control the action of MQXEP
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=reference-exit-entry-point-registration-call-mqxep)
     unsafe fn MQXEP(
         &self,
         Hconfig: lib::MQHCONFIG,
@@ -31,6 +33,9 @@ pub trait Exits {
     /// * `pNextRecord` (Output): Address of next record or structure
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=structures-mqxclwln-navigate-cluster-workload-records)
     unsafe fn MQXCLWLN(
         &self,
         pExitParms: &mut lib::MQWXP,
@@ -66,6 +71,9 @@ pub trait Exits {
     /// * `pEntryPoint`: Function entry point
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=information-mqzep-add-component-entry-point)
     unsafe fn MQZEP(
         &self,
         Hconfig: lib::MQHCONFIG,
@@ -75,7 +83,6 @@ pub trait Exits {
         pReason: &mut lib::MQLONG,
     );
 }
-#[allow(clippy::missing_safety_doc, clippy::too_many_arguments, non_snake_case)]
 #[cfg(feature = "mqai")]
 pub trait Mqai {
     /// Add Nested Bag to Bag
@@ -86,6 +93,9 @@ pub trait Mqai {
     /// * `ItemValue`: Item value
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqaddbag)
     unsafe fn mqAddBag(
         &self,
         Bag: lib::MQHBAG,
@@ -103,6 +113,9 @@ pub trait Mqai {
     /// * `pBuffer`: Buffer containing item value
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqaddbytestring)
     unsafe fn mqAddByteString(
         &self,
         Bag: lib::MQHBAG,
@@ -122,6 +135,9 @@ pub trait Mqai {
     /// * `Operator`: Item operator
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqaddbytestringfilter)
     unsafe fn mqAddByteStringFilter(
         &self,
         Bag: lib::MQHBAG,
@@ -139,6 +155,9 @@ pub trait Mqai {
     /// * `Selector`: Attribute selector
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqaddinquiry)
     unsafe fn mqAddInquiry(
         &self,
         Bag: lib::MQHBAG,
@@ -154,6 +173,9 @@ pub trait Mqai {
     /// * `ItemValue`: Item value
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqaddinteger)
     unsafe fn mqAddInteger(
         &self,
         Bag: lib::MQHBAG,
@@ -170,6 +192,9 @@ pub trait Mqai {
     /// * `ItemValue`: Item value
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqaddinteger64)
     unsafe fn mqAddInteger64(
         &self,
         Bag: lib::MQHBAG,
@@ -187,6 +212,9 @@ pub trait Mqai {
     /// * `Operator`: Item operator
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqaddintegerfilter)
     unsafe fn mqAddIntegerFilter(
         &self,
         Bag: lib::MQHBAG,
@@ -205,6 +233,9 @@ pub trait Mqai {
     /// * `pBuffer`: Buffer containing item value
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqaddstring)
     unsafe fn mqAddString(
         &self,
         Bag: lib::MQHBAG,
@@ -224,6 +255,9 @@ pub trait Mqai {
     /// * `Operator`: Item operator
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqaddstringfilter)
     unsafe fn mqAddStringFilter(
         &self,
         Bag: lib::MQHBAG,
@@ -244,6 +278,9 @@ pub trait Mqai {
     /// * `pDataLength` (Output): Length of PCF returned in buffer
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqbagtobuffer)
     unsafe fn mqBagToBuffer(
         &self,
         OptionsBag: lib::MQHBAG,
@@ -263,6 +300,9 @@ pub trait Mqai {
     /// * `DataBag` (Input/Output): Handle of bag to contain data
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqbuffertobag)
     unsafe fn mqBufferToBag(
         &self,
         OptionsBag: lib::MQHBAG,
@@ -278,6 +318,9 @@ pub trait Mqai {
     /// * `Bag`: Bag handle
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqclearbag)
     unsafe fn mqClearBag(
         &self,
         Bag: lib::MQHBAG,
@@ -292,6 +335,9 @@ pub trait Mqai {
     /// * `pItemCount` (Output): Number of items
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqcountitems)
     unsafe fn mqCountItems(
         &self,
         Bag: lib::MQHBAG,
@@ -307,6 +353,9 @@ pub trait Mqai {
     /// * `pBag` (Output): Handle of bag created
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqcreatebag)
     unsafe fn mqCreateBag(
         &self,
         Options: lib::MQLONG,
@@ -320,6 +369,9 @@ pub trait Mqai {
     /// * `pBag` (Input/Output): Bag handle
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqdeletebag)
     unsafe fn mqDeleteBag(
         &self,
         pBag: &mut lib::MQHBAG,
@@ -334,6 +386,9 @@ pub trait Mqai {
     /// * `ItemIndex`: Item index
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqdeleteitem)
     unsafe fn mqDeleteItem(
         &self,
         Bag: lib::MQHBAG,
@@ -354,6 +409,9 @@ pub trait Mqai {
     /// * `ResponseQ`: Handle of response queue
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqexecute)
     unsafe fn mqExecute(
         &self,
         Hconn: lib::MQHCONN,
@@ -376,6 +434,9 @@ pub trait Mqai {
     /// * `Bag` (Input/Output): Handle of bag to contain message
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqgetbag)
     unsafe fn mqGetBag(
         &self,
         Hconn: lib::MQHCONN,
@@ -395,6 +456,9 @@ pub trait Mqai {
     /// * `pItemValue` (Output): Item value
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinquirebag)
     unsafe fn mqInquireBag(
         &self,
         Bag: lib::MQHBAG,
@@ -415,6 +479,9 @@ pub trait Mqai {
     /// * `pByteStringLength` (Output): Length of byte string returned
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinquirebytestring)
     unsafe fn mqInquireByteString(
         &self,
         Bag: lib::MQHBAG,
@@ -438,6 +505,9 @@ pub trait Mqai {
     /// * `pOperator` (Output): Item operator
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinquirebytestringfilter)
     unsafe fn mqInquireByteStringFilter(
         &self,
         Bag: lib::MQHBAG,
@@ -459,6 +529,9 @@ pub trait Mqai {
     /// * `pItemValue` (Output): Item value
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinquireinteger)
     unsafe fn mqInquireInteger(
         &self,
         Bag: lib::MQHBAG,
@@ -477,6 +550,9 @@ pub trait Mqai {
     /// * `pItemValue` (Output): Item value
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinquireinteger64)
     unsafe fn mqInquireInteger64(
         &self,
         Bag: lib::MQHBAG,
@@ -496,6 +572,9 @@ pub trait Mqai {
     /// * `pOperator` (Output): Item operator
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinquireintegerfilter)
     unsafe fn mqInquireIntegerFilter(
         &self,
         Bag: lib::MQHBAG,
@@ -516,6 +595,9 @@ pub trait Mqai {
     /// * `pItemType` (Output): Data type of item
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinquireiteminfo)
     unsafe fn mqInquireItemInfo(
         &self,
         Bag: lib::MQHBAG,
@@ -538,6 +620,9 @@ pub trait Mqai {
     /// * `pCodedCharSetId` (Output): Character-set identifier of string
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinquirestring)
     unsafe fn mqInquireString(
         &self,
         Bag: lib::MQHBAG,
@@ -563,6 +648,9 @@ pub trait Mqai {
     /// * `pOperator` (Output): Item operator
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinquirestringfilter)
     unsafe fn mqInquireStringFilter(
         &self,
         Bag: lib::MQHBAG,
@@ -584,6 +672,9 @@ pub trait Mqai {
     /// * `pBuffer` (Output): Buffer to contain padded string
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqpad)
     unsafe fn mqPad(
         &self,
         pString: lib::PMQCHAR,
@@ -602,6 +693,9 @@ pub trait Mqai {
     /// * `Bag`: Handle of bag containing message data
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqputbag)
     unsafe fn mqPutBag(
         &self,
         Hconn: lib::MQHCONN,
@@ -622,6 +716,9 @@ pub trait Mqai {
     /// * `pBuffer`: Buffer containing item value
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqsetbytestring)
     unsafe fn mqSetByteString(
         &self,
         Bag: lib::MQHBAG,
@@ -643,6 +740,9 @@ pub trait Mqai {
     /// * `Operator`: Item operator
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqsetbytestringfilter)
     unsafe fn mqSetByteStringFilter(
         &self,
         Bag: lib::MQHBAG,
@@ -663,6 +763,9 @@ pub trait Mqai {
     /// * `ItemValue`: Item value
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqsetinteger)
     unsafe fn mqSetInteger(
         &self,
         Bag: lib::MQHBAG,
@@ -681,6 +784,9 @@ pub trait Mqai {
     /// * `ItemValue`: Item value
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqsetinteger64)
     unsafe fn mqSetInteger64(
         &self,
         Bag: lib::MQHBAG,
@@ -700,6 +806,9 @@ pub trait Mqai {
     /// * `Operator`: Item operator
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqsetintegerfilter)
     unsafe fn mqSetIntegerFilter(
         &self,
         Bag: lib::MQHBAG,
@@ -720,6 +829,9 @@ pub trait Mqai {
     /// * `pBuffer`: Buffer containing item value
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqsetstring)
     unsafe fn mqSetString(
         &self,
         Bag: lib::MQHBAG,
@@ -741,6 +853,9 @@ pub trait Mqai {
     /// * `Operator`: Item operator
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqsetstringfilter)
     unsafe fn mqSetStringFilter(
         &self,
         Bag: lib::MQHBAG,
@@ -760,6 +875,9 @@ pub trait Mqai {
     /// * `pString` (Output): String with blanks discarded
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqtrim)
     unsafe fn mqTrim(
         &self,
         BufferLength: lib::MQLONG,
@@ -775,6 +893,9 @@ pub trait Mqai {
     /// * `ItemCount`: Number of items to remain in bag
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqtruncatebag)
     unsafe fn mqTruncateBag(
         &self,
         Bag: lib::MQHBAG,
@@ -783,7 +904,6 @@ pub trait Mqai {
         pReason: &mut lib::MQLONG,
     );
 }
-#[allow(clippy::missing_safety_doc, clippy::too_many_arguments, non_snake_case)]
 pub trait Mqi {
     /// Back Out Changes
     ///
@@ -791,6 +911,9 @@ pub trait Mqi {
     /// * `Hconn`: Connection handle
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqback-back-out-changes)
     unsafe fn MQBACK(
         &self,
         Hconn: lib::MQHCONN,
@@ -804,6 +927,9 @@ pub trait Mqi {
     /// * `pBeginOptions` (Input/Output): Options that control the action of MQBEGIN
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqbegin-begin-unit-work)
     unsafe fn MQBEGIN(
         &self,
         Hconn: lib::MQHCONN,
@@ -823,6 +949,9 @@ pub trait Mqi {
     /// * `pDataLength` (Output): Length of the output buffer
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqbufmh-convert-buffer-into-message-handle)
     unsafe fn MQBUFMH(
         &self,
         Hconn: lib::MQHCONN,
@@ -846,6 +975,9 @@ pub trait Mqi {
     /// * `pGetMsgOpts`: Get options
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqcb-manage-callback)
     unsafe fn MQCB(
         &self,
         Hconn: lib::MQHCONN,
@@ -865,6 +997,9 @@ pub trait Mqi {
     /// * `Options`: Options that control the action of MQCLOSE
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqclose-close-object)
     unsafe fn MQCLOSE(
         &self,
         Hconn: lib::MQHCONN,
@@ -879,6 +1014,9 @@ pub trait Mqi {
     /// * `Hconn`: Connection handle
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqcmit-commit-changes)
     unsafe fn MQCMIT(
         &self,
         Hconn: lib::MQHCONN,
@@ -892,6 +1030,9 @@ pub trait Mqi {
     /// * `pHconn` (Output): Connection handle
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqconn-connect-queue-manager)
     unsafe fn MQCONN(
         &self,
         pQMgrName: &lib::MQCHAR48,
@@ -907,6 +1048,9 @@ pub trait Mqi {
     /// * `pHconn` (Output): Connection handle
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqconnx-connect-queue-manager-extended)
     unsafe fn MQCONNX(
         &self,
         pQMgrName: &lib::MQCHAR48,
@@ -923,6 +1067,9 @@ pub trait Mqi {
     /// * `pHmsg` (Output): Message handle
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqcrtmh-create-message-handle)
     unsafe fn MQCRTMH(
         &self,
         Hconn: lib::MQHCONN,
@@ -939,6 +1086,9 @@ pub trait Mqi {
     /// * `pControlOpts`: Control options
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqctl-control-callbacks)
     unsafe fn MQCTL(
         &self,
         Hconn: lib::MQHCONN,
@@ -953,6 +1103,9 @@ pub trait Mqi {
     /// * `pHconn` (Input/Output): Connection handle
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqdisc-disconnect-queue-manager)
     unsafe fn MQDISC(
         &self,
         pHconn: &mut lib::MQHCONN,
@@ -967,6 +1120,9 @@ pub trait Mqi {
     /// * `pDltMsgHOpts`: Options that control the action of MQDLTMH
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqdltmh-delete-message-handle)
     unsafe fn MQDLTMH(
         &self,
         Hconn: lib::MQHCONN,
@@ -984,6 +1140,9 @@ pub trait Mqi {
     /// * `pName`: Property name
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqdltmp-delete-message-property)
     unsafe fn MQDLTMP(
         &self,
         Hconn: lib::MQHCONN,
@@ -1005,6 +1164,9 @@ pub trait Mqi {
     /// * `pDataLength` (Output): Length of the message
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqget-get-message)
     unsafe fn MQGET(
         &self,
         Hconn: lib::MQHCONN,
@@ -1030,6 +1192,9 @@ pub trait Mqi {
     /// * `pCharAttrs` (Output): Character attributes
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinq-inquire-object-attributes)
     unsafe fn MQINQ(
         &self,
         Hconn: lib::MQHCONN,
@@ -1057,6 +1222,9 @@ pub trait Mqi {
     /// * `pDataLength` (Output): Length of the property value
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinqmp-inquire-message-property)
     unsafe fn MQINQMP(
         &self,
         Hconn: lib::MQHCONN,
@@ -1084,6 +1252,9 @@ pub trait Mqi {
     /// * `pDataLength` (Output): Length of the properties
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqmhbuf-convert-message-handle-into-buffer)
     unsafe fn MQMHBUF(
         &self,
         Hconn: lib::MQHCONN,
@@ -1106,6 +1277,9 @@ pub trait Mqi {
     /// * `pHobj` (Output): Object handle
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqopen-open-object)
     unsafe fn MQOPEN(
         &self,
         Hconn: lib::MQHCONN,
@@ -1126,6 +1300,9 @@ pub trait Mqi {
     /// * `pBuffer`: Message data
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqput-put-message)
     unsafe fn MQPUT(
         &self,
         Hconn: lib::MQHCONN,
@@ -1148,6 +1325,9 @@ pub trait Mqi {
     /// * `pBuffer`: Message data
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqput1-put-one-message)
     unsafe fn MQPUT1(
         &self,
         Hconn: lib::MQHCONN,
@@ -1172,6 +1352,9 @@ pub trait Mqi {
     /// * `pCharAttrs`: Character attributes
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqset-set-object-attributes)
     unsafe fn MQSET(
         &self,
         Hconn: lib::MQHCONN,
@@ -1198,6 +1381,9 @@ pub trait Mqi {
     /// * `pValue`: Property value
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqsetmp-set-message-property)
     unsafe fn MQSETMP(
         &self,
         Hconn: lib::MQHCONN,
@@ -1219,6 +1405,9 @@ pub trait Mqi {
     /// * `pStatus` (Input/Output): Status information
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqstat-retrieve-status-information)
     unsafe fn MQSTAT(
         &self,
         Hconn: lib::MQHCONN,
@@ -1236,6 +1425,9 @@ pub trait Mqi {
     /// * `pHsub` (Output): Subscription object handle
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqsub-register-subscription)
     unsafe fn MQSUB(
         &self,
         Hconn: lib::MQHCONN,
@@ -1254,6 +1446,9 @@ pub trait Mqi {
     /// * `pSubRqOpts` (Input/Output): Subscription Request Options
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqsubrq-subscription-request)
     unsafe fn MQSUBRQ(
         &self,
         Hconn: lib::MQHCONN,
@@ -1277,6 +1472,9 @@ pub trait Mqi {
     /// * `pDataLength` (Output): Length of output string
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=exit-mqxcnvc-convert-characters)
     unsafe fn MQXCNVC(
         &self,
         Hconn: lib::MQHCONN,

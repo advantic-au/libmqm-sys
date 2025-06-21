@@ -1,7 +1,7 @@
 use std::{borrow::Cow, collections::HashMap};
 
 use regex_lite::Regex;
-use syn::{visit_mut::VisitMut, Attribute};
+use syn::{parse_quote, visit_mut::VisitMut, Attribute};
 
 const BARE_REGEX: &str = r"(?msx)
     /\*+/
@@ -33,6 +33,259 @@ const PARAM_REGEX: &str = r"(?msx)
     ^(?:\s+([\w\d]+))+(?:,|\);)
     ((?:\s+/\*.+?\*/)+)
 ";
+
+const IBM_REFERENCE: &[(&str, &str)] = &[
+    ("mqPad", "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqpad"),
+    ("mqTrim", "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqtrim"),
+    (
+        "MQXEP",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=reference-exit-entry-point-registration-call-mqxep",
+    ),
+    (
+        "MQXCLWLN",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=structures-mqxclwln-navigate-cluster-workload-records",
+    ),
+    (
+        "MQZEP",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=information-mqzep-add-component-entry-point",
+    ),
+    (
+        "MQCONNX",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqconnx-connect-queue-manager-extended",
+    ),
+    (
+        "MQCONN",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqconn-connect-queue-manager",
+    ),
+    (
+        "MQDISC",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqdisc-disconnect-queue-manager",
+    ),
+    (
+        "MQOPEN",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqopen-open-object",
+    ),
+    (
+        "MQPUT1",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqput1-put-one-message",
+    ),
+    (
+        "MQCLOSE",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqclose-close-object",
+    ),
+    (
+        "MQCMIT",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqcmit-commit-changes",
+    ),
+    (
+        "MQGET",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqget-get-message",
+    ),
+    (
+        "MQPUT",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqput-put-message",
+    ),
+    (
+        "MQINQ",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinq-inquire-object-attributes",
+    ),
+    (
+        "MQSUB",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqsub-register-subscription",
+    ),
+    (
+        "MQSUBRQ",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqsubrq-subscription-request",
+    ),
+    (
+        "MQBEGIN",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqbegin-begin-unit-work",
+    ),
+    (
+        "MQBACK",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqback-back-out-changes",
+    ),
+    (
+        "MQCRTMH",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqcrtmh-create-message-handle",
+    ),
+    (
+        "MQDLTMH",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqdltmh-delete-message-handle",
+    ),
+    (
+        "MQMHBUF",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqmhbuf-convert-message-handle-into-buffer",
+    ),
+    (
+        "MQBUFMH",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqbufmh-convert-buffer-into-message-handle",
+    ),
+    (
+        "MQCB",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqcb-manage-callback",
+    ),
+    (
+        "MQCTL",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqctl-control-callbacks",
+    ),
+    (
+        "MQSET",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqset-set-object-attributes",
+    ),
+    (
+        "MQSETMP",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqsetmp-set-message-property",
+    ),
+    (
+        "MQSTAT",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqstat-retrieve-status-information",
+    ),
+    (
+        "MQINQMP",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinqmp-inquire-message-property",
+    ),
+    (
+        "MQDLTMP",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqdltmp-delete-message-property",
+    ),
+    (
+        "MQXCNVC",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=exit-mqxcnvc-convert-characters",
+    ),
+    (
+        "mqCreateBag",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqcreatebag",
+    ),
+    (
+        "mqClearBag",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqclearbag",
+    ),
+    (
+        "mqDeleteBag",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqdeletebag",
+    ),
+    ("mqGetBag", "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqgetbag"),
+    ("mqPutBag", "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqputbag"),
+    (
+        "mqTruncateBag",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqtruncatebag",
+    ),
+    (
+        "mqAddInquiry",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqaddinquiry",
+    ),
+    (
+        "mqDeleteItem",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqdeleteitem",
+    ),
+    (
+        "mqAddInteger",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqaddinteger",
+    ),
+    (
+        "mqAddIntegerFilter",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqaddintegerfilter",
+    ),
+    (
+        "mqAddInteger64",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqaddinteger64",
+    ),
+    (
+        "mqAddString",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqaddstring",
+    ),
+    (
+        "mqAddStringFilter",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqaddstringfilter",
+    ),
+    (
+        "mqAddByteString",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqaddbytestring",
+    ),
+    (
+        "mqAddByteStringFilter",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqaddbytestringfilter",
+    ),
+    (
+        "mqSetInteger",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqsetinteger",
+    ),
+    (
+        "mqSetIntegerFilter",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqsetintegerfilter",
+    ),
+    (
+        "mqSetInteger64",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqsetinteger64",
+    ),
+    ("mqAddBag", "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqaddbag"),
+    (
+        "mqSetString",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqsetstring",
+    ),
+    (
+        "mqSetStringFilter",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqsetstringfilter",
+    ),
+    (
+        "mqSetByteString",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqsetbytestring",
+    ),
+    (
+        "mqSetByteStringFilter",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqsetbytestringfilter",
+    ),
+    (
+        "mqInquireInteger",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinquireinteger",
+    ),
+    (
+        "mqInquireIntegerFilter",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinquireintegerfilter",
+    ),
+    (
+        "mqInquireInteger64",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinquireinteger64",
+    ),
+    (
+        "mqInquireByteString",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinquirebytestring",
+    ),
+    (
+        "mqInquireString",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinquirestring",
+    ),
+    (
+        "mqInquireStringFilter",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinquirestringfilter",
+    ),
+    (
+        "mqInquireByteStringFilter",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinquirebytestringfilter",
+    ),
+    (
+        "mqInquireBag",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinquirebag",
+    ),
+    (
+        "mqCountItems",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqcountitems",
+    ),
+    ("mqExecute", "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqexecute"),
+    (
+        "mqBagToBuffer",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqbagtobuffer",
+    ),
+    (
+        "mqBufferToBag",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqbuffertobag",
+    ),
+    (
+        "mqInquireItemInfo",
+        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinquireiteminfo",
+    ),
+];
 
 const EQUIV: &[(&str, &str)] = &[
     ("MQBACK", "MQ_BACK_CALL"),
@@ -87,6 +340,9 @@ pub struct DocCommentFields<'a>(pub &'a HashMap<String, HashMap<String, String>>
 
 #[derive(Debug, Clone)]
 pub struct DocCommentArgs<'a>(pub &'a HashMap<String, Vec<(String, String)>>);
+
+#[derive(Debug, Clone)]
+pub struct DocCommentReference;
 
 pub struct DescriptionRegex {
     search: Regex,
@@ -293,14 +549,6 @@ fn doc_comment_args(args: &[(String, String)]) -> Vec<Attribute> {
 }
 
 impl VisitMut for DocCommentArgs<'_> {
-    fn visit_item_fn_mut(&mut self, item: &mut syn::ItemFn) {
-        if let Some(args) = self.0.get(&item.sig.ident.to_string()) {
-            let mut arg_attrs = doc_comment_args(args);
-            std::mem::swap(&mut item.attrs, &mut arg_attrs);
-            item.attrs.extend(arg_attrs);
-        }
-    }
-
     fn visit_foreign_item_fn_mut(&mut self, item: &mut syn::ForeignItemFn) {
         if let Some(args) = self.0.get(&item.sig.ident.to_string()) {
             let mut arg_attrs = doc_comment_args(args);
@@ -314,6 +562,23 @@ impl VisitMut for DocCommentArgs<'_> {
             let mut arg_attrs = doc_comment_args(args);
             std::mem::swap(&mut item.attrs, &mut arg_attrs);
             item.attrs.extend(arg_attrs);
+        }
+    }
+}
+
+impl VisitMut for DocCommentReference {
+    fn visit_foreign_item_fn_mut(&mut self, item: &mut syn::ForeignItemFn) {
+        let ibm_url = IBM_REFERENCE
+            .iter()
+            .find_map(|(name, url)| (item.sig.ident == *name).then_some(*url));
+        if let Some(url) = ibm_url {
+            let doc_lit = syn::LitStr::new(&format!(" * [IBM Documentation]({url})"), proc_macro2::Span::call_site());
+            let comments: Vec<syn::Attribute> = parse_quote!(
+                ///
+                /// # References
+                #[doc = #doc_lit]
+            );
+            item.attrs.extend(comments);
         }
     }
 }

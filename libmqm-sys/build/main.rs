@@ -252,7 +252,7 @@ fn main() -> Result<(), io::Error> {
                 use syn::{parse_quote, visit::Visit, visit_mut::VisitMut as _};
 
                 use crate::{
-                    doc_comments::{DocCommentArgs, DocCommentFields, DocCommentType},
+                    doc_comments::{DocCommentArgs, DocCommentFields, DocCommentReference, DocCommentType},
                     mq_trait::TraitGenerator,
                     rustify::{FnArgType, MqLongConstWrap},
                 };
@@ -327,6 +327,7 @@ fn main() -> Result<(), io::Error> {
                     .replace_fns(["MQ_PRECONNECT_EXIT"], "pExitParms", &parse_quote!(&mut MQNXP));
 
                 DocCommentArgs(&parameters).visit_file_mut(&mut generated);
+                DocCommentReference.visit_file_mut(&mut generated);
                 DocCommentType(&comments).visit_file_mut(&mut generated);
                 DocCommentFields(&fields).visit_file_mut(&mut generated);
                 MqLongConstWrap.visit_file_mut(&mut generated);
@@ -410,7 +411,6 @@ fn main() -> Result<(), io::Error> {
 
                 use crate::lib;
                 #(
-                    #[allow(clippy::missing_safety_doc, clippy::too_many_arguments, non_snake_case)]
                     #traits
                 )*
             );

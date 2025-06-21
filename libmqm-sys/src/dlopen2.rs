@@ -1,41 +1,37 @@
-#![allow(non_snake_case)]
-#![allow(clippy::too_many_arguments)]
-#![allow(unused_variables)]
 /*!
- * Dynamic loading of the MQI library using dlopen2
- *
- * Example
- * -------
- *
- *  Dynamically load the `libmqm_r` library and issue an `MQCONN`
- *
- * ```no_run
- *  use dlopen2::wrapper::Container;
- *  use libmqm_sys::{lib, dlopen2::MqWrapper};
- *
- * # fn main() -> Result<(), dlopen2::Error> {
- * #
- * // Dynamically load the libmqm_r library
- * let mq: Container<MqWrapper> = unsafe { Container::load("libmqm_r") }?;
- *
- * // Connect to MQ
- * let mut hconn = lib::MQHC_DEF_HCONN;
- * let mut comp_code = lib::MQCC_UNKNOWN;
- * let mut reason = lib::MQRC_NONE;
- * let mut qmgr: [lib::MQCHAR; 48] = [32; 48]; // All spaces
- * unsafe {
- *    mq.MQCONN(
- *      &qmgr,
- *      &mut hconn,
- *      &mut comp_code,
- *      &mut reason,
- *    );
- * }
- * #
- * # Ok(())
- * # }
- * ```
- */
+Dynamic loading of the MQI library using dlopen2
+
+Example
+-------
+ Dynamically load the `libmqm_r` library and issue an `MQCONN`
+
+```no_run
+use dlopen2::wrapper::Container;
+use libmqm_sys::{lib, dlopen2::MqWrapper};
+
+# fn main() -> Result<(), dlopen2::Error> {
+#
+// Dynamically load the libmqm_r library
+let mq: Container<MqWrapper> = unsafe { Container::load("libmqm_r") }?;
+
+// Connect to MQ
+let mut hconn = lib::MQHC_DEF_HCONN;
+let mut comp_code = lib::MQCC_UNKNOWN;
+let mut reason = lib::MQRC_NONE;
+let mut qmgr: [lib::MQCHAR; 48] = [32; 48]; // All spaces
+unsafe {
+   mq.MQCONN(
+     &qmgr,
+     &mut hconn,
+     &mut comp_code,
+     &mut reason,
+   );
+}
+#
+# Ok(())
+# }
+```
+*/
 
 use ::dlopen2::wrapper::Container;
 

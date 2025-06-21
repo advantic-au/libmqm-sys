@@ -1,8 +1,4 @@
-#![allow(clippy::all)]
-#![allow(clippy::pedantic)]
-#![allow(clippy::nursery)]
-#![allow(non_camel_case_types)]
-#![allow(non_snake_case)]
+#![allow(clippy::missing_safety_doc, clippy::too_many_arguments, non_snake_case, non_camel_case_types)]
 
 #[cfg_attr(all(target_os = "windows", target_arch = "x86_64"), path = "x86_64-windows/mod.rs")]
 #[cfg_attr(all(target_os = "linux", target_arch = "x86_64"), path = "x86_64-linux/mod.rs")]

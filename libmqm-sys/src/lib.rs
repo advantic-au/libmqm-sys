@@ -80,8 +80,8 @@ unsafe {
 #![cfg_attr(feature = "docsrs", doc = document_features::document_features!())]
 
 /*!
- *
- * Minimum MQ client can be set using the `mqc_*` features
+
+Minimum MQ client can be set using the `mqc_*` features
 */
 
 #[cfg(feature = "bindgen")]
@@ -113,4 +113,4 @@ mod default;
 pub mod dlopen2;
 
 #[cfg(feature = "link_api")]
-pub use generated::link;
+pub mod link;
