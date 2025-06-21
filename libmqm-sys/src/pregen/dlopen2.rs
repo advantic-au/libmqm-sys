@@ -593,7 +593,7 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
         pReason: &mut lib::MQLONG,
     ) {
         unsafe {
-            MqWrapper::mqAddBag(self, Bag, Selector, ItemValue, pCompCode, pReason)
+            MqWrapper::mqAddBag(self, Bag, Selector, ItemValue, pCompCode, pReason);
         }
     }
     unsafe fn mqAddByteString(
@@ -614,7 +614,7 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
                 pBuffer,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn mqAddByteStringFilter(
@@ -637,7 +637,7 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
                 Operator,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn mqAddInquiry(
@@ -647,7 +647,9 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ) {
-        unsafe { MqWrapper::mqAddInquiry(self, Bag, Selector, pCompCode, pReason) }
+        unsafe {
+            MqWrapper::mqAddInquiry(self, Bag, Selector, pCompCode, pReason);
+        }
     }
     unsafe fn mqAddInteger(
         &self,
@@ -658,7 +660,7 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
         pReason: &mut lib::MQLONG,
     ) {
         unsafe {
-            MqWrapper::mqAddInteger(self, Bag, Selector, ItemValue, pCompCode, pReason)
+            MqWrapper::mqAddInteger(self, Bag, Selector, ItemValue, pCompCode, pReason);
         }
     }
     unsafe fn mqAddInteger64(
@@ -670,7 +672,14 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
         pReason: &mut lib::MQLONG,
     ) {
         unsafe {
-            MqWrapper::mqAddInteger64(self, Bag, Selector, ItemValue, pCompCode, pReason)
+            MqWrapper::mqAddInteger64(
+                self,
+                Bag,
+                Selector,
+                ItemValue,
+                pCompCode,
+                pReason,
+            );
         }
     }
     unsafe fn mqAddIntegerFilter(
@@ -691,7 +700,7 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
                 Operator,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn mqAddString(
@@ -712,7 +721,7 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
                 pBuffer,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn mqAddStringFilter(
@@ -735,7 +744,7 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
                 Operator,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn mqBagToBuffer(
@@ -758,7 +767,7 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
                 pDataLength,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn mqBufferToBag(
@@ -779,7 +788,7 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
                 DataBag,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn mqClearBag(
@@ -788,7 +797,9 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ) {
-        unsafe { MqWrapper::mqClearBag(self, Bag, pCompCode, pReason) }
+        unsafe {
+            MqWrapper::mqClearBag(self, Bag, pCompCode, pReason);
+        }
     }
     unsafe fn mqCountItems(
         &self,
@@ -799,7 +810,7 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
         pReason: &mut lib::MQLONG,
     ) {
         unsafe {
-            MqWrapper::mqCountItems(self, Bag, Selector, pItemCount, pCompCode, pReason)
+            MqWrapper::mqCountItems(self, Bag, Selector, pItemCount, pCompCode, pReason);
         }
     }
     unsafe fn mqCreateBag(
@@ -809,7 +820,9 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ) {
-        unsafe { MqWrapper::mqCreateBag(self, Options, pBag, pCompCode, pReason) }
+        unsafe {
+            MqWrapper::mqCreateBag(self, Options, pBag, pCompCode, pReason);
+        }
     }
     unsafe fn mqDeleteBag(
         &self,
@@ -817,7 +830,9 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ) {
-        unsafe { MqWrapper::mqDeleteBag(self, pBag, pCompCode, pReason) }
+        unsafe {
+            MqWrapper::mqDeleteBag(self, pBag, pCompCode, pReason);
+        }
     }
     unsafe fn mqDeleteItem(
         &self,
@@ -828,7 +843,7 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
         pReason: &mut lib::MQLONG,
     ) {
         unsafe {
-            MqWrapper::mqDeleteItem(self, Bag, Selector, ItemIndex, pCompCode, pReason)
+            MqWrapper::mqDeleteItem(self, Bag, Selector, ItemIndex, pCompCode, pReason);
         }
     }
     unsafe fn mqExecute(
@@ -855,7 +870,7 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
                 ResponseQ,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn mqGetBag(
@@ -878,7 +893,7 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
                 Bag,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn mqInquireBag(
@@ -899,7 +914,7 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
                 pItemValue,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn mqInquireByteString(
@@ -924,7 +939,7 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
                 pByteStringLength,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn mqInquireByteStringFilter(
@@ -951,7 +966,7 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
                 pOperator,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn mqInquireInteger(
@@ -972,7 +987,7 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
                 pItemValue,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn mqInquireInteger64(
@@ -993,7 +1008,7 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
                 pItemValue,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn mqInquireIntegerFilter(
@@ -1016,7 +1031,7 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
                 pOperator,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn mqInquireItemInfo(
@@ -1039,7 +1054,7 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
                 pItemType,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn mqInquireString(
@@ -1066,7 +1081,7 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
                 pCodedCharSetId,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn mqInquireStringFilter(
@@ -1095,7 +1110,7 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
                 pOperator,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn mqPad(
@@ -1107,7 +1122,7 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
         pReason: &mut lib::MQLONG,
     ) {
         unsafe {
-            MqWrapper::mqPad(self, pString, BufferLength, pBuffer, pCompCode, pReason)
+            MqWrapper::mqPad(self, pString, BufferLength, pBuffer, pCompCode, pReason);
         }
     }
     unsafe fn mqPutBag(
@@ -1130,7 +1145,7 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
                 Bag,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn mqSetByteString(
@@ -1153,7 +1168,7 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
                 pBuffer,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn mqSetByteStringFilter(
@@ -1178,7 +1193,7 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
                 Operator,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn mqSetInteger(
@@ -1199,7 +1214,7 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
                 ItemValue,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn mqSetInteger64(
@@ -1220,7 +1235,7 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
                 ItemValue,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn mqSetIntegerFilter(
@@ -1243,7 +1258,7 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
                 Operator,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn mqSetString(
@@ -1266,7 +1281,7 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
                 pBuffer,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn mqSetStringFilter(
@@ -1291,7 +1306,7 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
                 Operator,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn mqTrim(
@@ -1303,7 +1318,7 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
         pReason: &mut lib::MQLONG,
     ) {
         unsafe {
-            MqWrapper::mqTrim(self, BufferLength, pBuffer, pString, pCompCode, pReason)
+            MqWrapper::mqTrim(self, BufferLength, pBuffer, pString, pCompCode, pReason);
         }
     }
     unsafe fn mqTruncateBag(
@@ -1313,7 +1328,9 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ) {
-        unsafe { MqWrapper::mqTruncateBag(self, Bag, ItemCount, pCompCode, pReason) }
+        unsafe {
+            MqWrapper::mqTruncateBag(self, Bag, ItemCount, pCompCode, pReason);
+        }
     }
 }
 impl crate::Mqi for ::dlopen2::wrapper::Container<MqWrapper> {
@@ -1323,7 +1340,9 @@ impl crate::Mqi for ::dlopen2::wrapper::Container<MqWrapper> {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ) {
-        unsafe { MqWrapper::MQBACK(self, Hconn, pCompCode, pReason) }
+        unsafe {
+            MqWrapper::MQBACK(self, Hconn, pCompCode, pReason);
+        }
     }
     unsafe fn MQBEGIN(
         &self,
@@ -1332,7 +1351,9 @@ impl crate::Mqi for ::dlopen2::wrapper::Container<MqWrapper> {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ) {
-        unsafe { MqWrapper::MQBEGIN(self, Hconn, pBeginOptions, pCompCode, pReason) }
+        unsafe {
+            MqWrapper::MQBEGIN(self, Hconn, pBeginOptions, pCompCode, pReason);
+        }
     }
     unsafe fn MQBUFMH(
         &self,
@@ -1358,7 +1379,7 @@ impl crate::Mqi for ::dlopen2::wrapper::Container<MqWrapper> {
                 pDataLength,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn MQCB(
@@ -1383,7 +1404,7 @@ impl crate::Mqi for ::dlopen2::wrapper::Container<MqWrapper> {
                 pGetMsgOpts,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn MQCLOSE(
@@ -1394,7 +1415,9 @@ impl crate::Mqi for ::dlopen2::wrapper::Container<MqWrapper> {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ) {
-        unsafe { MqWrapper::MQCLOSE(self, Hconn, pHobj, Options, pCompCode, pReason) }
+        unsafe {
+            MqWrapper::MQCLOSE(self, Hconn, pHobj, Options, pCompCode, pReason);
+        }
     }
     unsafe fn MQCMIT(
         &self,
@@ -1402,7 +1425,9 @@ impl crate::Mqi for ::dlopen2::wrapper::Container<MqWrapper> {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ) {
-        unsafe { MqWrapper::MQCMIT(self, Hconn, pCompCode, pReason) }
+        unsafe {
+            MqWrapper::MQCMIT(self, Hconn, pCompCode, pReason);
+        }
     }
     unsafe fn MQCONN(
         &self,
@@ -1411,7 +1436,9 @@ impl crate::Mqi for ::dlopen2::wrapper::Container<MqWrapper> {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ) {
-        unsafe { MqWrapper::MQCONN(self, pQMgrName, pHconn, pCompCode, pReason) }
+        unsafe {
+            MqWrapper::MQCONN(self, pQMgrName, pHconn, pCompCode, pReason);
+        }
     }
     unsafe fn MQCONNX(
         &self,
@@ -1422,7 +1449,14 @@ impl crate::Mqi for ::dlopen2::wrapper::Container<MqWrapper> {
         pReason: &mut lib::MQLONG,
     ) {
         unsafe {
-            MqWrapper::MQCONNX(self, pQMgrName, pConnectOpts, pHconn, pCompCode, pReason)
+            MqWrapper::MQCONNX(
+                self,
+                pQMgrName,
+                pConnectOpts,
+                pHconn,
+                pCompCode,
+                pReason,
+            );
         }
     }
     unsafe fn MQCRTMH(
@@ -1434,7 +1468,7 @@ impl crate::Mqi for ::dlopen2::wrapper::Container<MqWrapper> {
         pReason: &mut lib::MQLONG,
     ) {
         unsafe {
-            MqWrapper::MQCRTMH(self, Hconn, pCrtMsgHOpts, pHmsg, pCompCode, pReason)
+            MqWrapper::MQCRTMH(self, Hconn, pCrtMsgHOpts, pHmsg, pCompCode, pReason);
         }
     }
     unsafe fn MQCTL(
@@ -1446,7 +1480,7 @@ impl crate::Mqi for ::dlopen2::wrapper::Container<MqWrapper> {
         pReason: &mut lib::MQLONG,
     ) {
         unsafe {
-            MqWrapper::MQCTL(self, Hconn, Operation, pControlOpts, pCompCode, pReason)
+            MqWrapper::MQCTL(self, Hconn, Operation, pControlOpts, pCompCode, pReason);
         }
     }
     unsafe fn MQDISC(
@@ -1455,7 +1489,9 @@ impl crate::Mqi for ::dlopen2::wrapper::Container<MqWrapper> {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ) {
-        unsafe { MqWrapper::MQDISC(self, pHconn, pCompCode, pReason) }
+        unsafe {
+            MqWrapper::MQDISC(self, pHconn, pCompCode, pReason);
+        }
     }
     unsafe fn MQDLTMH(
         &self,
@@ -1466,7 +1502,7 @@ impl crate::Mqi for ::dlopen2::wrapper::Container<MqWrapper> {
         pReason: &mut lib::MQLONG,
     ) {
         unsafe {
-            MqWrapper::MQDLTMH(self, Hconn, pHmsg, pDltMsgHOpts, pCompCode, pReason)
+            MqWrapper::MQDLTMH(self, Hconn, pHmsg, pDltMsgHOpts, pCompCode, pReason);
         }
     }
     unsafe fn MQDLTMP(
@@ -1487,7 +1523,7 @@ impl crate::Mqi for ::dlopen2::wrapper::Container<MqWrapper> {
                 pName,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn MQGET(
@@ -1514,7 +1550,7 @@ impl crate::Mqi for ::dlopen2::wrapper::Container<MqWrapper> {
                 pDataLength,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn MQINQ(
@@ -1543,7 +1579,7 @@ impl crate::Mqi for ::dlopen2::wrapper::Container<MqWrapper> {
                 pCharAttrs,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn MQINQMP(
@@ -1574,7 +1610,7 @@ impl crate::Mqi for ::dlopen2::wrapper::Container<MqWrapper> {
                 pDataLength,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn MQMHBUF(
@@ -1603,7 +1639,7 @@ impl crate::Mqi for ::dlopen2::wrapper::Container<MqWrapper> {
                 pDataLength,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn MQOPEN(
@@ -1616,7 +1652,7 @@ impl crate::Mqi for ::dlopen2::wrapper::Container<MqWrapper> {
         pReason: &mut lib::MQLONG,
     ) {
         unsafe {
-            MqWrapper::MQOPEN(self, Hconn, pObjDesc, Options, pHobj, pCompCode, pReason)
+            MqWrapper::MQOPEN(self, Hconn, pObjDesc, Options, pHobj, pCompCode, pReason);
         }
     }
     unsafe fn MQPUT(
@@ -1641,7 +1677,7 @@ impl crate::Mqi for ::dlopen2::wrapper::Container<MqWrapper> {
                 pBuffer,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn MQPUT1(
@@ -1666,7 +1702,7 @@ impl crate::Mqi for ::dlopen2::wrapper::Container<MqWrapper> {
                 pBuffer,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn MQSET(
@@ -1695,7 +1731,7 @@ impl crate::Mqi for ::dlopen2::wrapper::Container<MqWrapper> {
                 pCharAttrs,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn MQSETMP(
@@ -1724,7 +1760,7 @@ impl crate::Mqi for ::dlopen2::wrapper::Container<MqWrapper> {
                 pValue,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
     unsafe fn MQSTAT(
@@ -1735,7 +1771,9 @@ impl crate::Mqi for ::dlopen2::wrapper::Container<MqWrapper> {
         pCompCode: &mut lib::MQLONG,
         pReason: &mut lib::MQLONG,
     ) {
-        unsafe { MqWrapper::MQSTAT(self, Hconn, Type, pStatus, pCompCode, pReason) }
+        unsafe {
+            MqWrapper::MQSTAT(self, Hconn, Type, pStatus, pCompCode, pReason);
+        }
     }
     unsafe fn MQSUB(
         &self,
@@ -1747,7 +1785,7 @@ impl crate::Mqi for ::dlopen2::wrapper::Container<MqWrapper> {
         pReason: &mut lib::MQLONG,
     ) {
         unsafe {
-            MqWrapper::MQSUB(self, Hconn, pSubDesc, pHobj, pHsub, pCompCode, pReason)
+            MqWrapper::MQSUB(self, Hconn, pSubDesc, pHobj, pHsub, pCompCode, pReason);
         }
     }
     unsafe fn MQSUBRQ(
@@ -1760,7 +1798,15 @@ impl crate::Mqi for ::dlopen2::wrapper::Container<MqWrapper> {
         pReason: &mut lib::MQLONG,
     ) {
         unsafe {
-            MqWrapper::MQSUBRQ(self, Hconn, Hsub, Action, pSubRqOpts, pCompCode, pReason)
+            MqWrapper::MQSUBRQ(
+                self,
+                Hconn,
+                Hsub,
+                Action,
+                pSubRqOpts,
+                pCompCode,
+                pReason,
+            );
         }
     }
     unsafe fn MQXCNVC(
@@ -1791,7 +1837,7 @@ impl crate::Mqi for ::dlopen2::wrapper::Container<MqWrapper> {
                 pDataLength,
                 pCompCode,
                 pReason,
-            )
+            );
         }
     }
 }

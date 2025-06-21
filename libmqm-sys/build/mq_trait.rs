@@ -167,7 +167,7 @@ pub fn impl_dlopen2_fn(wrapper_name: &Path) -> impl Fn(&mut ImplItemFn, &TraitIt
         });
         impl_item_fn.block = parse_quote!({
             unsafe {
-                #wrapper_name::#fn_name(#(#inputs), *)
+                #wrapper_name::#fn_name(#(#inputs), *);
             }
         });
     }
