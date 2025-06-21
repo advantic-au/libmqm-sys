@@ -45,9 +45,9 @@ pub trait Exits {
     /// # Arguments
     /// * `pDataConvExitParms` (Input/Output): Data-conversion exit parameter block
     /// * `pMsgDesc` (Input/Output): Message descriptor
-    /// * `InBufferLength`: Length in bytes of InBuffer
+    /// * `InBufferLength`: Length in bytes of `InBuffer`
     /// * `pInBuffer`: Buffer containing the unconverted message
-    /// * `OutBufferLength`: Length in bytes of OutBuffer
+    /// * `OutBufferLength`: Length in bytes of `OutBuffer`
     /// * `pOutBuffer` (Output): Buffer containing the converted message
     unsafe fn MQXDX(
         &self,

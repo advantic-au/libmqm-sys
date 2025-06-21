@@ -67,7 +67,11 @@ const EQUIV: &[(&str, &str)] = &[
     ("MQZEP", "MQ_ZEP_CALL"),
 ];
 
-const REPLACE: &[(&str, &str)] = &[("CompCode", "`CompCode`")];
+const REPLACE: &[(&str, &str)] = &[
+    ("CompCode", "`CompCode`"),
+    ("InBuffer", "`InBuffer`"),
+    ("OutBuffer", "`OutBuffer`"),
+];
 
 fn replace_keywords(comment: &str) -> String {
     REPLACE

@@ -1,6 +1,7 @@
+#![allow(clippy::too_many_arguments)]
 use crate::lib;
 use ::dlopen2::wrapper::WrapperApi;
-#[derive(::dlopen2::wrapper::WrapperApi, Debug)]
+#[derive(WrapperApi, Debug)]
 pub struct MqWrapper {
     #[cfg(feature = "mqai")]
     mqAddBag: unsafe extern "C" fn(

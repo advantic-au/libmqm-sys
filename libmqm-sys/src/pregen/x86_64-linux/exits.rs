@@ -1148,9 +1148,9 @@ pub type PMQ_CLUSTER_WORKLOAD_EXIT = MQ_CLUSTER_WORKLOAD_EXIT;
 /// # Arguments
 /// * `pDataConvExitParms` (Input/Output): Data-conversion exit parameter block
 /// * `pMsgDesc` (Input/Output): Message descriptor
-/// * `InBufferLength`: Length in bytes of InBuffer
+/// * `InBufferLength`: Length in bytes of `InBuffer`
 /// * `pInBuffer`: Buffer containing the unconverted message
-/// * `OutBufferLength`: Length in bytes of OutBuffer
+/// * `OutBufferLength`: Length in bytes of `OutBuffer`
 /// * `pOutBuffer` (Output): Buffer containing the converted message
 pub type MQ_DATA_CONV_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
@@ -1264,9 +1264,9 @@ pub type PMQ_XCNVC_CALL = MQ_XCNVC_CALL;
 /// # Arguments
 /// * `pDataConvExitParms` (Input/Output): Data-conversion exit parameter block
 /// * `pMsgDesc` (Input/Output): Message descriptor
-/// * `InBufferLength`: Length in bytes of InBuffer
+/// * `InBufferLength`: Length in bytes of `InBuffer`
 /// * `pInBuffer`: Buffer containing the unconverted message
-/// * `OutBufferLength`: Length in bytes of OutBuffer
+/// * `OutBufferLength`: Length in bytes of `OutBuffer`
 /// * `pOutBuffer` (Output): Buffer containing the converted message
 pub type MQ_XDX_CALL = ::std::option::Option<
     unsafe extern "C" fn(
@@ -3430,9 +3430,9 @@ unsafe extern "C" {
     /// # Arguments
     /// * `pDataConvExitParms` (Input/Output): Data-conversion exit parameter block
     /// * `pMsgDesc` (Input/Output): Message descriptor
-    /// * `InBufferLength`: Length in bytes of InBuffer
+    /// * `InBufferLength`: Length in bytes of `InBuffer`
     /// * `pInBuffer`: Buffer containing the unconverted message
-    /// * `OutBufferLength`: Length in bytes of OutBuffer
+    /// * `OutBufferLength`: Length in bytes of `OutBuffer`
     /// * `pOutBuffer` (Output): Buffer containing the converted message
     pub fn MQXDX(
         pDataConvExitParms: &mut MQDXP,
