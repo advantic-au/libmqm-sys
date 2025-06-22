@@ -24,6 +24,11 @@ jobs:
           token: ${{ secrets.SCD }}
           repository: ${{ github.event.client_payload.pull_request.head.repo.full_name }}
           ref: ${{ github.event.client_payload.pull_request.head.ref }}
+      - name: Switch to pregen branch
+        shell: bash
+        run: |
+          PREGEN_BRANCH=pregen_${{ github.run_id }}
+          git switch --track origin/${PREGEN_BRANCH} || git switch -c ${PREGEN_BRANCH}
       - uses: advantic-au/action-mq-client@stable
         id: mq-client
         with:
@@ -43,11 +48,9 @@ jobs:
       - name: Modify pull request with refreshed pregen files
         shell: bash
         run: |
-          PREGEN_BRANCH=pregen_${{ github.run_id }}
-          git switch --track origin/${PREGEN_BRANCH} || git switch -c ${PREGEN_BRANCH}
           git add libmqm-sys/src libmqm-default/src libmqm-constants/src
           git commit -m "chore: MQ client ${MQ_CLIENT_VERSION} ${{ runner.os }}" && \
-            git push --set-upstream origin ${PREGEN_BRANCH} || true
+            git push --set-upstream origin pregen_${{ github.run_id }} || true
         env:
           MQ_CLIENT_VERSION: ${{ steps.mq-client.outputs.client-version }}
   pregen_arch:
@@ -68,6 +71,7 @@ jobs:
       packages: write
       contents: write
     steps:
+      # Checkout the pregen branch
       - uses: actions/checkout@v4
         with:
           persist-credentials: true
@@ -75,6 +79,11 @@ jobs:
           token: ${{ secrets.SCD }}
           repository: ${{ github.event.client_payload.pull_request.head.repo.full_name }}
           ref: ${{ github.event.client_payload.pull_request.head.ref }}
+      - name: Switch to the pregen branch
+        shell: bash
+        run: |
+          PREGEN_BRANCH=pregen_${{ github.run_id }}
+          git switch --track origin/${PREGEN_BRANCH} || git switch -c ${PREGEN_BRANCH}
       - name: Download MQ library
         uses: advantic-au/action-mq-client@stable
         id: mq-client
@@ -123,11 +132,9 @@ jobs:
       - name: Modify pull request with refreshed pregen files
         shell: bash
         run: |
-          PREGEN_BRANCH=pregen_${{ github.run_id }}
-          git switch --track origin/${PREGEN_BRANCH} || git switch -c ${PREGEN_BRANCH}
           git add libmqm-sys/src libmqm-default/src libmqm-constants/src
           git commit -m "chore: MQ client ${MQ_CLIENT_VERSION} Linux ${{ matrix.env.client_arch }}" && \
-            git push --set-upstream origin ${PREGEN_BRANCH} || true
+            git push --set-upstream origin pregen_${{ github.run_id }} || true
         env:
           MQ_CLIENT_VERSION: ${{ steps.mq-client.outputs.client-version }}
   pregen_merge:
@@ -146,4 +153,5 @@ jobs:
         shell: bash
         run: |
           PREGEN_BRANCH=pregen_${{ github.run_id }}
-          git merge --ff-only origin/${PREGEN_BRANCH} && git push || true
+          git merge --ff-only origin/${PREGEN_BRANCH} && git push && \
+            git push origin :${PREGEN_BRANCH} || true
