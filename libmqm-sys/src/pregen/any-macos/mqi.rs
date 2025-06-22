@@ -3773,6 +3773,9 @@ unsafe extern "C" {
     /// * `Hconn`: Connection handle
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqback-back-out-changes)
     pub fn MQBACK(Hconn: MQHCONN, pCompCode: &mut MQLONG, pReason: &mut MQLONG);
     /// Begin Unit of Work
     ///
@@ -3781,6 +3784,9 @@ unsafe extern "C" {
     /// * `pBeginOptions` (Input/Output): Options that control the action of MQBEGIN
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqbegin-begin-unit-work)
     pub fn MQBEGIN(
         Hconn: MQHCONN,
         pBeginOptions: Option<&mut MQBO>,
@@ -3799,6 +3805,9 @@ unsafe extern "C" {
     /// * `pDataLength` (Output): Length of the output buffer
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqbufmh-convert-buffer-into-message-handle)
     pub fn MQBUFMH(
         Hconn: MQHCONN,
         Hmsg: MQHMSG,
@@ -3821,6 +3830,9 @@ unsafe extern "C" {
     /// * `pGetMsgOpts`: Get options
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqcb-manage-callback)
     pub fn MQCB(
         Hconn: MQHCONN,
         Operation: MQLONG,
@@ -3839,6 +3851,9 @@ unsafe extern "C" {
     /// * `Options`: Options that control the action of MQCLOSE
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqclose-close-object)
     pub fn MQCLOSE(
         Hconn: MQHCONN,
         pHobj: &mut MQHOBJ,
@@ -3852,6 +3867,9 @@ unsafe extern "C" {
     /// * `Hconn`: Connection handle
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqcmit-commit-changes)
     pub fn MQCMIT(Hconn: MQHCONN, pCompCode: &mut MQLONG, pReason: &mut MQLONG);
     /// Connect Queue Manager
     ///
@@ -3860,6 +3878,9 @@ unsafe extern "C" {
     /// * `pHconn` (Output): Connection handle
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqconn-connect-queue-manager)
     pub fn MQCONN(
         pQMgrName: &MQCHAR48,
         pHconn: &mut MQHCONN,
@@ -3874,6 +3895,9 @@ unsafe extern "C" {
     /// * `pHconn` (Output): Connection handle
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqconnx-connect-queue-manager-extended)
     pub fn MQCONNX(
         pQMgrName: &MQCHAR48,
         pConnectOpts: &mut MQCNO,
@@ -3889,6 +3913,9 @@ unsafe extern "C" {
     /// * `pHmsg` (Output): Message handle
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqcrtmh-create-message-handle)
     pub fn MQCRTMH(
         Hconn: MQHCONN,
         pCrtMsgHOpts: &MQCMHO,
@@ -3904,6 +3931,9 @@ unsafe extern "C" {
     /// * `pControlOpts`: Control options
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqctl-control-callbacks)
     pub fn MQCTL(
         Hconn: MQHCONN,
         Operation: MQLONG,
@@ -3917,6 +3947,9 @@ unsafe extern "C" {
     /// * `pHconn` (Input/Output): Connection handle
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqdisc-disconnect-queue-manager)
     pub fn MQDISC(pHconn: &mut MQHCONN, pCompCode: &mut MQLONG, pReason: &mut MQLONG);
     /// Delete Message Handle
     ///
@@ -3926,6 +3959,9 @@ unsafe extern "C" {
     /// * `pDltMsgHOpts`: Options that control the action of MQDLTMH
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqdltmh-delete-message-handle)
     pub fn MQDLTMH(
         Hconn: MQHCONN,
         pHmsg: &mut MQHMSG,
@@ -3942,6 +3978,9 @@ unsafe extern "C" {
     /// * `pName`: Property name
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqdltmp-delete-message-property)
     pub fn MQDLTMP(
         Hconn: MQHCONN,
         Hmsg: MQHMSG,
@@ -3962,6 +4001,9 @@ unsafe extern "C" {
     /// * `pDataLength` (Output): Length of the message
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqget-get-message)
     pub fn MQGET(
         Hconn: MQHCONN,
         Hobj: MQHOBJ,
@@ -3986,6 +4028,9 @@ unsafe extern "C" {
     /// * `pCharAttrs` (Output): Character attributes
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinq-inquire-object-attributes)
     pub fn MQINQ(
         Hconn: MQHCONN,
         Hobj: MQHOBJ,
@@ -4012,6 +4057,9 @@ unsafe extern "C" {
     /// * `pDataLength` (Output): Length of the property value
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinqmp-inquire-message-property)
     pub fn MQINQMP(
         Hconn: MQHCONN,
         Hmsg: MQHMSG,
@@ -4038,6 +4086,9 @@ unsafe extern "C" {
     /// * `pDataLength` (Output): Length of the properties
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqmhbuf-convert-message-handle-into-buffer)
     pub fn MQMHBUF(
         Hconn: MQHCONN,
         Hmsg: MQHMSG,
@@ -4059,6 +4110,9 @@ unsafe extern "C" {
     /// * `pHobj` (Output): Object handle
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqopen-open-object)
     pub fn MQOPEN(
         Hconn: MQHCONN,
         pObjDesc: &mut MQOD,
@@ -4078,6 +4132,9 @@ unsafe extern "C" {
     /// * `pBuffer`: Message data
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqput-put-message)
     pub fn MQPUT(
         Hconn: MQHCONN,
         Hobj: MQHOBJ,
@@ -4099,6 +4156,9 @@ unsafe extern "C" {
     /// * `pBuffer`: Message data
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqput1-put-one-message)
     pub fn MQPUT1(
         Hconn: MQHCONN,
         pObjDesc: &mut MQOD,
@@ -4122,6 +4182,9 @@ unsafe extern "C" {
     /// * `pCharAttrs`: Character attributes
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqset-set-object-attributes)
     pub fn MQSET(
         Hconn: MQHCONN,
         Hobj: MQHOBJ,
@@ -4147,6 +4210,9 @@ unsafe extern "C" {
     /// * `pValue`: Property value
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqsetmp-set-message-property)
     pub fn MQSETMP(
         Hconn: MQHCONN,
         Hmsg: MQHMSG,
@@ -4167,6 +4233,9 @@ unsafe extern "C" {
     /// * `pStatus` (Input/Output): Status information
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqstat-retrieve-status-information)
     pub fn MQSTAT(
         Hconn: MQHCONN,
         Type: MQLONG,
@@ -4183,6 +4252,9 @@ unsafe extern "C" {
     /// * `pHsub` (Output): Subscription object handle
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqsub-register-subscription)
     pub fn MQSUB(
         Hconn: MQHCONN,
         pSubDesc: &mut MQSD,
@@ -4200,6 +4272,9 @@ unsafe extern "C" {
     /// * `pSubRqOpts` (Input/Output): Subscription Request Options
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqsubrq-subscription-request)
     pub fn MQSUBRQ(
         Hconn: MQHCONN,
         Hsub: MQHOBJ,
@@ -4483,6 +4558,9 @@ unsafe extern "C" {
     /// * `pDataLength` (Output): Length of output string
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=exit-mqxcnvc-convert-characters)
     pub fn MQXCNVC(
         Hconn: MQHCONN,
         Options: MQLONG,

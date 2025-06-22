@@ -3399,6 +3399,9 @@ unsafe extern "C" {
     /// * `pExitOpts`: Options that control the action of MQXEP
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=reference-exit-entry-point-registration-call-mqxep)
     pub fn MQXEP(
         Hconfig: MQHCONFIG,
         ExitReason: MQLONG,
@@ -3417,6 +3420,9 @@ unsafe extern "C" {
     /// * `pNextRecord` (Output): Address of next record or structure
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=structures-mqxclwln-navigate-cluster-workload-records)
     pub fn MQXCLWLN(
         pExitParms: &mut MQWXP,
         CurrentRecord: MQPTR,
@@ -3450,6 +3456,9 @@ unsafe extern "C" {
     /// * `pEntryPoint`: Function entry point
     /// * `pCompCode` (Output): Completion code
     /// * `pReason` (Output): Reason code qualifying `CompCode`
+    ///
+    /// # References
+    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=information-mqzep-add-component-entry-point)
     pub fn MQZEP(
         Hconfig: MQHCONFIG,
         Function: MQLONG,
