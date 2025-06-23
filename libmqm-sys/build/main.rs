@@ -206,7 +206,9 @@ fn main() -> Result<(), io::Error> {
 
         #[cfg(feature = "bindgen")]
         {
+            use indoc::formatdoc;
             use io::Write as _;
+            use quote::ToTokens as _;
             use syn::{parse_quote, visit_mut::VisitMut};
 
             use crate::{
@@ -415,16 +417,26 @@ fn main() -> Result<(), io::Error> {
                 )*
             );
 
-            #[rustfmt::skip]
-            let mock_file = parse_quote!(
+            let mock_impl_content = prettyplease::unparse(&parse_quote!(
+                #(
+                    #mock_impls
+                )*
+            ));
+
+            let mock_file_content = formatdoc! {"
                 use crate::lib;
-                mockall::mock! {
-                    pub #mock_name {}
-                    #(
-                        #mock_impls
-                    )*
-                }
-            );
+                mockall::mock! {{
+                    pub {} {{}}
+                {}
+                }}
+            ",
+                mock_name.to_token_stream().to_string().replace(" ::", "::"),
+                mock_impl_content.split_inclusive('\n').fold(String::new(), |mut impls, line| {
+                    impls += "    ";
+                    impls += line;
+                    impls
+                })
+            };
 
             let link_file = parse_quote!(
                 use crate::lib;
@@ -457,7 +469,7 @@ fn main() -> Result<(), io::Error> {
 
             let out_mock = out_path.join("mock.rs");
             let mut out_file = io::BufWriter::new(std::fs::File::create(&out_mock)?);
-            out_file.write_all(prettyplease::unparse(&mock_file).as_bytes())?;
+            out_file.write_all(mock_file_content.as_bytes())?;
             drop(out_file);
 
             let out_function = out_path.join("function.rs");
