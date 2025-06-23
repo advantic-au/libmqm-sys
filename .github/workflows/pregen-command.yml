@@ -32,7 +32,7 @@ jobs:
       - uses: advantic-au/action-mq-client@stable
         id: mq-client
         with:
-          client-version: latest
+          client-version: 9.4.3.0
       - name: Install rust stable
         uses: dtolnay/rust-toolchain@b3b07ba8b418998c39fb20f53e8b695cdcc8de1b
         with:
@@ -88,7 +88,7 @@ jobs:
         uses: advantic-au/action-mq-client@stable
         id: mq-client
         with:
-          client-version: latest
+          client-version: 9.4.3.0
           os: Linux
           arch: ${{ matrix.env.client_arch }}
       - id: cache-target-restore
