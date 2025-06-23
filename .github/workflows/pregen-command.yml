@@ -37,9 +37,9 @@ jobs:
           PREGEN_BRANCH=pregen_${{ github.run_id }}
           git switch --track origin/${PREGEN_BRANCH} || git switch -c ${PREGEN_BRANCH}
       - uses: advantic-au/action-mq-client@stable
-        id: mq-client
+        id: mq_client
         with:
-          client-version: ${{ steps.vars.client-version }}
+          client-version: ${{ steps.vars.outputs.client-version }}
       - name: Install rust stable
         uses: dtolnay/rust-toolchain@b3b07ba8b418998c39fb20f53e8b695cdcc8de1b
         with:
@@ -50,7 +50,7 @@ jobs:
       - name: Run build and refresh generated source code
         run: cargo build --no-default-features --features pregen
         env:
-          MQ_HOME: ${{ steps.mq-client.outputs.client-install-path }}
+          MQ_HOME: ${{ steps.mq_client.outputs.client-install-path }}
       - uses: qoomon/actions--setup-git@8e6bd30ac05e17a81b61169daae62cb6b7e61294 #v1.1
       - name: Modify pull request with refreshed pregen files
         shell: bash
@@ -59,7 +59,7 @@ jobs:
           git commit -m "chore: MQ client ${MQ_CLIENT_VERSION} ${{ runner.os }} ${{ runner.arch }}" && \
             git push --set-upstream origin pregen_${{ github.run_id }} || true
         env:
-          MQ_CLIENT_VERSION: ${{ steps.mq-client.outputs.client-version }}
+          MQ_CLIENT_VERSION: ${{ steps.mq_client.outputs.client-version }}
   pregen_arch:
     needs: [pregen]
     strategy:
@@ -100,9 +100,9 @@ jobs:
           git switch --track origin/${PREGEN_BRANCH} || git switch -c ${PREGEN_BRANCH}
       - name: Download MQ library
         uses: advantic-au/action-mq-client@stable
-        id: mq-client
+        id: mq_client
         with:
-          client-version: ${{ steps.vars.client-version }}
+          client-version: ${{ steps.vars.outputs.client-version }}
           os: Linux
           arch: ${{ matrix.env.client_arch }}
       - id: cache-target-restore
@@ -119,7 +119,7 @@ jobs:
           distro: ${{ matrix.env.distro }}
           githubToken: ${{ github.token }}
           dockerRunArgs: |
-            --volume "${{ steps.mq-client.outputs.client-install-path }}:/opt/mqm"
+            --volume "${{ steps.mq_client.outputs.client-install-path }}:/opt/mqm"
             --volume "${PWD}:/working"
           install: |
             apt-get update -q -y --silent
@@ -150,7 +150,7 @@ jobs:
           git commit -m "chore: MQ client ${MQ_CLIENT_VERSION} Linux ${{ matrix.env.arch }}" && \
             git push --set-upstream origin pregen_${{ github.run_id }} || true
         env:
-          MQ_CLIENT_VERSION: ${{ steps.mq-client.outputs.client-version }}
+          MQ_CLIENT_VERSION: ${{ steps.mq_client.outputs.client-version }}
   pregen_merge:
     runs-on: ubuntu-24.04
     needs: [ pregen, pregen_arch ]
