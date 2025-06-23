@@ -19,7 +19,7 @@ Developers who do not want to use the unsafe API should use the
 
 Compile time dynamic linking and run-time dynamic linking is supported.
 
-Developers must download the [MQI library](https://ibm.biz/mq94redistclients) directly from IBM.
+Developers must download the MQ client library or MQ server directly from IBM.
 Refer to the [Usage](#usage) instructions.
 
 Usage

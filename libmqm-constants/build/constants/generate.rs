@@ -60,7 +60,7 @@ pub fn as_array(by_value: &[(mqstr::MQLONG, &str, Option<&str>)]) -> String {
 pub fn as_phf(by_value: &[(mqstr::MQLONG, &str, Option<&str>)]) -> String {
     let mut phf_set = phf_codegen::Map::new();
     for (value, name, _) in by_value {
-        phf_set.entry(*value, &format!("\"{name}\""));
+        phf_set.entry(*value, format!("\"{name}\""));
     }
     phf_set.build().to_string()
 }
