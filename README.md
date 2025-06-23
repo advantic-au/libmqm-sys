@@ -64,14 +64,14 @@ let mut qmgr: [lib::MQCHAR; 48] = [32; 48]; // All spaces = default qmgr
 
 unsafe {
     lib::MQCONN(
-        (&raw mut qmgr).cast(),
-        &raw mut hconn,
-        &raw mut comp_code,
-        &raw mut reason,
+        &qmgr,
+        &mut hconn,
+        &mut comp_code,
+        &mut reason,
     );
     assert_eq!(reason, lib::MQRC_NONE, "MQRC");
     assert_eq!(comp_code, lib::MQCC_OK, "MQCC");
-    lib::MQDISC(&raw mut hconn, &raw mut comp_code, &raw mut reason);
+    lib::MQDISC(&mut hconn, &mut comp_code, &mut reason);
 };
 ```
 

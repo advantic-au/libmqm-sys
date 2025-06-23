@@ -1,4 +1,5 @@
 #[cfg(feature = "generate")]
+#[rustfmt::skip]
 mod c {
     #![allow(
         non_upper_case_globals,
@@ -15,6 +16,7 @@ mod c {
 }
 
 #[cfg(all(not(feature = "generate"), target_os = "windows", target_arch = "x86_64"))]
+#[rustfmt::skip]
 mod c {
     #![allow(
         non_upper_case_globals,
@@ -30,6 +32,7 @@ mod c {
 }
 
 #[cfg(all(not(feature = "generate"), target_os = "linux", target_arch = "x86_64"))]
+#[rustfmt::skip]
 mod c {
     #![allow(
         non_upper_case_globals,
@@ -45,6 +48,7 @@ mod c {
 }
 
 #[cfg(all(not(feature = "generate"), target_os = "linux", target_arch = "aarch64"))]
+#[rustfmt::skip]
 mod c {
     #![allow(
         non_upper_case_globals,
@@ -60,6 +64,7 @@ mod c {
 }
 
 #[cfg(all(not(feature = "generate"), target_os = "linux", target_arch = "powerpc64"))]
+#[rustfmt::skip]
 mod c {
     #![allow(
         non_upper_case_globals,
@@ -75,6 +80,7 @@ mod c {
 }
 
 #[cfg(all(not(feature = "generate"), target_os = "linux", target_arch = "s390x"))]
+#[rustfmt::skip]
 mod c {
     #![allow(
         non_upper_case_globals,
