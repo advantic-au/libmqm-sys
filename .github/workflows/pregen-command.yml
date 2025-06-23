@@ -17,6 +17,7 @@ jobs:
       contents: write
     steps:
       - id: vars
+        shell: bash
         run: |
           if [[ -z "${MQ_CLIENT_VERSION}" ]]; then MQ_CLIENT_VERSION="latest"; fi
           echo "client-version=${MQ_CLIENT_VERSION}" >> $GITHUB_OUTPUT
@@ -78,6 +79,7 @@ jobs:
       contents: write
     steps:
       - id: vars
+        shell: bash
         run: |
           if [[ -z "${MQ_CLIENT_VERSION}" ]]; then MQ_CLIENT_VERSION="latest"; fi
           echo "client-version=${MQ_CLIENT_VERSION}" >> $GITHUB_OUTPUT
