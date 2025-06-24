@@ -449,7 +449,7 @@ impl ExtractFromC for StructFieldExtract {
     fn extract(&self, file_content: &str) -> impl Iterator<Item = (String, Self::Extracted)> {
         self.struct_search.captures_iter(file_content).map(|c| {
             (
-                c[1].to_string(), // Struct name
+                c[1].trim_start_matches("tag").to_string(), // Struct name
                 self.field_search
                     .captures_iter(&c[2])
                     .map(|c| {

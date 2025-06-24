@@ -280,6 +280,20 @@ pub mod mqi {
                 .map(|(.., int_kind)| *int_kind)
         }
     }
+
+    #[derive(Debug)]
+
+    pub struct RemoveTag;
+    impl ParseCallbacks for RemoveTag {
+        fn item_name(&self, item_info: bindgen::callbacks::ItemInfo) -> Option<String> {
+            if item_info.name.starts_with("tag") {
+                Some(item_info.name.trim_start_matches("tag").to_string())
+            }
+            else {
+                None
+            }
+        }
+    }
 }
 
 #[cfg(feature = "constant_lookup")]
@@ -308,5 +322,6 @@ pub fn bindgen_builder(mq_inc_path: &Path) -> bindgen::Builder {
         .merge_extern_blocks(true)
         .generate_cstr(true)
         .parse_callbacks(Box::new(bindgen::CargoCallbacks::new()))
+        .parse_callbacks(Box::new(mqi::RemoveTag))
         .layout_tests(false)
 }
