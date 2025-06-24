@@ -40,7 +40,7 @@ impl VisitMut for FnArgType<'_> {
     fn visit_item_type_mut(&mut self, item: &mut syn::ItemType) {
         let fn_name = item.ident.to_string();
         BareFnArgType(|bare_arg: &mut syn::BareFnArg| {
-            if let Some((arg_name, _)) = &bare_arg.name {
+            if let Some((arg_name, colon)) = &bare_arg.name {
                 let arg_name = arg_name.to_string();
                 if let Some(ty) = self
                     .0
@@ -51,6 +51,10 @@ impl VisitMut for FnArgType<'_> {
                 {
                     bare_arg.ty = ty.clone(); // Set the new type
                 }
+                bare_arg.name = Some((
+                    syn::Ident::new(arg_name.trim_start_matches('p'), proc_macro2::Span::call_site()),
+                    *colon,
+                ));
             }
         })
         .visit_item_type_mut(item);
@@ -60,7 +64,7 @@ impl VisitMut for FnArgType<'_> {
         let fn_name = item.sig.ident.to_string();
         for arg in &mut item.sig.inputs {
             if let syn::FnArg::Typed(pat) = arg {
-                if let syn::Pat::Ident(ident) = &*pat.pat {
+                if let syn::Pat::Ident(ident) = &mut *pat.pat {
                     let arg_name = ident.ident.to_string();
                     if let Some(ty) = self
                         .0
@@ -71,6 +75,7 @@ impl VisitMut for FnArgType<'_> {
                     {
                         pat.ty = Box::new(ty.clone()); // Set the new type
                     }
+                    ident.ident = syn::Ident::new(arg_name.trim_start_matches('p'), proc_macro2::Span::call_site());
                 }
             }
         }

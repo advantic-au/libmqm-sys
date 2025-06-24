@@ -557,7 +557,10 @@ fn doc_comment_args(args: &[(String, String)]) -> Vec<Attribute> {
             Some((_, desc)) => Cow::Owned(format!(":{desc}")),
             _ => Cow::Borrowed(&**description),
         };
-        let doc_lit = syn::LitStr::new(&format!(" * `{name}`{dir_desc}"), proc_macro2::Span::call_site());
+        let doc_lit = syn::LitStr::new(
+            &format!(" * `{}`{dir_desc}", name.trim_start_matches('p')),
+            proc_macro2::Span::call_site(),
+        );
         syn::parse_quote!(#[doc = #doc_lit])
     }));
     arg_attrs
