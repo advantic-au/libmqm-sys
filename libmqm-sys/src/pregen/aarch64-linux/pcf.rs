@@ -1,48 +1,22 @@
 /* Generated with MQ client version 9.4.3.0 */
 
-/// PCF Header
-pub type MQCFH = tagMQCFH;
 pub type PMQCFH = *mut MQCFH;
-/// PCF Byte String Filter Parameter
-pub type MQCFBF = tagMQCFBF;
 pub type PMQCFBF = *mut MQCFBF;
-/// PCF Byte String Parameter
-pub type MQCFBS = tagMQCFBS;
 pub type PMQCFBS = *mut MQCFBS;
-/// PCF Group Parameter
-pub type MQCFGR = tagMQCFGR;
 pub type PMQCFGR = *mut MQCFGR;
-/// PCF Integer Filter Parameter
-pub type MQCFIF = tagMQCFIF;
 pub type PMQCFIF = *mut MQCFIF;
-/// PCF Integer-List Parameter
-pub type MQCFIL = tagMQCFIL;
 pub type PMQCFIL = *mut MQCFIL;
-/// PCF 64-bit Integer-List Parameter
-pub type MQCFIL64 = tagMQCFIL64;
 pub type PMQCFIL64 = *mut MQCFIL64;
-/// PCF Integer Parameter
-pub type MQCFIN = tagMQCFIN;
 pub type PMQCFIN = *mut MQCFIN;
-/// PCF 64-bit Integer Parameter
-pub type MQCFIN64 = tagMQCFIN64;
 pub type PMQCFIN64 = *mut MQCFIN64;
-/// PCF String Filter Parameter
-pub type MQCFSF = tagMQCFSF;
 pub type PMQCFSF = *mut MQCFSF;
-/// PCF String-List Parameter
-pub type MQCFSL = tagMQCFSL;
 pub type PMQCFSL = *mut MQCFSL;
-/// PCF String Parameter
-pub type MQCFST = tagMQCFST;
 pub type PMQCFST = *mut MQCFST;
-/// Embedded PCF header
-pub type MQEPH = tagMQEPH;
 pub type PMQEPH = *mut MQEPH;
 /// PCF Header
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQCFH {
+pub struct MQCFH {
     /// Structure type
     pub Type: MQLONG,
     /// Structure length
@@ -65,7 +39,7 @@ pub struct tagMQCFH {
 /// PCF Byte String Filter Parameter
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQCFBF {
+pub struct MQCFBF {
     /// Structure type
     pub Type: MQLONG,
     /// Structure length
@@ -82,7 +56,7 @@ pub struct tagMQCFBF {
 /// PCF Byte String Parameter
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQCFBS {
+pub struct MQCFBS {
     /// Structure type
     pub Type: MQLONG,
     /// Structure length
@@ -97,7 +71,7 @@ pub struct tagMQCFBS {
 /// PCF Group Parameter
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQCFGR {
+pub struct MQCFGR {
     /// Structure type
     pub Type: MQLONG,
     /// Structure length
@@ -110,7 +84,7 @@ pub struct tagMQCFGR {
 /// PCF Integer Filter Parameter
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQCFIF {
+pub struct MQCFIF {
     /// Structure type
     pub Type: MQLONG,
     /// Structure length
@@ -125,7 +99,7 @@ pub struct tagMQCFIF {
 /// PCF Integer-List Parameter
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQCFIL {
+pub struct MQCFIL {
     /// Structure type
     pub Type: MQLONG,
     /// Structure length
@@ -140,7 +114,7 @@ pub struct tagMQCFIL {
 /// PCF 64-bit Integer-List Parameter
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQCFIL64 {
+pub struct MQCFIL64 {
     /// Structure type
     pub Type: MQLONG,
     /// Structure length
@@ -155,7 +129,7 @@ pub struct tagMQCFIL64 {
 /// PCF Integer Parameter
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQCFIN {
+pub struct MQCFIN {
     /// Structure type
     pub Type: MQLONG,
     /// Structure length
@@ -168,7 +142,7 @@ pub struct tagMQCFIN {
 /// PCF 64-bit Integer Parameter
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQCFIN64 {
+pub struct MQCFIN64 {
     /// Structure type
     pub Type: MQLONG,
     /// Structure length
@@ -183,7 +157,7 @@ pub struct tagMQCFIN64 {
 /// PCF String Filter Parameter
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQCFSF {
+pub struct MQCFSF {
     /// Structure type
     pub Type: MQLONG,
     /// Structure length
@@ -202,7 +176,7 @@ pub struct tagMQCFSF {
 /// PCF String-List Parameter
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQCFSL {
+pub struct MQCFSL {
     /// Structure type
     pub Type: MQLONG,
     /// Structure length
@@ -221,7 +195,7 @@ pub struct tagMQCFSL {
 /// PCF String Parameter
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQCFST {
+pub struct MQCFST {
     /// Structure type
     pub Type: MQLONG,
     /// Structure length
@@ -238,12 +212,12 @@ pub struct tagMQCFST {
 /// Embedded PCF header
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQEPH {
+pub struct MQEPH {
     /// Structure identifier
     pub StrucId: MQCHAR4,
     /// Structure version number
     pub Version: MQLONG,
-    /// Total length of MQEPH including MQCFH and parameter structures that follow
+    /// Total length of [`MQEPH`] including [`MQCFH`] and parameter structures that follow
     pub StrucLength: MQLONG,
     /// Numeric encoding of data that follows last PCF parameter structure
     pub Encoding: MQLONG,

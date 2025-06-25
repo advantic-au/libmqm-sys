@@ -155,7 +155,7 @@ impl ConstLookup for crate::mapping::SelectorLookup {
         mapping.or_else(|| FIRST_LAST_MAPSTR.by_name(name))
     }
 
-    fn all(&self) -> impl Iterator<Item = ConstantItem> {
+    fn all(&self) -> impl Iterator<Item = ConstantItem<'_>> {
         let mapping = mapping::MQIA_MAPSTR.all().chain(mapping::MQCA_MAPSTR.all());
 
         #[cfg(feature = "pcf")]

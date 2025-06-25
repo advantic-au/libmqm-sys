@@ -86,151 +86,69 @@ pub type MQPID = MQLONG;
 pub type PMQPID = *mut MQPID;
 pub type MQTID = MQLONG;
 pub type PMQTID = *mut MQTID;
-/// Authentication Information Record
-pub type MQAIR = tagMQAIR;
 pub type PMQAIR = *mut MQAIR;
-/// MQ Balancing Options
-pub type MQBNO = tagMQBNO;
 pub type PMQBNO = *mut MQBNO;
-/// Buffer To Message Handle Options
-pub type MQBMHO = tagMQBMHO;
 pub type PMQBMHO = *mut MQBMHO;
-/// Begin Options
-pub type MQBO = tagMQBO;
 pub type PMQBO = *mut MQBO;
-/// Callback Context
-pub type MQCBC = tagMQCBC;
 pub type PMQCBC = *mut MQCBC;
-/// Callback Data Descriptor
-pub type MQCBD = tagMQCBD;
 pub type PMQCBD = *mut MQCBD;
-/// Variable-length string
-pub type MQCHARV = tagMQCHARV;
 pub type PMQCHARV = *mut MQCHARV;
-/// CICS Information Header
-pub type MQCIH = tagMQCIH;
 pub type PMQCIH = *mut MQCIH;
-/// Create Message Handle Options
-pub type MQCMHO = tagMQCMHO;
 pub type PMQCMHO = *mut MQCMHO;
-/// MQCTL function options
-pub type MQCTLO = tagMQCTLO;
 pub type PMQCTLO = *mut MQCTLO;
-/// SSL Configuration Options
-pub type MQSCO = tagMQSCO;
 pub type PMQSCO = *mut MQSCO;
-/// Security Parameters
-pub type MQCSP = tagMQCSP;
 pub type PMQCSP = *mut MQCSP;
-/// Connect Options
-pub type MQCNO = tagMQCNO;
 pub type PMQCNO = *mut MQCNO;
-/// Distribution Header
-pub type MQDH = tagMQDH;
 pub type PMQDH = *mut MQDH;
-/// Dead Letter Header
-pub type MQDLH = tagMQDLH;
 pub type PMQDLH = *mut MQDLH;
-/// Delete Message Handle Options
-pub type MQDMHO = tagMQDMHO;
 pub type PMQDMHO = *mut MQDMHO;
-/// Delete Message Property Options
-pub type MQDMPO = tagMQDMPO;
 pub type PMQDMPO = *mut MQDMPO;
-/// Get Message Options
-pub type MQGMO = tagMQGMO;
 pub type PMQGMO = *mut MQGMO;
-/// IMS Information Header
-pub type MQIIH = tagMQIIH;
 pub type PMQIIH = *mut MQIIH;
-/// Inquire Message Property Options
-pub type MQIMPO = tagMQIMPO;
 pub type PMQIMPO = *mut MQIMPO;
-/// Message Descriptor
-pub type MQMD = tagMQMD;
 pub type PMQMD = *mut MQMD;
-/// Message Descriptor Extension
-pub type MQMDE = tagMQMDE;
 pub type PMQMDE = *mut MQMDE;
-/// Version-1 Message Descriptor
-pub type MQMD1 = tagMQMD1;
 pub type PMQMD1 = *mut MQMD1;
-/// Version-2 Message Descriptor
-pub type MQMD2 = tagMQMD2;
 pub type PMQMD2 = *mut MQMD2;
-/// Message Handle To Buffer Options
-pub type MQMHBO = tagMQMHBO;
 pub type PMQMHBO = *mut MQMHBO;
-/// Object descriptor
-pub type MQOD = tagMQOD;
 pub type PMQOD = *mut MQOD;
-/// Object Record
-pub type MQOR = tagMQOR;
 pub type PMQOR = *mut MQOR;
-/// Property descriptor
-pub type MQPD = tagMQPD;
 pub type PMQPD = *mut MQPD;
-/// Put Message Options
-pub type MQPMO = tagMQPMO;
 pub type PMQPMO = *mut MQPMO;
-/// Rules and Formatting Header
-pub type MQRFH = tagMQRFH;
 pub type PMQRFH = *mut MQRFH;
-/// Rules and Formatting Header 2
-pub type MQRFH2 = tagMQRFH2;
 pub type PMQRFH2 = *mut MQRFH2;
-/// Reference Message Header
-pub type MQRMH = tagMQRMH;
 pub type PMQRMH = *mut MQRMH;
-/// Response Record
-pub type MQRR = tagMQRR;
 pub type PMQRR = *mut MQRR;
-/// Subscription Descriptor
-pub type MQSD = tagMQSD;
 pub type PMQSD = *mut MQSD;
-/// Set Message Property Options
-pub type MQSMPO = tagMQSMPO;
 pub type PMQSMPO = *mut MQSMPO;
-/// Subscription Request Options
-pub type MQSRO = tagMQSRO;
 pub type PMQSRO = *mut MQSRO;
-/// Status Information Record
-pub type MQSTS = tagMQSTS;
 pub type PMQSTS = *mut MQSTS;
-/// Trigger Message
-pub type MQTM = tagMQTM;
 pub type PMQTM = *mut MQTM;
-/// Trigger Message 2 (Character)
-pub type MQTMC2 = tagMQTMC2;
 pub type PMQTMC2 = *mut MQTMC2;
-/// Work Information Header
-pub type MQWIH = tagMQWIH;
 pub type PMQWIH = *mut MQWIH;
-/// Transmission Queue Header
-pub type MQXQH = tagMQXQH;
 pub type PMQXQH = *mut MQXQH;
 /// Message Consumer routine (Called by MQ)
 ///
 /// # Arguments
 /// * `Hconn`: Connection handle
-/// * `pMsgDesc`: Message descriptor
-/// * `pGetMsgOpts`: Area containing the MQGMO
-/// * `pBuffer`: Area containing the message data
-/// * `pContext`: Area containing the Consumer context
+/// * `MsgDesc`: Message descriptor
+/// * `GetMsgOpts`: Area containing the [`MQGMO`]
+/// * `Buffer`: Area containing the message data
+/// * `Context`: Area containing the Consumer context
 pub type MQCB_FUNCTION = ::std::option::Option<
     unsafe extern "C" fn(
         Hconn: MQHCONN,
-        pMsgDesc: PMQVOID,
-        pGetMsgOpts: &mut MQGMO,
-        pBuffer: PMQVOID,
-        pContext: PMQCBC,
+        MsgDesc: PMQVOID,
+        GetMsgOpts: &mut MQGMO,
+        Buffer: PMQVOID,
+        Context: PMQCBC,
     ),
 >;
 pub type PMQCB_FUNCTION = MQCB_FUNCTION;
 /// Authentication Information Record
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQAIR {
+pub struct MQAIR {
     /// Structure identifier
     pub StrucId: MQCHAR4,
     /// Structure version number
@@ -241,7 +159,7 @@ pub struct tagMQAIR {
     pub AuthInfoConnName: [MQCHAR; 264usize],
     /// Address of LDAP user name
     pub LDAPUserNamePtr: PMQCHAR,
-    /// Offset of LDAP user name from start of MQAIR structure
+    /// Offset of LDAP user name from start of [`MQAIR`] structure
     pub LDAPUserNameOffset: MQLONG,
     /// Length of LDAP user name
     pub LDAPUserNameLength: MQLONG,
@@ -253,7 +171,7 @@ pub struct tagMQAIR {
 /// MQ Balancing Options
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQBNO {
+pub struct MQBNO {
     /// Structure identifier
     pub StrucId: MQCHAR4,
     /// Structure version number
@@ -268,29 +186,29 @@ pub struct tagMQBNO {
 /// Buffer To Message Handle Options
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQBMHO {
+pub struct MQBMHO {
     /// Structure identifier
     pub StrucId: MQCHAR4,
     /// Structure version number
     pub Version: MQLONG,
-    /// Options that control the action of MQBUFMH
+    /// Options that control the action of [`MQBUFMH`]
     pub Options: MQLONG,
 }
 /// Begin Options
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQBO {
+pub struct MQBO {
     /// Structure identifier
     pub StrucId: MQCHAR4,
     /// Structure version number
     pub Version: MQLONG,
-    /// Options that control the action of MQBEGIN
+    /// Options that control the action of [`MQBEGIN`]
     pub Options: MQLONG,
 }
 /// Callback Context
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQCBC {
+pub struct MQCBC {
     /// Structure identifier
     pub StrucId: MQCHAR4,
     /// Structure version number
@@ -301,7 +219,7 @@ pub struct tagMQCBC {
     pub Hobj: MQHOBJ,
     /// Callback data passed to the function
     pub CallbackArea: MQPTR,
-    /// MQCTL Data area passed to the function
+    /// [`MQCTL`] Data area passed to the function
     pub ConnectionArea: MQPTR,
     /// Completion Code
     pub CompCode: MQLONG,
@@ -321,7 +239,7 @@ pub struct tagMQCBC {
 /// Callback Data Descriptor
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQCBD {
+pub struct MQCBD {
     /// Structure identifier
     pub StrucId: MQCHAR4,
     /// Structure version number
@@ -342,7 +260,7 @@ pub struct tagMQCBD {
 /// Variable-length string
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQCHARV {
+pub struct MQCHARV {
     /// Address of variable length string
     pub VSPtr: MQPTR,
     /// Offset of variable length string
@@ -357,18 +275,18 @@ pub struct tagMQCHARV {
 /// CICS Information Header
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQCIH {
+pub struct MQCIH {
     /// Structure identifier
     pub StrucId: MQCHAR4,
     /// Structure version number
     pub Version: MQLONG,
-    /// Length of MQCIH structure
+    /// Length of [`MQCIH`] structure
     pub StrucLength: MQLONG,
     /// Reserved
     pub Encoding: MQLONG,
     /// Reserved
     pub CodedCharSetId: MQLONG,
-    /// MQ format name of data that follows MQCIH
+    /// MQ format name of data that follows [`MQCIH`]
     pub Format: MQCHAR8,
     /// Flags
     pub Flags: MQLONG,
@@ -380,7 +298,7 @@ pub struct tagMQCIH {
     pub Reason: MQLONG,
     /// Unit-of-work control
     pub UOWControl: MQLONG,
-    /// Wait interval for MQGET call issued by bridge task
+    /// Wait interval for [`MQGET`] call issued by bridge task
     pub GetWaitInterval: MQLONG,
     /// Link type
     pub LinkType: MQLONG,
@@ -438,33 +356,33 @@ pub struct tagMQCIH {
 /// Create Message Handle Options
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQCMHO {
+pub struct MQCMHO {
     /// Structure identifier
     pub StrucId: MQCHAR4,
     /// Structure version number
     pub Version: MQLONG,
-    /// Options that control the action of MQCRTMH
+    /// Options that control the action of [`MQCRTMH`]
     pub Options: MQLONG,
 }
-/// MQCTL function options
+/// [`MQCTL`] function options
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQCTLO {
+pub struct MQCTLO {
     /// Structure identifier
     pub StrucId: MQCHAR4,
     /// Structure version number
     pub Version: MQLONG,
-    /// Options that control the action of MQCTL
+    /// Options that control the action of [`MQCTL`]
     pub Options: MQLONG,
     /// Reserved
     pub Reserved: MQLONG,
-    /// MQCTL Data area passed to the function
+    /// [`MQCTL`] Data area passed to the function
     pub ConnectionArea: MQPTR,
 }
 /// SSL Configuration Options
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQSCO {
+pub struct MQSCO {
     /// Structure identifier
     pub StrucId: MQCHAR4,
     /// Structure version number
@@ -473,11 +391,11 @@ pub struct tagMQSCO {
     pub KeyRepository: MQCHAR256,
     /// Cryptographic hardware configuration string
     pub CryptoHardware: MQCHAR256,
-    /// Number of MQAIR records present
+    /// Number of [`MQAIR`] records present
     pub AuthInfoRecCount: MQLONG,
-    /// Offset of first MQAIR record from start of MQSCO structure
+    /// Offset of first [`MQAIR`] record from start of [`MQSCO`] structure
     pub AuthInfoRecOffset: MQLONG,
-    /// Address of first MQAIR record
+    /// Address of first [`MQAIR`] record
     pub AuthInfoRecPtr: PMQAIR,
     /// Number of unencrypted bytes sent/received before secret key is reset
     pub KeyResetCount: MQLONG,
@@ -509,7 +427,7 @@ pub struct tagMQSCO {
 /// Security Parameters
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQCSP {
+pub struct MQCSP {
     /// Structure identifier
     pub StrucId: MQCHAR4,
     /// Structure version number
@@ -552,28 +470,28 @@ pub struct tagMQCSP {
 /// Connect Options
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQCNO {
+pub struct MQCNO {
     /// Structure identifier
     pub StrucId: MQCHAR4,
     /// Structure version number
     pub Version: MQLONG,
-    /// Options that control the action of MQCONNX
+    /// Options that control the action of [`MQCONNX`]
     pub Options: MQLONG,
-    /// Offset of MQCD structure for client connection
+    /// Offset of [`MQCD`] structure for client connection
     pub ClientConnOffset: MQLONG,
-    /// Address of MQCD structure for client connection
+    /// Address of [`MQCD`] structure for client connection
     pub ClientConnPtr: MQPTR,
     /// Queue-manager connection tag
     pub ConnTag: MQBYTE128,
-    /// Address of MQSCO structure for client connection
+    /// Address of [`MQSCO`] structure for client connection
     pub SSLConfigPtr: PMQSCO,
-    /// Offset of MQSCO structure for client connection
+    /// Offset of [`MQSCO`] structure for client connection
     pub SSLConfigOffset: MQLONG,
     /// Unique Connection Identifier
     pub ConnectionId: MQBYTE24,
-    /// Offset of MQCSP structure
+    /// Offset of [`MQCSP`] structure
     pub SecurityParmsOffset: MQLONG,
-    /// Address of MQCSP structure
+    /// Address of [`MQCSP`] structure
     pub SecurityParmsPtr: PMQCSP,
     /// Address of CCDT URL string
     pub CCDTUrlPtr: PMQCHAR,
@@ -597,34 +515,34 @@ pub struct tagMQCNO {
 /// Distribution Header
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQDH {
+pub struct MQDH {
     /// Structure identifier
     pub StrucId: MQCHAR4,
     /// Structure version number
     pub Version: MQLONG,
-    /// Length of MQDH structure plus following MQOR and MQPMR records
+    /// Length of [`MQDH`] structure plus following [`MQOR`] and `MQPMR` records
     pub StrucLength: MQLONG,
-    /// Numeric encoding of data that follows the MQOR and MQPMR records
+    /// Numeric encoding of data that follows the [`MQOR`] and `MQPMR` records
     pub Encoding: MQLONG,
-    /// Character set identifier of data that follows the MQOR and MQPMR records
+    /// Character set identifier of data that follows the [`MQOR`] and `MQPMR` records
     pub CodedCharSetId: MQLONG,
-    /// Format name of data that follows the MQOR and MQPMR records
+    /// Format name of data that follows the [`MQOR`] and `MQPMR` records
     pub Format: MQCHAR8,
     /// General flags
     pub Flags: MQLONG,
-    /// Flags indicating which MQPMR fields are present
+    /// Flags indicating which `MQPMR` fields are present
     pub PutMsgRecFields: MQLONG,
-    /// Number of MQOR records present
+    /// Number of [`MQOR`] records present
     pub RecsPresent: MQLONG,
-    /// Offset of first MQOR record from start of MQDH
+    /// Offset of first [`MQOR`] record from start of [`MQDH`]
     pub ObjectRecOffset: MQLONG,
-    /// Offset of first MQPMR record from start of MQDH
+    /// Offset of first `MQPMR` record from start of [`MQDH`]
     pub PutMsgRecOffset: MQLONG,
 }
 /// Dead Letter Header
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQDLH {
+pub struct MQDLH {
     /// Structure identifier
     pub StrucId: MQCHAR4,
     /// Structure version number
@@ -635,11 +553,11 @@ pub struct tagMQDLH {
     pub DestQName: MQCHAR48,
     /// Name of original destination queue manager
     pub DestQMgrName: MQCHAR48,
-    /// Numeric encoding of data that follows MQDLH
+    /// Numeric encoding of data that follows [`MQDLH`]
     pub Encoding: MQLONG,
-    /// Character set identifier of data that follows MQDLH
+    /// Character set identifier of data that follows [`MQDLH`]
     pub CodedCharSetId: MQLONG,
-    /// Format name of data that follows MQDLH
+    /// Format name of data that follows [`MQDLH`]
     pub Format: MQCHAR8,
     /// Type of application that put message on dead-letter (undelivered-message) queue
     pub PutApplType: MQLONG,
@@ -653,34 +571,34 @@ pub struct tagMQDLH {
 /// Delete Message Handle Options
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQDMHO {
+pub struct MQDMHO {
     /// Structure identifier
     pub StrucId: MQCHAR4,
     /// Structure version number
     pub Version: MQLONG,
-    /// Options that control the action of MQDLTMH
+    /// Options that control the action of [`MQDLTMH`]
     pub Options: MQLONG,
 }
 /// Delete Message Property Options
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQDMPO {
+pub struct MQDMPO {
     /// Structure identifier
     pub StrucId: MQCHAR4,
     /// Structure version number
     pub Version: MQLONG,
-    /// Options that control the action of MQDLTMP
+    /// Options that control the action of [`MQDLTMP`]
     pub Options: MQLONG,
 }
 /// Get Message Options
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQGMO {
+pub struct MQGMO {
     /// Structure identifier
     pub StrucId: MQCHAR4,
     /// Structure version number
     pub Version: MQLONG,
-    /// Options that control the action of MQGET
+    /// Options that control the action of [`MQGET`]
     pub Options: MQLONG,
     /// Wait interval
     pub WaitInterval: MQLONG,
@@ -690,7 +608,7 @@ pub struct tagMQGMO {
     pub Signal2: MQLONG,
     /// Resolved name of destination queue
     pub ResolvedQName: MQCHAR48,
-    /// Options controlling selection criteria used for MQGET
+    /// Options controlling selection criteria used for [`MQGET`]
     pub MatchOptions: MQLONG,
     /// Flag indicating whether message retrieved is in a group
     pub GroupStatus: MQCHAR,
@@ -712,18 +630,18 @@ pub struct tagMQGMO {
 /// IMS Information Header
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQIIH {
+pub struct MQIIH {
     /// Structure identifier
     pub StrucId: MQCHAR4,
     /// Structure version number
     pub Version: MQLONG,
-    /// Length of MQIIH structure
+    /// Length of [`MQIIH`] structure
     pub StrucLength: MQLONG,
     /// Reserved
     pub Encoding: MQLONG,
     /// Reserved
     pub CodedCharSetId: MQLONG,
-    /// MQ format name of data that follows MQIIH
+    /// MQ format name of data that follows [`MQIIH`]
     pub Format: MQCHAR8,
     /// Flags
     pub Flags: MQLONG,
@@ -749,12 +667,12 @@ pub struct tagMQIIH {
 /// Inquire Message Property Options
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQIMPO {
+pub struct MQIMPO {
     /// Structure identifier
     pub StrucId: MQCHAR4,
     /// Structure version number
     pub Version: MQLONG,
-    /// Options that control the action of MQINQMP
+    /// Options that control the action of [`MQINQMP`]
     pub Options: MQLONG,
     /// Requested encoding of Value
     pub RequestedEncoding: MQLONG,
@@ -774,7 +692,7 @@ pub struct tagMQIMPO {
 /// Message Descriptor
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQMD {
+pub struct MQMD {
     /// Structure identifier
     pub StrucId: MQCHAR4,
     /// Structure version number
@@ -837,18 +755,18 @@ pub struct tagMQMD {
 /// Message Descriptor Extension
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQMDE {
+pub struct MQMDE {
     /// Structure identifier
     pub StrucId: MQCHAR4,
     /// Structure version number
     pub Version: MQLONG,
-    /// Length of MQMDE structure
+    /// Length of [`MQMDE`] structure
     pub StrucLength: MQLONG,
-    /// Numeric encoding of data that follows MQMDE
+    /// Numeric encoding of data that follows [`MQMDE`]
     pub Encoding: MQLONG,
-    /// Character-set identifier of data that follows MQMDE
+    /// Character-set identifier of data that follows [`MQMDE`]
     pub CodedCharSetId: MQLONG,
-    /// Format name of data that follows MQMDE
+    /// Format name of data that follows [`MQMDE`]
     pub Format: MQCHAR8,
     /// General flags
     pub Flags: MQLONG,
@@ -866,7 +784,7 @@ pub struct tagMQMDE {
 /// Version-1 Message Descriptor
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQMD1 {
+pub struct MQMD1 {
     /// Structure identifier
     pub StrucId: MQCHAR4,
     /// Structure version number
@@ -919,7 +837,7 @@ pub struct tagMQMD1 {
 /// Version-2 Message Descriptor
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQMD2 {
+pub struct MQMD2 {
     /// Structure identifier
     pub StrucId: MQCHAR4,
     /// Structure version number
@@ -982,18 +900,18 @@ pub struct tagMQMD2 {
 /// Message Handle To Buffer Options
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQMHBO {
+pub struct MQMHBO {
     /// Structure identifier
     pub StrucId: MQCHAR4,
     /// Structure version number
     pub Version: MQLONG,
-    /// Options that control the action of MQMHBUF
+    /// Options that control the action of [`MQMHBUF`]
     pub Options: MQLONG,
 }
 /// Object descriptor
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQOD {
+pub struct MQOD {
     /// Structure identifier
     pub StrucId: MQCHAR4,
     /// Structure version number
@@ -1016,9 +934,9 @@ pub struct tagMQOD {
     pub UnknownDestCount: MQLONG,
     /// Number of queues that failed to open
     pub InvalidDestCount: MQLONG,
-    /// Offset of first object record from start of MQOD
+    /// Offset of first object record from start of [`MQOD`]
     pub ObjectRecOffset: MQLONG,
-    /// Offset of first response record from start of MQOD
+    /// Offset of first response record from start of [`MQOD`]
     pub ResponseRecOffset: MQLONG,
     /// Address of first object record
     pub ObjectRecPtr: MQPTR,
@@ -1042,7 +960,7 @@ pub struct tagMQOD {
 /// Object Record
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQOR {
+pub struct MQOR {
     /// Object name
     pub ObjectName: MQCHAR48,
     /// Object queue manager name
@@ -1051,12 +969,12 @@ pub struct tagMQOR {
 /// Property descriptor
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQPD {
+pub struct MQPD {
     /// Structure identifier
     pub StrucId: MQCHAR4,
     /// Structure version number
     pub Version: MQLONG,
-    /// Options that control the action of MQSETMP and MQINQMP
+    /// Options that control the action of [`MQSETMP`] and [`MQINQMP`]
     pub Options: MQLONG,
     /// Property support option
     pub Support: MQLONG,
@@ -1068,12 +986,12 @@ pub struct tagMQPD {
 /// Put Message Options
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQPMO {
+pub struct MQPMO {
     /// Structure identifier
     pub StrucId: MQCHAR4,
     /// Structure version number
     pub Version: MQLONG,
-    /// Options that control the action of MQPUT and MQPUT1
+    /// Options that control the action of [`MQPUT`] and [`MQPUT1`]
     pub Options: MQLONG,
     /// Reserved
     pub Timeout: MQLONG,
@@ -1091,11 +1009,11 @@ pub struct tagMQPMO {
     pub ResolvedQMgrName: MQCHAR48,
     /// Number of put message records or response records present
     pub RecsPresent: MQLONG,
-    /// Flags indicating which MQPMR fields are present
+    /// Flags indicating which `MQPMR` fields are present
     pub PutMsgRecFields: MQLONG,
-    /// Offset of first put message record from start of MQPMO
+    /// Offset of first put message record from start of [`MQPMO`]
     pub PutMsgRecOffset: MQLONG,
-    /// Offset of first response record from start of MQPMO
+    /// Offset of first response record from start of [`MQPMO`]
     pub ResponseRecOffset: MQLONG,
     /// Address of first put message record
     pub PutMsgRecPtr: MQPTR,
@@ -1113,12 +1031,12 @@ pub struct tagMQPMO {
 /// Rules and Formatting Header
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQRFH {
+pub struct MQRFH {
     /// Structure identifier
     pub StrucId: MQCHAR4,
     /// Structure version number
     pub Version: MQLONG,
-    /// Total length of MQRFH including NameValueString
+    /// Total length of [`MQRFH`] including NameValueString
     pub StrucLength: MQLONG,
     /// Numeric encoding of data that follows NameValueString
     pub Encoding: MQLONG,
@@ -1132,12 +1050,12 @@ pub struct tagMQRFH {
 /// Rules and Formatting Header 2
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQRFH2 {
+pub struct MQRFH2 {
     /// Structure identifier
     pub StrucId: MQCHAR4,
     /// Structure version number
     pub Version: MQLONG,
-    /// Total length of MQRFH2 including all NameValueLength and NameValueData fields
+    /// Total length of [`MQRFH2`] including all NameValueLength and NameValueData fields
     pub StrucLength: MQLONG,
     /// Numeric encoding of data that follows last NameValueData field
     pub Encoding: MQLONG,
@@ -1153,12 +1071,12 @@ pub struct tagMQRFH2 {
 /// Reference Message Header
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQRMH {
+pub struct MQRMH {
     /// Structure identifier
     pub StrucId: MQCHAR4,
     /// Structure version number
     pub Version: MQLONG,
-    /// Total length of MQRMH, including strings at end of fixed fields, but not the bulk data
+    /// Total length of [`MQRMH`], including strings at end of fixed fields, but not the bulk data
     pub StrucLength: MQLONG,
     /// Numeric encoding of bulk data
     pub Encoding: MQLONG,
@@ -1198,7 +1116,7 @@ pub struct tagMQRMH {
 /// Response Record
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQRR {
+pub struct MQRR {
     /// Completion code for queue
     pub CompCode: MQLONG,
     /// Reason code for queue
@@ -1207,7 +1125,7 @@ pub struct tagMQRR {
 /// Subscription Descriptor
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQSD {
+pub struct MQSD {
     /// Structure identifier
     pub StrucId: MQCHAR4,
     /// Structure version number
@@ -1246,12 +1164,12 @@ pub struct tagMQSD {
 /// Set Message Property Options
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQSMPO {
+pub struct MQSMPO {
     /// Structure identifier
     pub StrucId: MQCHAR4,
     /// Structure version number
     pub Version: MQLONG,
-    /// Options that control the action of MQSETMP
+    /// Options that control the action of [`MQSETMP`]
     pub Options: MQLONG,
     /// Encoding of Value
     pub ValueEncoding: MQLONG,
@@ -1261,12 +1179,12 @@ pub struct tagMQSMPO {
 /// Subscription Request Options
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQSRO {
+pub struct MQSRO {
     /// Structure identifier
     pub StrucId: MQCHAR4,
     /// Structure version number
     pub Version: MQLONG,
-    /// Options that control the action of MQSUBRQ
+    /// Options that control the action of [`MQSUBRQ`]
     pub Options: MQLONG,
     /// Number of publications sent
     pub NumPubs: MQLONG,
@@ -1274,7 +1192,7 @@ pub struct tagMQSRO {
 /// Status Information Record
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQSTS {
+pub struct MQSTS {
     /// Structure identifier
     pub StrucId: MQCHAR4,
     /// Structure version number
@@ -1311,7 +1229,7 @@ pub struct tagMQSTS {
 /// Trigger Message
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQTM {
+pub struct MQTM {
     /// Structure identifier
     pub StrucId: MQCHAR4,
     /// Structure version number
@@ -1334,7 +1252,7 @@ pub struct tagMQTM {
 /// Trigger Message 2 (Character)
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQTMC2 {
+pub struct MQTMC2 {
     /// Structure identifier
     pub StrucId: MQCHAR4,
     /// Structure version number
@@ -1359,18 +1277,18 @@ pub struct tagMQTMC2 {
 /// Work Information Header
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQWIH {
+pub struct MQWIH {
     /// Structure identifier
     pub StrucId: MQCHAR4,
     /// Structure version number
     pub Version: MQLONG,
-    /// Length of MQWIH structure
+    /// Length of [`MQWIH`] structure
     pub StrucLength: MQLONG,
-    /// Numeric encoding of data that follows MQWIH
+    /// Numeric encoding of data that follows [`MQWIH`]
     pub Encoding: MQLONG,
-    /// Character-set identifier of data that follows MQWIH
+    /// Character-set identifier of data that follows [`MQWIH`]
     pub CodedCharSetId: MQLONG,
-    /// Format name of data that follows MQWIH
+    /// Format name of data that follows [`MQWIH`]
     pub Format: MQCHAR8,
     /// Flags
     pub Flags: MQLONG,
@@ -1386,7 +1304,7 @@ pub struct tagMQWIH {
 /// Transmission Queue Header
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQXQH {
+pub struct MQXQH {
     /// Structure identifier
     pub StrucId: MQCHAR4,
     /// Structure version number
@@ -3787,249 +3705,249 @@ unsafe extern "C" {
     ///
     /// # Arguments
     /// * `Hconn`: Connection handle
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqback-back-out-changes)
-    pub fn MQBACK(Hconn: MQHCONN, pCompCode: &mut MQLONG, pReason: &mut MQLONG);
+    pub fn MQBACK(Hconn: MQHCONN, CompCode: &mut MQLONG, Reason: &mut MQLONG);
     /// Begin Unit of Work
     ///
     /// # Arguments
     /// * `Hconn`: Connection handle
-    /// * `pBeginOptions` (Input/Output): Options that control the action of MQBEGIN
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `BeginOptions` (Input/Output): Options that control the action of [`MQBEGIN`]
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqbegin-begin-unit-work)
     pub fn MQBEGIN(
         Hconn: MQHCONN,
-        pBeginOptions: Option<&mut MQBO>,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        BeginOptions: Option<&mut MQBO>,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
     /// Buffer To Message Handle
     ///
     /// # Arguments
     /// * `Hconn`: Connection handle
     /// * `Hmsg`: Message handle
-    /// * `pBufMsgHOpts`: Options that control the action of MQBUFMH
-    /// * `pMsgDesc` (Input/Output): Message descriptor
+    /// * `BufMsgHOpts`: Options that control the action of [`MQBUFMH`]
+    /// * `MsgDesc` (Input/Output): Message descriptor
     /// * `BufferLength`: Length in bytes of the Buffer area
-    /// * `pBuffer` (Input/Output): Area to contain the message buffer
-    /// * `pDataLength` (Output): Length of the output buffer
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `Buffer` (Input/Output): Area to contain the message buffer
+    /// * `DataLength` (Output): Length of the output buffer
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqbufmh-convert-buffer-into-message-handle)
     pub fn MQBUFMH(
         Hconn: MQHCONN,
         Hmsg: MQHMSG,
-        pBufMsgHOpts: &MQBMHO,
-        pMsgDesc: PMQVOID,
+        BufMsgHOpts: &MQBMHO,
+        MsgDesc: PMQVOID,
         BufferLength: MQLONG,
-        pBuffer: PMQVOID,
-        pDataLength: &mut MQLONG,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        Buffer: PMQVOID,
+        DataLength: &mut MQLONG,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
     /// Register Message consumer
     ///
     /// # Arguments
     /// * `Hconn`: Connection handle
     /// * `Operation`: Operation
-    /// * `pCallbackDesc`: Callback descriptor
+    /// * `CallbackDesc`: Callback descriptor
     /// * `Hobj`: Object handle
-    /// * `pMsgDesc`: Message Descriptor
-    /// * `pGetMsgOpts`: Get options
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `MsgDesc`: Message Descriptor
+    /// * `GetMsgOpts`: Get options
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqcb-manage-callback)
     pub fn MQCB(
         Hconn: MQHCONN,
         Operation: MQLONG,
-        pCallbackDesc: Option<&MQCBD>,
+        CallbackDesc: Option<&MQCBD>,
         Hobj: MQHOBJ,
-        pMsgDesc: PMQVOID,
-        pGetMsgOpts: Option<&MQGMO>,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        MsgDesc: PMQVOID,
+        GetMsgOpts: Option<&MQGMO>,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
     /// Close Object
     ///
     /// # Arguments
     /// * `Hconn`: Connection handle
-    /// * `pHobj` (Input/Output): Object handle
-    /// * `Options`: Options that control the action of MQCLOSE
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `Hobj` (Input/Output): Object handle
+    /// * `Options`: Options that control the action of [`MQCLOSE`]
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqclose-close-object)
     pub fn MQCLOSE(
         Hconn: MQHCONN,
-        pHobj: &mut MQHOBJ,
+        Hobj: &mut MQHOBJ,
         Options: MQLONG,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
     /// Commit Changes
     ///
     /// # Arguments
     /// * `Hconn`: Connection handle
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqcmit-commit-changes)
-    pub fn MQCMIT(Hconn: MQHCONN, pCompCode: &mut MQLONG, pReason: &mut MQLONG);
+    pub fn MQCMIT(Hconn: MQHCONN, CompCode: &mut MQLONG, Reason: &mut MQLONG);
     /// Connect Queue Manager
     ///
     /// # Arguments
-    /// * `pQMgrName`: Name of queue manager
-    /// * `pHconn` (Output): Connection handle
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `QMgrName`: Name of queue manager
+    /// * `Hconn` (Output): Connection handle
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqconn-connect-queue-manager)
     pub fn MQCONN(
-        pQMgrName: &MQCHAR48,
-        pHconn: &mut MQHCONN,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        QMgrName: &MQCHAR48,
+        Hconn: &mut MQHCONN,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
     /// Connect Queue Manager (Extended)
     ///
     /// # Arguments
-    /// * `pQMgrName`: Name of queue manager
-    /// * `pConnectOpts` (Input/Output): Options that control the action of MQCONNX
-    /// * `pHconn` (Output): Connection handle
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `QMgrName`: Name of queue manager
+    /// * `ConnectOpts` (Input/Output): Options that control the action of [`MQCONNX`]
+    /// * `Hconn` (Output): Connection handle
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqconnx-connect-queue-manager-extended)
     pub fn MQCONNX(
-        pQMgrName: &MQCHAR48,
-        pConnectOpts: &mut MQCNO,
-        pHconn: &mut MQHCONN,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        QMgrName: &MQCHAR48,
+        ConnectOpts: &mut MQCNO,
+        Hconn: &mut MQHCONN,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
     /// Create Message Handle
     ///
     /// # Arguments
     /// * `Hconn`: Connection handle
-    /// * `pCrtMsgHOpts`: Options that control the action of MQCRTMH
-    /// * `pHmsg` (Output): Message handle
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `CrtMsgHOpts`: Options that control the action of [`MQCRTMH`]
+    /// * `Hmsg` (Output): Message handle
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqcrtmh-create-message-handle)
     pub fn MQCRTMH(
         Hconn: MQHCONN,
-        pCrtMsgHOpts: &MQCMHO,
-        pHmsg: &mut MQHMSG,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        CrtMsgHOpts: &MQCMHO,
+        Hmsg: &mut MQHMSG,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
     /// Control Consumer
     ///
     /// # Arguments
     /// * `Hconn`: Connection handle
     /// * `Operation`: Operation
-    /// * `pControlOpts`: Control options
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `ControlOpts`: Control options
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqctl-control-callbacks)
     pub fn MQCTL(
         Hconn: MQHCONN,
         Operation: MQLONG,
-        pControlOpts: &MQCTLO,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        ControlOpts: &MQCTLO,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
     /// Disconnect Queue Manager
     ///
     /// # Arguments
-    /// * `pHconn` (Input/Output): Connection handle
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `Hconn` (Input/Output): Connection handle
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqdisc-disconnect-queue-manager)
-    pub fn MQDISC(pHconn: &mut MQHCONN, pCompCode: &mut MQLONG, pReason: &mut MQLONG);
+    pub fn MQDISC(Hconn: &mut MQHCONN, CompCode: &mut MQLONG, Reason: &mut MQLONG);
     /// Delete Message Handle
     ///
     /// # Arguments
     /// * `Hconn`: Connection handle
-    /// * `pHmsg` (Input/Output): Message handle
-    /// * `pDltMsgHOpts`: Options that control the action of MQDLTMH
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `Hmsg` (Input/Output): Message handle
+    /// * `DltMsgHOpts`: Options that control the action of [`MQDLTMH`]
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqdltmh-delete-message-handle)
     pub fn MQDLTMH(
         Hconn: MQHCONN,
-        pHmsg: &mut MQHMSG,
-        pDltMsgHOpts: &MQDMHO,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        Hmsg: &mut MQHMSG,
+        DltMsgHOpts: &MQDMHO,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
     /// Delete Message Property
     ///
     /// # Arguments
     /// * `Hconn`: Connection handle
     /// * `Hmsg`: Message handle
-    /// * `pDltPropOpts`: Options that control the action of MQDLTMP
-    /// * `pName`: Property name
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `DltPropOpts`: Options that control the action of [`MQDLTMP`]
+    /// * `Name`: Property name
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqdltmp-delete-message-property)
     pub fn MQDLTMP(
         Hconn: MQHCONN,
         Hmsg: MQHMSG,
-        pDltPropOpts: &MQDMPO,
-        pName: &MQCHARV,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        DltPropOpts: &MQDMPO,
+        Name: &MQCHARV,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
     /// Get Message
     ///
     /// # Arguments
     /// * `Hconn`: Connection handle
     /// * `Hobj`: Object handle
-    /// * `pMsgDesc` (Input/Output): Message descriptor
-    /// * `pGetMsgOpts` (Input/Output): Options that control the action of MQGET
+    /// * `MsgDesc` (Input/Output): Message descriptor
+    /// * `GetMsgOpts` (Input/Output): Options that control the action of [`MQGET`]
     /// * `BufferLength`: Length in bytes of the Buffer area
-    /// * `pBuffer` (Output): Area to contain the message data
-    /// * `pDataLength` (Output): Length of the message
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `Buffer` (Output): Area to contain the message data
+    /// * `DataLength` (Output): Length of the message
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqget-get-message)
     pub fn MQGET(
         Hconn: MQHCONN,
         Hobj: MQHOBJ,
-        pMsgDesc: PMQVOID,
-        pGetMsgOpts: &mut MQGMO,
+        MsgDesc: PMQVOID,
+        GetMsgOpts: &mut MQGMO,
         BufferLength: MQLONG,
-        pBuffer: PMQVOID,
-        pDataLength: &mut MQLONG,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        Buffer: PMQVOID,
+        DataLength: &mut MQLONG,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
     /// Inquire Object Attributes
     ///
@@ -4037,13 +3955,13 @@ unsafe extern "C" {
     /// * `Hconn`: Connection handle
     /// * `Hobj`: Object handle
     /// * `SelectorCount`: Count of selectors
-    /// * `pSelectors`: Array of attribute selectors
+    /// * `Selectors`: Array of attribute selectors
     /// * `IntAttrCount`: Count of integer attributes
-    /// * `pIntAttrs` (Output): Array of integer attributes
+    /// * `IntAttrs` (Output): Array of integer attributes
     /// * `CharAttrLength`: Length of character attributes buffer
-    /// * `pCharAttrs` (Output): Character attributes
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `CharAttrs` (Output): Character attributes
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinq-inquire-object-attributes)
@@ -4051,139 +3969,139 @@ unsafe extern "C" {
         Hconn: MQHCONN,
         Hobj: MQHOBJ,
         SelectorCount: MQLONG,
-        pSelectors: PMQLONG,
+        Selectors: PMQLONG,
         IntAttrCount: MQLONG,
-        pIntAttrs: PMQLONG,
+        IntAttrs: PMQLONG,
         CharAttrLength: MQLONG,
-        pCharAttrs: PMQCHAR,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        CharAttrs: PMQCHAR,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
     /// Inquire Message Property
     ///
     /// # Arguments
     /// * `Hconn`: Connection handle
     /// * `Hmsg`: Message handle
-    /// * `pInqPropOpts`: Options that control the action of MQINQMP
-    /// * `pName`: Property name
-    /// * `pPropDesc` (Output): Property descriptor
-    /// * `pType` (Input/Output): Property data type
+    /// * `InqPropOpts`: Options that control the action of [`MQINQMP`]
+    /// * `Name`: Property name
+    /// * `PropDesc` (Output): Property descriptor
+    /// * `Type` (Input/Output): Property data type
     /// * `ValueLength`: Length in bytes of the Value area
-    /// * `pValue` (Output): Property value
-    /// * `pDataLength` (Output): Length of the property value
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `Value` (Output): Property value
+    /// * `DataLength` (Output): Length of the property value
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinqmp-inquire-message-property)
     pub fn MQINQMP(
         Hconn: MQHCONN,
         Hmsg: MQHMSG,
-        pInqPropOpts: &mut MQIMPO,
-        pName: &MQCHARV,
-        pPropDesc: &mut MQPD,
-        pType: &mut MQLONG,
+        InqPropOpts: &mut MQIMPO,
+        Name: &MQCHARV,
+        PropDesc: &mut MQPD,
+        Type: &mut MQLONG,
         ValueLength: MQLONG,
-        pValue: PMQVOID,
-        pDataLength: &mut MQLONG,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        Value: PMQVOID,
+        DataLength: &mut MQLONG,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
     /// Message Handle To Buffer
     ///
     /// # Arguments
     /// * `Hconn`: Connection handle
     /// * `Hmsg`: Message handle
-    /// * `pMsgHBufOpts`: Options that control the action of MQMHBUF
-    /// * `pName`: Property name
-    /// * `pMsgDesc` (Input/Output): Message descriptor
+    /// * `MsgHBufOpts`: Options that control the action of [`MQMHBUF`]
+    /// * `Name`: Property name
+    /// * `MsgDesc` (Input/Output): Message descriptor
     /// * `BufferLength`: Length in bytes of the Buffer area
-    /// * `pBuffer` (Output): Area to contain the properties
-    /// * `pDataLength` (Output): Length of the properties
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `Buffer` (Output): Area to contain the properties
+    /// * `DataLength` (Output): Length of the properties
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqmhbuf-convert-message-handle-into-buffer)
     pub fn MQMHBUF(
         Hconn: MQHCONN,
         Hmsg: MQHMSG,
-        pMsgHBufOpts: &MQMHBO,
-        pName: &MQCHARV,
-        pMsgDesc: PMQVOID,
+        MsgHBufOpts: &MQMHBO,
+        Name: &MQCHARV,
+        MsgDesc: PMQVOID,
         BufferLength: MQLONG,
-        pBuffer: PMQVOID,
-        pDataLength: &mut MQLONG,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        Buffer: PMQVOID,
+        DataLength: &mut MQLONG,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
     /// Open Object
     ///
     /// # Arguments
     /// * `Hconn`: Connection handle
-    /// * `pObjDesc` (Input/Output): Object descriptor
-    /// * `Options`: Options that control the action of MQOPEN
-    /// * `pHobj` (Output): Object handle
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `ObjDesc` (Input/Output): Object descriptor
+    /// * `Options`: Options that control the action of [`MQOPEN`]
+    /// * `Hobj` (Output): Object handle
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqopen-open-object)
     pub fn MQOPEN(
         Hconn: MQHCONN,
-        pObjDesc: &mut MQOD,
+        ObjDesc: &mut MQOD,
         Options: MQLONG,
-        pHobj: &mut MQHOBJ,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        Hobj: &mut MQHOBJ,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
     /// Put Message
     ///
     /// # Arguments
     /// * `Hconn`: Connection handle
     /// * `Hobj`: Object handle
-    /// * `pMsgDesc` (Input/Output): Message descriptor
-    /// * `pPutMsgOpts` (Input/Output): Options that control the action of MQPUT
+    /// * `MsgDesc` (Input/Output): Message descriptor
+    /// * `PutMsgOpts` (Input/Output): Options that control the action of [`MQPUT`]
     /// * `BufferLength`: Length of the message in Buffer
-    /// * `pBuffer`: Message data
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `Buffer`: Message data
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqput-put-message)
     pub fn MQPUT(
         Hconn: MQHCONN,
         Hobj: MQHOBJ,
-        pMsgDesc: PMQVOID,
-        pPutMsgOpts: &mut MQPMO,
+        MsgDesc: PMQVOID,
+        PutMsgOpts: &mut MQPMO,
         BufferLength: MQLONG,
-        pBuffer: PMQVOID,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        Buffer: PMQVOID,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
     /// Put One Message
     ///
     /// # Arguments
     /// * `Hconn`: Connection handle
-    /// * `pObjDesc` (Input/Output): Object descriptor
-    /// * `pMsgDesc` (Input/Output): Message descriptor
-    /// * `pPutMsgOpts` (Input/Output): Options that control the action of MQPUT1
+    /// * `ObjDesc` (Input/Output): Object descriptor
+    /// * `MsgDesc` (Input/Output): Message descriptor
+    /// * `PutMsgOpts` (Input/Output): Options that control the action of [`MQPUT1`]
     /// * `BufferLength`: Length of the message in Buffer
-    /// * `pBuffer`: Message data
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `Buffer`: Message data
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqput1-put-one-message)
     pub fn MQPUT1(
         Hconn: MQHCONN,
-        pObjDesc: &mut MQOD,
-        pMsgDesc: PMQVOID,
-        pPutMsgOpts: &mut MQPMO,
+        ObjDesc: &mut MQOD,
+        MsgDesc: PMQVOID,
+        PutMsgOpts: &mut MQPMO,
         BufferLength: MQLONG,
-        pBuffer: PMQVOID,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        Buffer: PMQVOID,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
     /// Set Object Attributes
     ///
@@ -4191,13 +4109,13 @@ unsafe extern "C" {
     /// * `Hconn`: Connection handle
     /// * `Hobj`: Object handle
     /// * `SelectorCount`: Count of selectors
-    /// * `pSelectors`: Array of attribute selectors
+    /// * `Selectors`: Array of attribute selectors
     /// * `IntAttrCount`: Count of integer attributes
-    /// * `pIntAttrs`: Array of integer attributes
+    /// * `IntAttrs`: Array of integer attributes
     /// * `CharAttrLength`: Length of character attributes buffer
-    /// * `pCharAttrs`: Character attributes
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `CharAttrs`: Character attributes
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqset-set-object-attributes)
@@ -4205,79 +4123,79 @@ unsafe extern "C" {
         Hconn: MQHCONN,
         Hobj: MQHOBJ,
         SelectorCount: MQLONG,
-        pSelectors: PMQLONG,
+        Selectors: PMQLONG,
         IntAttrCount: MQLONG,
-        pIntAttrs: PMQLONG,
+        IntAttrs: PMQLONG,
         CharAttrLength: MQLONG,
-        pCharAttrs: PMQCHAR,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        CharAttrs: PMQCHAR,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
     /// Set Message Property
     ///
     /// # Arguments
     /// * `Hconn`: Connection handle
     /// * `Hmsg`: Message handle
-    /// * `pSetPropOpts`: Options that control the action of MQSETMP
-    /// * `pName`: Property name
-    /// * `pPropDesc` (Input/Output): Property descriptor
+    /// * `SetPropOpts`: Options that control the action of [`MQSETMP`]
+    /// * `Name`: Property name
+    /// * `PropDesc` (Input/Output): Property descriptor
     /// * `Type`: Property data type
     /// * `ValueLength`: Length of the Value area
-    /// * `pValue`: Property value
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `Value`: Property value
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqsetmp-set-message-property)
     pub fn MQSETMP(
         Hconn: MQHCONN,
         Hmsg: MQHMSG,
-        pSetPropOpts: &MQSMPO,
-        pName: &MQCHARV,
-        pPropDesc: &mut MQPD,
+        SetPropOpts: &MQSMPO,
+        Name: &MQCHARV,
+        PropDesc: &mut MQPD,
         Type: MQLONG,
         ValueLength: MQLONG,
-        pValue: PMQVOID,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        Value: PMQVOID,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
     /// Get Status Information
     ///
     /// # Arguments
     /// * `Hconn`: Connection handle
     /// * `Type`: Status information type
-    /// * `pStatus` (Input/Output): Status information
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `Status` (Input/Output): Status information
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqstat-retrieve-status-information)
     pub fn MQSTAT(
         Hconn: MQHCONN,
         Type: MQLONG,
-        pStatus: &mut MQSTS,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        Status: &mut MQSTS,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
     /// Subscribe to topic
     ///
     /// # Arguments
     /// * `Hconn`: Connection handle
-    /// * `pSubDesc` (Input/Output): Subscription descriptor
-    /// * `pHobj` (Input/Output): Object handle for queue
-    /// * `pHsub` (Output): Subscription object handle
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `SubDesc` (Input/Output): Subscription descriptor
+    /// * `Hobj` (Input/Output): Object handle for queue
+    /// * `Hsub` (Output): Subscription object handle
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqsub-register-subscription)
     pub fn MQSUB(
         Hconn: MQHCONN,
-        pSubDesc: &mut MQSD,
-        pHobj: Option<&mut MQHOBJ>,
-        pHsub: &mut MQHOBJ,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        SubDesc: &mut MQSD,
+        Hobj: Option<&mut MQHOBJ>,
+        Hsub: &mut MQHOBJ,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
     /// Subscription Request
     ///
@@ -4285,9 +4203,9 @@ unsafe extern "C" {
     /// * `Hconn`: Connection handle
     /// * `Hsub`: Subscription handle
     /// * `Action`: Action requested on the subscription
-    /// * `pSubRqOpts` (Input/Output): Subscription Request Options
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `SubRqOpts` (Input/Output): Subscription Request Options
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqsubrq-subscription-request)
@@ -4295,19 +4213,17 @@ unsafe extern "C" {
         Hconn: MQHCONN,
         Hsub: MQHOBJ,
         Action: MQLONG,
-        pSubRqOpts: Option<&mut MQSRO>,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        SubRqOpts: Option<&mut MQSRO>,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
 }
-/// Channel Definition
-pub type MQCD = tagMQCD;
 pub type PMQCD = *mut MQCD;
 pub type PPMQCD = *mut PMQCD;
 /// Channel Definition
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQCD {
+pub struct MQCD {
     /// Channel definition name
     pub ChannelName: [MQCHAR; 20usize],
     /// Structure version number
@@ -4394,7 +4310,7 @@ pub struct tagMQCD {
     pub BatchInterval: MQLONG,
     /// Speed at which nonpersistent messages are sent
     pub NonPersistentMsgSpeed: MQLONG,
-    /// Length of MQCD structure
+    /// Length of [`MQCD`] structure
     pub StrucLength: MQLONG,
     /// Length of exit name
     pub ExitNameLength: MQLONG,
@@ -4564,16 +4480,16 @@ unsafe extern "C" {
     ///
     /// # Arguments
     /// * `Hconn`: Connection handle
-    /// * `Options`: Options that control the action of MQXCNVC
+    /// * `Options`: Options that control the action of [`MQXCNVC`]
     /// * `SourceCCSID`: Coded character set identifier of string before conversion
     /// * `SourceLength`: Length of string before conversion
-    /// * `pSourceBuffer`: String to be converted
+    /// * `SourceBuffer`: String to be converted
     /// * `TargetCCSID`: Coded character set identifier of string after conversion
     /// * `TargetLength`: Length of output buffer
-    /// * `pTargetBuffer` (Output): String after conversion
-    /// * `pDataLength` (Output): Length of output string
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `TargetBuffer` (Output): String after conversion
+    /// * `DataLength` (Output): Length of output string
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=exit-mqxcnvc-convert-characters)
@@ -4582,12 +4498,12 @@ unsafe extern "C" {
         Options: MQLONG,
         SourceCCSID: MQLONG,
         SourceLength: MQLONG,
-        pSourceBuffer: PMQCHAR,
+        SourceBuffer: PMQCHAR,
         TargetCCSID: MQLONG,
         TargetLength: MQLONG,
-        pTargetBuffer: PMQCHAR,
-        pDataLength: &mut MQLONG,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        TargetBuffer: PMQCHAR,
+        DataLength: &mut MQLONG,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
 }

@@ -7,10 +7,10 @@ pub trait Exits {
     /// * `Hconfig`: Configuration handle
     /// * `ExitReason`: Exit reason
     /// * `Function`: Function identifier
-    /// * `pEntryPoint`: Exit function entry point
-    /// * `pExitOpts`: Options that control the action of MQXEP
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `EntryPoint`: Exit function entry point
+    /// * `ExitOpts`: Options that control the action of [`MQXEP`](Self::MQXEP)
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=reference-exit-entry-point-registration-call-mqxep)
@@ -19,58 +19,58 @@ pub trait Exits {
         Hconfig: lib::MQHCONFIG,
         ExitReason: lib::MQLONG,
         Function: lib::MQLONG,
-        pEntryPoint: lib::PMQFUNC,
-        pExitOpts: Option<&lib::MQXEPO>,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        EntryPoint: lib::PMQFUNC,
+        ExitOpts: Option<&lib::MQXEPO>,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Cluster Workload Navigate Records
     ///
     /// # Arguments
-    /// * `pExitParms` (Input/Output): Exit parameter structure
+    /// * `ExitParms` (Input/Output): Exit parameter structure
     /// * `CurrentRecord`: Address of current record
     /// * `NextOffset`: Offset of next record
-    /// * `pNextRecord` (Output): Address of next record or structure
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `NextRecord` (Output): Address of next record or structure
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=structures-mqxclwln-navigate-cluster-workload-records)
     unsafe fn MQXCLWLN(
         &self,
-        pExitParms: &mut lib::MQWXP,
+        ExitParms: &mut lib::MQWXP,
         CurrentRecord: lib::MQPTR,
         NextOffset: lib::MQLONG,
-        pNextRecord: &mut lib::MQPTR,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        NextRecord: &mut lib::MQPTR,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Convert Message Data
     ///
     /// # Arguments
-    /// * `pDataConvExitParms` (Input/Output): Data-conversion exit parameter block
-    /// * `pMsgDesc` (Input/Output): Message descriptor
+    /// * `DataConvExitParms` (Input/Output): Data-conversion exit parameter block
+    /// * `MsgDesc` (Input/Output): Message descriptor
     /// * `InBufferLength`: Length in bytes of `InBuffer`
-    /// * `pInBuffer`: Buffer containing the unconverted message
+    /// * `InBuffer`: Buffer containing the unconverted message
     /// * `OutBufferLength`: Length in bytes of `OutBuffer`
-    /// * `pOutBuffer` (Output): Buffer containing the converted message
+    /// * `OutBuffer` (Output): Buffer containing the converted message
     unsafe fn MQXDX(
         &self,
-        pDataConvExitParms: &mut lib::MQDXP,
-        pMsgDesc: lib::PMQMD,
+        DataConvExitParms: &mut lib::MQDXP,
+        MsgDesc: lib::PMQMD,
         InBufferLength: lib::MQLONG,
-        pInBuffer: lib::PMQVOID,
+        InBuffer: lib::PMQVOID,
         OutBufferLength: lib::MQLONG,
-        pOutBuffer: lib::PMQVOID,
+        OutBuffer: lib::PMQVOID,
     );
     /// Add Component Entry Point
     ///
     /// # Arguments
     /// * `Hconfig`: Configuration handle
     /// * `Function`: Function identifier
-    /// * `pEntryPoint`: Function entry point
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `EntryPoint`: Function entry point
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=information-mqzep-add-component-entry-point)
@@ -78,9 +78,9 @@ pub trait Exits {
         &self,
         Hconfig: lib::MQHCONFIG,
         Function: lib::MQLONG,
-        pEntryPoint: lib::PMQFUNC,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        EntryPoint: lib::PMQFUNC,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
 }
 #[cfg(feature = "mqai")]
@@ -91,8 +91,8 @@ pub trait Mqai {
     /// * `Bag`: Bag handle
     /// * `Selector`: Item selector
     /// * `ItemValue`: Item value
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqaddbag)
@@ -101,8 +101,8 @@ pub trait Mqai {
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
         ItemValue: lib::MQHBAG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Add Byte String to Bag
     ///
@@ -110,9 +110,9 @@ pub trait Mqai {
     /// * `Bag`: Bag handle
     /// * `Selector`: Item selector
     /// * `BufferLength`: Length of buffer
-    /// * `pBuffer`: Buffer containing item value
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `Buffer`: Buffer containing item value
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqaddbytestring)
@@ -121,9 +121,9 @@ pub trait Mqai {
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQBYTE,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Buffer: lib::PMQBYTE,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Add Byte String Filter to Bag
     ///
@@ -131,10 +131,10 @@ pub trait Mqai {
     /// * `Bag`: Bag handle
     /// * `Selector`: Item selector
     /// * `BufferLength`: Length of buffer
-    /// * `pBuffer`: Buffer containing item value
+    /// * `Buffer`: Buffer containing item value
     /// * `Operator`: Item operator
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqaddbytestringfilter)
@@ -143,18 +143,18 @@ pub trait Mqai {
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQBYTE,
+        Buffer: lib::PMQBYTE,
         Operator: lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Add an Inquiry Item to Bag
     ///
     /// # Arguments
     /// * `Bag`: Bag handle
     /// * `Selector`: Attribute selector
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqaddinquiry)
@@ -162,8 +162,8 @@ pub trait Mqai {
         &self,
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Add Integer to Bag
     ///
@@ -171,8 +171,8 @@ pub trait Mqai {
     /// * `Bag`: Bag handle
     /// * `Selector`: Item selector
     /// * `ItemValue`: Item value
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqaddinteger)
@@ -181,8 +181,8 @@ pub trait Mqai {
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
         ItemValue: lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Add 64-bit Integer to Bag
     ///
@@ -190,8 +190,8 @@ pub trait Mqai {
     /// * `Bag`: Bag handle
     /// * `Selector`: Item selector
     /// * `ItemValue`: Item value
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqaddinteger64)
@@ -200,8 +200,8 @@ pub trait Mqai {
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
         ItemValue: lib::MQINT64,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Add Integer Filter to Bag
     ///
@@ -210,8 +210,8 @@ pub trait Mqai {
     /// * `Selector`: Item selector
     /// * `ItemValue`: Item value
     /// * `Operator`: Item operator
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqaddintegerfilter)
@@ -221,8 +221,8 @@ pub trait Mqai {
         Selector: lib::MQLONG,
         ItemValue: lib::MQLONG,
         Operator: lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Add String to Bag
     ///
@@ -230,9 +230,9 @@ pub trait Mqai {
     /// * `Bag`: Bag handle
     /// * `Selector`: Item selector
     /// * `BufferLength`: Length of buffer
-    /// * `pBuffer`: Buffer containing item value
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `Buffer`: Buffer containing item value
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqaddstring)
@@ -241,9 +241,9 @@ pub trait Mqai {
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQCHAR,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Buffer: lib::PMQCHAR,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Add String Filter to Bag
     ///
@@ -251,10 +251,10 @@ pub trait Mqai {
     /// * `Bag`: Bag handle
     /// * `Selector`: Item selector
     /// * `BufferLength`: Length of buffer
-    /// * `pBuffer`: Buffer containing item value
+    /// * `Buffer`: Buffer containing item value
     /// * `Operator`: Item operator
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqaddstringfilter)
@@ -263,10 +263,10 @@ pub trait Mqai {
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQCHAR,
+        Buffer: lib::PMQCHAR,
         Operator: lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Convert Bag to PCF
     ///
@@ -274,10 +274,10 @@ pub trait Mqai {
     /// * `OptionsBag`: Handle of options bag
     /// * `DataBag`: Handle of data bag
     /// * `BufferLength`: Length of buffer
-    /// * `pBuffer` (Output): Buffer to contain PCF
-    /// * `pDataLength` (Output): Length of PCF returned in buffer
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `Buffer` (Output): Buffer to contain PCF
+    /// * `DataLength` (Output): Length of PCF returned in buffer
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqbagtobuffer)
@@ -286,20 +286,20 @@ pub trait Mqai {
         OptionsBag: lib::MQHBAG,
         DataBag: lib::MQHBAG,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQVOID,
-        pDataLength: &mut lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Buffer: lib::PMQVOID,
+        DataLength: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Convert PCF to Bag
     ///
     /// # Arguments
     /// * `OptionsBag`: Handle of options bag
     /// * `BufferLength`: Length of buffer
-    /// * `pBuffer`: Buffer containing PCF
+    /// * `Buffer`: Buffer containing PCF
     /// * `DataBag` (Input/Output): Handle of bag to contain data
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqbuffertobag)
@@ -307,34 +307,34 @@ pub trait Mqai {
         &self,
         OptionsBag: lib::MQHBAG,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQVOID,
+        Buffer: lib::PMQVOID,
         DataBag: lib::MQHBAG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Delete All Items in Bag
     ///
     /// # Arguments
     /// * `Bag`: Bag handle
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqclearbag)
     unsafe fn mqClearBag(
         &self,
         Bag: lib::MQHBAG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Count Items in Bag
     ///
     /// # Arguments
     /// * `Bag`: Bag handle
     /// * `Selector`: Item selector
-    /// * `pItemCount` (Output): Number of items
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `ItemCount` (Output): Number of items
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqcountitems)
@@ -342,41 +342,41 @@ pub trait Mqai {
         &self,
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
-        pItemCount: &mut lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        ItemCount: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Create Bag
     ///
     /// # Arguments
     /// * `Options`: Bag options
-    /// * `pBag` (Output): Handle of bag created
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `Bag` (Output): Handle of bag created
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqcreatebag)
     unsafe fn mqCreateBag(
         &self,
         Options: lib::MQLONG,
-        pBag: &mut lib::MQHBAG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Bag: &mut lib::MQHBAG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Delete Bag
     ///
     /// # Arguments
-    /// * `pBag` (Input/Output): Bag handle
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `Bag` (Input/Output): Bag handle
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqdeletebag)
     unsafe fn mqDeleteBag(
         &self,
-        pBag: &mut lib::MQHBAG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Bag: &mut lib::MQHBAG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Delete Item in Bag
     ///
@@ -384,8 +384,8 @@ pub trait Mqai {
     /// * `Bag`: Bag handle
     /// * `Selector`: Item selector
     /// * `ItemIndex`: Item index
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqdeleteitem)
@@ -394,8 +394,8 @@ pub trait Mqai {
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
         ItemIndex: lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Send Admin Command and Receive Reponse
     ///
@@ -407,8 +407,8 @@ pub trait Mqai {
     /// * `ResponseBag`: Handle of response bag
     /// * `AdminQ`: Handle of admin queue
     /// * `ResponseQ`: Handle of response queue
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqexecute)
@@ -421,19 +421,19 @@ pub trait Mqai {
         ResponseBag: lib::MQHBAG,
         AdminQ: lib::MQHOBJ,
         ResponseQ: lib::MQHOBJ,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Receive PCF Message into Bag
     ///
     /// # Arguments
     /// * `Hconn`: Connection handle
     /// * `Hobj`: Queue handle
-    /// * `pMsgDesc` (Input/Output): Message descriptor
-    /// * `pGetMsgOpts` (Input/Output): Get-message options
+    /// * `MsgDesc` (Input/Output): Message descriptor
+    /// * `GetMsgOpts` (Input/Output): Get-message options
     /// * `Bag` (Input/Output): Handle of bag to contain message
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqgetbag)
@@ -441,11 +441,11 @@ pub trait Mqai {
         &self,
         Hconn: lib::MQHCONN,
         Hobj: lib::MQHOBJ,
-        pMsgDesc: lib::PMQVOID,
-        pGetMsgOpts: &mut lib::MQGMO,
+        MsgDesc: lib::PMQVOID,
+        GetMsgOpts: &mut lib::MQGMO,
         Bag: lib::MQHBAG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Inquire Handle in Bag
     ///
@@ -453,9 +453,9 @@ pub trait Mqai {
     /// * `Bag`: Bag handle
     /// * `Selector`: Item selector
     /// * `ItemIndex`: Item index
-    /// * `pItemValue` (Output): Item value
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `ItemValue` (Output): Item value
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinquirebag)
@@ -464,9 +464,9 @@ pub trait Mqai {
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
         ItemIndex: lib::MQLONG,
-        pItemValue: &mut lib::MQHBAG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        ItemValue: &mut lib::MQHBAG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Inquire Byte String in Bag
     ///
@@ -475,10 +475,10 @@ pub trait Mqai {
     /// * `Selector`: Item selector
     /// * `ItemIndex`: Item index
     /// * `BufferLength`: Length of buffer
-    /// * `pBuffer` (Output): Buffer to contain string
-    /// * `pByteStringLength` (Output): Length of byte string returned
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `Buffer` (Output): Buffer to contain string
+    /// * `ByteStringLength` (Output): Length of byte string returned
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinquirebytestring)
@@ -488,10 +488,10 @@ pub trait Mqai {
         Selector: lib::MQLONG,
         ItemIndex: lib::MQLONG,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQBYTE,
-        pByteStringLength: &mut lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Buffer: lib::PMQBYTE,
+        ByteStringLength: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Inquire Byte String Filter in Bag
     ///
@@ -500,11 +500,11 @@ pub trait Mqai {
     /// * `Selector`: Item selector
     /// * `ItemIndex`: Item index
     /// * `BufferLength`: Length of buffer
-    /// * `pBuffer` (Output): Buffer to contain string
-    /// * `pByteStringLength` (Output): Length of byte string returned
-    /// * `pOperator` (Output): Item operator
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `Buffer` (Output): Buffer to contain string
+    /// * `ByteStringLength` (Output): Length of byte string returned
+    /// * `Operator` (Output): Item operator
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinquirebytestringfilter)
@@ -514,11 +514,11 @@ pub trait Mqai {
         Selector: lib::MQLONG,
         ItemIndex: lib::MQLONG,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQBYTE,
-        pByteStringLength: &mut lib::MQLONG,
-        pOperator: &mut lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Buffer: lib::PMQBYTE,
+        ByteStringLength: &mut lib::MQLONG,
+        Operator: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Inquire Integer in Bag
     ///
@@ -526,9 +526,9 @@ pub trait Mqai {
     /// * `Bag`: Bag handle
     /// * `Selector`: Item selector
     /// * `ItemIndex`: Item index
-    /// * `pItemValue` (Output): Item value
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `ItemValue` (Output): Item value
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinquireinteger)
@@ -537,9 +537,9 @@ pub trait Mqai {
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
         ItemIndex: lib::MQLONG,
-        pItemValue: &mut lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        ItemValue: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Inquire 64-bit Integer in Bag
     ///
@@ -547,9 +547,9 @@ pub trait Mqai {
     /// * `Bag`: Bag handle
     /// * `Selector`: Item selector
     /// * `ItemIndex`: Item index
-    /// * `pItemValue` (Output): Item value
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `ItemValue` (Output): Item value
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinquireinteger64)
@@ -558,9 +558,9 @@ pub trait Mqai {
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
         ItemIndex: lib::MQLONG,
-        pItemValue: &mut lib::MQINT64,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        ItemValue: &mut lib::MQINT64,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Inquire Integer Filter in Bag
     ///
@@ -568,10 +568,10 @@ pub trait Mqai {
     /// * `Bag`: Bag handle
     /// * `Selector`: Item selector
     /// * `ItemIndex`: Item index
-    /// * `pItemValue` (Output): Item value
-    /// * `pOperator` (Output): Item operator
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `ItemValue` (Output): Item value
+    /// * `Operator` (Output): Item operator
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinquireintegerfilter)
@@ -580,10 +580,10 @@ pub trait Mqai {
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
         ItemIndex: lib::MQLONG,
-        pItemValue: &mut lib::MQLONG,
-        pOperator: &mut lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        ItemValue: &mut lib::MQLONG,
+        Operator: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Inquire Attributes of Item in Bag
     ///
@@ -591,10 +591,10 @@ pub trait Mqai {
     /// * `Bag`: Bag handle
     /// * `Selector`: Item selector
     /// * `ItemIndex`: Item index
-    /// * `pOutSelector` (Output): Selector of item
-    /// * `pItemType` (Output): Data type of item
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `OutSelector` (Output): Selector of item
+    /// * `ItemType` (Output): Data type of item
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinquireiteminfo)
@@ -603,10 +603,10 @@ pub trait Mqai {
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
         ItemIndex: lib::MQLONG,
-        pOutSelector: &mut lib::MQLONG,
-        pItemType: &mut lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        OutSelector: &mut lib::MQLONG,
+        ItemType: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Inquire String in Bag
     ///
@@ -615,11 +615,11 @@ pub trait Mqai {
     /// * `Selector`: Item selector
     /// * `ItemIndex`: Item index
     /// * `BufferLength`: Length of buffer
-    /// * `pBuffer` (Output): Buffer to contain string
-    /// * `pStringLength` (Output): Length of string returned
-    /// * `pCodedCharSetId` (Output): Character-set identifier of string
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `Buffer` (Output): Buffer to contain string
+    /// * `StringLength` (Output): Length of string returned
+    /// * `CodedCharSetId` (Output): Character-set identifier of string
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinquirestring)
@@ -629,11 +629,11 @@ pub trait Mqai {
         Selector: lib::MQLONG,
         ItemIndex: lib::MQLONG,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQCHAR,
-        pStringLength: &mut lib::MQLONG,
-        pCodedCharSetId: &mut lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Buffer: lib::PMQCHAR,
+        StringLength: &mut lib::MQLONG,
+        CodedCharSetId: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Inquire String Filter in Bag
     ///
@@ -642,12 +642,12 @@ pub trait Mqai {
     /// * `Selector`: Item selector
     /// * `ItemIndex`: Item index
     /// * `BufferLength`: Length of buffer
-    /// * `pBuffer` (Output): Buffer to contain string
-    /// * `pStringLength` (Output): Length of string returned
-    /// * `pCodedCharSetId` (Output): Character-set identifier of string
-    /// * `pOperator` (Output): Item operator
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `Buffer` (Output): Buffer to contain string
+    /// * `StringLength` (Output): Length of string returned
+    /// * `CodedCharSetId` (Output): Character-set identifier of string
+    /// * `Operator` (Output): Item operator
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinquirestringfilter)
@@ -657,42 +657,42 @@ pub trait Mqai {
         Selector: lib::MQLONG,
         ItemIndex: lib::MQLONG,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQCHAR,
-        pStringLength: &mut lib::MQLONG,
-        pCodedCharSetId: &mut lib::MQLONG,
-        pOperator: &mut lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Buffer: lib::PMQCHAR,
+        StringLength: &mut lib::MQLONG,
+        CodedCharSetId: &mut lib::MQLONG,
+        Operator: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Pad Null-terminated String with Blanks
     ///
     /// # Arguments
-    /// * `pString`: Null-terminated string to be padded
+    /// * `String`: Null-terminated string to be padded
     /// * `BufferLength`: Length of buffer
-    /// * `pBuffer` (Output): Buffer to contain padded string
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `Buffer` (Output): Buffer to contain padded string
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqpad)
     unsafe fn mqPad(
         &self,
-        pString: lib::PMQCHAR,
+        String: lib::PMQCHAR,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQCHAR,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Buffer: lib::PMQCHAR,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Send Bag as PCF Message
     ///
     /// # Arguments
     /// * `Hconn`: Connection handle
     /// * `Hobj`: Queue handle
-    /// * `pMsgDesc` (Input/Output): Message descriptor
-    /// * `pPutMsgOpts` (Input/Output): Put-message options
+    /// * `MsgDesc` (Input/Output): Message descriptor
+    /// * `PutMsgOpts` (Input/Output): Put-message options
     /// * `Bag`: Handle of bag containing message data
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqputbag)
@@ -700,11 +700,11 @@ pub trait Mqai {
         &self,
         Hconn: lib::MQHCONN,
         Hobj: lib::MQHOBJ,
-        pMsgDesc: lib::PMQVOID,
-        pPutMsgOpts: &mut lib::MQPMO,
+        MsgDesc: lib::PMQVOID,
+        PutMsgOpts: &mut lib::MQPMO,
         Bag: lib::MQHBAG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Modify Byte String in Bag
     ///
@@ -713,9 +713,9 @@ pub trait Mqai {
     /// * `Selector`: Item selector
     /// * `ItemIndex`: Item index
     /// * `BufferLength`: Length of buffer
-    /// * `pBuffer`: Buffer containing item value
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `Buffer`: Buffer containing item value
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqsetbytestring)
@@ -725,9 +725,9 @@ pub trait Mqai {
         Selector: lib::MQLONG,
         ItemIndex: lib::MQLONG,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQBYTE,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Buffer: lib::PMQBYTE,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Modify Byte String Filter in Bag
     ///
@@ -736,10 +736,10 @@ pub trait Mqai {
     /// * `Selector`: Item selector
     /// * `ItemIndex`: Item index
     /// * `BufferLength`: Length of buffer
-    /// * `pBuffer`: Buffer containing item value
+    /// * `Buffer`: Buffer containing item value
     /// * `Operator`: Item operator
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqsetbytestringfilter)
@@ -749,10 +749,10 @@ pub trait Mqai {
         Selector: lib::MQLONG,
         ItemIndex: lib::MQLONG,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQBYTE,
+        Buffer: lib::PMQBYTE,
         Operator: lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Modify Integer in Bag
     ///
@@ -761,8 +761,8 @@ pub trait Mqai {
     /// * `Selector`: Item selector
     /// * `ItemIndex`: Item index
     /// * `ItemValue`: Item value
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqsetinteger)
@@ -772,8 +772,8 @@ pub trait Mqai {
         Selector: lib::MQLONG,
         ItemIndex: lib::MQLONG,
         ItemValue: lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Modify 64-bit Integer in Bag
     ///
@@ -782,8 +782,8 @@ pub trait Mqai {
     /// * `Selector`: Item selector
     /// * `ItemIndex`: Item index
     /// * `ItemValue`: Item value
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqsetinteger64)
@@ -793,8 +793,8 @@ pub trait Mqai {
         Selector: lib::MQLONG,
         ItemIndex: lib::MQLONG,
         ItemValue: lib::MQINT64,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Modify Integer Filter in Bag
     ///
@@ -804,8 +804,8 @@ pub trait Mqai {
     /// * `ItemIndex`: Item index
     /// * `ItemValue`: Item value
     /// * `Operator`: Item operator
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqsetintegerfilter)
@@ -816,8 +816,8 @@ pub trait Mqai {
         ItemIndex: lib::MQLONG,
         ItemValue: lib::MQLONG,
         Operator: lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Modify String in Bag
     ///
@@ -826,9 +826,9 @@ pub trait Mqai {
     /// * `Selector`: Item selector
     /// * `ItemIndex`: Item index
     /// * `BufferLength`: Length of buffer
-    /// * `pBuffer`: Buffer containing item value
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `Buffer`: Buffer containing item value
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqsetstring)
@@ -838,9 +838,9 @@ pub trait Mqai {
         Selector: lib::MQLONG,
         ItemIndex: lib::MQLONG,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQCHAR,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Buffer: lib::PMQCHAR,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Modify String Filter in Bag
     ///
@@ -849,10 +849,10 @@ pub trait Mqai {
     /// * `Selector`: Item selector
     /// * `ItemIndex`: Item index
     /// * `BufferLength`: Length of buffer
-    /// * `pBuffer`: Buffer containing item value
+    /// * `Buffer`: Buffer containing item value
     /// * `Operator`: Item operator
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqsetstringfilter)
@@ -862,37 +862,37 @@ pub trait Mqai {
         Selector: lib::MQLONG,
         ItemIndex: lib::MQLONG,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQCHAR,
+        Buffer: lib::PMQCHAR,
         Operator: lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Replace Trailing Blanks with Null Character
     ///
     /// # Arguments
     /// * `BufferLength`: Length of buffer
-    /// * `pBuffer`: Buffer containing blank-padded string
-    /// * `pString` (Output): String with blanks discarded
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `Buffer`: Buffer containing blank-padded string
+    /// * `String` (Output): String with blanks discarded
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqtrim)
     unsafe fn mqTrim(
         &self,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQCHAR,
-        pString: lib::PMQCHAR,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Buffer: lib::PMQCHAR,
+        String: lib::PMQCHAR,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Delete Trailing Items in Bag
     ///
     /// # Arguments
     /// * `Bag`: Bag handle
     /// * `ItemCount`: Number of items to remain in bag
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqtruncatebag)
@@ -900,8 +900,8 @@ pub trait Mqai {
         &self,
         Bag: lib::MQHBAG,
         ItemCount: lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
 }
 pub trait Mqi {
@@ -909,46 +909,46 @@ pub trait Mqi {
     ///
     /// # Arguments
     /// * `Hconn`: Connection handle
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqback-back-out-changes)
     unsafe fn MQBACK(
         &self,
         Hconn: lib::MQHCONN,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Begin Unit of Work
     ///
     /// # Arguments
     /// * `Hconn`: Connection handle
-    /// * `pBeginOptions` (Input/Output): Options that control the action of MQBEGIN
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `BeginOptions` (Input/Output): Options that control the action of [`MQBEGIN`](Self::MQBEGIN)
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqbegin-begin-unit-work)
     unsafe fn MQBEGIN(
         &self,
         Hconn: lib::MQHCONN,
-        pBeginOptions: Option<&mut lib::MQBO>,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        BeginOptions: Option<&mut lib::MQBO>,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Buffer To Message Handle
     ///
     /// # Arguments
     /// * `Hconn`: Connection handle
     /// * `Hmsg`: Message handle
-    /// * `pBufMsgHOpts`: Options that control the action of MQBUFMH
-    /// * `pMsgDesc` (Input/Output): Message descriptor
+    /// * `BufMsgHOpts`: Options that control the action of [`MQBUFMH`](Self::MQBUFMH)
+    /// * `MsgDesc` (Input/Output): Message descriptor
     /// * `BufferLength`: Length in bytes of the Buffer area
-    /// * `pBuffer` (Input/Output): Area to contain the message buffer
-    /// * `pDataLength` (Output): Length of the output buffer
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `Buffer` (Input/Output): Area to contain the message buffer
+    /// * `DataLength` (Output): Length of the output buffer
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqbufmh-convert-buffer-into-message-handle)
@@ -956,25 +956,25 @@ pub trait Mqi {
         &self,
         Hconn: lib::MQHCONN,
         Hmsg: lib::MQHMSG,
-        pBufMsgHOpts: &lib::MQBMHO,
-        pMsgDesc: lib::PMQVOID,
+        BufMsgHOpts: &lib::MQBMHO,
+        MsgDesc: lib::PMQVOID,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQVOID,
-        pDataLength: &mut lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Buffer: lib::PMQVOID,
+        DataLength: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Register Message consumer
     ///
     /// # Arguments
     /// * `Hconn`: Connection handle
     /// * `Operation`: Operation
-    /// * `pCallbackDesc`: Callback descriptor
+    /// * `CallbackDesc`: Callback descriptor
     /// * `Hobj`: Object handle
-    /// * `pMsgDesc`: Message Descriptor
-    /// * `pGetMsgOpts`: Get options
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `MsgDesc`: Message Descriptor
+    /// * `GetMsgOpts`: Get options
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqcb-manage-callback)
@@ -982,110 +982,110 @@ pub trait Mqi {
         &self,
         Hconn: lib::MQHCONN,
         Operation: lib::MQLONG,
-        pCallbackDesc: Option<&lib::MQCBD>,
+        CallbackDesc: Option<&lib::MQCBD>,
         Hobj: lib::MQHOBJ,
-        pMsgDesc: lib::PMQVOID,
-        pGetMsgOpts: Option<&lib::MQGMO>,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        MsgDesc: lib::PMQVOID,
+        GetMsgOpts: Option<&lib::MQGMO>,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Close Object
     ///
     /// # Arguments
     /// * `Hconn`: Connection handle
-    /// * `pHobj` (Input/Output): Object handle
-    /// * `Options`: Options that control the action of MQCLOSE
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `Hobj` (Input/Output): Object handle
+    /// * `Options`: Options that control the action of [`MQCLOSE`](Self::MQCLOSE)
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqclose-close-object)
     unsafe fn MQCLOSE(
         &self,
         Hconn: lib::MQHCONN,
-        pHobj: &mut lib::MQHOBJ,
+        Hobj: &mut lib::MQHOBJ,
         Options: lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Commit Changes
     ///
     /// # Arguments
     /// * `Hconn`: Connection handle
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqcmit-commit-changes)
     unsafe fn MQCMIT(
         &self,
         Hconn: lib::MQHCONN,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Connect Queue Manager
     ///
     /// # Arguments
-    /// * `pQMgrName`: Name of queue manager
-    /// * `pHconn` (Output): Connection handle
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `QMgrName`: Name of queue manager
+    /// * `Hconn` (Output): Connection handle
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqconn-connect-queue-manager)
     unsafe fn MQCONN(
         &self,
-        pQMgrName: &lib::MQCHAR48,
-        pHconn: &mut lib::MQHCONN,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        QMgrName: &lib::MQCHAR48,
+        Hconn: &mut lib::MQHCONN,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Connect Queue Manager (Extended)
     ///
     /// # Arguments
-    /// * `pQMgrName`: Name of queue manager
-    /// * `pConnectOpts` (Input/Output): Options that control the action of MQCONNX
-    /// * `pHconn` (Output): Connection handle
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `QMgrName`: Name of queue manager
+    /// * `ConnectOpts` (Input/Output): Options that control the action of [`MQCONNX`](Self::MQCONNX)
+    /// * `Hconn` (Output): Connection handle
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqconnx-connect-queue-manager-extended)
     unsafe fn MQCONNX(
         &self,
-        pQMgrName: &lib::MQCHAR48,
-        pConnectOpts: &mut lib::MQCNO,
-        pHconn: &mut lib::MQHCONN,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        QMgrName: &lib::MQCHAR48,
+        ConnectOpts: &mut lib::MQCNO,
+        Hconn: &mut lib::MQHCONN,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Create Message Handle
     ///
     /// # Arguments
     /// * `Hconn`: Connection handle
-    /// * `pCrtMsgHOpts`: Options that control the action of MQCRTMH
-    /// * `pHmsg` (Output): Message handle
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `CrtMsgHOpts`: Options that control the action of [`MQCRTMH`](Self::MQCRTMH)
+    /// * `Hmsg` (Output): Message handle
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqcrtmh-create-message-handle)
     unsafe fn MQCRTMH(
         &self,
         Hconn: lib::MQHCONN,
-        pCrtMsgHOpts: &lib::MQCMHO,
-        pHmsg: &mut lib::MQHMSG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CrtMsgHOpts: &lib::MQCMHO,
+        Hmsg: &mut lib::MQHMSG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Control Consumer
     ///
     /// # Arguments
     /// * `Hconn`: Connection handle
     /// * `Operation`: Operation
-    /// * `pControlOpts`: Control options
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `ControlOpts`: Control options
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqctl-control-callbacks)
@@ -1093,53 +1093,53 @@ pub trait Mqi {
         &self,
         Hconn: lib::MQHCONN,
         Operation: lib::MQLONG,
-        pControlOpts: &lib::MQCTLO,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        ControlOpts: &lib::MQCTLO,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Disconnect Queue Manager
     ///
     /// # Arguments
-    /// * `pHconn` (Input/Output): Connection handle
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `Hconn` (Input/Output): Connection handle
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqdisc-disconnect-queue-manager)
     unsafe fn MQDISC(
         &self,
-        pHconn: &mut lib::MQHCONN,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Hconn: &mut lib::MQHCONN,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Delete Message Handle
     ///
     /// # Arguments
     /// * `Hconn`: Connection handle
-    /// * `pHmsg` (Input/Output): Message handle
-    /// * `pDltMsgHOpts`: Options that control the action of MQDLTMH
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `Hmsg` (Input/Output): Message handle
+    /// * `DltMsgHOpts`: Options that control the action of [`MQDLTMH`](Self::MQDLTMH)
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqdltmh-delete-message-handle)
     unsafe fn MQDLTMH(
         &self,
         Hconn: lib::MQHCONN,
-        pHmsg: &mut lib::MQHMSG,
-        pDltMsgHOpts: &lib::MQDMHO,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Hmsg: &mut lib::MQHMSG,
+        DltMsgHOpts: &lib::MQDMHO,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Delete Message Property
     ///
     /// # Arguments
     /// * `Hconn`: Connection handle
     /// * `Hmsg`: Message handle
-    /// * `pDltPropOpts`: Options that control the action of MQDLTMP
-    /// * `pName`: Property name
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `DltPropOpts`: Options that control the action of [`MQDLTMP`](Self::MQDLTMP)
+    /// * `Name`: Property name
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqdltmp-delete-message-property)
@@ -1147,23 +1147,23 @@ pub trait Mqi {
         &self,
         Hconn: lib::MQHCONN,
         Hmsg: lib::MQHMSG,
-        pDltPropOpts: &lib::MQDMPO,
-        pName: &lib::MQCHARV,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        DltPropOpts: &lib::MQDMPO,
+        Name: &lib::MQCHARV,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Get Message
     ///
     /// # Arguments
     /// * `Hconn`: Connection handle
     /// * `Hobj`: Object handle
-    /// * `pMsgDesc` (Input/Output): Message descriptor
-    /// * `pGetMsgOpts` (Input/Output): Options that control the action of MQGET
+    /// * `MsgDesc` (Input/Output): Message descriptor
+    /// * `GetMsgOpts` (Input/Output): Options that control the action of [`MQGET`](Self::MQGET)
     /// * `BufferLength`: Length in bytes of the Buffer area
-    /// * `pBuffer` (Output): Area to contain the message data
-    /// * `pDataLength` (Output): Length of the message
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `Buffer` (Output): Area to contain the message data
+    /// * `DataLength` (Output): Length of the message
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqget-get-message)
@@ -1171,13 +1171,13 @@ pub trait Mqi {
         &self,
         Hconn: lib::MQHCONN,
         Hobj: lib::MQHOBJ,
-        pMsgDesc: lib::PMQVOID,
-        pGetMsgOpts: &mut lib::MQGMO,
+        MsgDesc: lib::PMQVOID,
+        GetMsgOpts: &mut lib::MQGMO,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQVOID,
-        pDataLength: &mut lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Buffer: lib::PMQVOID,
+        DataLength: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Inquire Object Attributes
     ///
@@ -1185,13 +1185,13 @@ pub trait Mqi {
     /// * `Hconn`: Connection handle
     /// * `Hobj`: Object handle
     /// * `SelectorCount`: Count of selectors
-    /// * `pSelectors`: Array of attribute selectors
+    /// * `Selectors`: Array of attribute selectors
     /// * `IntAttrCount`: Count of integer attributes
-    /// * `pIntAttrs` (Output): Array of integer attributes
+    /// * `IntAttrs` (Output): Array of integer attributes
     /// * `CharAttrLength`: Length of character attributes buffer
-    /// * `pCharAttrs` (Output): Character attributes
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `CharAttrs` (Output): Character attributes
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinq-inquire-object-attributes)
@@ -1200,28 +1200,28 @@ pub trait Mqi {
         Hconn: lib::MQHCONN,
         Hobj: lib::MQHOBJ,
         SelectorCount: lib::MQLONG,
-        pSelectors: lib::PMQLONG,
+        Selectors: lib::PMQLONG,
         IntAttrCount: lib::MQLONG,
-        pIntAttrs: lib::PMQLONG,
+        IntAttrs: lib::PMQLONG,
         CharAttrLength: lib::MQLONG,
-        pCharAttrs: lib::PMQCHAR,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CharAttrs: lib::PMQCHAR,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Inquire Message Property
     ///
     /// # Arguments
     /// * `Hconn`: Connection handle
     /// * `Hmsg`: Message handle
-    /// * `pInqPropOpts`: Options that control the action of MQINQMP
-    /// * `pName`: Property name
-    /// * `pPropDesc` (Output): Property descriptor
-    /// * `pType` (Input/Output): Property data type
+    /// * `InqPropOpts`: Options that control the action of [`MQINQMP`](Self::MQINQMP)
+    /// * `Name`: Property name
+    /// * `PropDesc` (Output): Property descriptor
+    /// * `Type` (Input/Output): Property data type
     /// * `ValueLength`: Length in bytes of the Value area
-    /// * `pValue` (Output): Property value
-    /// * `pDataLength` (Output): Length of the property value
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `Value` (Output): Property value
+    /// * `DataLength` (Output): Length of the property value
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinqmp-inquire-message-property)
@@ -1229,29 +1229,29 @@ pub trait Mqi {
         &self,
         Hconn: lib::MQHCONN,
         Hmsg: lib::MQHMSG,
-        pInqPropOpts: &mut lib::MQIMPO,
-        pName: &lib::MQCHARV,
-        pPropDesc: &mut lib::MQPD,
-        pType: &mut lib::MQLONG,
+        InqPropOpts: &mut lib::MQIMPO,
+        Name: &lib::MQCHARV,
+        PropDesc: &mut lib::MQPD,
+        Type: &mut lib::MQLONG,
         ValueLength: lib::MQLONG,
-        pValue: lib::PMQVOID,
-        pDataLength: &mut lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Value: lib::PMQVOID,
+        DataLength: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Message Handle To Buffer
     ///
     /// # Arguments
     /// * `Hconn`: Connection handle
     /// * `Hmsg`: Message handle
-    /// * `pMsgHBufOpts`: Options that control the action of MQMHBUF
-    /// * `pName`: Property name
-    /// * `pMsgDesc` (Input/Output): Message descriptor
+    /// * `MsgHBufOpts`: Options that control the action of [`MQMHBUF`](Self::MQMHBUF)
+    /// * `Name`: Property name
+    /// * `MsgDesc` (Input/Output): Message descriptor
     /// * `BufferLength`: Length in bytes of the Buffer area
-    /// * `pBuffer` (Output): Area to contain the properties
-    /// * `pDataLength` (Output): Length of the properties
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `Buffer` (Output): Area to contain the properties
+    /// * `DataLength` (Output): Length of the properties
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqmhbuf-convert-message-handle-into-buffer)
@@ -1259,47 +1259,47 @@ pub trait Mqi {
         &self,
         Hconn: lib::MQHCONN,
         Hmsg: lib::MQHMSG,
-        pMsgHBufOpts: &lib::MQMHBO,
-        pName: &lib::MQCHARV,
-        pMsgDesc: lib::PMQVOID,
+        MsgHBufOpts: &lib::MQMHBO,
+        Name: &lib::MQCHARV,
+        MsgDesc: lib::PMQVOID,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQVOID,
-        pDataLength: &mut lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Buffer: lib::PMQVOID,
+        DataLength: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Open Object
     ///
     /// # Arguments
     /// * `Hconn`: Connection handle
-    /// * `pObjDesc` (Input/Output): Object descriptor
-    /// * `Options`: Options that control the action of MQOPEN
-    /// * `pHobj` (Output): Object handle
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `ObjDesc` (Input/Output): Object descriptor
+    /// * `Options`: Options that control the action of [`MQOPEN`](Self::MQOPEN)
+    /// * `Hobj` (Output): Object handle
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqopen-open-object)
     unsafe fn MQOPEN(
         &self,
         Hconn: lib::MQHCONN,
-        pObjDesc: &mut lib::MQOD,
+        ObjDesc: &mut lib::MQOD,
         Options: lib::MQLONG,
-        pHobj: &mut lib::MQHOBJ,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Hobj: &mut lib::MQHOBJ,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Put Message
     ///
     /// # Arguments
     /// * `Hconn`: Connection handle
     /// * `Hobj`: Object handle
-    /// * `pMsgDesc` (Input/Output): Message descriptor
-    /// * `pPutMsgOpts` (Input/Output): Options that control the action of MQPUT
+    /// * `MsgDesc` (Input/Output): Message descriptor
+    /// * `PutMsgOpts` (Input/Output): Options that control the action of [`MQPUT`](Self::MQPUT)
     /// * `BufferLength`: Length of the message in Buffer
-    /// * `pBuffer`: Message data
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `Buffer`: Message data
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqput-put-message)
@@ -1307,37 +1307,37 @@ pub trait Mqi {
         &self,
         Hconn: lib::MQHCONN,
         Hobj: lib::MQHOBJ,
-        pMsgDesc: lib::PMQVOID,
-        pPutMsgOpts: &mut lib::MQPMO,
+        MsgDesc: lib::PMQVOID,
+        PutMsgOpts: &mut lib::MQPMO,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQVOID,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Buffer: lib::PMQVOID,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Put One Message
     ///
     /// # Arguments
     /// * `Hconn`: Connection handle
-    /// * `pObjDesc` (Input/Output): Object descriptor
-    /// * `pMsgDesc` (Input/Output): Message descriptor
-    /// * `pPutMsgOpts` (Input/Output): Options that control the action of MQPUT1
+    /// * `ObjDesc` (Input/Output): Object descriptor
+    /// * `MsgDesc` (Input/Output): Message descriptor
+    /// * `PutMsgOpts` (Input/Output): Options that control the action of [`MQPUT1`](Self::MQPUT1)
     /// * `BufferLength`: Length of the message in Buffer
-    /// * `pBuffer`: Message data
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `Buffer`: Message data
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqput1-put-one-message)
     unsafe fn MQPUT1(
         &self,
         Hconn: lib::MQHCONN,
-        pObjDesc: &mut lib::MQOD,
-        pMsgDesc: lib::PMQVOID,
-        pPutMsgOpts: &mut lib::MQPMO,
+        ObjDesc: &mut lib::MQOD,
+        MsgDesc: lib::PMQVOID,
+        PutMsgOpts: &mut lib::MQPMO,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQVOID,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Buffer: lib::PMQVOID,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Set Object Attributes
     ///
@@ -1345,13 +1345,13 @@ pub trait Mqi {
     /// * `Hconn`: Connection handle
     /// * `Hobj`: Object handle
     /// * `SelectorCount`: Count of selectors
-    /// * `pSelectors`: Array of attribute selectors
+    /// * `Selectors`: Array of attribute selectors
     /// * `IntAttrCount`: Count of integer attributes
-    /// * `pIntAttrs`: Array of integer attributes
+    /// * `IntAttrs`: Array of integer attributes
     /// * `CharAttrLength`: Length of character attributes buffer
-    /// * `pCharAttrs`: Character attributes
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `CharAttrs`: Character attributes
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqset-set-object-attributes)
@@ -1360,27 +1360,27 @@ pub trait Mqi {
         Hconn: lib::MQHCONN,
         Hobj: lib::MQHOBJ,
         SelectorCount: lib::MQLONG,
-        pSelectors: lib::PMQLONG,
+        Selectors: lib::PMQLONG,
         IntAttrCount: lib::MQLONG,
-        pIntAttrs: lib::PMQLONG,
+        IntAttrs: lib::PMQLONG,
         CharAttrLength: lib::MQLONG,
-        pCharAttrs: lib::PMQCHAR,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CharAttrs: lib::PMQCHAR,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Set Message Property
     ///
     /// # Arguments
     /// * `Hconn`: Connection handle
     /// * `Hmsg`: Message handle
-    /// * `pSetPropOpts`: Options that control the action of MQSETMP
-    /// * `pName`: Property name
-    /// * `pPropDesc` (Input/Output): Property descriptor
+    /// * `SetPropOpts`: Options that control the action of [`MQSETMP`](Self::MQSETMP)
+    /// * `Name`: Property name
+    /// * `PropDesc` (Input/Output): Property descriptor
     /// * `Type`: Property data type
     /// * `ValueLength`: Length of the Value area
-    /// * `pValue`: Property value
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `Value`: Property value
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqsetmp-set-message-property)
@@ -1388,23 +1388,23 @@ pub trait Mqi {
         &self,
         Hconn: lib::MQHCONN,
         Hmsg: lib::MQHMSG,
-        pSetPropOpts: &lib::MQSMPO,
-        pName: &lib::MQCHARV,
-        pPropDesc: &mut lib::MQPD,
+        SetPropOpts: &lib::MQSMPO,
+        Name: &lib::MQCHARV,
+        PropDesc: &mut lib::MQPD,
         Type: lib::MQLONG,
         ValueLength: lib::MQLONG,
-        pValue: lib::PMQVOID,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Value: lib::PMQVOID,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Get Status Information
     ///
     /// # Arguments
     /// * `Hconn`: Connection handle
     /// * `Type`: Status information type
-    /// * `pStatus` (Input/Output): Status information
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `Status` (Input/Output): Status information
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqstat-retrieve-status-information)
@@ -1412,30 +1412,30 @@ pub trait Mqi {
         &self,
         Hconn: lib::MQHCONN,
         Type: lib::MQLONG,
-        pStatus: &mut lib::MQSTS,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Status: &mut lib::MQSTS,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Subscribe to topic
     ///
     /// # Arguments
     /// * `Hconn`: Connection handle
-    /// * `pSubDesc` (Input/Output): Subscription descriptor
-    /// * `pHobj` (Input/Output): Object handle for queue
-    /// * `pHsub` (Output): Subscription object handle
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `SubDesc` (Input/Output): Subscription descriptor
+    /// * `Hobj` (Input/Output): Object handle for queue
+    /// * `Hsub` (Output): Subscription object handle
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqsub-register-subscription)
     unsafe fn MQSUB(
         &self,
         Hconn: lib::MQHCONN,
-        pSubDesc: &mut lib::MQSD,
-        pHobj: Option<&mut lib::MQHOBJ>,
-        pHsub: &mut lib::MQHOBJ,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        SubDesc: &mut lib::MQSD,
+        Hobj: Option<&mut lib::MQHOBJ>,
+        Hsub: &mut lib::MQHOBJ,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Subscription Request
     ///
@@ -1443,9 +1443,9 @@ pub trait Mqi {
     /// * `Hconn`: Connection handle
     /// * `Hsub`: Subscription handle
     /// * `Action`: Action requested on the subscription
-    /// * `pSubRqOpts` (Input/Output): Subscription Request Options
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `SubRqOpts` (Input/Output): Subscription Request Options
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqsubrq-subscription-request)
@@ -1454,24 +1454,24 @@ pub trait Mqi {
         Hconn: lib::MQHCONN,
         Hsub: lib::MQHOBJ,
         Action: lib::MQLONG,
-        pSubRqOpts: Option<&mut lib::MQSRO>,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        SubRqOpts: Option<&mut lib::MQSRO>,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
     /// Convert Characters
     ///
     /// # Arguments
     /// * `Hconn`: Connection handle
-    /// * `Options`: Options that control the action of MQXCNVC
+    /// * `Options`: Options that control the action of [`MQXCNVC`](Self::MQXCNVC)
     /// * `SourceCCSID`: Coded character set identifier of string before conversion
     /// * `SourceLength`: Length of string before conversion
-    /// * `pSourceBuffer`: String to be converted
+    /// * `SourceBuffer`: String to be converted
     /// * `TargetCCSID`: Coded character set identifier of string after conversion
     /// * `TargetLength`: Length of output buffer
-    /// * `pTargetBuffer` (Output): String after conversion
-    /// * `pDataLength` (Output): Length of output string
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `TargetBuffer` (Output): String after conversion
+    /// * `DataLength` (Output): Length of output string
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=exit-mqxcnvc-convert-characters)
@@ -1481,12 +1481,12 @@ pub trait Mqi {
         Options: lib::MQLONG,
         SourceCCSID: lib::MQLONG,
         SourceLength: lib::MQLONG,
-        pSourceBuffer: lib::PMQCHAR,
+        SourceBuffer: lib::PMQCHAR,
         TargetCCSID: lib::MQLONG,
         TargetLength: lib::MQLONG,
-        pTargetBuffer: lib::PMQCHAR,
-        pDataLength: &mut lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        TargetBuffer: lib::PMQCHAR,
+        DataLength: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     );
 }
