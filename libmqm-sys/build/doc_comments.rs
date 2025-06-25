@@ -1,6 +1,6 @@
 use std::{borrow::Cow, collections::HashMap};
 
-use regex_lite::Regex;
+use regex_lite::{Captures, Regex};
 use syn::{parse_quote, visit_mut::VisitMut, Attribute};
 
 const BARE_REGEX: &str = r"(?msx)
@@ -10,6 +10,18 @@ const BARE_REGEX: &str = r"(?msx)
     \s*/\*+/
 ";
 const SPLIT_REGEX: &str = r"(?m)\s*(\*/|/\*)\s*";
+
+const MQ_ITEM_REGEX: &str = r"MQ[A-Z\d_]+";
+
+fn doc_link(c: &Captures) -> Cow<'static, str> {
+    let matched = &c[0];
+    // MQPMR isn't a real struct
+    Cow::Owned(if matched == "MQPMR" {
+        format!("`{matched}`")
+    } else {
+        format!("[`{matched}`]")
+    })
+}
 
 const STRUCT_REGEX: &str = r"(?msx)
     struct\s+([\w\d_]+)\s+\{
@@ -347,18 +359,21 @@ pub struct DocCommentReference;
 pub struct DescriptionRegex {
     search: Regex,
     delim: Regex,
+    mq_item: Regex,
 }
 
 pub struct StructFieldExtract {
     struct_search: Regex,
     field_search: Regex,
     delim: Regex,
+    mq_item: Regex,
 }
 
 pub struct FnParamExtract {
     fn_search: Regex,
     param_search: Regex,
     delim: Regex,
+    mq_item: Regex,
 }
 
 impl Default for DescriptionRegex {
@@ -366,6 +381,7 @@ impl Default for DescriptionRegex {
         Self {
             search: Regex::new(BARE_REGEX).unwrap(),
             delim: Regex::new(SPLIT_REGEX).unwrap(),
+            mq_item: Regex::new(MQ_ITEM_REGEX).unwrap(),
         }
     }
 }
@@ -376,6 +392,7 @@ impl Default for StructFieldExtract {
             struct_search: Regex::new(STRUCT_REGEX).unwrap(),
             field_search: Regex::new(FIELD_REGEX).unwrap(),
             delim: Regex::new(SPLIT_REGEX).unwrap(),
+            mq_item: Regex::new(MQ_ITEM_REGEX).unwrap(),
         }
     }
 }
@@ -386,6 +403,7 @@ impl Default for FnParamExtract {
             fn_search: Regex::new(FN_REGEX).unwrap(),
             param_search: Regex::new(PARAM_REGEX).unwrap(),
             delim: Regex::new(SPLIT_REGEX).unwrap(),
+            mq_item: Regex::new(MQ_ITEM_REGEX).unwrap(),
         }
     }
 }
@@ -404,17 +422,19 @@ impl ExtractFromC for DescriptionRegex {
             .search
             .captures_iter(file_content)
             .map(|c| {
-                (
-                    c[1].to_string(),
-                    replace_keywords(&self.delim.split(&c[2]).map(str::trim).filter(|s| !s.is_empty()).fold(
-                        String::new(),
-                        |mut acc, s| {
+                let description =
+                    self.delim
+                        .split(&c[2])
+                        .map(str::trim)
+                        .filter(|s| !s.is_empty())
+                        .fold(String::new(), |mut acc, s| {
                             acc += " ";
                             acc += &s.split_whitespace().collect::<Vec<_>>().join(" ");
                             acc
-                        },
-                    )),
-                )
+                        });
+                let description = self.mq_item.replace_all(&description, doc_link);
+
+                (c[1].to_string(), replace_keywords(&description))
             })
             .collect::<HashMap<_, _>>();
 
@@ -435,20 +455,21 @@ impl ExtractFromC for StructFieldExtract {
     fn extract(&self, file_content: &str) -> impl Iterator<Item = (String, Self::Extracted)> {
         self.struct_search.captures_iter(file_content).map(|c| {
             (
-                c[1].to_string(), // Struct name
+                c[1].trim_start_matches("tag").to_string(), // Struct name
                 self.field_search
                     .captures_iter(&c[2])
                     .map(|c| {
+                        let description = self
+                            .delim
+                            .split(&c[2])
+                            .filter(|s| !s.is_empty() && !s.starts_with("Ver:"))
+                            .collect::<Vec<_>>()
+                            .join(" ");
+                        let description = self.mq_item.replace_all(&description, doc_link);
+
                         (
                             c[1].to_string(), // Field name
-                            replace_keywords(
-                                &self
-                                    .delim
-                                    .split(&c[2])
-                                    .filter(|s| !s.is_empty() && !s.starts_with("Ver:"))
-                                    .collect::<Vec<_>>()
-                                    .join(" "),
-                            ),
+                            replace_keywords(&description),
                         )
                     })
                     .collect(),
@@ -467,17 +488,17 @@ impl ExtractFromC for FnParamExtract {
                 self.param_search
                     .captures_iter(&c[2])
                     .map(|c| {
+                        let description = self
+                            .delim
+                            .split(&c[2])
+                            .filter(|s| !s.is_empty())
+                            .take_while(|s| s.chars().any(|c| c != '*'))
+                            .collect::<Vec<_>>()
+                            .join(" ");
+                        let description = self.mq_item.replace_all(&description, doc_link);
                         (
                             c[1].to_string(), // Param name
-                            replace_keywords(
-                                &self
-                                    .delim
-                                    .split(&c[2])
-                                    .filter(|s| !s.is_empty())
-                                    .take_while(|s| s.chars().any(|c| c != '*'))
-                                    .collect::<Vec<_>>()
-                                    .join(" "),
-                            ),
+                            replace_keywords(&description),
                         )
                     })
                     .collect(),
@@ -542,7 +563,10 @@ fn doc_comment_args(args: &[(String, String)]) -> Vec<Attribute> {
             Some((_, desc)) => Cow::Owned(format!(":{desc}")),
             _ => Cow::Borrowed(&**description),
         };
-        let doc_lit = syn::LitStr::new(&format!(" * `{name}`{dir_desc}"), proc_macro2::Span::call_site());
+        let doc_lit = syn::LitStr::new(
+            &format!(" * `{}`{dir_desc}", name.trim_start_matches('p')),
+            proc_macro2::Span::call_site(),
+        );
         syn::parse_quote!(#[doc = #doc_lit])
     }));
     arg_attrs

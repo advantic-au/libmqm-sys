@@ -1,48 +1,22 @@
-/* Generated with MQ client version 9.4.2.1 */
+/* Generated with MQ client version 9.4.3.0 */
 
-/// PCF Header
-pub type MQCFH = tagMQCFH;
 pub type PMQCFH = *mut MQCFH;
-/// PCF Byte String Filter Parameter
-pub type MQCFBF = tagMQCFBF;
 pub type PMQCFBF = *mut MQCFBF;
-/// PCF Byte String Parameter
-pub type MQCFBS = tagMQCFBS;
 pub type PMQCFBS = *mut MQCFBS;
-/// PCF Group Parameter
-pub type MQCFGR = tagMQCFGR;
 pub type PMQCFGR = *mut MQCFGR;
-/// PCF Integer Filter Parameter
-pub type MQCFIF = tagMQCFIF;
 pub type PMQCFIF = *mut MQCFIF;
-/// PCF Integer-List Parameter
-pub type MQCFIL = tagMQCFIL;
 pub type PMQCFIL = *mut MQCFIL;
-/// PCF 64-bit Integer-List Parameter
-pub type MQCFIL64 = tagMQCFIL64;
 pub type PMQCFIL64 = *mut MQCFIL64;
-/// PCF Integer Parameter
-pub type MQCFIN = tagMQCFIN;
 pub type PMQCFIN = *mut MQCFIN;
-/// PCF 64-bit Integer Parameter
-pub type MQCFIN64 = tagMQCFIN64;
 pub type PMQCFIN64 = *mut MQCFIN64;
-/// PCF String Filter Parameter
-pub type MQCFSF = tagMQCFSF;
 pub type PMQCFSF = *mut MQCFSF;
-/// PCF String-List Parameter
-pub type MQCFSL = tagMQCFSL;
 pub type PMQCFSL = *mut MQCFSL;
-/// PCF String Parameter
-pub type MQCFST = tagMQCFST;
 pub type PMQCFST = *mut MQCFST;
-/// Embedded PCF header
-pub type MQEPH = tagMQEPH;
 pub type PMQEPH = *mut MQEPH;
 /// PCF Header
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQCFH {
+pub struct MQCFH {
     /// Structure type
     pub Type: MQLONG,
     /// Structure length
@@ -65,7 +39,7 @@ pub struct tagMQCFH {
 /// PCF Byte String Filter Parameter
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQCFBF {
+pub struct MQCFBF {
     /// Structure type
     pub Type: MQLONG,
     /// Structure length
@@ -82,7 +56,7 @@ pub struct tagMQCFBF {
 /// PCF Byte String Parameter
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQCFBS {
+pub struct MQCFBS {
     /// Structure type
     pub Type: MQLONG,
     /// Structure length
@@ -97,7 +71,7 @@ pub struct tagMQCFBS {
 /// PCF Group Parameter
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQCFGR {
+pub struct MQCFGR {
     /// Structure type
     pub Type: MQLONG,
     /// Structure length
@@ -110,7 +84,7 @@ pub struct tagMQCFGR {
 /// PCF Integer Filter Parameter
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQCFIF {
+pub struct MQCFIF {
     /// Structure type
     pub Type: MQLONG,
     /// Structure length
@@ -125,7 +99,7 @@ pub struct tagMQCFIF {
 /// PCF Integer-List Parameter
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQCFIL {
+pub struct MQCFIL {
     /// Structure type
     pub Type: MQLONG,
     /// Structure length
@@ -140,7 +114,7 @@ pub struct tagMQCFIL {
 /// PCF 64-bit Integer-List Parameter
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQCFIL64 {
+pub struct MQCFIL64 {
     /// Structure type
     pub Type: MQLONG,
     /// Structure length
@@ -155,7 +129,7 @@ pub struct tagMQCFIL64 {
 /// PCF Integer Parameter
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQCFIN {
+pub struct MQCFIN {
     /// Structure type
     pub Type: MQLONG,
     /// Structure length
@@ -168,7 +142,7 @@ pub struct tagMQCFIN {
 /// PCF 64-bit Integer Parameter
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQCFIN64 {
+pub struct MQCFIN64 {
     /// Structure type
     pub Type: MQLONG,
     /// Structure length
@@ -183,7 +157,7 @@ pub struct tagMQCFIN64 {
 /// PCF String Filter Parameter
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQCFSF {
+pub struct MQCFSF {
     /// Structure type
     pub Type: MQLONG,
     /// Structure length
@@ -202,7 +176,7 @@ pub struct tagMQCFSF {
 /// PCF String-List Parameter
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQCFSL {
+pub struct MQCFSL {
     /// Structure type
     pub Type: MQLONG,
     /// Structure length
@@ -221,7 +195,7 @@ pub struct tagMQCFSL {
 /// PCF String Parameter
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQCFST {
+pub struct MQCFST {
     /// Structure type
     pub Type: MQLONG,
     /// Structure length
@@ -238,12 +212,12 @@ pub struct tagMQCFST {
 /// Embedded PCF header
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct tagMQEPH {
+pub struct MQEPH {
     /// Structure identifier
     pub StrucId: MQCHAR4,
     /// Structure version number
     pub Version: MQLONG,
-    /// Total length of MQEPH including MQCFH and parameter structures that follow
+    /// Total length of [`MQEPH`] including [`MQCFH`] and parameter structures that follow
     pub StrucLength: MQLONG,
     /// Numeric encoding of data that follows last PCF parameter structure
     pub Encoding: MQLONG,
@@ -730,6 +704,8 @@ pub const MQRCCF_STREAMQ_DEST_CONFLICT: MQLONG = 3385;
 pub const MQRCCF_STREAMQ_NOT_SUPPORTED: MQLONG = 3386;
 pub const MQRCCF_STREAMQ_CONFLICT: MQLONG = 3387;
 pub const MQRCCF_INCOMPATIBLE_QM_IN_QSG: MQLONG = 3389;
+pub const MQRCCF_ATTR_VALUE_ERROR_QSG_QM: MQLONG = 3390;
+pub const MQRCCF_AUTHORIZED: MQLONG = 3391;
 pub const MQRCCF_OBJECT_ALREADY_EXISTS: MQLONG = 4001;
 pub const MQRCCF_OBJECT_WRONG_TYPE: MQLONG = 4002;
 pub const MQRCCF_LIKE_OBJECT_WRONG_TYPE: MQLONG = 4003;
@@ -1528,7 +1504,8 @@ pub const MQIACF_NHA_GROUP_ROLE: MQLONG = 1474;
 pub const MQIACF_NHA_GROUP_STATUS: MQLONG = 1475;
 pub const MQIACF_NHA_INSTANCE_STATUS: MQLONG = 1476;
 pub const MQIACF_NHA_TYPE: MQLONG = 1477;
-pub const MQIACF_LAST_USED: MQLONG = 1477;
+pub const MQIACF_EVENT_DUPLICATE_COUNT: MQLONG = 1478;
+pub const MQIACF_LAST_USED: MQLONG = 1478;
 pub const MQCFACCESS_ENABLED: MQLONG = 0;
 pub const MQCFACCESS_SUSPENDED: MQLONG = 1;
 pub const MQCFACCESS_DISABLED: MQLONG = 2;
@@ -1933,7 +1910,8 @@ pub const MQCACF_NHA_GROUP_NAME: MQLONG = 3228;
 pub const MQCACF_NHA_GROUP_RECOV_LSN: MQLONG = 3229;
 pub const MQCACF_NHA_GROUP_RECOV_ISOTIME: MQLONG = 3230;
 pub const MQCACF_NHA_SYNC_ISOTIME: MQLONG = 3231;
-pub const MQCACF_LAST_USED: MQLONG = 3231;
+pub const MQCACF_EVENT_DUPLICATE_FROM: MQLONG = 3232;
+pub const MQCACF_LAST_USED: MQLONG = 3232;
 pub const MQCACH_FIRST: MQLONG = 3501;
 pub const MQCACH_CHANNEL_NAME: MQLONG = 3501;
 pub const MQCACH_DESC: MQLONG = 3502;
@@ -2214,6 +2192,9 @@ pub const MQEVR_NO_DISPLAY: MQLONG = 3;
 pub const MQEVR_API_ONLY: MQLONG = 4;
 pub const MQEVR_ADMIN_ONLY: MQLONG = 5;
 pub const MQEVR_USER_ONLY: MQLONG = 6;
+pub const MQAUSC_FAILURES: MQLONG = 0;
+pub const MQAUSC_ALLCONNS: MQLONG = 1;
+pub const MQAUSC_ALLCHECKS: MQLONG = 2;
 pub const MQFC_YES: MQLONG = 1;
 pub const MQFC_NO: MQLONG = 0;
 pub const MQHSTATE_INACTIVE: MQLONG = 0;
@@ -2329,6 +2310,10 @@ pub const MQRQ_FAILOVER_PERMITTED: MQLONG = 30;
 pub const MQRQ_FAILOVER_NOT_PERMITTED: MQLONG = 31;
 pub const MQRQ_STANDBY_ACTIVATED: MQLONG = 32;
 pub const MQRQ_REPLICA_ACTIVATED: MQLONG = 33;
+pub const MQRQ_CONN_AUTHORIZED: MQLONG = 65;
+pub const MQRQ_OPEN_AUTHORIZED: MQLONG = 66;
+pub const MQRQ_SUB_AUTHORIZED: MQLONG = 67;
+pub const MQRQ_SUB_DEST_AUTHORIZED: MQLONG = 68;
 pub const MQRT_CONFIGURATION: MQLONG = 1;
 pub const MQRT_EXPIRY: MQLONG = 2;
 pub const MQRT_NSPROC: MQLONG = 3;

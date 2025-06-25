@@ -17,7 +17,7 @@ pub trait ConstLookup {
     /// The constant value for the provided name.
     fn by_name(&self, name: &str) -> Option<MQLONG>;
     /// The complete list of value and name constants
-    fn all(&self) -> impl Iterator<Item = ConstantItem>;
+    fn all(&self) -> impl Iterator<Item = ConstantItem<'_>>;
 }
 
 /// MQ constant repository with primary and secondary constants
@@ -46,7 +46,7 @@ impl<P: ConstLookup, S: ConstLookup> ConstLookup for ConstSource<P, S> {
         source.by_name(name).or_else(|| extra.by_name(name))
     }
 
-    fn all(&self) -> impl Iterator<Item = ConstantItem> {
+    fn all(&self) -> impl Iterator<Item = ConstantItem<'_>> {
         let Self(source, extra) = self;
         source.all().chain(extra.all())
     }
@@ -65,7 +65,7 @@ impl ConstLookup for BinarySearch<'_> {
         list.by_name(name)
     }
 
-    fn all(&self) -> impl Iterator<Item = ConstantItem> {
+    fn all(&self) -> impl Iterator<Item = ConstantItem<'_>> {
         let list = &self.0;
         list.iter().copied()
     }
@@ -84,7 +84,7 @@ impl ConstLookup for &::phf::Map<MQLONG, &str> {
             .filter(|v| self.get(v) == Some(&name))
     }
 
-    fn all(&self) -> impl Iterator<Item = ConstantItem> {
+    fn all(&self) -> impl Iterator<Item = ConstantItem<'_>> {
         self.entries().map(|(&v, &n)| (v, n))
     }
 }
@@ -101,7 +101,7 @@ impl ConstLookup for &[ConstantItem<'_>] {
         self.iter().find_map(|(value, n)| (*n == name).then_some(*value))
     }
 
-    fn all(&self) -> impl Iterator<Item = ConstantItem> {
+    fn all(&self) -> impl Iterator<Item = ConstantItem<'_>> {
         self.iter().copied()
     }
 }

@@ -1,4 +1,4 @@
-#![allow(clippy::missing_safety_doc, clippy::too_many_arguments, non_snake_case, non_camel_case_types)]
+#![allow(clippy::missing_safety_doc, clippy::too_many_arguments, non_snake_case, non_camel_case_types, clippy::unreadable_literal, clippy::doc_markdown)]
 
 pub mod bindings {
     include!(concat!(env!("OUT_DIR"), "/mqi.rs"));

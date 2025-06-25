@@ -1,12 +1,24 @@
-/* Generated with MQ client version 9.4.2.1 */
+/* Generated with MQ client version 9.4.3.0 */
 /*
  * Unmapped constants:
+ *  MQAUSC_ALLCHECKS
+ *  MQAUSC_ALLCONNS
+ *  MQAUSC_FAILURES
  *  MQBA_FIRST
  *  MQBA_LAST
  *  MQGA_FIRST
  *  MQGA_LAST
  *  MQOA_FIRST
  *  MQOA_LAST
+ *  MQOTEL_PCTL_AS_PARENT
+ *  MQOTEL_PCTL_AUTO
+ *  MQOTEL_PCTL_MANUAL
+ *  MQOTEL_PCTL_QMGR
+ *  MQOTEL_TRACE_AS_PARENT
+ *  MQOTEL_TRACE_NONE
+ *  MQOTEL_TRACE_OFF
+ *  MQOTEL_TRACE_ON
+ *  MQOTEL_TRACE_QMGR
  *  MQUA_FIRST
  *  MQUA_LAST
  */
@@ -2042,7 +2054,8 @@ pub mod constants {
     pub const MQCMDL_LEVEL_940: types::MQCMDL = types::MQCMDL(940);
     pub const MQCMDL_LEVEL_941: types::MQCMDL = types::MQCMDL(941);
     pub const MQCMDL_LEVEL_942: types::MQCMDL = types::MQCMDL(942);
-    pub const MQCMDL_CURRENT_LEVEL: types::MQCMDL = types::MQCMDL(942);
+    pub const MQCMDL_LEVEL_943: types::MQCMDL = types::MQCMDL(943);
+    pub const MQCMDL_CURRENT_LEVEL: types::MQCMDL = types::MQCMDL(943);
     pub const MQCMHO_NONE: types::MQCMHO = types::MQCMHO(0);
     pub const MQCMHO_NO_VALIDATION: types::MQCMHO = types::MQCMHO(1);
     pub const MQCMHO_VALIDATE: types::MQCMHO = types::MQCMHO(2);
@@ -2561,9 +2574,12 @@ pub mod constants {
     pub const MQIA_MAX_Q_FILE_SIZE: types::MQIA = types::MQIA(274);
     pub const MQIA_STREAM_QUEUE_QOS: types::MQIA = types::MQIA(275);
     pub const MQIA_CAP_EXPIRY: types::MQIA = types::MQIA(276);
+    pub const MQIA_AUTHOREV_SCOPE: types::MQIA = types::MQIA(277);
+    pub const MQIA_OTEL_TRACE: types::MQIA = types::MQIA(278);
+    pub const MQIA_OTEL_PROPAGATION_CONTROL: types::MQIA = types::MQIA(279);
     pub const MQIA_USER_LIST: types::MQIA = types::MQIA(2000);
     pub const MQIA_FIRST: types::MQIA = types::MQIA(1);
-    pub const MQIA_LAST_USED: types::MQIA = types::MQIA(276);
+    pub const MQIA_LAST_USED: types::MQIA = types::MQIA(279);
     pub const MQIA_LAST: types::MQIA = types::MQIA(2000);
     pub const MQIGQPA_DEFAULT: types::MQIGQPA = types::MQIGQPA(1);
     pub const MQIGQPA_CONTEXT: types::MQIGQPA = types::MQIGQPA(2);
@@ -4356,8 +4372,9 @@ pub mod constants {
         pub const MQCACF_NHA_GROUP_RECOV_LSN: types::MQCACF = types::MQCACF(3229);
         pub const MQCACF_NHA_GROUP_RECOV_ISOTIME: types::MQCACF = types::MQCACF(3230);
         pub const MQCACF_NHA_SYNC_ISOTIME: types::MQCACF = types::MQCACF(3231);
+        pub const MQCACF_EVENT_DUPLICATE_FROM: types::MQCACF = types::MQCACF(3232);
         pub const MQCACF_FIRST: types::MQCACF = types::MQCACF(3001);
-        pub const MQCACF_LAST_USED: types::MQCACF = types::MQCACF(3231);
+        pub const MQCACF_LAST_USED: types::MQCACF = types::MQCACF(3232);
         pub const MQCACH_CHANNEL_NAME: types::MQCACH = types::MQCACH(3501);
         pub const MQCACH_DESC: types::MQCACH = types::MQCACH(3502);
         pub const MQCACH_MODE_NAME: types::MQCACH = types::MQCACH(3503);
@@ -5265,11 +5282,12 @@ pub mod constants {
         pub const MQIACF_NHA_GROUP_STATUS: types::MQIACF = types::MQIACF(1475);
         pub const MQIACF_NHA_INSTANCE_STATUS: types::MQIACF = types::MQIACF(1476);
         pub const MQIACF_NHA_TYPE: types::MQIACF = types::MQIACF(1477);
+        pub const MQIACF_EVENT_DUPLICATE_COUNT: types::MQIACF = types::MQIACF(1478);
         pub const MQIACF_FIRST: types::MQIACF = types::MQIACF(1001);
         pub const MQIACF_MODE: types::MQIACF = types::MQIACF(1008);
         pub const MQIACF_ERROR_IDENTIFIER: types::MQIACF = types::MQIACF(1013);
         pub const MQIACF_SYSP_SMF_STAT_TIME_MINS: types::MQIACF = types::MQIACF(1199);
-        pub const MQIACF_LAST_USED: types::MQIACF = types::MQIACF(1477);
+        pub const MQIACF_LAST_USED: types::MQIACF = types::MQIACF(1478);
         pub const MQIACH_XMIT_PROTOCOL_TYPE: types::MQIACH = types::MQIACH(1501);
         pub const MQIACH_BATCH_SIZE: types::MQIACH = types::MQIACH(1502);
         pub const MQIACH_DISC_INTERVAL: types::MQIACH = types::MQIACH(1503);
@@ -6048,6 +6066,8 @@ pub mod constants {
         pub const MQRCCF_STREAMQ_NOT_SUPPORTED: types::MQRCCF = types::MQRCCF(3386);
         pub const MQRCCF_STREAMQ_CONFLICT: types::MQRCCF = types::MQRCCF(3387);
         pub const MQRCCF_INCOMPATIBLE_QM_IN_QSG: types::MQRCCF = types::MQRCCF(3389);
+        pub const MQRCCF_ATTR_VALUE_ERROR_QSG_QM: types::MQRCCF = types::MQRCCF(3390);
+        pub const MQRCCF_AUTHORIZED: types::MQRCCF = types::MQRCCF(3391);
         pub const MQRCCF_OBJECT_ALREADY_EXISTS: types::MQRCCF = types::MQRCCF(4001);
         pub const MQRCCF_OBJECT_WRONG_TYPE: types::MQRCCF = types::MQRCCF(4002);
         pub const MQRCCF_LIKE_OBJECT_WRONG_TYPE: types::MQRCCF = types::MQRCCF(4003);
@@ -6221,6 +6241,10 @@ pub mod constants {
         pub const MQRQ_FAILOVER_NOT_PERMITTED: types::MQRQ = types::MQRQ(31);
         pub const MQRQ_STANDBY_ACTIVATED: types::MQRQ = types::MQRQ(32);
         pub const MQRQ_REPLICA_ACTIVATED: types::MQRQ = types::MQRQ(33);
+        pub const MQRQ_CONN_AUTHORIZED: types::MQRQ = types::MQRQ(65);
+        pub const MQRQ_OPEN_AUTHORIZED: types::MQRQ = types::MQRQ(66);
+        pub const MQRQ_SUB_AUTHORIZED: types::MQRQ = types::MQRQ(67);
+        pub const MQRQ_SUB_DEST_AUTHORIZED: types::MQRQ = types::MQRQ(68);
         pub const MQRT_CONFIGURATION: types::MQRT = types::MQRT(1);
         pub const MQRT_EXPIRY: types::MQRT = types::MQRT(2);
         pub const MQRT_NSPROC: types::MQRT = types::MQRT(3);

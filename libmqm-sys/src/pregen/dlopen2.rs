@@ -7,50 +7,50 @@ pub struct MqWrapper {
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
         ItemValue: lib::MQHBAG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     #[cfg(feature = "mqai")]
     mqAddByteString: unsafe extern "C" fn(
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQBYTE,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Buffer: lib::PMQBYTE,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     #[cfg(feature = "mqai")]
     mqAddByteStringFilter: unsafe extern "C" fn(
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQBYTE,
+        Buffer: lib::PMQBYTE,
         Operator: lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     #[cfg(feature = "mqai")]
     mqAddInquiry: unsafe extern "C" fn(
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     #[cfg(feature = "mqai")]
     mqAddInteger: unsafe extern "C" fn(
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
         ItemValue: lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     #[cfg(feature = "mqai")]
     mqAddInteger64: unsafe extern "C" fn(
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
         ItemValue: lib::MQINT64,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     #[cfg(feature = "mqai")]
     mqAddIntegerFilter: unsafe extern "C" fn(
@@ -58,81 +58,81 @@ pub struct MqWrapper {
         Selector: lib::MQLONG,
         ItemValue: lib::MQLONG,
         Operator: lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     #[cfg(feature = "mqai")]
     mqAddString: unsafe extern "C" fn(
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQCHAR,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Buffer: lib::PMQCHAR,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     #[cfg(feature = "mqai")]
     mqAddStringFilter: unsafe extern "C" fn(
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQCHAR,
+        Buffer: lib::PMQCHAR,
         Operator: lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     #[cfg(feature = "mqai")]
     mqBagToBuffer: unsafe extern "C" fn(
         OptionsBag: lib::MQHBAG,
         DataBag: lib::MQHBAG,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQVOID,
-        pDataLength: &mut lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Buffer: lib::PMQVOID,
+        DataLength: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     #[cfg(feature = "mqai")]
     mqBufferToBag: unsafe extern "C" fn(
         OptionsBag: lib::MQHBAG,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQVOID,
+        Buffer: lib::PMQVOID,
         DataBag: lib::MQHBAG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     #[cfg(feature = "mqai")]
     mqClearBag: unsafe extern "C" fn(
         Bag: lib::MQHBAG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     #[cfg(feature = "mqai")]
     mqCountItems: unsafe extern "C" fn(
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
-        pItemCount: &mut lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        ItemCount: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     #[cfg(feature = "mqai")]
     mqCreateBag: unsafe extern "C" fn(
         Options: lib::MQLONG,
-        pBag: &mut lib::MQHBAG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Bag: &mut lib::MQHBAG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     #[cfg(feature = "mqai")]
     mqDeleteBag: unsafe extern "C" fn(
-        pBag: &mut lib::MQHBAG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Bag: &mut lib::MQHBAG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     #[cfg(feature = "mqai")]
     mqDeleteItem: unsafe extern "C" fn(
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
         ItemIndex: lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     #[cfg(feature = "mqai")]
     mqExecute: unsafe extern "C" fn(
@@ -143,27 +143,27 @@ pub struct MqWrapper {
         ResponseBag: lib::MQHBAG,
         AdminQ: lib::MQHOBJ,
         ResponseQ: lib::MQHOBJ,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     #[cfg(feature = "mqai")]
     mqGetBag: unsafe extern "C" fn(
         Hconn: lib::MQHCONN,
         Hobj: lib::MQHOBJ,
-        pMsgDesc: lib::PMQVOID,
-        pGetMsgOpts: &mut lib::MQGMO,
+        MsgDesc: lib::PMQVOID,
+        GetMsgOpts: &mut lib::MQGMO,
         Bag: lib::MQHBAG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     #[cfg(feature = "mqai")]
     mqInquireBag: unsafe extern "C" fn(
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
         ItemIndex: lib::MQLONG,
-        pItemValue: &mut lib::MQHBAG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        ItemValue: &mut lib::MQHBAG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     #[cfg(feature = "mqai")]
     mqInquireByteString: unsafe extern "C" fn(
@@ -171,10 +171,10 @@ pub struct MqWrapper {
         Selector: lib::MQLONG,
         ItemIndex: lib::MQLONG,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQBYTE,
-        pByteStringLength: &mut lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Buffer: lib::PMQBYTE,
+        ByteStringLength: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     #[cfg(feature = "mqai")]
     mqInquireByteStringFilter: unsafe extern "C" fn(
@@ -182,49 +182,49 @@ pub struct MqWrapper {
         Selector: lib::MQLONG,
         ItemIndex: lib::MQLONG,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQBYTE,
-        pByteStringLength: &mut lib::MQLONG,
-        pOperator: &mut lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Buffer: lib::PMQBYTE,
+        ByteStringLength: &mut lib::MQLONG,
+        Operator: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     #[cfg(feature = "mqai")]
     mqInquireInteger: unsafe extern "C" fn(
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
         ItemIndex: lib::MQLONG,
-        pItemValue: &mut lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        ItemValue: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     #[cfg(feature = "mqai")]
     mqInquireInteger64: unsafe extern "C" fn(
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
         ItemIndex: lib::MQLONG,
-        pItemValue: &mut lib::MQINT64,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        ItemValue: &mut lib::MQINT64,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     #[cfg(feature = "mqai")]
     mqInquireIntegerFilter: unsafe extern "C" fn(
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
         ItemIndex: lib::MQLONG,
-        pItemValue: &mut lib::MQLONG,
-        pOperator: &mut lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        ItemValue: &mut lib::MQLONG,
+        Operator: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     #[cfg(feature = "mqai")]
     mqInquireItemInfo: unsafe extern "C" fn(
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
         ItemIndex: lib::MQLONG,
-        pOutSelector: &mut lib::MQLONG,
-        pItemType: &mut lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        OutSelector: &mut lib::MQLONG,
+        ItemType: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     #[cfg(feature = "mqai")]
     mqInquireString: unsafe extern "C" fn(
@@ -232,11 +232,11 @@ pub struct MqWrapper {
         Selector: lib::MQLONG,
         ItemIndex: lib::MQLONG,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQCHAR,
-        pStringLength: &mut lib::MQLONG,
-        pCodedCharSetId: &mut lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Buffer: lib::PMQCHAR,
+        StringLength: &mut lib::MQLONG,
+        CodedCharSetId: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     #[cfg(feature = "mqai")]
     mqInquireStringFilter: unsafe extern "C" fn(
@@ -244,30 +244,30 @@ pub struct MqWrapper {
         Selector: lib::MQLONG,
         ItemIndex: lib::MQLONG,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQCHAR,
-        pStringLength: &mut lib::MQLONG,
-        pCodedCharSetId: &mut lib::MQLONG,
-        pOperator: &mut lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Buffer: lib::PMQCHAR,
+        StringLength: &mut lib::MQLONG,
+        CodedCharSetId: &mut lib::MQLONG,
+        Operator: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     #[cfg(feature = "mqai")]
     mqPad: unsafe extern "C" fn(
-        pString: lib::PMQCHAR,
+        String: lib::PMQCHAR,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQCHAR,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Buffer: lib::PMQCHAR,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     #[cfg(feature = "mqai")]
     mqPutBag: unsafe extern "C" fn(
         Hconn: lib::MQHCONN,
         Hobj: lib::MQHOBJ,
-        pMsgDesc: lib::PMQVOID,
-        pPutMsgOpts: &mut lib::MQPMO,
+        MsgDesc: lib::PMQVOID,
+        PutMsgOpts: &mut lib::MQPMO,
         Bag: lib::MQHBAG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     #[cfg(feature = "mqai")]
     mqSetByteString: unsafe extern "C" fn(
@@ -275,9 +275,9 @@ pub struct MqWrapper {
         Selector: lib::MQLONG,
         ItemIndex: lib::MQLONG,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQBYTE,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Buffer: lib::PMQBYTE,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     #[cfg(feature = "mqai")]
     mqSetByteStringFilter: unsafe extern "C" fn(
@@ -285,10 +285,10 @@ pub struct MqWrapper {
         Selector: lib::MQLONG,
         ItemIndex: lib::MQLONG,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQBYTE,
+        Buffer: lib::PMQBYTE,
         Operator: lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     #[cfg(feature = "mqai")]
     mqSetInteger: unsafe extern "C" fn(
@@ -296,8 +296,8 @@ pub struct MqWrapper {
         Selector: lib::MQLONG,
         ItemIndex: lib::MQLONG,
         ItemValue: lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     #[cfg(feature = "mqai")]
     mqSetInteger64: unsafe extern "C" fn(
@@ -305,8 +305,8 @@ pub struct MqWrapper {
         Selector: lib::MQLONG,
         ItemIndex: lib::MQLONG,
         ItemValue: lib::MQINT64,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     #[cfg(feature = "mqai")]
     mqSetIntegerFilter: unsafe extern "C" fn(
@@ -315,8 +315,8 @@ pub struct MqWrapper {
         ItemIndex: lib::MQLONG,
         ItemValue: lib::MQLONG,
         Operator: lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     #[cfg(feature = "mqai")]
     mqSetString: unsafe extern "C" fn(
@@ -324,9 +324,9 @@ pub struct MqWrapper {
         Selector: lib::MQLONG,
         ItemIndex: lib::MQLONG,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQCHAR,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Buffer: lib::PMQCHAR,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     #[cfg(feature = "mqai")]
     mqSetStringFilter: unsafe extern "C" fn(
@@ -334,252 +334,252 @@ pub struct MqWrapper {
         Selector: lib::MQLONG,
         ItemIndex: lib::MQLONG,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQCHAR,
+        Buffer: lib::PMQCHAR,
         Operator: lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     #[cfg(feature = "mqai")]
     mqTrim: unsafe extern "C" fn(
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQCHAR,
-        pString: lib::PMQCHAR,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Buffer: lib::PMQCHAR,
+        String: lib::PMQCHAR,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     #[cfg(feature = "mqai")]
     mqTruncateBag: unsafe extern "C" fn(
         Bag: lib::MQHBAG,
         ItemCount: lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     MQBACK: unsafe extern "C" fn(
         Hconn: lib::MQHCONN,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     MQBEGIN: unsafe extern "C" fn(
         Hconn: lib::MQHCONN,
-        pBeginOptions: Option<&mut lib::MQBO>,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        BeginOptions: Option<&mut lib::MQBO>,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     MQBUFMH: unsafe extern "C" fn(
         Hconn: lib::MQHCONN,
         Hmsg: lib::MQHMSG,
-        pBufMsgHOpts: &lib::MQBMHO,
-        pMsgDesc: lib::PMQVOID,
+        BufMsgHOpts: &lib::MQBMHO,
+        MsgDesc: lib::PMQVOID,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQVOID,
-        pDataLength: &mut lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Buffer: lib::PMQVOID,
+        DataLength: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     MQCB: unsafe extern "C" fn(
         Hconn: lib::MQHCONN,
         Operation: lib::MQLONG,
-        pCallbackDesc: Option<&lib::MQCBD>,
+        CallbackDesc: Option<&lib::MQCBD>,
         Hobj: lib::MQHOBJ,
-        pMsgDesc: lib::PMQVOID,
-        pGetMsgOpts: Option<&lib::MQGMO>,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        MsgDesc: lib::PMQVOID,
+        GetMsgOpts: Option<&lib::MQGMO>,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     MQCLOSE: unsafe extern "C" fn(
         Hconn: lib::MQHCONN,
-        pHobj: &mut lib::MQHOBJ,
+        Hobj: &mut lib::MQHOBJ,
         Options: lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     MQCMIT: unsafe extern "C" fn(
         Hconn: lib::MQHCONN,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     MQCONN: unsafe extern "C" fn(
-        pQMgrName: &lib::MQCHAR48,
-        pHconn: &mut lib::MQHCONN,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        QMgrName: &lib::MQCHAR48,
+        Hconn: &mut lib::MQHCONN,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     MQCONNX: unsafe extern "C" fn(
-        pQMgrName: &lib::MQCHAR48,
-        pConnectOpts: &mut lib::MQCNO,
-        pHconn: &mut lib::MQHCONN,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        QMgrName: &lib::MQCHAR48,
+        ConnectOpts: &mut lib::MQCNO,
+        Hconn: &mut lib::MQHCONN,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     MQCRTMH: unsafe extern "C" fn(
         Hconn: lib::MQHCONN,
-        pCrtMsgHOpts: &lib::MQCMHO,
-        pHmsg: &mut lib::MQHMSG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CrtMsgHOpts: &lib::MQCMHO,
+        Hmsg: &mut lib::MQHMSG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     MQCTL: unsafe extern "C" fn(
         Hconn: lib::MQHCONN,
         Operation: lib::MQLONG,
-        pControlOpts: &lib::MQCTLO,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        ControlOpts: &lib::MQCTLO,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     MQDISC: unsafe extern "C" fn(
-        pHconn: &mut lib::MQHCONN,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Hconn: &mut lib::MQHCONN,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     MQDLTMH: unsafe extern "C" fn(
         Hconn: lib::MQHCONN,
-        pHmsg: &mut lib::MQHMSG,
-        pDltMsgHOpts: &lib::MQDMHO,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Hmsg: &mut lib::MQHMSG,
+        DltMsgHOpts: &lib::MQDMHO,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     MQDLTMP: unsafe extern "C" fn(
         Hconn: lib::MQHCONN,
         Hmsg: lib::MQHMSG,
-        pDltPropOpts: &lib::MQDMPO,
-        pName: &lib::MQCHARV,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        DltPropOpts: &lib::MQDMPO,
+        Name: &lib::MQCHARV,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     MQGET: unsafe extern "C" fn(
         Hconn: lib::MQHCONN,
         Hobj: lib::MQHOBJ,
-        pMsgDesc: lib::PMQVOID,
-        pGetMsgOpts: &mut lib::MQGMO,
+        MsgDesc: lib::PMQVOID,
+        GetMsgOpts: &mut lib::MQGMO,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQVOID,
-        pDataLength: &mut lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Buffer: lib::PMQVOID,
+        DataLength: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     MQINQ: unsafe extern "C" fn(
         Hconn: lib::MQHCONN,
         Hobj: lib::MQHOBJ,
         SelectorCount: lib::MQLONG,
-        pSelectors: lib::PMQLONG,
+        Selectors: lib::PMQLONG,
         IntAttrCount: lib::MQLONG,
-        pIntAttrs: lib::PMQLONG,
+        IntAttrs: lib::PMQLONG,
         CharAttrLength: lib::MQLONG,
-        pCharAttrs: lib::PMQCHAR,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CharAttrs: lib::PMQCHAR,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     MQINQMP: unsafe extern "C" fn(
         Hconn: lib::MQHCONN,
         Hmsg: lib::MQHMSG,
-        pInqPropOpts: &mut lib::MQIMPO,
-        pName: &lib::MQCHARV,
-        pPropDesc: &mut lib::MQPD,
-        pType: &mut lib::MQLONG,
+        InqPropOpts: &mut lib::MQIMPO,
+        Name: &lib::MQCHARV,
+        PropDesc: &mut lib::MQPD,
+        Type: &mut lib::MQLONG,
         ValueLength: lib::MQLONG,
-        pValue: lib::PMQVOID,
-        pDataLength: &mut lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Value: lib::PMQVOID,
+        DataLength: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     MQMHBUF: unsafe extern "C" fn(
         Hconn: lib::MQHCONN,
         Hmsg: lib::MQHMSG,
-        pMsgHBufOpts: &lib::MQMHBO,
-        pName: &lib::MQCHARV,
-        pMsgDesc: lib::PMQVOID,
+        MsgHBufOpts: &lib::MQMHBO,
+        Name: &lib::MQCHARV,
+        MsgDesc: lib::PMQVOID,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQVOID,
-        pDataLength: &mut lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Buffer: lib::PMQVOID,
+        DataLength: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     MQOPEN: unsafe extern "C" fn(
         Hconn: lib::MQHCONN,
-        pObjDesc: &mut lib::MQOD,
+        ObjDesc: &mut lib::MQOD,
         Options: lib::MQLONG,
-        pHobj: &mut lib::MQHOBJ,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Hobj: &mut lib::MQHOBJ,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     MQPUT: unsafe extern "C" fn(
         Hconn: lib::MQHCONN,
         Hobj: lib::MQHOBJ,
-        pMsgDesc: lib::PMQVOID,
-        pPutMsgOpts: &mut lib::MQPMO,
+        MsgDesc: lib::PMQVOID,
+        PutMsgOpts: &mut lib::MQPMO,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQVOID,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Buffer: lib::PMQVOID,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     MQPUT1: unsafe extern "C" fn(
         Hconn: lib::MQHCONN,
-        pObjDesc: &mut lib::MQOD,
-        pMsgDesc: lib::PMQVOID,
-        pPutMsgOpts: &mut lib::MQPMO,
+        ObjDesc: &mut lib::MQOD,
+        MsgDesc: lib::PMQVOID,
+        PutMsgOpts: &mut lib::MQPMO,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQVOID,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Buffer: lib::PMQVOID,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     MQSET: unsafe extern "C" fn(
         Hconn: lib::MQHCONN,
         Hobj: lib::MQHOBJ,
         SelectorCount: lib::MQLONG,
-        pSelectors: lib::PMQLONG,
+        Selectors: lib::PMQLONG,
         IntAttrCount: lib::MQLONG,
-        pIntAttrs: lib::PMQLONG,
+        IntAttrs: lib::PMQLONG,
         CharAttrLength: lib::MQLONG,
-        pCharAttrs: lib::PMQCHAR,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CharAttrs: lib::PMQCHAR,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     MQSETMP: unsafe extern "C" fn(
         Hconn: lib::MQHCONN,
         Hmsg: lib::MQHMSG,
-        pSetPropOpts: &lib::MQSMPO,
-        pName: &lib::MQCHARV,
-        pPropDesc: &mut lib::MQPD,
+        SetPropOpts: &lib::MQSMPO,
+        Name: &lib::MQCHARV,
+        PropDesc: &mut lib::MQPD,
         Type: lib::MQLONG,
         ValueLength: lib::MQLONG,
-        pValue: lib::PMQVOID,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Value: lib::PMQVOID,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     MQSTAT: unsafe extern "C" fn(
         Hconn: lib::MQHCONN,
         Type: lib::MQLONG,
-        pStatus: &mut lib::MQSTS,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Status: &mut lib::MQSTS,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     MQSUB: unsafe extern "C" fn(
         Hconn: lib::MQHCONN,
-        pSubDesc: &mut lib::MQSD,
-        pHobj: Option<&mut lib::MQHOBJ>,
-        pHsub: &mut lib::MQHOBJ,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        SubDesc: &mut lib::MQSD,
+        Hobj: Option<&mut lib::MQHOBJ>,
+        Hsub: &mut lib::MQHOBJ,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     MQSUBRQ: unsafe extern "C" fn(
         Hconn: lib::MQHCONN,
         Hsub: lib::MQHOBJ,
         Action: lib::MQLONG,
-        pSubRqOpts: Option<&mut lib::MQSRO>,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        SubRqOpts: Option<&mut lib::MQSRO>,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
     MQXCNVC: unsafe extern "C" fn(
         Hconn: lib::MQHCONN,
         Options: lib::MQLONG,
         SourceCCSID: lib::MQLONG,
         SourceLength: lib::MQLONG,
-        pSourceBuffer: lib::PMQCHAR,
+        SourceBuffer: lib::PMQCHAR,
         TargetCCSID: lib::MQLONG,
         TargetLength: lib::MQLONG,
-        pTargetBuffer: lib::PMQCHAR,
-        pDataLength: &mut lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        TargetBuffer: lib::PMQCHAR,
+        DataLength: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ),
 }
 #[cfg(feature = "mqai")]
@@ -589,11 +589,11 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
         ItemValue: lib::MQHBAG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
-            MqWrapper::mqAddBag(self, Bag, Selector, ItemValue, pCompCode, pReason);
+            MqWrapper::mqAddBag(self, Bag, Selector, ItemValue, CompCode, Reason);
         }
     }
     unsafe fn mqAddByteString(
@@ -601,9 +601,9 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQBYTE,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Buffer: lib::PMQBYTE,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
             MqWrapper::mqAddByteString(
@@ -611,9 +611,9 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
                 Bag,
                 Selector,
                 BufferLength,
-                pBuffer,
-                pCompCode,
-                pReason,
+                Buffer,
+                CompCode,
+                Reason,
             );
         }
     }
@@ -622,10 +622,10 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQBYTE,
+        Buffer: lib::PMQBYTE,
         Operator: lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
             MqWrapper::mqAddByteStringFilter(
@@ -633,10 +633,10 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
                 Bag,
                 Selector,
                 BufferLength,
-                pBuffer,
+                Buffer,
                 Operator,
-                pCompCode,
-                pReason,
+                CompCode,
+                Reason,
             );
         }
     }
@@ -644,11 +644,11 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
         &self,
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
-            MqWrapper::mqAddInquiry(self, Bag, Selector, pCompCode, pReason);
+            MqWrapper::mqAddInquiry(self, Bag, Selector, CompCode, Reason);
         }
     }
     unsafe fn mqAddInteger(
@@ -656,11 +656,11 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
         ItemValue: lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
-            MqWrapper::mqAddInteger(self, Bag, Selector, ItemValue, pCompCode, pReason);
+            MqWrapper::mqAddInteger(self, Bag, Selector, ItemValue, CompCode, Reason);
         }
     }
     unsafe fn mqAddInteger64(
@@ -668,18 +668,11 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
         ItemValue: lib::MQINT64,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
-            MqWrapper::mqAddInteger64(
-                self,
-                Bag,
-                Selector,
-                ItemValue,
-                pCompCode,
-                pReason,
-            );
+            MqWrapper::mqAddInteger64(self, Bag, Selector, ItemValue, CompCode, Reason);
         }
     }
     unsafe fn mqAddIntegerFilter(
@@ -688,8 +681,8 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
         Selector: lib::MQLONG,
         ItemValue: lib::MQLONG,
         Operator: lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
             MqWrapper::mqAddIntegerFilter(
@@ -698,8 +691,8 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
                 Selector,
                 ItemValue,
                 Operator,
-                pCompCode,
-                pReason,
+                CompCode,
+                Reason,
             );
         }
     }
@@ -708,9 +701,9 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQCHAR,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Buffer: lib::PMQCHAR,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
             MqWrapper::mqAddString(
@@ -718,9 +711,9 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
                 Bag,
                 Selector,
                 BufferLength,
-                pBuffer,
-                pCompCode,
-                pReason,
+                Buffer,
+                CompCode,
+                Reason,
             );
         }
     }
@@ -729,10 +722,10 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQCHAR,
+        Buffer: lib::PMQCHAR,
         Operator: lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
             MqWrapper::mqAddStringFilter(
@@ -740,10 +733,10 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
                 Bag,
                 Selector,
                 BufferLength,
-                pBuffer,
+                Buffer,
                 Operator,
-                pCompCode,
-                pReason,
+                CompCode,
+                Reason,
             );
         }
     }
@@ -752,10 +745,10 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
         OptionsBag: lib::MQHBAG,
         DataBag: lib::MQHBAG,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQVOID,
-        pDataLength: &mut lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Buffer: lib::PMQVOID,
+        DataLength: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
             MqWrapper::mqBagToBuffer(
@@ -763,10 +756,10 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
                 OptionsBag,
                 DataBag,
                 BufferLength,
-                pBuffer,
-                pDataLength,
-                pCompCode,
-                pReason,
+                Buffer,
+                DataLength,
+                CompCode,
+                Reason,
             );
         }
     }
@@ -774,64 +767,64 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
         &self,
         OptionsBag: lib::MQHBAG,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQVOID,
+        Buffer: lib::PMQVOID,
         DataBag: lib::MQHBAG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
             MqWrapper::mqBufferToBag(
                 self,
                 OptionsBag,
                 BufferLength,
-                pBuffer,
+                Buffer,
                 DataBag,
-                pCompCode,
-                pReason,
+                CompCode,
+                Reason,
             );
         }
     }
     unsafe fn mqClearBag(
         &self,
         Bag: lib::MQHBAG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
-            MqWrapper::mqClearBag(self, Bag, pCompCode, pReason);
+            MqWrapper::mqClearBag(self, Bag, CompCode, Reason);
         }
     }
     unsafe fn mqCountItems(
         &self,
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
-        pItemCount: &mut lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        ItemCount: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
-            MqWrapper::mqCountItems(self, Bag, Selector, pItemCount, pCompCode, pReason);
+            MqWrapper::mqCountItems(self, Bag, Selector, ItemCount, CompCode, Reason);
         }
     }
     unsafe fn mqCreateBag(
         &self,
         Options: lib::MQLONG,
-        pBag: &mut lib::MQHBAG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Bag: &mut lib::MQHBAG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
-            MqWrapper::mqCreateBag(self, Options, pBag, pCompCode, pReason);
+            MqWrapper::mqCreateBag(self, Options, Bag, CompCode, Reason);
         }
     }
     unsafe fn mqDeleteBag(
         &self,
-        pBag: &mut lib::MQHBAG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Bag: &mut lib::MQHBAG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
-            MqWrapper::mqDeleteBag(self, pBag, pCompCode, pReason);
+            MqWrapper::mqDeleteBag(self, Bag, CompCode, Reason);
         }
     }
     unsafe fn mqDeleteItem(
@@ -839,11 +832,11 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
         ItemIndex: lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
-            MqWrapper::mqDeleteItem(self, Bag, Selector, ItemIndex, pCompCode, pReason);
+            MqWrapper::mqDeleteItem(self, Bag, Selector, ItemIndex, CompCode, Reason);
         }
     }
     unsafe fn mqExecute(
@@ -855,8 +848,8 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
         ResponseBag: lib::MQHBAG,
         AdminQ: lib::MQHOBJ,
         ResponseQ: lib::MQHOBJ,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
             MqWrapper::mqExecute(
@@ -868,8 +861,8 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
                 ResponseBag,
                 AdminQ,
                 ResponseQ,
-                pCompCode,
-                pReason,
+                CompCode,
+                Reason,
             );
         }
     }
@@ -877,22 +870,22 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
         &self,
         Hconn: lib::MQHCONN,
         Hobj: lib::MQHOBJ,
-        pMsgDesc: lib::PMQVOID,
-        pGetMsgOpts: &mut lib::MQGMO,
+        MsgDesc: lib::PMQVOID,
+        GetMsgOpts: &mut lib::MQGMO,
         Bag: lib::MQHBAG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
             MqWrapper::mqGetBag(
                 self,
                 Hconn,
                 Hobj,
-                pMsgDesc,
-                pGetMsgOpts,
+                MsgDesc,
+                GetMsgOpts,
                 Bag,
-                pCompCode,
-                pReason,
+                CompCode,
+                Reason,
             );
         }
     }
@@ -901,9 +894,9 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
         ItemIndex: lib::MQLONG,
-        pItemValue: &mut lib::MQHBAG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        ItemValue: &mut lib::MQHBAG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
             MqWrapper::mqInquireBag(
@@ -911,9 +904,9 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
                 Bag,
                 Selector,
                 ItemIndex,
-                pItemValue,
-                pCompCode,
-                pReason,
+                ItemValue,
+                CompCode,
+                Reason,
             );
         }
     }
@@ -923,10 +916,10 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
         Selector: lib::MQLONG,
         ItemIndex: lib::MQLONG,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQBYTE,
-        pByteStringLength: &mut lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Buffer: lib::PMQBYTE,
+        ByteStringLength: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
             MqWrapper::mqInquireByteString(
@@ -935,10 +928,10 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
                 Selector,
                 ItemIndex,
                 BufferLength,
-                pBuffer,
-                pByteStringLength,
-                pCompCode,
-                pReason,
+                Buffer,
+                ByteStringLength,
+                CompCode,
+                Reason,
             );
         }
     }
@@ -948,11 +941,11 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
         Selector: lib::MQLONG,
         ItemIndex: lib::MQLONG,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQBYTE,
-        pByteStringLength: &mut lib::MQLONG,
-        pOperator: &mut lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Buffer: lib::PMQBYTE,
+        ByteStringLength: &mut lib::MQLONG,
+        Operator: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
             MqWrapper::mqInquireByteStringFilter(
@@ -961,11 +954,11 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
                 Selector,
                 ItemIndex,
                 BufferLength,
-                pBuffer,
-                pByteStringLength,
-                pOperator,
-                pCompCode,
-                pReason,
+                Buffer,
+                ByteStringLength,
+                Operator,
+                CompCode,
+                Reason,
             );
         }
     }
@@ -974,9 +967,9 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
         ItemIndex: lib::MQLONG,
-        pItemValue: &mut lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        ItemValue: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
             MqWrapper::mqInquireInteger(
@@ -984,9 +977,9 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
                 Bag,
                 Selector,
                 ItemIndex,
-                pItemValue,
-                pCompCode,
-                pReason,
+                ItemValue,
+                CompCode,
+                Reason,
             );
         }
     }
@@ -995,9 +988,9 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
         ItemIndex: lib::MQLONG,
-        pItemValue: &mut lib::MQINT64,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        ItemValue: &mut lib::MQINT64,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
             MqWrapper::mqInquireInteger64(
@@ -1005,9 +998,9 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
                 Bag,
                 Selector,
                 ItemIndex,
-                pItemValue,
-                pCompCode,
-                pReason,
+                ItemValue,
+                CompCode,
+                Reason,
             );
         }
     }
@@ -1016,10 +1009,10 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
         ItemIndex: lib::MQLONG,
-        pItemValue: &mut lib::MQLONG,
-        pOperator: &mut lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        ItemValue: &mut lib::MQLONG,
+        Operator: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
             MqWrapper::mqInquireIntegerFilter(
@@ -1027,10 +1020,10 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
                 Bag,
                 Selector,
                 ItemIndex,
-                pItemValue,
-                pOperator,
-                pCompCode,
-                pReason,
+                ItemValue,
+                Operator,
+                CompCode,
+                Reason,
             );
         }
     }
@@ -1039,10 +1032,10 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
         Bag: lib::MQHBAG,
         Selector: lib::MQLONG,
         ItemIndex: lib::MQLONG,
-        pOutSelector: &mut lib::MQLONG,
-        pItemType: &mut lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        OutSelector: &mut lib::MQLONG,
+        ItemType: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
             MqWrapper::mqInquireItemInfo(
@@ -1050,10 +1043,10 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
                 Bag,
                 Selector,
                 ItemIndex,
-                pOutSelector,
-                pItemType,
-                pCompCode,
-                pReason,
+                OutSelector,
+                ItemType,
+                CompCode,
+                Reason,
             );
         }
     }
@@ -1063,11 +1056,11 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
         Selector: lib::MQLONG,
         ItemIndex: lib::MQLONG,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQCHAR,
-        pStringLength: &mut lib::MQLONG,
-        pCodedCharSetId: &mut lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Buffer: lib::PMQCHAR,
+        StringLength: &mut lib::MQLONG,
+        CodedCharSetId: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
             MqWrapper::mqInquireString(
@@ -1076,11 +1069,11 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
                 Selector,
                 ItemIndex,
                 BufferLength,
-                pBuffer,
-                pStringLength,
-                pCodedCharSetId,
-                pCompCode,
-                pReason,
+                Buffer,
+                StringLength,
+                CodedCharSetId,
+                CompCode,
+                Reason,
             );
         }
     }
@@ -1090,12 +1083,12 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
         Selector: lib::MQLONG,
         ItemIndex: lib::MQLONG,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQCHAR,
-        pStringLength: &mut lib::MQLONG,
-        pCodedCharSetId: &mut lib::MQLONG,
-        pOperator: &mut lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Buffer: lib::PMQCHAR,
+        StringLength: &mut lib::MQLONG,
+        CodedCharSetId: &mut lib::MQLONG,
+        Operator: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
             MqWrapper::mqInquireStringFilter(
@@ -1104,47 +1097,47 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
                 Selector,
                 ItemIndex,
                 BufferLength,
-                pBuffer,
-                pStringLength,
-                pCodedCharSetId,
-                pOperator,
-                pCompCode,
-                pReason,
+                Buffer,
+                StringLength,
+                CodedCharSetId,
+                Operator,
+                CompCode,
+                Reason,
             );
         }
     }
     unsafe fn mqPad(
         &self,
-        pString: lib::PMQCHAR,
+        String: lib::PMQCHAR,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQCHAR,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Buffer: lib::PMQCHAR,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
-            MqWrapper::mqPad(self, pString, BufferLength, pBuffer, pCompCode, pReason);
+            MqWrapper::mqPad(self, String, BufferLength, Buffer, CompCode, Reason);
         }
     }
     unsafe fn mqPutBag(
         &self,
         Hconn: lib::MQHCONN,
         Hobj: lib::MQHOBJ,
-        pMsgDesc: lib::PMQVOID,
-        pPutMsgOpts: &mut lib::MQPMO,
+        MsgDesc: lib::PMQVOID,
+        PutMsgOpts: &mut lib::MQPMO,
         Bag: lib::MQHBAG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
             MqWrapper::mqPutBag(
                 self,
                 Hconn,
                 Hobj,
-                pMsgDesc,
-                pPutMsgOpts,
+                MsgDesc,
+                PutMsgOpts,
                 Bag,
-                pCompCode,
-                pReason,
+                CompCode,
+                Reason,
             );
         }
     }
@@ -1154,9 +1147,9 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
         Selector: lib::MQLONG,
         ItemIndex: lib::MQLONG,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQBYTE,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Buffer: lib::PMQBYTE,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
             MqWrapper::mqSetByteString(
@@ -1165,9 +1158,9 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
                 Selector,
                 ItemIndex,
                 BufferLength,
-                pBuffer,
-                pCompCode,
-                pReason,
+                Buffer,
+                CompCode,
+                Reason,
             );
         }
     }
@@ -1177,10 +1170,10 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
         Selector: lib::MQLONG,
         ItemIndex: lib::MQLONG,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQBYTE,
+        Buffer: lib::PMQBYTE,
         Operator: lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
             MqWrapper::mqSetByteStringFilter(
@@ -1189,10 +1182,10 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
                 Selector,
                 ItemIndex,
                 BufferLength,
-                pBuffer,
+                Buffer,
                 Operator,
-                pCompCode,
-                pReason,
+                CompCode,
+                Reason,
             );
         }
     }
@@ -1202,8 +1195,8 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
         Selector: lib::MQLONG,
         ItemIndex: lib::MQLONG,
         ItemValue: lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
             MqWrapper::mqSetInteger(
@@ -1212,8 +1205,8 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
                 Selector,
                 ItemIndex,
                 ItemValue,
-                pCompCode,
-                pReason,
+                CompCode,
+                Reason,
             );
         }
     }
@@ -1223,8 +1216,8 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
         Selector: lib::MQLONG,
         ItemIndex: lib::MQLONG,
         ItemValue: lib::MQINT64,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
             MqWrapper::mqSetInteger64(
@@ -1233,8 +1226,8 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
                 Selector,
                 ItemIndex,
                 ItemValue,
-                pCompCode,
-                pReason,
+                CompCode,
+                Reason,
             );
         }
     }
@@ -1245,8 +1238,8 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
         ItemIndex: lib::MQLONG,
         ItemValue: lib::MQLONG,
         Operator: lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
             MqWrapper::mqSetIntegerFilter(
@@ -1256,8 +1249,8 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
                 ItemIndex,
                 ItemValue,
                 Operator,
-                pCompCode,
-                pReason,
+                CompCode,
+                Reason,
             );
         }
     }
@@ -1267,9 +1260,9 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
         Selector: lib::MQLONG,
         ItemIndex: lib::MQLONG,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQCHAR,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Buffer: lib::PMQCHAR,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
             MqWrapper::mqSetString(
@@ -1278,9 +1271,9 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
                 Selector,
                 ItemIndex,
                 BufferLength,
-                pBuffer,
-                pCompCode,
-                pReason,
+                Buffer,
+                CompCode,
+                Reason,
             );
         }
     }
@@ -1290,10 +1283,10 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
         Selector: lib::MQLONG,
         ItemIndex: lib::MQLONG,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQCHAR,
+        Buffer: lib::PMQCHAR,
         Operator: lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
             MqWrapper::mqSetStringFilter(
@@ -1302,34 +1295,34 @@ impl crate::Mqai for ::dlopen2::wrapper::Container<MqWrapper> {
                 Selector,
                 ItemIndex,
                 BufferLength,
-                pBuffer,
+                Buffer,
                 Operator,
-                pCompCode,
-                pReason,
+                CompCode,
+                Reason,
             );
         }
     }
     unsafe fn mqTrim(
         &self,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQCHAR,
-        pString: lib::PMQCHAR,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Buffer: lib::PMQCHAR,
+        String: lib::PMQCHAR,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
-            MqWrapper::mqTrim(self, BufferLength, pBuffer, pString, pCompCode, pReason);
+            MqWrapper::mqTrim(self, BufferLength, Buffer, String, CompCode, Reason);
         }
     }
     unsafe fn mqTruncateBag(
         &self,
         Bag: lib::MQHBAG,
         ItemCount: lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
-            MqWrapper::mqTruncateBag(self, Bag, ItemCount, pCompCode, pReason);
+            MqWrapper::mqTruncateBag(self, Bag, ItemCount, CompCode, Reason);
         }
     }
 }
@@ -1337,48 +1330,48 @@ impl crate::Mqi for ::dlopen2::wrapper::Container<MqWrapper> {
     unsafe fn MQBACK(
         &self,
         Hconn: lib::MQHCONN,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
-            MqWrapper::MQBACK(self, Hconn, pCompCode, pReason);
+            MqWrapper::MQBACK(self, Hconn, CompCode, Reason);
         }
     }
     unsafe fn MQBEGIN(
         &self,
         Hconn: lib::MQHCONN,
-        pBeginOptions: Option<&mut lib::MQBO>,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        BeginOptions: Option<&mut lib::MQBO>,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
-            MqWrapper::MQBEGIN(self, Hconn, pBeginOptions, pCompCode, pReason);
+            MqWrapper::MQBEGIN(self, Hconn, BeginOptions, CompCode, Reason);
         }
     }
     unsafe fn MQBUFMH(
         &self,
         Hconn: lib::MQHCONN,
         Hmsg: lib::MQHMSG,
-        pBufMsgHOpts: &lib::MQBMHO,
-        pMsgDesc: lib::PMQVOID,
+        BufMsgHOpts: &lib::MQBMHO,
+        MsgDesc: lib::PMQVOID,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQVOID,
-        pDataLength: &mut lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Buffer: lib::PMQVOID,
+        DataLength: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
             MqWrapper::MQBUFMH(
                 self,
                 Hconn,
                 Hmsg,
-                pBufMsgHOpts,
-                pMsgDesc,
+                BufMsgHOpts,
+                MsgDesc,
                 BufferLength,
-                pBuffer,
-                pDataLength,
-                pCompCode,
-                pReason,
+                Buffer,
+                DataLength,
+                CompCode,
+                Reason,
             );
         }
     }
@@ -1386,170 +1379,155 @@ impl crate::Mqi for ::dlopen2::wrapper::Container<MqWrapper> {
         &self,
         Hconn: lib::MQHCONN,
         Operation: lib::MQLONG,
-        pCallbackDesc: Option<&lib::MQCBD>,
+        CallbackDesc: Option<&lib::MQCBD>,
         Hobj: lib::MQHOBJ,
-        pMsgDesc: lib::PMQVOID,
-        pGetMsgOpts: Option<&lib::MQGMO>,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        MsgDesc: lib::PMQVOID,
+        GetMsgOpts: Option<&lib::MQGMO>,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
             MqWrapper::MQCB(
                 self,
                 Hconn,
                 Operation,
-                pCallbackDesc,
+                CallbackDesc,
                 Hobj,
-                pMsgDesc,
-                pGetMsgOpts,
-                pCompCode,
-                pReason,
+                MsgDesc,
+                GetMsgOpts,
+                CompCode,
+                Reason,
             );
         }
     }
     unsafe fn MQCLOSE(
         &self,
         Hconn: lib::MQHCONN,
-        pHobj: &mut lib::MQHOBJ,
+        Hobj: &mut lib::MQHOBJ,
         Options: lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
-            MqWrapper::MQCLOSE(self, Hconn, pHobj, Options, pCompCode, pReason);
+            MqWrapper::MQCLOSE(self, Hconn, Hobj, Options, CompCode, Reason);
         }
     }
     unsafe fn MQCMIT(
         &self,
         Hconn: lib::MQHCONN,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
-            MqWrapper::MQCMIT(self, Hconn, pCompCode, pReason);
+            MqWrapper::MQCMIT(self, Hconn, CompCode, Reason);
         }
     }
     unsafe fn MQCONN(
         &self,
-        pQMgrName: &lib::MQCHAR48,
-        pHconn: &mut lib::MQHCONN,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        QMgrName: &lib::MQCHAR48,
+        Hconn: &mut lib::MQHCONN,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
-            MqWrapper::MQCONN(self, pQMgrName, pHconn, pCompCode, pReason);
+            MqWrapper::MQCONN(self, QMgrName, Hconn, CompCode, Reason);
         }
     }
     unsafe fn MQCONNX(
         &self,
-        pQMgrName: &lib::MQCHAR48,
-        pConnectOpts: &mut lib::MQCNO,
-        pHconn: &mut lib::MQHCONN,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        QMgrName: &lib::MQCHAR48,
+        ConnectOpts: &mut lib::MQCNO,
+        Hconn: &mut lib::MQHCONN,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
-            MqWrapper::MQCONNX(
-                self,
-                pQMgrName,
-                pConnectOpts,
-                pHconn,
-                pCompCode,
-                pReason,
-            );
+            MqWrapper::MQCONNX(self, QMgrName, ConnectOpts, Hconn, CompCode, Reason);
         }
     }
     unsafe fn MQCRTMH(
         &self,
         Hconn: lib::MQHCONN,
-        pCrtMsgHOpts: &lib::MQCMHO,
-        pHmsg: &mut lib::MQHMSG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CrtMsgHOpts: &lib::MQCMHO,
+        Hmsg: &mut lib::MQHMSG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
-            MqWrapper::MQCRTMH(self, Hconn, pCrtMsgHOpts, pHmsg, pCompCode, pReason);
+            MqWrapper::MQCRTMH(self, Hconn, CrtMsgHOpts, Hmsg, CompCode, Reason);
         }
     }
     unsafe fn MQCTL(
         &self,
         Hconn: lib::MQHCONN,
         Operation: lib::MQLONG,
-        pControlOpts: &lib::MQCTLO,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        ControlOpts: &lib::MQCTLO,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
-            MqWrapper::MQCTL(self, Hconn, Operation, pControlOpts, pCompCode, pReason);
+            MqWrapper::MQCTL(self, Hconn, Operation, ControlOpts, CompCode, Reason);
         }
     }
     unsafe fn MQDISC(
         &self,
-        pHconn: &mut lib::MQHCONN,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Hconn: &mut lib::MQHCONN,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
-            MqWrapper::MQDISC(self, pHconn, pCompCode, pReason);
+            MqWrapper::MQDISC(self, Hconn, CompCode, Reason);
         }
     }
     unsafe fn MQDLTMH(
         &self,
         Hconn: lib::MQHCONN,
-        pHmsg: &mut lib::MQHMSG,
-        pDltMsgHOpts: &lib::MQDMHO,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Hmsg: &mut lib::MQHMSG,
+        DltMsgHOpts: &lib::MQDMHO,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
-            MqWrapper::MQDLTMH(self, Hconn, pHmsg, pDltMsgHOpts, pCompCode, pReason);
+            MqWrapper::MQDLTMH(self, Hconn, Hmsg, DltMsgHOpts, CompCode, Reason);
         }
     }
     unsafe fn MQDLTMP(
         &self,
         Hconn: lib::MQHCONN,
         Hmsg: lib::MQHMSG,
-        pDltPropOpts: &lib::MQDMPO,
-        pName: &lib::MQCHARV,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        DltPropOpts: &lib::MQDMPO,
+        Name: &lib::MQCHARV,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
-            MqWrapper::MQDLTMP(
-                self,
-                Hconn,
-                Hmsg,
-                pDltPropOpts,
-                pName,
-                pCompCode,
-                pReason,
-            );
+            MqWrapper::MQDLTMP(self, Hconn, Hmsg, DltPropOpts, Name, CompCode, Reason);
         }
     }
     unsafe fn MQGET(
         &self,
         Hconn: lib::MQHCONN,
         Hobj: lib::MQHOBJ,
-        pMsgDesc: lib::PMQVOID,
-        pGetMsgOpts: &mut lib::MQGMO,
+        MsgDesc: lib::PMQVOID,
+        GetMsgOpts: &mut lib::MQGMO,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQVOID,
-        pDataLength: &mut lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Buffer: lib::PMQVOID,
+        DataLength: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
             MqWrapper::MQGET(
                 self,
                 Hconn,
                 Hobj,
-                pMsgDesc,
-                pGetMsgOpts,
+                MsgDesc,
+                GetMsgOpts,
                 BufferLength,
-                pBuffer,
-                pDataLength,
-                pCompCode,
-                pReason,
+                Buffer,
+                DataLength,
+                CompCode,
+                Reason,
             );
         }
     }
@@ -1558,13 +1536,13 @@ impl crate::Mqi for ::dlopen2::wrapper::Container<MqWrapper> {
         Hconn: lib::MQHCONN,
         Hobj: lib::MQHOBJ,
         SelectorCount: lib::MQLONG,
-        pSelectors: lib::PMQLONG,
+        Selectors: lib::PMQLONG,
         IntAttrCount: lib::MQLONG,
-        pIntAttrs: lib::PMQLONG,
+        IntAttrs: lib::PMQLONG,
         CharAttrLength: lib::MQLONG,
-        pCharAttrs: lib::PMQCHAR,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CharAttrs: lib::PMQCHAR,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
             MqWrapper::MQINQ(
@@ -1572,13 +1550,13 @@ impl crate::Mqi for ::dlopen2::wrapper::Container<MqWrapper> {
                 Hconn,
                 Hobj,
                 SelectorCount,
-                pSelectors,
+                Selectors,
                 IntAttrCount,
-                pIntAttrs,
+                IntAttrs,
                 CharAttrLength,
-                pCharAttrs,
-                pCompCode,
-                pReason,
+                CharAttrs,
+                CompCode,
+                Reason,
             );
         }
     }
@@ -1586,30 +1564,30 @@ impl crate::Mqi for ::dlopen2::wrapper::Container<MqWrapper> {
         &self,
         Hconn: lib::MQHCONN,
         Hmsg: lib::MQHMSG,
-        pInqPropOpts: &mut lib::MQIMPO,
-        pName: &lib::MQCHARV,
-        pPropDesc: &mut lib::MQPD,
-        pType: &mut lib::MQLONG,
+        InqPropOpts: &mut lib::MQIMPO,
+        Name: &lib::MQCHARV,
+        PropDesc: &mut lib::MQPD,
+        Type: &mut lib::MQLONG,
         ValueLength: lib::MQLONG,
-        pValue: lib::PMQVOID,
-        pDataLength: &mut lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Value: lib::PMQVOID,
+        DataLength: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
             MqWrapper::MQINQMP(
                 self,
                 Hconn,
                 Hmsg,
-                pInqPropOpts,
-                pName,
-                pPropDesc,
-                pType,
+                InqPropOpts,
+                Name,
+                PropDesc,
+                Type,
                 ValueLength,
-                pValue,
-                pDataLength,
-                pCompCode,
-                pReason,
+                Value,
+                DataLength,
+                CompCode,
+                Reason,
             );
         }
     }
@@ -1617,91 +1595,91 @@ impl crate::Mqi for ::dlopen2::wrapper::Container<MqWrapper> {
         &self,
         Hconn: lib::MQHCONN,
         Hmsg: lib::MQHMSG,
-        pMsgHBufOpts: &lib::MQMHBO,
-        pName: &lib::MQCHARV,
-        pMsgDesc: lib::PMQVOID,
+        MsgHBufOpts: &lib::MQMHBO,
+        Name: &lib::MQCHARV,
+        MsgDesc: lib::PMQVOID,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQVOID,
-        pDataLength: &mut lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Buffer: lib::PMQVOID,
+        DataLength: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
             MqWrapper::MQMHBUF(
                 self,
                 Hconn,
                 Hmsg,
-                pMsgHBufOpts,
-                pName,
-                pMsgDesc,
+                MsgHBufOpts,
+                Name,
+                MsgDesc,
                 BufferLength,
-                pBuffer,
-                pDataLength,
-                pCompCode,
-                pReason,
+                Buffer,
+                DataLength,
+                CompCode,
+                Reason,
             );
         }
     }
     unsafe fn MQOPEN(
         &self,
         Hconn: lib::MQHCONN,
-        pObjDesc: &mut lib::MQOD,
+        ObjDesc: &mut lib::MQOD,
         Options: lib::MQLONG,
-        pHobj: &mut lib::MQHOBJ,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Hobj: &mut lib::MQHOBJ,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
-            MqWrapper::MQOPEN(self, Hconn, pObjDesc, Options, pHobj, pCompCode, pReason);
+            MqWrapper::MQOPEN(self, Hconn, ObjDesc, Options, Hobj, CompCode, Reason);
         }
     }
     unsafe fn MQPUT(
         &self,
         Hconn: lib::MQHCONN,
         Hobj: lib::MQHOBJ,
-        pMsgDesc: lib::PMQVOID,
-        pPutMsgOpts: &mut lib::MQPMO,
+        MsgDesc: lib::PMQVOID,
+        PutMsgOpts: &mut lib::MQPMO,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQVOID,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Buffer: lib::PMQVOID,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
             MqWrapper::MQPUT(
                 self,
                 Hconn,
                 Hobj,
-                pMsgDesc,
-                pPutMsgOpts,
+                MsgDesc,
+                PutMsgOpts,
                 BufferLength,
-                pBuffer,
-                pCompCode,
-                pReason,
+                Buffer,
+                CompCode,
+                Reason,
             );
         }
     }
     unsafe fn MQPUT1(
         &self,
         Hconn: lib::MQHCONN,
-        pObjDesc: &mut lib::MQOD,
-        pMsgDesc: lib::PMQVOID,
-        pPutMsgOpts: &mut lib::MQPMO,
+        ObjDesc: &mut lib::MQOD,
+        MsgDesc: lib::PMQVOID,
+        PutMsgOpts: &mut lib::MQPMO,
         BufferLength: lib::MQLONG,
-        pBuffer: lib::PMQVOID,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Buffer: lib::PMQVOID,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
             MqWrapper::MQPUT1(
                 self,
                 Hconn,
-                pObjDesc,
-                pMsgDesc,
-                pPutMsgOpts,
+                ObjDesc,
+                MsgDesc,
+                PutMsgOpts,
                 BufferLength,
-                pBuffer,
-                pCompCode,
-                pReason,
+                Buffer,
+                CompCode,
+                Reason,
             );
         }
     }
@@ -1710,13 +1688,13 @@ impl crate::Mqi for ::dlopen2::wrapper::Container<MqWrapper> {
         Hconn: lib::MQHCONN,
         Hobj: lib::MQHOBJ,
         SelectorCount: lib::MQLONG,
-        pSelectors: lib::PMQLONG,
+        Selectors: lib::PMQLONG,
         IntAttrCount: lib::MQLONG,
-        pIntAttrs: lib::PMQLONG,
+        IntAttrs: lib::PMQLONG,
         CharAttrLength: lib::MQLONG,
-        pCharAttrs: lib::PMQCHAR,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        CharAttrs: lib::PMQCHAR,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
             MqWrapper::MQSET(
@@ -1724,13 +1702,13 @@ impl crate::Mqi for ::dlopen2::wrapper::Container<MqWrapper> {
                 Hconn,
                 Hobj,
                 SelectorCount,
-                pSelectors,
+                Selectors,
                 IntAttrCount,
-                pIntAttrs,
+                IntAttrs,
                 CharAttrLength,
-                pCharAttrs,
-                pCompCode,
-                pReason,
+                CharAttrs,
+                CompCode,
+                Reason,
             );
         }
     }
@@ -1738,28 +1716,28 @@ impl crate::Mqi for ::dlopen2::wrapper::Container<MqWrapper> {
         &self,
         Hconn: lib::MQHCONN,
         Hmsg: lib::MQHMSG,
-        pSetPropOpts: &lib::MQSMPO,
-        pName: &lib::MQCHARV,
-        pPropDesc: &mut lib::MQPD,
+        SetPropOpts: &lib::MQSMPO,
+        Name: &lib::MQCHARV,
+        PropDesc: &mut lib::MQPD,
         Type: lib::MQLONG,
         ValueLength: lib::MQLONG,
-        pValue: lib::PMQVOID,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Value: lib::PMQVOID,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
             MqWrapper::MQSETMP(
                 self,
                 Hconn,
                 Hmsg,
-                pSetPropOpts,
-                pName,
-                pPropDesc,
+                SetPropOpts,
+                Name,
+                PropDesc,
                 Type,
                 ValueLength,
-                pValue,
-                pCompCode,
-                pReason,
+                Value,
+                CompCode,
+                Reason,
             );
         }
     }
@@ -1767,25 +1745,25 @@ impl crate::Mqi for ::dlopen2::wrapper::Container<MqWrapper> {
         &self,
         Hconn: lib::MQHCONN,
         Type: lib::MQLONG,
-        pStatus: &mut lib::MQSTS,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        Status: &mut lib::MQSTS,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
-            MqWrapper::MQSTAT(self, Hconn, Type, pStatus, pCompCode, pReason);
+            MqWrapper::MQSTAT(self, Hconn, Type, Status, CompCode, Reason);
         }
     }
     unsafe fn MQSUB(
         &self,
         Hconn: lib::MQHCONN,
-        pSubDesc: &mut lib::MQSD,
-        pHobj: Option<&mut lib::MQHOBJ>,
-        pHsub: &mut lib::MQHOBJ,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        SubDesc: &mut lib::MQSD,
+        Hobj: Option<&mut lib::MQHOBJ>,
+        Hsub: &mut lib::MQHOBJ,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
-            MqWrapper::MQSUB(self, Hconn, pSubDesc, pHobj, pHsub, pCompCode, pReason);
+            MqWrapper::MQSUB(self, Hconn, SubDesc, Hobj, Hsub, CompCode, Reason);
         }
     }
     unsafe fn MQSUBRQ(
@@ -1793,20 +1771,12 @@ impl crate::Mqi for ::dlopen2::wrapper::Container<MqWrapper> {
         Hconn: lib::MQHCONN,
         Hsub: lib::MQHOBJ,
         Action: lib::MQLONG,
-        pSubRqOpts: Option<&mut lib::MQSRO>,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        SubRqOpts: Option<&mut lib::MQSRO>,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
-            MqWrapper::MQSUBRQ(
-                self,
-                Hconn,
-                Hsub,
-                Action,
-                pSubRqOpts,
-                pCompCode,
-                pReason,
-            );
+            MqWrapper::MQSUBRQ(self, Hconn, Hsub, Action, SubRqOpts, CompCode, Reason);
         }
     }
     unsafe fn MQXCNVC(
@@ -1815,13 +1785,13 @@ impl crate::Mqi for ::dlopen2::wrapper::Container<MqWrapper> {
         Options: lib::MQLONG,
         SourceCCSID: lib::MQLONG,
         SourceLength: lib::MQLONG,
-        pSourceBuffer: lib::PMQCHAR,
+        SourceBuffer: lib::PMQCHAR,
         TargetCCSID: lib::MQLONG,
         TargetLength: lib::MQLONG,
-        pTargetBuffer: lib::PMQCHAR,
-        pDataLength: &mut lib::MQLONG,
-        pCompCode: &mut lib::MQLONG,
-        pReason: &mut lib::MQLONG,
+        TargetBuffer: lib::PMQCHAR,
+        DataLength: &mut lib::MQLONG,
+        CompCode: &mut lib::MQLONG,
+        Reason: &mut lib::MQLONG,
     ) {
         unsafe {
             MqWrapper::MQXCNVC(
@@ -1830,13 +1800,13 @@ impl crate::Mqi for ::dlopen2::wrapper::Container<MqWrapper> {
                 Options,
                 SourceCCSID,
                 SourceLength,
-                pSourceBuffer,
+                SourceBuffer,
                 TargetCCSID,
                 TargetLength,
-                pTargetBuffer,
-                pDataLength,
-                pCompCode,
-                pReason,
+                TargetBuffer,
+                DataLength,
+                CompCode,
+                Reason,
             );
         }
     }

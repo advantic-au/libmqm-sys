@@ -1,4 +1,4 @@
-/* Generated with MQ client version 9.4.2.0 */
+/* Generated with MQ client version 9.4.3.0 */
 
 pub type MQHBAG = MQLONG;
 pub type PMQHBAG = *mut MQHBAG;
@@ -61,8 +61,8 @@ unsafe extern "C" {
     /// * `Bag`: Bag handle
     /// * `Selector`: Item selector
     /// * `ItemValue`: Item value
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqaddbag)
@@ -70,8 +70,8 @@ unsafe extern "C" {
         Bag: MQHBAG,
         Selector: MQLONG,
         ItemValue: MQHBAG,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
     /// Add Byte String to Bag
     ///
@@ -79,9 +79,9 @@ unsafe extern "C" {
     /// * `Bag`: Bag handle
     /// * `Selector`: Item selector
     /// * `BufferLength`: Length of buffer
-    /// * `pBuffer`: Buffer containing item value
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `Buffer`: Buffer containing item value
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqaddbytestring)
@@ -89,9 +89,9 @@ unsafe extern "C" {
         Bag: MQHBAG,
         Selector: MQLONG,
         BufferLength: MQLONG,
-        pBuffer: PMQBYTE,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        Buffer: PMQBYTE,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
     /// Add Byte String Filter to Bag
     ///
@@ -99,10 +99,10 @@ unsafe extern "C" {
     /// * `Bag`: Bag handle
     /// * `Selector`: Item selector
     /// * `BufferLength`: Length of buffer
-    /// * `pBuffer`: Buffer containing item value
+    /// * `Buffer`: Buffer containing item value
     /// * `Operator`: Item operator
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqaddbytestringfilter)
@@ -110,26 +110,26 @@ unsafe extern "C" {
         Bag: MQHBAG,
         Selector: MQLONG,
         BufferLength: MQLONG,
-        pBuffer: PMQBYTE,
+        Buffer: PMQBYTE,
         Operator: MQLONG,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
     /// Add an Inquiry Item to Bag
     ///
     /// # Arguments
     /// * `Bag`: Bag handle
     /// * `Selector`: Attribute selector
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqaddinquiry)
     pub fn mqAddInquiry(
         Bag: MQHBAG,
         Selector: MQLONG,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
     /// Add Integer to Bag
     ///
@@ -137,8 +137,8 @@ unsafe extern "C" {
     /// * `Bag`: Bag handle
     /// * `Selector`: Item selector
     /// * `ItemValue`: Item value
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqaddinteger)
@@ -146,8 +146,8 @@ unsafe extern "C" {
         Bag: MQHBAG,
         Selector: MQLONG,
         ItemValue: MQLONG,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
     /// Add 64-bit Integer to Bag
     ///
@@ -155,8 +155,8 @@ unsafe extern "C" {
     /// * `Bag`: Bag handle
     /// * `Selector`: Item selector
     /// * `ItemValue`: Item value
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqaddinteger64)
@@ -164,8 +164,8 @@ unsafe extern "C" {
         Bag: MQHBAG,
         Selector: MQLONG,
         ItemValue: MQINT64,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
     /// Add Integer Filter to Bag
     ///
@@ -174,8 +174,8 @@ unsafe extern "C" {
     /// * `Selector`: Item selector
     /// * `ItemValue`: Item value
     /// * `Operator`: Item operator
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqaddintegerfilter)
@@ -184,8 +184,8 @@ unsafe extern "C" {
         Selector: MQLONG,
         ItemValue: MQLONG,
         Operator: MQLONG,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
     /// Add String to Bag
     ///
@@ -193,9 +193,9 @@ unsafe extern "C" {
     /// * `Bag`: Bag handle
     /// * `Selector`: Item selector
     /// * `BufferLength`: Length of buffer
-    /// * `pBuffer`: Buffer containing item value
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `Buffer`: Buffer containing item value
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqaddstring)
@@ -203,9 +203,9 @@ unsafe extern "C" {
         Bag: MQHBAG,
         Selector: MQLONG,
         BufferLength: MQLONG,
-        pBuffer: PMQCHAR,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        Buffer: PMQCHAR,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
     /// Add String Filter to Bag
     ///
@@ -213,10 +213,10 @@ unsafe extern "C" {
     /// * `Bag`: Bag handle
     /// * `Selector`: Item selector
     /// * `BufferLength`: Length of buffer
-    /// * `pBuffer`: Buffer containing item value
+    /// * `Buffer`: Buffer containing item value
     /// * `Operator`: Item operator
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqaddstringfilter)
@@ -224,10 +224,10 @@ unsafe extern "C" {
         Bag: MQHBAG,
         Selector: MQLONG,
         BufferLength: MQLONG,
-        pBuffer: PMQCHAR,
+        Buffer: PMQCHAR,
         Operator: MQLONG,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
     /// Convert Bag to PCF
     ///
@@ -235,10 +235,10 @@ unsafe extern "C" {
     /// * `OptionsBag`: Handle of options bag
     /// * `DataBag`: Handle of data bag
     /// * `BufferLength`: Length of buffer
-    /// * `pBuffer` (Output): Buffer to contain PCF
-    /// * `pDataLength` (Output): Length of PCF returned in buffer
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `Buffer` (Output): Buffer to contain PCF
+    /// * `DataLength` (Output): Length of PCF returned in buffer
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqbagtobuffer)
@@ -246,93 +246,93 @@ unsafe extern "C" {
         OptionsBag: MQHBAG,
         DataBag: MQHBAG,
         BufferLength: MQLONG,
-        pBuffer: PMQVOID,
-        pDataLength: &mut MQLONG,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        Buffer: PMQVOID,
+        DataLength: &mut MQLONG,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
     /// Convert PCF to Bag
     ///
     /// # Arguments
     /// * `OptionsBag`: Handle of options bag
     /// * `BufferLength`: Length of buffer
-    /// * `pBuffer`: Buffer containing PCF
+    /// * `Buffer`: Buffer containing PCF
     /// * `DataBag` (Input/Output): Handle of bag to contain data
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqbuffertobag)
     pub fn mqBufferToBag(
         OptionsBag: MQHBAG,
         BufferLength: MQLONG,
-        pBuffer: PMQVOID,
+        Buffer: PMQVOID,
         DataBag: MQHBAG,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
     /// Delete All Items in Bag
     ///
     /// # Arguments
     /// * `Bag`: Bag handle
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqclearbag)
-    pub fn mqClearBag(Bag: MQHBAG, pCompCode: &mut MQLONG, pReason: &mut MQLONG);
+    pub fn mqClearBag(Bag: MQHBAG, CompCode: &mut MQLONG, Reason: &mut MQLONG);
     /// Count Items in Bag
     ///
     /// # Arguments
     /// * `Bag`: Bag handle
     /// * `Selector`: Item selector
-    /// * `pItemCount` (Output): Number of items
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `ItemCount` (Output): Number of items
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqcountitems)
     pub fn mqCountItems(
         Bag: MQHBAG,
         Selector: MQLONG,
-        pItemCount: &mut MQLONG,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        ItemCount: &mut MQLONG,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
     /// Create Bag
     ///
     /// # Arguments
     /// * `Options`: Bag options
-    /// * `pBag` (Output): Handle of bag created
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `Bag` (Output): Handle of bag created
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqcreatebag)
     pub fn mqCreateBag(
         Options: MQLONG,
-        pBag: &mut MQHBAG,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        Bag: &mut MQHBAG,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
     /// Delete Bag
     ///
     /// # Arguments
-    /// * `pBag` (Input/Output): Bag handle
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `Bag` (Input/Output): Bag handle
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqdeletebag)
-    pub fn mqDeleteBag(pBag: &mut MQHBAG, pCompCode: &mut MQLONG, pReason: &mut MQLONG);
+    pub fn mqDeleteBag(Bag: &mut MQHBAG, CompCode: &mut MQLONG, Reason: &mut MQLONG);
     /// Delete Item in Bag
     ///
     /// # Arguments
     /// * `Bag`: Bag handle
     /// * `Selector`: Item selector
     /// * `ItemIndex`: Item index
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqdeleteitem)
@@ -340,8 +340,8 @@ unsafe extern "C" {
         Bag: MQHBAG,
         Selector: MQLONG,
         ItemIndex: MQLONG,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
     /// Send Admin Command and Receive Reponse
     ///
@@ -353,8 +353,8 @@ unsafe extern "C" {
     /// * `ResponseBag`: Handle of response bag
     /// * `AdminQ`: Handle of admin queue
     /// * `ResponseQ`: Handle of response queue
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqexecute)
@@ -366,30 +366,30 @@ unsafe extern "C" {
         ResponseBag: MQHBAG,
         AdminQ: MQHOBJ,
         ResponseQ: MQHOBJ,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
     /// Receive PCF Message into Bag
     ///
     /// # Arguments
     /// * `Hconn`: Connection handle
     /// * `Hobj`: Queue handle
-    /// * `pMsgDesc` (Input/Output): Message descriptor
-    /// * `pGetMsgOpts` (Input/Output): Get-message options
+    /// * `MsgDesc` (Input/Output): Message descriptor
+    /// * `GetMsgOpts` (Input/Output): Get-message options
     /// * `Bag` (Input/Output): Handle of bag to contain message
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqgetbag)
     pub fn mqGetBag(
         Hconn: MQHCONN,
         Hobj: MQHOBJ,
-        pMsgDesc: PMQVOID,
-        pGetMsgOpts: &mut MQGMO,
+        MsgDesc: PMQVOID,
+        GetMsgOpts: &mut MQGMO,
         Bag: MQHBAG,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
     /// Inquire Handle in Bag
     ///
@@ -397,9 +397,9 @@ unsafe extern "C" {
     /// * `Bag`: Bag handle
     /// * `Selector`: Item selector
     /// * `ItemIndex`: Item index
-    /// * `pItemValue` (Output): Item value
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `ItemValue` (Output): Item value
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinquirebag)
@@ -407,9 +407,9 @@ unsafe extern "C" {
         Bag: MQHBAG,
         Selector: MQLONG,
         ItemIndex: MQLONG,
-        pItemValue: &mut MQHBAG,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        ItemValue: &mut MQHBAG,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
     /// Inquire Byte String in Bag
     ///
@@ -418,10 +418,10 @@ unsafe extern "C" {
     /// * `Selector`: Item selector
     /// * `ItemIndex`: Item index
     /// * `BufferLength`: Length of buffer
-    /// * `pBuffer` (Output): Buffer to contain string
-    /// * `pByteStringLength` (Output): Length of byte string returned
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `Buffer` (Output): Buffer to contain string
+    /// * `ByteStringLength` (Output): Length of byte string returned
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinquirebytestring)
@@ -430,10 +430,10 @@ unsafe extern "C" {
         Selector: MQLONG,
         ItemIndex: MQLONG,
         BufferLength: MQLONG,
-        pBuffer: PMQBYTE,
-        pByteStringLength: &mut MQLONG,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        Buffer: PMQBYTE,
+        ByteStringLength: &mut MQLONG,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
     /// Inquire Byte String Filter in Bag
     ///
@@ -442,11 +442,11 @@ unsafe extern "C" {
     /// * `Selector`: Item selector
     /// * `ItemIndex`: Item index
     /// * `BufferLength`: Length of buffer
-    /// * `pBuffer` (Output): Buffer to contain string
-    /// * `pByteStringLength` (Output): Length of byte string returned
-    /// * `pOperator` (Output): Item operator
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `Buffer` (Output): Buffer to contain string
+    /// * `ByteStringLength` (Output): Length of byte string returned
+    /// * `Operator` (Output): Item operator
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinquirebytestringfilter)
@@ -455,11 +455,11 @@ unsafe extern "C" {
         Selector: MQLONG,
         ItemIndex: MQLONG,
         BufferLength: MQLONG,
-        pBuffer: PMQBYTE,
-        pByteStringLength: &mut MQLONG,
-        pOperator: &mut MQLONG,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        Buffer: PMQBYTE,
+        ByteStringLength: &mut MQLONG,
+        Operator: &mut MQLONG,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
     /// Inquire Integer in Bag
     ///
@@ -467,9 +467,9 @@ unsafe extern "C" {
     /// * `Bag`: Bag handle
     /// * `Selector`: Item selector
     /// * `ItemIndex`: Item index
-    /// * `pItemValue` (Output): Item value
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `ItemValue` (Output): Item value
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinquireinteger)
@@ -477,9 +477,9 @@ unsafe extern "C" {
         Bag: MQHBAG,
         Selector: MQLONG,
         ItemIndex: MQLONG,
-        pItemValue: &mut MQLONG,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        ItemValue: &mut MQLONG,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
     /// Inquire 64-bit Integer in Bag
     ///
@@ -487,9 +487,9 @@ unsafe extern "C" {
     /// * `Bag`: Bag handle
     /// * `Selector`: Item selector
     /// * `ItemIndex`: Item index
-    /// * `pItemValue` (Output): Item value
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `ItemValue` (Output): Item value
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinquireinteger64)
@@ -497,9 +497,9 @@ unsafe extern "C" {
         Bag: MQHBAG,
         Selector: MQLONG,
         ItemIndex: MQLONG,
-        pItemValue: &mut MQINT64,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        ItemValue: &mut MQINT64,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
     /// Inquire Integer Filter in Bag
     ///
@@ -507,10 +507,10 @@ unsafe extern "C" {
     /// * `Bag`: Bag handle
     /// * `Selector`: Item selector
     /// * `ItemIndex`: Item index
-    /// * `pItemValue` (Output): Item value
-    /// * `pOperator` (Output): Item operator
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `ItemValue` (Output): Item value
+    /// * `Operator` (Output): Item operator
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinquireintegerfilter)
@@ -518,10 +518,10 @@ unsafe extern "C" {
         Bag: MQHBAG,
         Selector: MQLONG,
         ItemIndex: MQLONG,
-        pItemValue: &mut MQLONG,
-        pOperator: &mut MQLONG,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        ItemValue: &mut MQLONG,
+        Operator: &mut MQLONG,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
     /// Inquire Attributes of Item in Bag
     ///
@@ -529,10 +529,10 @@ unsafe extern "C" {
     /// * `Bag`: Bag handle
     /// * `Selector`: Item selector
     /// * `ItemIndex`: Item index
-    /// * `pOutSelector` (Output): Selector of item
-    /// * `pItemType` (Output): Data type of item
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `OutSelector` (Output): Selector of item
+    /// * `ItemType` (Output): Data type of item
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinquireiteminfo)
@@ -540,10 +540,10 @@ unsafe extern "C" {
         Bag: MQHBAG,
         Selector: MQLONG,
         ItemIndex: MQLONG,
-        pOutSelector: &mut MQLONG,
-        pItemType: &mut MQLONG,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        OutSelector: &mut MQLONG,
+        ItemType: &mut MQLONG,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
     /// Inquire String in Bag
     ///
@@ -552,11 +552,11 @@ unsafe extern "C" {
     /// * `Selector`: Item selector
     /// * `ItemIndex`: Item index
     /// * `BufferLength`: Length of buffer
-    /// * `pBuffer` (Output): Buffer to contain string
-    /// * `pStringLength` (Output): Length of string returned
-    /// * `pCodedCharSetId` (Output): Character-set identifier of string
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `Buffer` (Output): Buffer to contain string
+    /// * `StringLength` (Output): Length of string returned
+    /// * `CodedCharSetId` (Output): Character-set identifier of string
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinquirestring)
@@ -565,11 +565,11 @@ unsafe extern "C" {
         Selector: MQLONG,
         ItemIndex: MQLONG,
         BufferLength: MQLONG,
-        pBuffer: PMQCHAR,
-        pStringLength: &mut MQLONG,
-        pCodedCharSetId: &mut MQLONG,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        Buffer: PMQCHAR,
+        StringLength: &mut MQLONG,
+        CodedCharSetId: &mut MQLONG,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
     /// Inquire String Filter in Bag
     ///
@@ -578,12 +578,12 @@ unsafe extern "C" {
     /// * `Selector`: Item selector
     /// * `ItemIndex`: Item index
     /// * `BufferLength`: Length of buffer
-    /// * `pBuffer` (Output): Buffer to contain string
-    /// * `pStringLength` (Output): Length of string returned
-    /// * `pCodedCharSetId` (Output): Character-set identifier of string
-    /// * `pOperator` (Output): Item operator
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `Buffer` (Output): Buffer to contain string
+    /// * `StringLength` (Output): Length of string returned
+    /// * `CodedCharSetId` (Output): Character-set identifier of string
+    /// * `Operator` (Output): Item operator
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinquirestringfilter)
@@ -592,52 +592,52 @@ unsafe extern "C" {
         Selector: MQLONG,
         ItemIndex: MQLONG,
         BufferLength: MQLONG,
-        pBuffer: PMQCHAR,
-        pStringLength: &mut MQLONG,
-        pCodedCharSetId: &mut MQLONG,
-        pOperator: &mut MQLONG,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        Buffer: PMQCHAR,
+        StringLength: &mut MQLONG,
+        CodedCharSetId: &mut MQLONG,
+        Operator: &mut MQLONG,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
     /// Pad Null-terminated String with Blanks
     ///
     /// # Arguments
-    /// * `pString`: Null-terminated string to be padded
+    /// * `String`: Null-terminated string to be padded
     /// * `BufferLength`: Length of buffer
-    /// * `pBuffer` (Output): Buffer to contain padded string
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `Buffer` (Output): Buffer to contain padded string
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqpad)
     pub fn mqPad(
-        pString: PMQCHAR,
+        String: PMQCHAR,
         BufferLength: MQLONG,
-        pBuffer: PMQCHAR,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        Buffer: PMQCHAR,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
     /// Send Bag as PCF Message
     ///
     /// # Arguments
     /// * `Hconn`: Connection handle
     /// * `Hobj`: Queue handle
-    /// * `pMsgDesc` (Input/Output): Message descriptor
-    /// * `pPutMsgOpts` (Input/Output): Put-message options
+    /// * `MsgDesc` (Input/Output): Message descriptor
+    /// * `PutMsgOpts` (Input/Output): Put-message options
     /// * `Bag`: Handle of bag containing message data
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqputbag)
     pub fn mqPutBag(
         Hconn: MQHCONN,
         Hobj: MQHOBJ,
-        pMsgDesc: PMQVOID,
-        pPutMsgOpts: &mut MQPMO,
+        MsgDesc: PMQVOID,
+        PutMsgOpts: &mut MQPMO,
         Bag: MQHBAG,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
     /// Modify Byte String in Bag
     ///
@@ -646,9 +646,9 @@ unsafe extern "C" {
     /// * `Selector`: Item selector
     /// * `ItemIndex`: Item index
     /// * `BufferLength`: Length of buffer
-    /// * `pBuffer`: Buffer containing item value
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `Buffer`: Buffer containing item value
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqsetbytestring)
@@ -657,9 +657,9 @@ unsafe extern "C" {
         Selector: MQLONG,
         ItemIndex: MQLONG,
         BufferLength: MQLONG,
-        pBuffer: PMQBYTE,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        Buffer: PMQBYTE,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
     /// Modify Byte String Filter in Bag
     ///
@@ -668,10 +668,10 @@ unsafe extern "C" {
     /// * `Selector`: Item selector
     /// * `ItemIndex`: Item index
     /// * `BufferLength`: Length of buffer
-    /// * `pBuffer`: Buffer containing item value
+    /// * `Buffer`: Buffer containing item value
     /// * `Operator`: Item operator
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqsetbytestringfilter)
@@ -680,10 +680,10 @@ unsafe extern "C" {
         Selector: MQLONG,
         ItemIndex: MQLONG,
         BufferLength: MQLONG,
-        pBuffer: PMQBYTE,
+        Buffer: PMQBYTE,
         Operator: MQLONG,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
     /// Modify Integer in Bag
     ///
@@ -692,8 +692,8 @@ unsafe extern "C" {
     /// * `Selector`: Item selector
     /// * `ItemIndex`: Item index
     /// * `ItemValue`: Item value
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqsetinteger)
@@ -702,8 +702,8 @@ unsafe extern "C" {
         Selector: MQLONG,
         ItemIndex: MQLONG,
         ItemValue: MQLONG,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
     /// Modify 64-bit Integer in Bag
     ///
@@ -712,8 +712,8 @@ unsafe extern "C" {
     /// * `Selector`: Item selector
     /// * `ItemIndex`: Item index
     /// * `ItemValue`: Item value
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqsetinteger64)
@@ -722,8 +722,8 @@ unsafe extern "C" {
         Selector: MQLONG,
         ItemIndex: MQLONG,
         ItemValue: MQINT64,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
     /// Modify Integer Filter in Bag
     ///
@@ -733,8 +733,8 @@ unsafe extern "C" {
     /// * `ItemIndex`: Item index
     /// * `ItemValue`: Item value
     /// * `Operator`: Item operator
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqsetintegerfilter)
@@ -744,8 +744,8 @@ unsafe extern "C" {
         ItemIndex: MQLONG,
         ItemValue: MQLONG,
         Operator: MQLONG,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
     /// Modify String in Bag
     ///
@@ -754,9 +754,9 @@ unsafe extern "C" {
     /// * `Selector`: Item selector
     /// * `ItemIndex`: Item index
     /// * `BufferLength`: Length of buffer
-    /// * `pBuffer`: Buffer containing item value
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `Buffer`: Buffer containing item value
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqsetstring)
@@ -765,9 +765,9 @@ unsafe extern "C" {
         Selector: MQLONG,
         ItemIndex: MQLONG,
         BufferLength: MQLONG,
-        pBuffer: PMQCHAR,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        Buffer: PMQCHAR,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
     /// Modify String Filter in Bag
     ///
@@ -776,10 +776,10 @@ unsafe extern "C" {
     /// * `Selector`: Item selector
     /// * `ItemIndex`: Item index
     /// * `BufferLength`: Length of buffer
-    /// * `pBuffer`: Buffer containing item value
+    /// * `Buffer`: Buffer containing item value
     /// * `Operator`: Item operator
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqsetstringfilter)
@@ -788,43 +788,43 @@ unsafe extern "C" {
         Selector: MQLONG,
         ItemIndex: MQLONG,
         BufferLength: MQLONG,
-        pBuffer: PMQCHAR,
+        Buffer: PMQCHAR,
         Operator: MQLONG,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
     /// Replace Trailing Blanks with Null Character
     ///
     /// # Arguments
     /// * `BufferLength`: Length of buffer
-    /// * `pBuffer`: Buffer containing blank-padded string
-    /// * `pString` (Output): String with blanks discarded
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `Buffer`: Buffer containing blank-padded string
+    /// * `String` (Output): String with blanks discarded
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqtrim)
     pub fn mqTrim(
         BufferLength: MQLONG,
-        pBuffer: PMQCHAR,
-        pString: PMQCHAR,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        Buffer: PMQCHAR,
+        String: PMQCHAR,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
     /// Delete Trailing Items in Bag
     ///
     /// # Arguments
     /// * `Bag`: Bag handle
     /// * `ItemCount`: Number of items to remain in bag
-    /// * `pCompCode` (Output): Completion code
-    /// * `pReason` (Output): Reason code qualifying `CompCode`
+    /// * `CompCode` (Output): Completion code
+    /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
     /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqtruncatebag)
     pub fn mqTruncateBag(
         Bag: MQHBAG,
         ItemCount: MQLONG,
-        pCompCode: &mut MQLONG,
-        pReason: &mut MQLONG,
+        CompCode: &mut MQLONG,
+        Reason: &mut MQLONG,
     );
 }
