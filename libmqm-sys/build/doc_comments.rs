@@ -14,7 +14,13 @@ const SPLIT_REGEX: &str = r"(?m)\s*(\*/|/\*)\s*";
 const MQ_ITEM_REGEX: &str = r"MQ[A-Z\d_]+";
 
 fn doc_link(c: &Captures) -> Cow<'static, str> {
-    Cow::Owned(format!("[`{}`]", &c[0]))
+    let matched = &c[0];
+    // MQPMR isn't a real struct
+    Cow::Owned(if matched == "MQPMR" {
+        format!("`{matched}`")
+    } else {
+        format!("[`{matched}`]")
+    })
 }
 
 const STRUCT_REGEX: &str = r"(?msx)

@@ -30,7 +30,7 @@ macro_rules! define_new_type {
             ::derive_more::LowerHex,
             ::derive_more::Binary
         )]
-        #[allow(clippy::empty_docs,non_camel_case_types)]
+        #[allow(clippy::doc_markdown,clippy::empty_docs,non_camel_case_types)]
         #[doc = $doc]
         $vis struct $name(pub $type);
 

@@ -1,4 +1,3 @@
-use proc_macro2::Span;
 use syn::{
     parse_quote,
     punctuated::Punctuated,
@@ -49,7 +48,7 @@ impl VisitMut for DesugarForMockall {
         let mut add_lifetime = DesugarFn(|item: &mut syn::Type| {
             if let syn::Type::Reference(tr @ TypeReference { lifetime: None, .. }) = item {
                 if let Some(lt_char) = ('a'..='z').find(|c| !generics.lifetimes().any(|lt| lt.lifetime.ident == c.to_string())) {
-                    let lt = Lifetime::new(&format!("'{lt_char}"), Span::call_site());
+                    let lt = Lifetime::new(&format!("'{lt_char}"), proc_macro2::Span::call_site());
                     tr.lifetime = Some(lt.clone());
                     generics.params.insert(0, parse_quote!(#lt));
                 }
@@ -93,8 +92,26 @@ impl Visit<'_> for TraitGenerator {
         let self_arg = parse_quote!(&self);
         sig.inputs.insert(0, syn::FnArg::Receiver(self_arg));
         sig.unsafety = Some(parse_quote!(unsafe));
+
+        let doc_link_re = regex_lite::Regex::new(r"\[`(.+?)`\]").unwrap();
+        let new_attrs = attrs.iter().map(|attr| match attr.meta.require_name_value() {
+            Ok(syn::MetaNameValue {
+                value: syn::Expr::Lit(syn::ExprLit {
+                    lit: syn::Lit::Str(ls), ..
+                }),
+                ..
+            }) if attr.meta.path().is_ident("doc") => {
+                let val = ls.value();
+                let doc = doc_link_re.replace_all(&val, |c: &regex_lite::Captures<'_>| {
+                    std::borrow::Cow::Owned(format!("{}(Self::{})", &c[0], &c[1]))
+                });
+                let doc_lit = syn::LitStr::new(&doc, proc_macro2::Span::call_site());
+                parse_quote!(#[doc = #doc_lit])
+            }
+            _ => attr.clone(),
+        });
         self.foreign_fn.push(TraitItem::Fn(TraitItemFn {
-            attrs: attrs.clone(),
+            attrs: new_attrs.collect(),
             sig,
             default: None,
             semi_token: Some(*semi_token),
@@ -110,7 +127,7 @@ impl<F: FnMut(syn::Field)> Visit<'_> for WrapperGenerator<F> {
             syn::FnArg::Typed(pat_type) => Some(BareFnArg {
                 attrs: vec![],
                 name: Some(match &*pat_type.pat {
-                    syn::Pat::Ident(PatIdent { ident, .. }) => (ident.clone(), Colon(Span::call_site())),
+                    syn::Pat::Ident(PatIdent { ident, .. }) => (ident.clone(), Colon(proc_macro2::Span::call_site())),
                     _ => None?,
                 }),
                 ty: *pat_type.ty.clone(),

@@ -288,8 +288,7 @@ pub mod mqi {
         fn item_name(&self, item_info: bindgen::callbacks::ItemInfo) -> Option<String> {
             if item_info.name.starts_with("tag") {
                 Some(item_info.name.trim_start_matches("tag").to_string())
-            }
-            else {
+            } else {
                 None
             }
         }
