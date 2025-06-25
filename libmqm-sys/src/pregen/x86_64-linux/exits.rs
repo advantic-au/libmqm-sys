@@ -1,4 +1,4 @@
-/* Generated with MQ client version 9.4.3.0 */
+/* Generated with MQ client version 9.4.2.1 */
 
 pub type PPMQCHAR = *mut PMQCHAR;
 pub type PPMQLONG = *mut PMQLONG;
@@ -2814,8 +2814,6 @@ pub struct MQZIC {
     pub AccountingToken: MQBYTE32,
     /// Application data relating to identity
     pub ApplIdentityData: MQCHAR32,
-    /// Long user identifier
-    pub LongUserIdentifier: MQCHAR1024,
 }
 /// Interface Entry Points
 #[repr(C)]
@@ -3234,11 +3232,9 @@ pub const MQZFP_LENGTH_1: usize = 24;
 pub const MQZFP_CURRENT_LENGTH: usize = 24;
 pub const MQZIC_STRUC_ID: &::std::ffi::CStr = c"ZIC ";
 pub const MQZIC_VERSION_1: MQLONG = 1;
-pub const MQZIC_VERSION_2: MQLONG = 2;
-pub const MQZIC_CURRENT_VERSION: MQLONG = 2;
+pub const MQZIC_CURRENT_VERSION: MQLONG = 1;
 pub const MQZIC_LENGTH_1: usize = 84;
-pub const MQZIC_LENGTH_2: usize = 1108;
-pub const MQZIC_CURRENT_LENGTH: usize = 1108;
+pub const MQZIC_CURRENT_LENGTH: usize = 84;
 pub const MQZIO_PRIMARY: MQLONG = 0;
 pub const MQZIO_SECONDARY: MQLONG = 1;
 pub const MQZTO_PRIMARY: MQLONG = 0;
