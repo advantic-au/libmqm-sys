@@ -49,7 +49,7 @@ jobs:
         with:
           tool: nextest
       - name: Test
-        run: cargo nextest run --profile ci --profile ci --features ${{ matrix.version.feature }},pcf,exits,mqai,dlopen2
+        run: cargo nextest run --profile ci --features ${{ matrix.version.feature }},pcf,exits,mqai,dlopen2
         env:
           MQ_HOME: ${{ steps.mq-client.outputs.client-install-path }}
 
@@ -118,7 +118,7 @@ jobs:
         with:
           tool: nextest
       - name: Test
-        run: cargo nextest run --profile ci --locked --profile ci --all-features
+        run: cargo nextest run --locked --profile ci --all-features
         env:
           MQ_HOME: ${{ steps.mq-client.outputs.client-install-path }}
 
