@@ -29,11 +29,9 @@ jobs:
         run: |
           PREGEN_BRANCH=pregen_${{ github.run_id }}
           git switch --track origin/${PREGEN_BRANCH} || git switch -c ${PREGEN_BRANCH}
-      - id: mq_version_pregen
-        shell: bash
-        run: |
-          mq_version=$(jq -r .${{ runner.os }}${{ runner.arch }} .github/mq_version_pregen.json)
-          echo "client-version=${mq_version}" >> $GITHUB_OUTPUT
+      - name: Determine MQ version
+        id: mq_version_pregen
+        uses: ./.github/action/mq_version_pregen
       - uses: advantic-au/action-mq-client@stable
         id: mq_client
         with:
@@ -50,7 +48,7 @@ jobs:
         env:
           MQ_HOME: ${{ steps.mq_client.outputs.client-install-path }}
       - uses: qoomon/actions--setup-git@8e6bd30ac05e17a81b61169daae62cb6b7e61294 #v1.1
-      - name: Modify pull request with refreshed pregen files
+      - name: Modify pregen branch with refreshed pregen files
         shell: bash
         run: |
           git add libmqm-sys/src libmqm-default/src libmqm-constants/src
@@ -89,11 +87,12 @@ jobs:
         run: |
           PREGEN_BRANCH=pregen_${{ github.run_id }}
           git switch --track origin/${PREGEN_BRANCH} || git switch -c ${PREGEN_BRANCH}
-      - id: mq_version_pregen
-        shell: bash
-        run: |
-          mq_version=$(jq -r .Linux${{ matrix.env.client_arch }} .github/mq_version_pregen.json)
-          echo "client-version=${mq_version}" >> $GITHUB_OUTPUT
+      - name: Determine MQ version
+        id: mq_version_pregen
+        uses: ./.github/action/mq_version_pregen
+        with:
+          os: Linux
+          arch: ${{ matrix.env.client_arch }}
       - name: Download MQ library
         uses: advantic-au/action-mq-client@stable
         id: mq_client
@@ -159,7 +158,7 @@ jobs:
           token: ${{ secrets.SCD }}
           repository: ${{ github.event.client_payload.pull_request.head.repo.full_name }}
           ref: ${{ github.event.client_payload.pull_request.head.ref }}
-      - name: Merge pregenerated
+      - name: Merge pregen branch into pull request
         shell: bash
         run: |
           PREGEN_BRANCH=pregen_${{ github.run_id }}

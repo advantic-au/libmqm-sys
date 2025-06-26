@@ -1,0 +1,29 @@
+name: MQ version for pregen
+description: Retrieve the MQ version to be used for pregen
+
+inputs:
+  os:
+    description: OS of MQ client
+    required: true
+    default: ${{ runner.os }}
+  arch:
+    description: Architecture of MQ client
+    required: true
+    default: ${{ runner.arch }}
+
+outputs:
+  client-version:
+    description: MQ client version
+    value: ${{ steps.version.outputs.client-version }}
+    
+runs:
+  using: composite
+  steps:
+    - id: version
+      shell: bash
+      run: |
+          mq_version=$(jq -r ."${REQUESTED_OS}${REQUESTED_ARCH}" .github/mq_version_pregen.json)
+          echo "client-version=${mq_version}" >> $GITHUB_OUTPUT
+      env:
+        REQUESTED_OS: ${{ inputs.os }}
+        REQUESTED_ARCH: ${{ inputs.arch }}

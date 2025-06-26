@@ -150,11 +150,17 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
+      - name: Determine MQ version
+        id: mq_version_pregen
+        uses: ./.github/action/mq_version_pregen
+        with:
+          os: Linux
+          arch: ${{ matrix.env.client_arch }}
       - name: Download MQ library
         uses: advantic-au/action-mq-client@stable
         id: mq-client
         with:
-          client-version: 9.4.3.0
+          client-version: ${{ steps.mq_version_pregen.outputs.client-version }}
           os: Linux
           arch: ${{ matrix.env.client_arch }}
       - id: cache-target-restore
@@ -211,11 +217,14 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
+      - name: Determine MQ version
+        id: mq_version_pregen
+        uses: ./.github/action/mq_version_pregen
       - name: Install MQ client
         uses: advantic-au/action-mq-client@stable
         id: mq-client
         with:
-          client-version: 9.4.3.0
+          client-version: ${{ steps.mq_version_pregen.outputs.client-version }}
       - name: Install rust stable
         uses: dtolnay/rust-toolchain@b3b07ba8b418998c39fb20f53e8b695cdcc8de1b
         with:
