@@ -188,7 +188,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         // Full MQI_BY_STRING
         let mut mqi_by_string = phf_codegen::Map::<&str>::new();
         for (name, value) in generate::by_name(by_name_mqi) {
-            mqi_by_string.entry(name, &value.to_string());
+            mqi_by_string.entry(name, value.to_string());
         }
         writeln!(
             mapping_write,

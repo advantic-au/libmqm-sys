@@ -16,13 +16,6 @@ jobs:
     permissions:
       contents: write
     steps:
-      - id: vars
-        shell: bash
-        run: |
-          if [[ -z "${MQ_CLIENT_VERSION}" ]]; then MQ_CLIENT_VERSION="latest"; fi
-          echo "client-version=${MQ_CLIENT_VERSION}" >> $GITHUB_OUTPUT
-        env:
-          MQ_CLIENT_VERSION: ${{ github.event.client_payload.slash_command.args.unnamed.arg1 }}
       # Checkout the pull request branch
       - uses: actions/checkout@v4
         with:
@@ -36,10 +29,13 @@ jobs:
         run: |
           PREGEN_BRANCH=pregen_${{ github.run_id }}
           git switch --track origin/${PREGEN_BRANCH} || git switch -c ${PREGEN_BRANCH}
+      - name: Determine MQ version
+        id: mq_version_pregen
+        uses: ./.github/action/mq_version_pregen
       - uses: advantic-au/action-mq-client@stable
         id: mq_client
         with:
-          client-version: ${{ steps.vars.outputs.client-version }}
+          client-version: ${{ steps.mq_version_pregen.outputs.client-version }}
       - name: Install rust stable
         uses: dtolnay/rust-toolchain@b3b07ba8b418998c39fb20f53e8b695cdcc8de1b
         with:
@@ -52,7 +48,7 @@ jobs:
         env:
           MQ_HOME: ${{ steps.mq_client.outputs.client-install-path }}
       - uses: qoomon/actions--setup-git@8e6bd30ac05e17a81b61169daae62cb6b7e61294 #v1.1
-      - name: Modify pull request with refreshed pregen files
+      - name: Modify pregen branch with refreshed pregen files
         shell: bash
         run: |
           git add libmqm-sys/src libmqm-default/src libmqm-constants/src
@@ -78,14 +74,7 @@ jobs:
       packages: write
       contents: write
     steps:
-      - id: vars
-        shell: bash
-        run: |
-          if [[ -z "${MQ_CLIENT_VERSION}" ]]; then MQ_CLIENT_VERSION="latest"; fi
-          echo "client-version=${MQ_CLIENT_VERSION}" >> $GITHUB_OUTPUT
-        env:
-          MQ_CLIENT_VERSION: ${{ github.event.client_payload.slash_command.args.unnamed.arg1 }}
-      # Checkout the pregen branch
+      # Checkout the pull request branch
       - uses: actions/checkout@v4
         with:
           persist-credentials: true
@@ -98,11 +87,17 @@ jobs:
         run: |
           PREGEN_BRANCH=pregen_${{ github.run_id }}
           git switch --track origin/${PREGEN_BRANCH} || git switch -c ${PREGEN_BRANCH}
+      - name: Determine MQ version
+        id: mq_version_pregen
+        uses: ./.github/action/mq_version_pregen
+        with:
+          os: Linux
+          arch: ${{ matrix.env.client_arch }}
       - name: Download MQ library
         uses: advantic-au/action-mq-client@stable
         id: mq_client
         with:
-          client-version: ${{ steps.vars.outputs.client-version }}
+          client-version: ${{ steps.mq_version_pregen.outputs.client-version }}
           os: Linux
           arch: ${{ matrix.env.client_arch }}
       - id: cache-target-restore
@@ -163,7 +158,7 @@ jobs:
           token: ${{ secrets.SCD }}
           repository: ${{ github.event.client_payload.pull_request.head.repo.full_name }}
           ref: ${{ github.event.client_payload.pull_request.head.ref }}
-      - name: Merge pregenerated
+      - name: Merge pregen branch into pull request
         shell: bash
         run: |
           PREGEN_BRANCH=pregen_${{ github.run_id }}

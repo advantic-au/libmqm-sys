@@ -1,24 +1,12 @@
 /* Generated with MQ client version 9.4.3.0 */
 /*
  * Unmapped constants:
- *  MQAUSC_ALLCHECKS
- *  MQAUSC_ALLCONNS
- *  MQAUSC_FAILURES
  *  MQBA_FIRST
  *  MQBA_LAST
  *  MQGA_FIRST
  *  MQGA_LAST
  *  MQOA_FIRST
  *  MQOA_LAST
- *  MQOTEL_PCTL_AS_PARENT
- *  MQOTEL_PCTL_AUTO
- *  MQOTEL_PCTL_MANUAL
- *  MQOTEL_PCTL_QMGR
- *  MQOTEL_TRACE_AS_PARENT
- *  MQOTEL_TRACE_NONE
- *  MQOTEL_TRACE_OFF
- *  MQOTEL_TRACE_ON
- *  MQOTEL_TRACE_QMGR
  *  MQUA_FIRST
  *  MQUA_LAST
  */
@@ -465,6 +453,16 @@ pub mod types {
         r##"Operation codes for MQCTL and MQCB"##
     );
     impl_bitflags!(MQOP, mqsys::MQLONG);
+    define_new_type!(
+        pub MQOTEL_PCTL, mqsys::MQLONG, mapping::MQOTEL_PCTL_MAPSTR,
+        r##"OTELPCTL values"##
+    );
+    impl_value!(MQOTEL_PCTL, mqsys::MQLONG);
+    define_new_type!(
+        pub MQOTEL_TRACE, mqsys::MQLONG, mapping::MQOTEL_TRACE_MAPSTR,
+        r##"OTELTRAC values"##
+    );
+    impl_value!(MQOTEL_TRACE, mqsys::MQLONG);
     define_new_type!(
         pub MQOT, mqsys::MQLONG, mapping::MQOT_MAPSTR, r##"Extended Object Types"##
     );
@@ -1061,6 +1059,11 @@ pub mod types {
             r##"Asynchronous State Values"##
         );
         impl_value!(MQAS, mqsys::MQLONG);
+        define_new_type!(
+            pub MQAUSC, mqsys::MQLONG, mapping::MQAUSC_MAPSTR,
+            r##"Authority Event Scope"##
+        );
+        impl_value!(MQAUSC, mqsys::MQLONG);
         define_new_type!(
             pub MQAUTHENTICATE, mqsys::MQLONG, mapping::MQAUTHENTICATE_MAPSTR,
             r##"Authentication Method"##
@@ -2718,6 +2721,15 @@ pub mod constants {
     pub const MQOP_DEREGISTER: types::MQOP = types::MQOP(512);
     pub const MQOP_SUSPEND: types::MQOP = types::MQOP(65536);
     pub const MQOP_RESUME: types::MQOP = types::MQOP(131072);
+    pub const MQOTEL_PCTL_QMGR: types::MQOTEL_PCTL = types::MQOTEL_PCTL(0);
+    pub const MQOTEL_PCTL_MANUAL: types::MQOTEL_PCTL = types::MQOTEL_PCTL(1);
+    pub const MQOTEL_PCTL_AUTO: types::MQOTEL_PCTL = types::MQOTEL_PCTL(2);
+    pub const MQOTEL_PCTL_AS_PARENT: types::MQOTEL_PCTL = types::MQOTEL_PCTL(3);
+    pub const MQOTEL_TRACE_QMGR: types::MQOTEL_TRACE = types::MQOTEL_TRACE(0);
+    pub const MQOTEL_TRACE_OFF: types::MQOTEL_TRACE = types::MQOTEL_TRACE(1);
+    pub const MQOTEL_TRACE_ON: types::MQOTEL_TRACE = types::MQOTEL_TRACE(2);
+    pub const MQOTEL_TRACE_NONE: types::MQOTEL_TRACE = types::MQOTEL_TRACE(3);
+    pub const MQOTEL_TRACE_AS_PARENT: types::MQOTEL_TRACE = types::MQOTEL_TRACE(4);
     pub const MQOT_NONE: types::MQOT = types::MQOT(0);
     pub const MQOT_Q: types::MQOT = types::MQOT(1);
     pub const MQOT_NAMELIST: types::MQOT = types::MQOT(2);
@@ -4055,6 +4067,9 @@ pub mod constants {
         pub const MQAS_SUSPENDED_TEMPORARY: types::MQAS = types::MQAS(5);
         pub const MQAS_ACTIVE: types::MQAS = types::MQAS(6);
         pub const MQAS_INACTIVE: types::MQAS = types::MQAS(7);
+        pub const MQAUSC_FAILURES: types::MQAUSC = types::MQAUSC(0);
+        pub const MQAUSC_ALLCONNS: types::MQAUSC = types::MQAUSC(1);
+        pub const MQAUSC_ALLCHECKS: types::MQAUSC = types::MQAUSC(2);
         pub const MQAUTHENTICATE_OS: types::MQAUTHENTICATE = types::MQAUTHENTICATE(0);
         pub const MQAUTHENTICATE_PAM: types::MQAUTHENTICATE = types::MQAUTHENTICATE(1);
         pub const MQAUTHOPT_ENTITY_EXPLICIT: types::MQAUTHOPT = types::MQAUTHOPT(1);

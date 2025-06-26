@@ -23,7 +23,7 @@ docsrs = [
     "mqai",
     "exits",
     "pcf",
-    "mqc_9_4_2_0",           # Latest MQ version
+    "mqc_9_4_3_0",           # Latest MQ version
     "dep:document-features",
 ]
 
@@ -37,7 +37,7 @@ generate = [
 ]
 
 ## Generate the constants and save them in the src folder
-pregen = ["generate", "mqai", "exits", "pcf", "mqc_9_4_2_0"]
+pregen = ["generate", "mqai", "exits", "pcf", "mqc_9_4_3_0"]
 
 ## Administrative Interface (MQAI) constants
 mqai = ["pcf", "libmqm-sys/mqai"]
@@ -68,10 +68,12 @@ mqc_9_4_0_0 = ["libmqm-sys/mqc_9_4_0_0", "mqc_9_3_5_0"]
 mqc_9_4_1_0 = ["libmqm-sys/mqc_9_4_1_0", "mqc_9_4_0_0"]
 ## Minimum MQ client version 9.4.2.0
 mqc_9_4_2_0 = ["libmqm-sys/mqc_9_4_2_0", "mqc_9_4_1_0"]
+## Minimum MQ client version 9.4.3.0
+mqc_9_4_3_0 = ["libmqm-sys/mqc_9_4_3_0", "mqc_9_4_2_0"]
 
 [dependencies]
 libmqm-sys = { version = "0.8.0", default-features = false, path = "../libmqm-sys" }
-phf = { default-features = false, version = "0.11" }
+phf = { default-features = false, version = "0.12.1" }
 derive_more = { version = "2.0.1", features = [
     "from",
     "add",
@@ -83,7 +85,8 @@ document-features = { version = "0.2.10", optional = true }
 [build-dependencies]
 libmqm-sys = { version = "0.8.0", default-features = false, path = "../libmqm-sys" }
 regex-lite = { version = "0.1.6", optional = true }
-phf_codegen = { version = "0.11.2", optional = true }
+phf_codegen = { version = "0.12.1", optional = true }
+phf_generator = { version = "0.12.1", optional = true }
 prettyplease = { version = "0.2.31", optional = true }
 syn = { version = "2.0.90", optional = true, default-features = false, features = [
     "full",

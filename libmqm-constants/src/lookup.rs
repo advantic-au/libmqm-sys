@@ -78,10 +78,8 @@ impl ConstLookup for &::phf::Map<MQLONG, &str> {
     }
 
     fn by_name(&self, name: &str) -> Option<MQLONG> {
-        mapping::MQI_BY_STRING
-            .get(name)
-            .copied()
-            .filter(|v| self.get(v) == Some(&name))
+        let value: Option<&MQLONG> = mapping::MQI_BY_STRING.get(name);
+        value.filter(|v| self.get(v) == Some(&name)).copied()
     }
 
     fn all(&self) -> impl Iterator<Item = ConstantItem<'_>> {
