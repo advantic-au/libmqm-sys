@@ -16,13 +16,6 @@ jobs:
     permissions:
       contents: write
     steps:
-      - id: vars
-        shell: bash
-        run: |
-          if [[ -z "${MQ_CLIENT_VERSION}" ]]; then MQ_CLIENT_VERSION="latest"; fi
-          echo "client-version=${MQ_CLIENT_VERSION}" >> $GITHUB_OUTPUT
-        env:
-          MQ_CLIENT_VERSION: ${{ github.event.client_payload.slash_command.args.unnamed.arg1 }}
       # Checkout the pull request branch
       - uses: actions/checkout@v4
         with:
@@ -36,10 +29,15 @@ jobs:
         run: |
           PREGEN_BRANCH=pregen_${{ github.run_id }}
           git switch --track origin/${PREGEN_BRANCH} || git switch -c ${PREGEN_BRANCH}
+      - id: mq_version_pregen
+        shell: bash
+        run: |
+          mq_version=$(jq -r .${{ runner.os }}${{ runner.arch }} .github/mq_version_pregen.json)
+          echo "client-version=${mq_version}" >> $GITHUB_OUTPUT
       - uses: advantic-au/action-mq-client@stable
         id: mq_client
         with:
-          client-version: ${{ steps.vars.outputs.client-version }}
+          client-version: ${{ steps.mq_version_pregen.outputs.client-version }}
       - name: Install rust stable
         uses: dtolnay/rust-toolchain@b3b07ba8b418998c39fb20f53e8b695cdcc8de1b
         with:
@@ -78,14 +76,7 @@ jobs:
       packages: write
       contents: write
     steps:
-      - id: vars
-        shell: bash
-        run: |
-          if [[ -z "${MQ_CLIENT_VERSION}" ]]; then MQ_CLIENT_VERSION="latest"; fi
-          echo "client-version=${MQ_CLIENT_VERSION}" >> $GITHUB_OUTPUT
-        env:
-          MQ_CLIENT_VERSION: ${{ github.event.client_payload.slash_command.args.unnamed.arg1 }}
-      # Checkout the pregen branch
+      # Checkout the pull request branch
       - uses: actions/checkout@v4
         with:
           persist-credentials: true
@@ -98,11 +89,16 @@ jobs:
         run: |
           PREGEN_BRANCH=pregen_${{ github.run_id }}
           git switch --track origin/${PREGEN_BRANCH} || git switch -c ${PREGEN_BRANCH}
+      - id: mq_version_pregen
+        shell: bash
+        run: |
+          mq_version=$(jq -r .Linux${{ matrix.env.client_arch }} .github/mq_version_pregen.json)
+          echo "client-version=${mq_version}" >> $GITHUB_OUTPUT
       - name: Download MQ library
         uses: advantic-au/action-mq-client@stable
         id: mq_client
         with:
-          client-version: ${{ steps.vars.outputs.client-version }}
+          client-version: ${{ steps.mq_version_pregen.outputs.client-version }}
           os: Linux
           arch: ${{ matrix.env.client_arch }}
       - id: cache-target-restore
