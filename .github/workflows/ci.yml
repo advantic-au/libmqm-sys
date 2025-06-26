@@ -45,8 +45,11 @@ jobs:
       - uses: Swatinem/rust-cache@9d47c6ad4b02e050fd481d890b2ea34778fd09d6 # v2.7.8
         with:
           shared-key: "build"
+      - uses: taiki-e/install-action@84c20235bedc3797c7e1ddf685c574a4a6c666da # v2.52.2
+        with:
+          tool: nextest
       - name: Test
-        run: cargo test --features ${{ matrix.version.feature }},pcf,exits,mqai,dlopen2
+        run: cargo nextest run --profile ci --profile ci --features ${{ matrix.version.feature }},pcf,exits,mqai,dlopen2
         env:
           MQ_HOME: ${{ steps.mq-client.outputs.client-install-path }}
 
@@ -109,6 +112,13 @@ jobs:
           toolchain: 1.82
       - name: Check code
         run: cargo check --locked --all-features
+        env:
+          MQ_HOME: ${{ steps.mq-client.outputs.client-install-path }}
+      - uses: taiki-e/install-action@84c20235bedc3797c7e1ddf685c574a4a6c666da # v2.52.2
+        with:
+          tool: nextest
+      - name: Test
+        run: cargo nextest run --profile ci --locked --profile ci --all-features
         env:
           MQ_HOME: ${{ steps.mq-client.outputs.client-install-path }}
 
