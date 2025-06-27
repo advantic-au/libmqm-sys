@@ -1,6 +1,6 @@
 [package]
 name = "libmqm-sys"
-version = "0.8.0"
+version = "0.9.0"
 description = "IBM® MQ Interface (MQI), Programmable Command Format (PCF) and MQ Administration Interface (MQAI) bindings"
 keywords = ["message-queue", "messaging"]
 categories = ["external-ffi-bindings", "asynchronous"]
