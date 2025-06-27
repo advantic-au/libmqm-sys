@@ -5,10 +5,12 @@ name = "libmqm-sys"
 changelog_update = true
 changelog_path = "CHANGELOG.md"
 changelog_include = ["libmqm-default", "libmqm-constants"]
+version_group = "main"
 
 [[package]]
 name = "libmqm-default"
 changelog_update = false
+version_group = "main"
 
 [[package]]
 name = "libmqm-constants"

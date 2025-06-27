@@ -18,7 +18,7 @@ let mq: Container<MqWrapper> = unsafe { Container::load("libmqm_r") }?;
 let mut hconn = lib::MQHC_DEF_HCONN;
 let mut comp_code = lib::MQCC_UNKNOWN;
 let mut reason = lib::MQRC_NONE;
-let mut qmgr: [lib::MQCHAR; 48] = [32; 48]; // All spaces
+let mut qmgr: lib::MQCHAR48 = [32; 48]; // All spaces
 unsafe {
    mq.MQCONN(
      &qmgr,
@@ -85,7 +85,7 @@ mod tests {
         let mut hconn = lib::MQHC_DEF_HCONN;
         let mut comp_code = lib::MQCC_UNKNOWN;
         let mut reason = lib::MQRC_NONE;
-        let qmgr: [lib::MQCHAR; 48] = [32; 48]; // All spaces
+        let qmgr: lib::MQCHAR48 = [32; 48]; // All spaces
         unsafe {
             mq.MQCONN(&qmgr, &mut hconn, &mut comp_code, &mut reason);
         }
