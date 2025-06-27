@@ -24,6 +24,7 @@ pub mod dlopen2 {
 }
 
 #[cfg(feature = "mock")]
+#[allow(warnings)] // reason = no control on generated code
 pub mod mock {
     include!(concat!(env!("OUT_DIR"), "/mock.rs"));
 }

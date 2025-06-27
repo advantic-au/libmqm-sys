@@ -424,8 +424,6 @@ fn main() -> Result<(), io::Error> {
             ));
 
             let mock_file_content = formatdoc! {"
-                #![allow(warnings)] // reason = no control on generated code
-
                 use crate::lib;
                 
                 mockall::mock! {{

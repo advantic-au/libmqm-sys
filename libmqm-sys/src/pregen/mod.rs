@@ -13,6 +13,7 @@ pub mod function;
 pub mod dlopen2;
 
 #[cfg(feature = "mock")]
+#[allow(warnings)] // reason = no control on generated code
 pub mod mock;
 
 #[cfg(feature = "link_api")]
