@@ -1,4 +1,5 @@
 use crate::lib;
+
 mockall::mock! {
     pub Mq {}
     #[cfg(feature = "exits")]
