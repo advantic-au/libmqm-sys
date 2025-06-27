@@ -16,19 +16,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Other
 
 - Release version alignment for libmqm-default and libmqm-sys
-- Feature CI checks ([#110](https://github.com/advantic-au/libmqm-sys/pull/110))
 - MQ 9.4.3.0 ([#103](https://github.com/advantic-au/libmqm-sys/pull/103))
 - Rustify doc comments ([#109](https://github.com/advantic-au/libmqm-sys/pull/109))
 - Pregen build improvements ([#97](https://github.com/advantic-au/libmqm-sys/pull/97))
-- Improved README content
-- prettyplease bindgen formatting
 - constant lookup feature for libmqm-sys ([#94](https://github.com/advantic-au/libmqm-sys/pull/94))
-- s390x and powerpc64 pregen ([#91](https://github.com/advantic-au/libmqm-sys/pull/91))
 - s390x and powerpc64 support ([#90](https://github.com/advantic-au/libmqm-sys/pull/90))
-- pregen for aarch64 ([#84](https://github.com/advantic-au/libmqm-sys/pull/84))
 - Linux aarch64 ([#83](https://github.com/advantic-au/libmqm-sys/pull/83))
 - Rust 1.82 and Bindgen upgrade ([#81](https://github.com/advantic-au/libmqm-sys/pull/81))
-- precise version of libmqm-sys specified
 
 ## [0.8.0](https://github.com/advantic-au/libmqm-sys/compare/libmqm-sys-v0.7.0...libmqm-sys-v0.8.0) - 2025-04-24
 
