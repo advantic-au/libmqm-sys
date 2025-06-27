@@ -19,7 +19,7 @@ mod features {
     // Feature filter to bring consistency in managing lists that are filterable by enabled features
     pub type FeatureFilter<'a, T> = (&'a [T], Option<&'a [&'a str]>);
 
-    fn is_enabled(name: &str) -> bool {
+    pub fn is_enabled(name: &str) -> bool {
         env::var("CARGO_FEATURE_".to_string() + name.to_uppercase().as_str()).is_ok()
     }
 
@@ -424,7 +424,10 @@ fn main() -> Result<(), io::Error> {
             ));
 
             let mock_file_content = formatdoc! {"
+                #![allow(warnings)] // reason = no control on generated code
+
                 use crate::lib;
+                
                 mockall::mock! {{
                     pub {} {{}}
                 {}

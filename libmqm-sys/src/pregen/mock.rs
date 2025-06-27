@@ -1,4 +1,7 @@
+#![allow(warnings)] // reason = no control on generated code
+
 use crate::lib;
+
 mockall::mock! {
     pub Mq {}
     #[cfg(feature = "exits")]

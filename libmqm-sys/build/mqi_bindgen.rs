@@ -1,5 +1,3 @@
-use std::path::Path;
-
 #[cfg(feature = "bindgen")]
 pub mod mqi {
     use std::{
@@ -30,7 +28,9 @@ pub mod mqi {
         types: &["P?MQ.*"],
     };
 
+    #[derive(Clone, Debug)]
     pub struct HeaderFeature<'a> {
+        pub feature: Option<&'static str>,
         pub name: &'static str,
         pub headers: &'a [&'static str],
         pub allow_list: AllowList<'a>,
@@ -39,12 +39,14 @@ pub mod mqi {
 
     pub const HEADER_FEATURE: &[HeaderFeature] = &[
         HeaderFeature {
+            feature: None,
             name: "mqi.rs",
             headers: &["cmqc.h"],
             allow_list: ALL_ALLOW,
             target_list: &[],
         },
         HeaderFeature {
+            feature: None,
             name: "mqi.rs",
             headers: &["cmqc.h", "cmqxc.h"],
             allow_list: AllowList {
@@ -55,12 +57,14 @@ pub mod mqi {
             target_list: &["MQXPT_.*", "MQCHT_.*", "MQCAFTY_.*", "MQCOMPRESS_.*"],
         },
         HeaderFeature {
+            feature: Some("exits"),
             name: "exits.rs",
             headers: &["cmqc.h", "cmqec.h", "cmqxc.h", "cmqzc.h"],
             allow_list: ALL_ALLOW,
             target_list: &[".*MQIEP.*", ".*MQHCONFIG.*", "P?MQ_.*_CALL"],
         },
         HeaderFeature {
+            feature: Some("pcf"),
             name: "pcf.rs",
             headers: &["cmqc.h", "cmqcfc.h"],
             allow_list: AllowList {
@@ -71,6 +75,7 @@ pub mod mqi {
             target_list: &[],
         },
         HeaderFeature {
+            feature: Some("mqai"),
             name: "mqai.rs",
             headers: &["cmqc.h", "cmqbc.h", "cmqcfc.h"],
             allow_list: ALL_ALLOW,
@@ -138,6 +143,16 @@ pub mod mqi {
         let mut result = BTreeMap::new();
         let mut items_acc = HashSet::new();
 
+        // Remove HeaderFeatures that we don't require for the features
+        let mut hf = Vec::from(HEADER_FEATURE);
+        while let Some(item) = hf.last() {
+            if item.feature.is_some_and(|feat| !crate::features::is_enabled(feat)) {
+                hf.pop();
+            } else {
+                break;
+            }
+        }
+
         for (
             pos,
             &HeaderFeature {
@@ -147,7 +162,7 @@ pub mod mqi {
                 target_list,
                 ..
             },
-        ) in HEADER_FEATURE.iter().enumerate()
+        ) in hf.iter().enumerate()
         {
             // Get the subsequent target_list and make this part of the blocklist
             let blhf = HEADER_FEATURE.get((pos + 1)..);
@@ -280,19 +295,6 @@ pub mod mqi {
                 .map(|(.., int_kind)| *int_kind)
         }
     }
-
-    #[derive(Debug)]
-
-    pub struct RemoveTag;
-    impl ParseCallbacks for RemoveTag {
-        fn item_name(&self, item_info: bindgen::callbacks::ItemInfo) -> Option<String> {
-            if item_info.name.starts_with("tag") {
-                Some(item_info.name.trim_start_matches("tag").to_string())
-            } else {
-                None
-            }
-        }
-    }
 }
 
 #[cfg(feature = "constant_lookup")]
@@ -313,7 +315,20 @@ pub mod str {
     }
 }
 
-pub fn bindgen_builder(mq_inc_path: &Path) -> bindgen::Builder {
+#[cfg(any(feature = "constant_lookup", feature = "bindgen"))]
+pub fn bindgen_builder(mq_inc_path: &std::path::Path) -> bindgen::Builder {
+    #[derive(Debug)]
+    struct RemoveTag;
+    impl bindgen::callbacks::ParseCallbacks for RemoveTag {
+        fn item_name(&self, item_info: bindgen::callbacks::ItemInfo) -> Option<String> {
+            if item_info.name.starts_with("tag") {
+                Some(item_info.name.trim_start_matches("tag").to_string())
+            } else {
+                None
+            }
+        }
+    }
+
     bindgen::builder()
         .rust_target(bindgen::RustTarget::stable(82, 0).expect("rust target should exist"))
         .clang_arg(format!("-I{}", mq_inc_path.display()))
@@ -321,6 +336,6 @@ pub fn bindgen_builder(mq_inc_path: &Path) -> bindgen::Builder {
         .merge_extern_blocks(true)
         .generate_cstr(true)
         .parse_callbacks(Box::new(bindgen::CargoCallbacks::new()))
-        .parse_callbacks(Box::new(mqi::RemoveTag))
+        .parse_callbacks(Box::new(RemoveTag))
         .layout_tests(false)
 }

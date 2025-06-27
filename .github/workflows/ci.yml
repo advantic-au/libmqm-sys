@@ -71,12 +71,15 @@ jobs:
       - uses: Swatinem/rust-cache@9d47c6ad4b02e050fd481d890b2ea34778fd09d6 # v2.7.8
         with:
           shared-key: "build"
-      - name: Lint with clippy and rustfmt
+      - uses: taiki-e/install-action@2cab843126c0d8cf950bf55f4e9b8413f70f553f # v2.54.1
+        with:
+          tool: cargo-hack
+      - name: Lint with rustfmt
         run: |
-          cargo clippy --tests --examples --
-          cargo clippy --tests --examples --no-default-features --
-          cargo clippy --tests --examples --features pcf,exits,mqai,dlopen2,mqc_latest --
           cargo fmt -- --check
+      - name: Lint with clippy
+        run: |
+          cargo hack -p libmqm-sys --feature-powerset --keep-going --depth 2 --include-features mqai,pcf,exits,dlopen2,link,constant_lookup,struct_defaults,bindgen,mqc_latest,mock,default clippy
   clippy_fmt_outcome:
     if: ${{ always() }}
     runs-on: ubuntu-24.04
