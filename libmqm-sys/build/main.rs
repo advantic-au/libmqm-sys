@@ -12,16 +12,15 @@ mod rustify;
 #[cfg(feature = "bindgen")]
 mod mq_trait;
 
-#[cfg(any(feature = "struct_defaults", feature = "constant_lookup", feature = "bindgen"))]
+#[allow(dead_code)]
 mod features {
-    use std::env;
+
+    pub fn is_enabled(name: &str) -> bool {
+        std::env::var("CARGO_FEATURE_".to_string() + name.to_uppercase().as_str()).is_ok()
+    }
 
     // Feature filter to bring consistency in managing lists that are filterable by enabled features
     pub type FeatureFilter<'a, T> = (&'a [T], Option<&'a [&'a str]>);
-
-    pub fn is_enabled(name: &str) -> bool {
-        env::var("CARGO_FEATURE_".to_string() + name.to_uppercase().as_str()).is_ok()
-    }
 
     /// Filter iterator by selected build feature
     pub fn filtered<'a, T: 'a>(features: impl IntoIterator<Item = &'a FeatureFilter<'a, T>>) -> impl Iterator<Item = &'a T> {
