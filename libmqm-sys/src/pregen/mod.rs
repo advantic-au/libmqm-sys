@@ -5,7 +5,7 @@
 #[cfg_attr(all(target_os = "linux", target_arch = "aarch64"), path = "aarch64-linux/mod.rs")]
 #[cfg_attr(all(target_os = "linux", target_arch = "powerpc64"), path = "powerpc64-linux/mod.rs")]
 #[cfg_attr(all(target_os = "linux", target_arch = "s390x"), path = "s390x-linux/mod.rs")]
-#[cfg_attr(target_os = "macos", path = "any-macos")]
+#[cfg_attr(target_os = "macos", path = "any-macos/mod.rs")]
 pub mod bindings;
 
 pub mod function;

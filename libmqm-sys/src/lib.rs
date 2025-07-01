@@ -94,7 +94,14 @@ mod generated;
 #[path = "pregen/mod.rs"]
 mod generated;
 
-pub use generated::bindings as lib;
+pub mod lib {
+    /*!
+    Bindings to the MQ C library
+     */
+
+    pub use super::generated::bindings::*;
+}
+
 pub use generated::function::*;
 
 #[cfg(feature = "mock")]

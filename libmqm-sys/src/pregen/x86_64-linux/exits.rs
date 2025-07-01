@@ -593,6 +593,9 @@ pub type PMQ_XEP_CALL = MQ_XEP_CALL;
 /// * `Hconn` (Input/Output): Connection handle
 /// * `CompCode` (Output): Completion code
 /// * `Reason` (Output): Reason code qualifying `CompCode`
+///
+/// # References
+/// * [IBM `MQ_BACK_EXIT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q109700_.html)
 pub type MQ_BACK_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         ExitParms: &mut MQAXP,
@@ -612,6 +615,9 @@ pub type PMQ_BACK_EXIT = MQ_BACK_EXIT;
 /// * `BeginOptions` (Input/Output): Options that control the action of [`MQBEGIN`]
 /// * `CompCode` (Output): Completion code
 /// * `Reason` (Output): Reason code qualifying `CompCode`
+///
+/// # References
+/// * [IBM `MQ_BEGIN_EXIT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q109710_.html)
 pub type MQ_BEGIN_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         ExitParms: &mut MQAXP,
@@ -633,6 +639,9 @@ pub type PMQ_BEGIN_EXIT = MQ_BEGIN_EXIT;
 /// * `GetMsgOpts` (Input/Output): Options that define the operation of the consumer
 /// * `Buffer` (Input/Output): Area to contain the message data
 /// * `MQCBContext` (Input/Output): Context data for the callback
+///
+/// # References
+/// * [IBM `MQ_CALLBACK_EXIT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q109720_.html)
 pub type MQ_CALLBACK_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         ExitParms: &mut MQAXP,
@@ -658,6 +667,9 @@ pub type PMQ_CALLBACK_EXIT = MQ_CALLBACK_EXIT;
 /// * `GetMsgOpts` (Input/Output): Get message options
 /// * `CompCode` (Output): Completion code
 /// * `Reason` (Output): Reason code qualifying `CompCode`
+///
+/// # References
+/// * [IBM `MQ_CB_EXIT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q109730_.html)
 pub type MQ_CB_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         ExitParms: &mut MQAXP,
@@ -683,6 +695,9 @@ pub type PMQ_CB_EXIT = MQ_CB_EXIT;
 /// * `Options` (Input/Output): Options that control the action of [`MQCLOSE`]
 /// * `CompCode` (Output): Completion code
 /// * `Reason` (Output): Reason code qualifying `CompCode`
+///
+/// # References
+/// * [IBM `MQ_CLOSE_EXIT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q109740_.html)
 pub type MQ_CLOSE_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         ExitParms: &mut MQAXP,
@@ -703,6 +718,9 @@ pub type PMQ_CLOSE_EXIT = MQ_CLOSE_EXIT;
 /// * `Hconn` (Input/Output): Connection handle
 /// * `CompCode` (Output): Completion code
 /// * `Reason` (Output): Reason code qualifying `CompCode`
+///
+/// # References
+/// * [IBM `MQ_CMIT_EXIT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q109750_.html)
 pub type MQ_CMIT_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         ExitParms: &mut MQAXP,
@@ -723,6 +741,9 @@ pub type PMQ_CMIT_EXIT = MQ_CMIT_EXIT;
 /// * `Hconn` (Input/Output): Connection handle
 /// * `CompCode` (Output): Completion code
 /// * `Reason` (Output): Reason code qualifying `CompCode`
+///
+/// # References
+/// * [IBM `MQ_CONNX_EXIT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q109760_.html)
 pub type MQ_CONNX_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         ExitParms: &mut MQAXP,
@@ -745,6 +766,9 @@ pub type PMQ_CONNX_EXIT = MQ_CONNX_EXIT;
 /// * `CtlOpts` (Input/Output): Control options
 /// * `CompCode` (Output): Completion code
 /// * `Reason` (Output): Reason code qualifying `CompCode`
+///
+/// # References
+/// * [IBM `MQ_CTL_EXIT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q109770_.html)
 pub type MQ_CTL_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         ExitParms: &mut MQAXP,
@@ -765,6 +789,9 @@ pub type PMQ_CTL_EXIT = MQ_CTL_EXIT;
 /// * `Hconn` (Input/Output): Connection handle
 /// * `CompCode` (Output): Completion code
 /// * `Reason` (Output): Reason code qualifying `CompCode`
+///
+/// # References
+/// * [IBM `MQ_DISC_EXIT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q109780_.html)
 pub type MQ_DISC_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         ExitParms: &mut MQAXP,
@@ -789,6 +816,9 @@ pub type PMQ_DISC_EXIT = MQ_DISC_EXIT;
 /// * `DataLength` (Output): Length of the message
 /// * `CompCode` (Output): Completion code
 /// * `Reason` (Output): Reason code qualifying `CompCode`
+///
+/// # References
+/// * [IBM `MQ_GET_EXIT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q109790_.html)
 pub type MQ_GET_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         ExitParms: &mut MQAXP,
@@ -812,6 +842,9 @@ pub type PMQ_GET_EXIT = MQ_GET_EXIT;
 /// * `ExitContext` (Input/Output): Exit context structure
 /// * `CompCode` (Output): Completion code
 /// * `Reason` (Output): Reason code qualifying `CompCode`
+///
+/// # References
+/// * [IBM `MQ_INIT_EXIT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q109810_.html)
 pub type MQ_INIT_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         ExitParms: &mut MQAXP,
@@ -836,6 +869,9 @@ pub type PMQ_INIT_EXIT = MQ_INIT_EXIT;
 /// * `CharAttrs` (Output): Character attributes
 /// * `CompCode` (Output): Completion code
 /// * `Reason` (Output): Reason code qualifying `CompCode`
+///
+/// # References
+/// * [IBM `MQ_INQ_EXIT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q109820_.html)
 pub type MQ_INQ_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         ExitParms: &mut MQAXP,
@@ -864,6 +900,9 @@ pub type PMQ_INQ_EXIT = MQ_INQ_EXIT;
 /// * `Hobj` (Input/Output): Object handle
 /// * `CompCode` (Output): Completion code
 /// * `Reason` (Output): Reason code qualifying `CompCode`
+///
+/// # References
+/// * [IBM `MQ_OPEN_EXIT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q109830_.html)
 pub type MQ_OPEN_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         ExitParms: &mut MQAXP,
@@ -890,6 +929,9 @@ pub type PMQ_OPEN_EXIT = MQ_OPEN_EXIT;
 /// * `Buffer` (Input/Output): Message data
 /// * `CompCode` (Output): Completion code
 /// * `Reason` (Output): Reason code qualifying `CompCode`
+///
+/// # References
+/// * [IBM `MQ_PUT_EXIT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q109840_.html)
 pub type MQ_PUT_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         ExitParms: &mut MQAXP,
@@ -918,6 +960,9 @@ pub type PMQ_PUT_EXIT = MQ_PUT_EXIT;
 /// * `Buffer` (Input/Output): Message data
 /// * `CompCode` (Output): Completion code
 /// * `Reason` (Output): Reason code qualifying `CompCode`
+///
+/// # References
+/// * [IBM `MQ_PUT1_EXIT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q109850_.html)
 pub type MQ_PUT1_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         ExitParms: &mut MQAXP,
@@ -948,6 +993,9 @@ pub type PMQ_PUT1_EXIT = MQ_PUT1_EXIT;
 /// * `CharAttrs` (Output): Character attributes
 /// * `CompCode` (Output): Completion code
 /// * `Reason` (Output): Reason code qualifying `CompCode`
+///
+/// # References
+/// * [IBM `MQ_SET_EXIT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q109860_.html)
 pub type MQ_SET_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         ExitParms: &mut MQAXP,
@@ -975,6 +1023,9 @@ pub type PMQ_SET_EXIT = MQ_SET_EXIT;
 /// * `Status` (Input/Output): Status Buffer
 /// * `CompCode` (Output): Completion code
 /// * `Reason` (Output): Reason code qualifying `CompCode`
+///
+/// # References
+/// * [IBM `MQ_STAT_EXIT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q109870_.html)
 pub type MQ_STAT_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         ExitParms: &mut MQAXP,
@@ -998,6 +1049,9 @@ pub type PMQ_STAT_EXIT = MQ_STAT_EXIT;
 /// * `SubRqOpts` (Input/Output): Subscription Request options
 /// * `CompCode` (Output): Completion code
 /// * `Reason` (Output): Reason code qualifying `CompCode`
+///
+/// # References
+/// * [IBM `MQ_SUBRQ_EXIT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q109900_.html)
 pub type MQ_SUBRQ_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         ExitParms: &mut MQAXP,
@@ -1022,6 +1076,9 @@ pub type PMQ_SUBRQ_EXIT = MQ_SUBRQ_EXIT;
 /// * `Hsub` (Input/Output): Subscription object handle
 /// * `CompCode` (Output): Completion code
 /// * `Reason` (Output): Reason code qualifying `CompCode`
+///
+/// # References
+/// * [IBM `MQ_SUB_EXIT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q109890_.html)
 pub type MQ_SUB_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         ExitParms: &mut MQAXP,
@@ -1042,6 +1099,9 @@ pub type PMQ_SUB_EXIT = MQ_SUB_EXIT;
 /// * `ExitContext` (Input/Output): Exit context structure
 /// * `CompCode` (Output): Completion code
 /// * `Reason` (Output): Reason code qualifying `CompCode`
+///
+/// # References
+/// * [IBM `MQ_TERM_EXIT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q109880_.html)
 pub type MQ_TERM_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         ExitParms: &mut MQAXP,
@@ -1061,6 +1121,9 @@ pub type PMQ_TERM_EXIT = MQ_TERM_EXIT;
 /// * `AgentBuffer` (Input/Output): Agent buffer
 /// * `ExitBufferLength` (Input/Output): Length of exit buffer
 /// * `ExitBufferAddr` (Input/Output): Address of exit buffer
+///
+/// # References
+/// * [IBM `MQ_CHANNEL_EXIT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q108180_.html)
 pub type MQ_CHANNEL_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         ChannelExitParms: PMQVOID,
@@ -1078,6 +1141,9 @@ pub type PMQ_CHANNEL_EXIT = MQ_CHANNEL_EXIT;
 /// # Arguments
 /// * `ChannelExitParms` (Input/Output): Channel exit parameter block
 /// * `ChannelDefinition` (Input/Output): Channel definition
+///
+/// # References
+/// * [IBM `MQ_CHANNEL_AUTO_DEF_EXIT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q108190_.html)
 pub type MQ_CHANNEL_AUTO_DEF_EXIT = ::std::option::Option<
     unsafe extern "C" fn(ChannelExitParms: PMQVOID, ChannelDefinition: PMQVOID),
 >;
@@ -1086,6 +1152,9 @@ pub type PMQ_CHANNEL_AUTO_DEF_EXIT = MQ_CHANNEL_AUTO_DEF_EXIT;
 ///
 /// # Arguments
 /// * `ExitParms` (Input/Output): Exit parameter block
+///
+/// # References
+/// * [IBM `MQ_CLUSTER_WORKLOAD_EXIT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q082500_.html)
 pub type MQ_CLUSTER_WORKLOAD_EXIT = ::std::option::Option<
     unsafe extern "C" fn(ExitParms: &mut MQWXP),
 >;
@@ -1099,6 +1168,9 @@ pub type PMQ_CLUSTER_WORKLOAD_EXIT = MQ_CLUSTER_WORKLOAD_EXIT;
 /// * `InBuffer`: Buffer containing the unconverted message
 /// * `OutBufferLength`: Length in bytes of `OutBuffer`
 /// * `OutBuffer` (Output): Buffer containing the converted message
+///
+/// # References
+/// * [IBM `MQ_DATA_CONV_EXIT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q104120_.html)
 pub type MQ_DATA_CONV_EXIT = ::std::option::Option<
     unsafe extern "C" fn(
         DataConvExitParms: PMQDXP,
@@ -1116,6 +1188,9 @@ pub type PMQ_DATA_CONV_EXIT = MQ_DATA_CONV_EXIT;
 /// * `ExitParms` (Input/Output): Exit parameter block
 /// * `PubContext`: Publication context structure
 /// * `SubContext`: Subscription context structure
+///
+/// # References
+/// * [IBM `MQ_PUBLISH_EXIT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q108130_.html)
 pub type MQ_PUBLISH_EXIT = ::std::option::Option<
     unsafe extern "C" fn(ExitParms: &mut MQPSXP, PubContext: PMQPBC, SubContext: PMQSBC),
 >;
@@ -1256,6 +1331,9 @@ pub type PMQ_ZEP_CALL = MQ_ZEP_CALL;
 /// * `Version`: Version number
 /// * `CompCode` (Output): Completion code
 /// * `Reason` (Output): Reason code qualifying `CompCode`
+///
+/// # References
+/// * [IBM `MQZ_INIT_AUTHORITY` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110210_.html)
 pub type MQZ_INIT_AUTHORITY = ::std::option::Option<
     unsafe extern "C" fn(
         Hconfig: MQHCONFIG,
@@ -1278,6 +1356,9 @@ pub type PMQZ_INIT_AUTHORITY = MQZ_INIT_AUTHORITY;
 /// * `ComponentData`: Component data
 /// * `CompCode` (Output): Completion code
 /// * `Reason` (Output): Reason code qualifying `CompCode`
+///
+/// # References
+/// * [IBM `MQZ_TERM_AUTHORITY` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110260_.html)
 pub type MQZ_TERM_AUTHORITY = ::std::option::Option<
     unsafe extern "C" fn(
         Hconfig: MQHCONFIG,
@@ -1299,6 +1380,9 @@ pub type PMQZ_TERM_AUTHORITY = MQZ_TERM_AUTHORITY;
 /// * `Continuation` (Output): Continuation indicator set by component
 /// * `CompCode` (Output): Completion code
 /// * `Reason` (Output): Reason code qualifying `CompCode`
+///
+/// # References
+/// * [IBM `MQZ_DELETE_AUTHORITY` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110140_.html)
 pub type MQZ_DELETE_AUTHORITY = ::std::option::Option<
     unsafe extern "C" fn(
         QMgrName: PMQCHAR,
@@ -1324,6 +1408,9 @@ pub type PMQZ_DELETE_AUTHORITY = MQZ_DELETE_AUTHORITY;
 /// * `Continuation` (Output): Continuation indicator set by component
 /// * `CompCode` (Output): Completion code
 /// * `Reason` (Output): Reason code qualifying `CompCode`
+///
+/// # References
+/// * [IBM `MQZ_GET_AUTHORITY` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110170_.html)
 pub type MQZ_GET_AUTHORITY = ::std::option::Option<
     unsafe extern "C" fn(
         QMgrName: PMQCHAR,
@@ -1352,6 +1439,9 @@ pub type PMQZ_GET_AUTHORITY = MQZ_GET_AUTHORITY;
 /// * `Continuation` (Output): Continuation indicator set by component
 /// * `CompCode` (Output): Completion code
 /// * `Reason` (Output): Reason code qualifying `CompCode`
+///
+/// # References
+/// * [IBM `MQZ_GET_AUTHORITY_2` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110180_.html)
 pub type MQZ_GET_AUTHORITY_2 = ::std::option::Option<
     unsafe extern "C" fn(
         QMgrName: PMQCHAR,
@@ -1380,6 +1470,9 @@ pub type PMQZ_GET_AUTHORITY_2 = MQZ_GET_AUTHORITY_2;
 /// * `Continuation` (Output): Continuation indicator set by component
 /// * `CompCode` (Output): Completion code
 /// * `Reason` (Output): Reason code qualifying `CompCode`
+///
+/// # References
+/// * [IBM `MQZ_GET_EXPLICIT_AUTHORITY` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110190_.html)
 pub type MQZ_GET_EXPLICIT_AUTHORITY = ::std::option::Option<
     unsafe extern "C" fn(
         QMgrName: PMQCHAR,
@@ -1408,6 +1501,9 @@ pub type PMQZ_GET_EXPLICIT_AUTHORITY = MQZ_GET_EXPLICIT_AUTHORITY;
 /// * `Continuation` (Output): Continuation indicator set by component
 /// * `CompCode` (Output): Completion code
 /// * `Reason` (Output): Reason code qualifying `CompCode`
+///
+/// # References
+/// * [IBM `MQZ_GET_EXPLICIT_AUTHORITY_2` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110200_.html)
 pub type MQZ_GET_EXPLICIT_AUTHORITY_2 = ::std::option::Option<
     unsafe extern "C" fn(
         QMgrName: PMQCHAR,
@@ -1436,6 +1532,9 @@ pub type PMQZ_GET_EXPLICIT_AUTHORITY_2 = MQZ_GET_EXPLICIT_AUTHORITY_2;
 /// * `Continuation` (Output): Continuation indicator set by component
 /// * `CompCode` (Output): Completion code
 /// * `Reason` (Output): Reason code qualifying `CompCode`
+///
+/// # References
+/// * [IBM `MQZ_ENUMERATE_AUTHORITY_DATA` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110150_.html)
 pub type MQZ_ENUMERATE_AUTHORITY_DATA = ::std::option::Option<
     unsafe extern "C" fn(
         QMgrName: PMQCHAR,
@@ -1464,6 +1563,9 @@ pub type PMQZ_ENUMERATE_AUTHORITY_DATA = MQZ_ENUMERATE_AUTHORITY_DATA;
 /// * `Continuation` (Output): Continuation indicator set by component
 /// * `CompCode` (Output): Completion code
 /// * `Reason` (Output): Reason code qualifying `CompCode`
+///
+/// # References
+/// * [IBM `MQZ_SET_AUTHORITY` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110240_.html)
 pub type MQZ_SET_AUTHORITY = ::std::option::Option<
     unsafe extern "C" fn(
         QMgrName: PMQCHAR,
@@ -1492,6 +1594,9 @@ pub type PMQZ_SET_AUTHORITY = MQZ_SET_AUTHORITY;
 /// * `Continuation` (Output): Continuation indicator set by component
 /// * `CompCode` (Output): Completion code
 /// * `Reason` (Output): Reason code qualifying `CompCode`
+///
+/// # References
+/// * [IBM `MQZ_SET_AUTHORITY_2` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110250_.html)
 pub type MQZ_SET_AUTHORITY_2 = ::std::option::Option<
     unsafe extern "C" fn(
         QMgrName: PMQCHAR,
@@ -1518,6 +1623,9 @@ pub type PMQZ_SET_AUTHORITY_2 = MQZ_SET_AUTHORITY_2;
 /// * `Continuation` (Output): Continuation indicator set by component
 /// * `CompCode` (Output): Completion code
 /// * `Reason` (Output): Reason code qualifying `CompCode`
+///
+/// # References
+/// * [IBM `MQZ_COPY_ALL_AUTHORITY` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110130_.html)
 pub type MQZ_COPY_ALL_AUTHORITY = ::std::option::Option<
     unsafe extern "C" fn(
         QMgrName: PMQCHAR,
@@ -1544,6 +1652,9 @@ pub type PMQZ_COPY_ALL_AUTHORITY = MQZ_COPY_ALL_AUTHORITY;
 /// * `Continuation` (Output): Continuation indicator set by component
 /// * `CompCode` (Output): Completion code
 /// * `Reason` (Output): Reason code qualifying `CompCode`
+///
+/// # References
+/// * [IBM `MQZ_CHECK_AUTHORITY` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110100_.html)
 pub type MQZ_CHECK_AUTHORITY = ::std::option::Option<
     unsafe extern "C" fn(
         QMgrName: PMQCHAR,
@@ -1572,6 +1683,9 @@ pub type PMQZ_CHECK_AUTHORITY = MQZ_CHECK_AUTHORITY;
 /// * `Continuation` (Output): Continuation indicator set by component
 /// * `CompCode` (Output): Completion code
 /// * `Reason` (Output): Reason code qualifying `CompCode`
+///
+/// # References
+/// * [IBM `MQZ_CHECK_AUTHORITY_2` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110110_.html)
 pub type MQZ_CHECK_AUTHORITY_2 = ::std::option::Option<
     unsafe extern "C" fn(
         QMgrName: PMQCHAR,
@@ -1599,6 +1713,9 @@ pub type PMQZ_CHECK_AUTHORITY_2 = MQZ_CHECK_AUTHORITY_2;
 /// * `Continuation` (Output): Continuation indicator set by component
 /// * `CompCode` (Output): Completion code
 /// * `Reason` (Output): Reason code qualifying `CompCode`
+///
+/// # References
+/// * [IBM `MQZ_AUTHENTICATE_USER` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110090_.html)
 pub type MQZ_AUTHENTICATE_USER = ::std::option::Option<
     unsafe extern "C" fn(
         QMgrName: PMQCHAR,
@@ -1622,6 +1739,9 @@ pub type PMQZ_AUTHENTICATE_USER = MQZ_AUTHENTICATE_USER;
 /// * `Continuation` (Output): Continuation indicator set by component
 /// * `CompCode` (Output): Completion code
 /// * `Reason` (Output): Reason code qualifying `CompCode`
+///
+/// # References
+/// * [IBM `MQZ_FREE_USER` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110160_.html)
 pub type MQZ_FREE_USER = ::std::option::Option<
     unsafe extern "C" fn(
         QMgrName: PMQCHAR,
@@ -1648,6 +1768,9 @@ pub type PMQZ_FREE_USER = MQZ_FREE_USER;
 /// * `Continuation` (Output): Continuation indicator set by component
 /// * `CompCode` (Output): Completion code
 /// * `Reason` (Output): Reason code qualifying `CompCode`
+///
+/// # References
+/// * [IBM `MQZ_INQUIRE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110220_.html)
 pub type MQZ_INQUIRE = ::std::option::Option<
     unsafe extern "C" fn(
         QMgrName: PMQCHAR,
@@ -1673,6 +1796,9 @@ pub type PMQZ_INQUIRE = MQZ_INQUIRE;
 /// * `Continuation` (Output): Continuation indicator set by component
 /// * `CompCode` (Output): Completion code
 /// * `Reason` (Output): Reason code qualifying `CompCode`
+///
+/// # References
+/// * [IBM `MQZ_REFRESH_CACHE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110230_.html)
 pub type MQZ_REFRESH_CACHE = ::std::option::Option<
     unsafe extern "C" fn(
         QMgrName: PMQCHAR,
@@ -1693,6 +1819,9 @@ pub type PMQZ_REFRESH_CACHE = MQZ_REFRESH_CACHE;
 /// * `Continuation` (Output): Continuation indicator set by component
 /// * `CompCode` (Output): Completion code
 /// * `Reason` (Output): Reason code qualifying `CompCode`
+///
+/// # References
+/// * [IBM `MQZ_CHECK_PRIVILEGED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110120_.html)
 pub type MQZ_CHECK_PRIVILEGED = ::std::option::Option<
     unsafe extern "C" fn(
         QMgrName: PMQCHAR,
@@ -1716,6 +1845,9 @@ pub type PMQZ_CHECK_PRIVILEGED = MQZ_CHECK_PRIVILEGED;
 /// * `Version`: Version number
 /// * `CompCode` (Output): Completion code
 /// * `Reason` (Output): Reason code qualifying `CompCode`
+///
+/// # References
+/// * [IBM `MQZ_INIT_NAME` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110280_.html)
 pub type MQZ_INIT_NAME = ::std::option::Option<
     unsafe extern "C" fn(
         Hconfig: MQHCONFIG,
@@ -1738,6 +1870,9 @@ pub type PMQZ_INIT_NAME = MQZ_INIT_NAME;
 /// * `ComponentData`: Component data
 /// * `CompCode` (Output): Completion code
 /// * `Reason` (Output): Reason code qualifying `CompCode`
+///
+/// # References
+/// * [IBM `MQZ_TERM_NAME` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110310_.html)
 pub type MQZ_TERM_NAME = ::std::option::Option<
     unsafe extern "C" fn(
         Hconfig: MQHCONFIG,
@@ -1759,6 +1894,9 @@ pub type PMQZ_TERM_NAME = MQZ_TERM_NAME;
 /// * `Continuation` (Output): Continuation indicator set by component
 /// * `CompCode` (Output): Completion code
 /// * `Reason` (Output): Reason code qualifying `CompCode`
+///
+/// # References
+/// * [IBM `MQZ_LOOKUP_NAME` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110300_.html)
 pub type MQZ_LOOKUP_NAME = ::std::option::Option<
     unsafe extern "C" fn(
         QMgrName: PMQCHAR,
@@ -1781,6 +1919,9 @@ pub type PMQZ_LOOKUP_NAME = MQZ_LOOKUP_NAME;
 /// * `Continuation` (Output): Continuation indicator set by component
 /// * `CompCode` (Output): Completion code
 /// * `Reason` (Output): Reason code qualifying `CompCode`
+///
+/// # References
+/// * [IBM `MQZ_INSERT_NAME` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110290_.html)
 pub type MQZ_INSERT_NAME = ::std::option::Option<
     unsafe extern "C" fn(
         QMgrName: PMQCHAR,
@@ -1802,6 +1943,9 @@ pub type PMQZ_INSERT_NAME = MQZ_INSERT_NAME;
 /// * `Continuation` (Output): Continuation indicator set by component
 /// * `CompCode` (Output): Completion code
 /// * `Reason` (Output): Reason code qualifying `CompCode`
+///
+/// # References
+/// * [IBM `MQZ_DELETE_NAME` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110270_.html)
 pub type MQZ_DELETE_NAME = ::std::option::Option<
     unsafe extern "C" fn(
         QMgrName: PMQCHAR,
@@ -1879,6 +2023,9 @@ pub type MQZ_FIND_USERID = ::std::option::Option<
     ),
 >;
 pub type PMQZ_FIND_USERID = MQZ_FIND_USERID;
+///
+/// # References
+/// * [IBM `MQACH` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q109630_.html)
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct MQACH {
@@ -1896,6 +2043,9 @@ pub struct MQACH {
     pub NextChainAreaPtr: PMQACH,
 }
 /// API Exit Context
+///
+/// # References
+/// * [IBM `MQAXC` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q109620_.html)
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct MQAXC {
@@ -1928,13 +2078,22 @@ pub struct MQAXC {
     /// Thread identifier
     pub ThreadId: MQTID,
     /// Channel Name
+    ///
+    /// [`MQAXC::Version`] >= 2
     pub ChannelName: [MQCHAR; 20usize],
     /// Reserved
+    ///
+    /// [`MQAXC::Version`] >= 2
     pub Reserved1: MQBYTE4,
     /// Pointer to Channel Definition
+    ///
+    /// [`MQAXC::Version`] >= 2
     pub pChannelDefinition: PMQCD,
 }
 /// API Exit Parameter
+///
+/// # References
+/// * [IBM `MQAXP` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q109610_.html)
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct MQAXP {
@@ -1974,73 +2133,141 @@ pub struct MQAXP {
     pub ExitMsgHandle: MQHMSG,
 }
 /// Channel Exit Parameter
+///
+/// # References
+/// * [IBM `MQCXP` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q109150_.html)
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct MQCXP {
     /// Structure identifier
+    ///
+    /// [`MQCXP::Version`] >= 3
     pub StrucId: MQCHAR4,
     /// Structure version number
+    ///
+    /// [`MQCXP::Version`] >= 3
     pub Version: MQLONG,
     /// Type of exit
+    ///
+    /// [`MQCXP::Version`] >= 3
     pub ExitId: MQLONG,
     /// Reason for invoking exit
+    ///
+    /// [`MQCXP::Version`] >= 3
     pub ExitReason: MQLONG,
     /// Response from exit
+    ///
+    /// [`MQCXP::Version`] >= 3
     pub ExitResponse: MQLONG,
     /// Secondary response from exit
+    ///
+    /// [`MQCXP::Version`] >= 3
     pub ExitResponse2: MQLONG,
     /// Feedback code
+    ///
+    /// [`MQCXP::Version`] >= 3
     pub Feedback: MQLONG,
     /// Maximum segment length
+    ///
+    /// [`MQCXP::Version`] >= 3
     pub MaxSegmentLength: MQLONG,
     /// Exit user area
+    ///
+    /// [`MQCXP::Version`] >= 3
     pub ExitUserArea: MQBYTE16,
     /// Exit data
+    ///
+    /// [`MQCXP::Version`] >= 3
     pub ExitData: MQCHAR32,
     /// Number of times the message has been retried
+    ///
+    /// [`MQCXP::Version`] >= 3
     pub MsgRetryCount: MQLONG,
     /// Minimum interval in milliseconds after which the put operation should be retried
+    ///
+    /// [`MQCXP::Version`] >= 3
     pub MsgRetryInterval: MQLONG,
     /// Reason code from previous attempt to put the message
+    ///
+    /// [`MQCXP::Version`] >= 3
     pub MsgRetryReason: MQLONG,
     /// Length of header information
+    ///
+    /// [`MQCXP::Version`] >= 3
     pub HeaderLength: MQLONG,
     /// Partner Name
+    ///
+    /// [`MQCXP::Version`] >= 3
     pub PartnerName: MQCHAR48,
     /// Negotiated Formats and Protocols level
+    ///
+    /// [`MQCXP::Version`] >= 3
     pub FAPLevel: MQLONG,
     /// Capability flags
+    ///
+    /// [`MQCXP::Version`] >= 3
     pub CapabilityFlags: MQLONG,
     /// Exit number
+    ///
+    /// [`MQCXP::Version`] >= 3
     pub ExitNumber: MQLONG,
     /// Number of bytes in transmission buffer reserved for exit to use
+    ///
+    /// [`MQCXP::Version`] >= 5
     pub ExitSpace: MQLONG,
     /// User identifier associated with remote SSL certificate
+    ///
+    /// [`MQCXP::Version`] >= 6
     pub SSLCertUserid: MQCHAR12,
     /// Length of distinguished name of issuer of remote SSL certificate
+    ///
+    /// [`MQCXP::Version`] >= 6
     pub SSLRemCertIssNameLength: MQLONG,
     /// Address of distinguished name of issuer of remote SSL certificate
+    ///
+    /// [`MQCXP::Version`] >= 6
     pub SSLRemCertIssNamePtr: MQPTR,
     /// Address of security parameters
+    ///
+    /// [`MQCXP::Version`] >= 6
     pub SecurityParms: PMQCSP,
     /// Header data compression used for current message
+    ///
+    /// [`MQCXP::Version`] >= 6
     pub CurHdrCompression: MQLONG,
     /// Message data compression used for current message
+    ///
+    /// [`MQCXP::Version`] >= 6
     pub CurMsgCompression: MQLONG,
     /// Connection handle
+    ///
+    /// [`MQCXP::Version`] >= 7
     pub Hconn: MQHCONN,
     /// Multiple conversations allowed
+    ///
+    /// [`MQCXP::Version`] >= 7
     pub SharingConversations: MQBOOL,
     /// The source of the run-time user ID
+    ///
+    /// [`MQCXP::Version`] >= 8
     pub MCAUserSource: MQLONG,
     /// Interface entry points
+    ///
+    /// [`MQCXP::Version`] >= 8
     pub pEntryPoints: PMQIEP,
     /// The identifier for the remote product
+    ///
+    /// [`MQCXP::Version`] >= 9
     pub RemoteProduct: MQCHAR4,
     /// The version of the remote product
+    ///
+    /// [`MQCXP::Version`] >= 9
     pub RemoteVersion: MQCHAR8,
 }
 /// Data Conversion Exit Parameter
+///
+/// # References
+/// * [IBM `MQDXP` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q104100_.html)
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct MQDXP {
@@ -2067,6 +2294,8 @@ pub struct MQDXP {
     /// Connection handle
     pub Hconn: MQHCONN,
     /// Interface entry points
+    ///
+    /// [`MQDXP::Version`] >= 2
     pub pEntryPoints: PMQIEP,
 }
 /// PreConnect Exit options
@@ -2100,9 +2329,14 @@ pub struct MQNXP {
     /// Maximum [`MQCD`] version requested
     pub MaxMQCDVersion: MQLONG,
     /// Interface entry points
+    ///
+    /// [`MQNXP::Version`] >= 2
     pub pEntryPoints: PMQIEP,
 }
 /// Publish Exit Publication Context
+///
+/// # References
+/// * [IBM `MQPBC` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q108150_.html)
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct MQPBC {
@@ -2113,9 +2347,14 @@ pub struct MQPBC {
     /// Publish topic string
     pub PubTopicString: MQCHARV,
     /// Address of publisher message descriptor
+    ///
+    /// [`MQPBC::Version`] >= 2
     pub MsgDescPtr: PMQMD,
 }
 /// Publish Exit Parameter
+///
+/// # References
+/// * [IBM `MQPSXP` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q108140_.html)
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct MQPSXP {
@@ -2154,9 +2393,14 @@ pub struct MQPSXP {
     /// Length of output message data
     pub MsgOutLength: MQLONG,
     /// Interface entry points
+    ///
+    /// [`MQPSXP::Version`] >= 2
     pub pEntryPoints: PMQIEP,
 }
 /// Publish Exit Subscription Context
+///
+/// # References
+/// * [IBM `MQSBC` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q108160_.html)
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct MQSBC {
@@ -2190,6 +2434,9 @@ pub struct MQSBC {
     pub PSProperties: MQLONG,
 }
 /// Cluster Workload Exit Cluster Record
+///
+/// # References
+/// * [IBM `MQWCR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q082670_.html)
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct MQWCR {
@@ -2201,6 +2448,9 @@ pub struct MQWCR {
     pub ClusterFlags: MQLONG,
 }
 /// Cluster Workload Exit Destination Record
+///
+/// # References
+/// * [IBM `MQWDR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q082610_.html)
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct MQWDR {
@@ -2223,8 +2473,12 @@ pub struct MQWDR {
     /// Offset of channel definition structure
     pub ChannelDefOffset: MQLONG,
     /// Cluster channel destination sequence number
+    ///
+    /// [`MQWDR::Version`] >= 2
     pub DestSeqNumber: MQLONG,
     /// Cluster channel destination sequence factor
+    ///
+    /// [`MQWDR::Version`] >= 2
     pub DestSeqFactor: MQINT64,
 }
 /// Version-1 CLWL Exit Destination Record
@@ -2273,11 +2527,18 @@ pub struct MQWDR2 {
     /// Offset of channel definition structure
     pub ChannelDefOffset: MQLONG,
     /// Cluster channel destination sequence number
+    ///
+    /// [`MQWDR2::Version`] >= 2
     pub DestSeqNumber: MQLONG,
     /// Cluster channel destination sequence factor
+    ///
+    /// [`MQWDR2::Version`] >= 2
     pub DestSeqFactor: MQINT64,
 }
 /// Cluster Workload Exit Queue Record
+///
+/// # References
+/// * [IBM `MQWQR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q082640_.html)
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct MQWQR {
@@ -2308,12 +2569,20 @@ pub struct MQWQR {
     /// Whether put operations on the queue are allowed
     pub InhibitPut: MQLONG,
     /// Queue priority
+    ///
+    /// [`MQWQR::Version`] >= 2
     pub CLWLQueuePriority: MQLONG,
     /// Queue rank
+    ///
+    /// [`MQWQR::Version`] >= 2
     pub CLWLQueueRank: MQLONG,
     /// Default put response
+    ///
+    /// [`MQWQR::Version`] >= 3
     pub DefPutResponse: MQLONG,
     /// CapExpiry
+    ///
+    /// [`MQWQR::Version`] >= 4
     pub CapExpiry: MQLONG,
 }
 /// Version-1 CLWL Exit Queue Record
@@ -2378,8 +2647,12 @@ pub struct MQWQR2 {
     /// Whether put operations on the queue are allowed
     pub InhibitPut: MQLONG,
     /// Queue priority
+    ///
+    /// [`MQWQR2::Version`] >= 2
     pub CLWLQueuePriority: MQLONG,
     /// Queue rank
+    ///
+    /// [`MQWQR2::Version`] >= 2
     pub CLWLQueueRank: MQLONG,
 }
 /// Version-3 CLWL Exit Queue Record
@@ -2413,10 +2686,16 @@ pub struct MQWQR3 {
     /// Whether put operations on the queue are allowed
     pub InhibitPut: MQLONG,
     /// Queue priority
+    ///
+    /// [`MQWQR3::Version`] >= 2
     pub CLWLQueuePriority: MQLONG,
     /// Queue rank
+    ///
+    /// [`MQWQR3::Version`] >= 2
     pub CLWLQueueRank: MQLONG,
     /// Default put response
+    ///
+    /// [`MQWQR3::Version`] >= 3
     pub DefPutResponse: MQLONG,
 }
 /// Version-4 CLWL Exit Queue Record
@@ -2450,15 +2729,26 @@ pub struct MQWQR4 {
     /// Whether put operations on the queue are allowed
     pub InhibitPut: MQLONG,
     /// Queue priority
+    ///
+    /// [`MQWQR4::Version`] >= 2
     pub CLWLQueuePriority: MQLONG,
     /// Queue rank
+    ///
+    /// [`MQWQR4::Version`] >= 2
     pub CLWLQueueRank: MQLONG,
     /// Default put response
+    ///
+    /// [`MQWQR4::Version`] >= 3
     pub DefPutResponse: MQLONG,
     /// CapExpiry
+    ///
+    /// [`MQWQR4::Version`] >= 4
     pub CapExpiry: MQLONG,
 }
 /// Cluster Workload Exit Parameter
+///
+/// # References
+/// * [IBM `MQWXP` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q082580_.html)
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct MQWXP {
@@ -2503,12 +2793,20 @@ pub struct MQWXP {
     /// Address of an array of pointers to queue records
     pub QArrayPtr: PPMQWQR,
     /// Context information
+    ///
+    /// [`MQWXP::Version`] >= 2
     pub CacheContext: MQPTR,
     /// Type of cluster cache
+    ///
+    /// [`MQWXP::Version`] >= 2
     pub CacheType: MQLONG,
     /// Number of allowed active outbound channels
+    ///
+    /// [`MQWXP::Version`] >= 3
     pub CLWLMRUChannels: MQLONG,
     /// Interface entry points
+    ///
+    /// [`MQWXP::Version`] >= 4
     pub pEntryPoints: PMQIEP,
 }
 /// Version-1 CLWL Exit Parameter
@@ -2601,8 +2899,12 @@ pub struct MQWXP2 {
     /// Address of an array of pointers to queue records
     pub QArrayPtr: PPMQWQR,
     /// Context information
+    ///
+    /// [`MQWXP2::Version`] >= 2
     pub CacheContext: MQPTR,
     /// Type of cluster cache
+    ///
+    /// [`MQWXP2::Version`] >= 2
     pub CacheType: MQLONG,
 }
 /// Version-3 CLWL Exit Parameter
@@ -2650,10 +2952,16 @@ pub struct MQWXP3 {
     /// Address of an array of pointers to queue records
     pub QArrayPtr: PPMQWQR,
     /// Context information
+    ///
+    /// [`MQWXP3::Version`] >= 2
     pub CacheContext: MQPTR,
     /// Type of cluster cache
+    ///
+    /// [`MQWXP3::Version`] >= 2
     pub CacheType: MQLONG,
     /// Number of allowed active outbound channels
+    ///
+    /// [`MQWXP3::Version`] >= 3
     pub CLWLMRUChannels: MQLONG,
 }
 /// Version-4 CLWL Exit Parameter
@@ -2701,12 +3009,20 @@ pub struct MQWXP4 {
     /// Address of an array of pointers to queue records
     pub QArrayPtr: PPMQWQR,
     /// Context information
+    ///
+    /// [`MQWXP4::Version`] >= 2
     pub CacheContext: MQPTR,
     /// Type of cluster cache
+    ///
+    /// [`MQWXP4::Version`] >= 2
     pub CacheType: MQLONG,
     /// Number of allowed active outbound channels
+    ///
+    /// [`MQWXP4::Version`] >= 3
     pub CLWLMRUChannels: MQLONG,
     /// Interface entry points
+    ///
+    /// [`MQWXP4::Version`] >= 4
     pub pEntryPoints: PMQIEP,
 }
 /// Register entry point options
@@ -2723,6 +3039,9 @@ pub struct MQXEPO {
     pub ExitProperties: MQCHARV,
 }
 /// Entity Data
+///
+/// # References
+/// * [IBM `MQZED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110340_.html)
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct MQZED {
@@ -2737,9 +3056,14 @@ pub struct MQZED {
     /// Security identifier
     pub SecurityId: MQBYTE40,
     /// Address of correlational data
+    ///
+    /// [`MQZED::Version`] >= 2
     pub CorrelationPtr: MQPTR,
 }
 /// Application Context
+///
+/// # References
+/// * [IBM `MQZAC` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110320_.html)
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct MQZAC {
@@ -2767,6 +3091,9 @@ pub struct MQZAC {
     pub BindType: MQLONG,
 }
 /// Authority Data
+///
+/// # References
+/// * [IBM `MQZAD` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110330_.html)
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct MQZAD {
@@ -2785,9 +3112,14 @@ pub struct MQZAD {
     /// Entity type
     pub EntityType: MQLONG,
     /// Options
+    ///
+    /// [`MQZAD::Version`] >= 2
     pub Options: MQLONG,
 }
 /// Free Parameters
+///
+/// # References
+/// * [IBM `MQZFP` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110360_.html)
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct MQZFP {
@@ -2801,6 +3133,9 @@ pub struct MQZFP {
     pub CorrelationPtr: MQPTR,
 }
 /// Identity Context
+///
+/// # References
+/// * [IBM `MQZIC` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110370_.html)
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct MQZIC {
@@ -2815,9 +3150,14 @@ pub struct MQZIC {
     /// Application data relating to identity
     pub ApplIdentityData: MQCHAR32,
     /// Long user identifier
+    ///
+    /// [`MQZIC::Version`] >= 2
     pub LongUserIdentifier: MQCHAR1024,
 }
 /// Interface Entry Points
+///
+/// # References
+/// * [IBM `MQIEP` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q108070_.html)
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct MQIEP {
@@ -2959,6 +3299,9 @@ pub const MQXF_CLOSE: MQLONG = 7;
 pub const MQXF_PUT1: MQLONG = 8;
 pub const MQXF_PUT: MQLONG = 9;
 pub const MQXF_GET: MQLONG = 10;
+///
+/// # References
+/// * [IBM `MQXF_DATA_CONV_ON_GET` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q109800_.html)
 pub const MQXF_DATA_CONV_ON_GET: MQLONG = 11;
 pub const MQXF_INQ: MQLONG = 12;
 pub const MQXF_SET: MQLONG = 13;
@@ -3338,7 +3681,7 @@ unsafe extern "C" {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=reference-exit-entry-point-registration-call-mqxep)
+    /// * [IBM `MQXEP` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q109660_.html)
     pub fn MQXEP(
         Hconfig: MQHCONFIG,
         ExitReason: MQLONG,
@@ -3359,7 +3702,7 @@ unsafe extern "C" {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=structures-mqxclwln-navigate-cluster-workload-records)
+    /// * [IBM `MQXCLWLN` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q082540_.html)
     pub fn MQXCLWLN(
         ExitParms: &mut MQWXP,
         CurrentRecord: MQPTR,
@@ -3395,7 +3738,7 @@ unsafe extern "C" {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM Documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=information-mqzep-add-component-entry-point)
+    /// * [IBM `MQZEP` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110350_.html)
     pub fn MQZEP(
         Hconfig: MQHCONFIG,
         Function: MQLONG,
