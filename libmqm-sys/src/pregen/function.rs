@@ -1,4 +1,3 @@
-use crate::lib;
 #[cfg(feature = "exits")]
 pub trait Exits {
     /// Register Entry Point
@@ -16,13 +15,13 @@ pub trait Exits {
     /// * [IBM `MQXEP` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q109660_.html)
     unsafe fn MQXEP(
         &self,
-        Hconfig: lib::MQHCONFIG,
-        ExitReason: lib::MQLONG,
-        Function: lib::MQLONG,
-        EntryPoint: lib::PMQFUNC,
-        ExitOpts: Option<&lib::MQXEPO>,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Hconfig: crate::exits::MQHCONFIG,
+        ExitReason: crate::MQLONG,
+        Function: crate::MQLONG,
+        EntryPoint: crate::PMQFUNC,
+        ExitOpts: Option<&crate::exits::MQXEPO>,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Cluster Workload Navigate Records
     ///
@@ -38,12 +37,12 @@ pub trait Exits {
     /// * [IBM `MQXCLWLN` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q082540_.html)
     unsafe fn MQXCLWLN(
         &self,
-        ExitParms: &mut lib::MQWXP,
-        CurrentRecord: lib::MQPTR,
-        NextOffset: lib::MQLONG,
-        NextRecord: &mut lib::MQPTR,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        ExitParms: &mut crate::exits::MQWXP,
+        CurrentRecord: crate::MQPTR,
+        NextOffset: crate::MQLONG,
+        NextRecord: &mut crate::MQPTR,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Convert Message Data
     ///
@@ -56,12 +55,12 @@ pub trait Exits {
     /// * `OutBuffer` (Output): Buffer containing the converted message
     unsafe fn MQXDX(
         &self,
-        DataConvExitParms: &mut lib::MQDXP,
-        MsgDesc: lib::PMQMD,
-        InBufferLength: lib::MQLONG,
-        InBuffer: lib::PMQVOID,
-        OutBufferLength: lib::MQLONG,
-        OutBuffer: lib::PMQVOID,
+        DataConvExitParms: &mut crate::exits::MQDXP,
+        MsgDesc: crate::PMQMD,
+        InBufferLength: crate::MQLONG,
+        InBuffer: crate::PMQVOID,
+        OutBufferLength: crate::MQLONG,
+        OutBuffer: crate::PMQVOID,
     );
     /// Add Component Entry Point
     ///
@@ -76,11 +75,11 @@ pub trait Exits {
     /// * [IBM `MQZEP` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110350_.html)
     unsafe fn MQZEP(
         &self,
-        Hconfig: lib::MQHCONFIG,
-        Function: lib::MQLONG,
-        EntryPoint: lib::PMQFUNC,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Hconfig: crate::exits::MQHCONFIG,
+        Function: crate::MQLONG,
+        EntryPoint: crate::PMQFUNC,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
 }
 #[cfg(feature = "mqai")]
@@ -98,11 +97,11 @@ pub trait Mqai {
     /// * [IBM `mqAddBag` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089150_.html)
     unsafe fn mqAddBag(
         &self,
-        Bag: lib::MQHBAG,
-        Selector: lib::MQLONG,
-        ItemValue: lib::MQHBAG,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Bag: crate::mqai::MQHBAG,
+        Selector: crate::MQLONG,
+        ItemValue: crate::mqai::MQHBAG,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Add Byte String to Bag
     ///
@@ -118,12 +117,12 @@ pub trait Mqai {
     /// * [IBM `mqAddByteString` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089160_.html)
     unsafe fn mqAddByteString(
         &self,
-        Bag: lib::MQHBAG,
-        Selector: lib::MQLONG,
-        BufferLength: lib::MQLONG,
-        Buffer: lib::PMQBYTE,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Bag: crate::mqai::MQHBAG,
+        Selector: crate::MQLONG,
+        BufferLength: crate::MQLONG,
+        Buffer: crate::PMQBYTE,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Add Byte String Filter to Bag
     ///
@@ -140,13 +139,13 @@ pub trait Mqai {
     /// * [IBM `mqAddByteStringFilter` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089170_.html)
     unsafe fn mqAddByteStringFilter(
         &self,
-        Bag: lib::MQHBAG,
-        Selector: lib::MQLONG,
-        BufferLength: lib::MQLONG,
-        Buffer: lib::PMQBYTE,
-        Operator: lib::MQLONG,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Bag: crate::mqai::MQHBAG,
+        Selector: crate::MQLONG,
+        BufferLength: crate::MQLONG,
+        Buffer: crate::PMQBYTE,
+        Operator: crate::MQLONG,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Add an Inquiry Item to Bag
     ///
@@ -160,10 +159,10 @@ pub trait Mqai {
     /// * [IBM `mqAddInquiry` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089180_.html)
     unsafe fn mqAddInquiry(
         &self,
-        Bag: lib::MQHBAG,
-        Selector: lib::MQLONG,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Bag: crate::mqai::MQHBAG,
+        Selector: crate::MQLONG,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Add Integer to Bag
     ///
@@ -178,11 +177,11 @@ pub trait Mqai {
     /// * [IBM `mqAddInteger` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089190_.html)
     unsafe fn mqAddInteger(
         &self,
-        Bag: lib::MQHBAG,
-        Selector: lib::MQLONG,
-        ItemValue: lib::MQLONG,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Bag: crate::mqai::MQHBAG,
+        Selector: crate::MQLONG,
+        ItemValue: crate::MQLONG,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Add 64-bit Integer to Bag
     ///
@@ -197,11 +196,11 @@ pub trait Mqai {
     /// * [IBM `mqAddInteger64` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089200_.html)
     unsafe fn mqAddInteger64(
         &self,
-        Bag: lib::MQHBAG,
-        Selector: lib::MQLONG,
-        ItemValue: lib::MQINT64,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Bag: crate::mqai::MQHBAG,
+        Selector: crate::MQLONG,
+        ItemValue: crate::MQINT64,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Add Integer Filter to Bag
     ///
@@ -217,12 +216,12 @@ pub trait Mqai {
     /// * [IBM `mqAddIntegerFilter` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089210_.html)
     unsafe fn mqAddIntegerFilter(
         &self,
-        Bag: lib::MQHBAG,
-        Selector: lib::MQLONG,
-        ItemValue: lib::MQLONG,
-        Operator: lib::MQLONG,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Bag: crate::mqai::MQHBAG,
+        Selector: crate::MQLONG,
+        ItemValue: crate::MQLONG,
+        Operator: crate::MQLONG,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Add String to Bag
     ///
@@ -238,12 +237,12 @@ pub trait Mqai {
     /// * [IBM `mqAddString` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089220_.html)
     unsafe fn mqAddString(
         &self,
-        Bag: lib::MQHBAG,
-        Selector: lib::MQLONG,
-        BufferLength: lib::MQLONG,
-        Buffer: lib::PMQCHAR,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Bag: crate::mqai::MQHBAG,
+        Selector: crate::MQLONG,
+        BufferLength: crate::MQLONG,
+        Buffer: crate::PMQCHAR,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Add String Filter to Bag
     ///
@@ -260,13 +259,13 @@ pub trait Mqai {
     /// * [IBM `mqAddStringFilter` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089230_.html)
     unsafe fn mqAddStringFilter(
         &self,
-        Bag: lib::MQHBAG,
-        Selector: lib::MQLONG,
-        BufferLength: lib::MQLONG,
-        Buffer: lib::PMQCHAR,
-        Operator: lib::MQLONG,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Bag: crate::mqai::MQHBAG,
+        Selector: crate::MQLONG,
+        BufferLength: crate::MQLONG,
+        Buffer: crate::PMQCHAR,
+        Operator: crate::MQLONG,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Convert Bag to PCF
     ///
@@ -283,13 +282,13 @@ pub trait Mqai {
     /// * [IBM `mqBagToBuffer` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089240_.html)
     unsafe fn mqBagToBuffer(
         &self,
-        OptionsBag: lib::MQHBAG,
-        DataBag: lib::MQHBAG,
-        BufferLength: lib::MQLONG,
-        Buffer: lib::PMQVOID,
-        DataLength: &mut lib::MQLONG,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        OptionsBag: crate::mqai::MQHBAG,
+        DataBag: crate::mqai::MQHBAG,
+        BufferLength: crate::MQLONG,
+        Buffer: crate::PMQVOID,
+        DataLength: &mut crate::MQLONG,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Convert PCF to Bag
     ///
@@ -305,12 +304,12 @@ pub trait Mqai {
     /// * [IBM `mqBufferToBag` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089250_.html)
     unsafe fn mqBufferToBag(
         &self,
-        OptionsBag: lib::MQHBAG,
-        BufferLength: lib::MQLONG,
-        Buffer: lib::PMQVOID,
-        DataBag: lib::MQHBAG,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        OptionsBag: crate::mqai::MQHBAG,
+        BufferLength: crate::MQLONG,
+        Buffer: crate::PMQVOID,
+        DataBag: crate::mqai::MQHBAG,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Delete All Items in Bag
     ///
@@ -323,9 +322,9 @@ pub trait Mqai {
     /// * [IBM `mqClearBag` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089260_.html)
     unsafe fn mqClearBag(
         &self,
-        Bag: lib::MQHBAG,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Bag: crate::mqai::MQHBAG,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Count Items in Bag
     ///
@@ -340,11 +339,11 @@ pub trait Mqai {
     /// * [IBM `mqCountItems` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089270_.html)
     unsafe fn mqCountItems(
         &self,
-        Bag: lib::MQHBAG,
-        Selector: lib::MQLONG,
-        ItemCount: &mut lib::MQLONG,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Bag: crate::mqai::MQHBAG,
+        Selector: crate::MQLONG,
+        ItemCount: &mut crate::MQLONG,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Create Bag
     ///
@@ -358,10 +357,10 @@ pub trait Mqai {
     /// * [IBM `mqCreateBag` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089280_.html)
     unsafe fn mqCreateBag(
         &self,
-        Options: lib::MQLONG,
-        Bag: &mut lib::MQHBAG,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Options: crate::MQLONG,
+        Bag: &mut crate::mqai::MQHBAG,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Delete Bag
     ///
@@ -374,9 +373,9 @@ pub trait Mqai {
     /// * [IBM `mqDeleteBag` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089290_.html)
     unsafe fn mqDeleteBag(
         &self,
-        Bag: &mut lib::MQHBAG,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Bag: &mut crate::mqai::MQHBAG,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Delete Item in Bag
     ///
@@ -391,11 +390,11 @@ pub trait Mqai {
     /// * [IBM `mqDeleteItem` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089300_.html)
     unsafe fn mqDeleteItem(
         &self,
-        Bag: lib::MQHBAG,
-        Selector: lib::MQLONG,
-        ItemIndex: lib::MQLONG,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Bag: crate::mqai::MQHBAG,
+        Selector: crate::MQLONG,
+        ItemIndex: crate::MQLONG,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Send Admin Command and Receive Reponse
     ///
@@ -414,15 +413,15 @@ pub trait Mqai {
     /// * [IBM `mqExecute` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089310_.html)
     unsafe fn mqExecute(
         &self,
-        Hconn: lib::MQHCONN,
-        Command: lib::MQLONG,
-        OptionsBag: lib::MQHBAG,
-        AdminBag: lib::MQHBAG,
-        ResponseBag: lib::MQHBAG,
-        AdminQ: lib::MQHOBJ,
-        ResponseQ: lib::MQHOBJ,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Hconn: crate::MQHCONN,
+        Command: crate::MQLONG,
+        OptionsBag: crate::mqai::MQHBAG,
+        AdminBag: crate::mqai::MQHBAG,
+        ResponseBag: crate::mqai::MQHBAG,
+        AdminQ: crate::MQHOBJ,
+        ResponseQ: crate::MQHOBJ,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Receive PCF Message into Bag
     ///
@@ -439,13 +438,13 @@ pub trait Mqai {
     /// * [IBM `mqGetBag` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089320_.html)
     unsafe fn mqGetBag(
         &self,
-        Hconn: lib::MQHCONN,
-        Hobj: lib::MQHOBJ,
-        MsgDesc: lib::PMQVOID,
-        GetMsgOpts: &mut lib::MQGMO,
-        Bag: lib::MQHBAG,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Hconn: crate::MQHCONN,
+        Hobj: crate::MQHOBJ,
+        MsgDesc: crate::PMQVOID,
+        GetMsgOpts: &mut crate::MQGMO,
+        Bag: crate::mqai::MQHBAG,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Inquire Handle in Bag
     ///
@@ -461,12 +460,12 @@ pub trait Mqai {
     /// * [IBM `mqInquireBag` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089330_.html)
     unsafe fn mqInquireBag(
         &self,
-        Bag: lib::MQHBAG,
-        Selector: lib::MQLONG,
-        ItemIndex: lib::MQLONG,
-        ItemValue: &mut lib::MQHBAG,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Bag: crate::mqai::MQHBAG,
+        Selector: crate::MQLONG,
+        ItemIndex: crate::MQLONG,
+        ItemValue: &mut crate::mqai::MQHBAG,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Inquire Byte String in Bag
     ///
@@ -484,14 +483,14 @@ pub trait Mqai {
     /// * [IBM `mqInquireByteString` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089340_.html)
     unsafe fn mqInquireByteString(
         &self,
-        Bag: lib::MQHBAG,
-        Selector: lib::MQLONG,
-        ItemIndex: lib::MQLONG,
-        BufferLength: lib::MQLONG,
-        Buffer: lib::PMQBYTE,
-        ByteStringLength: &mut lib::MQLONG,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Bag: crate::mqai::MQHBAG,
+        Selector: crate::MQLONG,
+        ItemIndex: crate::MQLONG,
+        BufferLength: crate::MQLONG,
+        Buffer: crate::PMQBYTE,
+        ByteStringLength: &mut crate::MQLONG,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Inquire Byte String Filter in Bag
     ///
@@ -510,15 +509,15 @@ pub trait Mqai {
     /// * [IBM `mqInquireByteStringFilter` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089350_.html)
     unsafe fn mqInquireByteStringFilter(
         &self,
-        Bag: lib::MQHBAG,
-        Selector: lib::MQLONG,
-        ItemIndex: lib::MQLONG,
-        BufferLength: lib::MQLONG,
-        Buffer: lib::PMQBYTE,
-        ByteStringLength: &mut lib::MQLONG,
-        Operator: &mut lib::MQLONG,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Bag: crate::mqai::MQHBAG,
+        Selector: crate::MQLONG,
+        ItemIndex: crate::MQLONG,
+        BufferLength: crate::MQLONG,
+        Buffer: crate::PMQBYTE,
+        ByteStringLength: &mut crate::MQLONG,
+        Operator: &mut crate::MQLONG,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Inquire Integer in Bag
     ///
@@ -534,12 +533,12 @@ pub trait Mqai {
     /// * [IBM `mqInquireInteger` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089360_.html)
     unsafe fn mqInquireInteger(
         &self,
-        Bag: lib::MQHBAG,
-        Selector: lib::MQLONG,
-        ItemIndex: lib::MQLONG,
-        ItemValue: &mut lib::MQLONG,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Bag: crate::mqai::MQHBAG,
+        Selector: crate::MQLONG,
+        ItemIndex: crate::MQLONG,
+        ItemValue: &mut crate::MQLONG,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Inquire 64-bit Integer in Bag
     ///
@@ -555,12 +554,12 @@ pub trait Mqai {
     /// * [IBM `mqInquireInteger64` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089370_.html)
     unsafe fn mqInquireInteger64(
         &self,
-        Bag: lib::MQHBAG,
-        Selector: lib::MQLONG,
-        ItemIndex: lib::MQLONG,
-        ItemValue: &mut lib::MQINT64,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Bag: crate::mqai::MQHBAG,
+        Selector: crate::MQLONG,
+        ItemIndex: crate::MQLONG,
+        ItemValue: &mut crate::MQINT64,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Inquire Integer Filter in Bag
     ///
@@ -577,13 +576,13 @@ pub trait Mqai {
     /// * [IBM `mqInquireIntegerFilter` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089380_.html)
     unsafe fn mqInquireIntegerFilter(
         &self,
-        Bag: lib::MQHBAG,
-        Selector: lib::MQLONG,
-        ItemIndex: lib::MQLONG,
-        ItemValue: &mut lib::MQLONG,
-        Operator: &mut lib::MQLONG,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Bag: crate::mqai::MQHBAG,
+        Selector: crate::MQLONG,
+        ItemIndex: crate::MQLONG,
+        ItemValue: &mut crate::MQLONG,
+        Operator: &mut crate::MQLONG,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Inquire Attributes of Item in Bag
     ///
@@ -600,13 +599,13 @@ pub trait Mqai {
     /// * [IBM `mqInquireItemInfo` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089390_.html)
     unsafe fn mqInquireItemInfo(
         &self,
-        Bag: lib::MQHBAG,
-        Selector: lib::MQLONG,
-        ItemIndex: lib::MQLONG,
-        OutSelector: &mut lib::MQLONG,
-        ItemType: &mut lib::MQLONG,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Bag: crate::mqai::MQHBAG,
+        Selector: crate::MQLONG,
+        ItemIndex: crate::MQLONG,
+        OutSelector: &mut crate::MQLONG,
+        ItemType: &mut crate::MQLONG,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Inquire String in Bag
     ///
@@ -625,15 +624,15 @@ pub trait Mqai {
     /// * [IBM `mqInquireString` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089400_.html)
     unsafe fn mqInquireString(
         &self,
-        Bag: lib::MQHBAG,
-        Selector: lib::MQLONG,
-        ItemIndex: lib::MQLONG,
-        BufferLength: lib::MQLONG,
-        Buffer: lib::PMQCHAR,
-        StringLength: &mut lib::MQLONG,
-        CodedCharSetId: &mut lib::MQLONG,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Bag: crate::mqai::MQHBAG,
+        Selector: crate::MQLONG,
+        ItemIndex: crate::MQLONG,
+        BufferLength: crate::MQLONG,
+        Buffer: crate::PMQCHAR,
+        StringLength: &mut crate::MQLONG,
+        CodedCharSetId: &mut crate::MQLONG,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Inquire String Filter in Bag
     ///
@@ -653,16 +652,16 @@ pub trait Mqai {
     /// * [IBM `mqInquireStringFilter` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089410_.html)
     unsafe fn mqInquireStringFilter(
         &self,
-        Bag: lib::MQHBAG,
-        Selector: lib::MQLONG,
-        ItemIndex: lib::MQLONG,
-        BufferLength: lib::MQLONG,
-        Buffer: lib::PMQCHAR,
-        StringLength: &mut lib::MQLONG,
-        CodedCharSetId: &mut lib::MQLONG,
-        Operator: &mut lib::MQLONG,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Bag: crate::mqai::MQHBAG,
+        Selector: crate::MQLONG,
+        ItemIndex: crate::MQLONG,
+        BufferLength: crate::MQLONG,
+        Buffer: crate::PMQCHAR,
+        StringLength: &mut crate::MQLONG,
+        CodedCharSetId: &mut crate::MQLONG,
+        Operator: &mut crate::MQLONG,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Pad Null-terminated String with Blanks
     ///
@@ -677,11 +676,11 @@ pub trait Mqai {
     /// * [IBM `mqPad` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089420_.html)
     unsafe fn mqPad(
         &self,
-        String: lib::PMQCHAR,
-        BufferLength: lib::MQLONG,
-        Buffer: lib::PMQCHAR,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        String: crate::PMQCHAR,
+        BufferLength: crate::MQLONG,
+        Buffer: crate::PMQCHAR,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Send Bag as PCF Message
     ///
@@ -698,13 +697,13 @@ pub trait Mqai {
     /// * [IBM `mqPutBag` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089430_.html)
     unsafe fn mqPutBag(
         &self,
-        Hconn: lib::MQHCONN,
-        Hobj: lib::MQHOBJ,
-        MsgDesc: lib::PMQVOID,
-        PutMsgOpts: &mut lib::MQPMO,
-        Bag: lib::MQHBAG,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Hconn: crate::MQHCONN,
+        Hobj: crate::MQHOBJ,
+        MsgDesc: crate::PMQVOID,
+        PutMsgOpts: &mut crate::MQPMO,
+        Bag: crate::mqai::MQHBAG,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Modify Byte String in Bag
     ///
@@ -721,13 +720,13 @@ pub trait Mqai {
     /// * [IBM `mqSetByteString` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089440_.html)
     unsafe fn mqSetByteString(
         &self,
-        Bag: lib::MQHBAG,
-        Selector: lib::MQLONG,
-        ItemIndex: lib::MQLONG,
-        BufferLength: lib::MQLONG,
-        Buffer: lib::PMQBYTE,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Bag: crate::mqai::MQHBAG,
+        Selector: crate::MQLONG,
+        ItemIndex: crate::MQLONG,
+        BufferLength: crate::MQLONG,
+        Buffer: crate::PMQBYTE,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Modify Byte String Filter in Bag
     ///
@@ -745,14 +744,14 @@ pub trait Mqai {
     /// * [IBM `mqSetByteStringFilter` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089450_.html)
     unsafe fn mqSetByteStringFilter(
         &self,
-        Bag: lib::MQHBAG,
-        Selector: lib::MQLONG,
-        ItemIndex: lib::MQLONG,
-        BufferLength: lib::MQLONG,
-        Buffer: lib::PMQBYTE,
-        Operator: lib::MQLONG,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Bag: crate::mqai::MQHBAG,
+        Selector: crate::MQLONG,
+        ItemIndex: crate::MQLONG,
+        BufferLength: crate::MQLONG,
+        Buffer: crate::PMQBYTE,
+        Operator: crate::MQLONG,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Modify Integer in Bag
     ///
@@ -768,12 +767,12 @@ pub trait Mqai {
     /// * [IBM `mqSetInteger` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089460_.html)
     unsafe fn mqSetInteger(
         &self,
-        Bag: lib::MQHBAG,
-        Selector: lib::MQLONG,
-        ItemIndex: lib::MQLONG,
-        ItemValue: lib::MQLONG,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Bag: crate::mqai::MQHBAG,
+        Selector: crate::MQLONG,
+        ItemIndex: crate::MQLONG,
+        ItemValue: crate::MQLONG,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Modify 64-bit Integer in Bag
     ///
@@ -789,12 +788,12 @@ pub trait Mqai {
     /// * [IBM `mqSetInteger64` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089470_.html)
     unsafe fn mqSetInteger64(
         &self,
-        Bag: lib::MQHBAG,
-        Selector: lib::MQLONG,
-        ItemIndex: lib::MQLONG,
-        ItemValue: lib::MQINT64,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Bag: crate::mqai::MQHBAG,
+        Selector: crate::MQLONG,
+        ItemIndex: crate::MQLONG,
+        ItemValue: crate::MQINT64,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Modify Integer Filter in Bag
     ///
@@ -811,13 +810,13 @@ pub trait Mqai {
     /// * [IBM `mqSetIntegerFilter` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089480_.html)
     unsafe fn mqSetIntegerFilter(
         &self,
-        Bag: lib::MQHBAG,
-        Selector: lib::MQLONG,
-        ItemIndex: lib::MQLONG,
-        ItemValue: lib::MQLONG,
-        Operator: lib::MQLONG,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Bag: crate::mqai::MQHBAG,
+        Selector: crate::MQLONG,
+        ItemIndex: crate::MQLONG,
+        ItemValue: crate::MQLONG,
+        Operator: crate::MQLONG,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Modify String in Bag
     ///
@@ -834,13 +833,13 @@ pub trait Mqai {
     /// * [IBM `mqSetString` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089490_.html)
     unsafe fn mqSetString(
         &self,
-        Bag: lib::MQHBAG,
-        Selector: lib::MQLONG,
-        ItemIndex: lib::MQLONG,
-        BufferLength: lib::MQLONG,
-        Buffer: lib::PMQCHAR,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Bag: crate::mqai::MQHBAG,
+        Selector: crate::MQLONG,
+        ItemIndex: crate::MQLONG,
+        BufferLength: crate::MQLONG,
+        Buffer: crate::PMQCHAR,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Modify String Filter in Bag
     ///
@@ -858,14 +857,14 @@ pub trait Mqai {
     /// * [IBM `mqSetStringFilter` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089500_.html)
     unsafe fn mqSetStringFilter(
         &self,
-        Bag: lib::MQHBAG,
-        Selector: lib::MQLONG,
-        ItemIndex: lib::MQLONG,
-        BufferLength: lib::MQLONG,
-        Buffer: lib::PMQCHAR,
-        Operator: lib::MQLONG,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Bag: crate::mqai::MQHBAG,
+        Selector: crate::MQLONG,
+        ItemIndex: crate::MQLONG,
+        BufferLength: crate::MQLONG,
+        Buffer: crate::PMQCHAR,
+        Operator: crate::MQLONG,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Replace Trailing Blanks with Null Character
     ///
@@ -880,11 +879,11 @@ pub trait Mqai {
     /// * [IBM `mqTrim` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089510_.html)
     unsafe fn mqTrim(
         &self,
-        BufferLength: lib::MQLONG,
-        Buffer: lib::PMQCHAR,
-        String: lib::PMQCHAR,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        BufferLength: crate::MQLONG,
+        Buffer: crate::PMQCHAR,
+        String: crate::PMQCHAR,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Delete Trailing Items in Bag
     ///
@@ -898,10 +897,10 @@ pub trait Mqai {
     /// * [IBM `mqTruncateBag` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089520_.html)
     unsafe fn mqTruncateBag(
         &self,
-        Bag: lib::MQHBAG,
-        ItemCount: lib::MQLONG,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Bag: crate::mqai::MQHBAG,
+        ItemCount: crate::MQLONG,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
 }
 pub trait Mqi {
@@ -916,9 +915,9 @@ pub trait Mqi {
     /// * [IBM `MQBACK` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101690_.html)
     unsafe fn MQBACK(
         &self,
-        Hconn: lib::MQHCONN,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Hconn: crate::MQHCONN,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Begin Unit of Work
     ///
@@ -932,10 +931,10 @@ pub trait Mqi {
     /// * [IBM `MQBEGIN` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101700_.html)
     unsafe fn MQBEGIN(
         &self,
-        Hconn: lib::MQHCONN,
-        BeginOptions: Option<&mut lib::MQBO>,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Hconn: crate::MQHCONN,
+        BeginOptions: Option<&mut crate::MQBO>,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Buffer To Message Handle
     ///
@@ -954,15 +953,15 @@ pub trait Mqi {
     /// * [IBM `MQBUFMH` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101710_.html)
     unsafe fn MQBUFMH(
         &self,
-        Hconn: lib::MQHCONN,
-        Hmsg: lib::MQHMSG,
-        BufMsgHOpts: &lib::MQBMHO,
-        MsgDesc: lib::PMQVOID,
-        BufferLength: lib::MQLONG,
-        Buffer: lib::PMQVOID,
-        DataLength: &mut lib::MQLONG,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Hconn: crate::MQHCONN,
+        Hmsg: crate::MQHMSG,
+        BufMsgHOpts: &crate::MQBMHO,
+        MsgDesc: crate::PMQVOID,
+        BufferLength: crate::MQLONG,
+        Buffer: crate::PMQVOID,
+        DataLength: &mut crate::MQLONG,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Register Message consumer
     ///
@@ -980,14 +979,14 @@ pub trait Mqi {
     /// * [IBM `MQCB` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101720_.html)
     unsafe fn MQCB(
         &self,
-        Hconn: lib::MQHCONN,
-        Operation: lib::MQLONG,
-        CallbackDesc: Option<&lib::MQCBD>,
-        Hobj: lib::MQHOBJ,
-        MsgDesc: lib::PMQVOID,
-        GetMsgOpts: Option<&lib::MQGMO>,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Hconn: crate::MQHCONN,
+        Operation: crate::MQLONG,
+        CallbackDesc: Option<&crate::MQCBD>,
+        Hobj: crate::MQHOBJ,
+        MsgDesc: crate::PMQVOID,
+        GetMsgOpts: Option<&crate::MQGMO>,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Close Object
     ///
@@ -1002,11 +1001,11 @@ pub trait Mqi {
     /// * [IBM `MQCLOSE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101740_.html)
     unsafe fn MQCLOSE(
         &self,
-        Hconn: lib::MQHCONN,
-        Hobj: &mut lib::MQHOBJ,
-        Options: lib::MQLONG,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Hconn: crate::MQHCONN,
+        Hobj: &mut crate::MQHOBJ,
+        Options: crate::MQLONG,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Commit Changes
     ///
@@ -1019,9 +1018,9 @@ pub trait Mqi {
     /// * [IBM `MQCMIT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101750_.html)
     unsafe fn MQCMIT(
         &self,
-        Hconn: lib::MQHCONN,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Hconn: crate::MQHCONN,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Connect Queue Manager
     ///
@@ -1035,10 +1034,10 @@ pub trait Mqi {
     /// * [IBM `MQCONN` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101760_.html)
     unsafe fn MQCONN(
         &self,
-        QMgrName: &lib::MQCHAR48,
-        Hconn: &mut lib::MQHCONN,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        QMgrName: &crate::MQCHAR48,
+        Hconn: &mut crate::MQHCONN,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Connect Queue Manager (Extended)
     ///
@@ -1053,11 +1052,11 @@ pub trait Mqi {
     /// * [IBM `MQCONNX` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101770_.html)
     unsafe fn MQCONNX(
         &self,
-        QMgrName: &lib::MQCHAR48,
-        ConnectOpts: &mut lib::MQCNO,
-        Hconn: &mut lib::MQHCONN,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        QMgrName: &crate::MQCHAR48,
+        ConnectOpts: &mut crate::MQCNO,
+        Hconn: &mut crate::MQHCONN,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Create Message Handle
     ///
@@ -1072,11 +1071,11 @@ pub trait Mqi {
     /// * [IBM `MQCRTMH` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101780_.html)
     unsafe fn MQCRTMH(
         &self,
-        Hconn: lib::MQHCONN,
-        CrtMsgHOpts: &lib::MQCMHO,
-        Hmsg: &mut lib::MQHMSG,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Hconn: crate::MQHCONN,
+        CrtMsgHOpts: &crate::MQCMHO,
+        Hmsg: &mut crate::MQHMSG,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Control Consumer
     ///
@@ -1091,11 +1090,11 @@ pub trait Mqi {
     /// * [IBM `MQCTL` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101790_.html)
     unsafe fn MQCTL(
         &self,
-        Hconn: lib::MQHCONN,
-        Operation: lib::MQLONG,
-        ControlOpts: &lib::MQCTLO,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Hconn: crate::MQHCONN,
+        Operation: crate::MQLONG,
+        ControlOpts: &crate::MQCTLO,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Disconnect Queue Manager
     ///
@@ -1108,9 +1107,9 @@ pub trait Mqi {
     /// * [IBM `MQDISC` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101800_.html)
     unsafe fn MQDISC(
         &self,
-        Hconn: &mut lib::MQHCONN,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Hconn: &mut crate::MQHCONN,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Delete Message Handle
     ///
@@ -1125,11 +1124,11 @@ pub trait Mqi {
     /// * [IBM `MQDLTMH` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101810_.html)
     unsafe fn MQDLTMH(
         &self,
-        Hconn: lib::MQHCONN,
-        Hmsg: &mut lib::MQHMSG,
-        DltMsgHOpts: &lib::MQDMHO,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Hconn: crate::MQHCONN,
+        Hmsg: &mut crate::MQHMSG,
+        DltMsgHOpts: &crate::MQDMHO,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Delete Message Property
     ///
@@ -1145,12 +1144,12 @@ pub trait Mqi {
     /// * [IBM `MQDLTMP` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101820_.html)
     unsafe fn MQDLTMP(
         &self,
-        Hconn: lib::MQHCONN,
-        Hmsg: lib::MQHMSG,
-        DltPropOpts: &lib::MQDMPO,
-        Name: &lib::MQCHARV,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Hconn: crate::MQHCONN,
+        Hmsg: crate::MQHMSG,
+        DltPropOpts: &crate::MQDMPO,
+        Name: &crate::MQCHARV,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Get Message
     ///
@@ -1169,15 +1168,15 @@ pub trait Mqi {
     /// * [IBM `MQGET` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101830_.html)
     unsafe fn MQGET(
         &self,
-        Hconn: lib::MQHCONN,
-        Hobj: lib::MQHOBJ,
-        MsgDesc: lib::PMQVOID,
-        GetMsgOpts: &mut lib::MQGMO,
-        BufferLength: lib::MQLONG,
-        Buffer: lib::PMQVOID,
-        DataLength: &mut lib::MQLONG,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Hconn: crate::MQHCONN,
+        Hobj: crate::MQHOBJ,
+        MsgDesc: crate::PMQVOID,
+        GetMsgOpts: &mut crate::MQGMO,
+        BufferLength: crate::MQLONG,
+        Buffer: crate::PMQVOID,
+        DataLength: &mut crate::MQLONG,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Inquire Object Attributes
     ///
@@ -1197,16 +1196,16 @@ pub trait Mqi {
     /// * [IBM `MQINQ` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101840_.html)
     unsafe fn MQINQ(
         &self,
-        Hconn: lib::MQHCONN,
-        Hobj: lib::MQHOBJ,
-        SelectorCount: lib::MQLONG,
-        Selectors: lib::PMQLONG,
-        IntAttrCount: lib::MQLONG,
-        IntAttrs: lib::PMQLONG,
-        CharAttrLength: lib::MQLONG,
-        CharAttrs: lib::PMQCHAR,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Hconn: crate::MQHCONN,
+        Hobj: crate::MQHOBJ,
+        SelectorCount: crate::MQLONG,
+        Selectors: crate::PMQLONG,
+        IntAttrCount: crate::MQLONG,
+        IntAttrs: crate::PMQLONG,
+        CharAttrLength: crate::MQLONG,
+        CharAttrs: crate::PMQCHAR,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Inquire Message Property
     ///
@@ -1227,17 +1226,17 @@ pub trait Mqi {
     /// * [IBM `MQINQMP` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101850_.html)
     unsafe fn MQINQMP(
         &self,
-        Hconn: lib::MQHCONN,
-        Hmsg: lib::MQHMSG,
-        InqPropOpts: &mut lib::MQIMPO,
-        Name: &lib::MQCHARV,
-        PropDesc: &mut lib::MQPD,
-        Type: &mut lib::MQLONG,
-        ValueLength: lib::MQLONG,
-        Value: lib::PMQVOID,
-        DataLength: &mut lib::MQLONG,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Hconn: crate::MQHCONN,
+        Hmsg: crate::MQHMSG,
+        InqPropOpts: &mut crate::MQIMPO,
+        Name: &crate::MQCHARV,
+        PropDesc: &mut crate::MQPD,
+        Type: &mut crate::MQLONG,
+        ValueLength: crate::MQLONG,
+        Value: crate::PMQVOID,
+        DataLength: &mut crate::MQLONG,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Message Handle To Buffer
     ///
@@ -1257,16 +1256,16 @@ pub trait Mqi {
     /// * [IBM `MQMHBUF` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101860_.html)
     unsafe fn MQMHBUF(
         &self,
-        Hconn: lib::MQHCONN,
-        Hmsg: lib::MQHMSG,
-        MsgHBufOpts: &lib::MQMHBO,
-        Name: &lib::MQCHARV,
-        MsgDesc: lib::PMQVOID,
-        BufferLength: lib::MQLONG,
-        Buffer: lib::PMQVOID,
-        DataLength: &mut lib::MQLONG,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Hconn: crate::MQHCONN,
+        Hmsg: crate::MQHMSG,
+        MsgHBufOpts: &crate::MQMHBO,
+        Name: &crate::MQCHARV,
+        MsgDesc: crate::PMQVOID,
+        BufferLength: crate::MQLONG,
+        Buffer: crate::PMQVOID,
+        DataLength: &mut crate::MQLONG,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Open Object
     ///
@@ -1282,12 +1281,12 @@ pub trait Mqi {
     /// * [IBM `MQOPEN` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101870_.html)
     unsafe fn MQOPEN(
         &self,
-        Hconn: lib::MQHCONN,
-        ObjDesc: &mut lib::MQOD,
-        Options: lib::MQLONG,
-        Hobj: &mut lib::MQHOBJ,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Hconn: crate::MQHCONN,
+        ObjDesc: &mut crate::MQOD,
+        Options: crate::MQLONG,
+        Hobj: &mut crate::MQHOBJ,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Put Message
     ///
@@ -1305,14 +1304,14 @@ pub trait Mqi {
     /// * [IBM `MQPUT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101880_.html)
     unsafe fn MQPUT(
         &self,
-        Hconn: lib::MQHCONN,
-        Hobj: lib::MQHOBJ,
-        MsgDesc: lib::PMQVOID,
-        PutMsgOpts: &mut lib::MQPMO,
-        BufferLength: lib::MQLONG,
-        Buffer: lib::PMQVOID,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Hconn: crate::MQHCONN,
+        Hobj: crate::MQHOBJ,
+        MsgDesc: crate::PMQVOID,
+        PutMsgOpts: &mut crate::MQPMO,
+        BufferLength: crate::MQLONG,
+        Buffer: crate::PMQVOID,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Put One Message
     ///
@@ -1330,14 +1329,14 @@ pub trait Mqi {
     /// * [IBM `MQPUT1` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101890_.html)
     unsafe fn MQPUT1(
         &self,
-        Hconn: lib::MQHCONN,
-        ObjDesc: &mut lib::MQOD,
-        MsgDesc: lib::PMQVOID,
-        PutMsgOpts: &mut lib::MQPMO,
-        BufferLength: lib::MQLONG,
-        Buffer: lib::PMQVOID,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Hconn: crate::MQHCONN,
+        ObjDesc: &mut crate::MQOD,
+        MsgDesc: crate::PMQVOID,
+        PutMsgOpts: &mut crate::MQPMO,
+        BufferLength: crate::MQLONG,
+        Buffer: crate::PMQVOID,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Set Object Attributes
     ///
@@ -1357,16 +1356,16 @@ pub trait Mqi {
     /// * [IBM `MQSET` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101900_.html)
     unsafe fn MQSET(
         &self,
-        Hconn: lib::MQHCONN,
-        Hobj: lib::MQHOBJ,
-        SelectorCount: lib::MQLONG,
-        Selectors: lib::PMQLONG,
-        IntAttrCount: lib::MQLONG,
-        IntAttrs: lib::PMQLONG,
-        CharAttrLength: lib::MQLONG,
-        CharAttrs: lib::PMQCHAR,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Hconn: crate::MQHCONN,
+        Hobj: crate::MQHOBJ,
+        SelectorCount: crate::MQLONG,
+        Selectors: crate::PMQLONG,
+        IntAttrCount: crate::MQLONG,
+        IntAttrs: crate::PMQLONG,
+        CharAttrLength: crate::MQLONG,
+        CharAttrs: crate::PMQCHAR,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Set Message Property
     ///
@@ -1386,16 +1385,16 @@ pub trait Mqi {
     /// * [IBM `MQSETMP` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101910_.html)
     unsafe fn MQSETMP(
         &self,
-        Hconn: lib::MQHCONN,
-        Hmsg: lib::MQHMSG,
-        SetPropOpts: &lib::MQSMPO,
-        Name: &lib::MQCHARV,
-        PropDesc: &mut lib::MQPD,
-        Type: lib::MQLONG,
-        ValueLength: lib::MQLONG,
-        Value: lib::PMQVOID,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Hconn: crate::MQHCONN,
+        Hmsg: crate::MQHMSG,
+        SetPropOpts: &crate::MQSMPO,
+        Name: &crate::MQCHARV,
+        PropDesc: &mut crate::MQPD,
+        Type: crate::MQLONG,
+        ValueLength: crate::MQLONG,
+        Value: crate::PMQVOID,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Get Status Information
     ///
@@ -1410,11 +1409,11 @@ pub trait Mqi {
     /// * [IBM `MQSTAT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101920_.html)
     unsafe fn MQSTAT(
         &self,
-        Hconn: lib::MQHCONN,
-        Type: lib::MQLONG,
-        Status: &mut lib::MQSTS,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Hconn: crate::MQHCONN,
+        Type: crate::MQLONG,
+        Status: &mut crate::MQSTS,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Subscribe to topic
     ///
@@ -1430,12 +1429,12 @@ pub trait Mqi {
     /// * [IBM `MQSUB` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101930_.html)
     unsafe fn MQSUB(
         &self,
-        Hconn: lib::MQHCONN,
-        SubDesc: &mut lib::MQSD,
-        Hobj: Option<&mut lib::MQHOBJ>,
-        Hsub: &mut lib::MQHOBJ,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Hconn: crate::MQHCONN,
+        SubDesc: &mut crate::MQSD,
+        Hobj: Option<&mut crate::MQHOBJ>,
+        Hsub: &mut crate::MQHOBJ,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Subscription Request
     ///
@@ -1451,12 +1450,12 @@ pub trait Mqi {
     /// * [IBM `MQSUBRQ` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101940_.html)
     unsafe fn MQSUBRQ(
         &self,
-        Hconn: lib::MQHCONN,
-        Hsub: lib::MQHOBJ,
-        Action: lib::MQLONG,
-        SubRqOpts: Option<&mut lib::MQSRO>,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Hconn: crate::MQHCONN,
+        Hsub: crate::MQHOBJ,
+        Action: crate::MQLONG,
+        SubRqOpts: Option<&mut crate::MQSRO>,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
     /// Convert Characters
     ///
@@ -1477,16 +1476,16 @@ pub trait Mqi {
     /// * [IBM `MQXCNVC` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q104110_.html)
     unsafe fn MQXCNVC(
         &self,
-        Hconn: lib::MQHCONN,
-        Options: lib::MQLONG,
-        SourceCCSID: lib::MQLONG,
-        SourceLength: lib::MQLONG,
-        SourceBuffer: lib::PMQCHAR,
-        TargetCCSID: lib::MQLONG,
-        TargetLength: lib::MQLONG,
-        TargetBuffer: lib::PMQCHAR,
-        DataLength: &mut lib::MQLONG,
-        CompCode: &mut lib::MQLONG,
-        Reason: &mut lib::MQLONG,
+        Hconn: crate::MQHCONN,
+        Options: crate::MQLONG,
+        SourceCCSID: crate::MQLONG,
+        SourceLength: crate::MQLONG,
+        SourceBuffer: crate::PMQCHAR,
+        TargetCCSID: crate::MQLONG,
+        TargetLength: crate::MQLONG,
+        TargetBuffer: crate::PMQCHAR,
+        DataLength: &mut crate::MQLONG,
+        CompCode: &mut crate::MQLONG,
+        Reason: &mut crate::MQLONG,
     );
 }

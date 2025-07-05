@@ -55,23 +55,23 @@ Example
 -------
 
 ```rust
-use libmqm_sys::lib;
+use libmqm_sys as mq;
 
-let mut hconn = lib::MQHC_DEF_HCONN;
-let mut comp_code = lib::MQCC_UNKNOWN;
-let mut reason = lib::MQRC_NONE;
-let mut qmgr: lib::MQCHAR48 = [32; 48]; // All spaces = default qmgr
+let mut hconn = mq::MQHC_DEF_HCONN;
+let mut comp_code = mq::MQCC_UNKNOWN;
+let mut reason = mq::MQRC_NONE;
+let mut qmgr: mq::MQCHAR48 = [32; 48]; // All spaces = default qmgr
 
 unsafe {
-    lib::MQCONN(
+    mq::MQCONN(
         &qmgr,
         &mut hconn,
         &mut comp_code,
         &mut reason,
     );
-    assert_eq!(reason, lib::MQRC_NONE, "MQRC");
-    assert_eq!(comp_code, lib::MQCC_OK, "MQCC");
-    lib::MQDISC(&mut hconn, &mut comp_code, &mut reason);
+    assert_eq!(reason, mq::MQRC_NONE, "MQRC");
+    assert_eq!(comp_code, mq::MQCC_OK, "MQCC");
+    mq::MQDISC(&mut hconn, &mut comp_code, &mut reason);
 };
 ```
 

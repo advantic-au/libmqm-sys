@@ -7,7 +7,7 @@ Example
 
 ```no_run
 use dlopen2::wrapper::Container;
-use libmqm_sys::{lib, dlopen2::MqWrapper};
+use libmqm_sys::{self as mq, dlopen2::MqWrapper};
 
 # fn main() -> Result<(), dlopen2::Error> {
 #
@@ -15,10 +15,10 @@ use libmqm_sys::{lib, dlopen2::MqWrapper};
 let mq: Container<MqWrapper> = unsafe { Container::load("libmqm_r") }?;
 
 // Connect to MQ
-let mut hconn = lib::MQHC_DEF_HCONN;
-let mut comp_code = lib::MQCC_UNKNOWN;
-let mut reason = lib::MQRC_NONE;
-let mut qmgr: lib::MQCHAR48 = [32; 48]; // All spaces
+let mut hconn = mq::MQHC_DEF_HCONN;
+let mut comp_code = mq::MQCC_UNKNOWN;
+let mut reason = mq::MQRC_NONE;
+let mut qmgr: mq::MQCHAR48 = [32; 48]; // All spaces
 unsafe {
    mq.MQCONN(
      &qmgr,
@@ -68,7 +68,7 @@ impl LoadMqmExt for MqmContainer {
 mod tests {
     use dlopen2::wrapper::Container;
 
-    use crate::lib;
+    use crate as mq;
 
     use super::*;
 
@@ -82,10 +82,10 @@ mod tests {
         // Dynamically load the mqm library
         let mq: Container<MqWrapper> = unsafe { Container::load(MQM_LIB) }?;
 
-        let mut hconn = lib::MQHC_DEF_HCONN;
-        let mut comp_code = lib::MQCC_UNKNOWN;
-        let mut reason = lib::MQRC_NONE;
-        let qmgr: lib::MQCHAR48 = [32; 48]; // All spaces
+        let mut hconn = mq::MQHC_DEF_HCONN;
+        let mut comp_code = mq::MQCC_UNKNOWN;
+        let mut reason = mq::MQRC_NONE;
+        let qmgr: mq::MQCHAR48 = [32; 48]; // All spaces
         unsafe {
             mq.MQCONN(&qmgr, &mut hconn, &mut comp_code, &mut reason);
         }

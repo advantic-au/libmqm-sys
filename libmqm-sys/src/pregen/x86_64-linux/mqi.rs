@@ -2615,1997 +2615,1007 @@ pub const MQCC_OK: MQLONG = 0;
 pub const MQCC_WARNING: MQLONG = 1;
 pub const MQCC_FAILED: MQLONG = 2;
 pub const MQCC_UNKNOWN: MQLONG = -1;
-///
-/// # References
-/// * [IBM `MQRC_NONE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040720_.html)
+/// [IBM `MQRC_NONE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040720_.html)
 pub const MQRC_NONE: MQLONG = 0;
-///
-/// # References
-/// * [IBM `MQRC_APPL_FIRST` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040730_.html)
+/// [IBM `MQRC_APPL_FIRST` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040730_.html)
 pub const MQRC_APPL_FIRST: MQLONG = 900;
-///
-/// # References
-/// * [IBM `MQRC_APPL_LAST` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040740_.html)
+/// [IBM `MQRC_APPL_LAST` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040740_.html)
 pub const MQRC_APPL_LAST: MQLONG = 999;
-///
-/// # References
-/// * [IBM `MQRC_ALIAS_BASE_Q_TYPE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040750_.html)
+/// [IBM `MQRC_ALIAS_BASE_Q_TYPE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040750_.html)
 pub const MQRC_ALIAS_BASE_Q_TYPE_ERROR: MQLONG = 2001;
-///
-/// # References
-/// * [IBM `MQRC_ALREADY_CONNECTED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040760_.html)
+/// [IBM `MQRC_ALREADY_CONNECTED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040760_.html)
 pub const MQRC_ALREADY_CONNECTED: MQLONG = 2002;
-///
-/// # References
-/// * [IBM `MQRC_BACKED_OUT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040770_.html)
+/// [IBM `MQRC_BACKED_OUT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040770_.html)
 pub const MQRC_BACKED_OUT: MQLONG = 2003;
-///
-/// # References
-/// * [IBM `MQRC_BUFFER_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040780_.html)
+/// [IBM `MQRC_BUFFER_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040780_.html)
 pub const MQRC_BUFFER_ERROR: MQLONG = 2004;
-///
-/// # References
-/// * [IBM `MQRC_BUFFER_LENGTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040790_.html)
+/// [IBM `MQRC_BUFFER_LENGTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040790_.html)
 pub const MQRC_BUFFER_LENGTH_ERROR: MQLONG = 2005;
-///
-/// # References
-/// * [IBM `MQRC_CHAR_ATTR_LENGTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040800_.html)
+/// [IBM `MQRC_CHAR_ATTR_LENGTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040800_.html)
 pub const MQRC_CHAR_ATTR_LENGTH_ERROR: MQLONG = 2006;
-///
-/// # References
-/// * [IBM `MQRC_CHAR_ATTRS_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040810_.html)
+/// [IBM `MQRC_CHAR_ATTRS_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040810_.html)
 pub const MQRC_CHAR_ATTRS_ERROR: MQLONG = 2007;
-///
-/// # References
-/// * [IBM `MQRC_CHAR_ATTRS_TOO_SHORT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040820_.html)
+/// [IBM `MQRC_CHAR_ATTRS_TOO_SHORT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040820_.html)
 pub const MQRC_CHAR_ATTRS_TOO_SHORT: MQLONG = 2008;
-///
-/// # References
-/// * [IBM `MQRC_CONNECTION_BROKEN` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040830_.html)
+/// [IBM `MQRC_CONNECTION_BROKEN` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040830_.html)
 pub const MQRC_CONNECTION_BROKEN: MQLONG = 2009;
-///
-/// # References
-/// * [IBM `MQRC_DATA_LENGTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040840_.html)
+/// [IBM `MQRC_DATA_LENGTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040840_.html)
 pub const MQRC_DATA_LENGTH_ERROR: MQLONG = 2010;
-///
-/// # References
-/// * [IBM `MQRC_DYNAMIC_Q_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040850_.html)
+/// [IBM `MQRC_DYNAMIC_Q_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040850_.html)
 pub const MQRC_DYNAMIC_Q_NAME_ERROR: MQLONG = 2011;
-///
-/// # References
-/// * [IBM `MQRC_ENVIRONMENT_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040860_.html)
+/// [IBM `MQRC_ENVIRONMENT_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040860_.html)
 pub const MQRC_ENVIRONMENT_ERROR: MQLONG = 2012;
-///
-/// # References
-/// * [IBM `MQRC_EXPIRY_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040870_.html)
+/// [IBM `MQRC_EXPIRY_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040870_.html)
 pub const MQRC_EXPIRY_ERROR: MQLONG = 2013;
-///
-/// # References
-/// * [IBM `MQRC_FEEDBACK_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040880_.html)
+/// [IBM `MQRC_FEEDBACK_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040880_.html)
 pub const MQRC_FEEDBACK_ERROR: MQLONG = 2014;
-///
-/// # References
-/// * [IBM `MQRC_GET_INHIBITED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040890_.html)
+/// [IBM `MQRC_GET_INHIBITED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040890_.html)
 pub const MQRC_GET_INHIBITED: MQLONG = 2016;
-///
-/// # References
-/// * [IBM `MQRC_HANDLE_NOT_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040900_.html)
+/// [IBM `MQRC_HANDLE_NOT_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040900_.html)
 pub const MQRC_HANDLE_NOT_AVAILABLE: MQLONG = 2017;
-///
-/// # References
-/// * [IBM `MQRC_HCONN_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040910_.html)
+/// [IBM `MQRC_HCONN_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040910_.html)
 pub const MQRC_HCONN_ERROR: MQLONG = 2018;
-///
-/// # References
-/// * [IBM `MQRC_HOBJ_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040920_.html)
+/// [IBM `MQRC_HOBJ_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040920_.html)
 pub const MQRC_HOBJ_ERROR: MQLONG = 2019;
-///
-/// # References
-/// * [IBM `MQRC_INHIBIT_VALUE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040930_.html)
+/// [IBM `MQRC_INHIBIT_VALUE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040930_.html)
 pub const MQRC_INHIBIT_VALUE_ERROR: MQLONG = 2020;
-///
-/// # References
-/// * [IBM `MQRC_INT_ATTR_COUNT_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040940_.html)
+/// [IBM `MQRC_INT_ATTR_COUNT_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040940_.html)
 pub const MQRC_INT_ATTR_COUNT_ERROR: MQLONG = 2021;
-///
-/// # References
-/// * [IBM `MQRC_INT_ATTR_COUNT_TOO_SMALL` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040950_.html)
+/// [IBM `MQRC_INT_ATTR_COUNT_TOO_SMALL` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040950_.html)
 pub const MQRC_INT_ATTR_COUNT_TOO_SMALL: MQLONG = 2022;
-///
-/// # References
-/// * [IBM `MQRC_INT_ATTRS_ARRAY_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040960_.html)
+/// [IBM `MQRC_INT_ATTRS_ARRAY_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040960_.html)
 pub const MQRC_INT_ATTRS_ARRAY_ERROR: MQLONG = 2023;
-///
-/// # References
-/// * [IBM `MQRC_SYNCPOINT_LIMIT_REACHED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040970_.html)
+/// [IBM `MQRC_SYNCPOINT_LIMIT_REACHED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040970_.html)
 pub const MQRC_SYNCPOINT_LIMIT_REACHED: MQLONG = 2024;
-///
-/// # References
-/// * [IBM `MQRC_MAX_CONNS_LIMIT_REACHED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040980_.html)
+/// [IBM `MQRC_MAX_CONNS_LIMIT_REACHED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040980_.html)
 pub const MQRC_MAX_CONNS_LIMIT_REACHED: MQLONG = 2025;
-///
-/// # References
-/// * [IBM `MQRC_MD_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040990_.html)
+/// [IBM `MQRC_MD_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040990_.html)
 pub const MQRC_MD_ERROR: MQLONG = 2026;
-///
-/// # References
-/// * [IBM `MQRC_MISSING_REPLY_TO_Q` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041000_.html)
+/// [IBM `MQRC_MISSING_REPLY_TO_Q` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041000_.html)
 pub const MQRC_MISSING_REPLY_TO_Q: MQLONG = 2027;
-///
-/// # References
-/// * [IBM `MQRC_MSG_TYPE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041010_.html)
+/// [IBM `MQRC_MSG_TYPE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041010_.html)
 pub const MQRC_MSG_TYPE_ERROR: MQLONG = 2029;
-///
-/// # References
-/// * [IBM `MQRC_MSG_TOO_BIG_FOR_Q` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041020_.html)
+/// [IBM `MQRC_MSG_TOO_BIG_FOR_Q` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041020_.html)
 pub const MQRC_MSG_TOO_BIG_FOR_Q: MQLONG = 2030;
-///
-/// # References
-/// * [IBM `MQRC_MSG_TOO_BIG_FOR_Q_MGR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041030_.html)
+/// [IBM `MQRC_MSG_TOO_BIG_FOR_Q_MGR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041030_.html)
 pub const MQRC_MSG_TOO_BIG_FOR_Q_MGR: MQLONG = 2031;
-///
-/// # References
-/// * [IBM `MQRC_NO_MSG_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041040_.html)
+/// [IBM `MQRC_NO_MSG_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041040_.html)
 pub const MQRC_NO_MSG_AVAILABLE: MQLONG = 2033;
-///
-/// # References
-/// * [IBM `MQRC_NO_MSG_UNDER_CURSOR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041050_.html)
+/// [IBM `MQRC_NO_MSG_UNDER_CURSOR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041050_.html)
 pub const MQRC_NO_MSG_UNDER_CURSOR: MQLONG = 2034;
-///
-/// # References
-/// * [IBM `MQRC_NOT_AUTHORIZED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041060_.html)
+/// [IBM `MQRC_NOT_AUTHORIZED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041060_.html)
 pub const MQRC_NOT_AUTHORIZED: MQLONG = 2035;
-///
-/// # References
-/// * [IBM `MQRC_NOT_OPEN_FOR_BROWSE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041070_.html)
+/// [IBM `MQRC_NOT_OPEN_FOR_BROWSE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041070_.html)
 pub const MQRC_NOT_OPEN_FOR_BROWSE: MQLONG = 2036;
-///
-/// # References
-/// * [IBM `MQRC_NOT_OPEN_FOR_INPUT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041080_.html)
+/// [IBM `MQRC_NOT_OPEN_FOR_INPUT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041080_.html)
 pub const MQRC_NOT_OPEN_FOR_INPUT: MQLONG = 2037;
-///
-/// # References
-/// * [IBM `MQRC_NOT_OPEN_FOR_INQUIRE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041090_.html)
+/// [IBM `MQRC_NOT_OPEN_FOR_INQUIRE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041090_.html)
 pub const MQRC_NOT_OPEN_FOR_INQUIRE: MQLONG = 2038;
-///
-/// # References
-/// * [IBM `MQRC_NOT_OPEN_FOR_OUTPUT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041100_.html)
+/// [IBM `MQRC_NOT_OPEN_FOR_OUTPUT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041100_.html)
 pub const MQRC_NOT_OPEN_FOR_OUTPUT: MQLONG = 2039;
-///
-/// # References
-/// * [IBM `MQRC_NOT_OPEN_FOR_SET` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041110_.html)
+/// [IBM `MQRC_NOT_OPEN_FOR_SET` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041110_.html)
 pub const MQRC_NOT_OPEN_FOR_SET: MQLONG = 2040;
-///
-/// # References
-/// * [IBM `MQRC_OBJECT_CHANGED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041120_.html)
+/// [IBM `MQRC_OBJECT_CHANGED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041120_.html)
 pub const MQRC_OBJECT_CHANGED: MQLONG = 2041;
-///
-/// # References
-/// * [IBM `MQRC_OBJECT_IN_USE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041130_.html)
+/// [IBM `MQRC_OBJECT_IN_USE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041130_.html)
 pub const MQRC_OBJECT_IN_USE: MQLONG = 2042;
-///
-/// # References
-/// * [IBM `MQRC_OBJECT_TYPE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041140_.html)
+/// [IBM `MQRC_OBJECT_TYPE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041140_.html)
 pub const MQRC_OBJECT_TYPE_ERROR: MQLONG = 2043;
-///
-/// # References
-/// * [IBM `MQRC_OD_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041150_.html)
+/// [IBM `MQRC_OD_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041150_.html)
 pub const MQRC_OD_ERROR: MQLONG = 2044;
-///
-/// # References
-/// * [IBM `MQRC_OPTION_NOT_VALID_FOR_TYPE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041160_.html)
+/// [IBM `MQRC_OPTION_NOT_VALID_FOR_TYPE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041160_.html)
 pub const MQRC_OPTION_NOT_VALID_FOR_TYPE: MQLONG = 2045;
-///
-/// # References
-/// * [IBM `MQRC_OPTIONS_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041170_.html)
+/// [IBM `MQRC_OPTIONS_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041170_.html)
 pub const MQRC_OPTIONS_ERROR: MQLONG = 2046;
-///
-/// # References
-/// * [IBM `MQRC_PERSISTENCE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041180_.html)
+/// [IBM `MQRC_PERSISTENCE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041180_.html)
 pub const MQRC_PERSISTENCE_ERROR: MQLONG = 2047;
-///
-/// # References
-/// * [IBM `MQRC_PERSISTENT_NOT_ALLOWED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041190_.html)
+/// [IBM `MQRC_PERSISTENT_NOT_ALLOWED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041190_.html)
 pub const MQRC_PERSISTENT_NOT_ALLOWED: MQLONG = 2048;
-///
-/// # References
-/// * [IBM `MQRC_PRIORITY_EXCEEDS_MAXIMUM` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041200_.html)
+/// [IBM `MQRC_PRIORITY_EXCEEDS_MAXIMUM` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041200_.html)
 pub const MQRC_PRIORITY_EXCEEDS_MAXIMUM: MQLONG = 2049;
-///
-/// # References
-/// * [IBM `MQRC_PRIORITY_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041210_.html)
+/// [IBM `MQRC_PRIORITY_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041210_.html)
 pub const MQRC_PRIORITY_ERROR: MQLONG = 2050;
-///
-/// # References
-/// * [IBM `MQRC_PUT_INHIBITED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041220_.html)
+/// [IBM `MQRC_PUT_INHIBITED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041220_.html)
 pub const MQRC_PUT_INHIBITED: MQLONG = 2051;
-///
-/// # References
-/// * [IBM `MQRC_Q_DELETED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041230_.html)
+/// [IBM `MQRC_Q_DELETED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041230_.html)
 pub const MQRC_Q_DELETED: MQLONG = 2052;
-///
-/// # References
-/// * [IBM `MQRC_Q_FULL` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041240_.html)
+/// [IBM `MQRC_Q_FULL` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041240_.html)
 pub const MQRC_Q_FULL: MQLONG = 2053;
-///
-/// # References
-/// * [IBM `MQRC_Q_NOT_EMPTY` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041250_.html)
+/// [IBM `MQRC_Q_NOT_EMPTY` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041250_.html)
 pub const MQRC_Q_NOT_EMPTY: MQLONG = 2055;
-///
-/// # References
-/// * [IBM `MQRC_Q_SPACE_NOT_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041260_.html)
+/// [IBM `MQRC_Q_SPACE_NOT_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041260_.html)
 pub const MQRC_Q_SPACE_NOT_AVAILABLE: MQLONG = 2056;
-///
-/// # References
-/// * [IBM `MQRC_Q_TYPE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041270_.html)
+/// [IBM `MQRC_Q_TYPE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041270_.html)
 pub const MQRC_Q_TYPE_ERROR: MQLONG = 2057;
-///
-/// # References
-/// * [IBM `MQRC_Q_MGR_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041280_.html)
+/// [IBM `MQRC_Q_MGR_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041280_.html)
 pub const MQRC_Q_MGR_NAME_ERROR: MQLONG = 2058;
-///
-/// # References
-/// * [IBM `MQRC_Q_MGR_NOT_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041290_.html)
+/// [IBM `MQRC_Q_MGR_NOT_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041290_.html)
 pub const MQRC_Q_MGR_NOT_AVAILABLE: MQLONG = 2059;
-///
-/// # References
-/// * [IBM `MQRC_REPORT_OPTIONS_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041300_.html)
+/// [IBM `MQRC_REPORT_OPTIONS_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041300_.html)
 pub const MQRC_REPORT_OPTIONS_ERROR: MQLONG = 2061;
-///
-/// # References
-/// * [IBM `MQRC_SECOND_MARK_NOT_ALLOWED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041310_.html)
+/// [IBM `MQRC_SECOND_MARK_NOT_ALLOWED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041310_.html)
 pub const MQRC_SECOND_MARK_NOT_ALLOWED: MQLONG = 2062;
-///
-/// # References
-/// * [IBM `MQRC_SECURITY_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041320_.html)
+/// [IBM `MQRC_SECURITY_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041320_.html)
 pub const MQRC_SECURITY_ERROR: MQLONG = 2063;
-///
-/// # References
-/// * [IBM `MQRC_TOKEN_TIMESTAMP_NOT_VALID` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/mqrc2064.html)
+/// [IBM `MQRC_TOKEN_TIMESTAMP_NOT_VALID` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/mqrc2064.html)
 pub const MQRC_TOKEN_TIMESTAMP_NOT_VALID: MQLONG = 2064;
-///
-/// # References
-/// * [IBM `MQRC_SELECTOR_COUNT_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041330_.html)
+/// [IBM `MQRC_SELECTOR_COUNT_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041330_.html)
 pub const MQRC_SELECTOR_COUNT_ERROR: MQLONG = 2065;
-///
-/// # References
-/// * [IBM `MQRC_SELECTOR_LIMIT_EXCEEDED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041340_.html)
+/// [IBM `MQRC_SELECTOR_LIMIT_EXCEEDED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041340_.html)
 pub const MQRC_SELECTOR_LIMIT_EXCEEDED: MQLONG = 2066;
-///
-/// # References
-/// * [IBM `MQRC_SELECTOR_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041350_.html)
+/// [IBM `MQRC_SELECTOR_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041350_.html)
 pub const MQRC_SELECTOR_ERROR: MQLONG = 2067;
-///
-/// # References
-/// * [IBM `MQRC_SELECTOR_NOT_FOR_TYPE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041360_.html)
+/// [IBM `MQRC_SELECTOR_NOT_FOR_TYPE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041360_.html)
 pub const MQRC_SELECTOR_NOT_FOR_TYPE: MQLONG = 2068;
-///
-/// # References
-/// * [IBM `MQRC_SIGNAL_OUTSTANDING` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041370_.html)
+/// [IBM `MQRC_SIGNAL_OUTSTANDING` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041370_.html)
 pub const MQRC_SIGNAL_OUTSTANDING: MQLONG = 2069;
-///
-/// # References
-/// * [IBM `MQRC_SIGNAL_REQUEST_ACCEPTED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041380_.html)
+/// [IBM `MQRC_SIGNAL_REQUEST_ACCEPTED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041380_.html)
 pub const MQRC_SIGNAL_REQUEST_ACCEPTED: MQLONG = 2070;
-///
-/// # References
-/// * [IBM `MQRC_STORAGE_NOT_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041390_.html)
+/// [IBM `MQRC_STORAGE_NOT_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041390_.html)
 pub const MQRC_STORAGE_NOT_AVAILABLE: MQLONG = 2071;
-///
-/// # References
-/// * [IBM `MQRC_SYNCPOINT_NOT_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041400_.html)
+/// [IBM `MQRC_SYNCPOINT_NOT_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041400_.html)
 pub const MQRC_SYNCPOINT_NOT_AVAILABLE: MQLONG = 2072;
-///
-/// # References
-/// * [IBM `MQRC_TRIGGER_CONTROL_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041410_.html)
+/// [IBM `MQRC_TRIGGER_CONTROL_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041410_.html)
 pub const MQRC_TRIGGER_CONTROL_ERROR: MQLONG = 2075;
-///
-/// # References
-/// * [IBM `MQRC_TRIGGER_DEPTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041420_.html)
+/// [IBM `MQRC_TRIGGER_DEPTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041420_.html)
 pub const MQRC_TRIGGER_DEPTH_ERROR: MQLONG = 2076;
-///
-/// # References
-/// * [IBM `MQRC_TRIGGER_MSG_PRIORITY_ERR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041430_.html)
+/// [IBM `MQRC_TRIGGER_MSG_PRIORITY_ERR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041430_.html)
 pub const MQRC_TRIGGER_MSG_PRIORITY_ERR: MQLONG = 2077;
-///
-/// # References
-/// * [IBM `MQRC_TRIGGER_TYPE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041440_.html)
+/// [IBM `MQRC_TRIGGER_TYPE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041440_.html)
 pub const MQRC_TRIGGER_TYPE_ERROR: MQLONG = 2078;
-///
-/// # References
-/// * [IBM `MQRC_TRUNCATED_MSG_ACCEPTED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041450_.html)
+/// [IBM `MQRC_TRUNCATED_MSG_ACCEPTED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041450_.html)
 pub const MQRC_TRUNCATED_MSG_ACCEPTED: MQLONG = 2079;
-///
-/// # References
-/// * [IBM `MQRC_TRUNCATED_MSG_FAILED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041460_.html)
+/// [IBM `MQRC_TRUNCATED_MSG_FAILED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041460_.html)
 pub const MQRC_TRUNCATED_MSG_FAILED: MQLONG = 2080;
-///
-/// # References
-/// * [IBM `MQRC_UNKNOWN_ALIAS_BASE_Q` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041470_.html)
+/// [IBM `MQRC_UNKNOWN_ALIAS_BASE_Q` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041470_.html)
 pub const MQRC_UNKNOWN_ALIAS_BASE_Q: MQLONG = 2082;
-///
-/// # References
-/// * [IBM `MQRC_UNKNOWN_OBJECT_NAME` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041480_.html)
+/// [IBM `MQRC_UNKNOWN_OBJECT_NAME` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041480_.html)
 pub const MQRC_UNKNOWN_OBJECT_NAME: MQLONG = 2085;
-///
-/// # References
-/// * [IBM `MQRC_UNKNOWN_OBJECT_Q_MGR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041490_.html)
+/// [IBM `MQRC_UNKNOWN_OBJECT_Q_MGR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041490_.html)
 pub const MQRC_UNKNOWN_OBJECT_Q_MGR: MQLONG = 2086;
-///
-/// # References
-/// * [IBM `MQRC_UNKNOWN_REMOTE_Q_MGR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041500_.html)
+/// [IBM `MQRC_UNKNOWN_REMOTE_Q_MGR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041500_.html)
 pub const MQRC_UNKNOWN_REMOTE_Q_MGR: MQLONG = 2087;
-///
-/// # References
-/// * [IBM `MQRC_WAIT_INTERVAL_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041510_.html)
+/// [IBM `MQRC_WAIT_INTERVAL_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041510_.html)
 pub const MQRC_WAIT_INTERVAL_ERROR: MQLONG = 2090;
-///
-/// # References
-/// * [IBM `MQRC_XMIT_Q_TYPE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041520_.html)
+/// [IBM `MQRC_XMIT_Q_TYPE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041520_.html)
 pub const MQRC_XMIT_Q_TYPE_ERROR: MQLONG = 2091;
-///
-/// # References
-/// * [IBM `MQRC_XMIT_Q_USAGE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041530_.html)
+/// [IBM `MQRC_XMIT_Q_USAGE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041530_.html)
 pub const MQRC_XMIT_Q_USAGE_ERROR: MQLONG = 2092;
-///
-/// # References
-/// * [IBM `MQRC_NOT_OPEN_FOR_PASS_ALL` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041540_.html)
+/// [IBM `MQRC_NOT_OPEN_FOR_PASS_ALL` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041540_.html)
 pub const MQRC_NOT_OPEN_FOR_PASS_ALL: MQLONG = 2093;
-///
-/// # References
-/// * [IBM `MQRC_NOT_OPEN_FOR_PASS_IDENT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041550_.html)
+/// [IBM `MQRC_NOT_OPEN_FOR_PASS_IDENT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041550_.html)
 pub const MQRC_NOT_OPEN_FOR_PASS_IDENT: MQLONG = 2094;
-///
-/// # References
-/// * [IBM `MQRC_NOT_OPEN_FOR_SET_ALL` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041560_.html)
+/// [IBM `MQRC_NOT_OPEN_FOR_SET_ALL` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041560_.html)
 pub const MQRC_NOT_OPEN_FOR_SET_ALL: MQLONG = 2095;
-///
-/// # References
-/// * [IBM `MQRC_NOT_OPEN_FOR_SET_IDENT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041570_.html)
+/// [IBM `MQRC_NOT_OPEN_FOR_SET_IDENT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041570_.html)
 pub const MQRC_NOT_OPEN_FOR_SET_IDENT: MQLONG = 2096;
-///
-/// # References
-/// * [IBM `MQRC_CONTEXT_HANDLE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041580_.html)
+/// [IBM `MQRC_CONTEXT_HANDLE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041580_.html)
 pub const MQRC_CONTEXT_HANDLE_ERROR: MQLONG = 2097;
-///
-/// # References
-/// * [IBM `MQRC_CONTEXT_NOT_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041590_.html)
+/// [IBM `MQRC_CONTEXT_NOT_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041590_.html)
 pub const MQRC_CONTEXT_NOT_AVAILABLE: MQLONG = 2098;
-///
-/// # References
-/// * [IBM `MQRC_SIGNAL1_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041600_.html)
+/// [IBM `MQRC_SIGNAL1_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041600_.html)
 pub const MQRC_SIGNAL1_ERROR: MQLONG = 2099;
-///
-/// # References
-/// * [IBM `MQRC_OBJECT_ALREADY_EXISTS` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041610_.html)
+/// [IBM `MQRC_OBJECT_ALREADY_EXISTS` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041610_.html)
 pub const MQRC_OBJECT_ALREADY_EXISTS: MQLONG = 2100;
-///
-/// # References
-/// * [IBM `MQRC_OBJECT_DAMAGED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041620_.html)
+/// [IBM `MQRC_OBJECT_DAMAGED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041620_.html)
 pub const MQRC_OBJECT_DAMAGED: MQLONG = 2101;
-///
-/// # References
-/// * [IBM `MQRC_RESOURCE_PROBLEM` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041630_.html)
+/// [IBM `MQRC_RESOURCE_PROBLEM` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041630_.html)
 pub const MQRC_RESOURCE_PROBLEM: MQLONG = 2102;
-///
-/// # References
-/// * [IBM `MQRC_ANOTHER_Q_MGR_CONNECTED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041640_.html)
+/// [IBM `MQRC_ANOTHER_Q_MGR_CONNECTED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041640_.html)
 pub const MQRC_ANOTHER_Q_MGR_CONNECTED: MQLONG = 2103;
-///
-/// # References
-/// * [IBM `MQRC_UNKNOWN_REPORT_OPTION` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041650_.html)
+/// [IBM `MQRC_UNKNOWN_REPORT_OPTION` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041650_.html)
 pub const MQRC_UNKNOWN_REPORT_OPTION: MQLONG = 2104;
-///
-/// # References
-/// * [IBM `MQRC_STORAGE_CLASS_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041660_.html)
+/// [IBM `MQRC_STORAGE_CLASS_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041660_.html)
 pub const MQRC_STORAGE_CLASS_ERROR: MQLONG = 2105;
-///
-/// # References
-/// * [IBM `MQRC_COD_NOT_VALID_FOR_XCF_Q` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041670_.html)
+/// [IBM `MQRC_COD_NOT_VALID_FOR_XCF_Q` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041670_.html)
 pub const MQRC_COD_NOT_VALID_FOR_XCF_Q: MQLONG = 2106;
-///
-/// # References
-/// * [IBM `MQRC_XWAIT_CANCELED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041680_.html)
+/// [IBM `MQRC_XWAIT_CANCELED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041680_.html)
 pub const MQRC_XWAIT_CANCELED: MQLONG = 2107;
-///
-/// # References
-/// * [IBM `MQRC_XWAIT_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041690_.html)
+/// [IBM `MQRC_XWAIT_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041690_.html)
 pub const MQRC_XWAIT_ERROR: MQLONG = 2108;
-///
-/// # References
-/// * [IBM `MQRC_SUPPRESSED_BY_EXIT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041700_.html)
+/// [IBM `MQRC_SUPPRESSED_BY_EXIT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041700_.html)
 pub const MQRC_SUPPRESSED_BY_EXIT: MQLONG = 2109;
-///
-/// # References
-/// * [IBM `MQRC_FORMAT_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041710_.html)
+/// [IBM `MQRC_FORMAT_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041710_.html)
 pub const MQRC_FORMAT_ERROR: MQLONG = 2110;
-///
-/// # References
-/// * [IBM `MQRC_SOURCE_CCSID_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041720_.html)
+/// [IBM `MQRC_SOURCE_CCSID_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041720_.html)
 pub const MQRC_SOURCE_CCSID_ERROR: MQLONG = 2111;
-///
-/// # References
-/// * [IBM `MQRC_SOURCE_INTEGER_ENC_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041730_.html)
+/// [IBM `MQRC_SOURCE_INTEGER_ENC_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041730_.html)
 pub const MQRC_SOURCE_INTEGER_ENC_ERROR: MQLONG = 2112;
-///
-/// # References
-/// * [IBM `MQRC_SOURCE_DECIMAL_ENC_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041740_.html)
+/// [IBM `MQRC_SOURCE_DECIMAL_ENC_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041740_.html)
 pub const MQRC_SOURCE_DECIMAL_ENC_ERROR: MQLONG = 2113;
-///
-/// # References
-/// * [IBM `MQRC_SOURCE_FLOAT_ENC_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041750_.html)
+/// [IBM `MQRC_SOURCE_FLOAT_ENC_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041750_.html)
 pub const MQRC_SOURCE_FLOAT_ENC_ERROR: MQLONG = 2114;
-///
-/// # References
-/// * [IBM `MQRC_TARGET_CCSID_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041760_.html)
+/// [IBM `MQRC_TARGET_CCSID_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041760_.html)
 pub const MQRC_TARGET_CCSID_ERROR: MQLONG = 2115;
-///
-/// # References
-/// * [IBM `MQRC_TARGET_INTEGER_ENC_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041770_.html)
+/// [IBM `MQRC_TARGET_INTEGER_ENC_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041770_.html)
 pub const MQRC_TARGET_INTEGER_ENC_ERROR: MQLONG = 2116;
-///
-/// # References
-/// * [IBM `MQRC_TARGET_DECIMAL_ENC_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041780_.html)
+/// [IBM `MQRC_TARGET_DECIMAL_ENC_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041780_.html)
 pub const MQRC_TARGET_DECIMAL_ENC_ERROR: MQLONG = 2117;
-///
-/// # References
-/// * [IBM `MQRC_TARGET_FLOAT_ENC_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041790_.html)
+/// [IBM `MQRC_TARGET_FLOAT_ENC_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041790_.html)
 pub const MQRC_TARGET_FLOAT_ENC_ERROR: MQLONG = 2118;
-///
-/// # References
-/// * [IBM `MQRC_NOT_CONVERTED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041800_.html)
+/// [IBM `MQRC_NOT_CONVERTED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041800_.html)
 pub const MQRC_NOT_CONVERTED: MQLONG = 2119;
-///
-/// # References
-/// * [IBM `MQRC_CONVERTED_MSG_TOO_BIG` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041810_.html)
+/// [IBM `MQRC_CONVERTED_MSG_TOO_BIG` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041810_.html)
 pub const MQRC_CONVERTED_MSG_TOO_BIG: MQLONG = 2120;
 pub const MQRC_TRUNCATED: MQLONG = 2120;
-///
-/// # References
-/// * [IBM `MQRC_NO_EXTERNAL_PARTICIPANTS` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041820_.html)
+/// [IBM `MQRC_NO_EXTERNAL_PARTICIPANTS` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041820_.html)
 pub const MQRC_NO_EXTERNAL_PARTICIPANTS: MQLONG = 2121;
-///
-/// # References
-/// * [IBM `MQRC_PARTICIPANT_NOT_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041830_.html)
+/// [IBM `MQRC_PARTICIPANT_NOT_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041830_.html)
 pub const MQRC_PARTICIPANT_NOT_AVAILABLE: MQLONG = 2122;
-///
-/// # References
-/// * [IBM `MQRC_OUTCOME_MIXED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041840_.html)
+/// [IBM `MQRC_OUTCOME_MIXED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041840_.html)
 pub const MQRC_OUTCOME_MIXED: MQLONG = 2123;
-///
-/// # References
-/// * [IBM `MQRC_OUTCOME_PENDING` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041850_.html)
+/// [IBM `MQRC_OUTCOME_PENDING` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041850_.html)
 pub const MQRC_OUTCOME_PENDING: MQLONG = 2124;
-///
-/// # References
-/// * [IBM `MQRC_BRIDGE_STARTED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041860_.html)
+/// [IBM `MQRC_BRIDGE_STARTED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041860_.html)
 pub const MQRC_BRIDGE_STARTED: MQLONG = 2125;
-///
-/// # References
-/// * [IBM `MQRC_BRIDGE_STOPPED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041870_.html)
+/// [IBM `MQRC_BRIDGE_STOPPED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041870_.html)
 pub const MQRC_BRIDGE_STOPPED: MQLONG = 2126;
-///
-/// # References
-/// * [IBM `MQRC_ADAPTER_STORAGE_SHORTAGE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041880_.html)
+/// [IBM `MQRC_ADAPTER_STORAGE_SHORTAGE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041880_.html)
 pub const MQRC_ADAPTER_STORAGE_SHORTAGE: MQLONG = 2127;
-///
-/// # References
-/// * [IBM `MQRC_UOW_IN_PROGRESS` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041890_.html)
+/// [IBM `MQRC_UOW_IN_PROGRESS` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041890_.html)
 pub const MQRC_UOW_IN_PROGRESS: MQLONG = 2128;
-///
-/// # References
-/// * [IBM `MQRC_ADAPTER_CONN_LOAD_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041900_.html)
+/// [IBM `MQRC_ADAPTER_CONN_LOAD_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041900_.html)
 pub const MQRC_ADAPTER_CONN_LOAD_ERROR: MQLONG = 2129;
-///
-/// # References
-/// * [IBM `MQRC_ADAPTER_SERV_LOAD_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041910_.html)
+/// [IBM `MQRC_ADAPTER_SERV_LOAD_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041910_.html)
 pub const MQRC_ADAPTER_SERV_LOAD_ERROR: MQLONG = 2130;
-///
-/// # References
-/// * [IBM `MQRC_ADAPTER_DEFS_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041920_.html)
+/// [IBM `MQRC_ADAPTER_DEFS_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041920_.html)
 pub const MQRC_ADAPTER_DEFS_ERROR: MQLONG = 2131;
-///
-/// # References
-/// * [IBM `MQRC_ADAPTER_DEFS_LOAD_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041930_.html)
+/// [IBM `MQRC_ADAPTER_DEFS_LOAD_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041930_.html)
 pub const MQRC_ADAPTER_DEFS_LOAD_ERROR: MQLONG = 2132;
-///
-/// # References
-/// * [IBM `MQRC_ADAPTER_CONV_LOAD_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041940_.html)
+/// [IBM `MQRC_ADAPTER_CONV_LOAD_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041940_.html)
 pub const MQRC_ADAPTER_CONV_LOAD_ERROR: MQLONG = 2133;
-///
-/// # References
-/// * [IBM `MQRC_BO_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041950_.html)
+/// [IBM `MQRC_BO_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041950_.html)
 pub const MQRC_BO_ERROR: MQLONG = 2134;
-///
-/// # References
-/// * [IBM `MQRC_DH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041960_.html)
+/// [IBM `MQRC_DH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041960_.html)
 pub const MQRC_DH_ERROR: MQLONG = 2135;
-///
-/// # References
-/// * [IBM `MQRC_MULTIPLE_REASONS` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041970_.html)
+/// [IBM `MQRC_MULTIPLE_REASONS` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041970_.html)
 pub const MQRC_MULTIPLE_REASONS: MQLONG = 2136;
-///
-/// # References
-/// * [IBM `MQRC_OPEN_FAILED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041980_.html)
+/// [IBM `MQRC_OPEN_FAILED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041980_.html)
 pub const MQRC_OPEN_FAILED: MQLONG = 2137;
-///
-/// # References
-/// * [IBM `MQRC_ADAPTER_DISC_LOAD_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041990_.html)
+/// [IBM `MQRC_ADAPTER_DISC_LOAD_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041990_.html)
 pub const MQRC_ADAPTER_DISC_LOAD_ERROR: MQLONG = 2138;
-///
-/// # References
-/// * [IBM `MQRC_CNO_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042000_.html)
+/// [IBM `MQRC_CNO_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042000_.html)
 pub const MQRC_CNO_ERROR: MQLONG = 2139;
-///
-/// # References
-/// * [IBM `MQRC_CICS_WAIT_FAILED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042010_.html)
+/// [IBM `MQRC_CICS_WAIT_FAILED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042010_.html)
 pub const MQRC_CICS_WAIT_FAILED: MQLONG = 2140;
-///
-/// # References
-/// * [IBM `MQRC_DLH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042020_.html)
+/// [IBM `MQRC_DLH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042020_.html)
 pub const MQRC_DLH_ERROR: MQLONG = 2141;
-///
-/// # References
-/// * [IBM `MQRC_HEADER_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042030_.html)
+/// [IBM `MQRC_HEADER_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042030_.html)
 pub const MQRC_HEADER_ERROR: MQLONG = 2142;
-///
-/// # References
-/// * [IBM `MQRC_SOURCE_LENGTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042040_.html)
+/// [IBM `MQRC_SOURCE_LENGTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042040_.html)
 pub const MQRC_SOURCE_LENGTH_ERROR: MQLONG = 2143;
-///
-/// # References
-/// * [IBM `MQRC_TARGET_LENGTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042050_.html)
+/// [IBM `MQRC_TARGET_LENGTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042050_.html)
 pub const MQRC_TARGET_LENGTH_ERROR: MQLONG = 2144;
-///
-/// # References
-/// * [IBM `MQRC_SOURCE_BUFFER_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042060_.html)
+/// [IBM `MQRC_SOURCE_BUFFER_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042060_.html)
 pub const MQRC_SOURCE_BUFFER_ERROR: MQLONG = 2145;
-///
-/// # References
-/// * [IBM `MQRC_TARGET_BUFFER_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042070_.html)
+/// [IBM `MQRC_TARGET_BUFFER_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042070_.html)
 pub const MQRC_TARGET_BUFFER_ERROR: MQLONG = 2146;
-///
-/// # References
-/// * [IBM `MQRC_INCOMPLETE_TRANSACTION` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q132930_.html)
+/// [IBM `MQRC_INCOMPLETE_TRANSACTION` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q132930_.html)
 pub const MQRC_INCOMPLETE_TRANSACTION: MQLONG = 2147;
-///
-/// # References
-/// * [IBM `MQRC_IIH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042080_.html)
+/// [IBM `MQRC_IIH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042080_.html)
 pub const MQRC_IIH_ERROR: MQLONG = 2148;
-///
-/// # References
-/// * [IBM `MQRC_PCF_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042090_.html)
+/// [IBM `MQRC_PCF_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042090_.html)
 pub const MQRC_PCF_ERROR: MQLONG = 2149;
-///
-/// # References
-/// * [IBM `MQRC_DBCS_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042100_.html)
+/// [IBM `MQRC_DBCS_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042100_.html)
 pub const MQRC_DBCS_ERROR: MQLONG = 2150;
-///
-/// # References
-/// * [IBM `MQRC_OBJECT_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042110_.html)
+/// [IBM `MQRC_OBJECT_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042110_.html)
 pub const MQRC_OBJECT_NAME_ERROR: MQLONG = 2152;
-///
-/// # References
-/// * [IBM `MQRC_OBJECT_Q_MGR_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042120_.html)
+/// [IBM `MQRC_OBJECT_Q_MGR_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042120_.html)
 pub const MQRC_OBJECT_Q_MGR_NAME_ERROR: MQLONG = 2153;
-///
-/// # References
-/// * [IBM `MQRC_RECS_PRESENT_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042130_.html)
+/// [IBM `MQRC_RECS_PRESENT_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042130_.html)
 pub const MQRC_RECS_PRESENT_ERROR: MQLONG = 2154;
-///
-/// # References
-/// * [IBM `MQRC_OBJECT_RECORDS_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042140_.html)
+/// [IBM `MQRC_OBJECT_RECORDS_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042140_.html)
 pub const MQRC_OBJECT_RECORDS_ERROR: MQLONG = 2155;
-///
-/// # References
-/// * [IBM `MQRC_RESPONSE_RECORDS_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042150_.html)
+/// [IBM `MQRC_RESPONSE_RECORDS_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042150_.html)
 pub const MQRC_RESPONSE_RECORDS_ERROR: MQLONG = 2156;
-///
-/// # References
-/// * [IBM `MQRC_ASID_MISMATCH` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042160_.html)
+/// [IBM `MQRC_ASID_MISMATCH` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042160_.html)
 pub const MQRC_ASID_MISMATCH: MQLONG = 2157;
-///
-/// # References
-/// * [IBM `MQRC_PMO_RECORD_FLAGS_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042170_.html)
+/// [IBM `MQRC_PMO_RECORD_FLAGS_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042170_.html)
 pub const MQRC_PMO_RECORD_FLAGS_ERROR: MQLONG = 2158;
-///
-/// # References
-/// * [IBM `MQRC_PUT_MSG_RECORDS_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042180_.html)
+/// [IBM `MQRC_PUT_MSG_RECORDS_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042180_.html)
 pub const MQRC_PUT_MSG_RECORDS_ERROR: MQLONG = 2159;
-///
-/// # References
-/// * [IBM `MQRC_CONN_ID_IN_USE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042190_.html)
+/// [IBM `MQRC_CONN_ID_IN_USE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042190_.html)
 pub const MQRC_CONN_ID_IN_USE: MQLONG = 2160;
-///
-/// # References
-/// * [IBM `MQRC_Q_MGR_QUIESCING` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042200_.html)
+/// [IBM `MQRC_Q_MGR_QUIESCING` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042200_.html)
 pub const MQRC_Q_MGR_QUIESCING: MQLONG = 2161;
-///
-/// # References
-/// * [IBM `MQRC_Q_MGR_STOPPING` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042210_.html)
+/// [IBM `MQRC_Q_MGR_STOPPING` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042210_.html)
 pub const MQRC_Q_MGR_STOPPING: MQLONG = 2162;
-///
-/// # References
-/// * [IBM `MQRC_DUPLICATE_RECOV_COORD` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042220_.html)
+/// [IBM `MQRC_DUPLICATE_RECOV_COORD` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042220_.html)
 pub const MQRC_DUPLICATE_RECOV_COORD: MQLONG = 2163;
-///
-/// # References
-/// * [IBM `MQRC_PMO_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042230_.html)
+/// [IBM `MQRC_PMO_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042230_.html)
 pub const MQRC_PMO_ERROR: MQLONG = 2173;
-///
-/// # References
-/// * [IBM `MQRC_API_EXIT_NOT_FOUND` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042240_.html)
+/// [IBM `MQRC_API_EXIT_NOT_FOUND` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042240_.html)
 pub const MQRC_API_EXIT_NOT_FOUND: MQLONG = 2182;
-///
-/// # References
-/// * [IBM `MQRC_API_EXIT_LOAD_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042250_.html)
+/// [IBM `MQRC_API_EXIT_LOAD_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042250_.html)
 pub const MQRC_API_EXIT_LOAD_ERROR: MQLONG = 2183;
-///
-/// # References
-/// * [IBM `MQRC_REMOTE_Q_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042260_.html)
+/// [IBM `MQRC_REMOTE_Q_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042260_.html)
 pub const MQRC_REMOTE_Q_NAME_ERROR: MQLONG = 2184;
-///
-/// # References
-/// * [IBM `MQRC_INCONSISTENT_PERSISTENCE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042270_.html)
+/// [IBM `MQRC_INCONSISTENT_PERSISTENCE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042270_.html)
 pub const MQRC_INCONSISTENT_PERSISTENCE: MQLONG = 2185;
-///
-/// # References
-/// * [IBM `MQRC_GMO_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042280_.html)
+/// [IBM `MQRC_GMO_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042280_.html)
 pub const MQRC_GMO_ERROR: MQLONG = 2186;
-///
-/// # References
-/// * [IBM `MQRC_CICS_BRIDGE_RESTRICTION` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042290_.html)
+/// [IBM `MQRC_CICS_BRIDGE_RESTRICTION` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042290_.html)
 pub const MQRC_CICS_BRIDGE_RESTRICTION: MQLONG = 2187;
-///
-/// # References
-/// * [IBM `MQRC_STOPPED_BY_CLUSTER_EXIT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042300_.html)
+/// [IBM `MQRC_STOPPED_BY_CLUSTER_EXIT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042300_.html)
 pub const MQRC_STOPPED_BY_CLUSTER_EXIT: MQLONG = 2188;
-///
-/// # References
-/// * [IBM `MQRC_CLUSTER_RESOLUTION_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042310_.html)
+/// [IBM `MQRC_CLUSTER_RESOLUTION_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042310_.html)
 pub const MQRC_CLUSTER_RESOLUTION_ERROR: MQLONG = 2189;
-///
-/// # References
-/// * [IBM `MQRC_CONVERTED_STRING_TOO_BIG` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042320_.html)
+/// [IBM `MQRC_CONVERTED_STRING_TOO_BIG` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042320_.html)
 pub const MQRC_CONVERTED_STRING_TOO_BIG: MQLONG = 2190;
-///
-/// # References
-/// * [IBM `MQRC_TMC_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042330_.html)
+/// [IBM `MQRC_TMC_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042330_.html)
 pub const MQRC_TMC_ERROR: MQLONG = 2191;
-///
-/// # References
-/// * [IBM `MQRC_STORAGE_MEDIUM_FULL` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042350_.html)
+/// [IBM `MQRC_STORAGE_MEDIUM_FULL` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042350_.html)
 pub const MQRC_STORAGE_MEDIUM_FULL: MQLONG = 2192;
-///
-/// # References
-/// * [IBM `MQRC_PAGESET_FULL` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042340_.html)
+/// [IBM `MQRC_PAGESET_FULL` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042340_.html)
 pub const MQRC_PAGESET_FULL: MQLONG = 2192;
-///
-/// # References
-/// * [IBM `MQRC_PAGESET_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042360_.html)
+/// [IBM `MQRC_PAGESET_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042360_.html)
 pub const MQRC_PAGESET_ERROR: MQLONG = 2193;
-///
-/// # References
-/// * [IBM `MQRC_NAME_NOT_VALID_FOR_TYPE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042370_.html)
+/// [IBM `MQRC_NAME_NOT_VALID_FOR_TYPE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042370_.html)
 pub const MQRC_NAME_NOT_VALID_FOR_TYPE: MQLONG = 2194;
-///
-/// # References
-/// * [IBM `MQRC_UNEXPECTED_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042380_.html)
+/// [IBM `MQRC_UNEXPECTED_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042380_.html)
 pub const MQRC_UNEXPECTED_ERROR: MQLONG = 2195;
-///
-/// # References
-/// * [IBM `MQRC_UNKNOWN_XMIT_Q` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042390_.html)
+/// [IBM `MQRC_UNKNOWN_XMIT_Q` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042390_.html)
 pub const MQRC_UNKNOWN_XMIT_Q: MQLONG = 2196;
-///
-/// # References
-/// * [IBM `MQRC_UNKNOWN_DEF_XMIT_Q` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042400_.html)
+/// [IBM `MQRC_UNKNOWN_DEF_XMIT_Q` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042400_.html)
 pub const MQRC_UNKNOWN_DEF_XMIT_Q: MQLONG = 2197;
-///
-/// # References
-/// * [IBM `MQRC_DEF_XMIT_Q_TYPE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042410_.html)
+/// [IBM `MQRC_DEF_XMIT_Q_TYPE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042410_.html)
 pub const MQRC_DEF_XMIT_Q_TYPE_ERROR: MQLONG = 2198;
-///
-/// # References
-/// * [IBM `MQRC_DEF_XMIT_Q_USAGE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042420_.html)
+/// [IBM `MQRC_DEF_XMIT_Q_USAGE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042420_.html)
 pub const MQRC_DEF_XMIT_Q_USAGE_ERROR: MQLONG = 2199;
 pub const MQRC_MSG_MARKED_BROWSE_CO_OP: MQLONG = 2200;
-///
-/// # References
-/// * [IBM `MQRC_NAME_IN_USE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042430_.html)
+/// [IBM `MQRC_NAME_IN_USE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042430_.html)
 pub const MQRC_NAME_IN_USE: MQLONG = 2201;
-///
-/// # References
-/// * [IBM `MQRC_CONNECTION_QUIESCING` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042440_.html)
+/// [IBM `MQRC_CONNECTION_QUIESCING` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042440_.html)
 pub const MQRC_CONNECTION_QUIESCING: MQLONG = 2202;
-///
-/// # References
-/// * [IBM `MQRC_CONNECTION_STOPPING` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042450_.html)
+/// [IBM `MQRC_CONNECTION_STOPPING` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042450_.html)
 pub const MQRC_CONNECTION_STOPPING: MQLONG = 2203;
-///
-/// # References
-/// * [IBM `MQRC_ADAPTER_NOT_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042460_.html)
+/// [IBM `MQRC_ADAPTER_NOT_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042460_.html)
 pub const MQRC_ADAPTER_NOT_AVAILABLE: MQLONG = 2204;
-///
-/// # References
-/// * [IBM `MQRC_MSG_ID_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042470_.html)
+/// [IBM `MQRC_MSG_ID_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042470_.html)
 pub const MQRC_MSG_ID_ERROR: MQLONG = 2206;
-///
-/// # References
-/// * [IBM `MQRC_CORREL_ID_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042480_.html)
+/// [IBM `MQRC_CORREL_ID_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042480_.html)
 pub const MQRC_CORREL_ID_ERROR: MQLONG = 2207;
-///
-/// # References
-/// * [IBM `MQRC_FILE_SYSTEM_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042490_.html)
+/// [IBM `MQRC_FILE_SYSTEM_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042490_.html)
 pub const MQRC_FILE_SYSTEM_ERROR: MQLONG = 2208;
-///
-/// # References
-/// * [IBM `MQRC_NO_MSG_LOCKED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042500_.html)
+/// [IBM `MQRC_NO_MSG_LOCKED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042500_.html)
 pub const MQRC_NO_MSG_LOCKED: MQLONG = 2209;
 pub const MQRC_SOAP_DOTNET_ERROR: MQLONG = 2210;
 pub const MQRC_SOAP_AXIS_ERROR: MQLONG = 2211;
 pub const MQRC_SOAP_URL_ERROR: MQLONG = 2212;
 pub const MQRC_FILE_NOT_AUDITED: MQLONG = 2216;
-///
-/// # References
-/// * [IBM `MQRC_CONNECTION_NOT_AUTHORIZED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042540_.html)
+/// [IBM `MQRC_CONNECTION_NOT_AUTHORIZED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042540_.html)
 pub const MQRC_CONNECTION_NOT_AUTHORIZED: MQLONG = 2217;
-///
-/// # References
-/// * [IBM `MQRC_MSG_TOO_BIG_FOR_CHANNEL` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042550_.html)
+/// [IBM `MQRC_MSG_TOO_BIG_FOR_CHANNEL` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042550_.html)
 pub const MQRC_MSG_TOO_BIG_FOR_CHANNEL: MQLONG = 2218;
-///
-/// # References
-/// * [IBM `MQRC_CALL_IN_PROGRESS` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042560_.html)
+/// [IBM `MQRC_CALL_IN_PROGRESS` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042560_.html)
 pub const MQRC_CALL_IN_PROGRESS: MQLONG = 2219;
-///
-/// # References
-/// * [IBM `MQRC_RMH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042570_.html)
+/// [IBM `MQRC_RMH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042570_.html)
 pub const MQRC_RMH_ERROR: MQLONG = 2220;
-///
-/// # References
-/// * [IBM `MQRC_Q_MGR_ACTIVE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042580_.html)
+/// [IBM `MQRC_Q_MGR_ACTIVE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042580_.html)
 pub const MQRC_Q_MGR_ACTIVE: MQLONG = 2222;
-///
-/// # References
-/// * [IBM `MQRC_Q_MGR_NOT_ACTIVE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042590_.html)
+/// [IBM `MQRC_Q_MGR_NOT_ACTIVE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042590_.html)
 pub const MQRC_Q_MGR_NOT_ACTIVE: MQLONG = 2223;
-///
-/// # References
-/// * [IBM `MQRC_Q_DEPTH_HIGH` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042600_.html)
+/// [IBM `MQRC_Q_DEPTH_HIGH` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042600_.html)
 pub const MQRC_Q_DEPTH_HIGH: MQLONG = 2224;
-///
-/// # References
-/// * [IBM `MQRC_Q_DEPTH_LOW` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042610_.html)
+/// [IBM `MQRC_Q_DEPTH_LOW` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042610_.html)
 pub const MQRC_Q_DEPTH_LOW: MQLONG = 2225;
-///
-/// # References
-/// * [IBM `MQRC_Q_SERVICE_INTERVAL_HIGH` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042620_.html)
+/// [IBM `MQRC_Q_SERVICE_INTERVAL_HIGH` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042620_.html)
 pub const MQRC_Q_SERVICE_INTERVAL_HIGH: MQLONG = 2226;
-///
-/// # References
-/// * [IBM `MQRC_Q_SERVICE_INTERVAL_OK` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042630_.html)
+/// [IBM `MQRC_Q_SERVICE_INTERVAL_OK` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042630_.html)
 pub const MQRC_Q_SERVICE_INTERVAL_OK: MQLONG = 2227;
-///
-/// # References
-/// * [IBM `MQRC_RFH_HEADER_FIELD_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042640_.html)
+/// [IBM `MQRC_RFH_HEADER_FIELD_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042640_.html)
 pub const MQRC_RFH_HEADER_FIELD_ERROR: MQLONG = 2228;
-///
-/// # References
-/// * [IBM `MQRC_RAS_PROPERTY_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042650_.html)
+/// [IBM `MQRC_RAS_PROPERTY_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042650_.html)
 pub const MQRC_RAS_PROPERTY_ERROR: MQLONG = 2229;
-///
-/// # References
-/// * [IBM `MQRC_UNIT_OF_WORK_NOT_STARTED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042660_.html)
+/// [IBM `MQRC_UNIT_OF_WORK_NOT_STARTED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042660_.html)
 pub const MQRC_UNIT_OF_WORK_NOT_STARTED: MQLONG = 2232;
-///
-/// # References
-/// * [IBM `MQRC_CHANNEL_AUTO_DEF_OK` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042670_.html)
+/// [IBM `MQRC_CHANNEL_AUTO_DEF_OK` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042670_.html)
 pub const MQRC_CHANNEL_AUTO_DEF_OK: MQLONG = 2233;
-///
-/// # References
-/// * [IBM `MQRC_CHANNEL_AUTO_DEF_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042680_.html)
+/// [IBM `MQRC_CHANNEL_AUTO_DEF_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042680_.html)
 pub const MQRC_CHANNEL_AUTO_DEF_ERROR: MQLONG = 2234;
-///
-/// # References
-/// * [IBM `MQRC_CFH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042690_.html)
+/// [IBM `MQRC_CFH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042690_.html)
 pub const MQRC_CFH_ERROR: MQLONG = 2235;
-///
-/// # References
-/// * [IBM `MQRC_CFIL_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042700_.html)
+/// [IBM `MQRC_CFIL_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042700_.html)
 pub const MQRC_CFIL_ERROR: MQLONG = 2236;
-///
-/// # References
-/// * [IBM `MQRC_CFIN_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042710_.html)
+/// [IBM `MQRC_CFIN_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042710_.html)
 pub const MQRC_CFIN_ERROR: MQLONG = 2237;
-///
-/// # References
-/// * [IBM `MQRC_CFSL_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042720_.html)
+/// [IBM `MQRC_CFSL_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042720_.html)
 pub const MQRC_CFSL_ERROR: MQLONG = 2238;
-///
-/// # References
-/// * [IBM `MQRC_CFST_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042730_.html)
+/// [IBM `MQRC_CFST_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042730_.html)
 pub const MQRC_CFST_ERROR: MQLONG = 2239;
-///
-/// # References
-/// * [IBM `MQRC_INCOMPLETE_GROUP` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042740_.html)
+/// [IBM `MQRC_INCOMPLETE_GROUP` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042740_.html)
 pub const MQRC_INCOMPLETE_GROUP: MQLONG = 2241;
-///
-/// # References
-/// * [IBM `MQRC_INCOMPLETE_MSG` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042750_.html)
+/// [IBM `MQRC_INCOMPLETE_MSG` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042750_.html)
 pub const MQRC_INCOMPLETE_MSG: MQLONG = 2242;
-///
-/// # References
-/// * [IBM `MQRC_INCONSISTENT_CCSIDS` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042760_.html)
+/// [IBM `MQRC_INCONSISTENT_CCSIDS` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042760_.html)
 pub const MQRC_INCONSISTENT_CCSIDS: MQLONG = 2243;
-///
-/// # References
-/// * [IBM `MQRC_INCONSISTENT_ENCODINGS` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042770_.html)
+/// [IBM `MQRC_INCONSISTENT_ENCODINGS` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042770_.html)
 pub const MQRC_INCONSISTENT_ENCODINGS: MQLONG = 2244;
-///
-/// # References
-/// * [IBM `MQRC_INCONSISTENT_UOW` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042780_.html)
+/// [IBM `MQRC_INCONSISTENT_UOW` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042780_.html)
 pub const MQRC_INCONSISTENT_UOW: MQLONG = 2245;
-///
-/// # References
-/// * [IBM `MQRC_INVALID_MSG_UNDER_CURSOR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042790_.html)
+/// [IBM `MQRC_INVALID_MSG_UNDER_CURSOR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042790_.html)
 pub const MQRC_INVALID_MSG_UNDER_CURSOR: MQLONG = 2246;
-///
-/// # References
-/// * [IBM `MQRC_MATCH_OPTIONS_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042800_.html)
+/// [IBM `MQRC_MATCH_OPTIONS_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042800_.html)
 pub const MQRC_MATCH_OPTIONS_ERROR: MQLONG = 2247;
-///
-/// # References
-/// * [IBM `MQRC_MDE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042810_.html)
+/// [IBM `MQRC_MDE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042810_.html)
 pub const MQRC_MDE_ERROR: MQLONG = 2248;
-///
-/// # References
-/// * [IBM `MQRC_MSG_FLAGS_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042820_.html)
+/// [IBM `MQRC_MSG_FLAGS_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042820_.html)
 pub const MQRC_MSG_FLAGS_ERROR: MQLONG = 2249;
-///
-/// # References
-/// * [IBM `MQRC_MSG_SEQ_NUMBER_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042830_.html)
+/// [IBM `MQRC_MSG_SEQ_NUMBER_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042830_.html)
 pub const MQRC_MSG_SEQ_NUMBER_ERROR: MQLONG = 2250;
-///
-/// # References
-/// * [IBM `MQRC_OFFSET_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042840_.html)
+/// [IBM `MQRC_OFFSET_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042840_.html)
 pub const MQRC_OFFSET_ERROR: MQLONG = 2251;
-///
-/// # References
-/// * [IBM `MQRC_ORIGINAL_LENGTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042850_.html)
+/// [IBM `MQRC_ORIGINAL_LENGTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042850_.html)
 pub const MQRC_ORIGINAL_LENGTH_ERROR: MQLONG = 2252;
-///
-/// # References
-/// * [IBM `MQRC_SEGMENT_LENGTH_ZERO` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042860_.html)
+/// [IBM `MQRC_SEGMENT_LENGTH_ZERO` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042860_.html)
 pub const MQRC_SEGMENT_LENGTH_ZERO: MQLONG = 2253;
-///
-/// # References
-/// * [IBM `MQRC_UOW_NOT_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042870_.html)
+/// [IBM `MQRC_UOW_NOT_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042870_.html)
 pub const MQRC_UOW_NOT_AVAILABLE: MQLONG = 2255;
-///
-/// # References
-/// * [IBM `MQRC_WRONG_GMO_VERSION` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042880_.html)
+/// [IBM `MQRC_WRONG_GMO_VERSION` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042880_.html)
 pub const MQRC_WRONG_GMO_VERSION: MQLONG = 2256;
-///
-/// # References
-/// * [IBM `MQRC_WRONG_MD_VERSION` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042890_.html)
+/// [IBM `MQRC_WRONG_MD_VERSION` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042890_.html)
 pub const MQRC_WRONG_MD_VERSION: MQLONG = 2257;
-///
-/// # References
-/// * [IBM `MQRC_GROUP_ID_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042900_.html)
+/// [IBM `MQRC_GROUP_ID_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042900_.html)
 pub const MQRC_GROUP_ID_ERROR: MQLONG = 2258;
-///
-/// # References
-/// * [IBM `MQRC_INCONSISTENT_BROWSE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042910_.html)
+/// [IBM `MQRC_INCONSISTENT_BROWSE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042910_.html)
 pub const MQRC_INCONSISTENT_BROWSE: MQLONG = 2259;
-///
-/// # References
-/// * [IBM `MQRC_XQH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042920_.html)
+/// [IBM `MQRC_XQH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042920_.html)
 pub const MQRC_XQH_ERROR: MQLONG = 2260;
-///
-/// # References
-/// * [IBM `MQRC_SRC_ENV_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042930_.html)
+/// [IBM `MQRC_SRC_ENV_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042930_.html)
 pub const MQRC_SRC_ENV_ERROR: MQLONG = 2261;
-///
-/// # References
-/// * [IBM `MQRC_SRC_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042940_.html)
+/// [IBM `MQRC_SRC_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042940_.html)
 pub const MQRC_SRC_NAME_ERROR: MQLONG = 2262;
-///
-/// # References
-/// * [IBM `MQRC_DEST_ENV_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042950_.html)
+/// [IBM `MQRC_DEST_ENV_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042950_.html)
 pub const MQRC_DEST_ENV_ERROR: MQLONG = 2263;
-///
-/// # References
-/// * [IBM `MQRC_DEST_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042960_.html)
+/// [IBM `MQRC_DEST_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042960_.html)
 pub const MQRC_DEST_NAME_ERROR: MQLONG = 2264;
-///
-/// # References
-/// * [IBM `MQRC_TM_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042970_.html)
+/// [IBM `MQRC_TM_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042970_.html)
 pub const MQRC_TM_ERROR: MQLONG = 2265;
-///
-/// # References
-/// * [IBM `MQRC_CLUSTER_EXIT_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042980_.html)
+/// [IBM `MQRC_CLUSTER_EXIT_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042980_.html)
 pub const MQRC_CLUSTER_EXIT_ERROR: MQLONG = 2266;
-///
-/// # References
-/// * [IBM `MQRC_CLUSTER_EXIT_LOAD_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042990_.html)
+/// [IBM `MQRC_CLUSTER_EXIT_LOAD_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042990_.html)
 pub const MQRC_CLUSTER_EXIT_LOAD_ERROR: MQLONG = 2267;
-///
-/// # References
-/// * [IBM `MQRC_CLUSTER_PUT_INHIBITED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043000_.html)
+/// [IBM `MQRC_CLUSTER_PUT_INHIBITED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043000_.html)
 pub const MQRC_CLUSTER_PUT_INHIBITED: MQLONG = 2268;
-///
-/// # References
-/// * [IBM `MQRC_CLUSTER_RESOURCE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043010_.html)
+/// [IBM `MQRC_CLUSTER_RESOURCE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043010_.html)
 pub const MQRC_CLUSTER_RESOURCE_ERROR: MQLONG = 2269;
-///
-/// # References
-/// * [IBM `MQRC_NO_DESTINATIONS_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043020_.html)
+/// [IBM `MQRC_NO_DESTINATIONS_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043020_.html)
 pub const MQRC_NO_DESTINATIONS_AVAILABLE: MQLONG = 2270;
-///
-/// # References
-/// * [IBM `MQRC_CONN_TAG_IN_USE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043030_.html)
+/// [IBM `MQRC_CONN_TAG_IN_USE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043030_.html)
 pub const MQRC_CONN_TAG_IN_USE: MQLONG = 2271;
-///
-/// # References
-/// * [IBM `MQRC_PARTIALLY_CONVERTED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043040_.html)
+/// [IBM `MQRC_PARTIALLY_CONVERTED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043040_.html)
 pub const MQRC_PARTIALLY_CONVERTED: MQLONG = 2272;
-///
-/// # References
-/// * [IBM `MQRC_CONNECTION_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043050_.html)
+/// [IBM `MQRC_CONNECTION_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043050_.html)
 pub const MQRC_CONNECTION_ERROR: MQLONG = 2273;
-///
-/// # References
-/// * [IBM `MQRC_OPTION_ENVIRONMENT_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043060_.html)
+/// [IBM `MQRC_OPTION_ENVIRONMENT_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043060_.html)
 pub const MQRC_OPTION_ENVIRONMENT_ERROR: MQLONG = 2274;
-///
-/// # References
-/// * [IBM `MQRC_CD_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043070_.html)
+/// [IBM `MQRC_CD_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043070_.html)
 pub const MQRC_CD_ERROR: MQLONG = 2277;
-///
-/// # References
-/// * [IBM `MQRC_CLIENT_CONN_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043080_.html)
+/// [IBM `MQRC_CLIENT_CONN_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043080_.html)
 pub const MQRC_CLIENT_CONN_ERROR: MQLONG = 2278;
-///
-/// # References
-/// * [IBM `MQRC_CHANNEL_STOPPED_BY_USER` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043090_.html)
+/// [IBM `MQRC_CHANNEL_STOPPED_BY_USER` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043090_.html)
 pub const MQRC_CHANNEL_STOPPED_BY_USER: MQLONG = 2279;
-///
-/// # References
-/// * [IBM `MQRC_HCONFIG_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043100_.html)
+/// [IBM `MQRC_HCONFIG_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043100_.html)
 pub const MQRC_HCONFIG_ERROR: MQLONG = 2280;
-///
-/// # References
-/// * [IBM `MQRC_FUNCTION_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043110_.html)
+/// [IBM `MQRC_FUNCTION_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043110_.html)
 pub const MQRC_FUNCTION_ERROR: MQLONG = 2281;
-///
-/// # References
-/// * [IBM `MQRC_CHANNEL_STARTED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043120_.html)
+/// [IBM `MQRC_CHANNEL_STARTED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043120_.html)
 pub const MQRC_CHANNEL_STARTED: MQLONG = 2282;
-///
-/// # References
-/// * [IBM `MQRC_CHANNEL_STOPPED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043130_.html)
+/// [IBM `MQRC_CHANNEL_STOPPED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043130_.html)
 pub const MQRC_CHANNEL_STOPPED: MQLONG = 2283;
-///
-/// # References
-/// * [IBM `MQRC_CHANNEL_CONV_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043140_.html)
+/// [IBM `MQRC_CHANNEL_CONV_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043140_.html)
 pub const MQRC_CHANNEL_CONV_ERROR: MQLONG = 2284;
-///
-/// # References
-/// * [IBM `MQRC_SERVICE_NOT_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043150_.html)
+/// [IBM `MQRC_SERVICE_NOT_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043150_.html)
 pub const MQRC_SERVICE_NOT_AVAILABLE: MQLONG = 2285;
-///
-/// # References
-/// * [IBM `MQRC_INITIALIZATION_FAILED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043160_.html)
+/// [IBM `MQRC_INITIALIZATION_FAILED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043160_.html)
 pub const MQRC_INITIALIZATION_FAILED: MQLONG = 2286;
-///
-/// # References
-/// * [IBM `MQRC_TERMINATION_FAILED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043170_.html)
+/// [IBM `MQRC_TERMINATION_FAILED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043170_.html)
 pub const MQRC_TERMINATION_FAILED: MQLONG = 2287;
-///
-/// # References
-/// * [IBM `MQRC_UNKNOWN_Q_NAME` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043180_.html)
+/// [IBM `MQRC_UNKNOWN_Q_NAME` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043180_.html)
 pub const MQRC_UNKNOWN_Q_NAME: MQLONG = 2288;
-///
-/// # References
-/// * [IBM `MQRC_SERVICE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043190_.html)
+/// [IBM `MQRC_SERVICE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043190_.html)
 pub const MQRC_SERVICE_ERROR: MQLONG = 2289;
-///
-/// # References
-/// * [IBM `MQRC_Q_ALREADY_EXISTS` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043200_.html)
+/// [IBM `MQRC_Q_ALREADY_EXISTS` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043200_.html)
 pub const MQRC_Q_ALREADY_EXISTS: MQLONG = 2290;
-///
-/// # References
-/// * [IBM `MQRC_USER_ID_NOT_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043210_.html)
+/// [IBM `MQRC_USER_ID_NOT_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043210_.html)
 pub const MQRC_USER_ID_NOT_AVAILABLE: MQLONG = 2291;
-///
-/// # References
-/// * [IBM `MQRC_UNKNOWN_ENTITY` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043220_.html)
+/// [IBM `MQRC_UNKNOWN_ENTITY` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043220_.html)
 pub const MQRC_UNKNOWN_ENTITY: MQLONG = 2292;
 pub const MQRC_UNKNOWN_AUTH_ENTITY: MQLONG = 2293;
-///
-/// # References
-/// * [IBM `MQRC_UNKNOWN_REF_OBJECT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043230_.html)
+/// [IBM `MQRC_UNKNOWN_REF_OBJECT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043230_.html)
 pub const MQRC_UNKNOWN_REF_OBJECT: MQLONG = 2294;
-///
-/// # References
-/// * [IBM `MQRC_CHANNEL_ACTIVATED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043240_.html)
+/// [IBM `MQRC_CHANNEL_ACTIVATED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043240_.html)
 pub const MQRC_CHANNEL_ACTIVATED: MQLONG = 2295;
-///
-/// # References
-/// * [IBM `MQRC_CHANNEL_NOT_ACTIVATED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043250_.html)
+/// [IBM `MQRC_CHANNEL_NOT_ACTIVATED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043250_.html)
 pub const MQRC_CHANNEL_NOT_ACTIVATED: MQLONG = 2296;
-///
-/// # References
-/// * [IBM `MQRC_UOW_CANCELED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043260_.html)
+/// [IBM `MQRC_UOW_CANCELED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043260_.html)
 pub const MQRC_UOW_CANCELED: MQLONG = 2297;
-///
-/// # References
-/// * [IBM `MQRC_FUNCTION_NOT_SUPPORTED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043270_.html)
+/// [IBM `MQRC_FUNCTION_NOT_SUPPORTED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043270_.html)
 pub const MQRC_FUNCTION_NOT_SUPPORTED: MQLONG = 2298;
-///
-/// # References
-/// * [IBM `MQRC_SELECTOR_TYPE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043280_.html)
+/// [IBM `MQRC_SELECTOR_TYPE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043280_.html)
 pub const MQRC_SELECTOR_TYPE_ERROR: MQLONG = 2299;
-///
-/// # References
-/// * [IBM `MQRC_COMMAND_TYPE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043290_.html)
+/// [IBM `MQRC_COMMAND_TYPE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043290_.html)
 pub const MQRC_COMMAND_TYPE_ERROR: MQLONG = 2300;
-///
-/// # References
-/// * [IBM `MQRC_MULTIPLE_INSTANCE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043300_.html)
+/// [IBM `MQRC_MULTIPLE_INSTANCE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043300_.html)
 pub const MQRC_MULTIPLE_INSTANCE_ERROR: MQLONG = 2301;
-///
-/// # References
-/// * [IBM `MQRC_SYSTEM_ITEM_NOT_ALTERABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043310_.html)
+/// [IBM `MQRC_SYSTEM_ITEM_NOT_ALTERABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043310_.html)
 pub const MQRC_SYSTEM_ITEM_NOT_ALTERABLE: MQLONG = 2302;
-///
-/// # References
-/// * [IBM `MQRC_BAG_CONVERSION_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043320_.html)
+/// [IBM `MQRC_BAG_CONVERSION_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043320_.html)
 pub const MQRC_BAG_CONVERSION_ERROR: MQLONG = 2303;
-///
-/// # References
-/// * [IBM `MQRC_SELECTOR_OUT_OF_RANGE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043330_.html)
+/// [IBM `MQRC_SELECTOR_OUT_OF_RANGE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043330_.html)
 pub const MQRC_SELECTOR_OUT_OF_RANGE: MQLONG = 2304;
-///
-/// # References
-/// * [IBM `MQRC_SELECTOR_NOT_UNIQUE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043340_.html)
+/// [IBM `MQRC_SELECTOR_NOT_UNIQUE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043340_.html)
 pub const MQRC_SELECTOR_NOT_UNIQUE: MQLONG = 2305;
-///
-/// # References
-/// * [IBM `MQRC_INDEX_NOT_PRESENT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043350_.html)
+/// [IBM `MQRC_INDEX_NOT_PRESENT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043350_.html)
 pub const MQRC_INDEX_NOT_PRESENT: MQLONG = 2306;
-///
-/// # References
-/// * [IBM `MQRC_STRING_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043360_.html)
+/// [IBM `MQRC_STRING_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043360_.html)
 pub const MQRC_STRING_ERROR: MQLONG = 2307;
-///
-/// # References
-/// * [IBM `MQRC_ENCODING_NOT_SUPPORTED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043370_.html)
+/// [IBM `MQRC_ENCODING_NOT_SUPPORTED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043370_.html)
 pub const MQRC_ENCODING_NOT_SUPPORTED: MQLONG = 2308;
-///
-/// # References
-/// * [IBM `MQRC_SELECTOR_NOT_PRESENT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043380_.html)
+/// [IBM `MQRC_SELECTOR_NOT_PRESENT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043380_.html)
 pub const MQRC_SELECTOR_NOT_PRESENT: MQLONG = 2309;
-///
-/// # References
-/// * [IBM `MQRC_OUT_SELECTOR_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043390_.html)
+/// [IBM `MQRC_OUT_SELECTOR_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043390_.html)
 pub const MQRC_OUT_SELECTOR_ERROR: MQLONG = 2310;
-///
-/// # References
-/// * [IBM `MQRC_STRING_TRUNCATED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043400_.html)
+/// [IBM `MQRC_STRING_TRUNCATED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043400_.html)
 pub const MQRC_STRING_TRUNCATED: MQLONG = 2311;
-///
-/// # References
-/// * [IBM `MQRC_SELECTOR_WRONG_TYPE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043410_.html)
+/// [IBM `MQRC_SELECTOR_WRONG_TYPE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043410_.html)
 pub const MQRC_SELECTOR_WRONG_TYPE: MQLONG = 2312;
-///
-/// # References
-/// * [IBM `MQRC_INCONSISTENT_ITEM_TYPE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043420_.html)
+/// [IBM `MQRC_INCONSISTENT_ITEM_TYPE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043420_.html)
 pub const MQRC_INCONSISTENT_ITEM_TYPE: MQLONG = 2313;
-///
-/// # References
-/// * [IBM `MQRC_INDEX_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043430_.html)
+/// [IBM `MQRC_INDEX_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043430_.html)
 pub const MQRC_INDEX_ERROR: MQLONG = 2314;
-///
-/// # References
-/// * [IBM `MQRC_SYSTEM_BAG_NOT_ALTERABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043440_.html)
+/// [IBM `MQRC_SYSTEM_BAG_NOT_ALTERABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043440_.html)
 pub const MQRC_SYSTEM_BAG_NOT_ALTERABLE: MQLONG = 2315;
-///
-/// # References
-/// * [IBM `MQRC_ITEM_COUNT_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043450_.html)
+/// [IBM `MQRC_ITEM_COUNT_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043450_.html)
 pub const MQRC_ITEM_COUNT_ERROR: MQLONG = 2316;
-///
-/// # References
-/// * [IBM `MQRC_FORMAT_NOT_SUPPORTED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043460_.html)
+/// [IBM `MQRC_FORMAT_NOT_SUPPORTED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043460_.html)
 pub const MQRC_FORMAT_NOT_SUPPORTED: MQLONG = 2317;
-///
-/// # References
-/// * [IBM `MQRC_SELECTOR_NOT_SUPPORTED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043470_.html)
+/// [IBM `MQRC_SELECTOR_NOT_SUPPORTED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043470_.html)
 pub const MQRC_SELECTOR_NOT_SUPPORTED: MQLONG = 2318;
-///
-/// # References
-/// * [IBM `MQRC_ITEM_VALUE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043480_.html)
+/// [IBM `MQRC_ITEM_VALUE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043480_.html)
 pub const MQRC_ITEM_VALUE_ERROR: MQLONG = 2319;
-///
-/// # References
-/// * [IBM `MQRC_HBAG_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043490_.html)
+/// [IBM `MQRC_HBAG_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043490_.html)
 pub const MQRC_HBAG_ERROR: MQLONG = 2320;
-///
-/// # References
-/// * [IBM `MQRC_PARAMETER_MISSING` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043500_.html)
+/// [IBM `MQRC_PARAMETER_MISSING` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043500_.html)
 pub const MQRC_PARAMETER_MISSING: MQLONG = 2321;
-///
-/// # References
-/// * [IBM `MQRC_CMD_SERVER_NOT_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043510_.html)
+/// [IBM `MQRC_CMD_SERVER_NOT_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043510_.html)
 pub const MQRC_CMD_SERVER_NOT_AVAILABLE: MQLONG = 2322;
-///
-/// # References
-/// * [IBM `MQRC_STRING_LENGTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043520_.html)
+/// [IBM `MQRC_STRING_LENGTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043520_.html)
 pub const MQRC_STRING_LENGTH_ERROR: MQLONG = 2323;
-///
-/// # References
-/// * [IBM `MQRC_INQUIRY_COMMAND_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043530_.html)
+/// [IBM `MQRC_INQUIRY_COMMAND_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043530_.html)
 pub const MQRC_INQUIRY_COMMAND_ERROR: MQLONG = 2324;
-///
-/// # References
-/// * [IBM `MQRC_NESTED_BAG_NOT_SUPPORTED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043540_.html)
+/// [IBM `MQRC_NESTED_BAG_NOT_SUPPORTED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043540_.html)
 pub const MQRC_NESTED_BAG_NOT_SUPPORTED: MQLONG = 2325;
-///
-/// # References
-/// * [IBM `MQRC_BAG_WRONG_TYPE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043550_.html)
+/// [IBM `MQRC_BAG_WRONG_TYPE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043550_.html)
 pub const MQRC_BAG_WRONG_TYPE: MQLONG = 2326;
-///
-/// # References
-/// * [IBM `MQRC_ITEM_TYPE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043560_.html)
+/// [IBM `MQRC_ITEM_TYPE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043560_.html)
 pub const MQRC_ITEM_TYPE_ERROR: MQLONG = 2327;
-///
-/// # References
-/// * [IBM `MQRC_SYSTEM_BAG_NOT_DELETABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043570_.html)
+/// [IBM `MQRC_SYSTEM_BAG_NOT_DELETABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043570_.html)
 pub const MQRC_SYSTEM_BAG_NOT_DELETABLE: MQLONG = 2328;
-///
-/// # References
-/// * [IBM `MQRC_SYSTEM_ITEM_NOT_DELETABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043580_.html)
+/// [IBM `MQRC_SYSTEM_ITEM_NOT_DELETABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043580_.html)
 pub const MQRC_SYSTEM_ITEM_NOT_DELETABLE: MQLONG = 2329;
-///
-/// # References
-/// * [IBM `MQRC_CODED_CHAR_SET_ID_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043590_.html)
+/// [IBM `MQRC_CODED_CHAR_SET_ID_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043590_.html)
 pub const MQRC_CODED_CHAR_SET_ID_ERROR: MQLONG = 2330;
-///
-/// # References
-/// * [IBM `MQRC_MSG_TOKEN_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043600_.html)
+/// [IBM `MQRC_MSG_TOKEN_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043600_.html)
 pub const MQRC_MSG_TOKEN_ERROR: MQLONG = 2331;
-///
-/// # References
-/// * [IBM `MQRC_MISSING_WIH` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043610_.html)
+/// [IBM `MQRC_MISSING_WIH` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043610_.html)
 pub const MQRC_MISSING_WIH: MQLONG = 2332;
-///
-/// # References
-/// * [IBM `MQRC_WIH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043620_.html)
+/// [IBM `MQRC_WIH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043620_.html)
 pub const MQRC_WIH_ERROR: MQLONG = 2333;
-///
-/// # References
-/// * [IBM `MQRC_RFH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043630_.html)
+/// [IBM `MQRC_RFH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043630_.html)
 pub const MQRC_RFH_ERROR: MQLONG = 2334;
-///
-/// # References
-/// * [IBM `MQRC_RFH_STRING_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043640_.html)
+/// [IBM `MQRC_RFH_STRING_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043640_.html)
 pub const MQRC_RFH_STRING_ERROR: MQLONG = 2335;
-///
-/// # References
-/// * [IBM `MQRC_RFH_COMMAND_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043650_.html)
+/// [IBM `MQRC_RFH_COMMAND_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043650_.html)
 pub const MQRC_RFH_COMMAND_ERROR: MQLONG = 2336;
-///
-/// # References
-/// * [IBM `MQRC_RFH_PARM_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043660_.html)
+/// [IBM `MQRC_RFH_PARM_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043660_.html)
 pub const MQRC_RFH_PARM_ERROR: MQLONG = 2337;
-///
-/// # References
-/// * [IBM `MQRC_RFH_DUPLICATE_PARM` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043670_.html)
+/// [IBM `MQRC_RFH_DUPLICATE_PARM` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043670_.html)
 pub const MQRC_RFH_DUPLICATE_PARM: MQLONG = 2338;
-///
-/// # References
-/// * [IBM `MQRC_RFH_PARM_MISSING` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043680_.html)
+/// [IBM `MQRC_RFH_PARM_MISSING` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043680_.html)
 pub const MQRC_RFH_PARM_MISSING: MQLONG = 2339;
-///
-/// # References
-/// * [IBM `MQRC_CHAR_CONVERSION_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043690_.html)
+/// [IBM `MQRC_CHAR_CONVERSION_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043690_.html)
 pub const MQRC_CHAR_CONVERSION_ERROR: MQLONG = 2340;
-///
-/// # References
-/// * [IBM `MQRC_UCS2_CONVERSION_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043700_.html)
+/// [IBM `MQRC_UCS2_CONVERSION_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043700_.html)
 pub const MQRC_UCS2_CONVERSION_ERROR: MQLONG = 2341;
-///
-/// # References
-/// * [IBM `MQRC_DB2_NOT_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043710_.html)
+/// [IBM `MQRC_DB2_NOT_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043710_.html)
 pub const MQRC_DB2_NOT_AVAILABLE: MQLONG = 2342;
-///
-/// # References
-/// * [IBM `MQRC_OBJECT_NOT_UNIQUE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043720_.html)
+/// [IBM `MQRC_OBJECT_NOT_UNIQUE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043720_.html)
 pub const MQRC_OBJECT_NOT_UNIQUE: MQLONG = 2343;
-///
-/// # References
-/// * [IBM `MQRC_CONN_TAG_NOT_RELEASED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043730_.html)
+/// [IBM `MQRC_CONN_TAG_NOT_RELEASED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043730_.html)
 pub const MQRC_CONN_TAG_NOT_RELEASED: MQLONG = 2344;
-///
-/// # References
-/// * [IBM `MQRC_CF_NOT_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043740_.html)
+/// [IBM `MQRC_CF_NOT_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043740_.html)
 pub const MQRC_CF_NOT_AVAILABLE: MQLONG = 2345;
-///
-/// # References
-/// * [IBM `MQRC_CF_STRUC_IN_USE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043750_.html)
+/// [IBM `MQRC_CF_STRUC_IN_USE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043750_.html)
 pub const MQRC_CF_STRUC_IN_USE: MQLONG = 2346;
-///
-/// # References
-/// * [IBM `MQRC_CF_STRUC_LIST_HDR_IN_USE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043760_.html)
+/// [IBM `MQRC_CF_STRUC_LIST_HDR_IN_USE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043760_.html)
 pub const MQRC_CF_STRUC_LIST_HDR_IN_USE: MQLONG = 2347;
-///
-/// # References
-/// * [IBM `MQRC_CF_STRUC_AUTH_FAILED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043770_.html)
+/// [IBM `MQRC_CF_STRUC_AUTH_FAILED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043770_.html)
 pub const MQRC_CF_STRUC_AUTH_FAILED: MQLONG = 2348;
-///
-/// # References
-/// * [IBM `MQRC_CF_STRUC_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043780_.html)
+/// [IBM `MQRC_CF_STRUC_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043780_.html)
 pub const MQRC_CF_STRUC_ERROR: MQLONG = 2349;
-///
-/// # References
-/// * [IBM `MQRC_CONN_TAG_NOT_USABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043790_.html)
+/// [IBM `MQRC_CONN_TAG_NOT_USABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043790_.html)
 pub const MQRC_CONN_TAG_NOT_USABLE: MQLONG = 2350;
-///
-/// # References
-/// * [IBM `MQRC_GLOBAL_UOW_CONFLICT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043800_.html)
+/// [IBM `MQRC_GLOBAL_UOW_CONFLICT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043800_.html)
 pub const MQRC_GLOBAL_UOW_CONFLICT: MQLONG = 2351;
-///
-/// # References
-/// * [IBM `MQRC_LOCAL_UOW_CONFLICT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043810_.html)
+/// [IBM `MQRC_LOCAL_UOW_CONFLICT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043810_.html)
 pub const MQRC_LOCAL_UOW_CONFLICT: MQLONG = 2352;
-///
-/// # References
-/// * [IBM `MQRC_HANDLE_IN_USE_FOR_UOW` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043820_.html)
+/// [IBM `MQRC_HANDLE_IN_USE_FOR_UOW` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043820_.html)
 pub const MQRC_HANDLE_IN_USE_FOR_UOW: MQLONG = 2353;
-///
-/// # References
-/// * [IBM `MQRC_UOW_ENLISTMENT_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043830_.html)
+/// [IBM `MQRC_UOW_ENLISTMENT_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043830_.html)
 pub const MQRC_UOW_ENLISTMENT_ERROR: MQLONG = 2354;
-///
-/// # References
-/// * [IBM `MQRC_UOW_MIX_NOT_SUPPORTED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043840_.html)
+/// [IBM `MQRC_UOW_MIX_NOT_SUPPORTED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043840_.html)
 pub const MQRC_UOW_MIX_NOT_SUPPORTED: MQLONG = 2355;
-///
-/// # References
-/// * [IBM `MQRC_WXP_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043850_.html)
+/// [IBM `MQRC_WXP_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043850_.html)
 pub const MQRC_WXP_ERROR: MQLONG = 2356;
-///
-/// # References
-/// * [IBM `MQRC_CURRENT_RECORD_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043860_.html)
+/// [IBM `MQRC_CURRENT_RECORD_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043860_.html)
 pub const MQRC_CURRENT_RECORD_ERROR: MQLONG = 2357;
-///
-/// # References
-/// * [IBM `MQRC_NEXT_OFFSET_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043870_.html)
+/// [IBM `MQRC_NEXT_OFFSET_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043870_.html)
 pub const MQRC_NEXT_OFFSET_ERROR: MQLONG = 2358;
-///
-/// # References
-/// * [IBM `MQRC_NO_RECORD_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043880_.html)
+/// [IBM `MQRC_NO_RECORD_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043880_.html)
 pub const MQRC_NO_RECORD_AVAILABLE: MQLONG = 2359;
-///
-/// # References
-/// * [IBM `MQRC_OBJECT_LEVEL_INCOMPATIBLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043890_.html)
+/// [IBM `MQRC_OBJECT_LEVEL_INCOMPATIBLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043890_.html)
 pub const MQRC_OBJECT_LEVEL_INCOMPATIBLE: MQLONG = 2360;
-///
-/// # References
-/// * [IBM `MQRC_NEXT_RECORD_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043900_.html)
+/// [IBM `MQRC_NEXT_RECORD_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043900_.html)
 pub const MQRC_NEXT_RECORD_ERROR: MQLONG = 2361;
-///
-/// # References
-/// * [IBM `MQRC_BACKOUT_THRESHOLD_REACHED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043910_.html)
+/// [IBM `MQRC_BACKOUT_THRESHOLD_REACHED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043910_.html)
 pub const MQRC_BACKOUT_THRESHOLD_REACHED: MQLONG = 2362;
-///
-/// # References
-/// * [IBM `MQRC_MSG_NOT_MATCHED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043920_.html)
+/// [IBM `MQRC_MSG_NOT_MATCHED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043920_.html)
 pub const MQRC_MSG_NOT_MATCHED: MQLONG = 2363;
-///
-/// # References
-/// * [IBM `MQRC_JMS_FORMAT_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043930_.html)
+/// [IBM `MQRC_JMS_FORMAT_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043930_.html)
 pub const MQRC_JMS_FORMAT_ERROR: MQLONG = 2364;
-///
-/// # References
-/// * [IBM `MQRC_SEGMENTS_NOT_SUPPORTED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043940_.html)
+/// [IBM `MQRC_SEGMENTS_NOT_SUPPORTED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043940_.html)
 pub const MQRC_SEGMENTS_NOT_SUPPORTED: MQLONG = 2365;
-///
-/// # References
-/// * [IBM `MQRC_WRONG_CF_LEVEL` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043950_.html)
+/// [IBM `MQRC_WRONG_CF_LEVEL` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043950_.html)
 pub const MQRC_WRONG_CF_LEVEL: MQLONG = 2366;
-///
-/// # References
-/// * [IBM `MQRC_CONFIG_CREATE_OBJECT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043960_.html)
+/// [IBM `MQRC_CONFIG_CREATE_OBJECT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043960_.html)
 pub const MQRC_CONFIG_CREATE_OBJECT: MQLONG = 2367;
-///
-/// # References
-/// * [IBM `MQRC_CONFIG_CHANGE_OBJECT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043970_.html)
+/// [IBM `MQRC_CONFIG_CHANGE_OBJECT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043970_.html)
 pub const MQRC_CONFIG_CHANGE_OBJECT: MQLONG = 2368;
-///
-/// # References
-/// * [IBM `MQRC_CONFIG_DELETE_OBJECT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043980_.html)
+/// [IBM `MQRC_CONFIG_DELETE_OBJECT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043980_.html)
 pub const MQRC_CONFIG_DELETE_OBJECT: MQLONG = 2369;
-///
-/// # References
-/// * [IBM `MQRC_CONFIG_REFRESH_OBJECT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043990_.html)
+/// [IBM `MQRC_CONFIG_REFRESH_OBJECT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043990_.html)
 pub const MQRC_CONFIG_REFRESH_OBJECT: MQLONG = 2370;
-///
-/// # References
-/// * [IBM `MQRC_CHANNEL_SSL_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044000_.html)
+/// [IBM `MQRC_CHANNEL_SSL_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044000_.html)
 pub const MQRC_CHANNEL_SSL_ERROR: MQLONG = 2371;
 pub const MQRC_PARTICIPANT_NOT_DEFINED: MQLONG = 2372;
-///
-/// # References
-/// * [IBM `MQRC_CF_STRUC_FAILED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044010_.html)
+/// [IBM `MQRC_CF_STRUC_FAILED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044010_.html)
 pub const MQRC_CF_STRUC_FAILED: MQLONG = 2373;
-///
-/// # References
-/// * [IBM `MQRC_API_EXIT_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044020_.html)
+/// [IBM `MQRC_API_EXIT_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044020_.html)
 pub const MQRC_API_EXIT_ERROR: MQLONG = 2374;
-///
-/// # References
-/// * [IBM `MQRC_API_EXIT_INIT_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044030_.html)
+/// [IBM `MQRC_API_EXIT_INIT_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044030_.html)
 pub const MQRC_API_EXIT_INIT_ERROR: MQLONG = 2375;
-///
-/// # References
-/// * [IBM `MQRC_API_EXIT_TERM_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044040_.html)
+/// [IBM `MQRC_API_EXIT_TERM_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044040_.html)
 pub const MQRC_API_EXIT_TERM_ERROR: MQLONG = 2376;
-///
-/// # References
-/// * [IBM `MQRC_EXIT_REASON_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044050_.html)
+/// [IBM `MQRC_EXIT_REASON_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044050_.html)
 pub const MQRC_EXIT_REASON_ERROR: MQLONG = 2377;
-///
-/// # References
-/// * [IBM `MQRC_RESERVED_VALUE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044060_.html)
+/// [IBM `MQRC_RESERVED_VALUE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044060_.html)
 pub const MQRC_RESERVED_VALUE_ERROR: MQLONG = 2378;
-///
-/// # References
-/// * [IBM `MQRC_NO_DATA_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044070_.html)
+/// [IBM `MQRC_NO_DATA_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044070_.html)
 pub const MQRC_NO_DATA_AVAILABLE: MQLONG = 2379;
-///
-/// # References
-/// * [IBM `MQRC_SCO_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044080_.html)
+/// [IBM `MQRC_SCO_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044080_.html)
 pub const MQRC_SCO_ERROR: MQLONG = 2380;
-///
-/// # References
-/// * [IBM `MQRC_KEY_REPOSITORY_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044090_.html)
+/// [IBM `MQRC_KEY_REPOSITORY_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044090_.html)
 pub const MQRC_KEY_REPOSITORY_ERROR: MQLONG = 2381;
-///
-/// # References
-/// * [IBM `MQRC_CRYPTO_HARDWARE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044100_.html)
+/// [IBM `MQRC_CRYPTO_HARDWARE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044100_.html)
 pub const MQRC_CRYPTO_HARDWARE_ERROR: MQLONG = 2382;
-///
-/// # References
-/// * [IBM `MQRC_AUTH_INFO_REC_COUNT_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044110_.html)
+/// [IBM `MQRC_AUTH_INFO_REC_COUNT_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044110_.html)
 pub const MQRC_AUTH_INFO_REC_COUNT_ERROR: MQLONG = 2383;
-///
-/// # References
-/// * [IBM `MQRC_AUTH_INFO_REC_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044120_.html)
+/// [IBM `MQRC_AUTH_INFO_REC_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044120_.html)
 pub const MQRC_AUTH_INFO_REC_ERROR: MQLONG = 2384;
-///
-/// # References
-/// * [IBM `MQRC_AIR_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044130_.html)
+/// [IBM `MQRC_AIR_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044130_.html)
 pub const MQRC_AIR_ERROR: MQLONG = 2385;
-///
-/// # References
-/// * [IBM `MQRC_AUTH_INFO_TYPE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044140_.html)
+/// [IBM `MQRC_AUTH_INFO_TYPE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044140_.html)
 pub const MQRC_AUTH_INFO_TYPE_ERROR: MQLONG = 2386;
-///
-/// # References
-/// * [IBM `MQRC_AUTH_INFO_CONN_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044150_.html)
+/// [IBM `MQRC_AUTH_INFO_CONN_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044150_.html)
 pub const MQRC_AUTH_INFO_CONN_NAME_ERROR: MQLONG = 2387;
-///
-/// # References
-/// * [IBM `MQRC_LDAP_USER_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044160_.html)
+/// [IBM `MQRC_LDAP_USER_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044160_.html)
 pub const MQRC_LDAP_USER_NAME_ERROR: MQLONG = 2388;
-///
-/// # References
-/// * [IBM `MQRC_LDAP_USER_NAME_LENGTH_ERR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044170_.html)
+/// [IBM `MQRC_LDAP_USER_NAME_LENGTH_ERR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044170_.html)
 pub const MQRC_LDAP_USER_NAME_LENGTH_ERR: MQLONG = 2389;
-///
-/// # References
-/// * [IBM `MQRC_LDAP_PASSWORD_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044180_.html)
+/// [IBM `MQRC_LDAP_PASSWORD_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044180_.html)
 pub const MQRC_LDAP_PASSWORD_ERROR: MQLONG = 2390;
-///
-/// # References
-/// * [IBM `MQRC_SSL_ALREADY_INITIALIZED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044190_.html)
+/// [IBM `MQRC_SSL_ALREADY_INITIALIZED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044190_.html)
 pub const MQRC_SSL_ALREADY_INITIALIZED: MQLONG = 2391;
-///
-/// # References
-/// * [IBM `MQRC_SSL_CONFIG_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044200_.html)
+/// [IBM `MQRC_SSL_CONFIG_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044200_.html)
 pub const MQRC_SSL_CONFIG_ERROR: MQLONG = 2392;
-///
-/// # References
-/// * [IBM `MQRC_SSL_INITIALIZATION_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044210_.html)
+/// [IBM `MQRC_SSL_INITIALIZATION_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044210_.html)
 pub const MQRC_SSL_INITIALIZATION_ERROR: MQLONG = 2393;
-///
-/// # References
-/// * [IBM `MQRC_Q_INDEX_TYPE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044220_.html)
+/// [IBM `MQRC_Q_INDEX_TYPE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044220_.html)
 pub const MQRC_Q_INDEX_TYPE_ERROR: MQLONG = 2394;
-///
-/// # References
-/// * [IBM `MQRC_CFBS_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044230_.html)
+/// [IBM `MQRC_CFBS_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044230_.html)
 pub const MQRC_CFBS_ERROR: MQLONG = 2395;
-///
-/// # References
-/// * [IBM `MQRC_SSL_NOT_ALLOWED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044240_.html)
+/// [IBM `MQRC_SSL_NOT_ALLOWED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044240_.html)
 pub const MQRC_SSL_NOT_ALLOWED: MQLONG = 2396;
-///
-/// # References
-/// * [IBM `MQRC_JSSE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044250_.html)
+/// [IBM `MQRC_JSSE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044250_.html)
 pub const MQRC_JSSE_ERROR: MQLONG = 2397;
-///
-/// # References
-/// * [IBM `MQRC_SSL_PEER_NAME_MISMATCH` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044260_.html)
+/// [IBM `MQRC_SSL_PEER_NAME_MISMATCH` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044260_.html)
 pub const MQRC_SSL_PEER_NAME_MISMATCH: MQLONG = 2398;
-///
-/// # References
-/// * [IBM `MQRC_SSL_PEER_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044270_.html)
+/// [IBM `MQRC_SSL_PEER_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044270_.html)
 pub const MQRC_SSL_PEER_NAME_ERROR: MQLONG = 2399;
-///
-/// # References
-/// * [IBM `MQRC_UNSUPPORTED_CIPHER_SUITE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044280_.html)
+/// [IBM `MQRC_UNSUPPORTED_CIPHER_SUITE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044280_.html)
 pub const MQRC_UNSUPPORTED_CIPHER_SUITE: MQLONG = 2400;
-///
-/// # References
-/// * [IBM `MQRC_SSL_CERTIFICATE_REVOKED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044290_.html)
+/// [IBM `MQRC_SSL_CERTIFICATE_REVOKED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044290_.html)
 pub const MQRC_SSL_CERTIFICATE_REVOKED: MQLONG = 2401;
-///
-/// # References
-/// * [IBM `MQRC_SSL_CERT_STORE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044300_.html)
+/// [IBM `MQRC_SSL_CERT_STORE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044300_.html)
 pub const MQRC_SSL_CERT_STORE_ERROR: MQLONG = 2402;
-///
-/// # References
-/// * [IBM `MQRC_CLIENT_EXIT_LOAD_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044310_.html)
+/// [IBM `MQRC_CLIENT_EXIT_LOAD_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044310_.html)
 pub const MQRC_CLIENT_EXIT_LOAD_ERROR: MQLONG = 2406;
-///
-/// # References
-/// * [IBM `MQRC_CLIENT_EXIT_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044320_.html)
+/// [IBM `MQRC_CLIENT_EXIT_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044320_.html)
 pub const MQRC_CLIENT_EXIT_ERROR: MQLONG = 2407;
 pub const MQRC_UOW_COMMITTED: MQLONG = 2408;
-///
-/// # References
-/// * [IBM `MQRC_SSL_KEY_RESET_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044330_.html)
+/// [IBM `MQRC_SSL_KEY_RESET_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044330_.html)
 pub const MQRC_SSL_KEY_RESET_ERROR: MQLONG = 2409;
 pub const MQRC_UNKNOWN_COMPONENT_NAME: MQLONG = 2410;
-///
-/// # References
-/// * [IBM `MQRC_LOGGER_STATUS` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044340_.html)
+/// [IBM `MQRC_LOGGER_STATUS` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044340_.html)
 pub const MQRC_LOGGER_STATUS: MQLONG = 2411;
-///
-/// # References
-/// * [IBM `MQRC_COMMAND_MQSC` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044350_.html)
+/// [IBM `MQRC_COMMAND_MQSC` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044350_.html)
 pub const MQRC_COMMAND_MQSC: MQLONG = 2412;
-///
-/// # References
-/// * [IBM `MQRC_COMMAND_PCF` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044360_.html)
+/// [IBM `MQRC_COMMAND_PCF` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044360_.html)
 pub const MQRC_COMMAND_PCF: MQLONG = 2413;
-///
-/// # References
-/// * [IBM `MQRC_CFIF_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044370_.html)
+/// [IBM `MQRC_CFIF_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044370_.html)
 pub const MQRC_CFIF_ERROR: MQLONG = 2414;
-///
-/// # References
-/// * [IBM `MQRC_CFSF_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044380_.html)
+/// [IBM `MQRC_CFSF_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044380_.html)
 pub const MQRC_CFSF_ERROR: MQLONG = 2415;
-///
-/// # References
-/// * [IBM `MQRC_CFGR_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044390_.html)
+/// [IBM `MQRC_CFGR_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044390_.html)
 pub const MQRC_CFGR_ERROR: MQLONG = 2416;
-///
-/// # References
-/// * [IBM `MQRC_MSG_NOT_ALLOWED_IN_GROUP` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044400_.html)
+/// [IBM `MQRC_MSG_NOT_ALLOWED_IN_GROUP` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044400_.html)
 pub const MQRC_MSG_NOT_ALLOWED_IN_GROUP: MQLONG = 2417;
-///
-/// # References
-/// * [IBM `MQRC_FILTER_OPERATOR_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044410_.html)
+/// [IBM `MQRC_FILTER_OPERATOR_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044410_.html)
 pub const MQRC_FILTER_OPERATOR_ERROR: MQLONG = 2418;
-///
-/// # References
-/// * [IBM `MQRC_NESTED_SELECTOR_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044420_.html)
+/// [IBM `MQRC_NESTED_SELECTOR_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044420_.html)
 pub const MQRC_NESTED_SELECTOR_ERROR: MQLONG = 2419;
-///
-/// # References
-/// * [IBM `MQRC_EPH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044430_.html)
+/// [IBM `MQRC_EPH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044430_.html)
 pub const MQRC_EPH_ERROR: MQLONG = 2420;
-///
-/// # References
-/// * [IBM `MQRC_RFH_FORMAT_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044440_.html)
+/// [IBM `MQRC_RFH_FORMAT_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044440_.html)
 pub const MQRC_RFH_FORMAT_ERROR: MQLONG = 2421;
-///
-/// # References
-/// * [IBM `MQRC_CFBF_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044450_.html)
+/// [IBM `MQRC_CFBF_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044450_.html)
 pub const MQRC_CFBF_ERROR: MQLONG = 2422;
-///
-/// # References
-/// * [IBM `MQRC_CLIENT_CHANNEL_CONFLICT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044460_.html)
+/// [IBM `MQRC_CLIENT_CHANNEL_CONFLICT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044460_.html)
 pub const MQRC_CLIENT_CHANNEL_CONFLICT: MQLONG = 2423;
-///
-/// # References
-/// * [IBM `MQRC_SD_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044470_.html)
+/// [IBM `MQRC_SD_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044470_.html)
 pub const MQRC_SD_ERROR: MQLONG = 2424;
-///
-/// # References
-/// * [IBM `MQRC_TOPIC_STRING_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044480_.html)
+/// [IBM `MQRC_TOPIC_STRING_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044480_.html)
 pub const MQRC_TOPIC_STRING_ERROR: MQLONG = 2425;
-///
-/// # References
-/// * [IBM `MQRC_STS_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044490_.html)
+/// [IBM `MQRC_STS_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044490_.html)
 pub const MQRC_STS_ERROR: MQLONG = 2426;
-///
-/// # References
-/// * [IBM `MQRC_NO_SUBSCRIPTION` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044500_.html)
+/// [IBM `MQRC_NO_SUBSCRIPTION` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044500_.html)
 pub const MQRC_NO_SUBSCRIPTION: MQLONG = 2428;
-///
-/// # References
-/// * [IBM `MQRC_SUBSCRIPTION_IN_USE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044510_.html)
+/// [IBM `MQRC_SUBSCRIPTION_IN_USE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044510_.html)
 pub const MQRC_SUBSCRIPTION_IN_USE: MQLONG = 2429;
-///
-/// # References
-/// * [IBM `MQRC_STAT_TYPE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044520_.html)
+/// [IBM `MQRC_STAT_TYPE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044520_.html)
 pub const MQRC_STAT_TYPE_ERROR: MQLONG = 2430;
-///
-/// # References
-/// * [IBM `MQRC_SUB_USER_DATA_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044530_.html)
+/// [IBM `MQRC_SUB_USER_DATA_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044530_.html)
 pub const MQRC_SUB_USER_DATA_ERROR: MQLONG = 2431;
-///
-/// # References
-/// * [IBM `MQRC_SUB_ALREADY_EXISTS` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044540_.html)
+/// [IBM `MQRC_SUB_ALREADY_EXISTS` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044540_.html)
 pub const MQRC_SUB_ALREADY_EXISTS: MQLONG = 2432;
-///
-/// # References
-/// * [IBM `MQRC_IDENTITY_MISMATCH` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044550_.html)
+/// [IBM `MQRC_IDENTITY_MISMATCH` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044550_.html)
 pub const MQRC_IDENTITY_MISMATCH: MQLONG = 2434;
-///
-/// # References
-/// * [IBM `MQRC_ALTER_SUB_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044560_.html)
+/// [IBM `MQRC_ALTER_SUB_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044560_.html)
 pub const MQRC_ALTER_SUB_ERROR: MQLONG = 2435;
-///
-/// # References
-/// * [IBM `MQRC_DURABILITY_NOT_ALLOWED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044570_.html)
+/// [IBM `MQRC_DURABILITY_NOT_ALLOWED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044570_.html)
 pub const MQRC_DURABILITY_NOT_ALLOWED: MQLONG = 2436;
-///
-/// # References
-/// * [IBM `MQRC_NO_RETAINED_MSG` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044580_.html)
+/// [IBM `MQRC_NO_RETAINED_MSG` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044580_.html)
 pub const MQRC_NO_RETAINED_MSG: MQLONG = 2437;
-///
-/// # References
-/// * [IBM `MQRC_SRO_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044590_.html)
+/// [IBM `MQRC_SRO_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044590_.html)
 pub const MQRC_SRO_ERROR: MQLONG = 2438;
-///
-/// # References
-/// * [IBM `MQRC_SUB_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044600_.html)
+/// [IBM `MQRC_SUB_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044600_.html)
 pub const MQRC_SUB_NAME_ERROR: MQLONG = 2440;
-///
-/// # References
-/// * [IBM `MQRC_OBJECT_STRING_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044610_.html)
+/// [IBM `MQRC_OBJECT_STRING_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044610_.html)
 pub const MQRC_OBJECT_STRING_ERROR: MQLONG = 2441;
-///
-/// # References
-/// * [IBM `MQRC_PROPERTY_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044620_.html)
+/// [IBM `MQRC_PROPERTY_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044620_.html)
 pub const MQRC_PROPERTY_NAME_ERROR: MQLONG = 2442;
-///
-/// # References
-/// * [IBM `MQRC_SEGMENTATION_NOT_ALLOWED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044630_.html)
+/// [IBM `MQRC_SEGMENTATION_NOT_ALLOWED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044630_.html)
 pub const MQRC_SEGMENTATION_NOT_ALLOWED: MQLONG = 2443;
-///
-/// # References
-/// * [IBM `MQRC_CBD_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044640_.html)
+/// [IBM `MQRC_CBD_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044640_.html)
 pub const MQRC_CBD_ERROR: MQLONG = 2444;
-///
-/// # References
-/// * [IBM `MQRC_CTLO_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044650_.html)
+/// [IBM `MQRC_CTLO_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044650_.html)
 pub const MQRC_CTLO_ERROR: MQLONG = 2445;
-///
-/// # References
-/// * [IBM `MQRC_NO_CALLBACKS_ACTIVE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044660_.html)
+/// [IBM `MQRC_NO_CALLBACKS_ACTIVE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044660_.html)
 pub const MQRC_NO_CALLBACKS_ACTIVE: MQLONG = 2446;
-///
-/// # References
-/// * [IBM `MQRC_CALLBACK_NOT_REGISTERED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044670_.html)
+/// [IBM `MQRC_CALLBACK_NOT_REGISTERED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044670_.html)
 pub const MQRC_CALLBACK_NOT_REGISTERED: MQLONG = 2448;
-///
-/// # References
-/// * [IBM `MQRC_OPTIONS_CHANGED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044690_.html)
+/// [IBM `MQRC_OPTIONS_CHANGED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044690_.html)
 pub const MQRC_OPTIONS_CHANGED: MQLONG = 2457;
-///
-/// # References
-/// * [IBM `MQRC_READ_AHEAD_MSGS` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044700_.html)
+/// [IBM `MQRC_READ_AHEAD_MSGS` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044700_.html)
 pub const MQRC_READ_AHEAD_MSGS: MQLONG = 2458;
-///
-/// # References
-/// * [IBM `MQRC_SELECTOR_SYNTAX_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044710_.html)
+/// [IBM `MQRC_SELECTOR_SYNTAX_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044710_.html)
 pub const MQRC_SELECTOR_SYNTAX_ERROR: MQLONG = 2459;
-///
-/// # References
-/// * [IBM `MQRC_HMSG_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044720_.html)
+/// [IBM `MQRC_HMSG_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044720_.html)
 pub const MQRC_HMSG_ERROR: MQLONG = 2460;
-///
-/// # References
-/// * [IBM `MQRC_CMHO_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044730_.html)
+/// [IBM `MQRC_CMHO_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044730_.html)
 pub const MQRC_CMHO_ERROR: MQLONG = 2461;
-///
-/// # References
-/// * [IBM `MQRC_DMHO_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044740_.html)
+/// [IBM `MQRC_DMHO_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044740_.html)
 pub const MQRC_DMHO_ERROR: MQLONG = 2462;
-///
-/// # References
-/// * [IBM `MQRC_SMPO_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044750_.html)
+/// [IBM `MQRC_SMPO_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044750_.html)
 pub const MQRC_SMPO_ERROR: MQLONG = 2463;
-///
-/// # References
-/// * [IBM `MQRC_IMPO_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044760_.html)
+/// [IBM `MQRC_IMPO_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044760_.html)
 pub const MQRC_IMPO_ERROR: MQLONG = 2464;
-///
-/// # References
-/// * [IBM `MQRC_PROPERTY_NAME_TOO_BIG` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044770_.html)
+/// [IBM `MQRC_PROPERTY_NAME_TOO_BIG` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044770_.html)
 pub const MQRC_PROPERTY_NAME_TOO_BIG: MQLONG = 2465;
-///
-/// # References
-/// * [IBM `MQRC_PROP_VALUE_NOT_CONVERTED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044780_.html)
+/// [IBM `MQRC_PROP_VALUE_NOT_CONVERTED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044780_.html)
 pub const MQRC_PROP_VALUE_NOT_CONVERTED: MQLONG = 2466;
-///
-/// # References
-/// * [IBM `MQRC_PROP_TYPE_NOT_SUPPORTED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044790_.html)
+/// [IBM `MQRC_PROP_TYPE_NOT_SUPPORTED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044790_.html)
 pub const MQRC_PROP_TYPE_NOT_SUPPORTED: MQLONG = 2467;
-///
-/// # References
-/// * [IBM `MQRC_PROPERTY_VALUE_TOO_BIG` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044800_.html)
+/// [IBM `MQRC_PROPERTY_VALUE_TOO_BIG` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044800_.html)
 pub const MQRC_PROPERTY_VALUE_TOO_BIG: MQLONG = 2469;
-///
-/// # References
-/// * [IBM `MQRC_PROP_CONV_NOT_SUPPORTED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044810_.html)
+/// [IBM `MQRC_PROP_CONV_NOT_SUPPORTED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044810_.html)
 pub const MQRC_PROP_CONV_NOT_SUPPORTED: MQLONG = 2470;
-///
-/// # References
-/// * [IBM `MQRC_PROPERTY_NOT_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044820_.html)
+/// [IBM `MQRC_PROPERTY_NOT_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044820_.html)
 pub const MQRC_PROPERTY_NOT_AVAILABLE: MQLONG = 2471;
-///
-/// # References
-/// * [IBM `MQRC_PROP_NUMBER_FORMAT_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044830_.html)
+/// [IBM `MQRC_PROP_NUMBER_FORMAT_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044830_.html)
 pub const MQRC_PROP_NUMBER_FORMAT_ERROR: MQLONG = 2472;
-///
-/// # References
-/// * [IBM `MQRC_PROPERTY_TYPE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044840_.html)
+/// [IBM `MQRC_PROPERTY_TYPE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044840_.html)
 pub const MQRC_PROPERTY_TYPE_ERROR: MQLONG = 2473;
-///
-/// # References
-/// * [IBM `MQRC_PROPERTIES_TOO_BIG` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044850_.html)
+/// [IBM `MQRC_PROPERTIES_TOO_BIG` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044850_.html)
 pub const MQRC_PROPERTIES_TOO_BIG: MQLONG = 2478;
-///
-/// # References
-/// * [IBM `MQRC_PUT_NOT_RETAINED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044860_.html)
+/// [IBM `MQRC_PUT_NOT_RETAINED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044860_.html)
 pub const MQRC_PUT_NOT_RETAINED: MQLONG = 2479;
-///
-/// # References
-/// * [IBM `MQRC_ALIAS_TARGTYPE_CHANGED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044870_.html)
+/// [IBM `MQRC_ALIAS_TARGTYPE_CHANGED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044870_.html)
 pub const MQRC_ALIAS_TARGTYPE_CHANGED: MQLONG = 2480;
-///
-/// # References
-/// * [IBM `MQRC_DMPO_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044880_.html)
+/// [IBM `MQRC_DMPO_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044880_.html)
 pub const MQRC_DMPO_ERROR: MQLONG = 2481;
-///
-/// # References
-/// * [IBM `MQRC_PD_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044890_.html)
+/// [IBM `MQRC_PD_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044890_.html)
 pub const MQRC_PD_ERROR: MQLONG = 2482;
-///
-/// # References
-/// * [IBM `MQRC_CALLBACK_TYPE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044900_.html)
+/// [IBM `MQRC_CALLBACK_TYPE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044900_.html)
 pub const MQRC_CALLBACK_TYPE_ERROR: MQLONG = 2483;
-///
-/// # References
-/// * [IBM `MQRC_CBD_OPTIONS_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044910_.html)
+/// [IBM `MQRC_CBD_OPTIONS_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044910_.html)
 pub const MQRC_CBD_OPTIONS_ERROR: MQLONG = 2484;
-///
-/// # References
-/// * [IBM `MQRC_MAX_MSG_LENGTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044920_.html)
+/// [IBM `MQRC_MAX_MSG_LENGTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044920_.html)
 pub const MQRC_MAX_MSG_LENGTH_ERROR: MQLONG = 2485;
-///
-/// # References
-/// * [IBM `MQRC_CALLBACK_ROUTINE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044930_.html)
+/// [IBM `MQRC_CALLBACK_ROUTINE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044930_.html)
 pub const MQRC_CALLBACK_ROUTINE_ERROR: MQLONG = 2486;
-///
-/// # References
-/// * [IBM `MQRC_CALLBACK_LINK_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044940_.html)
+/// [IBM `MQRC_CALLBACK_LINK_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044940_.html)
 pub const MQRC_CALLBACK_LINK_ERROR: MQLONG = 2487;
-///
-/// # References
-/// * [IBM `MQRC_OPERATION_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044950_.html)
+/// [IBM `MQRC_OPERATION_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044950_.html)
 pub const MQRC_OPERATION_ERROR: MQLONG = 2488;
-///
-/// # References
-/// * [IBM `MQRC_BMHO_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044960_.html)
+/// [IBM `MQRC_BMHO_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044960_.html)
 pub const MQRC_BMHO_ERROR: MQLONG = 2489;
-///
-/// # References
-/// * [IBM `MQRC_UNSUPPORTED_PROPERTY` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044970_.html)
+/// [IBM `MQRC_UNSUPPORTED_PROPERTY` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044970_.html)
 pub const MQRC_UNSUPPORTED_PROPERTY: MQLONG = 2490;
-///
-/// # References
-/// * [IBM `MQRC_MSG_LENGTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/returncode_2491.html)
+/// [IBM `MQRC_MSG_LENGTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/returncode_2491.html)
 pub const MQRC_MSG_LENGTH_ERROR: MQLONG = 2491;
-///
-/// # References
-/// * [IBM `MQRC_PROP_NAME_NOT_CONVERTED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044980_.html)
+/// [IBM `MQRC_PROP_NAME_NOT_CONVERTED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044980_.html)
 pub const MQRC_PROP_NAME_NOT_CONVERTED: MQLONG = 2492;
-///
-/// # References
-/// * [IBM `MQRC_GET_ENABLED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044990_.html)
+/// [IBM `MQRC_GET_ENABLED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044990_.html)
 pub const MQRC_GET_ENABLED: MQLONG = 2494;
-///
-/// # References
-/// * [IBM `MQRC_MODULE_NOT_FOUND` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045000_.html)
+/// [IBM `MQRC_MODULE_NOT_FOUND` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045000_.html)
 pub const MQRC_MODULE_NOT_FOUND: MQLONG = 2495;
-///
-/// # References
-/// * [IBM `MQRC_MODULE_INVALID` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045010_.html)
+/// [IBM `MQRC_MODULE_INVALID` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045010_.html)
 pub const MQRC_MODULE_INVALID: MQLONG = 2496;
-///
-/// # References
-/// * [IBM `MQRC_MODULE_ENTRY_NOT_FOUND` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045020_.html)
+/// [IBM `MQRC_MODULE_ENTRY_NOT_FOUND` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045020_.html)
 pub const MQRC_MODULE_ENTRY_NOT_FOUND: MQLONG = 2497;
-///
-/// # References
-/// * [IBM `MQRC_MIXED_CONTENT_NOT_ALLOWED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045030_.html)
+/// [IBM `MQRC_MIXED_CONTENT_NOT_ALLOWED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045030_.html)
 pub const MQRC_MIXED_CONTENT_NOT_ALLOWED: MQLONG = 2498;
-///
-/// # References
-/// * [IBM `MQRC_MSG_HANDLE_IN_USE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045040_.html)
+/// [IBM `MQRC_MSG_HANDLE_IN_USE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045040_.html)
 pub const MQRC_MSG_HANDLE_IN_USE: MQLONG = 2499;
-///
-/// # References
-/// * [IBM `MQRC_HCONN_ASYNC_ACTIVE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045050_.html)
+/// [IBM `MQRC_HCONN_ASYNC_ACTIVE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045050_.html)
 pub const MQRC_HCONN_ASYNC_ACTIVE: MQLONG = 2500;
-///
-/// # References
-/// * [IBM `MQRC_MHBO_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045060_.html)
+/// [IBM `MQRC_MHBO_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045060_.html)
 pub const MQRC_MHBO_ERROR: MQLONG = 2501;
-///
-/// # References
-/// * [IBM `MQRC_PUBLICATION_FAILURE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045070_.html)
+/// [IBM `MQRC_PUBLICATION_FAILURE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045070_.html)
 pub const MQRC_PUBLICATION_FAILURE: MQLONG = 2502;
-///
-/// # References
-/// * [IBM `MQRC_SUB_INHIBITED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045080_.html)
+/// [IBM `MQRC_SUB_INHIBITED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045080_.html)
 pub const MQRC_SUB_INHIBITED: MQLONG = 2503;
-///
-/// # References
-/// * [IBM `MQRC_SELECTOR_ALWAYS_FALSE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045090_.html)
+/// [IBM `MQRC_SELECTOR_ALWAYS_FALSE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045090_.html)
 pub const MQRC_SELECTOR_ALWAYS_FALSE: MQLONG = 2504;
-///
-/// # References
-/// * [IBM `MQRC_XEPO_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045100_.html)
+/// [IBM `MQRC_XEPO_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045100_.html)
 pub const MQRC_XEPO_ERROR: MQLONG = 2507;
-///
-/// # References
-/// * [IBM `MQRC_DURABILITY_NOT_ALTERABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045110_.html)
+/// [IBM `MQRC_DURABILITY_NOT_ALTERABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045110_.html)
 pub const MQRC_DURABILITY_NOT_ALTERABLE: MQLONG = 2509;
-///
-/// # References
-/// * [IBM `MQRC_TOPIC_NOT_ALTERABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045120_.html)
+/// [IBM `MQRC_TOPIC_NOT_ALTERABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045120_.html)
 pub const MQRC_TOPIC_NOT_ALTERABLE: MQLONG = 2510;
-///
-/// # References
-/// * [IBM `MQRC_SUBLEVEL_NOT_ALTERABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045130_.html)
+/// [IBM `MQRC_SUBLEVEL_NOT_ALTERABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045130_.html)
 pub const MQRC_SUBLEVEL_NOT_ALTERABLE: MQLONG = 2512;
-///
-/// # References
-/// * [IBM `MQRC_PROPERTY_NAME_LENGTH_ERR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045140_.html)
+/// [IBM `MQRC_PROPERTY_NAME_LENGTH_ERR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045140_.html)
 pub const MQRC_PROPERTY_NAME_LENGTH_ERR: MQLONG = 2513;
-///
-/// # References
-/// * [IBM `MQRC_DUPLICATE_GROUP_SUB` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045150_.html)
+/// [IBM `MQRC_DUPLICATE_GROUP_SUB` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045150_.html)
 pub const MQRC_DUPLICATE_GROUP_SUB: MQLONG = 2514;
-///
-/// # References
-/// * [IBM `MQRC_GROUPING_NOT_ALTERABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045160_.html)
+/// [IBM `MQRC_GROUPING_NOT_ALTERABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045160_.html)
 pub const MQRC_GROUPING_NOT_ALTERABLE: MQLONG = 2515;
-///
-/// # References
-/// * [IBM `MQRC_SELECTOR_INVALID_FOR_TYPE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045170_.html)
+/// [IBM `MQRC_SELECTOR_INVALID_FOR_TYPE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045170_.html)
 pub const MQRC_SELECTOR_INVALID_FOR_TYPE: MQLONG = 2516;
-///
-/// # References
-/// * [IBM `MQRC_HOBJ_QUIESCED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045180_.html)
+/// [IBM `MQRC_HOBJ_QUIESCED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045180_.html)
 pub const MQRC_HOBJ_QUIESCED: MQLONG = 2517;
-///
-/// # References
-/// * [IBM `MQRC_HOBJ_QUIESCED_NO_MSGS` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045190_.html)
+/// [IBM `MQRC_HOBJ_QUIESCED_NO_MSGS` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045190_.html)
 pub const MQRC_HOBJ_QUIESCED_NO_MSGS: MQLONG = 2518;
-///
-/// # References
-/// * [IBM `MQRC_SELECTION_STRING_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045200_.html)
+/// [IBM `MQRC_SELECTION_STRING_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045200_.html)
 pub const MQRC_SELECTION_STRING_ERROR: MQLONG = 2519;
-///
-/// # References
-/// * [IBM `MQRC_RES_OBJECT_STRING_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045210_.html)
+/// [IBM `MQRC_RES_OBJECT_STRING_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045210_.html)
 pub const MQRC_RES_OBJECT_STRING_ERROR: MQLONG = 2520;
-///
-/// # References
-/// * [IBM `MQRC_CONNECTION_SUSPENDED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045220_.html)
+/// [IBM `MQRC_CONNECTION_SUSPENDED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045220_.html)
 pub const MQRC_CONNECTION_SUSPENDED: MQLONG = 2521;
-///
-/// # References
-/// * [IBM `MQRC_INVALID_DESTINATION` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045230_.html)
+/// [IBM `MQRC_INVALID_DESTINATION` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045230_.html)
 pub const MQRC_INVALID_DESTINATION: MQLONG = 2522;
-///
-/// # References
-/// * [IBM `MQRC_INVALID_SUBSCRIPTION` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045240_.html)
+/// [IBM `MQRC_INVALID_SUBSCRIPTION` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045240_.html)
 pub const MQRC_INVALID_SUBSCRIPTION: MQLONG = 2523;
-///
-/// # References
-/// * [IBM `MQRC_SELECTOR_NOT_ALTERABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045250_.html)
+/// [IBM `MQRC_SELECTOR_NOT_ALTERABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045250_.html)
 pub const MQRC_SELECTOR_NOT_ALTERABLE: MQLONG = 2524;
-///
-/// # References
-/// * [IBM `MQRC_RETAINED_MSG_Q_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045260_.html)
+/// [IBM `MQRC_RETAINED_MSG_Q_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045260_.html)
 pub const MQRC_RETAINED_MSG_Q_ERROR: MQLONG = 2525;
-///
-/// # References
-/// * [IBM `MQRC_RETAINED_NOT_DELIVERED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045270_.html)
+/// [IBM `MQRC_RETAINED_NOT_DELIVERED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045270_.html)
 pub const MQRC_RETAINED_NOT_DELIVERED: MQLONG = 2526;
-///
-/// # References
-/// * [IBM `MQRC_RFH_RESTRICTED_FORMAT_ERR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045280_.html)
+/// [IBM `MQRC_RFH_RESTRICTED_FORMAT_ERR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045280_.html)
 pub const MQRC_RFH_RESTRICTED_FORMAT_ERR: MQLONG = 2527;
-///
-/// # References
-/// * [IBM `MQRC_CONNECTION_STOPPED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045290_.html)
+/// [IBM `MQRC_CONNECTION_STOPPED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045290_.html)
 pub const MQRC_CONNECTION_STOPPED: MQLONG = 2528;
-///
-/// # References
-/// * [IBM `MQRC_ASYNC_UOW_CONFLICT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045300_.html)
+/// [IBM `MQRC_ASYNC_UOW_CONFLICT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045300_.html)
 pub const MQRC_ASYNC_UOW_CONFLICT: MQLONG = 2529;
-///
-/// # References
-/// * [IBM `MQRC_ASYNC_XA_CONFLICT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045310_.html)
+/// [IBM `MQRC_ASYNC_XA_CONFLICT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045310_.html)
 pub const MQRC_ASYNC_XA_CONFLICT: MQLONG = 2530;
-///
-/// # References
-/// * [IBM `MQRC_PUBSUB_INHIBITED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045320_.html)
+/// [IBM `MQRC_PUBSUB_INHIBITED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045320_.html)
 pub const MQRC_PUBSUB_INHIBITED: MQLONG = 2531;
-///
-/// # References
-/// * [IBM `MQRC_MSG_HANDLE_COPY_FAILURE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045330_.html)
+/// [IBM `MQRC_MSG_HANDLE_COPY_FAILURE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045330_.html)
 pub const MQRC_MSG_HANDLE_COPY_FAILURE: MQLONG = 2532;
-///
-/// # References
-/// * [IBM `MQRC_DEST_CLASS_NOT_ALTERABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045340_.html)
+/// [IBM `MQRC_DEST_CLASS_NOT_ALTERABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045340_.html)
 pub const MQRC_DEST_CLASS_NOT_ALTERABLE: MQLONG = 2533;
-///
-/// # References
-/// * [IBM `MQRC_OPERATION_NOT_ALLOWED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045350_.html)
+/// [IBM `MQRC_OPERATION_NOT_ALLOWED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045350_.html)
 pub const MQRC_OPERATION_NOT_ALLOWED: MQLONG = 2534;
-///
-/// # References
-/// * [IBM `MQRC_ACTION_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045360_.html)
+/// [IBM `MQRC_ACTION_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045360_.html)
 pub const MQRC_ACTION_ERROR: MQLONG = 2535;
-///
-/// # References
-/// * [IBM `MQRC_CHANNEL_NOT_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045370_.html)
+/// [IBM `MQRC_CHANNEL_NOT_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045370_.html)
 pub const MQRC_CHANNEL_NOT_AVAILABLE: MQLONG = 2537;
-///
-/// # References
-/// * [IBM `MQRC_HOST_NOT_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045380_.html)
+/// [IBM `MQRC_HOST_NOT_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045380_.html)
 pub const MQRC_HOST_NOT_AVAILABLE: MQLONG = 2538;
-///
-/// # References
-/// * [IBM `MQRC_CHANNEL_CONFIG_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045390_.html)
+/// [IBM `MQRC_CHANNEL_CONFIG_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045390_.html)
 pub const MQRC_CHANNEL_CONFIG_ERROR: MQLONG = 2539;
-///
-/// # References
-/// * [IBM `MQRC_UNKNOWN_CHANNEL_NAME` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045400_.html)
+/// [IBM `MQRC_UNKNOWN_CHANNEL_NAME` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045400_.html)
 pub const MQRC_UNKNOWN_CHANNEL_NAME: MQLONG = 2540;
-///
-/// # References
-/// * [IBM `MQRC_LOOPING_PUBLICATION` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045410_.html)
+/// [IBM `MQRC_LOOPING_PUBLICATION` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045410_.html)
 pub const MQRC_LOOPING_PUBLICATION: MQLONG = 2541;
 pub const MQRC_ALREADY_JOINED: MQLONG = 2542;
-///
-/// # References
-/// * [IBM `MQRC_STANDBY_Q_MGR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045420_.html)
+/// [IBM `MQRC_STANDBY_Q_MGR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045420_.html)
 pub const MQRC_STANDBY_Q_MGR: MQLONG = 2543;
-///
-/// # References
-/// * [IBM `MQRC_RECONNECTING` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045430_.html)
+/// [IBM `MQRC_RECONNECTING` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045430_.html)
 pub const MQRC_RECONNECTING: MQLONG = 2544;
-///
-/// # References
-/// * [IBM `MQRC_RECONNECTED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045440_.html)
+/// [IBM `MQRC_RECONNECTED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045440_.html)
 pub const MQRC_RECONNECTED: MQLONG = 2545;
-///
-/// # References
-/// * [IBM `MQRC_RECONNECT_QMID_MISMATCH` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045450_.html)
+/// [IBM `MQRC_RECONNECT_QMID_MISMATCH` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045450_.html)
 pub const MQRC_RECONNECT_QMID_MISMATCH: MQLONG = 2546;
-///
-/// # References
-/// * [IBM `MQRC_RECONNECT_INCOMPATIBLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045460_.html)
+/// [IBM `MQRC_RECONNECT_INCOMPATIBLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045460_.html)
 pub const MQRC_RECONNECT_INCOMPATIBLE: MQLONG = 2547;
-///
-/// # References
-/// * [IBM `MQRC_RECONNECT_FAILED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045470_.html)
+/// [IBM `MQRC_RECONNECT_FAILED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045470_.html)
 pub const MQRC_RECONNECT_FAILED: MQLONG = 2548;
-///
-/// # References
-/// * [IBM `MQRC_CALL_INTERRUPTED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045480_.html)
+/// [IBM `MQRC_CALL_INTERRUPTED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045480_.html)
 pub const MQRC_CALL_INTERRUPTED: MQLONG = 2549;
-///
-/// # References
-/// * [IBM `MQRC_NO_SUBS_MATCHED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045490_.html)
+/// [IBM `MQRC_NO_SUBS_MATCHED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045490_.html)
 pub const MQRC_NO_SUBS_MATCHED: MQLONG = 2550;
-///
-/// # References
-/// * [IBM `MQRC_SELECTION_NOT_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045500_.html)
+/// [IBM `MQRC_SELECTION_NOT_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045500_.html)
 pub const MQRC_SELECTION_NOT_AVAILABLE: MQLONG = 2551;
-///
-/// # References
-/// * [IBM `MQRC_CHANNEL_SSL_WARNING` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045510_.html)
+/// [IBM `MQRC_CHANNEL_SSL_WARNING` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045510_.html)
 pub const MQRC_CHANNEL_SSL_WARNING: MQLONG = 2552;
-///
-/// # References
-/// * [IBM `MQRC_OCSP_URL_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045520_.html)
+/// [IBM `MQRC_OCSP_URL_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045520_.html)
 pub const MQRC_OCSP_URL_ERROR: MQLONG = 2553;
-///
-/// # References
-/// * [IBM `MQRC_CONTENT_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045530_.html)
+/// [IBM `MQRC_CONTENT_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045530_.html)
 pub const MQRC_CONTENT_ERROR: MQLONG = 2554;
-///
-/// # References
-/// * [IBM `MQRC_RECONNECT_Q_MGR_REQD` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045540_.html)
+/// [IBM `MQRC_RECONNECT_Q_MGR_REQD` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045540_.html)
 pub const MQRC_RECONNECT_Q_MGR_REQD: MQLONG = 2555;
-///
-/// # References
-/// * [IBM `MQRC_RECONNECT_TIMED_OUT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045550_.html)
+/// [IBM `MQRC_RECONNECT_TIMED_OUT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045550_.html)
 pub const MQRC_RECONNECT_TIMED_OUT: MQLONG = 2556;
-///
-/// # References
-/// * [IBM `MQRC_PUBLISH_EXIT_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045560_.html)
+/// [IBM `MQRC_PUBLISH_EXIT_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045560_.html)
 pub const MQRC_PUBLISH_EXIT_ERROR: MQLONG = 2557;
-///
-/// # References
-/// * [IBM `MQRC_COMMINFO_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045570_.html)
+/// [IBM `MQRC_COMMINFO_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045570_.html)
 pub const MQRC_COMMINFO_ERROR: MQLONG = 2558;
 pub const MQRC_DEF_SYNCPOINT_INHIBITED: MQLONG = 2559;
-///
-/// # References
-/// * [IBM `MQRC_MULTICAST_ONLY` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045580_.html)
+/// [IBM `MQRC_MULTICAST_ONLY` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045580_.html)
 pub const MQRC_MULTICAST_ONLY: MQLONG = 2560;
-///
-/// # References
-/// * [IBM `MQRC_DATA_SET_NOT_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045590_.html)
+/// [IBM `MQRC_DATA_SET_NOT_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045590_.html)
 pub const MQRC_DATA_SET_NOT_AVAILABLE: MQLONG = 2561;
-///
-/// # References
-/// * [IBM `MQRC_GROUPING_NOT_ALLOWED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045600_.html)
+/// [IBM `MQRC_GROUPING_NOT_ALLOWED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045600_.html)
 pub const MQRC_GROUPING_NOT_ALLOWED: MQLONG = 2562;
-///
-/// # References
-/// * [IBM `MQRC_GROUP_ADDRESS_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045610_.html)
+/// [IBM `MQRC_GROUP_ADDRESS_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045610_.html)
 pub const MQRC_GROUP_ADDRESS_ERROR: MQLONG = 2563;
-///
-/// # References
-/// * [IBM `MQRC_MULTICAST_CONFIG_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045620_.html)
+/// [IBM `MQRC_MULTICAST_CONFIG_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045620_.html)
 pub const MQRC_MULTICAST_CONFIG_ERROR: MQLONG = 2564;
-///
-/// # References
-/// * [IBM `MQRC_MULTICAST_INTERFACE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045630_.html)
+/// [IBM `MQRC_MULTICAST_INTERFACE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045630_.html)
 pub const MQRC_MULTICAST_INTERFACE_ERROR: MQLONG = 2565;
-///
-/// # References
-/// * [IBM `MQRC_MULTICAST_SEND_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045640_.html)
+/// [IBM `MQRC_MULTICAST_SEND_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045640_.html)
 pub const MQRC_MULTICAST_SEND_ERROR: MQLONG = 2566;
-///
-/// # References
-/// * [IBM `MQRC_MULTICAST_INTERNAL_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045650_.html)
+/// [IBM `MQRC_MULTICAST_INTERNAL_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045650_.html)
 pub const MQRC_MULTICAST_INTERNAL_ERROR: MQLONG = 2567;
-///
-/// # References
-/// * [IBM `MQRC_CONNECTION_NOT_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q114250_.html)
+/// [IBM `MQRC_CONNECTION_NOT_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q114250_.html)
 pub const MQRC_CONNECTION_NOT_AVAILABLE: MQLONG = 2568;
-///
-/// # References
-/// * [IBM `MQRC_SYNCPOINT_NOT_ALLOWED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045660_.html)
+/// [IBM `MQRC_SYNCPOINT_NOT_ALLOWED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045660_.html)
 pub const MQRC_SYNCPOINT_NOT_ALLOWED: MQLONG = 2569;
 pub const MQRC_SSL_ALT_PROVIDER_REQUIRED: MQLONG = 2570;
 pub const MQRC_MCAST_PUB_STATUS: MQLONG = 2571;
@@ -4614,196 +3624,106 @@ pub const MQRC_PRECONN_EXIT_LOAD_ERROR: MQLONG = 2573;
 pub const MQRC_PRECONN_EXIT_NOT_FOUND: MQLONG = 2574;
 pub const MQRC_PRECONN_EXIT_ERROR: MQLONG = 2575;
 pub const MQRC_CD_ARRAY_ERROR: MQLONG = 2576;
-///
-/// # References
-/// * [IBM `MQRC_CHANNEL_BLOCKED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q114930_.html)
+/// [IBM `MQRC_CHANNEL_BLOCKED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q114930_.html)
 pub const MQRC_CHANNEL_BLOCKED: MQLONG = 2577;
-///
-/// # References
-/// * [IBM `MQRC_CHANNEL_BLOCKED_WARNING` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q114940_.html)
+/// [IBM `MQRC_CHANNEL_BLOCKED_WARNING` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q114940_.html)
 pub const MQRC_CHANNEL_BLOCKED_WARNING: MQLONG = 2578;
 pub const MQRC_SUBSCRIPTION_CREATE: MQLONG = 2579;
 pub const MQRC_SUBSCRIPTION_DELETE: MQLONG = 2580;
 pub const MQRC_SUBSCRIPTION_CHANGE: MQLONG = 2581;
 pub const MQRC_SUBSCRIPTION_REFRESH: MQLONG = 2582;
-///
-/// # References
-/// * [IBM `MQRC_INSTALLATION_MISMATCH` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045670_.html)
+/// [IBM `MQRC_INSTALLATION_MISMATCH` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045670_.html)
 pub const MQRC_INSTALLATION_MISMATCH: MQLONG = 2583;
 pub const MQRC_NOT_PRIVILEGED: MQLONG = 2584;
 pub const MQRC_PROPERTIES_DISABLED: MQLONG = 2586;
-///
-/// # References
-/// * [IBM `MQRC_HMSG_NOT_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045680_.html)
+/// [IBM `MQRC_HMSG_NOT_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045680_.html)
 pub const MQRC_HMSG_NOT_AVAILABLE: MQLONG = 2587;
 pub const MQRC_EXIT_PROPS_NOT_SUPPORTED: MQLONG = 2588;
-///
-/// # References
-/// * [IBM `MQRC_INSTALLATION_MISSING` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045690_.html)
+/// [IBM `MQRC_INSTALLATION_MISSING` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045690_.html)
 pub const MQRC_INSTALLATION_MISSING: MQLONG = 2589;
-///
-/// # References
-/// * [IBM `MQRC_FASTPATH_NOT_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045700_.html)
+/// [IBM `MQRC_FASTPATH_NOT_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045700_.html)
 pub const MQRC_FASTPATH_NOT_AVAILABLE: MQLONG = 2590;
-///
-/// # References
-/// * [IBM `MQRC_CIPHER_SPEC_NOT_SUITE_B` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045710_.html)
+/// [IBM `MQRC_CIPHER_SPEC_NOT_SUITE_B` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045710_.html)
 pub const MQRC_CIPHER_SPEC_NOT_SUITE_B: MQLONG = 2591;
-///
-/// # References
-/// * [IBM `MQRC_SUITE_B_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045720_.html)
+/// [IBM `MQRC_SUITE_B_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045720_.html)
 pub const MQRC_SUITE_B_ERROR: MQLONG = 2592;
-///
-/// # References
-/// * [IBM `MQRC_CERT_VAL_POLICY_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045730_.html)
+/// [IBM `MQRC_CERT_VAL_POLICY_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045730_.html)
 pub const MQRC_CERT_VAL_POLICY_ERROR: MQLONG = 2593;
-///
-/// # References
-/// * [IBM `MQRC_PASSWORD_PROTECTION_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q120510_.html)
+/// [IBM `MQRC_PASSWORD_PROTECTION_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q120510_.html)
 pub const MQRC_PASSWORD_PROTECTION_ERROR: MQLONG = 2594;
-///
-/// # References
-/// * [IBM `MQRC_CSP_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q120520_.html)
+/// [IBM `MQRC_CSP_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q120520_.html)
 pub const MQRC_CSP_ERROR: MQLONG = 2595;
-///
-/// # References
-/// * [IBM `MQRC_CERT_LABEL_NOT_ALLOWED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q120530_.html)
+/// [IBM `MQRC_CERT_LABEL_NOT_ALLOWED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q120530_.html)
 pub const MQRC_CERT_LABEL_NOT_ALLOWED: MQLONG = 2596;
-///
-/// # References
-/// * [IBM `MQRC_ADMIN_TOPIC_STRING_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q120535_.html)
+/// [IBM `MQRC_ADMIN_TOPIC_STRING_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q120535_.html)
 pub const MQRC_ADMIN_TOPIC_STRING_ERROR: MQLONG = 2598;
 pub const MQRC_AMQP_NOT_AVAILABLE: MQLONG = 2599;
 pub const MQRC_CCDT_URL_ERROR: MQLONG = 2600;
-///
-/// # References
-/// * [IBM `MQRC_Q_MGR_RECONNECT_REQUESTED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q120538_.html)
+/// [IBM `MQRC_Q_MGR_RECONNECT_REQUESTED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q120538_.html)
 pub const MQRC_Q_MGR_RECONNECT_REQUESTED: MQLONG = 2601;
-///
-/// # References
-/// * [IBM `MQRC_BNO_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/reacode2602.html)
+/// [IBM `MQRC_BNO_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/reacode2602.html)
 pub const MQRC_BNO_ERROR: MQLONG = 2602;
 pub const MQRC_OUTBOUND_SNI_NOT_VALID: MQLONG = 2603;
 pub const MQRC_HTTPS_KEYSTORE_ERROR: MQLONG = 2604;
-///
-/// # References
-/// * [IBM `MQRC_REOPEN_EXCL_INPUT_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045740_.html)
+/// [IBM `MQRC_REOPEN_EXCL_INPUT_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045740_.html)
 pub const MQRC_REOPEN_EXCL_INPUT_ERROR: MQLONG = 6100;
-///
-/// # References
-/// * [IBM `MQRC_REOPEN_INQUIRE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045750_.html)
+/// [IBM `MQRC_REOPEN_INQUIRE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045750_.html)
 pub const MQRC_REOPEN_INQUIRE_ERROR: MQLONG = 6101;
-///
-/// # References
-/// * [IBM `MQRC_REOPEN_SAVED_CONTEXT_ERR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045760_.html)
+/// [IBM `MQRC_REOPEN_SAVED_CONTEXT_ERR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045760_.html)
 pub const MQRC_REOPEN_SAVED_CONTEXT_ERR: MQLONG = 6102;
-///
-/// # References
-/// * [IBM `MQRC_REOPEN_TEMPORARY_Q_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045770_.html)
+/// [IBM `MQRC_REOPEN_TEMPORARY_Q_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045770_.html)
 pub const MQRC_REOPEN_TEMPORARY_Q_ERROR: MQLONG = 6103;
-///
-/// # References
-/// * [IBM `MQRC_ATTRIBUTE_LOCKED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045780_.html)
+/// [IBM `MQRC_ATTRIBUTE_LOCKED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045780_.html)
 pub const MQRC_ATTRIBUTE_LOCKED: MQLONG = 6104;
-///
-/// # References
-/// * [IBM `MQRC_CURSOR_NOT_VALID` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045790_.html)
+/// [IBM `MQRC_CURSOR_NOT_VALID` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045790_.html)
 pub const MQRC_CURSOR_NOT_VALID: MQLONG = 6105;
-///
-/// # References
-/// * [IBM `MQRC_ENCODING_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045800_.html)
+/// [IBM `MQRC_ENCODING_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045800_.html)
 pub const MQRC_ENCODING_ERROR: MQLONG = 6106;
-///
-/// # References
-/// * [IBM `MQRC_STRUC_ID_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045810_.html)
+/// [IBM `MQRC_STRUC_ID_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045810_.html)
 pub const MQRC_STRUC_ID_ERROR: MQLONG = 6107;
-///
-/// # References
-/// * [IBM `MQRC_NULL_POINTER` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045820_.html)
+/// [IBM `MQRC_NULL_POINTER` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045820_.html)
 pub const MQRC_NULL_POINTER: MQLONG = 6108;
-///
-/// # References
-/// * [IBM `MQRC_NO_CONNECTION_REFERENCE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045830_.html)
+/// [IBM `MQRC_NO_CONNECTION_REFERENCE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045830_.html)
 pub const MQRC_NO_CONNECTION_REFERENCE: MQLONG = 6109;
-///
-/// # References
-/// * [IBM `MQRC_NO_BUFFER` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045840_.html)
+/// [IBM `MQRC_NO_BUFFER` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045840_.html)
 pub const MQRC_NO_BUFFER: MQLONG = 6110;
-///
-/// # References
-/// * [IBM `MQRC_BINARY_DATA_LENGTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045850_.html)
+/// [IBM `MQRC_BINARY_DATA_LENGTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045850_.html)
 pub const MQRC_BINARY_DATA_LENGTH_ERROR: MQLONG = 6111;
-///
-/// # References
-/// * [IBM `MQRC_BUFFER_NOT_AUTOMATIC` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045860_.html)
+/// [IBM `MQRC_BUFFER_NOT_AUTOMATIC` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045860_.html)
 pub const MQRC_BUFFER_NOT_AUTOMATIC: MQLONG = 6112;
-///
-/// # References
-/// * [IBM `MQRC_INSUFFICIENT_BUFFER` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045870_.html)
+/// [IBM `MQRC_INSUFFICIENT_BUFFER` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045870_.html)
 pub const MQRC_INSUFFICIENT_BUFFER: MQLONG = 6113;
-///
-/// # References
-/// * [IBM `MQRC_INSUFFICIENT_DATA` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045880_.html)
+/// [IBM `MQRC_INSUFFICIENT_DATA` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045880_.html)
 pub const MQRC_INSUFFICIENT_DATA: MQLONG = 6114;
-///
-/// # References
-/// * [IBM `MQRC_DATA_TRUNCATED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045890_.html)
+/// [IBM `MQRC_DATA_TRUNCATED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045890_.html)
 pub const MQRC_DATA_TRUNCATED: MQLONG = 6115;
-///
-/// # References
-/// * [IBM `MQRC_ZERO_LENGTH` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045900_.html)
+/// [IBM `MQRC_ZERO_LENGTH` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045900_.html)
 pub const MQRC_ZERO_LENGTH: MQLONG = 6116;
-///
-/// # References
-/// * [IBM `MQRC_NEGATIVE_LENGTH` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045910_.html)
+/// [IBM `MQRC_NEGATIVE_LENGTH` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045910_.html)
 pub const MQRC_NEGATIVE_LENGTH: MQLONG = 6117;
-///
-/// # References
-/// * [IBM `MQRC_NEGATIVE_OFFSET` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045920_.html)
+/// [IBM `MQRC_NEGATIVE_OFFSET` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045920_.html)
 pub const MQRC_NEGATIVE_OFFSET: MQLONG = 6118;
-///
-/// # References
-/// * [IBM `MQRC_INCONSISTENT_FORMAT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045930_.html)
+/// [IBM `MQRC_INCONSISTENT_FORMAT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045930_.html)
 pub const MQRC_INCONSISTENT_FORMAT: MQLONG = 6119;
-///
-/// # References
-/// * [IBM `MQRC_INCONSISTENT_OBJECT_STATE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045940_.html)
+/// [IBM `MQRC_INCONSISTENT_OBJECT_STATE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045940_.html)
 pub const MQRC_INCONSISTENT_OBJECT_STATE: MQLONG = 6120;
-///
-/// # References
-/// * [IBM `MQRC_CONTEXT_OBJECT_NOT_VALID` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045950_.html)
+/// [IBM `MQRC_CONTEXT_OBJECT_NOT_VALID` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045950_.html)
 pub const MQRC_CONTEXT_OBJECT_NOT_VALID: MQLONG = 6121;
-///
-/// # References
-/// * [IBM `MQRC_CONTEXT_OPEN_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045960_.html)
+/// [IBM `MQRC_CONTEXT_OPEN_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045960_.html)
 pub const MQRC_CONTEXT_OPEN_ERROR: MQLONG = 6122;
-///
-/// # References
-/// * [IBM `MQRC_STRUC_LENGTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045970_.html)
+/// [IBM `MQRC_STRUC_LENGTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045970_.html)
 pub const MQRC_STRUC_LENGTH_ERROR: MQLONG = 6123;
-///
-/// # References
-/// * [IBM `MQRC_NOT_CONNECTED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045980_.html)
+/// [IBM `MQRC_NOT_CONNECTED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045980_.html)
 pub const MQRC_NOT_CONNECTED: MQLONG = 6124;
-///
-/// # References
-/// * [IBM `MQRC_NOT_OPEN` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045990_.html)
+/// [IBM `MQRC_NOT_OPEN` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045990_.html)
 pub const MQRC_NOT_OPEN: MQLONG = 6125;
-///
-/// # References
-/// * [IBM `MQRC_DISTRIBUTION_LIST_EMPTY` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046000_.html)
+/// [IBM `MQRC_DISTRIBUTION_LIST_EMPTY` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046000_.html)
 pub const MQRC_DISTRIBUTION_LIST_EMPTY: MQLONG = 6126;
-///
-/// # References
-/// * [IBM `MQRC_INCONSISTENT_OPEN_OPTIONS` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046010_.html)
+/// [IBM `MQRC_INCONSISTENT_OPEN_OPTIONS` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046010_.html)
 pub const MQRC_INCONSISTENT_OPEN_OPTIONS: MQLONG = 6127;
-///
-/// # References
-/// * [IBM `MQRC_WRONG_VERSION` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046020_.html)
+/// [IBM `MQRC_WRONG_VERSION` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046020_.html)
 pub const MQRC_WRONG_VERSION: MQLONG = 6128;
-///
-/// # References
-/// * [IBM `MQRC_REFERENCE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046030_.html)
+/// [IBM `MQRC_REFERENCE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046030_.html)
 pub const MQRC_REFERENCE_ERROR: MQLONG = 6129;
 pub const MQRC_XR_NOT_AVAILABLE: MQLONG = 6130;
 pub const MQRC_SUB_JOIN_NOT_ALTERABLE: MQLONG = 29440;

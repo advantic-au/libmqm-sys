@@ -208,25 +208,109 @@ fn main() -> Result<(), io::Error> {
             use indoc::formatdoc;
             use io::Write as _;
             use quote::ToTokens as _;
-            use syn::{parse_quote, visit_mut::VisitMut};
+            use syn::parse_quote;
 
             use crate::{
                 doc_comments::{DescriptionRegex, FnParamExtract, StructFieldExtract},
-                mq_trait::{PrefixMqTypes, WrapperGenerator},
+                mq_trait::WrapperGenerator,
+                rustify::PrefixMqTypes,
             };
 
-            let source_trait: &[(_, syn::Ident, Option<syn::LitStr>, bool)] = &[
-                ("mqi.rs", syn::parse_quote!(Mqi), None, true),
-                ("mqai.rs", syn::parse_quote!(Mqai), Some(syn::parse_quote!("mqai")), true),
-                ("exits.rs", syn::parse_quote!(Exits), Some(syn::parse_quote!("exits")), false),
+            type SourceTrait<'a> = (&'a str, Option<syn::Ident>, syn::Path, Option<syn::LitStr>, bool);
+
+            let source_trait: &[SourceTrait] = &[
+                ("mqi.rs", syn::parse_quote!(Mqi), syn::parse_quote!(crate), None, true),
+                (
+                    "mqai.rs",
+                    syn::parse_quote!(Mqai),
+                    syn::parse_quote!(crate::mqai),
+                    syn::parse_quote!("mqai"),
+                    true,
+                ),
+                (
+                    "exits.rs",
+                    syn::parse_quote!(Exits),
+                    syn::parse_quote!(crate::exits),
+                    syn::parse_quote!("exits"),
+                    false,
+                ),
+                ("pcf.rs", None, syn::parse_quote!(crate::pcf), syn::parse_quote!("pcf"), false),
             ];
+
+            let mut arg_type = crate::rustify::FnArgType::new()
+                .replace_all("pCompCode", parse_quote!(&mut MQLONG))
+                .replace_all("pReason", parse_quote!(&mut MQLONG))
+                .replace_all("pHconn", parse_quote!(&mut MQHCONN))
+                .replace_all("pHobj", parse_quote!(&mut MQHOBJ))
+                .replace_all("pHmsg", parse_quote!(&mut MQHMSG))
+                .replace_all("pDataLength", parse_quote!(&mut MQLONG))
+                .replace_all("pName", parse_quote!(&MQCHARV)) // TODO: fix pName mutability
+                .replace_all("pObjDesc", parse_quote!(&mut MQOD))
+                .replace_all("pPutMsgOpts", parse_quote!(&mut MQPMO))
+                .replace_all("pGetMsgOpts", parse_quote!(&mut MQGMO))
+                .replace_all("pPropDesc", parse_quote!(&mut MQPD))
+                .replace_all("pBag", parse_quote!(&mut MQHBAG))
+                .replace_all("pByteStringLength", parse_quote!(&mut MQLONG))
+                .replace_all("pStringLength", parse_quote!(&mut MQLONG))
+                .replace_all("pOperator", parse_quote!(&mut MQLONG))
+                .replace_all("pCodedCharSetId", parse_quote!(&mut MQLONG))
+                .replace_all("pExitOpts", parse_quote!(Option<&MQXEPO>))
+                .replace_all("pExitParms", parse_quote!(&mut MQAXP))
+                .replace_all("pExitContext", parse_quote!(&mut MQAXC))
+                .replace_fns(
+                    ["MQCONN", "MQCONNX", "MQ_CONN_CALL", "MQ_CONNX_CALL"],
+                    "pQMgrName",
+                    &parse_quote!(&MQCHAR48),
+                )
+                .replace_fns(["MQCTL", "MQ_CTL_CALL"], "pControlOpts", &parse_quote!(&MQCTLO))
+                .replace_fns(["MQCRTMH", "MQ_CRTMH_CALL"], "pCrtMsgHOpts", &parse_quote!(&MQCMHO))
+                .replace_fns(["MQDLTMH", "MQ_DLTMH_CALL"], "pDltMsgHOpts", &parse_quote!(&MQDMHO))
+                .replace_fns(["MQDLTMP", "MQ_DLTMP_CALL"], "pDltPropOpts", &parse_quote!(&MQDMPO))
+                .replace_fns(["MQSUB", "MQ_SUB_CALL"], "pHobj", &parse_quote!(Option<&mut MQHOBJ>))
+                .replace_fns(["MQCONNX", "MQ_CONNX_CALL"], "pConnectOpts", &parse_quote!(&mut MQCNO))
+                .replace_fns(
+                    ["MQBEGIN", "MQ_BEGIN_CALL"],
+                    "pBeginOptions",
+                    &parse_quote!(Option<&mut MQBO>),
+                )
+                .replace_fns(["MQBUFMH", "MQ_BUFMH_CALL"], "pBufMsgHOpts", &parse_quote!(&MQBMHO))
+                .replace_fns(["MQCB", "MQ_CB_CALL"], "pCallbackDesc", &parse_quote!(Option<&MQCBD>))
+                .replace_fns(["MQCB", "MQ_CB_CALL"], "pGetMsgOpts", &parse_quote!(Option<&MQGMO>))
+                .replace_fns(["MQINQMP", "MQ_INQMP_CALL"], "pType", &parse_quote!(&mut MQLONG))
+                .replace_fns(["MQINQMP", "MQ_INQMP_CALL"], "pInqPropOpts", &parse_quote!(&mut MQIMPO)) // TODO: inconsistent (header says input only, but doc says input/output
+                .replace_fns(["MQINQMP", "MQ_INQMP_CALL"], "pPropDesc", &parse_quote!(&mut MQPD))
+                .replace_fns(["MQMHBUF", "MQ_MHBUF_CALL"], "pMsgHBufOpts", &parse_quote!(&MQMHBO))
+                .replace_fns(["MQSETMP", "MQ_SETMP_CALL"], "pSetPropOpts", &parse_quote!(&MQSMPO))
+                .replace_fns(["MQSTAT", "MQ_STAT_CALL"], "pStatus", &parse_quote!(&mut MQSTS))
+                .replace_fns(["MQSUB", "MQ_SUB_CALL"], "pSubDesc", &parse_quote!(&mut MQSD))
+                .replace_fns(["MQSUB", "MQ_SUB_CALL"], "pHsub", &parse_quote!(&mut MQHOBJ))
+                .replace_fns(["MQSUBRQ", "MQ_SUBRQ_CALL"], "pSubRqOpts", &parse_quote!(Option<&mut MQSRO>))
+                .replace_fns(["mqCountItems"], "pItemCount", &parse_quote!(&mut MQLONG))
+                .replace_fns(["mqInquireInteger64"], "pItemValue", &parse_quote!(&mut MQINT64))
+                .replace_fns(
+                    ["mqInquireInteger", "mqInquireIntegerFilter"],
+                    "pItemValue",
+                    &parse_quote!(&mut MQLONG),
+                )
+                .replace_fns(["mqInquireItemInfo"], "pOutSelector", &parse_quote!(&mut MQLONG))
+                .replace_fns(["mqInquireItemInfo"], "pItemType", &parse_quote!(&mut MQLONG))
+                .replace_fns(["mqInquireBag"], "pItemValue", &parse_quote!(&mut MQHBAG))
+                .replace_fns(
+                    ["MQXCLWLN", "MQ_XCLWLN_CALL", "MQ_CLUSTER_WORKLOAD_EXIT"],
+                    "pExitParms",
+                    &parse_quote!(&mut MQWXP),
+                )
+                .replace_fns(["MQXCLWLN", "MQ_XCLWLN_CALL"], "pNextRecord", &parse_quote!(&mut MQPTR)) // TODO: MQPTR can be improved
+                .replace_fns(["MQXDX"], "pDataConvExitParms", &parse_quote!(&mut MQDXP))
+                .replace_fns(["MQ_PUBLISH_EXIT"], "pExitParms", &parse_quote!(&mut MQPSXP))
+                .replace_fns(["MQ_TRANSPORT_EXIT"], "pExitParms", &parse_quote!(PMQVOID))
+                .replace_fns(["MQ_PRECONNECT_EXIT"], "pExitParms", &parse_quote!(&mut MQNXP));
 
             let mut traits = vec![];
             let mut mock_impls = vec![];
             let mut dlopen_impls = vec![];
             let mut link_impls = vec![];
 
-            let mq_mod = parse_quote!(lib);
             let mock_name = parse_quote!(Mq);
             let link_name = parse_quote!(LinkedMq);
             let wrapper_name = parse_quote!(MqWrapper);
@@ -255,102 +339,56 @@ fn main() -> Result<(), io::Error> {
                 use crate::{
                     doc_comments::{DocCommentArgs, DocCommentFields, DocCommentReference, DocCommentType},
                     mq_trait::TraitGenerator,
-                    rustify::{FnArgType, MqLongConstWrap},
+                    rustify::MqLongConstWrap,
                 };
 
-                let mut arg_type = FnArgType::new()
-                    .replace_all("pCompCode", parse_quote!(&mut MQLONG))
-                    .replace_all("pReason", parse_quote!(&mut MQLONG))
-                    .replace_all("pHconn", parse_quote!(&mut MQHCONN))
-                    .replace_all("pHobj", parse_quote!(&mut MQHOBJ))
-                    .replace_all("pHmsg", parse_quote!(&mut MQHMSG))
-                    .replace_all("pDataLength", parse_quote!(&mut MQLONG))
-                    .replace_all("pName", parse_quote!(&MQCHARV)) // TODO: fix pName mutability
-                    .replace_all("pObjDesc", parse_quote!(&mut MQOD))
-                    .replace_all("pPutMsgOpts", parse_quote!(&mut MQPMO))
-                    .replace_all("pGetMsgOpts", parse_quote!(&mut MQGMO))
-                    .replace_all("pPropDesc", parse_quote!(&mut MQPD))
-                    .replace_all("pBag", parse_quote!(&mut MQHBAG))
-                    .replace_all("pByteStringLength", parse_quote!(&mut MQLONG))
-                    .replace_all("pStringLength", parse_quote!(&mut MQLONG))
-                    .replace_all("pOperator", parse_quote!(&mut MQLONG))
-                    .replace_all("pCodedCharSetId", parse_quote!(&mut MQLONG))
-                    .replace_all("pExitOpts", parse_quote!(Option<&MQXEPO>))
-                    .replace_all("pExitParms", parse_quote!(&mut MQAXP))
-                    .replace_all("pExitContext", parse_quote!(&mut MQAXC))
-                    .replace_fns(
-                        ["MQCONN", "MQCONNX", "MQ_CONN_CALL", "MQ_CONNX_CALL"],
-                        "pQMgrName",
-                        &parse_quote!(&MQCHAR48),
-                    )
-                    .replace_fns(["MQCTL", "MQ_CTL_CALL"], "pControlOpts", &parse_quote!(&MQCTLO))
-                    .replace_fns(["MQCRTMH", "MQ_CRTMH_CALL"], "pCrtMsgHOpts", &parse_quote!(&MQCMHO))
-                    .replace_fns(["MQDLTMH", "MQ_DLTMH_CALL"], "pDltMsgHOpts", &parse_quote!(&MQDMHO))
-                    .replace_fns(["MQDLTMP", "MQ_DLTMP_CALL"], "pDltPropOpts", &parse_quote!(&MQDMPO))
-                    .replace_fns(["MQSUB", "MQ_SUB_CALL"], "pHobj", &parse_quote!(Option<&mut MQHOBJ>))
-                    .replace_fns(["MQCONNX", "MQ_CONNX_CALL"], "pConnectOpts", &parse_quote!(&mut MQCNO))
-                    .replace_fns(
-                        ["MQBEGIN", "MQ_BEGIN_CALL"],
-                        "pBeginOptions",
-                        &parse_quote!(Option<&mut MQBO>),
-                    )
-                    .replace_fns(["MQBUFMH", "MQ_BUFMH_CALL"], "pBufMsgHOpts", &parse_quote!(&MQBMHO))
-                    .replace_fns(["MQCB", "MQ_CB_CALL"], "pCallbackDesc", &parse_quote!(Option<&MQCBD>))
-                    .replace_fns(["MQCB", "MQ_CB_CALL"], "pGetMsgOpts", &parse_quote!(Option<&MQGMO>))
-                    .replace_fns(["MQINQMP", "MQ_INQMP_CALL"], "pType", &parse_quote!(&mut MQLONG))
-                    .replace_fns(["MQINQMP", "MQ_INQMP_CALL"], "pInqPropOpts", &parse_quote!(&mut MQIMPO)) // TODO: inconsistent (header says input only, but doc says input/output
-                    .replace_fns(["MQINQMP", "MQ_INQMP_CALL"], "pPropDesc", &parse_quote!(&mut MQPD))
-                    .replace_fns(["MQMHBUF", "MQ_MHBUF_CALL"], "pMsgHBufOpts", &parse_quote!(&MQMHBO))
-                    .replace_fns(["MQSETMP", "MQ_SETMP_CALL"], "pSetPropOpts", &parse_quote!(&MQSMPO))
-                    .replace_fns(["MQSTAT", "MQ_STAT_CALL"], "pStatus", &parse_quote!(&mut MQSTS))
-                    .replace_fns(["MQSUB", "MQ_SUB_CALL"], "pSubDesc", &parse_quote!(&mut MQSD))
-                    .replace_fns(["MQSUB", "MQ_SUB_CALL"], "pHsub", &parse_quote!(&mut MQHOBJ))
-                    .replace_fns(["MQSUBRQ", "MQ_SUBRQ_CALL"], "pSubRqOpts", &parse_quote!(Option<&mut MQSRO>))
-                    .replace_fns(["mqCountItems"], "pItemCount", &parse_quote!(&mut MQLONG))
-                    .replace_fns(["mqInquireInteger64"], "pItemValue", &parse_quote!(&mut MQINT64))
-                    .replace_fns(
-                        ["mqInquireInteger", "mqInquireIntegerFilter"],
-                        "pItemValue",
-                        &parse_quote!(&mut MQLONG),
-                    )
-                    .replace_fns(["mqInquireItemInfo"], "pOutSelector", &parse_quote!(&mut MQLONG))
-                    .replace_fns(["mqInquireItemInfo"], "pItemType", &parse_quote!(&mut MQLONG))
-                    .replace_fns(["mqInquireBag"], "pItemValue", &parse_quote!(&mut MQHBAG))
-                    .replace_fns(
-                        ["MQXCLWLN", "MQ_XCLWLN_CALL", "MQ_CLUSTER_WORKLOAD_EXIT"],
-                        "pExitParms",
-                        &parse_quote!(&mut MQWXP),
-                    )
-                    .replace_fns(["MQXCLWLN", "MQ_XCLWLN_CALL"], "pNextRecord", &parse_quote!(&mut MQPTR)) // TODO: MQPTR can be improved
-                    .replace_fns(["MQXDX"], "pDataConvExitParms", &parse_quote!(&mut MQDXP))
-                    .replace_fns(["MQ_PUBLISH_EXIT"], "pExitParms", &parse_quote!(&mut MQPSXP))
-                    .replace_fns(["MQ_TRANSPORT_EXIT"], "pExitParms", &parse_quote!(PMQVOID))
-                    .replace_fns(["MQ_PRECONNECT_EXIT"], "pExitParms", &parse_quote!(&mut MQNXP));
-
                 DocCommentArgs(&parameters).visit_file_mut(&mut generated);
-                DocCommentReference.visit_file_mut(&mut generated);
                 DocCommentType(&comments).visit_file_mut(&mut generated);
                 DocCommentFields(&fields).visit_file_mut(&mut generated);
+                DocCommentReference.visit_file_mut(&mut generated);
                 MqLongConstWrap.visit_file_mut(&mut generated);
                 arg_type.visit_file_mut(&mut generated);
+                let symbols = generated
+                    .items
+                    .iter()
+                    .flat_map(|item| match item {
+                        syn::Item::Const(item_const) => vec![item_const.ident.clone()],
+                        syn::Item::Static(item_static) => vec![item_static.ident.clone()],
+                        syn::Item::Struct(item_struct) => vec![item_struct.ident.clone()],
+                        syn::Item::Type(item_type) => vec![item_type.ident.clone()],
+                        syn::Item::ForeignMod(item_foreign) => item_foreign
+                            .items
+                            .iter()
+                            .filter_map(|item| {
+                                if let syn::ForeignItem::Fn(foreign_item_fn) = item {
+                                    Some(foreign_item_fn.sig.ident.clone())
+                                } else {
+                                    None
+                                }
+                            })
+                            .collect(),
+                        _ => vec![],
+                    })
+                    .collect();
+                PrefixMqTypes(&parse_quote!(crate), &symbols).visit_file_mut(&mut generated);
 
-                if !source_trait.iter().any(|(source, .., dlopen)| *source == name && !dlopen) {
+                if let Some((.., path, feat, _)) = source_trait.iter().find(|(source, .., dlopen)| *source == name && *dlopen) {
                     WrapperGenerator(|mut field: syn::Field| {
-                        field.attrs.extend(
-                            source_trait
-                                .iter()
-                                .find_map(|(source, .., feat, _)| {
-                                    (*source == name && feat.is_some()).then(|| feat.as_ref().unwrap())
-                                })
-                                .map(|feat| parse_quote!(#[cfg(feature = #feat)])),
-                        );
+                        if let Some(feat) = &feat {
+                            field.attrs.push(parse_quote!(#[cfg(feature = #feat)]));
+                        }
+                        PrefixMqTypes(path, &std::collections::HashSet::new()).visit_field_mut(&mut field);
                         wrapper_fields.push(field);
                     })
                     .visit_file(&generated);
                 }
 
-                if let Some((_, trait_name, feature, dlopen)) = source_trait.iter().find(|(source, ..)| *source == name) {
+                if let Some((_, Some(trait_name), path, feature, dlopen)) =
+                    source_trait.iter().find(|(source, ..)| *source == name)
+                {
                     // Generate the trait
+
+                    use std::collections::HashSet;
 
                     use syn::{ImplItemFn, TraitItemFn};
 
@@ -364,14 +402,14 @@ fn main() -> Result<(), io::Error> {
                     item_trait
                         .attrs
                         .extend(feature.as_ref().map(|feat| parse_quote!(#[cfg(feature = #feat)])));
-                    PrefixMqTypes(&mq_mod).visit_item_trait_mut(&mut item_trait);
+                    PrefixMqTypes(path, &HashSet::new()).visit_item_trait_mut(&mut item_trait);
 
                     // Generate the Mock struct
                     let mut mg = ImplFnGenerator::new(|_: &mut ImplItemFn, _: &TraitItemFn| {});
                     mg.visit_item_trait(&item_trait);
                     let mut mock_impl_trait = mg.generate(&parse_quote!(crate::#trait_name), &mock_name);
                     mock_impl_trait.attrs.extend(feat_cfg.clone());
-                    PrefixMqTypes(&mq_mod).visit_item_impl_mut(&mut mock_impl_trait);
+                    PrefixMqTypes(path, &HashSet::new()).visit_item_impl_mut(&mut mock_impl_trait);
                     DesugarForMockall.visit_item_impl_mut(&mut mock_impl_trait);
 
                     if *dlopen {
@@ -380,16 +418,16 @@ fn main() -> Result<(), io::Error> {
                         dg.visit_item_trait(&item_trait);
                         let mut dlopen2_impl_trait = dg.generate(&parse_quote!(crate::#trait_name), &dlopen2_name);
                         dlopen2_impl_trait.attrs.extend(feat_cfg.clone());
-                        PrefixMqTypes(&mq_mod).visit_item_impl_mut(&mut dlopen2_impl_trait);
+                        PrefixMqTypes(path, &HashSet::new()).visit_item_impl_mut(&mut dlopen2_impl_trait);
                         dlopen_impls.push(dlopen2_impl_trait);
                     }
 
                     // Generate the link struct
-                    let mut lg = ImplFnGenerator::new(impl_link_fn(&mq_mod));
+                    let mut lg = ImplFnGenerator::new(impl_link_fn(path));
                     lg.visit_item_trait(&item_trait);
                     let mut link_impl_trait = lg.generate(&parse_quote!(crate::#trait_name), &link_name);
                     link_impl_trait.attrs.extend(feat_cfg.clone());
-                    PrefixMqTypes(&mq_mod).visit_item_impl_mut(&mut link_impl_trait);
+                    PrefixMqTypes(path, &HashSet::new()).visit_item_impl_mut(&mut link_impl_trait);
 
                     mock_impls.push(mock_impl_trait);
                     traits.push(item_trait);
@@ -409,8 +447,6 @@ fn main() -> Result<(), io::Error> {
             }
 
             let trait_file = parse_quote!(
-
-                use crate::lib;
                 #(
                     #traits
                 )*
@@ -423,8 +459,6 @@ fn main() -> Result<(), io::Error> {
             ));
 
             let mock_file_content = formatdoc! {"
-                use crate::lib;
-                
                 mockall::mock! {{
                     pub {} {{}}
                 {}
@@ -439,8 +473,6 @@ fn main() -> Result<(), io::Error> {
             };
 
             let link_file = parse_quote!(
-                use crate::lib;
-
                 /// Provides access to compile time linked MQI and MQAI functions
                 #[derive(Debug, Clone, Copy)]
                 pub struct #link_name;
@@ -451,8 +483,7 @@ fn main() -> Result<(), io::Error> {
 
             );
 
-            let mut wrapper_file = parse_quote!(
-                use crate::lib;
+            let wrapper_file = parse_quote!(
                 use ::dlopen2::wrapper::WrapperApi;
 
                 #[derive(WrapperApi, Debug)]
@@ -465,7 +496,6 @@ fn main() -> Result<(), io::Error> {
                 )*
 
             );
-            PrefixMqTypes(&mq_mod).visit_file_mut(&mut wrapper_file);
 
             let out_mock = out_path.join("mock.rs");
             let mut out_file = io::BufWriter::new(std::fs::File::create(&out_mock)?);

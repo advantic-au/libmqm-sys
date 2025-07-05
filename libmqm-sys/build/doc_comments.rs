@@ -424,19 +424,30 @@ fn add_ibm_reference(attrs: &mut Vec<syn::Attribute>, ident: &syn::Ident) {
 
     let ibm_url = references.get(&ident.to_string());
     if let Some(url) = ibm_url {
-        let doc_lit = syn::LitStr::new(&format!(" * [IBM `{ident}` Documentation]({url})"), proc_macro2::Span::call_site());
-        let comments: Vec<syn::Attribute> = parse_quote!(
-            ///
-            /// # References
-            #[doc = #doc_lit]
-        );
+        let documentation_link = format!(" [IBM `{ident}` Documentation]({url})");
 
         // Insert the references after the last doc comment
         let mut pos = attrs.len();
         while pos != 0 && !attrs[pos - 1].meta.path().is_ident("doc") {
             pos -= 1;
         }
-        attrs.splice(pos..pos, comments);
+        if pos == 0 {
+            let doc_lit = syn::LitStr::new(&documentation_link, proc_macro2::Span::call_site());
+            attrs.insert(
+                0,
+                parse_quote!(
+                    #[doc = #doc_lit]
+                ),
+            );
+        } else {
+            let doc_lit = syn::LitStr::new(&format!(" *{documentation_link}"), proc_macro2::Span::call_site());
+            let comments: Vec<syn::Attribute> = parse_quote!(
+                ///
+                /// # References
+                #[doc = #doc_lit]
+            );
+            attrs.splice(pos..pos, comments);
+        }
     }
 }
 

@@ -1,13 +1,24 @@
 #![allow(clippy::missing_safety_doc, clippy::too_many_arguments, non_snake_case, non_camel_case_types, clippy::unreadable_literal, clippy::doc_markdown)]
 
 pub mod bindings {
-    include!(concat!(env!("OUT_DIR"), "/mqi.rs"));
+    pub mod mqi {
+        include!(concat!(env!("OUT_DIR"), "/mqi.rs"));
+    }
+    
     #[cfg(feature = "exits")]
-    include!(concat!(env!("OUT_DIR"), "/exits.rs"));
+    pub mod exits {
+        include!(concat!(env!("OUT_DIR"), "/exits.rs"));
+    }
+    
     #[cfg(feature = "mqai")]
-    include!(concat!(env!("OUT_DIR"), "/mqai.rs"));
+    pub mod mqai {
+        include!(concat!(env!("OUT_DIR"), "/mqai.rs"));
+    }
+
     #[cfg(feature = "pcf")]
-    include!(concat!(env!("OUT_DIR"), "/pcf.rs"));
+    pub mod pcf {
+        include!(concat!(env!("OUT_DIR"), "/pcf.rs"));
+    }
 
     pub mod version {
         include!(concat!(env!("OUT_DIR"), "/version.rs"));

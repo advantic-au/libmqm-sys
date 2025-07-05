@@ -112,23 +112,35 @@ mod c {
 
 pub mod constants {
     pub use super::c::constants::*;
+    use crate::types;
+    use libmqm_sys as mq;
+
+    pub const MQBA_FIRST: types::Selector = types::Selector(mq::MQBA_FIRST);
+    pub const MQBA_LAST: types::Selector = types::Selector(mq::MQBA_LAST);
+    pub const MQGA_FIRST: types::Selector = types::Selector(mq::MQGA_FIRST);
+    pub const MQGA_LAST: types::Selector = types::Selector(mq::MQGA_LAST);
 
     #[cfg(feature = "mqai")]
     mod mqai {
         use crate::types;
-        use libmqm_sys::lib as sys;
+        use libmqm_sys::mqai;
 
-        pub const MQBA_FIRST: types::Selector = types::Selector(sys::MQBA_FIRST);
-        pub const MQBA_LAST: types::Selector = types::Selector(sys::MQBA_LAST);
-        pub const MQGA_FIRST: types::Selector = types::Selector(sys::MQGA_FIRST);
-        pub const MQGA_LAST: types::Selector = types::Selector(sys::MQGA_LAST);
-        pub const MQOA_FIRST: types::Selector = types::Selector(sys::MQOA_FIRST);
-        pub const MQOA_LAST: types::Selector = types::Selector(sys::MQOA_LAST);
-        pub const MQUA_FIRST: types::Selector = types::Selector(sys::MQUA_FIRST);
-        pub const MQUA_LAST: types::Selector = types::Selector(sys::MQUA_LAST);
+        pub const MQOA_FIRST: types::Selector = types::Selector(mqai::MQOA_FIRST);
+        pub const MQOA_LAST: types::Selector = types::Selector(mqai::MQOA_LAST);
     }
     #[cfg(feature = "mqai")]
     pub use mqai::*;
+
+    #[cfg(feature = "pcf")]
+    mod pcf {
+        use crate::types;
+        use libmqm_sys::pcf;
+
+        pub const MQUA_FIRST: types::Selector = types::Selector(pcf::MQUA_FIRST);
+        pub const MQUA_LAST: types::Selector = types::Selector(pcf::MQUA_LAST);
+    }
+    #[cfg(feature = "pcf")]
+    pub use pcf::*;
 }
 
 pub mod mapping {
@@ -146,15 +158,15 @@ pub mod mapping {
 
 pub mod types {
     use crate::value::{define_new_type, impl_value};
-    use ::libmqm_sys::lib as sys;
+    use ::libmqm_sys as mq;
 
     pub use super::c::types::*;
 
-    define_new_type!(pub MQXA, sys::MQLONG, super::mapping::MQXA_MAPSTR, "Selectors for MQIA and MQCA");
-    impl_value!(MQXA, sys::MQLONG);
-    define_new_type!(pub MQRC, sys::MQLONG, super::mapping::MQRC_FULL_MAPSTR, "Reason Code from an MQ function call");
-    impl_value!(MQRC, sys::MQLONG);
+    define_new_type!(pub MQXA, mq::MQLONG, super::mapping::MQXA_MAPSTR, "Selectors for MQIA and MQCA");
+    impl_value!(MQXA, mq::MQLONG);
+    define_new_type!(pub MQRC, mq::MQLONG, super::mapping::MQRC_FULL_MAPSTR, "Reason Code from an MQ function call");
+    impl_value!(MQRC, mq::MQLONG);
 
-    define_new_type!(pub Selector, sys::MQLONG, super::mapping::SelectorLookup, "All Selectors including [`MQIA`], [`MQCA`], [`MQIACF`], [`MQCACF`], [`MQIACH`], [`MQCACH`], [`MQIASY`] and [`MQHA`]");
-    impl_value!(Selector, sys::MQLONG);
+    define_new_type!(pub Selector, mq::MQLONG, super::mapping::SelectorLookup, "All Selectors including [`MQIA`], [`MQCA`], [`MQIACF`], [`MQCACF`], [`MQIACH`], [`MQCACH`], [`MQIASY`] and [`MQHA`]");
+    impl_value!(Selector, mq::MQLONG);
 }

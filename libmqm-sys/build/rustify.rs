@@ -1,10 +1,17 @@
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 
 use proc_macro2::Span;
-use syn::{visit_mut::VisitMut, Expr, Ident, Lit, Type, TypePath};
+use quote::ToTokens;
+use regex_lite::Captures;
+use syn::{
+    parse_quote,
+    visit_mut::{visit_path_mut, VisitMut},
+    Expr, Ident, Lit, LitStr, Type, TypePath,
+};
 
 pub struct MqLongConstWrap;
 pub struct FnArgType<'a>(HashMap<(&'a str, Option<&'a str>), Type>);
+pub struct PrefixMqTypes<'a>(pub &'a syn::Path, pub &'a HashSet<syn::Ident>);
 
 struct BareFnArgType<T>(pub T);
 
@@ -106,6 +113,53 @@ impl VisitMut for MqLongConstWrap {
                         item.expr = Box::new(syn::parse_quote!(#lit));
                     }
                 }
+            }
+            _ => (),
+        }
+    }
+}
+
+impl VisitMut for PrefixMqTypes<'_> {
+    fn visit_path_mut(&mut self, item: &mut syn::Path) {
+        if item.segments.len() == 1 {
+            let ident = &item.segments[0].ident;
+            let ident_str = ident.to_string();
+            if (ident_str.starts_with("MQ") || ident_str.starts_with("PMQ") || ident_str.starts_with("PPMQ"))
+                && !self.1.contains(ident)
+            {
+                let mut path: syn::Path = self.0.clone();
+                path.segments.extend(item.segments.iter().cloned());
+                std::mem::swap(&mut path.segments, &mut item.segments);
+            }
+        }
+        visit_path_mut(self, item);
+    }
+
+    fn visit_attribute_mut(&mut self, item: &mut syn::Attribute) {
+        match item.meta.require_name_value() {
+            Ok(syn::MetaNameValue {
+                value: syn::Expr::Lit(syn::ExprLit {
+                    lit: syn::Lit::Str(ls), ..
+                }),
+                ..
+            }) if item.meta.path().is_ident("doc") => {
+                let link_search = regex_lite::Regex::new(r"(?i)\[`(MQ\w+?)`\]([^\(]|$)").unwrap();
+                let val = ls.value();
+                let new_doc_comment = link_search.replace_all(&val, |c: &Captures| {
+                    let mq_item = &c[1];
+                    let ident = syn::Ident::new(mq_item, proc_macro2::Span::call_site());
+                    if !self.1.contains(&ident) {
+                        let path = self.0;
+                        let full_ident: syn::Path = parse_quote!(#path::#ident);
+                        return format!(
+                            "[`{mq_item}`]({}) ",
+                            full_ident.to_token_stream().to_string().replace(' ', "")
+                        );
+                    }
+                    c[0].to_string()
+                });
+                let doc_lit = LitStr::new(&new_doc_comment, proc_macro2::Span::call_site());
+                *item = parse_quote!(#[doc = #doc_lit]);
             }
             _ => (),
         }

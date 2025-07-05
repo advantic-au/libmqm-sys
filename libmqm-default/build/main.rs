@@ -1,7 +1,7 @@
 #[allow(clippy::missing_errors_doc, clippy::too_many_lines)]
 #[cfg(feature = "generate")]
 pub fn generate_defaults(w: &mut impl std::io::Write) -> Result<(), std::io::Error> {
-    use libmqm_sys::lib;
+    use libmqm_sys as mq;
 
     fn const_default<T>(
         write: &mut impl std::io::Write,
@@ -32,114 +32,116 @@ pub fn generate_defaults(w: &mut impl std::io::Write) -> Result<(), std::io::Err
         Ok(())
     }
 
-    const_default(w, "MQMD_DEFAULT", "libmqm_sys::lib::MQMD", &lib::MQMD::default())?;
-    const_default(w, "MQMDE_DEFAULT", "libmqm_sys::lib::MQMDE", &lib::MQMDE::default())?;
-    const_default(w, "MQMD1_DEFAULT", "libmqm_sys::lib::MQMD1", &lib::MQMD1::default())?;
-    const_default(w, "MQMD2_DEFAULT", "libmqm_sys::lib::MQMD2", &lib::MQMD2::default())?;
-    const_default(w, "MQPD_DEFAULT", "libmqm_sys::lib::MQPD", &lib::MQPD::default())?;
-    const_default(w, "MQIMPO_DEFAULT", "libmqm_sys::lib::MQIMPO", &lib::MQIMPO::default())?;
-    const_default(w, "MQMHBO_DEFAULT", "libmqm_sys::lib::MQMHBO", &lib::MQMHBO::default())?;
-    const_default(w, "MQBO_DEFAULT", "libmqm_sys::lib::MQBO", &lib::MQBO::default())?;
-    const_default(w, "MQDMHO_DEFAULT", "libmqm_sys::lib::MQDMHO", &lib::MQDMHO::default())?;
-    const_default(w, "MQCMHO_DEFAULT", "libmqm_sys::lib::MQCMHO", &lib::MQCMHO::default())?;
-    const_default(w, "MQSRO_DEFAULT", "libmqm_sys::lib::MQSRO", &lib::MQSRO::default())?;
-    const_default(w, "MQSD_DEFAULT", "libmqm_sys::lib::MQSD", &lib::MQSD::default())?;
-    const_default(w, "MQGMO_DEFAULT", "libmqm_sys::lib::MQGMO", &lib::MQGMO::default())?;
-    const_default(w, "MQPMO_DEFAULT", "libmqm_sys::lib::MQPMO", &lib::MQPMO::default())?;
-    const_default(w, "MQOD_DEFAULT", "libmqm_sys::lib::MQOD", &lib::MQOD::default())?;
-    const_default(w, "MQCNO_DEFAULT", "libmqm_sys::lib::MQCNO", &lib::MQCNO::default())?;
-    const_default(w, "MQCD_DEFAULT", "libmqm_sys::lib::MQCD", &lib::MQCD::default())?;
+    const_default(w, "MQMD_DEFAULT", "libmqm_sys::MQMD", &mq::MQMD::default())?;
+    const_default(w, "MQMDE_DEFAULT", "libmqm_sys::MQMDE", &mq::MQMDE::default())?;
+    const_default(w, "MQMD1_DEFAULT", "libmqm_sys::MQMD1", &mq::MQMD1::default())?;
+    const_default(w, "MQMD2_DEFAULT", "libmqm_sys::MQMD2", &mq::MQMD2::default())?;
+    const_default(w, "MQPD_DEFAULT", "libmqm_sys::MQPD", &mq::MQPD::default())?;
+    const_default(w, "MQIMPO_DEFAULT", "libmqm_sys::MQIMPO", &mq::MQIMPO::default())?;
+    const_default(w, "MQMHBO_DEFAULT", "libmqm_sys::MQMHBO", &mq::MQMHBO::default())?;
+    const_default(w, "MQBO_DEFAULT", "libmqm_sys::MQBO", &mq::MQBO::default())?;
+    const_default(w, "MQDMHO_DEFAULT", "libmqm_sys::MQDMHO", &mq::MQDMHO::default())?;
+    const_default(w, "MQCMHO_DEFAULT", "libmqm_sys::MQCMHO", &mq::MQCMHO::default())?;
+    const_default(w, "MQSRO_DEFAULT", "libmqm_sys::MQSRO", &mq::MQSRO::default())?;
+    const_default(w, "MQSD_DEFAULT", "libmqm_sys::MQSD", &mq::MQSD::default())?;
+    const_default(w, "MQGMO_DEFAULT", "libmqm_sys::MQGMO", &mq::MQGMO::default())?;
+    const_default(w, "MQPMO_DEFAULT", "libmqm_sys::MQPMO", &mq::MQPMO::default())?;
+    const_default(w, "MQOD_DEFAULT", "libmqm_sys::MQOD", &mq::MQOD::default())?;
+    const_default(w, "MQCNO_DEFAULT", "libmqm_sys::MQCNO", &mq::MQCNO::default())?;
+    const_default(w, "MQCD_DEFAULT", "libmqm_sys::MQCD", &mq::MQCD::default())?;
     const_default(
         w,
         "MQCD_CLIENT_CONN_DEFAULT",
-        "libmqm_sys::lib::MQCD",
-        &lib::MQCD::client_conn_default(),
+        "libmqm_sys::MQCD",
+        &mq::MQCD::client_conn_default(),
     )?;
-    const_default(w, "MQCSP_DEFAULT", "libmqm_sys::lib::MQCSP", &lib::MQCSP::default())?;
-    const_default(w, "MQSCO_DEFAULT", "libmqm_sys::lib::MQSCO", &lib::MQSCO::default())?;
+    const_default(w, "MQCSP_DEFAULT", "libmqm_sys::MQCSP", &mq::MQCSP::default())?;
+    const_default(w, "MQSCO_DEFAULT", "libmqm_sys::MQSCO", &mq::MQSCO::default())?;
     #[cfg(feature = "mqc_9_3_0_0")]
     {
         writeln!(w, "#[cfg(feature = \"mqc_9_3_0_0\")]")?;
-        const_default(w, "MQBNO_DEFAULT", "libmqm_sys::lib::MQBNO", &lib::MQBNO::default())?;
+        const_default(w, "MQBNO_DEFAULT", "libmqm_sys::MQBNO", &mq::MQBNO::default())?;
     }
-    const_default(w, "MQAIR_DEFAULT", "libmqm_sys::lib::MQAIR", &lib::MQAIR::default())?;
-    const_default(w, "MQBMHO_DEFAULT", "libmqm_sys::lib::MQBMHO", &lib::MQBMHO::default())?;
-    const_default(w, "MQCBD_DEFAULT", "libmqm_sys::lib::MQCBD", &lib::MQCBD::default())?;
-    const_default(w, "MQCHARV_DEFAULT", "libmqm_sys::lib::MQCHARV", &lib::MQCHARV::default())?;
-    const_default(w, "MQCIH_DEFAULT", "libmqm_sys::lib::MQCIH", &lib::MQCIH::default())?;
-    const_default(w, "MQCTLO_DEFAULT", "libmqm_sys::lib::MQCTLO", &lib::MQCTLO::default())?;
-    const_default(w, "MQDH_DEFAULT", "libmqm_sys::lib::MQDH", &lib::MQDH::default())?;
-    const_default(w, "MQDLH_DEFAULT", "libmqm_sys::lib::MQDLH", &lib::MQDLH::default())?;
-    const_default(w, "MQDMPO_DEFAULT", "libmqm_sys::lib::MQDMPO", &lib::MQDMPO::default())?;
-    const_default(w, "MQIIH_DEFAULT", "libmqm_sys::lib::MQIIH", &lib::MQIIH::default())?;
-    const_default(w, "MQOR_DEFAULT", "libmqm_sys::lib::MQOR", &lib::MQOR::default())?;
-    const_default(w, "MQRFH_DEFAULT", "libmqm_sys::lib::MQRFH", &lib::MQRFH::default())?;
-    const_default(w, "MQRFH2_DEFAULT", "libmqm_sys::lib::MQRFH2", &lib::MQRFH2::default())?;
-    const_default(w, "MQRMH_DEFAULT", "libmqm_sys::lib::MQRMH", &lib::MQRMH::default())?;
-    const_default(w, "MQRR_DEFAULT", "libmqm_sys::lib::MQRR", &lib::MQRR::default())?;
-    const_default(w, "MQSMPO_DEFAULT", "libmqm_sys::lib::MQSMPO", &lib::MQSMPO::default())?;
-    const_default(w, "MQSTS_DEFAULT", "libmqm_sys::lib::MQSTS", &lib::MQSTS::default())?;
-    const_default(w, "MQTM_DEFAULT", "libmqm_sys::lib::MQTM", &lib::MQTM::default())?;
-    const_default(w, "MQTMC2_DEFAULT", "libmqm_sys::lib::MQTMC2", &lib::MQTMC2::default())?;
-    const_default(w, "MQWIH_DEFAULT", "libmqm_sys::lib::MQWIH", &lib::MQWIH::default())?;
-    const_default(w, "MQXQH_DEFAULT", "libmqm_sys::lib::MQXQH", &lib::MQXQH::default())?;
+    const_default(w, "MQAIR_DEFAULT", "libmqm_sys::MQAIR", &mq::MQAIR::default())?;
+    const_default(w, "MQBMHO_DEFAULT", "libmqm_sys::MQBMHO", &mq::MQBMHO::default())?;
+    const_default(w, "MQCBD_DEFAULT", "libmqm_sys::MQCBD", &mq::MQCBD::default())?;
+    const_default(w, "MQCHARV_DEFAULT", "libmqm_sys::MQCHARV", &mq::MQCHARV::default())?;
+    const_default(w, "MQCIH_DEFAULT", "libmqm_sys::MQCIH", &mq::MQCIH::default())?;
+    const_default(w, "MQCTLO_DEFAULT", "libmqm_sys::MQCTLO", &mq::MQCTLO::default())?;
+    const_default(w, "MQDH_DEFAULT", "libmqm_sys::MQDH", &mq::MQDH::default())?;
+    const_default(w, "MQDLH_DEFAULT", "libmqm_sys::MQDLH", &mq::MQDLH::default())?;
+    const_default(w, "MQDMPO_DEFAULT", "libmqm_sys::MQDMPO", &mq::MQDMPO::default())?;
+    const_default(w, "MQIIH_DEFAULT", "libmqm_sys::MQIIH", &mq::MQIIH::default())?;
+    const_default(w, "MQOR_DEFAULT", "libmqm_sys::MQOR", &mq::MQOR::default())?;
+    const_default(w, "MQRFH_DEFAULT", "libmqm_sys::MQRFH", &mq::MQRFH::default())?;
+    const_default(w, "MQRFH2_DEFAULT", "libmqm_sys::MQRFH2", &mq::MQRFH2::default())?;
+    const_default(w, "MQRMH_DEFAULT", "libmqm_sys::MQRMH", &mq::MQRMH::default())?;
+    const_default(w, "MQRR_DEFAULT", "libmqm_sys::MQRR", &mq::MQRR::default())?;
+    const_default(w, "MQSMPO_DEFAULT", "libmqm_sys::MQSMPO", &mq::MQSMPO::default())?;
+    const_default(w, "MQSTS_DEFAULT", "libmqm_sys::MQSTS", &mq::MQSTS::default())?;
+    const_default(w, "MQTM_DEFAULT", "libmqm_sys::MQTM", &mq::MQTM::default())?;
+    const_default(w, "MQTMC2_DEFAULT", "libmqm_sys::MQTMC2", &mq::MQTMC2::default())?;
+    const_default(w, "MQWIH_DEFAULT", "libmqm_sys::MQWIH", &mq::MQWIH::default())?;
+    const_default(w, "MQXQH_DEFAULT", "libmqm_sys::MQXQH", &mq::MQXQH::default())?;
 
     #[cfg(feature = "pcf")]
     {
+        use libmqm_sys::pcf;
         writeln!(w, "#[cfg(feature = \"pcf\")]\npub mod pcf {{")?;
-        const_default(w, "MQCFH_DEFAULT", "libmqm_sys::lib::MQCFH", &lib::MQCFH::default())?;
-        const_default(w, "MQCFBF_DEFAULT", "libmqm_sys::lib::MQCFBF", &lib::MQCFBF::default())?;
-        const_default(w, "MQCFBS_DEFAULT", "libmqm_sys::lib::MQCFBS", &lib::MQCFBS::default())?;
-        const_default(w, "MQCFGR_DEFAULT", "libmqm_sys::lib::MQCFGR", &lib::MQCFGR::default())?;
-        const_default(w, "MQCFIF_DEFAULT", "libmqm_sys::lib::MQCFIF", &lib::MQCFIF::default())?;
-        const_default(w, "MQCFIL_DEFAULT", "libmqm_sys::lib::MQCFIL", &lib::MQCFIL::default())?;
-        const_default(w, "MQCFIL64_DEFAULT", "libmqm_sys::lib::MQCFIL64", &lib::MQCFIL64::default())?;
-        const_default(w, "MQCFIN_DEFAULT", "libmqm_sys::lib::MQCFIN", &lib::MQCFIN::default())?;
-        const_default(w, "MQCFIN64_DEFAULT", "libmqm_sys::lib::MQCFIN64", &lib::MQCFIN64::default())?;
-        const_default(w, "MQCFSF_DEFAULT", "libmqm_sys::lib::MQCFSF", &lib::MQCFSF::default())?;
-        const_default(w, "MQCFSL_DEFAULT", "libmqm_sys::lib::MQCFSL", &lib::MQCFSL::default())?;
-        const_default(w, "MQCFST_DEFAULT", "libmqm_sys::lib::MQCFST", &lib::MQCFST::default())?;
-        const_default(w, "MQEPH_DEFAULT", "libmqm_sys::lib::MQEPH", &lib::MQEPH::default())?;
+        const_default(w, "MQCFH_DEFAULT", "libmqm_sys::pcf::MQCFH", &pcf::MQCFH::default())?;
+        const_default(w, "MQCFBF_DEFAULT", "libmqm_sys::pcf::MQCFBF", &pcf::MQCFBF::default())?;
+        const_default(w, "MQCFBS_DEFAULT", "libmqm_sys::pcf::MQCFBS", &pcf::MQCFBS::default())?;
+        const_default(w, "MQCFGR_DEFAULT", "libmqm_sys::pcf::MQCFGR", &pcf::MQCFGR::default())?;
+        const_default(w, "MQCFIF_DEFAULT", "libmqm_sys::pcf::MQCFIF", &pcf::MQCFIF::default())?;
+        const_default(w, "MQCFIL_DEFAULT", "libmqm_sys::pcf::MQCFIL", &pcf::MQCFIL::default())?;
+        const_default(w, "MQCFIL64_DEFAULT", "libmqm_sys::pcf::MQCFIL64", &pcf::MQCFIL64::default())?;
+        const_default(w, "MQCFIN_DEFAULT", "libmqm_sys::pcf::MQCFIN", &pcf::MQCFIN::default())?;
+        const_default(w, "MQCFIN64_DEFAULT", "libmqm_sys::pcf::MQCFIN64", &pcf::MQCFIN64::default())?;
+        const_default(w, "MQCFSF_DEFAULT", "libmqm_sys::pcf::MQCFSF", &pcf::MQCFSF::default())?;
+        const_default(w, "MQCFSL_DEFAULT", "libmqm_sys::pcf::MQCFSL", &pcf::MQCFSL::default())?;
+        const_default(w, "MQCFST_DEFAULT", "libmqm_sys::pcf::MQCFST", &pcf::MQCFST::default())?;
+        const_default(w, "MQEPH_DEFAULT", "libmqm_sys::pcf::MQEPH", &pcf::MQEPH::default())?;
         writeln!(w, "}}")?;
     }
 
     #[cfg(feature = "exits")]
     {
+        use libmqm_sys::exits;
         writeln!(w, "#[cfg(feature = \"exits\")]\npub mod exits {{")?;
-        const_default(w, "MQACH_DEFAULT", "libmqm_sys::lib::MQACH", &lib::MQACH::default())?;
-        const_default(w, "MQAXC_DEFAULT", "libmqm_sys::lib::MQAXC", &lib::MQAXC::default())?;
-        const_default(w, "MQAXP_DEFAULT", "libmqm_sys::lib::MQAXP", &lib::MQAXP::default())?;
-        const_default(w, "MQCXP_DEFAULT", "libmqm_sys::lib::MQCXP", &lib::MQCXP::default())?;
-        const_default(w, "MQDXP_DEFAULT", "libmqm_sys::lib::MQDXP", &lib::MQDXP::default())?;
-        const_default(w, "MQNXP_DEFAULT", "libmqm_sys::lib::MQNXP", &lib::MQNXP::default())?;
-        const_default(w, "MQPBC_DEFAULT", "libmqm_sys::lib::MQPBC", &lib::MQPBC::default())?;
-        const_default(w, "MQPSXP_DEFAULT", "libmqm_sys::lib::MQPSXP", &lib::MQPSXP::default())?;
-        const_default(w, "MQSBC_DEFAULT", "libmqm_sys::lib::MQSBC", &lib::MQSBC::default())?;
-        const_default(w, "MQWCR_DEFAULT", "libmqm_sys::lib::MQWCR", &lib::MQWCR::default())?;
-        const_default(w, "MQWDR_DEFAULT", "libmqm_sys::lib::MQWDR", &lib::MQWDR::default())?;
-        const_default(w, "MQWDR1_DEFAULT", "libmqm_sys::lib::MQWDR1", &lib::MQWDR1::default())?;
-        const_default(w, "MQWDR2_DEFAULT", "libmqm_sys::lib::MQWDR2", &lib::MQWDR2::default())?;
-        const_default(w, "MQWQR_DEFAULT", "libmqm_sys::lib::MQWQR", &lib::MQWQR::default())?;
-        const_default(w, "MQWQR1_DEFAULT", "libmqm_sys::lib::MQWQR1", &lib::MQWQR1::default())?;
-        const_default(w, "MQWQR2_DEFAULT", "libmqm_sys::lib::MQWQR2", &lib::MQWQR2::default())?;
-        const_default(w, "MQWQR3_DEFAULT", "libmqm_sys::lib::MQWQR3", &lib::MQWQR3::default())?;
+        const_default(w, "MQACH_DEFAULT", "libmqm_sys::exits::MQACH", &exits::MQACH::default())?;
+        const_default(w, "MQAXC_DEFAULT", "libmqm_sys::exits::MQAXC", &exits::MQAXC::default())?;
+        const_default(w, "MQAXP_DEFAULT", "libmqm_sys::exits::MQAXP", &exits::MQAXP::default())?;
+        const_default(w, "MQCXP_DEFAULT", "libmqm_sys::exits::MQCXP", &exits::MQCXP::default())?;
+        const_default(w, "MQDXP_DEFAULT", "libmqm_sys::exits::MQDXP", &exits::MQDXP::default())?;
+        const_default(w, "MQNXP_DEFAULT", "libmqm_sys::exits::MQNXP", &exits::MQNXP::default())?;
+        const_default(w, "MQPBC_DEFAULT", "libmqm_sys::exits::MQPBC", &exits::MQPBC::default())?;
+        const_default(w, "MQPSXP_DEFAULT", "libmqm_sys::exits::MQPSXP", &exits::MQPSXP::default())?;
+        const_default(w, "MQSBC_DEFAULT", "libmqm_sys::exits::MQSBC", &exits::MQSBC::default())?;
+        const_default(w, "MQWCR_DEFAULT", "libmqm_sys::exits::MQWCR", &exits::MQWCR::default())?;
+        const_default(w, "MQWDR_DEFAULT", "libmqm_sys::exits::MQWDR", &exits::MQWDR::default())?;
+        const_default(w, "MQWDR1_DEFAULT", "libmqm_sys::exits::MQWDR1", &exits::MQWDR1::default())?;
+        const_default(w, "MQWDR2_DEFAULT", "libmqm_sys::exits::MQWDR2", &exits::MQWDR2::default())?;
+        const_default(w, "MQWQR_DEFAULT", "libmqm_sys::exits::MQWQR", &exits::MQWQR::default())?;
+        const_default(w, "MQWQR1_DEFAULT", "libmqm_sys::exits::MQWQR1", &exits::MQWQR1::default())?;
+        const_default(w, "MQWQR2_DEFAULT", "libmqm_sys::exits::MQWQR2", &exits::MQWQR2::default())?;
+        const_default(w, "MQWQR3_DEFAULT", "libmqm_sys::exits::MQWQR3", &exits::MQWQR3::default())?;
         #[cfg(feature = "mqc_9_3_1_0")]
         {
             writeln!(w, "#[cfg(feature = \"mqc_9_3_1_0\")]")?;
-            const_default(w, "MQWQR4_DEFAULT", "libmqm_sys::lib::MQWQR4", &lib::MQWQR4::default())?;
+            const_default(w, "MQWQR4_DEFAULT", "libmqm_sys::exits::MQWQR4", &exits::MQWQR4::default())?;
         }
-        const_default(w, "MQWXP_DEFAULT", "libmqm_sys::lib::MQWXP", &lib::MQWXP::default())?;
-        const_default(w, "MQWXP1_DEFAULT", "libmqm_sys::lib::MQWXP1", &lib::MQWXP1::default())?;
-        const_default(w, "MQWXP2_DEFAULT", "libmqm_sys::lib::MQWXP2", &lib::MQWXP2::default())?;
-        const_default(w, "MQWXP3_DEFAULT", "libmqm_sys::lib::MQWXP3", &lib::MQWXP3::default())?;
-        const_default(w, "MQWXP4_DEFAULT", "libmqm_sys::lib::MQWXP4", &lib::MQWXP4::default())?;
-        const_default(w, "MQXEPO_DEFAULT", "libmqm_sys::lib::MQXEPO", &lib::MQXEPO::default())?;
-        const_default(w, "MQIEP_DEFAULT", "libmqm_sys::lib::MQIEP", &lib::MQIEP::default())?;
-        const_default(w, "MQZED_DEFAULT", "libmqm_sys::lib::MQZED", &lib::MQZED::default())?;
-        const_default(w, "MQZAC_DEFAULT", "libmqm_sys::lib::MQZAC", &lib::MQZAC::default())?;
-        const_default(w, "MQZAD_DEFAULT", "libmqm_sys::lib::MQZAD", &lib::MQZAD::default())?;
-        const_default(w, "MQZFP_DEFAULT", "libmqm_sys::lib::MQZFP", &lib::MQZFP::default())?;
-        const_default(w, "MQZIC_DEFAULT", "libmqm_sys::lib::MQZIC", &lib::MQZIC::default())?;
+        const_default(w, "MQWXP_DEFAULT", "libmqm_sys::exits::MQWXP", &exits::MQWXP::default())?;
+        const_default(w, "MQWXP1_DEFAULT", "libmqm_sys::exits::MQWXP1", &exits::MQWXP1::default())?;
+        const_default(w, "MQWXP2_DEFAULT", "libmqm_sys::exits::MQWXP2", &exits::MQWXP2::default())?;
+        const_default(w, "MQWXP3_DEFAULT", "libmqm_sys::exits::MQWXP3", &exits::MQWXP3::default())?;
+        const_default(w, "MQWXP4_DEFAULT", "libmqm_sys::exits::MQWXP4", &exits::MQWXP4::default())?;
+        const_default(w, "MQXEPO_DEFAULT", "libmqm_sys::exits::MQXEPO", &exits::MQXEPO::default())?;
+        const_default(w, "MQIEP_DEFAULT", "libmqm_sys::exits::MQIEP", &exits::MQIEP::default())?;
+        const_default(w, "MQZED_DEFAULT", "libmqm_sys::exits::MQZED", &exits::MQZED::default())?;
+        const_default(w, "MQZAC_DEFAULT", "libmqm_sys::exits::MQZAC", &exits::MQZAC::default())?;
+        const_default(w, "MQZAD_DEFAULT", "libmqm_sys::exits::MQZAD", &exits::MQZAD::default())?;
+        const_default(w, "MQZFP_DEFAULT", "libmqm_sys::exits::MQZFP", &exits::MQZFP::default())?;
+        const_default(w, "MQZIC_DEFAULT", "libmqm_sys::exits::MQZIC", &exits::MQZIC::default())?;
         writeln!(w, "}}")?;
     }
 
@@ -189,7 +191,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     writeln!(
         defaults_pretty_write,
         "/* Generated with MQ client version {} */",
-        libmqm_sys::lib::version::CLIENT_BUILD_VERSION
+        libmqm_sys::version::CLIENT_BUILD_VERSION
     )?;
     defaults_pretty_write.write_all(defaults_pretty.as_ref())?;
     drop(defaults_pretty_write);

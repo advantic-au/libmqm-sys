@@ -90,7 +90,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                     writeln!(
                         w,
                         "
-                            use ::libmqm_sys::lib as mqsys;
+                            use ::libmqm_sys as mq;
                             use crate::mapping;
                             use crate::value::{{define_new_type, impl_value}};
                             use crate::bitflags::impl_bitflags;
@@ -101,8 +101,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                         writeln!(
                             w,
                             "
-                                define_new_type!(pub {new_type}, mqsys::{orig_type}, mapping::{prefix}MAPSTR{});
-                                impl_{usage}!({new_type}, mqsys::{orig_type});
+                                define_new_type!(pub {new_type}, mq::{orig_type}, mapping::{prefix}MAPSTR{});
+                                impl_{usage}!({new_type}, mq::{orig_type});
                             ",
                             doc.map_or(String::new(), |doc_lines| format!(", r##\"{doc_lines}\"##"))
                         )?;
@@ -192,7 +192,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         }
         writeln!(
             mapping_write,
-            "pub const MQI_BY_STRING: ::phf::Map<&'static str, ::libmqm_sys::lib::MQLONG> = {};",
+            "pub const MQI_BY_STRING: ::phf::Map<&'static str, ::libmqm_sys::MQLONG> = {};",
             mqi_by_string.build()
         )?;
 
@@ -200,7 +200,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         let outdir_path = std::path::Path::new(&outdir);
         let version_stamp = format!(
             "/* Generated with MQ client version {} */",
-            libmqm_sys::lib::version::CLIENT_BUILD_VERSION
+            libmqm_sys::version::CLIENT_BUILD_VERSION
         );
         for (filename, prelude, buffer) in [
             ("mapping.rs", [&*version_stamp].as_slice(), mapping_write),

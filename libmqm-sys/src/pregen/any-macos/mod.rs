@@ -1,9 +1,11 @@
-include!("mqi.rs");
+pub mod mqi;
+
 #[cfg(feature = "exits")]
-include!("exits.rs");
+pub mod exits;
+
 #[cfg(feature = "mqai")]
-include!("mqai.rs");
+pub mod mqai;
 #[cfg(feature = "pcf")]
-include!("pcf.rs");
+pub mod pcf;
 
 pub mod version;
