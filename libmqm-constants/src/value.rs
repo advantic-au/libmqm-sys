@@ -78,7 +78,7 @@ pub(crate) use define_new_type;
 
 macro_rules! impl_value {
     ($new_type:path) => {
-        impl_value!($new_type, ::libmqm_sys::lib::MQLONG);
+        impl_value!($new_type, ::libmqm_sys::MQLONG);
     };
     ($new_type:path, $orig_type:ty) => {
         #[allow(unused_imports)]
@@ -211,11 +211,11 @@ mod test {
     use std::{error::Error, str::FromStr};
 
     use crate::lookup::{ConstantItem, HasMqNames as _};
-    use libmqm_sys::lib as sys;
+    use libmqm_sys as mq;
 
     const LOOKUP: &[ConstantItem] = &[(0, "ZERO"), (0, "ZERO_ALIAS"), (1, "ONE"), (1, "ONE_ALIAS")];
 
-    define_new_type!(pub X, sys::MQLONG, LOOKUP);
+    define_new_type!(pub X, mq::MQLONG, LOOKUP);
     impl_value!(X);
 
     #[test]

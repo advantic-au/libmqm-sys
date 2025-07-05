@@ -1,8 +1,13 @@
 use std::{borrow::Cow, collections::HashMap};
 
 use regex_lite::{Captures, Regex};
-use syn::{parse_quote, visit_mut::VisitMut, Attribute};
+use syn::{
+    parse_quote,
+    visit_mut::{visit_item_mut, VisitMut},
+    Attribute,
+};
 
+// Used to match code comments above structures / functions
 const BARE_REGEX: &str = r"(?msx)
     /\*+/
     \s+/\*\s+([A-Za-z_0-9]+)\s+(?:Structure\s+|Function\s+)?--?\s
@@ -34,6 +39,8 @@ const FIELD_REGEX: &str = r"(?msx)
     ((?:\s+/\*.+?\*/)+)
 ";
 
+const VER_REGEX: &str = r"/\*\s+Ver:(\d+)\s+\*/";
+
 const FN_REGEX: &str = r"(?msx)
     (?msx)
     void\s+MQENTRY\s+([\w\d_]+)\s\(
@@ -46,258 +53,8 @@ const PARAM_REGEX: &str = r"(?msx)
     ((?:\s+/\*.+?\*/)+)
 ";
 
-const IBM_REFERENCE: &[(&str, &str)] = &[
-    ("mqPad", "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqpad"),
-    ("mqTrim", "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqtrim"),
-    (
-        "MQXEP",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=reference-exit-entry-point-registration-call-mqxep",
-    ),
-    (
-        "MQXCLWLN",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=structures-mqxclwln-navigate-cluster-workload-records",
-    ),
-    (
-        "MQZEP",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=information-mqzep-add-component-entry-point",
-    ),
-    (
-        "MQCONNX",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqconnx-connect-queue-manager-extended",
-    ),
-    (
-        "MQCONN",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqconn-connect-queue-manager",
-    ),
-    (
-        "MQDISC",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqdisc-disconnect-queue-manager",
-    ),
-    (
-        "MQOPEN",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqopen-open-object",
-    ),
-    (
-        "MQPUT1",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqput1-put-one-message",
-    ),
-    (
-        "MQCLOSE",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqclose-close-object",
-    ),
-    (
-        "MQCMIT",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqcmit-commit-changes",
-    ),
-    (
-        "MQGET",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqget-get-message",
-    ),
-    (
-        "MQPUT",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqput-put-message",
-    ),
-    (
-        "MQINQ",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinq-inquire-object-attributes",
-    ),
-    (
-        "MQSUB",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqsub-register-subscription",
-    ),
-    (
-        "MQSUBRQ",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqsubrq-subscription-request",
-    ),
-    (
-        "MQBEGIN",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqbegin-begin-unit-work",
-    ),
-    (
-        "MQBACK",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqback-back-out-changes",
-    ),
-    (
-        "MQCRTMH",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqcrtmh-create-message-handle",
-    ),
-    (
-        "MQDLTMH",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqdltmh-delete-message-handle",
-    ),
-    (
-        "MQMHBUF",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqmhbuf-convert-message-handle-into-buffer",
-    ),
-    (
-        "MQBUFMH",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqbufmh-convert-buffer-into-message-handle",
-    ),
-    (
-        "MQCB",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqcb-manage-callback",
-    ),
-    (
-        "MQCTL",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqctl-control-callbacks",
-    ),
-    (
-        "MQSET",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqset-set-object-attributes",
-    ),
-    (
-        "MQSETMP",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqsetmp-set-message-property",
-    ),
-    (
-        "MQSTAT",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqstat-retrieve-status-information",
-    ),
-    (
-        "MQINQMP",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinqmp-inquire-message-property",
-    ),
-    (
-        "MQDLTMP",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqdltmp-delete-message-property",
-    ),
-    (
-        "MQXCNVC",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=exit-mqxcnvc-convert-characters",
-    ),
-    (
-        "mqCreateBag",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqcreatebag",
-    ),
-    (
-        "mqClearBag",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqclearbag",
-    ),
-    (
-        "mqDeleteBag",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqdeletebag",
-    ),
-    ("mqGetBag", "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqgetbag"),
-    ("mqPutBag", "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqputbag"),
-    (
-        "mqTruncateBag",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqtruncatebag",
-    ),
-    (
-        "mqAddInquiry",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqaddinquiry",
-    ),
-    (
-        "mqDeleteItem",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqdeleteitem",
-    ),
-    (
-        "mqAddInteger",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqaddinteger",
-    ),
-    (
-        "mqAddIntegerFilter",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqaddintegerfilter",
-    ),
-    (
-        "mqAddInteger64",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqaddinteger64",
-    ),
-    (
-        "mqAddString",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqaddstring",
-    ),
-    (
-        "mqAddStringFilter",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqaddstringfilter",
-    ),
-    (
-        "mqAddByteString",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqaddbytestring",
-    ),
-    (
-        "mqAddByteStringFilter",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqaddbytestringfilter",
-    ),
-    (
-        "mqSetInteger",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqsetinteger",
-    ),
-    (
-        "mqSetIntegerFilter",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqsetintegerfilter",
-    ),
-    (
-        "mqSetInteger64",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqsetinteger64",
-    ),
-    ("mqAddBag", "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqaddbag"),
-    (
-        "mqSetString",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqsetstring",
-    ),
-    (
-        "mqSetStringFilter",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqsetstringfilter",
-    ),
-    (
-        "mqSetByteString",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqsetbytestring",
-    ),
-    (
-        "mqSetByteStringFilter",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqsetbytestringfilter",
-    ),
-    (
-        "mqInquireInteger",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinquireinteger",
-    ),
-    (
-        "mqInquireIntegerFilter",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinquireintegerfilter",
-    ),
-    (
-        "mqInquireInteger64",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinquireinteger64",
-    ),
-    (
-        "mqInquireByteString",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinquirebytestring",
-    ),
-    (
-        "mqInquireString",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinquirestring",
-    ),
-    (
-        "mqInquireStringFilter",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinquirestringfilter",
-    ),
-    (
-        "mqInquireByteStringFilter",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinquirebytestringfilter",
-    ),
-    (
-        "mqInquireBag",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinquirebag",
-    ),
-    (
-        "mqCountItems",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqcountitems",
-    ),
-    ("mqExecute", "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqexecute"),
-    (
-        "mqBagToBuffer",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqbagtobuffer",
-    ),
-    (
-        "mqBufferToBag",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqbuffertobag",
-    ),
-    (
-        "mqInquireItemInfo",
-        "https://www.ibm.com/docs/en/ibm-mq/latest?topic=calls-mqinquireiteminfo",
-    ),
-];
+const IBM_REFERENCE_CSV: &str = include_str!("ibm_references.csv");
+static IBM_REFERENCES: std::sync::OnceLock<HashMap<String, String>> = std::sync::OnceLock::new();
 
 const EQUIV: &[(&str, &str)] = &[
     ("MQBACK", "MQ_BACK_CALL"),
@@ -348,7 +105,7 @@ fn replace_keywords(comment: &str) -> String {
 pub struct DocCommentType<'a>(pub &'a HashMap<String, String>);
 
 #[derive(Debug, Clone)]
-pub struct DocCommentFields<'a>(pub &'a HashMap<String, HashMap<String, String>>);
+pub struct DocCommentFields<'a>(pub &'a HashMap<String, HashMap<String, (String, Option<usize>)>>);
 
 #[derive(Debug, Clone)]
 pub struct DocCommentArgs<'a>(pub &'a HashMap<String, Vec<(String, String)>>);
@@ -365,6 +122,7 @@ pub struct DescriptionRegex {
 pub struct StructFieldExtract {
     struct_search: Regex,
     field_search: Regex,
+    ver_search: Regex,
     delim: Regex,
     mq_item: Regex,
 }
@@ -391,6 +149,7 @@ impl Default for StructFieldExtract {
         Self {
             struct_search: Regex::new(STRUCT_REGEX).unwrap(),
             field_search: Regex::new(FIELD_REGEX).unwrap(),
+            ver_search: Regex::new(VER_REGEX).unwrap(),
             delim: Regex::new(SPLIT_REGEX).unwrap(),
             mq_item: Regex::new(MQ_ITEM_REGEX).unwrap(),
         }
@@ -450,30 +209,42 @@ impl ExtractFromC for DescriptionRegex {
 }
 
 impl ExtractFromC for StructFieldExtract {
-    type Extracted = HashMap<String, String>;
+    type Extracted = HashMap<String, (String, Option<usize>)>; // field: (description, min_version)
 
     fn extract(&self, file_content: &str) -> impl Iterator<Item = (String, Self::Extracted)> {
-        self.struct_search.captures_iter(file_content).map(|c| {
-            (
-                c[1].trim_start_matches("tag").to_string(), // Struct name
-                self.field_search
-                    .captures_iter(&c[2])
-                    .map(|c| {
-                        let description = self
-                            .delim
-                            .split(&c[2])
-                            .filter(|s| !s.is_empty() && !s.starts_with("Ver:"))
-                            .collect::<Vec<_>>()
-                            .join(" ");
-                        let description = self.mq_item.replace_all(&description, doc_link);
+        self.struct_search.captures_iter(file_content).map(move |c| {
+            // tag convention is an unneeded c relic which bindgen is configured to remove
+            let struct_name = c[1].trim_start_matches("tag").to_string();
 
-                        (
-                            c[1].to_string(), // Field name
-                            replace_keywords(&description),
-                        )
-                    })
-                    .collect(),
-            )
+            // Split the fields into version segments
+            let struct_content = &c[2];
+            let mut match_pos = 0;
+            let mut by_version = vec![];
+            for m in self.ver_search.find_iter(struct_content) {
+                by_version.push(&struct_content[match_pos..m.end()]);
+                match_pos = m.end();
+            }
+            by_version.push(&struct_content[match_pos..]);
+
+            let extracted = by_version.iter().flat_map(|&section| {
+                let version: Option<usize> = self.ver_search.captures(section).and_then(|c| c[1].parse().ok());
+                self.field_search.captures_iter(section).map(move |c| {
+                    let description = self
+                        .delim
+                        .split(&c[2])
+                        .filter(|s| !s.is_empty() && !s.starts_with("Ver:"))
+                        .collect::<Vec<_>>()
+                        .join(" ");
+                    let description = self.mq_item.replace_all(&description, doc_link);
+
+                    (
+                        c[1].to_string(), // Field name
+                        (replace_keywords(&description), version),
+                    )
+                })
+            });
+
+            (struct_name, extracted.collect())
         })
     }
 }
@@ -543,11 +314,27 @@ impl VisitMut for DocCommentType<'_> {
 
 impl VisitMut for DocCommentFields<'_> {
     fn visit_item_struct_mut(&mut self, item: &mut syn::ItemStruct) {
-        if let Some(fields) = self.0.get(&item.ident.to_string()) {
+        let struct_name = item.ident.to_string();
+        if let Some(fields) = self.0.get(&struct_name) {
             for field in &mut item.fields {
-                if let Some(description) = fields.get(&field.ident.as_ref().unwrap().to_string()) {
-                    let doc_lit = syn::LitStr::new(&format!(" {description}"), proc_macro2::Span::call_site());
-                    field.attrs.insert(0, syn::parse_quote!(#[doc = #doc_lit ]));
+                if let Some((description, version)) = fields.get(&field.ident.as_ref().unwrap().to_string()) {
+                    let version = version.iter().filter(|ver| **ver > 1).flat_map(|ver| {
+                        [
+                            syn::LitStr::new("", proc_macro2::Span::call_site()),
+                            syn::LitStr::new(
+                                &format!(" [`{struct_name}::Version`] >= {ver}"),
+                                proc_macro2::Span::call_site(),
+                            ),
+                        ]
+                    });
+
+                    let desc_lit = std::iter::once(syn::LitStr::new(&format!(" {description}"), proc_macro2::Span::call_site()));
+                    let doc_lit = desc_lit
+                        .chain(version)
+                        .map(|lit| syn::parse_quote!(#[doc = #lit ]))
+                        .chain(field.attrs.iter().cloned());
+
+                    field.attrs = doc_lit.collect();
                 }
             }
         }
@@ -591,18 +378,75 @@ impl VisitMut for DocCommentArgs<'_> {
 }
 
 impl VisitMut for DocCommentReference {
+    fn visit_item_mut(&mut self, item: &mut syn::Item) {
+        match item {
+            syn::Item::Const(item_const) => add_ibm_reference(&mut item_const.attrs, &item_const.ident),
+            syn::Item::Struct(item_struct) => add_ibm_reference(&mut item_struct.attrs, &item_struct.ident),
+            syn::Item::Type(item_type) => add_ibm_reference(&mut item_type.attrs, &item_type.ident),
+            _ => (),
+        }
+
+        visit_item_mut(self, item);
+    }
+
     fn visit_foreign_item_fn_mut(&mut self, item: &mut syn::ForeignItemFn) {
-        let ibm_url = IBM_REFERENCE
-            .iter()
-            .find_map(|(name, url)| (item.sig.ident == *name).then_some(*url));
-        if let Some(url) = ibm_url {
-            let doc_lit = syn::LitStr::new(&format!(" * [IBM Documentation]({url})"), proc_macro2::Span::call_site());
+        add_ibm_reference(&mut item.attrs, &item.sig.ident);
+    }
+}
+
+fn add_ibm_reference(attrs: &mut Vec<syn::Attribute>, ident: &syn::Ident) {
+    let references = IBM_REFERENCES.get_or_init(|| {
+        let mut ibm_csv = csv::Reader::from_reader(IBM_REFERENCE_CSV.as_bytes());
+
+        let headers = ibm_csv.headers().unwrap().clone();
+        let symbol_re = regex_lite::Regex::new(r"(?i)\bmq\w+\b").unwrap();
+
+        ibm_csv
+            .records()
+            .map(|record| {
+                let record = record.unwrap();
+                let row: Vec<_> = headers.iter().zip(record.iter()).collect();
+                (
+                    row.iter()
+                        .find_map(|(key, value)| (*key == "name").then(|| symbol_re.find(value)))
+                        .flatten()
+                        .unwrap()
+                        .as_str()
+                        .to_string(),
+                    row.iter()
+                        .find_map(|(key, value)| (*key == "url").then_some(*value))
+                        .unwrap()
+                        .to_string(),
+                )
+            })
+            .collect()
+    });
+
+    let ibm_url = references.get(&ident.to_string());
+    if let Some(url) = ibm_url {
+        let documentation_link = format!(" [IBM `{ident}` Documentation]({url})");
+
+        // Insert the references after the last doc comment
+        let mut pos = attrs.len();
+        while pos != 0 && !attrs[pos - 1].meta.path().is_ident("doc") {
+            pos -= 1;
+        }
+        if pos == 0 {
+            let doc_lit = syn::LitStr::new(&documentation_link, proc_macro2::Span::call_site());
+            attrs.insert(
+                0,
+                parse_quote!(
+                    #[doc = #doc_lit]
+                ),
+            );
+        } else {
+            let doc_lit = syn::LitStr::new(&format!(" *{documentation_link}"), proc_macro2::Span::call_site());
             let comments: Vec<syn::Attribute> = parse_quote!(
                 ///
                 /// # References
                 #[doc = #doc_lit]
             );
-            item.attrs.extend(comments);
+            attrs.splice(pos..pos, comments);
         }
     }
 }

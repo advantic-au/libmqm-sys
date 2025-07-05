@@ -1,6 +1,5 @@
 use syn::{
     parse_quote,
-    punctuated::Punctuated,
     token::Colon,
     visit::Visit,
     visit_mut::{visit_pat_type_mut, visit_type_mut, VisitMut},
@@ -20,8 +19,6 @@ pub struct ImplFnGenerator<F> {
 }
 
 pub struct WrapperGenerator<F>(pub F);
-
-pub struct PrefixMqTypes<'a>(pub &'a syn::Path);
 
 impl TraitGenerator {
     #[must_use]
@@ -61,23 +58,6 @@ impl VisitMut for DesugarForMockall {
             }
         }
         item.sig.generics = generics;
-    }
-}
-
-impl VisitMut for PrefixMqTypes<'_> {
-    fn visit_path_mut(&mut self, item: &mut syn::Path) {
-        if item.segments.len() == 1 {
-            let ident_str = item.segments[0].ident.to_string();
-            if ident_str.starts_with("MQ") || ident_str.starts_with("PMQ") {
-                let mut path: Path = self.0.clone();
-                path.segments.extend(item.segments.iter().cloned());
-                std::mem::swap(&mut path.segments, &mut item.segments);
-            }
-        }
-        for mut el in Punctuated::pairs_mut(&mut item.segments) {
-            let it = el.value_mut();
-            self.visit_path_segment_mut(it);
-        }
     }
 }
 

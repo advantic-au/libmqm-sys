@@ -13,7 +13,7 @@ macro_rules! impl_bitflags {
         use $crate::lookup::{ConstLookup as _, HasConstLookup as _, HasMqNames as _};
 
         impl std::str::FromStr for $name {
-            type Err = <libmqm_sys::lib::MQLONG as std::str::FromStr>::Err;
+            type Err = <libmqm_sys::MQLONG as std::str::FromStr>::Err;
 
             fn from_str(name: &str) -> Result<Self, Self::Err> {
                 Ok(Self(
@@ -29,7 +29,7 @@ macro_rules! impl_bitflags {
                 &self,
             ) -> (
                 impl Iterator<Item = $crate::lookup::ConstantItem<'static>> + use<>,
-                ::libmqm_sys::lib::MQLONG,
+                ::libmqm_sys::MQLONG,
             ) {
                 let &Self(val) = self;
                 $crate::bitflags::bitflags_list(val, Self::const_lookup().all())
@@ -76,7 +76,7 @@ macro_rules! impl_bitflags {
 
             fn bitflags_str<'a>(
                 list: impl Iterator<Item = $crate::lookup::ConstantItem<'a>>,
-                residual: ::libmqm_sys::lib::MQLONG,
+                residual: ::libmqm_sys::MQLONG,
             ) -> Option<std::borrow::Cow<'a, str>> {
                 $crate::bitflags::bitflags_str(Self::const_lookup(), list, residual)
             }
@@ -176,7 +176,7 @@ pub(crate) use impl_bitflags;
 
 pub fn bitflags_debug(
     type_name: &str,
-    value: libmqm_sys::lib::MQLONG,
+    value: libmqm_sys::MQLONG,
     lookup: &impl ConstLookup,
     f: &mut std::fmt::Formatter,
 ) -> std::fmt::Result {
@@ -195,9 +195,9 @@ pub fn bitflags_debug(
 }
 
 pub fn bitflags_list<'a>(
-    value: libmqm_sys::lib::MQLONG,
+    value: libmqm_sys::MQLONG,
     source: impl Iterator<Item = ConstantItem<'a>>,
-) -> (impl Iterator<Item = ConstantItem<'a>>, libmqm_sys::lib::MQLONG) {
+) -> (impl Iterator<Item = ConstantItem<'a>>, libmqm_sys::MQLONG) {
     let mut bitflags_list = Vec::new();
     let residual = source
         .into_iter()
@@ -217,7 +217,7 @@ pub fn bitflags_list<'a>(
 pub fn bitflags_str<'a>(
     lookup: &'a impl ConstLookup,
     list: impl Iterator<Item = ConstantItem<'a>>,
-    residual: libmqm_sys::lib::MQLONG,
+    residual: libmqm_sys::MQLONG,
 ) -> Option<Cow<'a, str>> {
     let res_cow = (residual != 0).then(|| Cow::Owned(format!("{residual:#X}")));
     let list = list.map(|(.., name)| Cow::Borrowed(name)).chain(res_cow);
@@ -234,7 +234,7 @@ pub fn bitflags_str<'a>(
 #[cfg_attr(coverage_nightly, coverage(off))]
 mod test {
     use crate::value::define_new_type;
-    use ::libmqm_sys::lib as sys;
+    use ::libmqm_sys as mq;
 
     use super::*;
 
@@ -246,10 +246,10 @@ mod test {
         (0b1, "ONE_MASK"),
         (0b10, "TWO"),
     ];
-    define_new_type!(MaskOne, sys::MQLONG, ONEB);
+    define_new_type!(MaskOne, mq::MQLONG, ONEB);
     impl_bitflags!(MaskOne);
     const NO_ZERO: &[ConstantItem] = &[(1, "ONE")];
-    define_new_type!(NoZero, sys::MQLONG, NO_ZERO);
+    define_new_type!(NoZero, mq::MQLONG, NO_ZERO);
     impl_bitflags!(NoZero);
 
     #[test]

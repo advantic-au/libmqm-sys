@@ -1,0 +1,1111 @@
+name,url
+MQBACK - Back out changes,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101690_.html
+MQBEGIN - Begin unit of work,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101700_.html
+MQBUFMH - Convert buffer into message handle,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101710_.html
+MQCB - Manage callback,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101720_.html
+MQCB_FUNCTION - Callback function,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101730_.html
+MQCLOSE - Close object,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101740_.html
+MQCMIT - Commit changes,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101750_.html
+MQCONN - Connect queue manager,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101760_.html
+MQCONNX - Connect queue manager (extended),https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101770_.html
+MQCRTMH - Create message handle,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101780_.html
+MQCTL - Control callbacks,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101790_.html
+MQDISC - Disconnect queue manager,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101800_.html
+MQDLTMH - Delete message handle,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101810_.html
+MQDLTMP - Delete message property,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101820_.html
+MQGET - Get message,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101830_.html
+MQINQ - Inquire object attributes,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101840_.html
+MQINQMP - Inquire message property,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101850_.html
+MQMHBUF - Convert message handle into buffer,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101860_.html
+MQOPEN - Open object,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101870_.html
+MQPUT - Put message,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101880_.html
+MQPUT1 - Put one message,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101890_.html
+MQSET - Set object attributes,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101900_.html
+MQSETMP - Set message property,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101910_.html
+MQSTAT - Retrieve status information,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101920_.html
+MQMHBUF - Convert message handle into buffer,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101860_.html
+MQSUB - Register subscription,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101930_.html
+MQSUBRQ - Subscription request,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101940_.html
+Data types and programming for the MQI,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q093570_.html
+MQAIR - Authentication information record,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q093950_.html
+MQBMHO - Buffer to message handle options,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q094110_.html
+MQBNO - Balancing options,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/mqbno-mqbaloptions.html
+MQBO - Begin options,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q094220_.html
+MQCBC - Callback context,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q094330_.html
+MQCBD - Callback descriptor,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q094540_.html
+MQCHARV - Variable Length String,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q094690_.html
+MQCIH - CICS bridge header,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q094830_.html
+MQCMHO - Create message handle options,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q095300_.html
+MQCNO - Connect options,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q095410_.html
+MQCSP - Security parameters,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q095610_.html
+MQCTLO - Control callback options structure,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q095800_.html
+MQDH - Distribution header,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q095920_.html
+MQDLH - Dead letter header,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q096110_.html
+MQDMHO - Delete message handle options,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q096320_.html
+MQDMPO - Delete message property options,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q096430_.html
+MQEPH - Embedded PCF header,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q096540_.html
+MQGMO - Get-message options,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q096710_.html
+MQIIH - IMS information header,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q096960_.html
+MQIMPO - Inquire message property options,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q097210_.html
+MQMD - Message descriptor,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q097390_.html
+MQMDE - Message descriptor extension,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q097780_.html
+MQMHBO - Message handle to buffer options,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q097990_.html
+MQOD - Object descriptor,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q098100_.html
+MQOR - Object record,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q098410_.html
+MQPD - Property descriptor,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q098510_.html
+MQPMO - Put message options,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q098650_.html
+MQPMR - Put-message record,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q098940_.html
+MQRFH - Rules and formatting header,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q099070_.html
+MQRFH2 - Rules and formatting header 2,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q099240_.html
+MQRMH - Reference message header,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q099430_.html
+MQRR - Response record,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q099720_.html
+MQSCO - SSL/TLS configuration options,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q099820_.html
+MQSD - Subscription descriptor,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q100010_.html
+MQSMPO - Set message property options,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q100270_.html
+MQSRO - Subscription request options,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q100400_.html
+MQSTS - Status reporting structure,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q100520_.html
+MQTM - Trigger message,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q100760_.html
+MQTMC2 - Trigger message 2 (character format),https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q100940_.html
+MQWIH - Work information header,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101130_.html
+MQXP - Exit parameter block,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101330_.html
+MQXQH - Transmission-queue header,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101500_.html
+MQI applications reference,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q089590_.html
+IBM MQ API exit parameter structure (MQAXP),https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q109610_.html
+IBM MQ API exit context structure (MQAXC),https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q109620_.html
+The exit chain area and exit chain area header (MQACH),https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q109630_.html
+The exit entry point registration call (MQXEP),https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q109660_.html
+MQ_DATA_CONV_EXIT - Data conversion exit,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q104120_.html
+MQXCNVC - Convert characters,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q104110_.html
+MQDXP - Data-conversion exit parameter,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q104100_.html
+MQDXP - Data-conversion exit parameter,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q104100_.html
+MQXCNVC - Convert characters,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q104110_.html
+MQ_DATA_CONV_EXIT - Data conversion exit,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q104120_.html
+MQI applications reference,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q089590_.html
+MQIEP structure,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q108070_.html
+MQ_PUBLISH_EXIT - Publish exit,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q108130_.html
+MQ_CHANNEL_EXIT - Channel exit,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q108180_.html
+MQ_CHANNEL_AUTO_DEF_EXIT - Channel auto-definition exit,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q108190_.html
+MQXWAIT - Wait in exit,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q108200_.html
+MQCD - Channel definition,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q108210_.html
+MQCXP - Channel exit parameter,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q109150_.html
+MQXWD - Exit wait descriptor,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q109500_.html
+MQAI selectors,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089530_.html
+mqAddBag,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089150_.html
+mqAddByteString,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089160_.html
+mqAddByteStringFilter,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089170_.html
+mqAddInquiry,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089180_.html
+mqAddInteger,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089190_.html
+mqAddInteger64,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089200_.html
+mqAddIntegerFilter,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089210_.html
+mqAddString,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089220_.html
+mqAddStringFilter,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089230_.html
+mqClearBag,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089260_.html
+mqCountItems,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089270_.html
+mqCreateBag,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089280_.html
+mqDeleteBag,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089290_.html
+mqDeleteItem,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089300_.html
+mqInquireBag,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089330_.html
+mqInquireByteString,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089340_.html
+mqInquireByteStringFilter,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089350_.html
+mqInquireInteger,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089360_.html
+mqInquireInteger64,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089370_.html
+mqInquireIntegerFilter,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089380_.html
+mqInquireItemInfo,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089390_.html
+mqInquireString,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089400_.html
+mqInquireStringFilter,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089410_.html
+mqSetByteString,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089440_.html
+mqSetByteStringFilter,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089450_.html
+mqSetInteger,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089460_.html
+mqSetInteger64,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089470_.html
+mqSetIntegerFilter,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089480_.html
+mqSetString,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089490_.html
+mqSetStringFilter,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089500_.html
+mqTruncateBag,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089520_.html
+mqBagToBuffer,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089240_.html
+mqBufferToBag,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089250_.html
+mqExecute,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089310_.html
+mqGetBag,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089320_.html
+mqPutBag,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089430_.html
+mqPad,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089420_.html
+mqTrim,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089510_.html
+mqAddBag,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089150_.html
+mqAddByteString,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089160_.html
+mqAddByteStringFilter,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089170_.html
+mqAddInquiry,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089180_.html
+mqAddInteger,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089190_.html
+mqAddInteger64,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089200_.html
+mqAddIntegerFilter,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089210_.html
+mqAddString,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089220_.html
+mqAddStringFilter,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089230_.html
+mqBagToBuffer,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089240_.html
+mqBufferToBag,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089250_.html
+mqClearBag,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089260_.html
+mqCountItems,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089270_.html
+mqCreateBag,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089280_.html
+mqDeleteBag,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089290_.html
+mqDeleteItem,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089300_.html
+mqExecute,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089310_.html
+mqGetBag,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089320_.html
+mqInquireBag,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089330_.html
+mqInquireByteString,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089340_.html
+mqInquireByteStringFilter,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089350_.html
+mqInquireInteger,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089360_.html
+mqInquireInteger64,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089370_.html
+mqInquireIntegerFilter,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089380_.html
+mqInquireItemInfo,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089390_.html
+mqInquireString,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089400_.html
+mqInquireStringFilter,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089410_.html
+mqPad,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089420_.html
+mqPutBag,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089430_.html
+mqSetByteString,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089440_.html
+mqSetByteStringFilter,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089450_.html
+mqSetInteger,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089460_.html
+mqSetInteger64,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089470_.html
+mqSetIntegerFilter,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089480_.html
+mqSetString,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089490_.html
+mqSetStringFilter,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089500_.html
+mqTrim,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089510_.html
+mqTruncateBag,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089520_.html
+MQCFH - PCF header,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q088600_.html
+MQCFBF - PCF byte string filter parameter,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q088610_.html
+MQCFBS - PCF byte string parameter,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q088620_.html
+MQCFIF - PCF integer filter parameter,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q088630_.html
+MQCFIL - PCF integer list parameter,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q088640_.html
+MQCFIN - PCF integer parameter,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q088650_.html
+MQCFSF - PCF string filter parameter,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q088660_.html
+MQCFSL - PCF string list parameter,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q088670_.html
+MQCFST - PCF string parameter,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q088680_.html
+MQCFH - PCF header,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q088600_.html
+MQCFBF - PCF byte string filter parameter,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q088610_.html
+MQCFBS - PCF byte string parameter,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q088620_.html
+MQCFIF - PCF integer filter parameter,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q088630_.html
+MQCFIL - PCF integer list parameter,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q088640_.html
+MQCFIN - PCF integer parameter,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q088650_.html
+MQCFSF - PCF string filter parameter,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q088660_.html
+MQCFSL - PCF string list parameter,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q088670_.html
+MQCFST - PCF string parameter,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q088680_.html
+MQCFBS - Byte string parameter,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q049380_.html
+MQCFGR - Group parameter,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q049390_.html
+MQCFH - PCF header,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q049400_.html
+MQCFIL - Integer list parameter,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q049410_.html
+MQCFIL64 - 64-bit integer list parameter,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q049420_.html
+MQCFIN - Integer parameter,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q049430_.html
+MQCFIN64 - 64-bit integer parameter,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q049440_.html
+MQCFSL - String list parameter,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q049450_.html
+MQCFST - String parameter,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q049460_.html
+MQEPH - Embedded PCF header,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q049470_.html
+MQZ_AUTHENTICATE_USER - Authenticate user,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110090_.html
+MQZ_CHECK_AUTHORITY - Check authority,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110100_.html
+MQZ_CHECK_AUTHORITY_2 - Check authority (extended),https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110110_.html
+MQZ_CHECK_PRIVILEGED - Check if user is privileged,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110120_.html
+MQZ_COPY_ALL_AUTHORITY - Copy all authority,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110130_.html
+MQZ_DELETE_AUTHORITY - Delete authority,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110140_.html
+MQZ_ENUMERATE_AUTHORITY_DATA - Enumerate authority data,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110150_.html
+MQZ_FREE_USER - Free user,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110160_.html
+MQZ_GET_AUTHORITY - Get authority,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110170_.html
+MQZ_GET_AUTHORITY_2 - Get authority (extended),https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110180_.html
+MQZ_GET_EXPLICIT_AUTHORITY - Get explicit authority,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110190_.html
+MQZ_GET_EXPLICIT_AUTHORITY_2 - Get explicit authority (extended),https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110200_.html
+MQZ_INIT_AUTHORITY - Initialize authorization service,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110210_.html
+MQZ_INQUIRE - Inquire authorization service,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110220_.html
+MQZ_REFRESH_CACHE - Refresh all authorizations,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110230_.html
+MQZ_SET_AUTHORITY - Set authority,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110240_.html
+MQZ_SET_AUTHORITY_2 - Set authority (extended),https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110250_.html
+MQZ_TERM_AUTHORITY - Terminate authorization service,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110260_.html
+MQZ_DELETE_NAME - Delete name,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110270_.html
+MQZ_INIT_NAME - Initialize name service,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110280_.html
+MQZ_INSERT_NAME - Insert name,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110290_.html
+MQZ_LOOKUP_NAME - Lookup name,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110300_.html
+MQZ_TERM_NAME - Terminate name service,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110310_.html
+MQZAC - Application context,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110320_.html
+MQZAD - Authority data,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110330_.html
+MQZED - Entity descriptor,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110340_.html
+MQZEP - Add component entry point,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110350_.html
+MQZFP - Free parameters,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110360_.html
+MQZIC - Identity context,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110370_.html
+MQPSXP - Publish exit data structure,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q108140_.html
+MQPBC - Publication context data structure,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q108150_.html
+MQSBC - Subscription context data structure,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q108160_.html
+MQ_CLUSTER_WORKLOAD_EXIT - Call description,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q082500_.html
+MQXCLWLN - Navigate Cluster workload records,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q082540_.html
+MQWXP - Cluster workload exit parameter structure,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q082580_.html
+MQWDR - Cluster workload destination record structure,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q082610_.html
+MQWQR - Cluster workload queue record structure,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q082640_.html
+MQWCR - Cluster workload cluster record structure,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q082670_.html
+MQSC commands,https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q085130_.html
+MQ_CLUSTER_WORKLOAD_EXIT - Call description,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q082500_.html
+MQXCLWLN - Navigate Cluster workload records,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q082540_.html
+MQWXP - Cluster workload exit parameter structure,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q082580_.html
+MQWDR - Cluster workload destination record structure,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q082610_.html
+MQWQR - Cluster workload queue record structure,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q082640_.html
+MQWCR - Cluster workload cluster record structure,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q082670_.html
+Backout - MQ_BACK_EXIT,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q109700_.html
+Begin - MQ_BEGIN_EXIT,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q109710_.html
+Callback - MQ_CALLBACK_EXIT,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q109720_.html
+Manage callback functions - MQ_CB_EXIT,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q109730_.html
+Close - MQ_CLOSE_EXIT,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q109740_.html
+Commit - MQ_CMIT_EXIT,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q109750_.html
+Connect and connect extension - MQ_CONNX_EXIT,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q109760_.html
+Control callback - MQ_CTL_EXIT,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q109770_.html
+Disconnect - MQ_DISC_EXIT,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q109780_.html
+Get - MQ_GET_EXIT,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q109790_.html
+MQXF_DATA_CONV_ON_GET,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q109800_.html
+Initialization - MQ_INIT_EXIT,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q109810_.html
+Inquire - MQ_INQ_EXIT,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q109820_.html
+Open - MQ_OPEN_EXIT,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q109830_.html
+Put - MQ_PUT_EXIT,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q109840_.html
+Put1 - MQ_PUT1_EXIT,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q109850_.html
+Set - MQ_SET_EXIT,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q109860_.html
+Status - MQ_STAT_EXIT,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q109870_.html
+Termination - MQ_TERM_EXIT,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q109880_.html
+Register subscription - MQ_SUB_EXIT,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q109890_.html
+Subscription request - MQ_SUBRQ_EXIT,https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q109900_.html
+0 (0000) (RC0): MQRC_NONE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040720_.html
+900 (0384) (RC900): MQRC_APPL_FIRST,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040730_.html
+999 (03E7) (RC999): MQRC_APPL_LAST,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040740_.html
+2001 (07D1) (RC2001): MQRC_ALIAS_BASE_Q_TYPE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040750_.html
+2002 (07D2) (RC2002): MQRC_ALREADY_CONNECTED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040760_.html
+2003 (07D3) (RC2003): MQRC_BACKED_OUT,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040770_.html
+2004 (07D4) (RC2004): MQRC_BUFFER_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040780_.html
+2005 (07D5) (RC2005): MQRC_BUFFER_LENGTH_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040790_.html
+2006 (07D6) (RC2006): MQRC_CHAR_ATTR_LENGTH_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040800_.html
+2007 (07D7) (RC2007): MQRC_CHAR_ATTRS_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040810_.html
+2008 (07D8) (RC2008): MQRC_CHAR_ATTRS_TOO_SHORT,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040820_.html
+2009 (07D9) (RC2009): MQRC_CONNECTION_BROKEN,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040830_.html
+2010 (07DA) (RC2010): MQRC_DATA_LENGTH_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040840_.html
+2011 (07DB) (RC2011): MQRC_DYNAMIC_Q_NAME_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040850_.html
+2012 (07DC) (RC2012): MQRC_ENVIRONMENT_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040860_.html
+2013 (07DD) (RC2013): MQRC_EXPIRY_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040870_.html
+2014 (07DE) (RC2014): MQRC_FEEDBACK_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040880_.html
+2016 (07E0) (RC2016): MQRC_GET_INHIBITED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040890_.html
+2017 (07E1) (RC2017): MQRC_HANDLE_NOT_AVAILABLE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040900_.html
+2018 (07E2) (RC2018): MQRC_HCONN_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040910_.html
+2019 (07E3) (RC2019): MQRC_HOBJ_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040920_.html
+2020 (07E4) (RC2020): MQRC_INHIBIT_VALUE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040930_.html
+2021 (07E5) (RC2021): MQRC_INT_ATTR_COUNT_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040940_.html
+2022 (07E6) (RC2022): MQRC_INT_ATTR_COUNT_TOO_SMALL,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040950_.html
+2023 (07E7) (RC2023): MQRC_INT_ATTRS_ARRAY_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040960_.html
+2025 (07E8) (RC2024): MQRC_SYNCPOINT_LIMIT_REACHED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040970_.html
+2025 (07E9) (RC2025): MQRC_MAX_CONNS_LIMIT_REACHED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040980_.html
+2026 (07EA) (RC2026): MQRC_MD_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q040990_.html
+2027 (07EB) (RC2027): MQRC_MISSING_REPLY_TO_Q,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041000_.html
+2029 (07ED) (RC2029): MQRC_MSG_TYPE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041010_.html
+2030 (07EE) (RC2030): MQRC_MSG_TOO_BIG_FOR_Q,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041020_.html
+2031 (07EF) (RC2031): MQRC_MSG_TOO_BIG_FOR_Q_MGR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041030_.html
+2033 (07F1) (RC2033): MQRC_NO_MSG_AVAILABLE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041040_.html
+2034 (07F2) (RC2034): MQRC_NO_MSG_UNDER_CURSOR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041050_.html
+2035 (07F3) (RC2035): MQRC_NOT_AUTHORIZED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041060_.html
+2036 (07F4) (RC2036): MQRC_NOT_OPEN_FOR_BROWSE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041070_.html
+2037 (07F5) (RC2037): MQRC_NOT_OPEN_FOR_INPUT,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041080_.html
+2038 (07F6) (RC2038): MQRC_NOT_OPEN_FOR_INQUIRE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041090_.html
+2039 (07F7) (RC2039): MQRC_NOT_OPEN_FOR_OUTPUT,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041100_.html
+2040 (07F8) (RC2040): MQRC_NOT_OPEN_FOR_SET,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041110_.html
+2041 (07F9) (RC2041): MQRC_OBJECT_CHANGED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041120_.html
+2042 (07FA) (RC2042): MQRC_OBJECT_IN_USE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041130_.html
+2043 (07FB) (RC2043): MQRC_OBJECT_TYPE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041140_.html
+2044 (07FC) (RC2044): MQRC_OD_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041150_.html
+2045 (07FD) (RC2045): MQRC_OPTION_NOT_VALID_FOR_TYPE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041160_.html
+2046 (07FE) (RC2046): MQRC_OPTIONS_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041170_.html
+2047 (07FF) (RC2047): MQRC_PERSISTENCE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041180_.html
+2048 (0800) (RC2048): MQRC_PERSISTENT_NOT_ALLOWED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041190_.html
+2049 (0801) (RC2049): MQRC_PRIORITY_EXCEEDS_MAXIMUM,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041200_.html
+2050 (0802) (RC2050): MQRC_PRIORITY_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041210_.html
+2051 (0803) (RC2051): MQRC_PUT_INHIBITED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041220_.html
+2052 (0804) (RC2052): MQRC_Q_DELETED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041230_.html
+2053 (0805) (RC2053): MQRC_Q_FULL,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041240_.html
+2055 (0807) (RC2055): MQRC_Q_NOT_EMPTY,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041250_.html
+2056 (0808) (RC2056): MQRC_Q_SPACE_NOT_AVAILABLE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041260_.html
+2057 (0809) (RC2057): MQRC_Q_TYPE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041270_.html
+2058 (080A) (RC2058): MQRC_Q_MGR_NAME_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041280_.html
+2059 (080B) (RC2059): MQRC_Q_MGR_NOT_AVAILABLE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041290_.html
+2061 (080D) (RC2061): MQRC_REPORT_OPTIONS_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041300_.html
+2062 (080E) (RC2062): MQRC_SECOND_MARK_NOT_ALLOWED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041310_.html
+2063 (080F) (RC2063): MQRC_SECURITY_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041320_.html
+2064 (0810) (RC2064): MQRC_TOKEN_TIMESTAMP_NOT_VALID,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/mqrc2064.html
+2065 (0811) (RC2065): MQRC_SELECTOR_COUNT_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041330_.html
+2066 (0812) (RC2066): MQRC_SELECTOR_LIMIT_EXCEEDED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041340_.html
+2067 (0813) (RC2067): MQRC_SELECTOR_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041350_.html
+2068 (0814) (RC2068): MQRC_SELECTOR_NOT_FOR_TYPE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041360_.html
+2069 (0815) (RC2069): MQRC_SIGNAL_OUTSTANDING,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041370_.html
+2070 (0816) (RC2070): MQRC_SIGNAL_REQUEST_ACCEPTED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041380_.html
+2071 (0817) (RC2071): MQRC_STORAGE_NOT_AVAILABLE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041390_.html
+2072 (0818) (RC2072): MQRC_SYNCPOINT_NOT_AVAILABLE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041400_.html
+2075 (081B) (RC2075): MQRC_TRIGGER_CONTROL_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041410_.html
+2076 (081C) (RC2076): MQRC_TRIGGER_DEPTH_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041420_.html
+2077 (081D) (RC2077): MQRC_TRIGGER_MSG_PRIORITY_ERR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041430_.html
+2078 (081E) (RC2078): MQRC_TRIGGER_TYPE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041440_.html
+2079 (081F) (RC2079): MQRC_TRUNCATED_MSG_ACCEPTED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041450_.html
+2080 (0820) (RC2080): MQRC_TRUNCATED_MSG_FAILED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041460_.html
+2082 (0822) (RC2082): MQRC_UNKNOWN_ALIAS_BASE_Q,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041470_.html
+2085 (0825) (RC2085): MQRC_UNKNOWN_OBJECT_NAME,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041480_.html
+2086 (0826) (RC2086): MQRC_UNKNOWN_OBJECT_Q_MGR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041490_.html
+2087 (0827) (RC2087): MQRC_UNKNOWN_REMOTE_Q_MGR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041500_.html
+2090 (082A) (RC2090): MQRC_WAIT_INTERVAL_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041510_.html
+2091 (082B) (RC2091): MQRC_XMIT_Q_TYPE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041520_.html
+2092 (082C) (RC2092): MQRC_XMIT_Q_USAGE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041530_.html
+2093 (082D) (RC2093): MQRC_NOT_OPEN_FOR_PASS_ALL,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041540_.html
+2094 (082E) (RC2094): MQRC_NOT_OPEN_FOR_PASS_IDENT,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041550_.html
+2095 (082F) (RC2095): MQRC_NOT_OPEN_FOR_SET_ALL,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041560_.html
+2096 (0830) (RC2096): MQRC_NOT_OPEN_FOR_SET_IDENT,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041570_.html
+2097 (0831) (RC2097): MQRC_CONTEXT_HANDLE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041580_.html
+2098 (0832) (RC2098): MQRC_CONTEXT_NOT_AVAILABLE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041590_.html
+2099 (0833) (RC2099): MQRC_SIGNAL1_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041600_.html
+2100 (0834) (RC2100): MQRC_OBJECT_ALREADY_EXISTS,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041610_.html
+2101 (0835) (RC2101): MQRC_OBJECT_DAMAGED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041620_.html
+2102 (0836) (RC2102): MQRC_RESOURCE_PROBLEM,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041630_.html
+2103 (0837) (RC2103): MQRC_ANOTHER_Q_MGR_CONNECTED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041640_.html
+2104 (0838) (RC2104): MQRC_UNKNOWN_REPORT_OPTION,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041650_.html
+2105 (0839) (RC2105): MQRC_STORAGE_CLASS_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041660_.html
+2106 (083A) (RC2106): MQRC_COD_NOT_VALID_FOR_XCF_Q,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041670_.html
+2107 (083B) (RC2107): MQRC_XWAIT_CANCELED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041680_.html
+2108 (083C) (RC2108): MQRC_XWAIT_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041690_.html
+2109 (083D) (RC2109): MQRC_SUPPRESSED_BY_EXIT,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041700_.html
+2110 (083E) (RC2110): MQRC_FORMAT_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041710_.html
+2111 (083F) (RC2111): MQRC_SOURCE_CCSID_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041720_.html
+2112 (0840) (RC2112): MQRC_SOURCE_INTEGER_ENC_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041730_.html
+2113 (0841) (RC2113): MQRC_SOURCE_DECIMAL_ENC_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041740_.html
+2114 (0842) (RC2114): MQRC_SOURCE_FLOAT_ENC_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041750_.html
+2115 (0843) (RC2115): MQRC_TARGET_CCSID_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041760_.html
+2116 (0844) (RC2116): MQRC_TARGET_INTEGER_ENC_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041770_.html
+2117 (0845) (RC2117): MQRC_TARGET_DECIMAL_ENC_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041780_.html
+2118 (0846) (RC2118): MQRC_TARGET_FLOAT_ENC_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041790_.html
+2119 (0847) (RC2119): MQRC_NOT_CONVERTED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041800_.html
+2120 (0848) (RC2120): MQRC_CONVERTED_MSG_TOO_BIG,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041810_.html
+2121 (0849) (RC2121): MQRC_NO_EXTERNAL_PARTICIPANTS,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041820_.html
+2122 (084A) (RC2122): MQRC_PARTICIPANT_NOT_AVAILABLE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041830_.html
+2123 (084B) (RC2123): MQRC_OUTCOME_MIXED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041840_.html
+2124 (084C) (RC2124): MQRC_OUTCOME_PENDING,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041850_.html
+2125 (084D) (RC2125): MQRC_BRIDGE_STARTED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041860_.html
+2126 (084E) (RC2126): MQRC_BRIDGE_STOPPED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041870_.html
+2127 (084F) (RC2127): MQRC_ADAPTER_STORAGE_SHORTAGE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041880_.html
+2128 (0850) (RC2128): MQRC_UOW_IN_PROGRESS,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041890_.html
+2129 (0851) (RC2129): MQRC_ADAPTER_CONN_LOAD_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041900_.html
+2130 (0852) (RC2130): MQRC_ADAPTER_SERV_LOAD_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041910_.html
+2131 (0853) (RC2131): MQRC_ADAPTER_DEFS_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041920_.html
+2132 (0854) (RC2132): MQRC_ADAPTER_DEFS_LOAD_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041930_.html
+2133 (0855) (RC2133): MQRC_ADAPTER_CONV_LOAD_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041940_.html
+2134 (0856) (RC2134): MQRC_BO_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041950_.html
+2135 (0857) (RC2135): MQRC_DH_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041960_.html
+2136 (0858) (RC2136): MQRC_MULTIPLE_REASONS,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041970_.html
+2137 (0859) (RC2137): MQRC_OPEN_FAILED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041980_.html
+2138 (085A) (RC2138): MQRC_ADAPTER_DISC_LOAD_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q041990_.html
+2139 (085B) (RC2139): MQRC_CNO_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042000_.html
+2140 (085C) (RC2140): MQRC_CICS_WAIT_FAILED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042010_.html
+2141 (085D) (RC2141): MQRC_DLH_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042020_.html
+2142 (085E) (RC2142): MQRC_HEADER_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042030_.html
+2143 (085F) (RC2143): MQRC_SOURCE_LENGTH_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042040_.html
+2144 (0860) (RC2144): MQRC_TARGET_LENGTH_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042050_.html
+2145 (0861) (RC2145): MQRC_SOURCE_BUFFER_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042060_.html
+2146 (0862) (RC2146): MQRC_TARGET_BUFFER_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042070_.html
+2147 (0863) (RC2147): MQRC_INCOMPLETE_TRANSACTION,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q132930_.html
+2148 (0864) (RC2148): MQRC_IIH_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042080_.html
+2149 (0865) (RC2149): MQRC_PCF_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042090_.html
+2150 (0866) (RC2150): MQRC_DBCS_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042100_.html
+2152 (0868) (RC2152): MQRC_OBJECT_NAME_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042110_.html
+2153 (0869) (RC2153): MQRC_OBJECT_Q_MGR_NAME_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042120_.html
+2154 (086A) (RC2154): MQRC_RECS_PRESENT_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042130_.html
+2155 (086B) (RC2155): MQRC_OBJECT_RECORDS_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042140_.html
+2156 (086C) (RC2156): MQRC_RESPONSE_RECORDS_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042150_.html
+2157 (086D) (RC2157): MQRC_ASID_MISMATCH,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042160_.html
+2158 (086E) (RC2158): MQRC_PMO_RECORD_FLAGS_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042170_.html
+2159 (086F) (RC2159): MQRC_PUT_MSG_RECORDS_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042180_.html
+2160 (0870) (RC2160): MQRC_CONN_ID_IN_USE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042190_.html
+2161 (0871) (RC2161): MQRC_Q_MGR_QUIESCING,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042200_.html
+2162 (0872) (RC2162): MQRC_Q_MGR_STOPPING,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042210_.html
+2163 (0873) (RC2163): MQRC_DUPLICATE_RECOV_COORD,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042220_.html
+2173 (087D) (RC2173): MQRC_PMO_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042230_.html
+2182 (0886) (RC2182): MQRC_API_EXIT_NOT_FOUND,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042240_.html
+2183 (0887) (RC2183): MQRC_API_EXIT_LOAD_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042250_.html
+2184 (0888) (RC2184): MQRC_REMOTE_Q_NAME_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042260_.html
+2185 (0889) (RC2185): MQRC_INCONSISTENT_PERSISTENCE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042270_.html
+2186 (088A) (RC2186): MQRC_GMO_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042280_.html
+2187 (088B) (RC2187): MQRC_CICS_BRIDGE_RESTRICTION,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042290_.html
+2188 (088C) (RC2188): MQRC_STOPPED_BY_CLUSTER_EXIT,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042300_.html
+2189 (088D) (RC2189): MQRC_CLUSTER_RESOLUTION_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042310_.html
+2190 (088E) (RC2190): MQRC_CONVERTED_STRING_TOO_BIG,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042320_.html
+2191 (088F) (RC2191): MQRC_TMC_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042330_.html
+2192 (0890) (RC2192): MQRC_PAGESET_FULL,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042340_.html
+2192 (0890) (RC2192): MQRC_STORAGE_MEDIUM_FULL,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042350_.html
+2193 (0891) (RC2193): MQRC_PAGESET_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042360_.html
+2194 (0892) (RC2194): MQRC_NAME_NOT_VALID_FOR_TYPE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042370_.html
+2195 (0893) (RC2195): MQRC_UNEXPECTED_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042380_.html
+2196 (0894) (RC2196): MQRC_UNKNOWN_XMIT_Q,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042390_.html
+2197 (0895) (RC2197): MQRC_UNKNOWN_DEF_XMIT_Q,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042400_.html
+2198 (0896) (RC2198): MQRC_DEF_XMIT_Q_TYPE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042410_.html
+2199 (0897) (RC2199): MQRC_DEF_XMIT_Q_USAGE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042420_.html
+2201 (0899) (RC2201): MQRC_NAME_IN_USE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042430_.html
+2202 (089A) (RC2202): MQRC_CONNECTION_QUIESCING,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042440_.html
+2203 (089B) (RC2203): MQRC_CONNECTION_STOPPING,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042450_.html
+2204 (089C) (RC2204): MQRC_ADAPTER_NOT_AVAILABLE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042460_.html
+2206 (089E) (RC2206): MQRC_MSG_ID_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042470_.html
+2207 (089F) (RC2207): MQRC_CORREL_ID_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042480_.html
+2208 (08A0) (RC2208): MQRC_FILE_SYSTEM_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042490_.html
+2209 (08A1) (RC2209): MQRC_NO_MSG_LOCKED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042500_.html
+2217 (08A9) (RC2217): MQRC_CONNECTION_NOT_AUTHORIZED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042540_.html
+2218 (08AA) (RC2218): MQRC_MSG_TOO_BIG_FOR_CHANNEL,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042550_.html
+2219 (08AB) (RC2219): MQRC_CALL_IN_PROGRESS,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042560_.html
+2220 (08AC) (RC2220): MQRC_RMH_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042570_.html
+2222 (08AE) (RC2222): MQRC_Q_MGR_ACTIVE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042580_.html
+2223 (08AF) (RC2223): MQRC_Q_MGR_NOT_ACTIVE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042590_.html
+2224 (08B0) (RC2224): MQRC_Q_DEPTH_HIGH,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042600_.html
+2225 (08B1) (RC2225): MQRC_Q_DEPTH_LOW,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042610_.html
+2226 (08B2) (RC2226): MQRC_Q_SERVICE_INTERVAL_HIGH,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042620_.html
+2227 (08B3) (RC2227): MQRC_Q_SERVICE_INTERVAL_OK,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042630_.html
+2228 (08B4) (RC2228): MQRC_RFH_HEADER_FIELD_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042640_.html
+2229 (08B5) (RC2229): MQRC_RAS_PROPERTY_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042650_.html
+2232 (08B8) (RC2232): MQRC_UNIT_OF_WORK_NOT_STARTED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042660_.html
+2233 (08B9) (RC2233): MQRC_CHANNEL_AUTO_DEF_OK,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042670_.html
+2234 (08BA) (RC2234): MQRC_CHANNEL_AUTO_DEF_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042680_.html
+2235 (08BB) (RC2235): MQRC_CFH_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042690_.html
+2236 (08BC) (RC2236): MQRC_CFIL_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042700_.html
+2237 (08BD) (RC2237): MQRC_CFIN_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042710_.html
+2238 (08BE) (RC2238): MQRC_CFSL_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042720_.html
+2239 (08BF) (RC2239): MQRC_CFST_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042730_.html
+2241 (08C1) (RC2241): MQRC_INCOMPLETE_GROUP,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042740_.html
+2242 (08C2) (RC2242): MQRC_INCOMPLETE_MSG,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042750_.html
+2243 (08C3) (RC2243): MQRC_INCONSISTENT_CCSIDS,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042760_.html
+2244 (08C4) (RC2244): MQRC_INCONSISTENT_ENCODINGS,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042770_.html
+2245 (08C5) (RC2245): MQRC_INCONSISTENT_UOW,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042780_.html
+2246 (08C6) (RC2246): MQRC_INVALID_MSG_UNDER_CURSOR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042790_.html
+2247 (08C7) (RC2247): MQRC_MATCH_OPTIONS_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042800_.html
+2248 (08C8) (RC2248): MQRC_MDE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042810_.html
+2249 (08C9) (RC2249): MQRC_MSG_FLAGS_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042820_.html
+2250 (08CA) (RC2250): MQRC_MSG_SEQ_NUMBER_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042830_.html
+2251 (08CB) (RC2251): MQRC_OFFSET_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042840_.html
+2252 (08CC) (RC2252): MQRC_ORIGINAL_LENGTH_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042850_.html
+2253 (08CD) (RC2253): MQRC_SEGMENT_LENGTH_ZERO,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042860_.html
+2255 (08CF) (RC2255): MQRC_UOW_NOT_AVAILABLE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042870_.html
+2256 (08D0) (RC2256): MQRC_WRONG_GMO_VERSION,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042880_.html
+2257 (08D1) (RC2257): MQRC_WRONG_MD_VERSION,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042890_.html
+2258 (08D2) (RC2258): MQRC_GROUP_ID_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042900_.html
+2259 (08D3) (RC2259): MQRC_INCONSISTENT_BROWSE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042910_.html
+2260 (08D4) (RC2260): MQRC_XQH_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042920_.html
+2261 (08D5) (RC2261): MQRC_SRC_ENV_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042930_.html
+2262 (08D6) (RC2262): MQRC_SRC_NAME_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042940_.html
+2263 (08D7) (RC2263): MQRC_DEST_ENV_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042950_.html
+2264 (08D8) (RC2264): MQRC_DEST_NAME_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042960_.html
+2265 (08D9) (RC2265): MQRC_TM_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042970_.html
+2266 (08DA) (RC2266): MQRC_CLUSTER_EXIT_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042980_.html
+2267 (08DB) (RC2267): MQRC_CLUSTER_EXIT_LOAD_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q042990_.html
+2268 (08DC) (RC2268): MQRC_CLUSTER_PUT_INHIBITED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043000_.html
+2269 (08DD) (RC2269): MQRC_CLUSTER_RESOURCE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043010_.html
+2270 (08DE) (RC2270): MQRC_NO_DESTINATIONS_AVAILABLE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043020_.html
+2271 (08DF) (RC2271): MQRC_CONN_TAG_IN_USE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043030_.html
+2272 (08E0) (RC2272): MQRC_PARTIALLY_CONVERTED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043040_.html
+2273 (08E1) (RC2273): MQRC_CONNECTION_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043050_.html
+2274 (08E2) (RC2274): MQRC_OPTION_ENVIRONMENT_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043060_.html
+2277 (08E5) (RC2277): MQRC_CD_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043070_.html
+2278 (08E6) (RC2278): MQRC_CLIENT_CONN_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043080_.html
+2279 (08E7) (RC2279): MQRC_CHANNEL_STOPPED_BY_USER,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043090_.html
+2280 (08E8) (RC2280): MQRC_HCONFIG_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043100_.html
+2281 (08E9) (RC2281): MQRC_FUNCTION_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043110_.html
+2282 (08EA) (RC2282): MQRC_CHANNEL_STARTED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043120_.html
+2283 (08EB) (RC2283): MQRC_CHANNEL_STOPPED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043130_.html
+2284 (08EC) (RC2284): MQRC_CHANNEL_CONV_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043140_.html
+2285 (08ED) (RC2285): MQRC_SERVICE_NOT_AVAILABLE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043150_.html
+2286 (08EE) (RC2286): MQRC_INITIALIZATION_FAILED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043160_.html
+2287 (08EF) (RC2287): MQRC_TERMINATION_FAILED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043170_.html
+2288 (08F0) (RC2288): MQRC_UNKNOWN_Q_NAME,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043180_.html
+2289 (08F1) (RC2289): MQRC_SERVICE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043190_.html
+2290 (08F2) (RC2290): MQRC_Q_ALREADY_EXISTS,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043200_.html
+2291 (08F3) (RC2291): MQRC_USER_ID_NOT_AVAILABLE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043210_.html
+2292 (08F4) (RC2292): MQRC_UNKNOWN_ENTITY,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043220_.html
+2294 (08F6) (RC2294): MQRC_UNKNOWN_REF_OBJECT,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043230_.html
+2295 (08F7) (RC2295): MQRC_CHANNEL_ACTIVATED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043240_.html
+2296 (08F8) (RC2296): MQRC_CHANNEL_NOT_ACTIVATED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043250_.html
+2297 (08F9) (RC2297): MQRC_UOW_CANCELED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043260_.html
+2298 (08FA) (RC2298): MQRC_FUNCTION_NOT_SUPPORTED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043270_.html
+2299 (08FB) (RC2299): MQRC_SELECTOR_TYPE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043280_.html
+2300 (08FC) (RC2300): MQRC_COMMAND_TYPE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043290_.html
+2301 (08FD) (RC2301): MQRC_MULTIPLE_INSTANCE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043300_.html
+2302 (08FE) (RC2302): MQRC_SYSTEM_ITEM_NOT_ALTERABLE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043310_.html
+2303 (08FF) (RC2303): MQRC_BAG_CONVERSION_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043320_.html
+2304 (0900) (RC2304): MQRC_SELECTOR_OUT_OF_RANGE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043330_.html
+2305 (0901) (RC2305): MQRC_SELECTOR_NOT_UNIQUE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043340_.html
+2306 (0902) (RC2306): MQRC_INDEX_NOT_PRESENT,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043350_.html
+2307 (0903) (RC2307): MQRC_STRING_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043360_.html
+2308 (0904) (RC2308): MQRC_ENCODING_NOT_SUPPORTED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043370_.html
+2309 (0905) (RC2309): MQRC_SELECTOR_NOT_PRESENT,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043380_.html
+2310 (0906) (RC2310): MQRC_OUT_SELECTOR_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043390_.html
+2311 (0907) (RC2311): MQRC_STRING_TRUNCATED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043400_.html
+2312 (0908) (RC2312): MQRC_SELECTOR_WRONG_TYPE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043410_.html
+2313 (0909) (RC2313): MQRC_INCONSISTENT_ITEM_TYPE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043420_.html
+2314 (090A) (RC2314): MQRC_INDEX_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043430_.html
+2315 (090B) (RC2315): MQRC_SYSTEM_BAG_NOT_ALTERABLE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043440_.html
+2316 (090C) (RC2316): MQRC_ITEM_COUNT_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043450_.html
+2317 (090D) (RC2317): MQRC_FORMAT_NOT_SUPPORTED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043460_.html
+2318 (090E) (RC2318): MQRC_SELECTOR_NOT_SUPPORTED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043470_.html
+2319 (090F) (RC2319): MQRC_ITEM_VALUE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043480_.html
+2320 (0910) (RC2320): MQRC_HBAG_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043490_.html
+2321 (0911) (RC2321): MQRC_PARAMETER_MISSING,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043500_.html
+2322 (0912) (RC2322): MQRC_CMD_SERVER_NOT_AVAILABLE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043510_.html
+2323 (0913) (RC2323): MQRC_STRING_LENGTH_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043520_.html
+2324 (0914) (RC2324): MQRC_INQUIRY_COMMAND_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043530_.html
+2325 (0915) (RC2325): MQRC_NESTED_BAG_NOT_SUPPORTED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043540_.html
+2326 (0916) (RC2326): MQRC_BAG_WRONG_TYPE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043550_.html
+2327 (0917) (RC2327): MQRC_ITEM_TYPE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043560_.html
+2328 (0918) (RC2328): MQRC_SYSTEM_BAG_NOT_DELETABLE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043570_.html
+2329 (0919) (RC2329): MQRC_SYSTEM_ITEM_NOT_DELETABLE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043580_.html
+2330 (091A) (RC2330): MQRC_CODED_CHAR_SET_ID_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043590_.html
+2331 (091B) (RC2331): MQRC_MSG_TOKEN_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043600_.html
+2332 (091C) (RC2332): MQRC_MISSING_WIH,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043610_.html
+2333 (091D) (RC2333): MQRC_WIH_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043620_.html
+2334 (091E) (RC2334): MQRC_RFH_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043630_.html
+2335 (091F) (RC2335): MQRC_RFH_STRING_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043640_.html
+2336 (0920) (RC2336): MQRC_RFH_COMMAND_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043650_.html
+2337 (0921) (RC2337): MQRC_RFH_PARM_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043660_.html
+2338 (0922) (RC2338): MQRC_RFH_DUPLICATE_PARM,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043670_.html
+2339 (0923) (RC2339): MQRC_RFH_PARM_MISSING,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043680_.html
+2340 (0924) (RC2340): MQRC_CHAR_CONVERSION_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043690_.html
+2341 (0925) (RC2341): MQRC_UCS2_CONVERSION_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043700_.html
+2342 (0926) (RC2342): MQRC_DB2_NOT_AVAILABLE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043710_.html
+2343 (0927) (RC2343): MQRC_OBJECT_NOT_UNIQUE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043720_.html
+2344 (0928) (RC2344): MQRC_CONN_TAG_NOT_RELEASED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043730_.html
+2345 (0929) (RC2345): MQRC_CF_NOT_AVAILABLE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043740_.html
+2346 (092A) (RC2346): MQRC_CF_STRUC_IN_USE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043750_.html
+2347 (092B) (RC2347): MQRC_CF_STRUC_LIST_HDR_IN_USE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043760_.html
+2348 (092C) (RC2348): MQRC_CF_STRUC_AUTH_FAILED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043770_.html
+2349 (092D) (RC2349): MQRC_CF_STRUC_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043780_.html
+2350 (092E) (RC2350): MQRC_CONN_TAG_NOT_USABLE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043790_.html
+2351 (092F) (RC2351): MQRC_GLOBAL_UOW_CONFLICT,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043800_.html
+2352 (0930) (RC2352): MQRC_LOCAL_UOW_CONFLICT,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043810_.html
+2353 (0931) (RC2353): MQRC_HANDLE_IN_USE_FOR_UOW,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043820_.html
+2354 (0932) (RC2354): MQRC_UOW_ENLISTMENT_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043830_.html
+2355 (0933) (RC2355): MQRC_UOW_MIX_NOT_SUPPORTED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043840_.html
+2356 (0934) (RC2356): MQRC_WXP_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043850_.html
+2357 (0935) (RC2357): MQRC_CURRENT_RECORD_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043860_.html
+2358 (0936) (RC2358): MQRC_NEXT_OFFSET_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043870_.html
+2359 (0937) (RC2359): MQRC_NO_RECORD_AVAILABLE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043880_.html
+2360 (0938) (RC2360): MQRC_OBJECT_LEVEL_INCOMPATIBLE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043890_.html
+2361 (0939) (RC2361): MQRC_NEXT_RECORD_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043900_.html
+2362 (093A) (RC2362): MQRC_BACKOUT_THRESHOLD_REACHED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043910_.html
+2363 (093B) (RC2363): MQRC_MSG_NOT_MATCHED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043920_.html
+2364 (093C) (RC2364): MQRC_JMS_FORMAT_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043930_.html
+2365 (093D) (RC2365): MQRC_SEGMENTS_NOT_SUPPORTED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043940_.html
+2366 (093E) (RC2366): MQRC_WRONG_CF_LEVEL,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043950_.html
+2367 (093F) (RC2367): MQRC_CONFIG_CREATE_OBJECT,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043960_.html
+2368 (0940) (RC2368): MQRC_CONFIG_CHANGE_OBJECT,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043970_.html
+2369 (0941) (RC2369): MQRC_CONFIG_DELETE_OBJECT,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043980_.html
+2370 (0942) (RC2370): MQRC_CONFIG_REFRESH_OBJECT,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q043990_.html
+2371 (0943) (RC2371): MQRC_CHANNEL_SSL_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044000_.html
+2373 (0945) (RC2373): MQRC_CF_STRUC_FAILED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044010_.html
+2374 (0946) (RC2374): MQRC_API_EXIT_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044020_.html
+2375 (0947) (RC2375): MQRC_API_EXIT_INIT_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044030_.html
+2376 (0948) (RC2376): MQRC_API_EXIT_TERM_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044040_.html
+2377 (0949) (RC2377): MQRC_EXIT_REASON_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044050_.html
+2378 (094A) (RC2378): MQRC_RESERVED_VALUE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044060_.html
+2379 (094B) (RC2379): MQRC_NO_DATA_AVAILABLE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044070_.html
+2380 (094C) (RC2380): MQRC_SCO_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044080_.html
+2381 (094D) (RC2381): MQRC_KEY_REPOSITORY_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044090_.html
+2382 (094E) (RC2382): MQRC_CRYPTO_HARDWARE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044100_.html
+2383 (094F) (RC2383): MQRC_AUTH_INFO_REC_COUNT_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044110_.html
+2384 (0950) (RC2384): MQRC_AUTH_INFO_REC_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044120_.html
+2385 (0951) (RC2385): MQRC_AIR_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044130_.html
+2386 (0952) (RC2386): MQRC_AUTH_INFO_TYPE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044140_.html
+2387 (0953) (RC2387): MQRC_AUTH_INFO_CONN_NAME_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044150_.html
+2388 (0954) (RC2388): MQRC_LDAP_USER_NAME_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044160_.html
+2389 (0955) (RC2389): MQRC_LDAP_USER_NAME_LENGTH_ERR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044170_.html
+2390 (0956) (RC2390): MQRC_LDAP_PASSWORD_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044180_.html
+2391 (0957) (RC2391): MQRC_SSL_ALREADY_INITIALIZED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044190_.html
+2392 (0958) (RC2392): MQRC_SSL_CONFIG_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044200_.html
+2393 (0959) (RC2393): MQRC_SSL_INITIALIZATION_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044210_.html
+2394 (095A) (RC2394): MQRC_Q_INDEX_TYPE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044220_.html
+2395 (095B) (RC2395): MQRC_CFBS_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044230_.html
+2396 (095C) (RC2396): MQRC_SSL_NOT_ALLOWED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044240_.html
+2397 (095D) (RC2397): MQRC_JSSE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044250_.html
+2398 (095E) (RC2398): MQRC_SSL_PEER_NAME_MISMATCH,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044260_.html
+2399 (095F) (RC2399): MQRC_SSL_PEER_NAME_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044270_.html
+2400 (0960) (RC2400): MQRC_UNSUPPORTED_CIPHER_SUITE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044280_.html
+2401 (0961) (RC2401): MQRC_SSL_CERTIFICATE_REVOKED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044290_.html
+2402 (0962) (RC2402): MQRC_SSL_CERT_STORE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044300_.html
+2406 (0966) (RC2406): MQRC_CLIENT_EXIT_LOAD_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044310_.html
+2407 (0967) (RC2407): MQRC_CLIENT_EXIT_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044320_.html
+2409 (0969) (RC2409): MQRC_SSL_KEY_RESET_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044330_.html
+2411 (096B) (RC2411): MQRC_LOGGER_STATUS,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044340_.html
+2412 (096C) (RC2412): MQRC_COMMAND_MQSC,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044350_.html
+2413 (096D) (RC2413): MQRC_COMMAND_PCF,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044360_.html
+2414 (096E) (RC2414): MQRC_CFIF_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044370_.html
+2415 (096F) (RC2415): MQRC_CFSF_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044380_.html
+2416 (0970) (RC2416): MQRC_CFGR_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044390_.html
+2417 (0971) (RC2417): MQRC_MSG_NOT_ALLOWED_IN_GROUP,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044400_.html
+2418 (0972) (RC2418): MQRC_FILTER_OPERATOR_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044410_.html
+2419 (0973) (RC2419): MQRC_NESTED_SELECTOR_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044420_.html
+2420 (0974) (RC2420): MQRC_EPH_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044430_.html
+2421 (0975) (RC2421): MQRC_RFH_FORMAT_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044440_.html
+2422 (0976) (RC2422): MQRC_CFBF_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044450_.html
+2423 (0977) (RC2423): MQRC_CLIENT_CHANNEL_CONFLICT,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044460_.html
+2424 (0978) (RC2424): MQRC_SD_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044470_.html
+2425 (0979) (RC2425): MQRC_TOPIC_STRING_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044480_.html
+2426 (097A) (RC2426): MQRC_STS_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044490_.html
+2428 (097C) (RC2428): MQRC_NO_SUBSCRIPTION,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044500_.html
+2429 (097D) (RC2429): MQRC_SUBSCRIPTION_IN_USE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044510_.html
+2430 (097E) (RC2430): MQRC_STAT_TYPE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044520_.html
+2431 (097F) (RC2431): MQRC_SUB_USER_DATA_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044530_.html
+2432 (0980) (RC2432): MQRC_SUB_ALREADY_EXISTS,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044540_.html
+2434 (0982) (RC2434): MQRC_IDENTITY_MISMATCH,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044550_.html
+2435 (0983) (RC2435): MQRC_ALTER_SUB_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044560_.html
+2436 (0984) (RC2436): MQRC_DURABILITY_NOT_ALLOWED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044570_.html
+2437 (0985) (RC2437): MQRC_NO_RETAINED_MSG,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044580_.html
+2438 (0986) (RC2438): MQRC_SRO_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044590_.html
+2440 (0988) (RC2440): MQRC_SUB_NAME_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044600_.html
+2441 (0989) (RC2441): MQRC_OBJECT_STRING_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044610_.html
+2442 (098A) (RC2442): MQRC_PROPERTY_NAME_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044620_.html
+2443 (098B) (RC2443): MQRC_SEGMENTATION_NOT_ALLOWED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044630_.html
+2444 (098C) (RC2444): MQRC_CBD_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044640_.html
+2445 (098D) (RC2445): MQRC_CTLO_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044650_.html
+2446 (098E) (RC2446): MQRC_NO_CALLBACKS_ACTIVE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044660_.html
+2448 (0990) (RC2448): MQRC_CALLBACK_NOT_REGISTERED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044670_.html
+2449 (0991) (RC2449): MQRC_OPERATION_NOT_ALLOWED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044680_.html
+2457 (0999) (RC2457): MQRC_OPTIONS_CHANGED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044690_.html
+2458 (099A) (RC2458): MQRC_READ_AHEAD_MSGS,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044700_.html
+2459 (099B) (RC2459): MQRC_SELECTOR_SYNTAX_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044710_.html
+2460 (099C) (RC2460): MQRC_HMSG_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044720_.html
+2461 (099D) (RC2461): MQRC_CMHO_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044730_.html
+2462 (099E) (RC2462): MQRC_DMHO_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044740_.html
+2463 (099F) (RC2463): MQRC_SMPO_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044750_.html
+2464 (09A0) (RC2464): MQRC_IMPO_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044760_.html
+2465 (09A1) (RC2465): MQRC_PROPERTY_NAME_TOO_BIG,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044770_.html
+2466 (09A2) (RC2466): MQRC_PROP_VALUE_NOT_CONVERTED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044780_.html
+2467 (09A3) (RC2467): MQRC_PROP_TYPE_NOT_SUPPORTED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044790_.html
+2469 (09A5) (RC2469): MQRC_PROPERTY_VALUE_TOO_BIG,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044800_.html
+2470 (09A6) (RC2470): MQRC_PROP_CONV_NOT_SUPPORTED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044810_.html
+2471 (09A7) (RC2471): MQRC_PROPERTY_NOT_AVAILABLE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044820_.html
+2472 (09A8) (RC2472): MQRC_PROP_NUMBER_FORMAT_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044830_.html
+2473 (09A9) (RC2473): MQRC_PROPERTY_TYPE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044840_.html
+2478 (09AE) (RC2478): MQRC_PROPERTIES_TOO_BIG,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044850_.html
+2479 (09AF) (RC2479): MQRC_PUT_NOT_RETAINED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044860_.html
+2480 (09B0) (RC2480): MQRC_ALIAS_TARGTYPE_CHANGED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044870_.html
+2481 (09B1) (RC2481): MQRC_DMPO_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044880_.html
+2482 (09B2) (RC2482): MQRC_PD_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044890_.html
+2483 (09B3) (RC2483): MQRC_CALLBACK_TYPE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044900_.html
+2484 (09B4) (RC2484): MQRC_CBD_OPTIONS_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044910_.html
+2485 (09B5) (RC2485): MQRC_MAX_MSG_LENGTH_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044920_.html
+2486 (09B6) (RC2486): MQRC_CALLBACK_ROUTINE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044930_.html
+2487 (09B7) (RC2487): MQRC_CALLBACK_LINK_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044940_.html
+2488 (09B8) (RC2488): MQRC_OPERATION_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044950_.html
+2489 (09B9) (RC2489): MQRC_BMHO_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044960_.html
+2490 (09BA) (RC2490): MQRC_UNSUPPORTED_PROPERTY,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044970_.html
+2491 0x000009bb MQRC_MSG_LENGTH_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/returncode_2491.html
+2492 (09BC) (RC2492): MQRC_PROP_NAME_NOT_CONVERTED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044980_.html
+2494 (09BE) (RC2494): MQRC_GET_ENABLED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q044990_.html
+2495 (09BF) (RC2495): MQRC_MODULE_NOT_FOUND,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045000_.html
+2496 (09C0) (RC2496): MQRC_MODULE_INVALID,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045010_.html
+2497 (09C1) (RC2497): MQRC_MODULE_ENTRY_NOT_FOUND,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045020_.html
+2498 (09C2) (RC2498): MQRC_MIXED_CONTENT_NOT_ALLOWED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045030_.html
+2499 (09C3) (RC2499): MQRC_MSG_HANDLE_IN_USE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045040_.html
+2500 (09C4) (RC2500): MQRC_HCONN_ASYNC_ACTIVE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045050_.html
+2501 (09C5) (RC2501): MQRC_MHBO_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045060_.html
+2502 (09C6) (RC2502): MQRC_PUBLICATION_FAILURE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045070_.html
+2503 (09C7) (RC2503): MQRC_SUB_INHIBITED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045080_.html
+2504 (09C8) (RC2504): MQRC_SELECTOR_ALWAYS_FALSE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045090_.html
+2507 (09CB) (RC2507): MQRC_XEPO_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045100_.html
+2509 (09CD) (RC2509): MQRC_DURABILITY_NOT_ALTERABLE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045110_.html
+2510 (09CE) (RC2510): MQRC_TOPIC_NOT_ALTERABLE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045120_.html
+2512 (09D0) (RC2512): MQRC_SUBLEVEL_NOT_ALTERABLE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045130_.html
+2513 (09D1) (RC2513): MQRC_PROPERTY_NAME_LENGTH_ERR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045140_.html
+2514 (09D2) (RC2514): MQRC_DUPLICATE_GROUP_SUB,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045150_.html
+2515 (09D3) (RC2515): MQRC_GROUPING_NOT_ALTERABLE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045160_.html
+2516 (09D4) (RC2516): MQRC_SELECTOR_INVALID_FOR_TYPE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045170_.html
+2517 (09D5) (RC2517): MQRC_HOBJ_QUIESCED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045180_.html
+2518 (09D6) (RC2518): MQRC_HOBJ_QUIESCED_NO_MSGS,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045190_.html
+2519 (09D7) (RC2519): MQRC_SELECTION_STRING_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045200_.html
+2520 (09D8) (RC2520): MQRC_RES_OBJECT_STRING_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045210_.html
+2521 (09D9) (RC2521): MQRC_CONNECTION_SUSPENDED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045220_.html
+2522 (09DA) (RC2522): MQRC_INVALID_DESTINATION,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045230_.html
+2523 (09DB) (RC2523): MQRC_INVALID_SUBSCRIPTION,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045240_.html
+2524 (09DC) (RC2524): MQRC_SELECTOR_NOT_ALTERABLE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045250_.html
+2525 (09DD) (RC2525): MQRC_RETAINED_MSG_Q_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045260_.html
+2526 (09DE) (RC2526): MQRC_RETAINED_NOT_DELIVERED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045270_.html
+2527 (09DF) (RC2527): MQRC_RFH_RESTRICTED_FORMAT_ERR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045280_.html
+2528 (09E0) (RC2528): MQRC_CONNECTION_STOPPED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045290_.html
+2529 (09E1) (RC2529): MQRC_ASYNC_UOW_CONFLICT,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045300_.html
+2530 (09E2) (RC2530): MQRC_ASYNC_XA_CONFLICT,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045310_.html
+2531 (09E3) (RC2531): MQRC_PUBSUB_INHIBITED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045320_.html
+2532 (09E4) (RC2532): MQRC_MSG_HANDLE_COPY_FAILURE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045330_.html
+2533 (09E5) (RC2533): MQRC_DEST_CLASS_NOT_ALTERABLE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045340_.html
+2534 (09E6) (RC2534): MQRC_OPERATION_NOT_ALLOWED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045350_.html
+2535 (09E7): MQRC_ACTION_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045360_.html
+2537 (09E9) (RC2537): MQRC_CHANNEL_NOT_AVAILABLE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045370_.html
+2538 (09EA) (RC2538): MQRC_HOST_NOT_AVAILABLE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045380_.html
+2539 (09EB) (RC2539): MQRC_CHANNEL_CONFIG_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045390_.html
+2540 (09EC) (RC2540): MQRC_UNKNOWN_CHANNEL_NAME,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045400_.html
+2541 (09ED) (RC2541): MQRC_LOOPING_PUBLICATION,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045410_.html
+2543 (09EF) (RC2543): MQRC_STANDBY_Q_MGR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045420_.html
+2544 (09F0) (RC2544): MQRC_RECONNECTING,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045430_.html
+2545 (09F1) (RC2545): MQRC_RECONNECTED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045440_.html
+2546 (09F2) (RC2546): MQRC_RECONNECT_QMID_MISMATCH,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045450_.html
+2547 (09F3) (RC2547): MQRC_RECONNECT_INCOMPATIBLE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045460_.html
+2548 (09F4) (RC2548): MQRC_RECONNECT_FAILED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045470_.html
+2549 (09F5) (RC2549): MQRC_CALL_INTERRUPTED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045480_.html
+2550 (09F6) (RC2550): MQRC_NO_SUBS_MATCHED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045490_.html
+2551 (09F7) (RC2551): MQRC_SELECTION_NOT_AVAILABLE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045500_.html
+2552 (09F8) (RC2552): MQRC_CHANNEL_SSL_WARNING,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045510_.html
+2553 (09F9) (RC2553): MQRC_OCSP_URL_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045520_.html
+2554 (09FA) (RC2554): MQRC_CONTENT_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045530_.html
+2555 (09FB) (RC2555): MQRC_RECONNECT_Q_MGR_REQD,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045540_.html
+2556 (09FC) (RC2556): MQRC_RECONNECT_TIMED_OUT,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045550_.html
+2557 (09FD) (RC2557): MQRC_PUBLISH_EXIT_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045560_.html
+2558 (09FE) (RC2558): MQRC_COMMINFO_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045570_.html
+2560 (0A00) (RC2560): MQRC_MULTICAST_ONLY,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045580_.html
+2561 (0A01) (RC2561): MQRC_DATA_SET_NOT_AVAILABLE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045590_.html
+2562 (0A02) (RC2562): MQRC_GROUPING_NOT_ALLOWED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045600_.html
+2563 (0A03) (RC2563): MQRC_GROUP_ADDRESS_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045610_.html
+2564 (0A04) (RC2564): MQRC_MULTICAST_CONFIG_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045620_.html
+2565 (0A05) (RC2565): MQRC_MULTICAST_INTERFACE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045630_.html
+2566 (0A06) (RC2566): MQRC_MULTICAST_SEND_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045640_.html
+2567 (0A07) (RC2567): MQRC_MULTICAST_INTERNAL_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045650_.html
+2568 (0A08) (RC2568): MQRC_CONNECTION_NOT_AVAILABLE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q114250_.html
+2569 (0A09) (RC2569): MQRC_SYNCPOINT_NOT_ALLOWED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045660_.html
+2577 (0A11) (RC2577): MQRC_CHANNEL_BLOCKED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q114930_.html
+2578 (0A12) (RC2578): MQRC_CHANNEL_BLOCKED_WARNING,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q114940_.html
+2583 (0A17) (RC2583): MQRC_INSTALLATION_MISMATCH,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045670_.html
+2587 (0A1B) (RC2587): MQRC_HMSG_NOT_AVAILABLE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045680_.html
+2589 (0A1D) (RC2589) MQRC_INSTALLATION_MISSING,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045690_.html
+2590 (0A1E) (RC2590): MQRC_FASTPATH_NOT_AVAILABLE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045700_.html
+2591 (0A1F) (RC2591): MQRC_CIPHER_SPEC_NOT_SUITE_B,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045710_.html
+2592 (0A20) (RC2592): MQRC_SUITE_B_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045720_.html
+2593 (0A21)(RC2593): MQRC_CERT_VAL_POLICY_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045730_.html
+2594 (0A22)(RC2594): MQRC_PASSWORD_PROTECTION_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q120510_.html
+2595 (0A23)(RC2595): MQRC_CSP_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q120520_.html
+2596 (0A24)(RC2596): MQRC_CERT_LABEL_NOT_ALLOWED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q120530_.html
+2598 (0A26)(RC2598): MQRC_ADMIN_TOPIC_STRING_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q120535_.html
+2601 (0A29)(RC2601): MQRC_Q_MGR_RECONNECT_REQUESTED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q120538_.html
+2602 (0A2A)(RC2602): MQRC_BNO_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/reacode2602.html
+6100 (17D4) (RC6100): MQRC_REOPEN_EXCL_INPUT_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045740_.html
+6101 (17D5) (RC6101): MQRC_REOPEN_INQUIRE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045750_.html
+6102 (17D6) (RC6102): MQRC_REOPEN_SAVED_CONTEXT_ERR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045760_.html
+6103 (17D7) (RC6103): MQRC_REOPEN_TEMPORARY_Q_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045770_.html
+6104 (17D8) (RC6104): MQRC_ATTRIBUTE_LOCKED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045780_.html
+6105 (17D9) (RC6105): MQRC_CURSOR_NOT_VALID,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045790_.html
+6106 (17DA) (RC6106): MQRC_ENCODING_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045800_.html
+6107 (17DB) (RC6107): MQRC_STRUC_ID_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045810_.html
+6108 (17DC) (RC6108): MQRC_NULL_POINTER,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045820_.html
+6109 (17DD) (RC6109): MQRC_NO_CONNECTION_REFERENCE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045830_.html
+6110 (17DE) (RC6110): MQRC_NO_BUFFER,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045840_.html
+6111 (17DF) (RC6111): MQRC_BINARY_DATA_LENGTH_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045850_.html
+6112 (17E0) (RC6112): MQRC_BUFFER_NOT_AUTOMATIC,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045860_.html
+6113 (17E1) (RC6113): MQRC_INSUFFICIENT_BUFFER,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045870_.html
+6114 (17E2) (RC6114): MQRC_INSUFFICIENT_DATA,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045880_.html
+6115 (17E3) (RC6115): MQRC_DATA_TRUNCATED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045890_.html
+6116 (17E4) (RC6116): MQRC_ZERO_LENGTH,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045900_.html
+6117 (17E5) (RC6117): MQRC_NEGATIVE_LENGTH,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045910_.html
+6118 (17E6) (RC6118): MQRC_NEGATIVE_OFFSET,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045920_.html
+6119 (17E7) (RC6119): MQRC_INCONSISTENT_FORMAT,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045930_.html
+6120 (17E8) (RC6120): MQRC_INCONSISTENT_OBJECT_STATE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045940_.html
+6121 (17E9) (RC6121): MQRC_CONTEXT_OBJECT_NOT_VALID,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045950_.html
+6122 (17EA) (RC6122): MQRC_CONTEXT_OPEN_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045960_.html
+6123 (17EB) (RC6123): MQRC_STRUC_LENGTH_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045970_.html
+6124 (17EC) (RC6124): MQRC_NOT_CONNECTED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045980_.html
+6125 (17ED) (RC6125): MQRC_NOT_OPEN,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q045990_.html
+6126 (17EE) (RC6126): MQRC_DISTRIBUTION_LIST_EMPTY,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046000_.html
+6127 (17EF) (RC6127): MQRC_INCONSISTENT_OPEN_OPTIONS,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046010_.html
+6128 (17FO) (RC6128): MQRC_WRONG_VERSION,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046020_.html
+6129 (17F1) (RC6129): MQRC_REFERENCE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046030_.html
+3001 (0BB9) (RC3001): MQRCCF_CFH_TYPE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046050_.html
+3002 (0BBA) (RC3002): MQRCCF_CFH_LENGTH_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046060_.html
+3003 (0BBB) (RC3003): MQRCCF_CFH_VERSION_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046070_.html
+3004 (0BBC) (RC3004): MQRCCF_CFH_MSG_SEQ_NUMBER_ERR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046080_.html
+3005 (0BBD) (RC3005): MQRCCF_CFH_CONTROL_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046090_.html
+3006 (0BBE) (RC3006): MQRCCF_CFH_PARM_COUNT_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046100_.html
+3007 (0BBF) (RC3007): MQRCCF_CFH_COMMAND_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046110_.html
+3008 (0BC0) (RC3008): MQRCCF_COMMAND_FAILED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046120_.html
+3009 (0BC1) (RC3009): MQRCCF_CFIN_LENGTH_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046130_.html
+3010 (0BC2) (RC3010): MQRCCF_CFST_LENGTH_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046140_.html
+3011 (0BC3) (RC3011): MQRCCF_CFST_STRING_LENGTH_ERR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046150_.html
+3012 (0BC4) (RC3012): MQRCCF_FORCE_VALUE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046160_.html
+3013 (0BC5) (RC3013): MQRCCF_STRUCTURE_TYPE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046170_.html
+3014 (0BC6) (RC3014): MQRCCF_CFIN_PARM_ID_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046180_.html
+3015 (0BC7) (RC3015): MQRCCF_CFST_PARM_ID_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046190_.html
+3016 (0BC8) (RC3016): MQRCCF_MSG_LENGTH_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046200_.html
+3017 (0BC9) (RC3017): MQRCCF_CFIN_DUPLICATE_PARM,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046210_.html
+3018 (0BCA) (RC3018): MQRCCF_CFST_DUPLICATE_PARM,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046220_.html
+3019 (0BCB) (RC3019): MQRCCF_PARM_COUNT_TOO_SMALL,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046230_.html
+3020 (0BCC) (RC3020): MQRCCF_PARM_COUNT_TOO_BIG,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046240_.html
+3021 (0BCD) (RC3021): MQRCCF_Q_ALREADY_IN_CELL,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046250_.html
+3022 (0BCE) (RC3022): MQRCCF_Q_TYPE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046260_.html
+3023 (0BCF) (RC3023): MQRCCF_MD_FORMAT_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046270_.html
+3024 (0BD0) (RC3024): MQRCCF_CFSL_LENGTH_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046280_.html
+3025 (0BD1) (RC3025): MQRCCF_REPLACE_VALUE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046290_.html
+3026 (0BD2) (RC3026): MQRCCF_CFIL_DUPLICATE_VALUE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046300_.html
+3027 (0BD3) (RC3027): MQRCCF_CFIL_COUNT_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046310_.html
+3028 (0BD4) (RC3028): MQRCCF_CFIL_LENGTH_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046320_.html
+3029 (0BD5) (RC3029): MQRCCF_MODE_VALUE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046330_.html
+3029 (0BD5) (RC3029): MQRCCF_QUIESCE_VALUE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046340_.html
+3030 (0BD6) (RC3030): MQRCCF_MSG_SEQ_NUMBER_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046350_.html
+3031 (0BD7) (RC3031): MQRCCF_PING_DATA_COUNT_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046360_.html
+3032 (0BD8) (RC3032): MQRCCF_PING_DATA_COMPARE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046370_.html
+3033 (0BD9) (RC3033): MQRCCF_CFSL_PARM_ID_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046380_.html
+3034 (0BDA) (RC3034): MQRCCF_CHANNEL_TYPE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046390_.html
+3035 (0BDB) (RC3035): MQRCCF_PARM_SEQUENCE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046400_.html
+3036 (0BDC) (RC3036): MQRCCF_XMIT_PROTOCOL_TYPE_ERR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046410_.html
+3037 (0BDD) (RC3037): MQRCCF_BATCH_SIZE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046420_.html
+3038 (0BDE) (RC3038): MQRCCF_DISC_INT_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046430_.html
+3039 (0BDF) (RC3039): MQRCCF_SHORT_RETRY_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046440_.html
+3040 (0BE0) (RC3040): MQRCCF_SHORT_TIMER_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046450_.html
+3041 (0BE1) (RC3041): MQRCCF_LONG_RETRY_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046460_.html
+3042 (0BE2) (RC3042): MQRCCF_LONG_TIMER_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046470_.html
+3043 (0BE3) (RC3043): MQRCCF_SEQ_NUMBER_WRAP_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046480_.html
+3044 (0BE4) (RC3044): MQRCCF_MAX_MSG_LENGTH_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046490_.html
+3045 (0BE5) (RC3045): MQRCCF_PUT_AUTH_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046500_.html
+3046 (0BE6) (RC3046): MQRCCF_PURGE_VALUE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046510_.html
+3047 (0BE7) (RC3047): MQRCCF_CFIL_PARM_ID_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046520_.html
+3048 (0BE8) (RC3048): MQRCCF_MSG_TRUNCATED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046530_.html
+3049 (0BE9) (RC3049): MQRCCF_CCSID_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046540_.html
+3050 (0BEA) (RC3050): MQRCCF_ENCODING_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046550_.html
+3052 (0BEC) (RC3052): MQRCCF_DATA_CONV_VALUE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046560_.html
+3053 (0BED) (RC3053): MQRCCF_INDOUBT_VALUE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046570_.html
+3054 (0BEE) (RC3054): MQRCCF_ESCAPE_TYPE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046580_.html
+3062 (0BF6) (RC3062): MQRCCF_CHANNEL_TABLE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046590_.html
+3063 (0BF7) (RC3063): MQRCCF_MCA_TYPE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046600_.html
+3064 (0BF8) (RC3064): MQRCCF_CHL_INST_TYPE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046610_.html
+3065 (0BF9) (RC3065): MQRCCF_CHL_STATUS_NOT_FOUND,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046620_.html
+3066 (0BFA) (RC3066): MQRCCF_CFSL_DUPLICATE_PARM,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046630_.html
+3067 (0BFB) (RC3067): MQRCCF_CFSL_TOTAL_LENGTH_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046640_.html
+3068 (0BFC) (RC3068): MQRCCF_CFSL_COUNT_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046650_.html
+3069 (0BFD) (RC3069): MQRCCF_CFSL_STRING_LENGTH_ERR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046660_.html
+3070 (0BFE) (RC3070): MQRCCF_BROKER_DELETED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046670_.html
+3071 (0BFF) (RC3071): MQRCCF_STREAM_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046680_.html
+3072 (0C00) (RC3072): MQRCCF_TOPIC_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046690_.html
+3073 (0C01) (RC3073): MQRCCF_NOT_REGISTERED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046700_.html
+3074 (0C02) (RC3074): MQRCCF_Q_MGR_NAME_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046710_.html
+3075 (0C03) (RC3075): MQRCCF_INCORRECT_STREAM,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046720_.html
+3076 (0C04) (RC3076): MQRCCF_Q_NAME_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046730_.html
+3077 (0C05) (RC3077): MQRCCF_NO_RETAINED_MSG,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046740_.html
+3078 (0C06) (RC3078): MQRCCF_DUPLICATE_IDENTITY,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046750_.html
+3079 (0C07) (RC3079): MQRCCF_INCORRECT_Q,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046760_.html
+3080 (0C08) (RC3080): MQRCCF_CORREL_ID_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046770_.html
+3081 (0C09) (RC3081): MQRCCF_NOT_AUTHORIZED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046780_.html
+3082 (0C0A) (RC3082): MQRCCF_UNKNOWN_STREAM,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046790_.html
+3083 (0C0B) (RC3083): MQRCCF_REG_OPTIONS_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046800_.html
+3084 (0C0C) (RC3084): MQRCCF_PUB_OPTIONS_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046810_.html
+3085 (0C0D) (RC3085): MQRCCF_UNKNOWN_BROKER,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046820_.html
+3086 (0C0E) (RC3086): MQRCCF_Q_MGR_CCSID_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046830_.html
+3087 (0C0F) (RC3087): MQRCCF_DEL_OPTIONS_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046840_.html
+3088 (0C10) (RC3088): MQRCCF_CLUSTER_NAME_CONFLICT,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046850_.html
+3089 (0C11) (RC3089): MQRCCF_REPOS_NAME_CONFLICT,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046860_.html
+3090 (0C12) (RC3090): MQRCCF_CLUSTER_Q_USAGE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046870_.html
+3091 (0C13) (RC3091): MQRCCF_ACTION_VALUE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046880_.html
+3092 (0C14) (RC3092): MQRCCF_COMMS_LIBRARY_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046890_.html
+3093 (0C15) (RC3093): MQRCCF_NETBIOS_NAME_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046900_.html
+3094 (0C16) (RC3094): MQRCCF_BROKER_COMMAND_FAILED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046910_.html
+3095 (0C17) (RC3095): MQRCCF_CFST_CONFLICTING_PARM,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046920_.html
+3096 (0C18) (RC3096): MQRCCF_PATH_NOT_VALID,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046930_.html
+3097 (0C19) (RC3097): MQRCCF_PARM_SYNTAX_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046940_.html
+3098 (0C1A) (RC3098): MQRCCF_PWD_LENGTH_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046950_.html
+3150 (0C4E) (RC3150): MQRCCF_FILTER_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046960_.html
+3151 (0C4F) (RC3151): MQRCCF_WRONG_USER,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046970_.html
+3152 (0C50) (RC3152): MQRCCF_DUPLICATE_SUBSCRIPTION,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046980_.html
+3153 (0C51) (RC3153): MQRCCF_SUB_NAME_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046990_.html
+3154 (0C52) (RC3154): MQRCCF_SUB_IDENTITY_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047000_.html
+3155 (0C53) (RC3155): MQRCCF_SUBSCRIPTION_IN_USE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047010_.html
+3156 (0C54) (RC3156): MQRCCF_SUBSCRIPTION_LOCKED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047020_.html
+3157 (0C55) (RC3157): MQRCCF_ALREADY_JOINED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047030_.html
+3160 (0C58) (RC3160): MQRCCF_OBJECT_IN_USE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047040_.html
+3161 (0C59) (RC3161): MQRCCF_UNKNOWN_FILE_NAME,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047050_.html
+3162 (0C5A) (RC3162): MQRCCF_FILE_NOT_AVAILABLE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047060_.html
+3163 (0C5B) (RC3163): MQRCCF_DISC_RETRY_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047070_.html
+3164 (0C5C) (RC3164): MQRCCF_ALLOC_RETRY_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047080_.html
+3165 (0C5D) (RC3165): MQRCCF_ALLOC_SLOW_TIMER_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047090_.html
+3166 (0C5E) (RC3166): MQRCCF_ALLOC_FAST_TIMER_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047100_.html
+3167 (0C5F) (RC3167): MQRCCF_PORT_NUMBER_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047110_.html
+3168 (0C60) (RC3168): MQRCCF_CHL_SYSTEM_NOT_ACTIVE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047120_.html
+3169 (0C61) (RC3169): MQRCCF_ENTITY_NAME_MISSING,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047130_.html
+3170 (0C62) (RC3170): MQRCCF_PROFILE_NAME_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047140_.html
+3171 (0C63) (RC3171): MQRCCF_AUTH_VALUE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047150_.html
+3172 (0C64) (RC3172): MQRCCF_AUTH_VALUE_MISSING,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047160_.html
+3173 (0C65) (RC3173): MQRCCF_OBJECT_TYPE_MISSING,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047170_.html
+3174 (0C66) (RC3174): MQRCCF_CONNECTION_ID_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047180_.html
+3175 (0C67) (RC3175): MQRCCF_LOG_TYPE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047190_.html
+3176 (0C68) (RC3176): MQRCCF_PROGRAM_NOT_AVAILABLE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047200_.html
+3177 (0C69) (RC3177): MQRCCF_PROGRAM_AUTH_FAILED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047210_.html
+3200 (0C80) (RC3200): MQRCCF_NONE_FOUND,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047220_.html
+3201 (0C81) (RC3201): MQRCCF_SECURITY_SWITCH_OFF,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047230_.html
+3202 (0C82) (RC3202): MQRCCF_SECURITY_REFRESH_FAILED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047240_.html
+3203 (0C83) (RC3203): MQRCCF_PARM_CONFLICT,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047250_.html
+3204 (0C84) (RC3204): MQRCCF_COMMAND_INHIBITED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047260_.html
+3205 (0C85) (RC3205): MQRCCF_OBJECT_BEING_DELETED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047270_.html
+3207 (0C87) (RC3207): MQRCCF_STORAGE_CLASS_IN_USE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047280_.html
+3208 (0C88) (RC3208): MQRCCF_OBJECT_NAME_RESTRICTED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047290_.html
+3209 (0C89) (RC3209): MQRCCF_OBJECT_LIMIT_EXCEEDED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047300_.html
+3210 (0C8A) (RC3210): MQRCCF_OBJECT_OPEN_FORCE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047310_.html
+3211 (0C8B) (RC3211): MQRCCF_DISPOSITION_CONFLICT,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047320_.html
+3212 (0C8C) (RC3212): MQRCCF_Q_MGR_NOT_IN_QSG,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047330_.html
+3213 (0C8D) (RC3213): MQRCCF_ATTR_VALUE_FIXED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047340_.html
+3215 (0C8F) (RC3215): MQRCCF_NAMELIST_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047350_.html
+3217 (0C91) (RC3217): MQRCCF_NO_CHANNEL_INITIATOR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047360_.html
+3218 (0C93) (RC3218): MQRCCF_CHANNEL_INITIATOR_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047370_.html
+3222 (0C96) (RC3222): MQRCCF_COMMAND_LEVEL_CONFLICT,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047380_.html
+3223 (0C97) (RC3223): MQRCCF_Q_ATTR_CONFLICT,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047390_.html
+3224 (0C98) (RC3224): MQRCCF_EVENTS_DISABLED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047400_.html
+3225 (0C99) (RC3225): MQRCCF_COMMAND_SCOPE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047410_.html
+3226 (0C9A) (RC3226): MQRCCF_COMMAND_REPLY_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047420_.html
+3227 (0C9B) (RC3227): MQRCCF_FUNCTION_RESTRICTED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047430_.html
+3228 (0C9C) (RC3228): MQRCCF_PARM_MISSING,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047440_.html
+3229 (0C9D) (RC3229): MQRCCF_PARM_VALUE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047450_.html
+3230 (0C9E) (RC3230): MQRCCF_COMMAND_LENGTH_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047460_.html
+3231 (0C9F) (RC3231): MQRCCF_COMMAND_ORIGIN_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047470_.html
+3232 (0CA0) (RC3232): MQRCCF_LISTENER_CONFLICT,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047480_.html
+3233 (0CA1) (RC3233): MQRCCF_LISTENER_STARTED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047490_.html
+3234 (0CA2) (RC3234): MQRCCF_LISTENER_STOPPED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047500_.html
+3235 (0CA3) (RC3235): MQRCCF_CHANNEL_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047510_.html
+3236 (0CA4) (RC3236): MQRCCF_CF_STRUC_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047520_.html
+3237 (0CA5) (RC3237): MQRCCF_UNKNOWN_USER_ID,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047530_.html
+3238 (0CA6) (RC3238): MQRCCF_UNEXPECTED_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047540_.html
+3239 (0CA7) (RC3239): MQRCCF_NO_XCF_PARTNER,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047550_.html
+3240 (0CA8) (RC3240): MQRCCF_CFGR_PARM_ID_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047560_.html
+3241 (0CA9) (RC3241): MQRCCF_CFIF_LENGTH_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047570_.html
+3242 (0CAA) (RC3242): MQRCCF_CFIF_OPERATOR_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047580_.html
+3243 (0CAB) (RC3243): MQRCCF_CFIF_PARM_ID_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047590_.html
+3244 (0CAC) (RC3244): MQRCCF_CFSF_FILTER_VAL_LEN_ERR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047600_.html
+3245 (0CAD) (RC3245): MQRCCF_CFSF_LENGTH_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047610_.html
+3246 (0CAE) (RC3246): MQRCCF_CFSF_OPERATOR_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047620_.html
+3247 (0CAF) (RC3247): MQRCCF_CFSF_PARM_ID_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047630_.html
+3248 (0CB0) (RC3248): MQRCCF_TOO_MANY_FILTERS,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047640_.html
+3249 (0CB1) (RC3249): MQRCCF_LISTENER_RUNNING,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047650_.html
+3250 (0CB2) (RC3250): MQRCCF_LSTR_STATUS_NOT_FOUND,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047660_.html
+3251 (0CB3) (RC3251): MQRCCF_SERVICE_RUNNING,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047670_.html
+3252 (0CB4) (RC3252): MQRCCF_SERV_STATUS_NOT_FOUND,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047680_.html
+3253 (0CB5) (RC3253): MQRCCF_SERVICE_STOPPED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047690_.html
+3254 (0CB6) (RC3254): MQRCCF_CFBS_DUPLICATE_PARM,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047700_.html
+3255 (0CB7) (RC3255): MQRCCF_CFBS_LENGTH_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047710_.html
+3256 (0CB8) (RC3256): MQRCCF_CFBS_PARM_ID_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047720_.html
+3257 (0CB9) (RC3257): MQRCCF_CFBS_STRING_LENGTH_ERR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047730_.html
+3258 (0CBA) (RC3258): MQRCCF_CFGR_LENGTH_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047740_.html
+3259 (0CBB) (RC3259): MQRCCF_CFGR_PARM_COUNT_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047750_.html
+3260 (0CBC) (RC3260): MQRCCF_CONN_NOT_STOPPED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047760_.html
+3261 (0CBD) (RC3261): MQRCCF_SERVICE_REQUEST_PENDING,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047770_.html
+3262 (0CBE) (RC3262): MQRCCF_NO_START_CMD,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047780_.html
+3263 (0CBF) (RC3263): MQRCCF_NO_STOP_CMD,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047790_.html
+3264 (0CC0) (RC3264): MQRCCF_CFBF_LENGTH_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047800_.html
+3265 (0CC1) (RC3265): MQRCCF_CFBF_PARM_ID_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047810_.html
+3266 (0CC2) (RC3266): MQRCCF_CFBF_FILTER_VAL_LEN_ERR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047820_.html
+3267 (0CC3) (RC3267): MQRCCF_CFBF_OPERATOR_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047830_.html
+3268 (0CC4) (RC3268): MQRCCF_LISTENER_STILL_ACTIVE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047840_.html
+3269 (0CC5) (RC3269): MQRCCF_DEF_XMIT_Q_CLUS_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047850_.html
+3300 (0CE4) (RC3300): MQRCCF_TOPICSTR_ALREADY_EXISTS,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047860_.html
+3301 (0CE5) (RC3301): MQRCCF_SHARING_CONVS_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047870_.html
+3302 (0CE6) (RC3302): MQRCCF_SHARING_CONVS_TYPE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047880_.html
+3303 (0CE7) (RC3303): MQRCCF_SECURITY_CASE_CONFLICT,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047890_.html
+3305 (0CE9) (RC3305): MQRCCF_TOPIC_TYPE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047900_.html
+3306 (0CEA) (RC3306): MQRCCF_MAX_INSTANCES_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047910_.html
+3307 (0CEB) (RC3307): MQRCCF_MAX_INSTS_PER_CLNT_ERR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047920_.html
+3308 (0CEC) (RC3308): MQRCCF_TOPIC_STRING_NOT_FOUND,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047930_.html
+3309 (0CED) (RC3309): MQRCCF_SUBSCRIPTION_POINT_ERR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047940_.html
+3311 (0CEF) (RC2432): MQRCCF_SUB_ALREADY_EXISTS,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047950_.html
+3314 (0CF2) (RC3314): MQRCCF_DURABILITY_NOT_ALLOWED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047960_.html
+3317 (0CF5) (RC3317): MQRCCF_INVALID_DESTINATION,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047970_.html
+3318 (0CF6) (RC3318): MQRCCF_PUBSUB_INHIBITED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047980_.html
+3326 (0CFE) (RC3326): MQRCCF_CHLAUTH_TYPE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047990_.html
+3327 (0CFF) (RC3327): MQRCCF_CHLAUTH_ACTION_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048000_.html
+3335 (0D07) (RC3335): MQRCCF_CHLAUTH_USRSRC_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048010_.html
+3336 (0D08) (RC3336): MQRCCF_WRONG_CHLAUTH_TYPE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048020_.html
+3337 (0D09) (RC3337): MQRCCF_CHLAUTH_ALREADY_EXISTS,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048030_.html
+3338 (0D0A) (RC3338): MQRCCF_CHLAUTH_NOT_FOUND,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048040_.html
+3339 (0D0B) (RC3339): MQRCCF_WRONG_CHLAUTH_ACTION,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048050_.html
+3340 (0D0C) (RC3340): MQRCCF_WRONG_CHLAUTH_USERSRC,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048060_.html
+3341 (0D0D) (RC3341): MQRCCF_CHLAUTH_WARN_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048070_.html
+3342 (0D0E) (RC3342): MQRCCF_WRONG_CHLAUTH_MATCH,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048080_.html
+3343 (0D0F) (RC3343): MQRCCF_IPADDR_RANGE_CONFLICT,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048090_.html
+3344 (0D10) (RC3344): MQRCCF_CHLAUTH_MAX_EXCEEDED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048100_.html
+3345 (0D11) (RC3345): MQRCCF_IPADDR_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048110_.html
+3346 (0D12) (RC3346): MQRCCF_IPADDR_RANGE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048120_.html
+3347 (0D13) (RC3347): MQRCCF_PROFILE_NAME_MISSING,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048130_.html
+3348 (0D14) (RC3348): MQRCCF_CHLAUTH_CLNTUSER_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048140_.html
+3349 (0D15) (RC3349): MQRCCF_CHLAUTH_NAME_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048150_.html
+3350 (0D16) (RC3350): MQRCCF_CHLAUTH_RUNCHECK_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048160_.html
+3353 (0D19) (RC3353): MQRCCF_SUITE_B_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048170_.html
+3363 (0D23) (RC3363): MQRCCF_CLUS_XMIT_Q_USAGE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048180_.html
+3364 (0D24) (RC3364): MQRCCF_CERT_VAL_POLICY_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048190_.html
+3366 (0D26) (RC3366): MQRCCF_REVDNS_DISABLED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q113230_.html
+3370 (0D2A) (RC3370): MQRCCF_CHLAUTH_CHKCLI_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q120540_.html
+3377 (0D31) (RC3377): MQRCCF_TOPIC_RESTRICTED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q120545_.html
+3389 (0D3D) (RC3389): MQRCCF_INCOMPATIBLE_QM_IN_QSG,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/rc3389.html
+3391 (0D3F) RC3391): MQRCCF_AUTHORIZED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/rc3391.html
+4001 (0FA1) (RC4001): MQRCCF_OBJECT_ALREADY_EXISTS,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048200_.html
+4002 (0FA2) (RC4002): MQRCCF_OBJECT_WRONG_TYPE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048210_.html
+4003 (0FA3) (RC4003): MQRCCF_LIKE_OBJECT_WRONG_TYPE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048220_.html
+4004 (0FA4) (RC4004): MQRCCF_OBJECT_OPEN,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048230_.html
+4005 (0FA5) (RC4005): MQRCCF_ATTR_VALUE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048240_.html
+4006 (0FA6) (RC4006): MQRCCF_UNKNOWN_Q_MGR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048250_.html
+4007 (0FA7) (RC4007): MQRCCF_Q_WRONG_TYPE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048260_.html
+4008 (0FA8) (RC4008): MQRCCF_OBJECT_NAME_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048270_.html
+4009 (0FA9) (RC4009): MQRCCF_ALLOCATE_FAILED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048280_.html
+4010 (0FAA) (RC4010): MQRCCF_HOST_NOT_AVAILABLE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048290_.html
+4011 (0FAB) (RC4011): MQRCCF_CONFIGURATION_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048300_.html
+4012 (0FAC) (RC4012): MQRCCF_CONNECTION_REFUSED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048310_.html
+4013 (0FAD) (RC4013): MQRCCF_ENTRY_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048320_.html
+4014 (0FAE) (RC4014): MQRCCF_SEND_FAILED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048330_.html
+4015 (0FAF) (RC4015): MQRCCF_RECEIVED_DATA_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048340_.html
+4016 (0FB0) (RC4016): MQRCCF_RECEIVE_FAILED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048350_.html
+4017 (0FB1) (RC4017): MQRCCF_CONNECTION_CLOSED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048360_.html
+4018 (0FB2) (RC4018): MQRCCF_NO_STORAGE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048370_.html
+4019 (0FB3) (RC4019): MQRCCF_NO_COMMS_MANAGER,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048380_.html
+4020 (0FB4) (RC4020): MQRCCF_LISTENER_NOT_STARTED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048390_.html
+4024 (0FB8) (RC4024): MQRCCF_BIND_FAILED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048400_.html
+4025 (0FB9) (RC4025): MQRCCF_CHANNEL_INDOUBT,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048410_.html
+4026 (0FBA) (RC4026): MQRCCF_MQCONN_FAILED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048420_.html
+4027 (0FBB) (RC4027): MQRCCF_MQOPEN_FAILED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048430_.html
+4028 (0FBC) (RC4028): MQRCCF_MQGET_FAILED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048440_.html
+4029 (0FBD) (RC4029): MQRCCF_MQPUT_FAILED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048450_.html
+4030 (0FBE) (RC4030): MQRCCF_PING_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048460_.html
+4031 (0FBF) (RC4031): MQRCCF_CHANNEL_IN_USE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048470_.html
+4032 (0FC0) (RC4032): MQRCCF_CHANNEL_NOT_FOUND,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048480_.html
+4033 (0FC1) (RC4033): MQRCCF_UNKNOWN_REMOTE_CHANNEL,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048490_.html
+4034 (0FC2) (RC4034): MQRCCF_REMOTE_QM_UNAVAILABLE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048500_.html
+4035 (0FC3) (RC4035): MQRCCF_REMOTE_QM_TERMINATING,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048510_.html
+4036 (0FC4) (RC4036): MQRCCF_MQINQ_FAILED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048520_.html
+4037 (0FC5) (RC4037): MQRCCF_NOT_XMIT_Q,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048530_.html
+4038 (0FC6) (RC4038): MQRCCF_CHANNEL_DISABLED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048540_.html
+4039 (0FC7) (RC4039): MQRCCF_USER_EXIT_NOT_AVAILABLE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048550_.html
+4040 (0FC8) (RC4040): MQRCCF_COMMIT_FAILED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048560_.html
+4041 (0FC9) (RC4041): MQRCCF_WRONG_CHANNEL_TYPE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048570_.html
+4042 (0FCA) (RC4042): MQRCCF_CHANNEL_ALREADY_EXISTS,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048580_.html
+4043 (0FCB) (RC4043): MQRCCF_DATA_TOO_LARGE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048590_.html
+4044 (0FCC) (RC4044): MQRCCF_CHANNEL_NAME_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048600_.html
+4045 (0FCD) (RC4045): MQRCCF_XMIT_Q_NAME_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048610_.html
+4047 (0FCF) (RC4047): MQRCCF_MCA_NAME_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048620_.html
+4048 (0FD0) (RC4048): MQRCCF_SEND_EXIT_NAME_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048630_.html
+4049 (0FD1) (RC4049): MQRCCF_SEC_EXIT_NAME_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048640_.html
+4050 (0FD2) (RC4050): MQRCCF_MSG_EXIT_NAME_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048650_.html
+4051 (0FD3) (RC4051): MQRCCF_RCV_EXIT_NAME_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048660_.html
+4052 (0FD4) (RC4052): MQRCCF_XMIT_Q_NAME_WRONG_TYPE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048670_.html
+4053 (0FD5) (RC4053): MQRCCF_MCA_NAME_WRONG_TYPE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048680_.html
+4054 (0FD6) (RC4054): MQRCCF_DISC_INT_WRONG_TYPE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048690_.html
+4055 (0FD7) (RC4055): MQRCCF_SHORT_RETRY_WRONG_TYPE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048700_.html
+4056 (0FD8) (RC4056): MQRCCF_SHORT_TIMER_WRONG_TYPE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048710_.html
+4057 (0FD9) (RC4057): MQRCCF_LONG_RETRY_WRONG_TYPE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048720_.html
+4058 (0FDA) (RC4058): MQRCCF_LONG_TIMER_WRONG_TYPE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048730_.html
+4059 (0FDB) (RC4059): MQRCCF_PUT_AUTH_WRONG_TYPE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048740_.html
+4061 (0FDD) (RC4061): MQRCCF_MISSING_CONN_NAME,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048750_.html
+4062 (0FDE) (RC4062): MQRCCF_CONN_NAME_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048760_.html
+4063 (0FDF) (RC4063): MQRCCF_MQSET_FAILED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048770_.html
+4064 (0FE0) (RC4064): MQRCCF_CHANNEL_NOT_ACTIVE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048780_.html
+4065 (0FE1) (RC4065): MQRCCF_TERMINATED_BY_SEC_EXIT,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048790_.html
+4067 (0FE3) (RC4067): MQRCCF_DYNAMIC_Q_SCOPE_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048800_.html
+4068 (0FE4) (RC4068): MQRCCF_CELL_DIR_NOT_AVAILABLE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048810_.html
+4069 (0FE5) (RC4069): MQRCCF_MR_COUNT_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048820_.html
+4070 (0FE6) (RC4070): MQRCCF_MR_COUNT_WRONG_TYPE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048830_.html
+4071 (0FE7) (RC4071): MQRCCF_MR_EXIT_NAME_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048840_.html
+4072 (0FE8) (RC4072): MQRCCF_MR_EXIT_NAME_WRONG_TYPE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048850_.html
+4073 (0FE9) (RC4073): MQRCCF_MR_INTERVAL_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048860_.html
+4074 (0FEA) (RC4074): MQRCCF_MR_INTERVAL_WRONG_TYPE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048870_.html
+4075 (0FEB) (RC4075): MQRCCF_NPM_SPEED_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048880_.html
+4076 (0FEC) (RC4076): MQRCCF_NPM_SPEED_WRONG_TYPE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048890_.html
+4077 (0FED) (RC4077): MQRCCF_HB_INTERVAL_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048900_.html
+4078 (0FEE) (RC4078): MQRCCF_HB_INTERVAL_WRONG_TYPE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048910_.html
+4079 (0FEF) (RC4079): MQRCCF_CHAD_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048920_.html
+4080 (0FF0) (RC4080): MQRCCF_CHAD_WRONG_TYPE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048930_.html
+4081 (0FF1) (RC4081): MQRCCF_CHAD_EVENT_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048940_.html
+4082 (0FF2) (RC4082): MQRCCF_CHAD_EVENT_WRONG_TYPE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048950_.html
+4083 (0FF3) (RC4083): MQRCCF_CHAD_EXIT_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048960_.html
+4084 (0FF4) (RC4084): MQRCCF_CHAD_EXIT_WRONG_TYPE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048970_.html
+4085 (0FF5) (RC4085): MQRCCF_SUPPRESSED_BY_EXIT,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048980_.html
+4086 (0FF6) (RC4086): MQRCCF_BATCH_INT_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048990_.html
+4087 (0FF7) (RC4087): MQRCCF_BATCH_INT_WRONG_TYPE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q049000_.html
+4088 (0FF8) (RC4088): MQRCCF_NET_PRIORITY_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q049010_.html
+4089 (0FF9) (RC4089): MQRCCF_NET_PRIORITY_WRONG_TYPE,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q049020_.html
+4090 (0FFA) (RC4090): MQRCCF_CHANNEL_CLOSED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q049030_.html
+4092 (0FFC) (RC4092): MQRCCF_SSL_CIPHER_SPEC_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q049040_.html
+4093 (0FFD) (RC4093): MQRCCF_SSL_PEER_NAME_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q049050_.html
+4094 (0FFE) (RC4094): MQRCCF_SSL_CLIENT_AUTH_ERROR,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q049060_.html
+4095 (0FFF) (RC4095): MQRCCF_RETAINED_NOT_SUPPORTED,https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q049070_.html

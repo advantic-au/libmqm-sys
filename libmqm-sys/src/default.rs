@@ -15,67 +15,67 @@ macro_rules! mq_default {
 
 #[cfg(feature = "pcf")]
 mod pcf {
-    use crate::lib;
+    use crate::pcf;
 
-    mq_default!(lib::MQCFH, mqcfh_default);
-    mq_default!(lib::MQCFBF, mqcfbf_default);
-    mq_default!(lib::MQCFBS, mqcfbs_default);
-    mq_default!(lib::MQCFGR, mqcfgr_default);
-    mq_default!(lib::MQCFIF, mqcfif_default);
-    mq_default!(lib::MQCFIL, mqcfil_default);
-    mq_default!(lib::MQCFIL64, mqcfil64_default);
-    mq_default!(lib::MQCFIN, mqcfin_default);
-    mq_default!(lib::MQCFIN64, mqcfin64_default);
-    mq_default!(lib::MQCFSF, mqcfsf_default);
-    mq_default!(lib::MQCFSL, mqcfsl_default);
-    mq_default!(lib::MQCFST, mqcfst_default);
-    mq_default!(lib::MQEPH, mqeph_default);
+    mq_default!(pcf::MQCFH, mqcfh_default);
+    mq_default!(pcf::MQCFBF, mqcfbf_default);
+    mq_default!(pcf::MQCFBS, mqcfbs_default);
+    mq_default!(pcf::MQCFGR, mqcfgr_default);
+    mq_default!(pcf::MQCFIF, mqcfif_default);
+    mq_default!(pcf::MQCFIL, mqcfil_default);
+    mq_default!(pcf::MQCFIL64, mqcfil64_default);
+    mq_default!(pcf::MQCFIN, mqcfin_default);
+    mq_default!(pcf::MQCFIN64, mqcfin64_default);
+    mq_default!(pcf::MQCFSF, mqcfsf_default);
+    mq_default!(pcf::MQCFSL, mqcfsl_default);
+    mq_default!(pcf::MQCFST, mqcfst_default);
+    mq_default!(pcf::MQEPH, mqeph_default);
 }
 
 #[cfg(feature = "exits")]
 mod exits {
-    use crate::lib;
+    use crate::exits;
 
-    mq_default!(lib::MQACH, mqach_default);
-    mq_default!(lib::MQAXC, mqaxc_default);
-    mq_default!(lib::MQAXP, mqaxp_default);
-    mq_default!(lib::MQCXP, mqcxp_default);
-    mq_default!(lib::MQDXP, mqdxp_default);
-    mq_default!(lib::MQNXP, mqnxp_default);
-    mq_default!(lib::MQPBC, mqpbc_default);
-    mq_default!(lib::MQPSXP, mqpsxp_default);
-    mq_default!(lib::MQSBC, mqsbc_default);
-    mq_default!(lib::MQWCR, mqwcr_default);
-    mq_default!(lib::MQWDR, mqwdr_default);
-    mq_default!(lib::MQWDR1, mqwdr1_default);
-    mq_default!(lib::MQWDR2, mqwdr2_default);
-    mq_default!(lib::MQWQR, mqwqr_default);
-    mq_default!(lib::MQWQR1, mqwqr1_default);
-    mq_default!(lib::MQWQR2, mqwqr2_default);
-    mq_default!(lib::MQWQR3, mqwqr3_default);
+    mq_default!(exits::MQACH, mqach_default);
+    mq_default!(exits::MQAXC, mqaxc_default);
+    mq_default!(exits::MQAXP, mqaxp_default);
+    mq_default!(exits::MQCXP, mqcxp_default);
+    mq_default!(exits::MQDXP, mqdxp_default);
+    mq_default!(exits::MQNXP, mqnxp_default);
+    mq_default!(exits::MQPBC, mqpbc_default);
+    mq_default!(exits::MQPSXP, mqpsxp_default);
+    mq_default!(exits::MQSBC, mqsbc_default);
+    mq_default!(exits::MQWCR, mqwcr_default);
+    mq_default!(exits::MQWDR, mqwdr_default);
+    mq_default!(exits::MQWDR1, mqwdr1_default);
+    mq_default!(exits::MQWDR2, mqwdr2_default);
+    mq_default!(exits::MQWQR, mqwqr_default);
+    mq_default!(exits::MQWQR1, mqwqr1_default);
+    mq_default!(exits::MQWQR2, mqwqr2_default);
+    mq_default!(exits::MQWQR3, mqwqr3_default);
     #[cfg(feature = "mqc_9_3_1_0")]
-    mq_default!(lib::MQWQR4, mqwqr4_default);
-    mq_default!(lib::MQWXP, mqwxp_default);
-    mq_default!(lib::MQWXP1, mqwxp1_default);
-    mq_default!(lib::MQWXP2, mqwxp2_default);
-    mq_default!(lib::MQWXP3, mqwxp3_default);
-    mq_default!(lib::MQWXP4, mqwxp4_default);
-    mq_default!(lib::MQXEPO, mqxepo_default);
-    mq_default!(lib::MQIEP, mqiep_default);
-    mq_default!(lib::MQZED, mqzed_default);
-    mq_default!(lib::MQZAC, mqzac_default);
-    mq_default!(lib::MQZAD, mqzad_default);
-    mq_default!(lib::MQZFP, mqzfp_default);
-    mq_default!(lib::MQZIC, mqzic_default);
+    mq_default!(exits::MQWQR4, mqwqr4_default);
+    mq_default!(exits::MQWXP, mqwxp_default);
+    mq_default!(exits::MQWXP1, mqwxp1_default);
+    mq_default!(exits::MQWXP2, mqwxp2_default);
+    mq_default!(exits::MQWXP3, mqwxp3_default);
+    mq_default!(exits::MQWXP4, mqwxp4_default);
+    mq_default!(exits::MQXEPO, mqxepo_default);
+    mq_default!(exits::MQIEP, mqiep_default);
+    mq_default!(exits::MQZED, mqzed_default);
+    mq_default!(exits::MQZAC, mqzac_default);
+    mq_default!(exits::MQZAD, mqzad_default);
+    mq_default!(exits::MQZFP, mqzfp_default);
+    mq_default!(exits::MQZIC, mqzic_default);
 }
 
 mod mqi {
-    use crate::lib;
+    use crate as mq;
 
     unsafe extern "C" {
-        static mqcd_client_conn_default: lib::MQCD;
+        static mqcd_client_conn_default: mq::MQCD;
     }
-    impl lib::MQCD {
+    impl mq::MQCD {
         /// Default `MQCD` suitable for MQI client connections
         #[must_use]
         pub fn client_conn_default() -> Self {
@@ -83,46 +83,46 @@ mod mqi {
         }
     }
 
-    mq_default!(lib::MQMD, mqmd_default);
-    mq_default!(lib::MQMDE, mqmde_default);
-    mq_default!(lib::MQMD1, mqmd1_default);
-    mq_default!(lib::MQMD2, mqmd2_default);
-    mq_default!(lib::MQPD, mqpd_default);
-    mq_default!(lib::MQIMPO, mqimpo_default);
-    mq_default!(lib::MQMHBO, mqmhbo_default);
-    mq_default!(lib::MQBO, mqbo_default);
-    mq_default!(lib::MQDMHO, mqdmho_default);
-    mq_default!(lib::MQCMHO, mqcmho_default);
-    mq_default!(lib::MQSRO, mqsro_default);
-    mq_default!(lib::MQSD, mqsd_default);
-    mq_default!(lib::MQGMO, mqgmo_default);
-    mq_default!(lib::MQPMO, mqpmo_default);
-    mq_default!(lib::MQOD, mqod_default);
-    mq_default!(lib::MQCNO, mqcno_default);
-    mq_default!(lib::MQCD, mqcd_default);
-    mq_default!(lib::MQCSP, mqcsp_default);
-    mq_default!(lib::MQSCO, mqsco_default);
+    mq_default!(mq::MQMD, mqmd_default);
+    mq_default!(mq::MQMDE, mqmde_default);
+    mq_default!(mq::MQMD1, mqmd1_default);
+    mq_default!(mq::MQMD2, mqmd2_default);
+    mq_default!(mq::MQPD, mqpd_default);
+    mq_default!(mq::MQIMPO, mqimpo_default);
+    mq_default!(mq::MQMHBO, mqmhbo_default);
+    mq_default!(mq::MQBO, mqbo_default);
+    mq_default!(mq::MQDMHO, mqdmho_default);
+    mq_default!(mq::MQCMHO, mqcmho_default);
+    mq_default!(mq::MQSRO, mqsro_default);
+    mq_default!(mq::MQSD, mqsd_default);
+    mq_default!(mq::MQGMO, mqgmo_default);
+    mq_default!(mq::MQPMO, mqpmo_default);
+    mq_default!(mq::MQOD, mqod_default);
+    mq_default!(mq::MQCNO, mqcno_default);
+    mq_default!(mq::MQCD, mqcd_default);
+    mq_default!(mq::MQCSP, mqcsp_default);
+    mq_default!(mq::MQSCO, mqsco_default);
     #[cfg(feature = "mqc_9_3_0_0")]
-    mq_default!(lib::MQBNO, mqbno_default);
-    mq_default!(lib::MQAIR, mqair_default);
-    mq_default!(lib::MQBMHO, mqbmho_default);
-    mq_default!(lib::MQCBD, mqcbd_default);
-    mq_default!(lib::MQCHARV, mqcharv_default);
-    mq_default!(lib::MQCIH, mqcih_default);
-    mq_default!(lib::MQCTLO, mqctlo_default);
-    mq_default!(lib::MQDH, mqdh_default);
-    mq_default!(lib::MQDLH, mqdlh_default);
-    mq_default!(lib::MQDMPO, mqdmpo_default);
-    mq_default!(lib::MQIIH, mqiih_default);
-    mq_default!(lib::MQOR, mqor_default);
-    mq_default!(lib::MQRFH, mqrfh_default);
-    mq_default!(lib::MQRFH2, mqrfh2_default);
-    mq_default!(lib::MQRMH, mqrmh_default);
-    mq_default!(lib::MQRR, mqrr_default);
-    mq_default!(lib::MQSMPO, mqsmpo_default);
-    mq_default!(lib::MQSTS, mqsts_default);
-    mq_default!(lib::MQTM, mqtm_default);
-    mq_default!(lib::MQTMC2, mqtmc2_default);
-    mq_default!(lib::MQWIH, mqwih_default);
-    mq_default!(lib::MQXQH, mqxqh_default);
+    mq_default!(mq::MQBNO, mqbno_default);
+    mq_default!(mq::MQAIR, mqair_default);
+    mq_default!(mq::MQBMHO, mqbmho_default);
+    mq_default!(mq::MQCBD, mqcbd_default);
+    mq_default!(mq::MQCHARV, mqcharv_default);
+    mq_default!(mq::MQCIH, mqcih_default);
+    mq_default!(mq::MQCTLO, mqctlo_default);
+    mq_default!(mq::MQDH, mqdh_default);
+    mq_default!(mq::MQDLH, mqdlh_default);
+    mq_default!(mq::MQDMPO, mqdmpo_default);
+    mq_default!(mq::MQIIH, mqiih_default);
+    mq_default!(mq::MQOR, mqor_default);
+    mq_default!(mq::MQRFH, mqrfh_default);
+    mq_default!(mq::MQRFH2, mqrfh2_default);
+    mq_default!(mq::MQRMH, mqrmh_default);
+    mq_default!(mq::MQRR, mqrr_default);
+    mq_default!(mq::MQSMPO, mqsmpo_default);
+    mq_default!(mq::MQSTS, mqsts_default);
+    mq_default!(mq::MQTM, mqtm_default);
+    mq_default!(mq::MQTMC2, mqtmc2_default);
+    mq_default!(mq::MQWIH, mqwih_default);
+    mq_default!(mq::MQXQH, mqxqh_default);
 }

@@ -32,7 +32,7 @@ mod tests {
 
     #[test]
     fn endian() {
-        assert_eq!(defaults::MQMD2_DEFAULT.Encoding, libmqm_sys::lib::MQENC_NATIVE);
-        assert_eq!(defaults::MQMD2_DEFAULT.Version, libmqm_sys::lib::MQMD_VERSION_2);
+        assert_eq!(defaults::MQMD2_DEFAULT.Encoding, libmqm_sys::MQENC_NATIVE);
+        assert_eq!(defaults::MQMD2_DEFAULT.Version, libmqm_sys::MQMD_VERSION_2);
     }
 }

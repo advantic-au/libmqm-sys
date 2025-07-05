@@ -1,4 +1,4 @@
-use libmqm_sys::lib as sys;
+use libmqm_sys as mq;
 
 use crate::constants;
 use crate::lookup::{ConstLookup, ConstSource, ConstantItem, HasMqNames as _, LinearSource};
@@ -53,18 +53,18 @@ impl_default_value!(types::MQCMD, constants::MQCMD_NONE);
 
 const FIRST_LAST_MAPSTR: LinearSource = ConstSource(
     &[
-        (sys::MQBA_FIRST, "MQBA_FIRST"),
-        (sys::MQBA_LAST, "MQBA_LAST"),
-        (sys::MQGA_FIRST, "MQGA_FIRST"),
-        (sys::MQGA_LAST, "MQGA_LAST"),
+        (mq::MQBA_FIRST, "MQBA_FIRST"),
+        (mq::MQBA_LAST, "MQBA_LAST"),
+        (mq::MQGA_FIRST, "MQGA_FIRST"),
+        (mq::MQGA_LAST, "MQGA_LAST"),
         #[cfg(feature = "mqai")]
-        (sys::MQOA_FIRST, "MQOA_FIRST"),
+        (libmqm_sys::mqai::MQOA_FIRST, "MQOA_FIRST"),
         #[cfg(feature = "mqai")]
-        (sys::MQOA_LAST, "MQOA_LAST"),
+        (libmqm_sys::mqai::MQOA_LAST, "MQOA_LAST"),
         #[cfg(feature = "pcf")]
-        (sys::MQUA_FIRST, "MQUA_FIRST"),
+        (libmqm_sys::pcf::MQUA_FIRST, "MQUA_FIRST"),
         #[cfg(feature = "pcf")]
-        (sys::MQUA_LAST, "MQUA_LAST"),
+        (libmqm_sys::pcf::MQUA_LAST, "MQUA_LAST"),
     ],
     &[],
 );
@@ -115,7 +115,7 @@ It would be more efficient to generate one large set as part of the build proces
 */
 
 impl ConstLookup for crate::mapping::SelectorLookup {
-    fn by_value(&self, value: sys::MQLONG) -> impl Iterator<Item = &str> {
+    fn by_value(&self, value: mq::MQLONG) -> impl Iterator<Item = &str> {
         let mapping = mapping::MQIA_MAPSTR
             .by_value(value)
             .chain(mapping::MQCA_MAPSTR.by_value(value));
@@ -135,7 +135,7 @@ impl ConstLookup for crate::mapping::SelectorLookup {
         mapping.chain(FIRST_LAST_MAPSTR.by_value(value))
     }
 
-    fn by_name(&self, name: &str) -> Option<sys::MQLONG> {
+    fn by_name(&self, name: &str) -> Option<mq::MQLONG> {
         let mapping = mapping::MQIA_MAPSTR
             .by_name(name)
             .or_else(|| mapping::MQCA_MAPSTR.by_name(name));

@@ -1,4 +1,4 @@
-use libmqm_sys::lib::MQLONG;
+use libmqm_sys::MQLONG;
 
 use crate::mapping;
 
