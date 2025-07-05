@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.10.0](https://github.com/advantic-au/libmqm-sys/compare/libmqm-sys-v0.9.0...libmqm-sys-v0.10.0) - 2025-07-05
+
+### Fixed
+
+- MQCBC type ([#116](https://github.com/advantic-au/libmqm-sys/pull/116))
+
+### Other
+
+- type fix for "MQCB_FUNCTION"
+- Bindings Refactor ([#114](https://github.com/advantic-au/libmqm-sys/pull/114))
+
 ## [0.9.0](https://github.com/advantic-au/libmqm-sys/compare/libmqm-sys-v0.8.0...libmqm-sys-v0.9.0) - 2025-06-27
 
 ### Added
