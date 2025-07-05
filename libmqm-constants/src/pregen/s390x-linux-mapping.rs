@@ -5970,7 +5970,7 @@ pub const MQ_SUITE_MAPSTR: LinearSource = ConstSource(
     ],
     &[(4, "MQ_SUITE_B_SIZE")],
 );
-pub const MQI_BY_STRING: ::phf::Map<&'static str, ::libmqm_sys::lib::MQLONG> = ::phf::Map {
+pub const MQI_BY_STRING: ::phf::Map<&'static str, ::libmqm_sys::MQLONG> = ::phf::Map {
     key: 16287231350648472473,
     disps: &[
         (0, 662),

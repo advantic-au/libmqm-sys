@@ -12,1695 +12,1586 @@
  */
 
 pub mod types {
-    use ::libmqm_sys::lib as mqsys;
+    use ::libmqm_sys as mq;
     use crate::mapping;
     use crate::value::{define_new_type, impl_value};
     use crate::bitflags::impl_bitflags;
     define_new_type!(
-        pub MQACTP, mqsys::MQLONG, mapping::MQACTP_MAPSTR, r##"Property Action"##
+        pub MQACTP, mq::MQLONG, mapping::MQACTP_MAPSTR, r##"Property Action"##
     );
-    impl_value!(MQACTP, mqsys::MQLONG);
+    impl_value!(MQACTP, mq::MQLONG);
     define_new_type!(
-        pub MQACTV, mqsys::MQLONG, mapping::MQACTV_MAPSTR,
+        pub MQACTV, mq::MQLONG, mapping::MQACTV_MAPSTR,
         r##"Application Activity Trace Detail"##
     );
-    impl_value!(MQACTV, mqsys::MQLONG);
+    impl_value!(MQACTV, mq::MQLONG);
     define_new_type!(
-        pub MQADOPT_CHECK, mqsys::MQLONG, mapping::MQADOPT_CHECK_MAPSTR,
+        pub MQADOPT_CHECK, mq::MQLONG, mapping::MQADOPT_CHECK_MAPSTR,
         r##"Adopt New MCA Checks"##
     );
-    impl_value!(MQADOPT_CHECK, mqsys::MQLONG);
+    impl_value!(MQADOPT_CHECK, mq::MQLONG);
     define_new_type!(
-        pub MQADOPT_TYPE, mqsys::MQLONG, mapping::MQADOPT_TYPE_MAPSTR,
+        pub MQADOPT_TYPE, mq::MQLONG, mapping::MQADOPT_TYPE_MAPSTR,
         r##"Adopt New MCA Types"##
     );
-    impl_value!(MQADOPT_TYPE, mqsys::MQLONG);
+    impl_value!(MQADOPT_TYPE, mq::MQLONG);
     define_new_type!(
-        pub MQAIT, mqsys::MQLONG, mapping::MQAIT_MAPSTR,
+        pub MQAIT, mq::MQLONG, mapping::MQAIT_MAPSTR,
         r##"Authentication Information Type"##
     );
-    impl_value!(MQAIT, mqsys::MQLONG);
+    impl_value!(MQAIT, mq::MQLONG);
     define_new_type!(
-        pub MQAT, mqsys::MQLONG, mapping::MQAT_MAPSTR, r##"Put Application Types"##
+        pub MQAT, mq::MQLONG, mapping::MQAT_MAPSTR, r##"Put Application Types"##
     );
-    impl_value!(MQAT, mqsys::MQLONG);
+    impl_value!(MQAT, mq::MQLONG);
+    define_new_type!(pub MQAUTO, mq::MQLONG, mapping::MQAUTO_MAPSTR, r##"Autostart"##);
+    impl_value!(MQAUTO, mq::MQLONG);
     define_new_type!(
-        pub MQAUTO, mqsys::MQLONG, mapping::MQAUTO_MAPSTR, r##"Autostart"##
-    );
-    impl_value!(MQAUTO, mqsys::MQLONG);
-    define_new_type!(
-        pub MQBMHO, mqsys::MQLONG, mapping::MQBMHO_MAPSTR,
+        pub MQBMHO, mq::MQLONG, mapping::MQBMHO_MAPSTR,
         r##"Buffer To Message Handle Options"##
     );
-    impl_bitflags!(MQBMHO, mqsys::MQLONG);
+    impl_bitflags!(MQBMHO, mq::MQLONG);
     define_new_type!(
-        pub MQBND, mqsys::MQLONG, mapping::MQBND_MAPSTR, r##"Default Bindings"##
+        pub MQBND, mq::MQLONG, mapping::MQBND_MAPSTR, r##"Default Bindings"##
     );
-    impl_value!(MQBND, mqsys::MQLONG);
+    impl_value!(MQBND, mq::MQLONG);
     define_new_type!(
-        pub MQBNO_BALTYPE, mqsys::MQLONG, mapping::MQBNO_BALTYPE_MAPSTR,
+        pub MQBNO_BALTYPE, mq::MQLONG, mapping::MQBNO_BALTYPE_MAPSTR,
         r##"MQ Balancing Application Type"##
     );
-    impl_value!(MQBNO_BALTYPE, mqsys::MQLONG);
+    impl_value!(MQBNO_BALTYPE, mq::MQLONG);
     define_new_type!(
-        pub MQBNO_OPTIONS, mqsys::MQLONG, mapping::MQBNO_OPTIONS_MAPSTR,
+        pub MQBNO_OPTIONS, mq::MQLONG, mapping::MQBNO_OPTIONS_MAPSTR,
         r##"MQ Balancing Options"##
     );
-    impl_value!(MQBNO_OPTIONS, mqsys::MQLONG);
+    impl_value!(MQBNO_OPTIONS, mq::MQLONG);
     define_new_type!(
-        pub MQBNO_TIMEOUT, mqsys::MQLONG, mapping::MQBNO_TIMEOUT_MAPSTR,
+        pub MQBNO_TIMEOUT, mq::MQLONG, mapping::MQBNO_TIMEOUT_MAPSTR,
         r##"MQ Balancing Timeout"##
     );
-    impl_value!(MQBNO_TIMEOUT, mqsys::MQLONG);
+    impl_value!(MQBNO_TIMEOUT, mq::MQLONG);
+    define_new_type!(pub MQBO, mq::MQLONG, mapping::MQBO_MAPSTR, r##"Begin Options"##);
+    impl_bitflags!(MQBO, mq::MQLONG);
     define_new_type!(
-        pub MQBO, mqsys::MQLONG, mapping::MQBO_MAPSTR, r##"Begin Options"##
+        pub MQCADSD, mq::MQLONG, mapping::MQCADSD_MAPSTR, r##"ADS Descriptors"##
     );
-    impl_bitflags!(MQBO, mqsys::MQLONG);
+    impl_value!(MQCADSD, mq::MQLONG);
     define_new_type!(
-        pub MQCADSD, mqsys::MQLONG, mapping::MQCADSD_MAPSTR, r##"ADS Descriptors"##
-    );
-    impl_value!(MQCADSD, mqsys::MQLONG);
-    define_new_type!(
-        pub MQCAFTY, mqsys::MQLONG, mapping::MQCAFTY_MAPSTR,
+        pub MQCAFTY, mq::MQLONG, mapping::MQCAFTY_MAPSTR,
         r##"Connection Affinity Values"##
     );
-    impl_value!(MQCAFTY, mqsys::MQLONG);
-    define_new_type!(pub MQCAP, mqsys::MQLONG, mapping::MQCAP_MAPSTR, r##"Capability"##);
-    impl_value!(MQCAP, mqsys::MQLONG);
+    impl_value!(MQCAFTY, mq::MQLONG);
+    define_new_type!(pub MQCAP, mq::MQLONG, mapping::MQCAP_MAPSTR, r##"Capability"##);
+    impl_value!(MQCAP, mq::MQLONG);
     define_new_type!(
-        pub MQCA, mqsys::MQLONG, mapping::MQCA_MAPSTR,
-        r##"Character Attribute Selectors"##
+        pub MQCA, mq::MQLONG, mapping::MQCA_MAPSTR, r##"Character Attribute Selectors"##
     );
-    impl_value!(MQCA, mqsys::MQLONG);
+    impl_value!(MQCA, mq::MQLONG);
     define_new_type!(
-        pub MQCBCF, mqsys::MQLONG, mapping::MQCBCF_MAPSTR, r##"Callback Context Flags"##
+        pub MQCBCF, mq::MQLONG, mapping::MQCBCF_MAPSTR, r##"Callback Context Flags"##
     );
-    impl_value!(MQCBCF, mqsys::MQLONG);
+    impl_value!(MQCBCF, mq::MQLONG);
     define_new_type!(
-        pub MQCBCT, mqsys::MQLONG, mapping::MQCBCT_MAPSTR, r##"Callback type"##
+        pub MQCBCT, mq::MQLONG, mapping::MQCBCT_MAPSTR, r##"Callback type"##
     );
-    impl_value!(MQCBCT, mqsys::MQLONG);
+    impl_value!(MQCBCT, mq::MQLONG);
     define_new_type!(
-        pub MQCBDO, mqsys::MQLONG, mapping::MQCBDO_MAPSTR, r##"Callback Options"##
+        pub MQCBDO, mq::MQLONG, mapping::MQCBDO_MAPSTR, r##"Callback Options"##
     );
-    impl_bitflags!(MQCBDO, mqsys::MQLONG);
+    impl_bitflags!(MQCBDO, mq::MQLONG);
     define_new_type!(
-        pub MQCBD, mqsys::MQLONG, mapping::MQCBD_MAPSTR, r##"Buffer size values"##
+        pub MQCBD, mq::MQLONG, mapping::MQCBD_MAPSTR, r##"Buffer size values"##
     );
-    impl_value!(MQCBD, mqsys::MQLONG);
+    impl_value!(MQCBD, mq::MQLONG);
     define_new_type!(
-        pub MQCBT, mqsys::MQLONG, mapping::MQCBT_MAPSTR,
+        pub MQCBT, mq::MQLONG, mapping::MQCBT_MAPSTR,
         r##"This is the type of the Callback Function"##
     );
-    impl_value!(MQCBT, mqsys::MQLONG);
+    impl_value!(MQCBT, mq::MQLONG);
     define_new_type!(
-        pub MQCCSI, mqsys::MQLONG, mapping::MQCCSI_MAPSTR,
+        pub MQCCSI, mq::MQLONG, mapping::MQCCSI_MAPSTR,
         r##"Coded Character Set Identifiers"##
     );
-    impl_value!(MQCCSI, mqsys::MQLONG);
+    impl_value!(MQCCSI, mq::MQLONG);
     define_new_type!(
-        pub MQCCT, mqsys::MQLONG, mapping::MQCCT_MAPSTR,
-        r##"Conversational Task Options"##
+        pub MQCCT, mq::MQLONG, mapping::MQCCT_MAPSTR, r##"Conversational Task Options"##
     );
-    impl_value!(MQCCT, mqsys::MQLONG);
+    impl_value!(MQCCT, mq::MQLONG);
     define_new_type!(
-        pub MQCC, mqsys::MQLONG, mapping::MQCC_MAPSTR, r##"Completion Codes"##
+        pub MQCC, mq::MQLONG, mapping::MQCC_MAPSTR, r##"Completion Codes"##
     );
-    impl_value!(MQCC, mqsys::MQLONG);
+    impl_value!(MQCC, mq::MQLONG);
     define_new_type!(
-        pub MQCEX, mqsys::MQLONG, mapping::MQCEX_MAPSTR, r##"Queue cap expiry values"##
+        pub MQCEX, mq::MQLONG, mapping::MQCEX_MAPSTR, r##"Queue cap expiry values"##
     );
-    impl_value!(MQCEX, mqsys::MQLONG);
+    impl_value!(MQCEX, mq::MQLONG);
     define_new_type!(
-        pub MQCFCONLOS, mqsys::MQLONG, mapping::MQCFCONLOS_MAPSTR,
+        pub MQCFCONLOS, mq::MQLONG, mapping::MQCFCONLOS_MAPSTR,
         r##"CF Loss of Connectivity Action"##
     );
-    impl_value!(MQCFCONLOS, mqsys::MQLONG);
+    impl_value!(MQCFCONLOS, mq::MQLONG);
     define_new_type!(
-        pub MQCFOFFLD, mqsys::MQLONG, mapping::MQCFOFFLD_MAPSTR, r##"OffldUse Options"##
+        pub MQCFOFFLD, mq::MQLONG, mapping::MQCFOFFLD_MAPSTR, r##"OffldUse Options"##
     );
-    impl_value!(MQCFOFFLD, mqsys::MQLONG);
+    impl_value!(MQCFOFFLD, mq::MQLONG);
     define_new_type!(
-        pub MQCFR, mqsys::MQLONG, mapping::MQCFR_MAPSTR, r##"CF Recoverability"##
+        pub MQCFR, mq::MQLONG, mapping::MQCFR_MAPSTR, r##"CF Recoverability"##
     );
-    impl_value!(MQCFR, mqsys::MQLONG);
+    impl_value!(MQCFR, mq::MQLONG);
     define_new_type!(
-        pub MQCGWI, mqsys::MQLONG, mapping::MQCGWI_MAPSTR, r##"Get Wait Interval"##
+        pub MQCGWI, mq::MQLONG, mapping::MQCGWI_MAPSTR, r##"Get Wait Interval"##
     );
-    impl_value!(MQCGWI, mqsys::MQLONG);
+    impl_value!(MQCGWI, mq::MQLONG);
     define_new_type!(
-        pub MQCHAD, mqsys::MQLONG, mapping::MQCHAD_MAPSTR, r##"Channel Auto Definition"##
+        pub MQCHAD, mq::MQLONG, mapping::MQCHAD_MAPSTR, r##"Channel Auto Definition"##
     );
-    impl_value!(MQCHAD, mqsys::MQLONG);
+    impl_value!(MQCHAD, mq::MQLONG);
+    define_new_type!(pub MQCHT, mq::MQLONG, mapping::MQCHT_MAPSTR, r##"Channel Types"##);
+    impl_value!(MQCHT, mq::MQLONG);
+    define_new_type!(pub MQCIH, mq::MQLONG, mapping::MQCIH_MAPSTR, r##"MQCIH Flags"##);
+    impl_value!(MQCIH, mq::MQLONG);
+    define_new_type!(pub MQCIT, mq::MQLONG, mapping::MQCIT_MAPSTR, r##"CommInfo Type"##);
+    impl_value!(MQCIT, mq::MQLONG);
+    define_new_type!(pub MQCLT, mq::MQLONG, mapping::MQCLT_MAPSTR, r##"Link Types"##);
+    impl_value!(MQCLT, mq::MQLONG);
     define_new_type!(
-        pub MQCHT, mqsys::MQLONG, mapping::MQCHT_MAPSTR, r##"Channel Types"##
+        pub MQCLWL, mq::MQLONG, mapping::MQCLWL_MAPSTR, r##"Cluster Workload"##
     );
-    impl_value!(MQCHT, mqsys::MQLONG);
+    impl_value!(MQCLWL, mq::MQLONG);
     define_new_type!(
-        pub MQCIH, mqsys::MQLONG, mapping::MQCIH_MAPSTR, r##"MQCIH Flags"##
+        pub MQCMDL, mq::MQLONG, mapping::MQCMDL_MAPSTR, r##"Command Levels"##
     );
-    impl_value!(MQCIH, mqsys::MQLONG);
+    impl_value!(MQCMDL, mq::MQLONG);
     define_new_type!(
-        pub MQCIT, mqsys::MQLONG, mapping::MQCIT_MAPSTR, r##"CommInfo Type"##
-    );
-    impl_value!(MQCIT, mqsys::MQLONG);
-    define_new_type!(pub MQCLT, mqsys::MQLONG, mapping::MQCLT_MAPSTR, r##"Link Types"##);
-    impl_value!(MQCLT, mqsys::MQLONG);
-    define_new_type!(
-        pub MQCLWL, mqsys::MQLONG, mapping::MQCLWL_MAPSTR, r##"Cluster Workload"##
-    );
-    impl_value!(MQCLWL, mqsys::MQLONG);
-    define_new_type!(
-        pub MQCMDL, mqsys::MQLONG, mapping::MQCMDL_MAPSTR, r##"Command Levels"##
-    );
-    impl_value!(MQCMDL, mqsys::MQLONG);
-    define_new_type!(
-        pub MQCMHO, mqsys::MQLONG, mapping::MQCMHO_MAPSTR,
+        pub MQCMHO, mq::MQLONG, mapping::MQCMHO_MAPSTR,
         r##"Create Message Handle Options"##
     );
-    impl_value!(MQCMHO, mqsys::MQLONG);
+    impl_value!(MQCMHO, mq::MQLONG);
     define_new_type!(
-        pub MQCNO, mqsys::MQLONG, mapping::MQCNO_MAPSTR, r##"Connect Options"##
+        pub MQCNO, mq::MQLONG, mapping::MQCNO_MAPSTR, r##"Connect Options"##
     );
-    impl_bitflags!(MQCNO, mqsys::MQLONG);
+    impl_bitflags!(MQCNO, mq::MQLONG);
     define_new_type!(
-        pub MQCODL, mqsys::MQLONG, mapping::MQCODL_MAPSTR, r##"Output Data Length"##
+        pub MQCODL, mq::MQLONG, mapping::MQCODL_MAPSTR, r##"Output Data Length"##
     );
-    impl_value!(MQCODL, mqsys::MQLONG);
+    impl_value!(MQCODL, mq::MQLONG);
     define_new_type!(
-        pub MQCOPY, mqsys::MQLONG, mapping::MQCOPY_MAPSTR, r##"Property Copy Options"##
+        pub MQCOPY, mq::MQLONG, mapping::MQCOPY_MAPSTR, r##"Property Copy Options"##
     );
-    impl_bitflags!(MQCOPY, mqsys::MQLONG);
+    impl_bitflags!(MQCOPY, mq::MQLONG);
+    define_new_type!(pub MQCO, mq::MQLONG, mapping::MQCO_MAPSTR, r##"Close Options"##);
+    impl_bitflags!(MQCO, mq::MQLONG);
     define_new_type!(
-        pub MQCO, mqsys::MQLONG, mapping::MQCO_MAPSTR, r##"Close Options"##
+        pub MQCQT, mq::MQLONG, mapping::MQCQT_MAPSTR, r##"Cluster Queue Types"##
     );
-    impl_bitflags!(MQCO, mqsys::MQLONG);
+    impl_value!(MQCQT, mq::MQLONG);
+    define_new_type!(pub MQCRC, mq::MQLONG, mapping::MQCRC_MAPSTR, r##"Return Codes"##);
+    impl_value!(MQCRC, mq::MQLONG);
     define_new_type!(
-        pub MQCQT, mqsys::MQLONG, mapping::MQCQT_MAPSTR, r##"Cluster Queue Types"##
+        pub MQCSP, mq::MQLONG, mapping::MQCSP_MAPSTR, r##"Authentication Types"##
     );
-    impl_value!(MQCQT, mqsys::MQLONG);
+    impl_value!(MQCSP, mq::MQLONG);
     define_new_type!(
-        pub MQCRC, mqsys::MQLONG, mapping::MQCRC_MAPSTR, r##"Return Codes"##
-    );
-    impl_value!(MQCRC, mqsys::MQLONG);
-    define_new_type!(
-        pub MQCSP, mqsys::MQLONG, mapping::MQCSP_MAPSTR, r##"Authentication Types"##
-    );
-    impl_value!(MQCSP, mqsys::MQLONG);
-    define_new_type!(
-        pub MQCSRV_CONVERT, mqsys::MQLONG, mapping::MQCSRV_CONVERT_MAPSTR,
+        pub MQCSRV_CONVERT, mq::MQLONG, mapping::MQCSRV_CONVERT_MAPSTR,
         r##"Command Server Options"##
     );
-    impl_value!(MQCSRV_CONVERT, mqsys::MQLONG);
+    impl_value!(MQCSRV_CONVERT, mq::MQLONG);
     define_new_type!(
-        pub MQCSRV_DLQ, mqsys::MQLONG, mapping::MQCSRV_DLQ_MAPSTR,
+        pub MQCSRV_DLQ, mq::MQLONG, mapping::MQCSRV_DLQ_MAPSTR,
         r##"Command Server Options"##
     );
-    impl_value!(MQCSRV_DLQ, mqsys::MQLONG);
+    impl_value!(MQCSRV_DLQ, mq::MQLONG);
+    define_new_type!(pub MQCS, mq::MQLONG, mapping::MQCS_MAPSTR, r##"Consumer state"##);
+    impl_value!(MQCS, mq::MQLONG);
     define_new_type!(
-        pub MQCS, mqsys::MQLONG, mapping::MQCS_MAPSTR, r##"Consumer state"##
+        pub MQCTES, mq::MQLONG, mapping::MQCTES_MAPSTR, r##"Task End Status"##
     );
-    impl_value!(MQCS, mqsys::MQLONG);
+    impl_value!(MQCTES, mq::MQLONG);
     define_new_type!(
-        pub MQCTES, mqsys::MQLONG, mapping::MQCTES_MAPSTR, r##"Task End Status"##
+        pub MQCTLO, mq::MQLONG, mapping::MQCTLO_MAPSTR, r##"Consumer Control Options"##
     );
-    impl_value!(MQCTES, mqsys::MQLONG);
+    impl_bitflags!(MQCTLO, mq::MQLONG);
     define_new_type!(
-        pub MQCTLO, mqsys::MQLONG, mapping::MQCTLO_MAPSTR,
-        r##"Consumer Control Options"##
+        pub MQCUOWC, mq::MQLONG, mapping::MQCUOWC_MAPSTR, r##"Unit-of-Work Controls"##
     );
-    impl_bitflags!(MQCTLO, mqsys::MQLONG);
+    impl_value!(MQCUOWC, mq::MQLONG);
     define_new_type!(
-        pub MQCUOWC, mqsys::MQLONG, mapping::MQCUOWC_MAPSTR, r##"Unit-of-Work Controls"##
+        pub MQDC, mq::MQLONG, mapping::MQDC_MAPSTR, r##"Destination Class"##
     );
-    impl_value!(MQCUOWC, mqsys::MQLONG);
+    impl_value!(MQDC, mq::MQLONG);
+    define_new_type!(pub MQDHF, mq::MQLONG, mapping::MQDHF_MAPSTR, r##"MQDH Flags"##);
+    impl_value!(MQDHF, mq::MQLONG);
     define_new_type!(
-        pub MQDC, mqsys::MQLONG, mapping::MQDC_MAPSTR, r##"Destination Class"##
-    );
-    impl_value!(MQDC, mqsys::MQLONG);
-    define_new_type!(pub MQDHF, mqsys::MQLONG, mapping::MQDHF_MAPSTR, r##"MQDH Flags"##);
-    impl_value!(MQDHF, mqsys::MQLONG);
-    define_new_type!(
-        pub MQDLV, mqsys::MQLONG, mapping::MQDLV_MAPSTR,
+        pub MQDLV, mq::MQLONG, mapping::MQDLV_MAPSTR,
         r##"Persistent/Non-persistent Message Delivery"##
     );
-    impl_value!(MQDLV, mqsys::MQLONG);
+    impl_value!(MQDLV, mq::MQLONG);
     define_new_type!(
-        pub MQDL, mqsys::MQLONG, mapping::MQDL_MAPSTR, r##"Distribution Lists"##
+        pub MQDL, mq::MQLONG, mapping::MQDL_MAPSTR, r##"Distribution Lists"##
     );
-    impl_value!(MQDL, mqsys::MQLONG);
+    impl_value!(MQDL, mq::MQLONG);
     define_new_type!(
-        pub MQDMHO, mqsys::MQLONG, mapping::MQDMHO_MAPSTR,
+        pub MQDMHO, mq::MQLONG, mapping::MQDMHO_MAPSTR,
         r##"Delete Message Handle Options"##
     );
-    impl_value!(MQDMHO, mqsys::MQLONG);
+    impl_value!(MQDMHO, mq::MQLONG);
     define_new_type!(
-        pub MQDMPO, mqsys::MQLONG, mapping::MQDMPO_MAPSTR,
+        pub MQDMPO, mq::MQLONG, mapping::MQDMPO_MAPSTR,
         r##"Delete Message Property Options"##
     );
-    impl_value!(MQDMPO, mqsys::MQLONG);
+    impl_value!(MQDMPO, mq::MQLONG);
+    define_new_type!(pub MQDNSWLM, mq::MQLONG, mapping::MQDNSWLM_MAPSTR, r##"DNS WLM"##);
+    impl_value!(MQDNSWLM, mq::MQLONG);
     define_new_type!(
-        pub MQDNSWLM, mqsys::MQLONG, mapping::MQDNSWLM_MAPSTR, r##"DNS WLM"##
+        pub MQDSB, mq::MQLONG, mapping::MQDSB_MAPSTR, r##"DSBlock Options"##
     );
-    impl_value!(MQDNSWLM, mqsys::MQLONG);
+    impl_value!(MQDSB, mq::MQLONG);
     define_new_type!(
-        pub MQDSB, mqsys::MQLONG, mapping::MQDSB_MAPSTR, r##"DSBlock Options"##
+        pub MQDSE, mq::MQLONG, mapping::MQDSE_MAPSTR, r##"DSExpand Options"##
     );
-    impl_value!(MQDSB, mqsys::MQLONG);
+    impl_value!(MQDSE, mq::MQLONG);
+    define_new_type!(pub MQEC, mq::MQLONG, mapping::MQEC_MAPSTR, r##"Signal Values"##);
+    impl_value!(MQEC, mq::MQLONG);
+    define_new_type!(pub MQEI, mq::MQLONG, mapping::MQEI_MAPSTR, r##"Expiry"##);
+    impl_value!(MQEI, mq::MQLONG);
+    define_new_type!(pub MQENC, mq::MQLONG, mapping::MQENC_MAPSTR, r##"Encoding"##);
+    impl_bitflags!(MQENC, mq::MQLONG);
     define_new_type!(
-        pub MQDSE, mqsys::MQLONG, mapping::MQDSE_MAPSTR, r##"DSExpand Options"##
+        pub MQEXPI, mq::MQLONG, mapping::MQEXPI_MAPSTR, r##"Expiration Scan Interval"##
     );
-    impl_value!(MQDSE, mqsys::MQLONG);
+    impl_value!(MQEXPI, mq::MQLONG);
+    define_new_type!(pub MQFB, mq::MQLONG, mapping::MQFB_MAPSTR, r##"Feedback Values"##);
+    impl_value!(MQFB, mq::MQLONG);
+    define_new_type!(pub MQFIELD_WQR, mq::MQLONG, mapping::MQFIELD_WQR_MAPSTR);
+    impl_value!(MQFIELD_WQR, mq::MQLONG);
     define_new_type!(
-        pub MQEC, mqsys::MQLONG, mapping::MQEC_MAPSTR, r##"Signal Values"##
+        pub MQFUN, mq::MQLONG, mapping::MQFUN_MAPSTR, r##"Application Function Types"##
     );
-    impl_value!(MQEC, mqsys::MQLONG);
-    define_new_type!(pub MQEI, mqsys::MQLONG, mapping::MQEI_MAPSTR, r##"Expiry"##);
-    impl_value!(MQEI, mqsys::MQLONG);
-    define_new_type!(pub MQENC, mqsys::MQLONG, mapping::MQENC_MAPSTR, r##"Encoding"##);
-    impl_bitflags!(MQENC, mqsys::MQLONG);
+    impl_value!(MQFUN, mq::MQLONG);
     define_new_type!(
-        pub MQEXPI, mqsys::MQLONG, mapping::MQEXPI_MAPSTR,
-        r##"Expiration Scan Interval"##
+        pub MQGMO, mq::MQLONG, mapping::MQGMO_MAPSTR, r##"Get Message Options"##
     );
-    impl_value!(MQEXPI, mqsys::MQLONG);
+    impl_bitflags!(MQGMO, mq::MQLONG);
     define_new_type!(
-        pub MQFB, mqsys::MQLONG, mapping::MQFB_MAPSTR, r##"Feedback Values"##
+        pub MQHC, mq::MQHCONN, mapping::MQHC_MAPSTR, r##"Connection Handles"##
     );
-    impl_value!(MQFB, mqsys::MQLONG);
-    define_new_type!(pub MQFIELD_WQR, mqsys::MQLONG, mapping::MQFIELD_WQR_MAPSTR);
-    impl_value!(MQFIELD_WQR, mqsys::MQLONG);
+    impl_value!(MQHC, mq::MQHCONN);
+    define_new_type!(pub MQHM, mq::MQHMSG, mapping::MQHM_MAPSTR, r##"Message handle"##);
+    impl_value!(MQHM, mq::MQHMSG);
+    define_new_type!(pub MQHO, mq::MQHOBJ, mapping::MQHO_MAPSTR, r##"Object Handle"##);
+    impl_value!(MQHO, mq::MQHOBJ);
     define_new_type!(
-        pub MQFUN, mqsys::MQLONG, mapping::MQFUN_MAPSTR,
-        r##"Application Function Types"##
+        pub MQIAV, mq::MQLONG, mapping::MQIAV_MAPSTR, r##"Integer Attribute Values"##
     );
-    impl_value!(MQFUN, mqsys::MQLONG);
+    impl_value!(MQIAV, mq::MQLONG);
     define_new_type!(
-        pub MQGMO, mqsys::MQLONG, mapping::MQGMO_MAPSTR, r##"Get Message Options"##
+        pub MQIA, mq::MQLONG, mapping::MQIA_MAPSTR, r##"Integer Attribute Selectors"##
     );
-    impl_bitflags!(MQGMO, mqsys::MQLONG);
+    impl_value!(MQIA, mq::MQLONG);
     define_new_type!(
-        pub MQHC, mqsys::MQHCONN, mapping::MQHC_MAPSTR, r##"Connection Handles"##
-    );
-    impl_value!(MQHC, mqsys::MQHCONN);
-    define_new_type!(
-        pub MQHM, mqsys::MQHMSG, mapping::MQHM_MAPSTR, r##"Message handle"##
-    );
-    impl_value!(MQHM, mqsys::MQHMSG);
-    define_new_type!(
-        pub MQHO, mqsys::MQHOBJ, mapping::MQHO_MAPSTR, r##"Object Handle"##
-    );
-    impl_value!(MQHO, mqsys::MQHOBJ);
-    define_new_type!(
-        pub MQIAV, mqsys::MQLONG, mapping::MQIAV_MAPSTR, r##"Integer Attribute Values"##
-    );
-    impl_value!(MQIAV, mqsys::MQLONG);
-    define_new_type!(
-        pub MQIA, mqsys::MQLONG, mapping::MQIA_MAPSTR, r##"Integer Attribute Selectors"##
-    );
-    impl_value!(MQIA, mqsys::MQLONG);
-    define_new_type!(
-        pub MQIGQPA, mqsys::MQLONG, mapping::MQIGQPA_MAPSTR,
+        pub MQIGQPA, mq::MQLONG, mapping::MQIGQPA_MAPSTR,
         r##"Intra-Group Queuing Put Authority"##
     );
-    impl_value!(MQIGQPA, mqsys::MQLONG);
+    impl_value!(MQIGQPA, mq::MQLONG);
     define_new_type!(
-        pub MQIGQ, mqsys::MQLONG, mapping::MQIGQ_MAPSTR, r##"Intra-Group Queuing"##
+        pub MQIGQ, mq::MQLONG, mapping::MQIGQ_MAPSTR, r##"Intra-Group Queuing"##
     );
-    impl_value!(MQIGQ, mqsys::MQLONG);
+    impl_value!(MQIGQ, mq::MQLONG);
+    define_new_type!(pub MQIIH, mq::MQLONG, mapping::MQIIH_MAPSTR, r##"MQIIH Flags"##);
+    impl_value!(MQIIH, mq::MQLONG);
     define_new_type!(
-        pub MQIIH, mqsys::MQLONG, mapping::MQIIH_MAPSTR, r##"MQIIH Flags"##
-    );
-    impl_value!(MQIIH, mqsys::MQLONG);
-    define_new_type!(
-        pub MQIMGRCOV, mqsys::MQLONG, mapping::MQIMGRCOV_MAPSTR,
+        pub MQIMGRCOV, mq::MQLONG, mapping::MQIMGRCOV_MAPSTR,
         r##"Media Image Recoverability"##
     );
-    impl_value!(MQIMGRCOV, mqsys::MQLONG);
+    impl_value!(MQIMGRCOV, mq::MQLONG);
     define_new_type!(
-        pub MQIMPO, mqsys::MQLONG, mapping::MQIMPO_MAPSTR,
+        pub MQIMPO, mq::MQLONG, mapping::MQIMPO_MAPSTR,
         r##"Inquire Message Property Options"##
     );
-    impl_bitflags!(MQIMPO, mqsys::MQLONG);
+    impl_bitflags!(MQIMPO, mq::MQLONG);
     define_new_type!(
-        pub MQIPADDR, mqsys::MQLONG, mapping::MQIPADDR_MAPSTR, r##"IP Address Versions"##
+        pub MQIPADDR, mq::MQLONG, mapping::MQIPADDR_MAPSTR, r##"IP Address Versions"##
     );
-    impl_value!(MQIPADDR, mqsys::MQLONG);
-    define_new_type!(pub MQIT, mqsys::MQLONG, mapping::MQIT_MAPSTR, r##"Index Types"##);
-    impl_value!(MQIT, mqsys::MQLONG);
+    impl_value!(MQIPADDR, mq::MQLONG);
+    define_new_type!(pub MQIT, mq::MQLONG, mapping::MQIT_MAPSTR, r##"Index Types"##);
+    impl_value!(MQIT, mq::MQLONG);
     define_new_type!(
-        pub MQKAI, mqsys::MQLONG, mapping::MQKAI_MAPSTR, r##"KeepAlive Interval"##
+        pub MQKAI, mq::MQLONG, mapping::MQKAI_MAPSTR, r##"KeepAlive Interval"##
     );
-    impl_value!(MQKAI, mqsys::MQLONG);
+    impl_value!(MQKAI, mq::MQLONG);
     define_new_type!(
-        pub MQKEY, mqsys::MQLONG, mapping::MQKEY_MAPSTR, r##"Key reuse count"##
+        pub MQKEY, mq::MQLONG, mapping::MQKEY_MAPSTR, r##"Key reuse count"##
     );
-    impl_value!(MQKEY, mqsys::MQLONG);
+    impl_value!(MQKEY, mq::MQLONG);
     define_new_type!(
-        pub MQMASTER, mqsys::MQLONG, mapping::MQMASTER_MAPSTR,
-        r##"Master administration"##
+        pub MQMASTER, mq::MQLONG, mapping::MQMASTER_MAPSTR, r##"Master administration"##
     );
-    impl_value!(MQMASTER, mqsys::MQLONG);
+    impl_value!(MQMASTER, mq::MQLONG);
     define_new_type!(
-        pub MQMCB, mqsys::MQLONG, mapping::MQMCB_MAPSTR, r##"CommInfo Bridge"##
+        pub MQMCB, mq::MQLONG, mapping::MQMCB_MAPSTR, r##"CommInfo Bridge"##
     );
-    impl_value!(MQMCB, mqsys::MQLONG);
-    define_new_type!(pub MQMC, mqsys::MQLONG, mapping::MQMC_MAPSTR, r##"Multicast"##);
-    impl_value!(MQMC, mqsys::MQLONG);
+    impl_value!(MQMCB, mq::MQLONG);
+    define_new_type!(pub MQMC, mq::MQLONG, mapping::MQMC_MAPSTR, r##"Multicast"##);
+    impl_value!(MQMC, mq::MQLONG);
+    define_new_type!(pub MQMDEF, mq::MQLONG, mapping::MQMDEF_MAPSTR, r##"MQMDE Flags"##);
+    impl_value!(MQMDEF, mq::MQLONG);
     define_new_type!(
-        pub MQMDEF, mqsys::MQLONG, mapping::MQMDEF_MAPSTR, r##"MQMDE Flags"##
+        pub MQMDS, mq::MQLONG, mapping::MQMDS_MAPSTR, r##"Message Delivery Sequence"##
     );
-    impl_value!(MQMDEF, mqsys::MQLONG);
+    impl_value!(MQMDS, mq::MQLONG);
     define_new_type!(
-        pub MQMDS, mqsys::MQLONG, mapping::MQMDS_MAPSTR, r##"Message Delivery Sequence"##
-    );
-    impl_value!(MQMDS, mqsys::MQLONG);
-    define_new_type!(
-        pub MQMEDIMGINTVL, mqsys::MQLONG, mapping::MQMEDIMGINTVL_MAPSTR,
+        pub MQMEDIMGINTVL, mq::MQLONG, mapping::MQMEDIMGINTVL_MAPSTR,
         r##"Automatic Media Image Interval"##
     );
-    impl_value!(MQMEDIMGINTVL, mqsys::MQLONG);
+    impl_value!(MQMEDIMGINTVL, mq::MQLONG);
     define_new_type!(
-        pub MQMEDIMGLOGLN, mqsys::MQLONG, mapping::MQMEDIMGLOGLN_MAPSTR,
+        pub MQMEDIMGLOGLN, mq::MQLONG, mapping::MQMEDIMGLOGLN_MAPSTR,
         r##"Automatic Media Image Log Length"##
     );
-    impl_value!(MQMEDIMGLOGLN, mqsys::MQLONG);
+    impl_value!(MQMEDIMGLOGLN, mq::MQLONG);
     define_new_type!(
-        pub MQMEDIMGSCHED, mqsys::MQLONG, mapping::MQMEDIMGSCHED_MAPSTR,
+        pub MQMEDIMGSCHED, mq::MQLONG, mapping::MQMEDIMGSCHED_MAPSTR,
         r##"Media Image Scheduling"##
     );
-    impl_value!(MQMEDIMGSCHED, mqsys::MQLONG);
+    impl_value!(MQMEDIMGSCHED, mq::MQLONG);
+    define_new_type!(pub MQMF, mq::MQLONG, mapping::MQMF_MAPSTR, r##"Message Flags"##);
+    impl_value!(MQMF, mq::MQLONG);
     define_new_type!(
-        pub MQMF, mqsys::MQLONG, mapping::MQMF_MAPSTR, r##"Message Flags"##
-    );
-    impl_value!(MQMF, mqsys::MQLONG);
-    define_new_type!(
-        pub MQMHBO, mqsys::MQLONG, mapping::MQMHBO_MAPSTR,
+        pub MQMHBO, mq::MQLONG, mapping::MQMHBO_MAPSTR,
         r##"Message Handle To Buffer Options"##
     );
-    impl_bitflags!(MQMHBO, mqsys::MQLONG);
+    impl_bitflags!(MQMHBO, mq::MQLONG);
     define_new_type!(
-        pub MQMMBI, mqsys::MQLONG, mapping::MQMMBI_MAPSTR,
+        pub MQMMBI, mq::MQLONG, mapping::MQMMBI_MAPSTR,
         r##"Message Mark-Browse Interval"##
     );
-    impl_value!(MQMMBI, mqsys::MQLONG);
+    impl_value!(MQMMBI, mq::MQLONG);
     define_new_type!(
-        pub MQMON, mqsys::MQLONG, mapping::MQMON_MAPSTR, r##"Monitoring Values"##
+        pub MQMON, mq::MQLONG, mapping::MQMON_MAPSTR, r##"Monitoring Values"##
     );
-    impl_value!(MQMON, mqsys::MQLONG);
+    impl_value!(MQMON, mq::MQLONG);
     define_new_type!(
-        pub MQMON_AVAILABILITY, mqsys::MQLONG, mapping::MQMON_AVAILABILITY_MAPSTR,
+        pub MQMON_AVAILABILITY, mq::MQLONG, mapping::MQMON_AVAILABILITY_MAPSTR,
         r##"Monitoring Values"##
     );
-    impl_value!(MQMON_AVAILABILITY, mqsys::MQLONG);
+    impl_value!(MQMON_AVAILABILITY, mq::MQLONG);
     define_new_type!(
-        pub MQMON_OVERRIDE, mqsys::MQLONG, mapping::MQMON_OVERRIDE_MAPSTR,
+        pub MQMON_OVERRIDE, mq::MQLONG, mapping::MQMON_OVERRIDE_MAPSTR,
         r##"Monitoring Values"##
     );
-    impl_value!(MQMON_OVERRIDE, mqsys::MQLONG);
+    impl_value!(MQMON_OVERRIDE, mq::MQLONG);
+    define_new_type!(pub MQMO, mq::MQLONG, mapping::MQMO_MAPSTR, r##"Match Options"##);
+    impl_bitflags!(MQMO, mq::MQLONG);
+    define_new_type!(pub MQMT, mq::MQLONG, mapping::MQMT_MAPSTR, r##"Message Types"##);
+    impl_value!(MQMT, mq::MQLONG);
+    define_new_type!(pub MQNC, mq::MQLONG, mapping::MQNC_MAPSTR, r##"Name Count"##);
+    impl_value!(MQNC, mq::MQLONG);
     define_new_type!(
-        pub MQMO, mqsys::MQLONG, mapping::MQMO_MAPSTR, r##"Match Options"##
+        pub MQNPM, mq::MQLONG, mapping::MQNPM_MAPSTR, r##"Nonpersistent Message Class"##
     );
-    impl_bitflags!(MQMO, mqsys::MQLONG);
+    impl_value!(MQNPM, mq::MQLONG);
+    define_new_type!(pub MQNT, mq::MQLONG, mapping::MQNT_MAPSTR, r##"Namelist Types"##);
+    impl_value!(MQNT, mq::MQLONG);
+    define_new_type!(pub MQOL, mq::MQLONG, mapping::MQOL_MAPSTR, r##"Original Length"##);
+    impl_value!(MQOL, mq::MQLONG);
     define_new_type!(
-        pub MQMT, mqsys::MQLONG, mapping::MQMT_MAPSTR, r##"Message Types"##
-    );
-    impl_value!(MQMT, mqsys::MQLONG);
-    define_new_type!(pub MQNC, mqsys::MQLONG, mapping::MQNC_MAPSTR, r##"Name Count"##);
-    impl_value!(MQNC, mqsys::MQLONG);
-    define_new_type!(
-        pub MQNPM, mqsys::MQLONG, mapping::MQNPM_MAPSTR,
-        r##"Nonpersistent Message Class"##
-    );
-    impl_value!(MQNPM, mqsys::MQLONG);
-    define_new_type!(
-        pub MQNT, mqsys::MQLONG, mapping::MQNT_MAPSTR, r##"Namelist Types"##
-    );
-    impl_value!(MQNT, mqsys::MQLONG);
-    define_new_type!(
-        pub MQOL, mqsys::MQLONG, mapping::MQOL_MAPSTR, r##"Original Length"##
-    );
-    impl_value!(MQOL, mqsys::MQLONG);
-    define_new_type!(
-        pub MQOM, mqsys::MQLONG, mapping::MQOM_MAPSTR,
+        pub MQOM, mq::MQLONG, mapping::MQOM_MAPSTR,
         r##"Obsolete DB2 Messages options on Inquire Group"##
     );
-    impl_value!(MQOM, mqsys::MQLONG);
-    define_new_type!(pub MQOO, mqsys::MQLONG, mapping::MQOO_MAPSTR, r##"Open Options"##);
-    impl_bitflags!(MQOO, mqsys::MQLONG);
+    impl_value!(MQOM, mq::MQLONG);
+    define_new_type!(pub MQOO, mq::MQLONG, mapping::MQOO_MAPSTR, r##"Open Options"##);
+    impl_bitflags!(MQOO, mq::MQLONG);
     define_new_type!(
-        pub MQOP, mqsys::MQLONG, mapping::MQOP_MAPSTR,
+        pub MQOP, mq::MQLONG, mapping::MQOP_MAPSTR,
         r##"Operation codes for MQCTL and MQCB"##
     );
-    impl_bitflags!(MQOP, mqsys::MQLONG);
+    impl_bitflags!(MQOP, mq::MQLONG);
     define_new_type!(
-        pub MQOTEL_PCTL, mqsys::MQLONG, mapping::MQOTEL_PCTL_MAPSTR,
-        r##"OTELPCTL values"##
+        pub MQOTEL_PCTL, mq::MQLONG, mapping::MQOTEL_PCTL_MAPSTR, r##"OTELPCTL values"##
     );
-    impl_value!(MQOTEL_PCTL, mqsys::MQLONG);
+    impl_value!(MQOTEL_PCTL, mq::MQLONG);
     define_new_type!(
-        pub MQOTEL_TRACE, mqsys::MQLONG, mapping::MQOTEL_TRACE_MAPSTR,
+        pub MQOTEL_TRACE, mq::MQLONG, mapping::MQOTEL_TRACE_MAPSTR,
         r##"OTELTRAC values"##
     );
-    impl_value!(MQOTEL_TRACE, mqsys::MQLONG);
+    impl_value!(MQOTEL_TRACE, mq::MQLONG);
     define_new_type!(
-        pub MQOT, mqsys::MQLONG, mapping::MQOT_MAPSTR, r##"Extended Object Types"##
+        pub MQOT, mq::MQLONG, mapping::MQOT_MAPSTR, r##"Extended Object Types"##
     );
-    impl_value!(MQOT, mqsys::MQLONG);
+    impl_value!(MQOT, mq::MQLONG);
     define_new_type!(
-        pub MQPD, mqsys::MQLONG, mapping::MQPD_MAPSTR, r##"Property Context"##
+        pub MQPD, mq::MQLONG, mapping::MQPD_MAPSTR, r##"Property Context"##
     );
-    impl_value!(MQPD, mqsys::MQLONG);
+    impl_value!(MQPD, mq::MQLONG);
     define_new_type!(
-        pub MQPER, mqsys::MQLONG, mapping::MQPER_MAPSTR, r##"Persistence Values"##
+        pub MQPER, mq::MQLONG, mapping::MQPER_MAPSTR, r##"Persistence Values"##
     );
-    impl_value!(MQPER, mqsys::MQLONG);
-    define_new_type!(pub MQPL, mqsys::MQLONG, mapping::MQPL_MAPSTR, r##"Platforms"##);
-    impl_value!(MQPL, mqsys::MQLONG);
+    impl_value!(MQPER, mq::MQLONG);
+    define_new_type!(pub MQPL, mq::MQLONG, mapping::MQPL_MAPSTR, r##"Platforms"##);
+    impl_value!(MQPL, mq::MQLONG);
     define_new_type!(
-        pub MQPMO, mqsys::MQLONG, mapping::MQPMO_MAPSTR,
+        pub MQPMO, mq::MQLONG, mapping::MQPMO_MAPSTR,
         r##"Put Message Options for publish mask"##
     );
-    impl_bitflags!(MQPMO, mqsys::MQLONG);
+    impl_bitflags!(MQPMO, mq::MQLONG);
     define_new_type!(
-        pub MQPMRF, mqsys::MQLONG, mapping::MQPMRF_MAPSTR,
-        r##"Put Message Record Fields"##
+        pub MQPMRF, mq::MQLONG, mapping::MQPMRF_MAPSTR, r##"Put Message Record Fields"##
     );
-    impl_value!(MQPMRF, mqsys::MQLONG);
-    define_new_type!(pub MQPRI, mqsys::MQLONG, mapping::MQPRI_MAPSTR, r##"Priority"##);
-    impl_value!(MQPRI, mqsys::MQLONG);
+    impl_value!(MQPMRF, mq::MQLONG);
+    define_new_type!(pub MQPRI, mq::MQLONG, mapping::MQPRI_MAPSTR, r##"Priority"##);
+    impl_value!(MQPRI, mq::MQLONG);
     define_new_type!(
-        pub MQPROP, mqsys::MQLONG, mapping::MQPROP_MAPSTR,
+        pub MQPROP, mq::MQLONG, mapping::MQPROP_MAPSTR,
         r##"Queue and Channel Property Control Values"##
     );
-    impl_value!(MQPROP, mqsys::MQLONG);
+    impl_value!(MQPROP, mq::MQLONG);
     define_new_type!(
-        pub MQPRT, mqsys::MQLONG, mapping::MQPRT_MAPSTR, r##"Put Response Values"##
+        pub MQPRT, mq::MQLONG, mapping::MQPRT_MAPSTR, r##"Put Response Values"##
     );
-    impl_value!(MQPRT, mqsys::MQLONG);
+    impl_value!(MQPRT, mq::MQLONG);
     define_new_type!(
-        pub MQPSCLUS, mqsys::MQLONG, mapping::MQPSCLUS_MAPSTR, r##"Pub/Sub clusters"##
+        pub MQPSCLUS, mq::MQLONG, mapping::MQPSCLUS_MAPSTR, r##"Pub/Sub clusters"##
     );
-    impl_value!(MQPSCLUS, mqsys::MQLONG);
+    impl_value!(MQPSCLUS, mq::MQLONG);
+    define_new_type!(pub MQPSM, mq::MQLONG, mapping::MQPSM_MAPSTR, r##"Pub/Sub Mode"##);
+    impl_value!(MQPSM, mq::MQLONG);
     define_new_type!(
-        pub MQPSM, mqsys::MQLONG, mapping::MQPSM_MAPSTR, r##"Pub/Sub Mode"##
-    );
-    impl_value!(MQPSM, mqsys::MQLONG);
-    define_new_type!(
-        pub MQPSPROP, mqsys::MQLONG, mapping::MQPSPROP_MAPSTR,
+        pub MQPSPROP, mq::MQLONG, mapping::MQPSPROP_MAPSTR,
         r##"Pub/Sub Message Properties"##
     );
-    impl_value!(MQPSPROP, mqsys::MQLONG);
+    impl_value!(MQPSPROP, mq::MQLONG);
     define_new_type!(
-        pub MQQA_BACKOUT, mqsys::MQLONG, mapping::MQQA_BACKOUT_MAPSTR,
+        pub MQQA_BACKOUT, mq::MQLONG, mapping::MQQA_BACKOUT_MAPSTR,
         r##"Back-Out Hardening"##
     );
-    impl_value!(MQQA_BACKOUT, mqsys::MQLONG);
+    impl_value!(MQQA_BACKOUT, mq::MQLONG);
     define_new_type!(
-        pub MQQA_GET, mqsys::MQLONG, mapping::MQQA_GET_MAPSTR, r##"Inhibit Get Values"##
+        pub MQQA_GET, mq::MQLONG, mapping::MQQA_GET_MAPSTR, r##"Inhibit Get Values"##
     );
-    impl_value!(MQQA_GET, mqsys::MQLONG);
+    impl_value!(MQQA_GET, mq::MQLONG);
     define_new_type!(
-        pub MQQA_PUT, mqsys::MQLONG, mapping::MQQA_PUT_MAPSTR, r##"Inhibit Put Values"##
+        pub MQQA_PUT, mq::MQLONG, mapping::MQQA_PUT_MAPSTR, r##"Inhibit Put Values"##
     );
-    impl_value!(MQQA_PUT, mqsys::MQLONG);
+    impl_value!(MQQA_PUT, mq::MQLONG);
     define_new_type!(
-        pub MQQA_SHAREABLE, mqsys::MQLONG, mapping::MQQA_SHAREABLE_MAPSTR,
+        pub MQQA_SHAREABLE, mq::MQLONG, mapping::MQQA_SHAREABLE_MAPSTR,
         r##"Queue Shareability"##
     );
-    impl_value!(MQQA_SHAREABLE, mqsys::MQLONG);
+    impl_value!(MQQA_SHAREABLE, mq::MQLONG);
     define_new_type!(
-        pub MQQDT, mqsys::MQLONG, mapping::MQQDT_MAPSTR, r##"Queue Definition Types"##
+        pub MQQDT, mq::MQLONG, mapping::MQQDT_MAPSTR, r##"Queue Definition Types"##
     );
-    impl_value!(MQQDT, mqsys::MQLONG);
+    impl_value!(MQQDT, mq::MQLONG);
     define_new_type!(
-        pub MQQFS, mqsys::MQLONG, mapping::MQQFS_MAPSTR,
-        r##"Max queue file size values"##
+        pub MQQFS, mq::MQLONG, mapping::MQQFS_MAPSTR, r##"Max queue file size values"##
     );
-    impl_value!(MQQFS, mqsys::MQLONG);
+    impl_value!(MQQFS, mq::MQLONG);
     define_new_type!(
-        pub MQQMOPT, mqsys::MQLONG, mapping::MQQMOPT_MAPSTR, r##"Control Options"##
+        pub MQQMOPT, mq::MQLONG, mapping::MQQMOPT_MAPSTR, r##"Control Options"##
     );
-    impl_value!(MQQMOPT, mqsys::MQLONG);
+    impl_value!(MQQMOPT, mq::MQLONG);
     define_new_type!(
-        pub MQQSGD, mqsys::MQLONG, mapping::MQQSGD_MAPSTR,
+        pub MQQSGD, mq::MQLONG, mapping::MQQSGD_MAPSTR,
         r##"Queue Sharing Group Dispositions"##
     );
-    impl_value!(MQQSGD, mqsys::MQLONG);
+    impl_value!(MQQSGD, mq::MQLONG);
     define_new_type!(
-        pub MQQT, mqsys::MQLONG, mapping::MQQT_MAPSTR, r##"Extended Queue Types"##
+        pub MQQT, mq::MQLONG, mapping::MQQT_MAPSTR, r##"Extended Queue Types"##
     );
-    impl_value!(MQQT, mqsys::MQLONG);
+    impl_value!(MQQT, mq::MQLONG);
     define_new_type!(
-        pub MQRCN, mqsys::MQLONG, mapping::MQRCN_MAPSTR, r##"Client Reconnect"##
+        pub MQRCN, mq::MQLONG, mapping::MQRCN_MAPSTR, r##"Client Reconnect"##
     );
-    impl_value!(MQRCN, mqsys::MQLONG);
+    impl_value!(MQRCN, mq::MQLONG);
     define_new_type!(
-        pub MQRCVTIME, mqsys::MQLONG, mapping::MQRCVTIME_MAPSTR,
+        pub MQRCVTIME, mq::MQLONG, mapping::MQRCVTIME_MAPSTR,
         r##"Receive Timeout Types"##
     );
-    impl_value!(MQRCVTIME, mqsys::MQLONG);
-    define_new_type!(pub MQRC, mqsys::MQLONG, mapping::MQRC_MAPSTR, r##"Reason Codes"##);
-    impl_value!(MQRC, mqsys::MQLONG);
+    impl_value!(MQRCVTIME, mq::MQLONG);
+    define_new_type!(pub MQRC, mq::MQLONG, mapping::MQRC_MAPSTR, r##"Reason Codes"##);
+    impl_value!(MQRC, mq::MQLONG);
+    define_new_type!(pub MQRD, mq::MQLONG, mapping::MQRD_MAPSTR, r##"Reconnect delay"##);
+    impl_value!(MQRD, mq::MQLONG);
     define_new_type!(
-        pub MQRD, mqsys::MQLONG, mapping::MQRD_MAPSTR, r##"Reconnect delay"##
+        pub MQREADA, mq::MQLONG, mapping::MQREADA_MAPSTR, r##"Read Ahead Values"##
     );
-    impl_value!(MQRD, mqsys::MQLONG);
+    impl_value!(MQREADA, mq::MQLONG);
     define_new_type!(
-        pub MQREADA, mqsys::MQLONG, mapping::MQREADA_MAPSTR, r##"Read Ahead Values"##
-    );
-    impl_value!(MQREADA, mqsys::MQLONG);
-    define_new_type!(
-        pub MQRECAUTO, mqsys::MQLONG, mapping::MQRECAUTO_MAPSTR,
+        pub MQRECAUTO, mq::MQLONG, mapping::MQRECAUTO_MAPSTR,
         r##"CF Automatic Recovery"##
     );
-    impl_value!(MQRECAUTO, mqsys::MQLONG);
+    impl_value!(MQRECAUTO, mq::MQLONG);
     define_new_type!(
-        pub MQRECORDING, mqsys::MQLONG, mapping::MQRECORDING_MAPSTR,
+        pub MQRECORDING, mq::MQLONG, mapping::MQRECORDING_MAPSTR,
         r##"Recording Options"##
     );
-    impl_value!(MQRECORDING, mqsys::MQLONG);
+    impl_value!(MQRECORDING, mq::MQLONG);
     define_new_type!(
-        pub MQREORG, mqsys::MQLONG, mapping::MQREORG_MAPSTR,
-        r##"Reorganization Controls"##
+        pub MQREORG, mq::MQLONG, mapping::MQREORG_MAPSTR, r##"Reorganization Controls"##
     );
-    impl_value!(MQREORG, mqsys::MQLONG);
+    impl_value!(MQREORG, mq::MQLONG);
+    define_new_type!(pub MQRFH, mq::MQLONG, mapping::MQRFH_MAPSTR, r##"MQRFH Flags"##);
+    impl_value!(MQRFH, mq::MQLONG);
+    define_new_type!(pub MQRL, mq::MQLONG, mapping::MQRL_MAPSTR, r##"Returned Length"##);
+    impl_value!(MQRL, mq::MQLONG);
+    define_new_type!(pub MQRMHF, mq::MQLONG, mapping::MQRMHF_MAPSTR, r##"MQRMH Flags"##);
+    impl_value!(MQRMHF, mq::MQLONG);
     define_new_type!(
-        pub MQRFH, mqsys::MQLONG, mapping::MQRFH_MAPSTR, r##"MQRFH Flags"##
+        pub MQRO, mq::MQLONG, mapping::MQRO_MAPSTR, r##"Report Options Masks"##
     );
-    impl_value!(MQRFH, mqsys::MQLONG);
+    impl_bitflags!(MQRO, mq::MQLONG);
+    define_new_type!(pub MQRU, mq::MQLONG, mapping::MQRU_MAPSTR, r##"Request Only"##);
+    impl_value!(MQRU, mq::MQLONG);
     define_new_type!(
-        pub MQRL, mqsys::MQLONG, mapping::MQRL_MAPSTR, r##"Returned Length"##
+        pub MQSCOPE, mq::MQLONG, mapping::MQSCOPE_MAPSTR, r##"Publish scope"##
     );
-    impl_value!(MQRL, mqsys::MQLONG);
+    impl_value!(MQSCOPE, mq::MQLONG);
     define_new_type!(
-        pub MQRMHF, mqsys::MQLONG, mapping::MQRMHF_MAPSTR, r##"MQRMH Flags"##
+        pub MQSCO, mq::MQLONG, mapping::MQSCO_MAPSTR, r##"Key Reset Count"##
     );
-    impl_value!(MQRMHF, mqsys::MQLONG);
+    impl_value!(MQSCO, mq::MQLONG);
     define_new_type!(
-        pub MQRO, mqsys::MQLONG, mapping::MQRO_MAPSTR, r##"Report Options Masks"##
+        pub MQSCYC, mq::MQLONG, mapping::MQSCYC_MAPSTR, r##"Security Case"##
     );
-    impl_bitflags!(MQRO, mqsys::MQLONG);
-    define_new_type!(pub MQRU, mqsys::MQLONG, mapping::MQRU_MAPSTR, r##"Request Only"##);
-    impl_value!(MQRU, mqsys::MQLONG);
+    impl_value!(MQSCYC, mq::MQLONG);
     define_new_type!(
-        pub MQSCOPE, mqsys::MQLONG, mapping::MQSCOPE_MAPSTR, r##"Publish scope"##
-    );
-    impl_value!(MQSCOPE, mqsys::MQLONG);
-    define_new_type!(
-        pub MQSCO, mqsys::MQLONG, mapping::MQSCO_MAPSTR, r##"Key Reset Count"##
-    );
-    impl_value!(MQSCO, mqsys::MQLONG);
-    define_new_type!(
-        pub MQSCYC, mqsys::MQLONG, mapping::MQSCYC_MAPSTR, r##"Security Case"##
-    );
-    impl_value!(MQSCYC, mqsys::MQLONG);
-    define_new_type!(
-        pub MQSMPO, mqsys::MQLONG, mapping::MQSMPO_MAPSTR,
+        pub MQSMPO, mq::MQLONG, mapping::MQSMPO_MAPSTR,
         r##"Set Message Property Options"##
     );
-    impl_value!(MQSMPO, mqsys::MQLONG);
+    impl_value!(MQSMPO, mq::MQLONG);
     define_new_type!(
-        pub MQSO, mqsys::MQLONG, mapping::MQSO_MAPSTR, r##"Subscribe Options"##
+        pub MQSO, mq::MQLONG, mapping::MQSO_MAPSTR, r##"Subscribe Options"##
     );
-    impl_bitflags!(MQSO, mqsys::MQLONG);
+    impl_bitflags!(MQSO, mq::MQLONG);
     define_new_type!(
-        pub MQSP, mqsys::MQLONG, mapping::MQSP_MAPSTR, r##"Syncpoint Availability"##
+        pub MQSP, mq::MQLONG, mapping::MQSP_MAPSTR, r##"Syncpoint Availability"##
     );
-    impl_value!(MQSP, mqsys::MQLONG);
+    impl_value!(MQSP, mq::MQLONG);
     define_new_type!(
-        pub MQSQQM, mqsys::MQLONG, mapping::MQSQQM_MAPSTR,
+        pub MQSQQM, mq::MQLONG, mapping::MQSQQM_MAPSTR,
         r##"Shared Queue Queue Manager Name"##
     );
-    impl_value!(MQSQQM, mqsys::MQLONG);
+    impl_value!(MQSQQM, mq::MQLONG);
     define_new_type!(
-        pub MQSRO, mqsys::MQLONG, mapping::MQSRO_MAPSTR,
-        r##"Subscription Request Options"##
+        pub MQSRO, mq::MQLONG, mapping::MQSRO_MAPSTR, r##"Subscription Request Options"##
     );
-    impl_bitflags!(MQSRO, mqsys::MQLONG);
+    impl_bitflags!(MQSRO, mq::MQLONG);
     define_new_type!(
-        pub MQSR, mqsys::MQLONG, mapping::MQSR_MAPSTR, r##"Subscription Request Action"##
+        pub MQSR, mq::MQLONG, mapping::MQSR_MAPSTR, r##"Subscription Request Action"##
     );
-    impl_value!(MQSR, mqsys::MQLONG);
+    impl_value!(MQSR, mq::MQLONG);
     define_new_type!(
-        pub MQSSL, mqsys::MQLONG, mapping::MQSSL_MAPSTR, r##"SSL FIPS Requirements"##
+        pub MQSSL, mq::MQLONG, mapping::MQSSL_MAPSTR, r##"SSL FIPS Requirements"##
     );
-    impl_value!(MQSSL, mqsys::MQLONG);
+    impl_value!(MQSSL, mq::MQLONG);
     define_new_type!(
-        pub MQSTAT, mqsys::MQLONG, mapping::MQSTAT_MAPSTR, r##"Stat Options"##
+        pub MQSTAT, mq::MQLONG, mapping::MQSTAT_MAPSTR, r##"Stat Options"##
     );
-    impl_value!(MQSTAT, mqsys::MQLONG);
+    impl_value!(MQSTAT, mq::MQLONG);
     define_new_type!(
-        pub MQST, mqsys::MQLONG, mapping::MQST_MAPSTR,
+        pub MQST, mq::MQLONG, mapping::MQST_MAPSTR,
         r##"Streaming Queue Quality of Service Values"##
     );
-    impl_value!(MQST, mqsys::MQLONG);
+    impl_value!(MQST, mq::MQLONG);
     define_new_type!(
-        pub MQSUB, mqsys::MQLONG, mapping::MQSUB_MAPSTR, r##"Durable subscriptions"##
+        pub MQSUB, mq::MQLONG, mapping::MQSUB_MAPSTR, r##"Durable subscriptions"##
     );
-    impl_value!(MQSUB, mqsys::MQLONG);
+    impl_value!(MQSUB, mq::MQLONG);
     define_new_type!(
-        pub MQSUB_DURABILITY, mqsys::MQLONG, mapping::MQSUB_DURABILITY_MAPSTR,
+        pub MQSUB_DURABILITY, mq::MQLONG, mapping::MQSUB_DURABILITY_MAPSTR,
         r##"Durable Subscriptions"##
     );
-    impl_value!(MQSUB_DURABILITY, mqsys::MQLONG);
+    impl_value!(MQSUB_DURABILITY, mq::MQLONG);
     define_new_type!(
-        pub MQSVC_CONTROL, mqsys::MQLONG, mapping::MQSVC_CONTROL_MAPSTR,
+        pub MQSVC_CONTROL, mq::MQLONG, mapping::MQSVC_CONTROL_MAPSTR,
         r##"Service Controls"##
     );
-    impl_value!(MQSVC_CONTROL, mqsys::MQLONG);
+    impl_value!(MQSVC_CONTROL, mq::MQLONG);
     define_new_type!(
-        pub MQSVC_STATUS, mqsys::MQLONG, mapping::MQSVC_STATUS_MAPSTR,
-        r##"Service Status"##
+        pub MQSVC_STATUS, mq::MQLONG, mapping::MQSVC_STATUS_MAPSTR, r##"Service Status"##
     );
-    impl_value!(MQSVC_STATUS, mqsys::MQLONG);
+    impl_value!(MQSVC_STATUS, mq::MQLONG);
     define_new_type!(
-        pub MQSVC_TYPE, mqsys::MQLONG, mapping::MQSVC_TYPE_MAPSTR, r##"Service Types"##
+        pub MQSVC_TYPE, mq::MQLONG, mapping::MQSVC_TYPE_MAPSTR, r##"Service Types"##
     );
-    impl_value!(MQSVC_TYPE, mqsys::MQLONG);
+    impl_value!(MQSVC_TYPE, mq::MQLONG);
     define_new_type!(
-        pub MQTA, mqsys::MQLONG, mapping::MQTA_MAPSTR, r##"Topic Attributes"##
+        pub MQTA, mq::MQLONG, mapping::MQTA_MAPSTR, r##"Topic Attributes"##
     );
-    impl_value!(MQTA, mqsys::MQLONG);
+    impl_value!(MQTA, mq::MQLONG);
     define_new_type!(
-        pub MQTA_PROXY, mqsys::MQLONG, mapping::MQTA_PROXY_MAPSTR,
+        pub MQTA_PROXY, mq::MQLONG, mapping::MQTA_PROXY_MAPSTR,
         r##"Proxy Sub Propagation"##
     );
-    impl_value!(MQTA_PROXY, mqsys::MQLONG);
+    impl_value!(MQTA_PROXY, mq::MQLONG);
     define_new_type!(
-        pub MQTA_PUB, mqsys::MQLONG, mapping::MQTA_PUB_MAPSTR,
-        r##"Publications Allowed"##
+        pub MQTA_PUB, mq::MQLONG, mapping::MQTA_PUB_MAPSTR, r##"Publications Allowed"##
     );
-    impl_value!(MQTA_PUB, mqsys::MQLONG);
+    impl_value!(MQTA_PUB, mq::MQLONG);
     define_new_type!(
-        pub MQTA_SUB, mqsys::MQLONG, mapping::MQTA_SUB_MAPSTR,
-        r##"Subscriptions Allowed"##
+        pub MQTA_SUB, mq::MQLONG, mapping::MQTA_SUB_MAPSTR, r##"Subscriptions Allowed"##
     );
-    impl_value!(MQTA_SUB, mqsys::MQLONG);
+    impl_value!(MQTA_SUB, mq::MQLONG);
     define_new_type!(
-        pub MQTCPKEEP, mqsys::MQLONG, mapping::MQTCPKEEP_MAPSTR, r##"TCP Keepalive"##
+        pub MQTCPKEEP, mq::MQLONG, mapping::MQTCPKEEP_MAPSTR, r##"TCP Keepalive"##
     );
-    impl_value!(MQTCPKEEP, mqsys::MQLONG);
+    impl_value!(MQTCPKEEP, mq::MQLONG);
     define_new_type!(
-        pub MQTCPSTACK, mqsys::MQLONG, mapping::MQTCPSTACK_MAPSTR, r##"TCP Stack Types"##
+        pub MQTCPSTACK, mq::MQLONG, mapping::MQTCPSTACK_MAPSTR, r##"TCP Stack Types"##
     );
-    impl_value!(MQTCPSTACK, mqsys::MQLONG);
+    impl_value!(MQTCPSTACK, mq::MQLONG);
     define_new_type!(
-        pub MQTC, mqsys::MQLONG, mapping::MQTC_MAPSTR, r##"Trigger Controls"##
+        pub MQTC, mq::MQLONG, mapping::MQTC_MAPSTR, r##"Trigger Controls"##
     );
-    impl_value!(MQTC, mqsys::MQLONG);
+    impl_value!(MQTC, mq::MQLONG);
+    define_new_type!(pub MQTOPT, mq::MQLONG, mapping::MQTOPT_MAPSTR, r##"Topic Type"##);
+    impl_value!(MQTOPT, mq::MQLONG);
     define_new_type!(
-        pub MQTOPT, mqsys::MQLONG, mapping::MQTOPT_MAPSTR, r##"Topic Type"##
-    );
-    impl_value!(MQTOPT, mqsys::MQLONG);
-    define_new_type!(
-        pub MQTRAXSTR, mqsys::MQLONG, mapping::MQTRAXSTR_MAPSTR,
+        pub MQTRAXSTR, mq::MQLONG, mapping::MQTRAXSTR_MAPSTR,
         r##"Channel Initiator Trace Autostart"##
     );
-    impl_value!(MQTRAXSTR, mqsys::MQLONG);
+    impl_value!(MQTRAXSTR, mq::MQLONG);
     define_new_type!(
-        pub MQTRIGGER, mqsys::MQLONG, mapping::MQTRIGGER_MAPSTR, r##"Trigger Restart"##
+        pub MQTRIGGER, mq::MQLONG, mapping::MQTRIGGER_MAPSTR, r##"Trigger Restart"##
     );
-    impl_value!(MQTRIGGER, mqsys::MQLONG);
+    impl_value!(MQTRIGGER, mq::MQLONG);
     define_new_type!(
-        pub MQTSCOPE, mqsys::MQLONG, mapping::MQTSCOPE_MAPSTR, r##"Subscription Scope"##
+        pub MQTSCOPE, mq::MQLONG, mapping::MQTSCOPE_MAPSTR, r##"Subscription Scope"##
     );
-    impl_value!(MQTSCOPE, mqsys::MQLONG);
+    impl_value!(MQTSCOPE, mq::MQLONG);
+    define_new_type!(pub MQTT, mq::MQLONG, mapping::MQTT_MAPSTR, r##"Trigger Types"##);
+    impl_value!(MQTT, mq::MQLONG);
     define_new_type!(
-        pub MQTT, mqsys::MQLONG, mapping::MQTT_MAPSTR, r##"Trigger Types"##
+        pub MQTYPE, mq::MQLONG, mapping::MQTYPE_MAPSTR, r##"Property data types"##
     );
-    impl_value!(MQTT, mqsys::MQLONG);
+    impl_value!(MQTYPE, mq::MQLONG);
     define_new_type!(
-        pub MQTYPE, mqsys::MQLONG, mapping::MQTYPE_MAPSTR, r##"Property data types"##
-    );
-    impl_value!(MQTYPE, mqsys::MQLONG);
-    define_new_type!(
-        pub MQUSEDLQ, mqsys::MQLONG, mapping::MQUSEDLQ_MAPSTR,
+        pub MQUSEDLQ, mq::MQLONG, mapping::MQUSEDLQ_MAPSTR,
         r##"Use Dead Letter Queue Options"##
     );
-    impl_value!(MQUSEDLQ, mqsys::MQLONG);
+    impl_value!(MQUSEDLQ, mq::MQLONG);
     define_new_type!(
-        pub MQUSRC, mqsys::MQLONG, mapping::MQUSRC_MAPSTR, r##"User Source Options"##
+        pub MQUSRC, mq::MQLONG, mapping::MQUSRC_MAPSTR, r##"User Source Options"##
     );
-    impl_value!(MQUSRC, mqsys::MQLONG);
-    define_new_type!(pub MQUS, mqsys::MQLONG, mapping::MQUS_MAPSTR, r##"Queue Usages"##);
-    impl_value!(MQUS, mqsys::MQLONG);
+    impl_value!(MQUSRC, mq::MQLONG);
+    define_new_type!(pub MQUS, mq::MQLONG, mapping::MQUS_MAPSTR, r##"Queue Usages"##);
+    impl_value!(MQUS, mq::MQLONG);
     define_new_type!(
-        pub MQVL, mqsys::MQLONG, mapping::MQVL_MAPSTR, r##"Property value lengths"##
+        pub MQVL, mq::MQLONG, mapping::MQVL_MAPSTR, r##"Property value lengths"##
     );
-    impl_value!(MQVL, mqsys::MQLONG);
+    impl_value!(MQVL, mq::MQLONG);
     define_new_type!(
-        pub MQVS, mqsys::MQLONG, mapping::MQVS_MAPSTR, r##"Variable String Length"##
+        pub MQVS, mq::MQLONG, mapping::MQVS_MAPSTR, r##"Variable String Length"##
     );
-    impl_value!(MQVS, mqsys::MQLONG);
+    impl_value!(MQVS, mq::MQLONG);
     define_new_type!(
-        pub MQVU, mqsys::MQLONG, mapping::MQVU_MAPSTR, r##"Variable User ID"##
+        pub MQVU, mq::MQLONG, mapping::MQVU_MAPSTR, r##"Variable User ID"##
     );
-    impl_value!(MQVU, mqsys::MQLONG);
+    impl_value!(MQVU, mq::MQLONG);
     define_new_type!(
-        pub MQWARN, mqsys::MQLONG, mapping::MQWARN_MAPSTR, r##"Warn Options"##
+        pub MQWARN, mq::MQLONG, mapping::MQWARN_MAPSTR, r##"Warn Options"##
     );
-    impl_value!(MQWARN, mqsys::MQLONG);
+    impl_value!(MQWARN, mq::MQLONG);
+    define_new_type!(pub MQWIH, mq::MQLONG, mapping::MQWIH_MAPSTR, r##"MQWIH Flags"##);
+    impl_value!(MQWIH, mq::MQLONG);
+    define_new_type!(pub MQWI, mq::MQLONG, mapping::MQWI_MAPSTR, r##"Wait Interval"##);
+    impl_value!(MQWI, mq::MQLONG);
+    define_new_type!(pub MQWS, mq::MQLONG, mapping::MQWS_MAPSTR, r##"Wildcard Schema"##);
+    impl_value!(MQWS, mq::MQLONG);
+    define_new_type!(pub MQXC, mq::MQLONG, mapping::MQXC_MAPSTR, r##"Exit Commands"##);
+    impl_value!(MQXC, mq::MQLONG);
     define_new_type!(
-        pub MQWIH, mqsys::MQLONG, mapping::MQWIH_MAPSTR, r##"MQWIH Flags"##
+        pub MQXPT, mq::MQLONG, mapping::MQXPT_MAPSTR, r##"Transport Types"##
     );
-    impl_value!(MQWIH, mqsys::MQLONG);
+    impl_value!(MQXPT, mq::MQLONG);
     define_new_type!(
-        pub MQWI, mqsys::MQLONG, mapping::MQWI_MAPSTR, r##"Wait Interval"##
-    );
-    impl_value!(MQWI, mqsys::MQLONG);
-    define_new_type!(
-        pub MQWS, mqsys::MQLONG, mapping::MQWS_MAPSTR, r##"Wildcard Schema"##
-    );
-    impl_value!(MQWS, mqsys::MQLONG);
-    define_new_type!(
-        pub MQXC, mqsys::MQLONG, mapping::MQXC_MAPSTR, r##"Exit Commands"##
-    );
-    impl_value!(MQXC, mqsys::MQLONG);
-    define_new_type!(
-        pub MQXPT, mqsys::MQLONG, mapping::MQXPT_MAPSTR, r##"Transport Types"##
-    );
-    impl_value!(MQXPT, mqsys::MQLONG);
-    define_new_type!(
-        pub MQ_CERT, mqsys::MQLONG, mapping::MQ_CERT_MAPSTR,
+        pub MQ_CERT, mq::MQLONG, mapping::MQ_CERT_MAPSTR,
         r##"Certificate Validation Policy Type"##
     );
-    impl_value!(MQ_CERT, mqsys::MQLONG);
+    impl_value!(MQ_CERT, mq::MQLONG);
     define_new_type!(
-        pub MQ_HTTPSCERTREV, mqsys::MQLONG, mapping::MQ_HTTPSCERTREV_MAPSTR,
+        pub MQ_HTTPSCERTREV, mq::MQLONG, mapping::MQ_HTTPSCERTREV_MAPSTR,
         r##"HTTPS Certificate Revocation Type"##
     );
-    impl_value!(MQ_HTTPSCERTREV, mqsys::MQLONG);
+    impl_value!(MQ_HTTPSCERTREV, mq::MQLONG);
     define_new_type!(
-        pub MQ_HTTPSCERTVAL, mqsys::MQLONG, mapping::MQ_HTTPSCERTVAL_MAPSTR,
+        pub MQ_HTTPSCERTVAL, mq::MQLONG, mapping::MQ_HTTPSCERTVAL_MAPSTR,
         r##"HTTPS Certificate Validation Type"##
     );
-    impl_value!(MQ_HTTPSCERTVAL, mqsys::MQLONG);
+    impl_value!(MQ_HTTPSCERTVAL, mq::MQLONG);
     define_new_type!(
-        pub MQ_MQTT, mqsys::MQLONG, mapping::MQ_MQTT_MAPSTR, r##"General Constants"##
+        pub MQ_MQTT, mq::MQLONG, mapping::MQ_MQTT_MAPSTR, r##"General Constants"##
     );
-    impl_value!(MQ_MQTT, mqsys::MQLONG);
+    impl_value!(MQ_MQTT, mq::MQLONG);
     define_new_type!(
-        pub MQ_SUITE, mqsys::MQLONG, mapping::MQ_SUITE_MAPSTR, r##"SuiteB Type"##
+        pub MQ_SUITE, mq::MQLONG, mapping::MQ_SUITE_MAPSTR, r##"SuiteB Type"##
     );
-    impl_value!(MQ_SUITE, mqsys::MQLONG);
+    impl_value!(MQ_SUITE, mq::MQLONG);
     #[cfg(feature = "exits")]
     mod exits {
-        use ::libmqm_sys::lib as mqsys;
+        use ::libmqm_sys as mq;
         use crate::mapping;
         use crate::value::{define_new_type, impl_value};
         use crate::bitflags::impl_bitflags;
         define_new_type!(
-            pub MQCDC, mqsys::MQLONG, mapping::MQCDC_MAPSTR,
-            r##"Channel Data Conversion"##
+            pub MQCDC, mq::MQLONG, mapping::MQCDC_MAPSTR, r##"Channel Data Conversion"##
         );
-        impl_value!(MQCDC, mqsys::MQLONG);
+        impl_value!(MQCDC, mq::MQLONG);
         define_new_type!(
-            pub MQCF, mqsys::MQLONG, mapping::MQCF_MAPSTR, r##"Capability Flags"##
+            pub MQCF, mq::MQLONG, mapping::MQCF_MAPSTR, r##"Capability Flags"##
         );
-        impl_value!(MQCF, mqsys::MQLONG);
+        impl_value!(MQCF, mq::MQLONG);
         define_new_type!(
-            pub MQCLCT, mqsys::MQLONG, mapping::MQCLCT_MAPSTR, r##"Cluster Cache Types"##
+            pub MQCLCT, mq::MQLONG, mapping::MQCLCT_MAPSTR, r##"Cluster Cache Types"##
         );
-        impl_value!(MQCLCT, mqsys::MQLONG);
+        impl_value!(MQCLCT, mq::MQLONG);
         define_new_type!(
-            pub MQCOMPRESS, mqsys::MQLONG, mapping::MQCOMPRESS_MAPSTR,
+            pub MQCOMPRESS, mq::MQLONG, mapping::MQCOMPRESS_MAPSTR,
             r##"Channel Compression"##
         );
-        impl_value!(MQCOMPRESS, mqsys::MQLONG);
+        impl_value!(MQCOMPRESS, mq::MQLONG);
         define_new_type!(
-            pub MQDCC, mqsys::MQLONG, mapping::MQDCC_MAPSTR,
+            pub MQDCC, mq::MQLONG, mapping::MQDCC_MAPSTR,
             r##"Conversion Options Masks and Factors"##
         );
-        impl_bitflags!(MQDCC, mqsys::MQLONG);
+        impl_bitflags!(MQDCC, mq::MQLONG);
         define_new_type!(
-            pub MQIEPF, mqsys::MQLONG, mapping::MQIEPF_MAPSTR, r##"IEP Flags"##
+            pub MQIEPF, mq::MQLONG, mapping::MQIEPF_MAPSTR, r##"IEP Flags"##
         );
-        impl_value!(MQIEPF, mqsys::MQLONG);
+        impl_value!(MQIEPF, mq::MQLONG);
         define_new_type!(
-            pub MQMCAT, mqsys::MQLONG, mapping::MQMCAT_MAPSTR, r##"MCA Types"##
+            pub MQMCAT, mq::MQLONG, mapping::MQMCAT_MAPSTR, r##"MCA Types"##
         );
-        impl_value!(MQMCAT, mqsys::MQLONG);
+        impl_value!(MQMCAT, mq::MQLONG);
         define_new_type!(
-            pub MQMCEV, mqsys::MQLONG, mapping::MQMCEV_MAPSTR, r##"Multicast Events"##
+            pub MQMCEV, mq::MQLONG, mapping::MQMCEV_MAPSTR, r##"Multicast Events"##
         );
-        impl_value!(MQMCEV, mqsys::MQLONG);
+        impl_value!(MQMCEV, mq::MQLONG);
         define_new_type!(
-            pub MQNPMS, mqsys::MQLONG, mapping::MQNPMS_MAPSTR,
+            pub MQNPMS, mq::MQLONG, mapping::MQNPMS_MAPSTR,
             r##"NonPersistent-Message Speeds"##
         );
-        impl_value!(MQNPMS, mqsys::MQLONG);
+        impl_value!(MQNPMS, mq::MQLONG);
         define_new_type!(
-            pub MQPA, mqsys::MQLONG, mapping::MQPA_MAPSTR, r##"Put Authority"##
+            pub MQPA, mq::MQLONG, mapping::MQPA_MAPSTR, r##"Put Authority"##
         );
-        impl_value!(MQPA, mqsys::MQLONG);
+        impl_value!(MQPA, mq::MQLONG);
         define_new_type!(
-            pub MQPROTO, mqsys::MQLONG, mapping::MQPROTO_MAPSTR, r##"Protocol"##
+            pub MQPROTO, mq::MQLONG, mapping::MQPROTO_MAPSTR, r##"Protocol"##
         );
-        impl_value!(MQPROTO, mqsys::MQLONG);
+        impl_value!(MQPROTO, mq::MQLONG);
+        define_new_type!(pub MQQF, mq::MQLONG, mapping::MQQF_MAPSTR, r##"Queue Flags"##);
+        impl_value!(MQQF, mq::MQLONG);
         define_new_type!(
-            pub MQQF, mqsys::MQLONG, mapping::MQQF_MAPSTR, r##"Queue Flags"##
+            pub MQQMF, mq::MQLONG, mapping::MQQMF_MAPSTR, r##"Queue Manager Flags"##
         );
-        impl_value!(MQQF, mqsys::MQLONG);
+        impl_bitflags!(MQQMF, mq::MQLONG);
         define_new_type!(
-            pub MQQMF, mqsys::MQLONG, mapping::MQQMF_MAPSTR, r##"Queue Manager Flags"##
-        );
-        impl_bitflags!(MQQMF, mqsys::MQLONG);
-        define_new_type!(
-            pub MQSCA, mqsys::MQLONG, mapping::MQSCA_MAPSTR,
+            pub MQSCA, mq::MQLONG, mapping::MQSCA_MAPSTR,
             r##"SSL Client Authentication"##
         );
-        impl_value!(MQSCA, mqsys::MQLONG);
+        impl_value!(MQSCA, mq::MQLONG);
         define_new_type!(
-            pub MQSECPROT, mqsys::MQLONG, mapping::MQSECPROT_MAPSTR,
+            pub MQSECPROT, mq::MQLONG, mapping::MQSECPROT_MAPSTR,
             r##"Security Protocol"##
         );
-        impl_value!(MQSECPROT, mqsys::MQLONG);
+        impl_value!(MQSECPROT, mq::MQLONG);
         define_new_type!(
-            pub MQSPL, mqsys::MQLONG, mapping::MQSPL_MAPSTR, r##"SPL Protection"##
+            pub MQSPL, mq::MQLONG, mapping::MQSPL_MAPSTR, r##"SPL Protection"##
         );
-        impl_value!(MQSPL, mqsys::MQLONG);
+        impl_value!(MQSPL, mq::MQLONG);
         define_new_type!(
-            pub MQWXP, mqsys::MQLONG, mapping::MQWXP_MAPSTR,
-            r##"Cluster Workload Flags"##
+            pub MQWXP, mq::MQLONG, mapping::MQWXP_MAPSTR, r##"Cluster Workload Flags"##
         );
-        impl_value!(MQWXP, mqsys::MQLONG);
+        impl_value!(MQWXP, mq::MQLONG);
         define_new_type!(
-            pub MQXACT, mqsys::MQLONG, mapping::MQXACT_MAPSTR, r##"API Caller Types"##
+            pub MQXACT, mq::MQLONG, mapping::MQXACT_MAPSTR, r##"API Caller Types"##
         );
-        impl_value!(MQXACT, mqsys::MQLONG);
+        impl_value!(MQXACT, mq::MQLONG);
         define_new_type!(
-            pub MQXCC, mqsys::MQLONG, mapping::MQXCC_MAPSTR, r##"Exit Responses"##
+            pub MQXCC, mq::MQLONG, mapping::MQXCC_MAPSTR, r##"Exit Responses"##
         );
-        impl_value!(MQXCC, mqsys::MQLONG);
+        impl_value!(MQXCC, mq::MQLONG);
         define_new_type!(
-            pub MQXDR, mqsys::MQLONG, mapping::MQXDR_MAPSTR, r##"Exit Response"##
+            pub MQXDR, mq::MQLONG, mapping::MQXDR_MAPSTR, r##"Exit Response"##
         );
-        impl_value!(MQXDR, mqsys::MQLONG);
+        impl_value!(MQXDR, mq::MQLONG);
         define_new_type!(
-            pub MQXEPO, mqsys::MQLONG, mapping::MQXEPO_MAPSTR, r##"Exit Options"##
+            pub MQXEPO, mq::MQLONG, mapping::MQXEPO_MAPSTR, r##"Exit Options"##
         );
-        impl_value!(MQXEPO, mqsys::MQLONG);
+        impl_value!(MQXEPO, mq::MQLONG);
         define_new_type!(
-            pub MQXE, mqsys::MQLONG, mapping::MQXE_MAPSTR, r##"Environments"##
+            pub MQXE, mq::MQLONG, mapping::MQXE_MAPSTR, r##"Environments"##
         );
-        impl_value!(MQXE, mqsys::MQLONG);
+        impl_value!(MQXE, mq::MQLONG);
         define_new_type!(
-            pub MQXF, mqsys::MQLONG, mapping::MQXF_MAPSTR,
-            r##"API Function Identifiers"##
+            pub MQXF, mq::MQLONG, mapping::MQXF_MAPSTR, r##"API Function Identifiers"##
         );
-        impl_value!(MQXF, mqsys::MQLONG);
+        impl_value!(MQXF, mq::MQLONG);
         define_new_type!(
-            pub MQXR2, mqsys::MQLONG, mapping::MQXR2_MAPSTR, r##"Exit Response 2"##
+            pub MQXR2, mq::MQLONG, mapping::MQXR2_MAPSTR, r##"Exit Response 2"##
         );
-        impl_value!(MQXR2, mqsys::MQLONG);
+        impl_value!(MQXR2, mq::MQLONG);
         define_new_type!(
-            pub MQXR, mqsys::MQLONG, mapping::MQXR_MAPSTR, r##"Exit Reasons"##
+            pub MQXR, mq::MQLONG, mapping::MQXR_MAPSTR, r##"Exit Reasons"##
         );
-        impl_value!(MQXR, mqsys::MQLONG);
+        impl_value!(MQXR, mq::MQLONG);
         define_new_type!(
-            pub MQXT, mqsys::MQLONG, mapping::MQXT_MAPSTR, r##"Exit Identifiers"##
+            pub MQXT, mq::MQLONG, mapping::MQXT_MAPSTR, r##"Exit Identifiers"##
         );
-        impl_value!(MQXT, mqsys::MQLONG);
+        impl_value!(MQXT, mq::MQLONG);
         define_new_type!(
-            pub MQZAET, mqsys::MQLONG, mapping::MQZAET_MAPSTR, r##"Entity Types"##
+            pub MQZAET, mq::MQLONG, mapping::MQZAET_MAPSTR, r##"Entity Types"##
         );
-        impl_value!(MQZAET, mqsys::MQLONG);
+        impl_value!(MQZAET, mq::MQLONG);
         define_new_type!(
-            pub MQZAO, mqsys::MQLONG, mapping::MQZAO_MAPSTR, r##"Authorizations"##
+            pub MQZAO, mq::MQLONG, mapping::MQZAO_MAPSTR, r##"Authorizations"##
         );
-        impl_bitflags!(MQZAO, mqsys::MQLONG);
+        impl_bitflags!(MQZAO, mq::MQLONG);
         define_new_type!(
-            pub MQZAT, mqsys::MQLONG, mapping::MQZAT_MAPSTR, r##"Authentication Types"##
+            pub MQZAT, mq::MQLONG, mapping::MQZAT_MAPSTR, r##"Authentication Types"##
         );
-        impl_value!(MQZAT, mqsys::MQLONG);
+        impl_value!(MQZAT, mq::MQLONG);
         define_new_type!(
-            pub MQZCI, mqsys::MQLONG, mapping::MQZCI_MAPSTR,
-            r##"Continuation Indicator"##
+            pub MQZCI, mq::MQLONG, mapping::MQZCI_MAPSTR, r##"Continuation Indicator"##
         );
-        impl_value!(MQZCI, mqsys::MQLONG);
+        impl_value!(MQZCI, mq::MQLONG);
         define_new_type!(
-            pub MQZID, mqsys::MQLONG, mapping::MQZID_MAPSTR,
+            pub MQZID, mq::MQLONG, mapping::MQZID_MAPSTR,
             r##"Function ids common to all services"##
         );
-        impl_value!(MQZID, mqsys::MQLONG);
+        impl_value!(MQZID, mq::MQLONG);
         define_new_type!(
-            pub MQZID_AUTHORITY, mqsys::MQLONG, mapping::MQZID_AUTHORITY_MAPSTR,
+            pub MQZID_AUTHORITY, mq::MQLONG, mapping::MQZID_AUTHORITY_MAPSTR,
             r##"Function ids for Authority service"##
         );
-        impl_value!(MQZID_AUTHORITY, mqsys::MQLONG);
+        impl_value!(MQZID_AUTHORITY, mq::MQLONG);
         define_new_type!(
-            pub MQZID_NAME, mqsys::MQLONG, mapping::MQZID_NAME_MAPSTR,
+            pub MQZID_NAME, mq::MQLONG, mapping::MQZID_NAME_MAPSTR,
             r##"Function ids for Name service"##
         );
-        impl_value!(MQZID_NAME, mqsys::MQLONG);
+        impl_value!(MQZID_NAME, mq::MQLONG);
         define_new_type!(
-            pub MQZID_USERID, mqsys::MQLONG, mapping::MQZID_USERID_MAPSTR,
+            pub MQZID_USERID, mq::MQLONG, mapping::MQZID_USERID_MAPSTR,
             r##"Function ids for Userid service"##
         );
-        impl_value!(MQZID_USERID, mqsys::MQLONG);
+        impl_value!(MQZID_USERID, mq::MQLONG);
         define_new_type!(
-            pub MQZIO, mqsys::MQLONG, mapping::MQZIO_MAPSTR,
-            r##"Initialization Options"##
+            pub MQZIO, mq::MQLONG, mapping::MQZIO_MAPSTR, r##"Initialization Options"##
         );
-        impl_value!(MQZIO, mqsys::MQLONG);
+        impl_value!(MQZIO, mq::MQLONG);
         define_new_type!(
-            pub MQZSE, mqsys::MQLONG, mapping::MQZSE_MAPSTR,
+            pub MQZSE, mq::MQLONG, mapping::MQZSE_MAPSTR,
             r##"Start-Enumeration Indicator"##
         );
-        impl_value!(MQZSE, mqsys::MQLONG);
+        impl_value!(MQZSE, mq::MQLONG);
         define_new_type!(
-            pub MQZSL, mqsys::MQLONG, mapping::MQZSL_MAPSTR, r##"Selector Indicator"##
+            pub MQZSL, mq::MQLONG, mapping::MQZSL_MAPSTR, r##"Selector Indicator"##
         );
-        impl_value!(MQZSL, mqsys::MQLONG);
+        impl_value!(MQZSL, mq::MQLONG);
         define_new_type!(
-            pub MQZTO, mqsys::MQLONG, mapping::MQZTO_MAPSTR, r##"Termination Options"##
+            pub MQZTO, mq::MQLONG, mapping::MQZTO_MAPSTR, r##"Termination Options"##
         );
-        impl_value!(MQZTO, mqsys::MQLONG);
+        impl_value!(MQZTO, mq::MQLONG);
     }
     #[cfg(feature = "exits")]
     pub use exits::*;
     #[cfg(feature = "mqai")]
     mod mqai {
-        use ::libmqm_sys::lib as mqsys;
+        use ::libmqm_sys as mq;
         use crate::mapping;
         use crate::value::{define_new_type, impl_value};
         use crate::bitflags::impl_bitflags;
         define_new_type!(
-            pub MQBL, mqsys::MQLONG, mapping::MQBL_MAPSTR,
+            pub MQBL, mq::MQLONG, mapping::MQBL_MAPSTR,
             r##"Buffer Length for mqAddString and mqSetString"##
         );
-        impl_value!(MQBL, mqsys::MQLONG);
+        impl_value!(MQBL, mq::MQLONG);
         define_new_type!(
-            pub MQCBO, mqsys::MQLONG, mapping::MQCBO_MAPSTR,
+            pub MQCBO, mq::MQLONG, mapping::MQCBO_MAPSTR,
             r##"Create-Bag Options for mqCreateBag"##
         );
-        impl_bitflags!(MQCBO, mqsys::MQLONG);
+        impl_bitflags!(MQCBO, mq::MQLONG);
         define_new_type!(
-            pub MQHA, mqsys::MQLONG, mapping::MQHA_MAPSTR, r##"Handle Selectors"##
+            pub MQHA, mq::MQLONG, mapping::MQHA_MAPSTR, r##"Handle Selectors"##
         );
-        impl_value!(MQHA, mqsys::MQLONG);
+        impl_value!(MQHA, mq::MQLONG);
+        define_new_type!(pub MQHB, mq::MQLONG, mapping::MQHB_MAPSTR, r##"Bag Handles"##);
+        impl_value!(MQHB, mq::MQLONG);
         define_new_type!(
-            pub MQHB, mqsys::MQLONG, mapping::MQHB_MAPSTR, r##"Bag Handles"##
-        );
-        impl_value!(MQHB, mqsys::MQLONG);
-        define_new_type!(
-            pub MQIASY, mqsys::MQLONG, mapping::MQIASY_MAPSTR,
+            pub MQIASY, mq::MQLONG, mapping::MQIASY_MAPSTR,
             r##"Integer System Selectors"##
         );
-        impl_value!(MQIASY, mqsys::MQLONG);
+        impl_value!(MQIASY, mq::MQLONG);
         define_new_type!(
-            pub MQIND, mqsys::MQLONG, mapping::MQIND_MAPSTR, r##"Special Index Values"##
+            pub MQIND, mq::MQLONG, mapping::MQIND_MAPSTR, r##"Special Index Values"##
         );
-        impl_value!(MQIND, mqsys::MQLONG);
+        impl_value!(MQIND, mq::MQLONG);
         define_new_type!(
-            pub MQITEM, mqsys::MQLONG, mapping::MQITEM_MAPSTR,
+            pub MQITEM, mq::MQLONG, mapping::MQITEM_MAPSTR,
             r##"Item Types for mqInquireItemInfo"##
         );
-        impl_value!(MQITEM, mqsys::MQLONG);
+        impl_value!(MQITEM, mq::MQLONG);
         define_new_type!(
-            pub MQSEL_ALL, mqsys::MQLONG, mapping::MQSEL_ALL_MAPSTR,
+            pub MQSEL_ALL, mq::MQLONG, mapping::MQSEL_ALL_MAPSTR,
             r##"Special Selector Values"##
         );
-        impl_value!(MQSEL_ALL, mqsys::MQLONG);
+        impl_value!(MQSEL_ALL, mq::MQLONG);
         define_new_type!(
-            pub MQSEL_ANY, mqsys::MQLONG, mapping::MQSEL_ANY_MAPSTR,
+            pub MQSEL_ANY, mq::MQLONG, mapping::MQSEL_ANY_MAPSTR,
             r##"Special Selector Values"##
         );
-        impl_value!(MQSEL_ANY, mqsys::MQLONG);
+        impl_value!(MQSEL_ANY, mq::MQLONG);
     }
     #[cfg(feature = "mqai")]
     pub use mqai::*;
     #[cfg(feature = "pcf")]
     mod pcf {
-        use ::libmqm_sys::lib as mqsys;
+        use ::libmqm_sys as mq;
         use crate::mapping;
         use crate::value::{define_new_type, impl_value};
         use crate::bitflags::impl_bitflags;
         define_new_type!(
-            pub MQACTIVE, mqsys::MQLONG, mapping::MQACTIVE_MAPSTR, r##"Active Options"##
+            pub MQACTIVE, mq::MQLONG, mapping::MQACTIVE_MAPSTR, r##"Active Options"##
         );
-        impl_value!(MQACTIVE, mqsys::MQLONG);
+        impl_value!(MQACTIVE, mq::MQLONG);
         define_new_type!(
-            pub MQACT, mqsys::MQLONG, mapping::MQACT_MAPSTR, r##"Action Options"##
+            pub MQACT, mq::MQLONG, mapping::MQACT_MAPSTR, r##"Action Options"##
         );
-        impl_value!(MQACT, mqsys::MQLONG);
+        impl_value!(MQACT, mq::MQLONG);
         define_new_type!(
-            pub MQADPCTX, mqsys::MQLONG, mapping::MQADPCTX_MAPSTR,
+            pub MQADPCTX, mq::MQLONG, mapping::MQADPCTX_MAPSTR,
             r##"Authentication Adoption Context"##
         );
-        impl_value!(MQADPCTX, mqsys::MQLONG);
+        impl_value!(MQADPCTX, mq::MQLONG);
         define_new_type!(
-            pub MQAPPL, mqsys::MQLONG, mapping::MQAPPL_MAPSTR, r##"Movable Options"##
+            pub MQAPPL, mq::MQLONG, mapping::MQAPPL_MAPSTR, r##"Movable Options"##
         );
-        impl_value!(MQAPPL, mqsys::MQLONG);
+        impl_value!(MQAPPL, mq::MQLONG);
         define_new_type!(
-            pub MQAS, mqsys::MQLONG, mapping::MQAS_MAPSTR,
-            r##"Asynchronous State Values"##
+            pub MQAS, mq::MQLONG, mapping::MQAS_MAPSTR, r##"Asynchronous State Values"##
         );
-        impl_value!(MQAS, mqsys::MQLONG);
+        impl_value!(MQAS, mq::MQLONG);
         define_new_type!(
-            pub MQAUSC, mqsys::MQLONG, mapping::MQAUSC_MAPSTR,
-            r##"Authority Event Scope"##
+            pub MQAUSC, mq::MQLONG, mapping::MQAUSC_MAPSTR, r##"Authority Event Scope"##
         );
-        impl_value!(MQAUSC, mqsys::MQLONG);
+        impl_value!(MQAUSC, mq::MQLONG);
         define_new_type!(
-            pub MQAUTHENTICATE, mqsys::MQLONG, mapping::MQAUTHENTICATE_MAPSTR,
+            pub MQAUTHENTICATE, mq::MQLONG, mapping::MQAUTHENTICATE_MAPSTR,
             r##"Authentication Method"##
         );
-        impl_value!(MQAUTHENTICATE, mqsys::MQLONG);
+        impl_value!(MQAUTHENTICATE, mq::MQLONG);
         define_new_type!(
-            pub MQAUTHOPT, mqsys::MQLONG, mapping::MQAUTHOPT_MAPSTR,
+            pub MQAUTHOPT, mq::MQLONG, mapping::MQAUTHOPT_MAPSTR,
             r##"Authority Options"##
         );
-        impl_bitflags!(MQAUTHOPT, mqsys::MQLONG);
+        impl_bitflags!(MQAUTHOPT, mq::MQLONG);
         define_new_type!(
-            pub MQAUTH, mqsys::MQLONG, mapping::MQAUTH_MAPSTR, r##"Authority Values"##
+            pub MQAUTH, mq::MQLONG, mapping::MQAUTH_MAPSTR, r##"Authority Values"##
         );
-        impl_value!(MQAUTH, mqsys::MQLONG);
+        impl_value!(MQAUTH, mq::MQLONG);
         define_new_type!(
-            pub MQAUTOCLUS, mqsys::MQLONG, mapping::MQAUTOCLUS_MAPSTR,
+            pub MQAUTOCLUS, mq::MQLONG, mapping::MQAUTOCLUS_MAPSTR,
             r##"Automatic Cluster Types"##
         );
-        impl_value!(MQAUTOCLUS, mqsys::MQLONG);
+        impl_value!(MQAUTOCLUS, mq::MQLONG);
         define_new_type!(
-            pub MQBACF, mqsys::MQLONG, mapping::MQBACF_MAPSTR,
-            r##"Byte Parameter Types"##
+            pub MQBACF, mq::MQLONG, mapping::MQBACF_MAPSTR, r##"Byte Parameter Types"##
         );
-        impl_value!(MQBACF, mqsys::MQLONG);
+        impl_value!(MQBACF, mq::MQLONG);
         define_new_type!(
-            pub MQBALANCED, mqsys::MQLONG, mapping::MQBALANCED_MAPSTR,
+            pub MQBALANCED, mq::MQLONG, mapping::MQBALANCED_MAPSTR,
             r##"Balance Options"##
         );
-        impl_value!(MQBALANCED, mqsys::MQLONG);
+        impl_value!(MQBALANCED, mq::MQLONG);
         define_new_type!(
-            pub MQBALSTATE, mqsys::MQLONG, mapping::MQBALSTATE_MAPSTR,
-            r##"Balance State"##
+            pub MQBALSTATE, mq::MQLONG, mapping::MQBALSTATE_MAPSTR, r##"Balance State"##
         );
-        impl_value!(MQBALSTATE, mqsys::MQLONG);
+        impl_value!(MQBALSTATE, mq::MQLONG);
         define_new_type!(
-            pub MQBPLOCATION, mqsys::MQLONG, mapping::MQBPLOCATION_MAPSTR,
+            pub MQBPLOCATION, mq::MQLONG, mapping::MQBPLOCATION_MAPSTR,
             r##"Values for MQIACF_BUFFER_POOL_LOCATION."##
         );
-        impl_value!(MQBPLOCATION, mqsys::MQLONG);
+        impl_value!(MQBPLOCATION, mq::MQLONG);
         define_new_type!(
-            pub MQBT, mqsys::MQLONG, mapping::MQBT_MAPSTR, r##"Bridge Types"##
+            pub MQBT, mq::MQLONG, mapping::MQBT_MAPSTR, r##"Bridge Types"##
         );
-        impl_value!(MQBT, mqsys::MQLONG);
+        impl_value!(MQBT, mq::MQLONG);
         define_new_type!(
-            pub MQCACF, mqsys::MQLONG, mapping::MQCACF_MAPSTR,
+            pub MQCACF, mq::MQLONG, mapping::MQCACF_MAPSTR,
             r##"Character Parameter Types"##
         );
-        impl_value!(MQCACF, mqsys::MQLONG);
+        impl_value!(MQCACF, mq::MQLONG);
         define_new_type!(
-            pub MQCACH, mqsys::MQLONG, mapping::MQCACH_MAPSTR,
+            pub MQCACH, mq::MQLONG, mapping::MQCACH_MAPSTR,
             r##"Character Channel Parameter Types"##
         );
-        impl_value!(MQCACH, mqsys::MQLONG);
+        impl_value!(MQCACH, mq::MQLONG);
         define_new_type!(
-            pub MQCAMO, mqsys::MQLONG, mapping::MQCAMO_MAPSTR,
+            pub MQCAMO, mq::MQLONG, mapping::MQCAMO_MAPSTR,
             r##"Character Monitoring Parameter Types"##
         );
-        impl_value!(MQCAMO, mqsys::MQLONG);
+        impl_value!(MQCAMO, mq::MQLONG);
         define_new_type!(
-            pub MQCAUT, mqsys::MQLONG, mapping::MQCAUT_MAPSTR, r##"CHLAUTH Type"##
+            pub MQCAUT, mq::MQLONG, mapping::MQCAUT_MAPSTR, r##"CHLAUTH Type"##
         );
-        impl_value!(MQCAUT, mqsys::MQLONG);
+        impl_value!(MQCAUT, mq::MQLONG);
         define_new_type!(
-            pub MQCFACCESS, mqsys::MQLONG, mapping::MQCFACCESS_MAPSTR,
-            r##"Access Options"##
+            pub MQCFACCESS, mq::MQLONG, mapping::MQCFACCESS_MAPSTR, r##"Access Options"##
         );
-        impl_value!(MQCFACCESS, mqsys::MQLONG);
+        impl_value!(MQCFACCESS, mq::MQLONG);
         define_new_type!(
-            pub MQCFC, mqsys::MQLONG, mapping::MQCFC_MAPSTR, r##"Control Options"##
+            pub MQCFC, mq::MQLONG, mapping::MQCFC_MAPSTR, r##"Control Options"##
         );
-        impl_value!(MQCFC, mqsys::MQLONG);
+        impl_value!(MQCFC, mq::MQLONG);
         define_new_type!(
-            pub MQCFOP, mqsys::MQLONG, mapping::MQCFOP_MAPSTR, r##"Filter Operators"##
+            pub MQCFOP, mq::MQLONG, mapping::MQCFOP_MAPSTR, r##"Filter Operators"##
         );
-        impl_value!(MQCFOP, mqsys::MQLONG);
+        impl_value!(MQCFOP, mq::MQLONG);
         define_new_type!(
-            pub MQCFO_REFRESH, mqsys::MQLONG, mapping::MQCFO_REFRESH_MAPSTR,
+            pub MQCFO_REFRESH, mq::MQLONG, mapping::MQCFO_REFRESH_MAPSTR,
             r##"Refresh Repository Options"##
         );
-        impl_value!(MQCFO_REFRESH, mqsys::MQLONG);
+        impl_value!(MQCFO_REFRESH, mq::MQLONG);
         define_new_type!(
-            pub MQCFO_REMOVE, mqsys::MQLONG, mapping::MQCFO_REMOVE_MAPSTR,
+            pub MQCFO_REMOVE, mq::MQLONG, mapping::MQCFO_REMOVE_MAPSTR,
             r##"Remove Queues Options"##
         );
-        impl_value!(MQCFO_REMOVE, mqsys::MQLONG);
+        impl_value!(MQCFO_REMOVE, mq::MQLONG);
         define_new_type!(
-            pub MQCFSTATUS, mqsys::MQLONG, mapping::MQCFSTATUS_MAPSTR, r##"CF Status"##
+            pub MQCFSTATUS, mq::MQLONG, mapping::MQCFSTATUS_MAPSTR, r##"CF Status"##
         );
-        impl_value!(MQCFSTATUS, mqsys::MQLONG);
+        impl_value!(MQCFSTATUS, mq::MQLONG);
         define_new_type!(
-            pub MQCFTYPE, mqsys::MQLONG, mapping::MQCFTYPE_MAPSTR, r##"CF Types"##
+            pub MQCFTYPE, mq::MQLONG, mapping::MQCFTYPE_MAPSTR, r##"CF Types"##
         );
-        impl_value!(MQCFTYPE, mqsys::MQLONG);
+        impl_value!(MQCFTYPE, mq::MQLONG);
         define_new_type!(
-            pub MQCFT, mqsys::MQLONG, mapping::MQCFT_MAPSTR, r##"Types of Structure"##
+            pub MQCFT, mq::MQLONG, mapping::MQCFT_MAPSTR, r##"Types of Structure"##
         );
-        impl_value!(MQCFT, mqsys::MQLONG);
+        impl_value!(MQCFT, mq::MQLONG);
         define_new_type!(
-            pub MQCHIDS, mqsys::MQLONG, mapping::MQCHIDS_MAPSTR, r##"Indoubt Status"##
+            pub MQCHIDS, mq::MQLONG, mapping::MQCHIDS_MAPSTR, r##"Indoubt Status"##
         );
-        impl_value!(MQCHIDS, mqsys::MQLONG);
+        impl_value!(MQCHIDS, mq::MQLONG);
         define_new_type!(
-            pub MQCHK, mqsys::MQLONG, mapping::MQCHK_MAPSTR,
+            pub MQCHK, mq::MQLONG, mapping::MQCHK_MAPSTR,
             r##"Authentication Validation Types"##
         );
-        impl_value!(MQCHK, mqsys::MQLONG);
+        impl_value!(MQCHK, mq::MQLONG);
         define_new_type!(
-            pub MQCHLA, mqsys::MQLONG, mapping::MQCHLA_MAPSTR, r##"CHLAUTH QMGR State"##
+            pub MQCHLA, mq::MQLONG, mapping::MQCHLA_MAPSTR, r##"CHLAUTH QMGR State"##
         );
-        impl_value!(MQCHLA, mqsys::MQLONG);
+        impl_value!(MQCHLA, mq::MQLONG);
         define_new_type!(
-            pub MQCHLD, mqsys::MQLONG, mapping::MQCHLD_MAPSTR,
-            r##"Channel Dispositions"##
+            pub MQCHLD, mq::MQLONG, mapping::MQCHLD_MAPSTR, r##"Channel Dispositions"##
         );
-        impl_value!(MQCHLD, mqsys::MQLONG);
+        impl_value!(MQCHLD, mq::MQLONG);
         define_new_type!(
-            pub MQCHRR, mqsys::MQLONG, mapping::MQCHRR_MAPSTR,
+            pub MQCHRR, mq::MQLONG, mapping::MQCHRR_MAPSTR,
             r##"Channel reset requested"##
         );
-        impl_value!(MQCHRR, mqsys::MQLONG);
+        impl_value!(MQCHRR, mq::MQLONG);
         define_new_type!(
-            pub MQCHSH, mqsys::MQLONG, mapping::MQCHSH_MAPSTR,
+            pub MQCHSH, mq::MQLONG, mapping::MQCHSH_MAPSTR,
             r##"Channel Shared Restart Options"##
         );
-        impl_value!(MQCHSH, mqsys::MQLONG);
+        impl_value!(MQCHSH, mq::MQLONG);
         define_new_type!(
-            pub MQCHSR, mqsys::MQLONG, mapping::MQCHSR_MAPSTR,
-            r##"Channel Stop Options"##
+            pub MQCHSR, mq::MQLONG, mapping::MQCHSR_MAPSTR, r##"Channel Stop Options"##
         );
-        impl_value!(MQCHSR, mqsys::MQLONG);
+        impl_value!(MQCHSR, mq::MQLONG);
         define_new_type!(
-            pub MQCHSSTATE, mqsys::MQLONG, mapping::MQCHSSTATE_MAPSTR,
+            pub MQCHSSTATE, mq::MQLONG, mapping::MQCHSSTATE_MAPSTR,
             r##"Channel Substates"##
         );
-        impl_value!(MQCHSSTATE, mqsys::MQLONG);
+        impl_value!(MQCHSSTATE, mq::MQLONG);
         define_new_type!(
-            pub MQCHS, mqsys::MQLONG, mapping::MQCHS_MAPSTR, r##"Channel Status"##
+            pub MQCHS, mq::MQLONG, mapping::MQCHS_MAPSTR, r##"Channel Status"##
         );
-        impl_value!(MQCHS, mqsys::MQLONG);
+        impl_value!(MQCHS, mq::MQLONG);
         define_new_type!(
-            pub MQCHTAB, mqsys::MQLONG, mapping::MQCHTAB_MAPSTR,
-            r##"Channel Table Types"##
+            pub MQCHTAB, mq::MQLONG, mapping::MQCHTAB_MAPSTR, r##"Channel Table Types"##
         );
-        impl_value!(MQCHTAB, mqsys::MQLONG);
+        impl_value!(MQCHTAB, mq::MQLONG);
         define_new_type!(
-            pub MQCLROUTE, mqsys::MQLONG, mapping::MQCLROUTE_MAPSTR,
+            pub MQCLROUTE, mq::MQLONG, mapping::MQCLROUTE_MAPSTR,
             r##"CLROUTE Topic State"##
         );
-        impl_value!(MQCLROUTE, mqsys::MQLONG);
+        impl_value!(MQCLROUTE, mq::MQLONG);
         define_new_type!(
-            pub MQCLRS, mqsys::MQLONG, mapping::MQCLRS_MAPSTR,
+            pub MQCLRS, mq::MQLONG, mapping::MQCLRS_MAPSTR,
             r##"Clear Topic String Scope"##
         );
-        impl_value!(MQCLRS, mqsys::MQLONG);
+        impl_value!(MQCLRS, mq::MQLONG);
         define_new_type!(
-            pub MQCLRT, mqsys::MQLONG, mapping::MQCLRT_MAPSTR,
+            pub MQCLRT, mq::MQLONG, mapping::MQCLRT_MAPSTR,
             r##"Clear Topic String Type"##
         );
-        impl_value!(MQCLRT, mqsys::MQLONG);
+        impl_value!(MQCLRT, mq::MQLONG);
         define_new_type!(
-            pub MQCLST, mqsys::MQLONG, mapping::MQCLST_MAPSTR,
+            pub MQCLST, mq::MQLONG, mapping::MQCLST_MAPSTR,
             r##"CLSTATE Clustered Topic Definition State"##
         );
-        impl_value!(MQCLST, mqsys::MQLONG);
+        impl_value!(MQCLST, mq::MQLONG);
         define_new_type!(
-            pub MQCLXQ, mqsys::MQLONG, mapping::MQCLXQ_MAPSTR,
+            pub MQCLXQ, mq::MQLONG, mapping::MQCLXQ_MAPSTR,
             r##"Transmission queue types"##
         );
-        impl_value!(MQCLXQ, mqsys::MQLONG);
+        impl_value!(MQCLXQ, mq::MQLONG);
         define_new_type!(
-            pub MQCMDI, mqsys::MQLONG, mapping::MQCMDI_MAPSTR,
+            pub MQCMDI, mq::MQLONG, mapping::MQCMDI_MAPSTR,
             r##"Command Information Values"##
         );
-        impl_value!(MQCMDI, mqsys::MQLONG);
+        impl_value!(MQCMDI, mq::MQLONG);
         define_new_type!(
-            pub MQCMD, mqsys::MQLONG, mapping::MQCMD_MAPSTR, r##"Command Codes"##
+            pub MQCMD, mq::MQLONG, mapping::MQCMD_MAPSTR, r##"Command Codes"##
         );
-        impl_value!(MQCMD, mqsys::MQLONG);
+        impl_value!(MQCMD, mq::MQLONG);
         define_new_type!(
-            pub MQDELO, mqsys::MQLONG, mapping::MQDELO_MAPSTR, r##"Delete Options"##
+            pub MQDELO, mq::MQLONG, mapping::MQDELO_MAPSTR, r##"Delete Options"##
         );
-        impl_value!(MQDELO, mqsys::MQLONG);
+        impl_value!(MQDELO, mq::MQLONG);
         define_new_type!(
-            pub MQDISCONNECT, mqsys::MQLONG, mapping::MQDISCONNECT_MAPSTR,
+            pub MQDISCONNECT, mq::MQLONG, mapping::MQDISCONNECT_MAPSTR,
             r##"Disconnect Types"##
         );
-        impl_value!(MQDISCONNECT, mqsys::MQLONG);
+        impl_value!(MQDISCONNECT, mq::MQLONG);
         define_new_type!(
-            pub MQDOPT, mqsys::MQLONG, mapping::MQDOPT_MAPSTR,
+            pub MQDOPT, mq::MQLONG, mapping::MQDOPT_MAPSTR,
             r##"Display Subscription Types"##
         );
-        impl_value!(MQDOPT, mqsys::MQLONG);
+        impl_value!(MQDOPT, mq::MQLONG);
         define_new_type!(
-            pub MQEPH, mqsys::MQLONG, mapping::MQEPH_MAPSTR, r##"MQEPH Flags"##
+            pub MQEPH, mq::MQLONG, mapping::MQEPH_MAPSTR, r##"MQEPH Flags"##
         );
-        impl_value!(MQEPH, mqsys::MQLONG);
+        impl_value!(MQEPH, mq::MQLONG);
         define_new_type!(
-            pub MQET, mqsys::MQLONG, mapping::MQET_MAPSTR, r##"Escape Types"##
+            pub MQET, mq::MQLONG, mapping::MQET_MAPSTR, r##"Escape Types"##
         );
-        impl_value!(MQET, mqsys::MQLONG);
+        impl_value!(MQET, mq::MQLONG);
         define_new_type!(
-            pub MQEVO, mqsys::MQLONG, mapping::MQEVO_MAPSTR, r##"Event Origins"##
+            pub MQEVO, mq::MQLONG, mapping::MQEVO_MAPSTR, r##"Event Origins"##
         );
-        impl_value!(MQEVO, mqsys::MQLONG);
+        impl_value!(MQEVO, mq::MQLONG);
         define_new_type!(
-            pub MQEVR, mqsys::MQLONG, mapping::MQEVR_MAPSTR, r##"Event Recording"##
+            pub MQEVR, mq::MQLONG, mapping::MQEVR_MAPSTR, r##"Event Recording"##
         );
-        impl_value!(MQEVR, mqsys::MQLONG);
+        impl_value!(MQEVR, mq::MQLONG);
         define_new_type!(
-            pub MQEXTATTRS, mqsys::MQLONG, mapping::MQEXTATTRS_MAPSTR,
-            r##"Export Attrs"##
+            pub MQEXTATTRS, mq::MQLONG, mapping::MQEXTATTRS_MAPSTR, r##"Export Attrs"##
         );
-        impl_value!(MQEXTATTRS, mqsys::MQLONG);
+        impl_value!(MQEXTATTRS, mq::MQLONG);
         define_new_type!(
-            pub MQEXT, mqsys::MQLONG, mapping::MQEXT_MAPSTR, r##"Export Type"##
+            pub MQEXT, mq::MQLONG, mapping::MQEXT_MAPSTR, r##"Export Type"##
         );
-        impl_value!(MQEXT, mqsys::MQLONG);
+        impl_value!(MQEXT, mq::MQLONG);
         define_new_type!(
-            pub MQFC, mqsys::MQLONG, mapping::MQFC_MAPSTR, r##"Force Options"##
+            pub MQFC, mq::MQLONG, mapping::MQFC_MAPSTR, r##"Force Options"##
         );
-        impl_value!(MQFC, mqsys::MQLONG);
+        impl_value!(MQFC, mq::MQLONG);
         define_new_type!(
-            pub MQFSENC, mqsys::MQLONG, mapping::MQFSENC_MAPSTR,
+            pub MQFSENC, mq::MQLONG, mapping::MQFSENC_MAPSTR,
             r##"File System Encryption Values"##
         );
-        impl_value!(MQFSENC, mqsys::MQLONG);
+        impl_value!(MQFSENC, mq::MQLONG);
         define_new_type!(
-            pub MQFS, mqsys::MQLONG, mapping::MQFS_MAPSTR,
-            r##"File System Sharing Values"##
+            pub MQFS, mq::MQLONG, mapping::MQFS_MAPSTR, r##"File System Sharing Values"##
         );
-        impl_value!(MQFS, mqsys::MQLONG);
+        impl_value!(MQFS, mq::MQLONG);
         define_new_type!(
-            pub MQGACF, mqsys::MQLONG, mapping::MQGACF_MAPSTR,
-            r##"Group Parameter Types"##
+            pub MQGACF, mq::MQLONG, mapping::MQGACF_MAPSTR, r##"Group Parameter Types"##
         );
-        impl_value!(MQGACF, mqsys::MQLONG);
+        impl_value!(MQGACF, mq::MQLONG);
         define_new_type!(
-            pub MQGUR, mqsys::MQLONG, mapping::MQGUR_MAPSTR,
+            pub MQGUR, mq::MQLONG, mapping::MQGUR_MAPSTR,
             r##"Grouped Units of Recovery"##
         );
-        impl_value!(MQGUR, mqsys::MQLONG);
+        impl_value!(MQGUR, mq::MQLONG);
         define_new_type!(
-            pub MQHSTATE, mqsys::MQLONG, mapping::MQHSTATE_MAPSTR, r##"Handle States"##
+            pub MQHSTATE, mq::MQLONG, mapping::MQHSTATE_MAPSTR, r##"Handle States"##
         );
-        impl_value!(MQHSTATE, mqsys::MQLONG);
+        impl_value!(MQHSTATE, mq::MQLONG);
         define_new_type!(
-            pub MQIACF, mqsys::MQLONG, mapping::MQIACF_MAPSTR,
+            pub MQIACF, mq::MQLONG, mapping::MQIACF_MAPSTR,
             r##"Integer Parameter Types"##
         );
-        impl_value!(MQIACF, mqsys::MQLONG);
+        impl_value!(MQIACF, mq::MQLONG);
         define_new_type!(
-            pub MQIACH, mqsys::MQLONG, mapping::MQIACH_MAPSTR,
-            r##"Integer Channel Types"##
+            pub MQIACH, mq::MQLONG, mapping::MQIACH_MAPSTR, r##"Integer Channel Types"##
         );
-        impl_value!(MQIACH, mqsys::MQLONG);
+        impl_value!(MQIACH, mq::MQLONG);
         define_new_type!(
-            pub MQIAMO64, mqsys::MQLONG, mapping::MQIAMO64_MAPSTR,
+            pub MQIAMO64, mq::MQLONG, mapping::MQIAMO64_MAPSTR,
             r##"Integer Monitoring Parameter Types"##
         );
-        impl_value!(MQIAMO64, mqsys::MQLONG);
+        impl_value!(MQIAMO64, mq::MQLONG);
         define_new_type!(
-            pub MQIAMO, mqsys::MQLONG, mapping::MQIAMO_MAPSTR,
+            pub MQIAMO, mq::MQLONG, mapping::MQIAMO_MAPSTR,
             r##"Integer Monitoring Parameter Types"##
         );
-        impl_value!(MQIAMO, mqsys::MQLONG);
+        impl_value!(MQIAMO, mq::MQLONG);
         define_new_type!(
-            pub MQIAMO_MONITOR_DATATYPE, mqsys::MQLONG,
+            pub MQIAMO_MONITOR_DATATYPE, mq::MQLONG,
             mapping::MQIAMO_MONITOR_DATATYPE_MAPSTR,
             r##"Defined values for MQIAMO_MONITOR_DATATYPE"##
         );
-        impl_value!(MQIAMO_MONITOR_DATATYPE, mqsys::MQLONG);
+        impl_value!(MQIAMO_MONITOR_DATATYPE, mq::MQLONG);
         define_new_type!(
-            pub MQIAMO_MONITOR_FLAGS, mqsys::MQLONG,
-            mapping::MQIAMO_MONITOR_FLAGS_MAPSTR,
+            pub MQIAMO_MONITOR_FLAGS, mq::MQLONG, mapping::MQIAMO_MONITOR_FLAGS_MAPSTR,
             r##"Defined values for MQIAMO_MONITOR_FLAGS"##
         );
-        impl_value!(MQIAMO_MONITOR_FLAGS, mqsys::MQLONG);
+        impl_value!(MQIAMO_MONITOR_FLAGS, mq::MQLONG);
         define_new_type!(
-            pub MQIDO, mqsys::MQLONG, mapping::MQIDO_MAPSTR, r##"Indoubt Options"##
+            pub MQIDO, mq::MQLONG, mapping::MQIDO_MAPSTR, r##"Indoubt Options"##
         );
-        impl_value!(MQIDO, mqsys::MQLONG);
+        impl_value!(MQIDO, mq::MQLONG);
         define_new_type!(
-            pub MQIMMREASON, mqsys::MQLONG, mapping::MQIMMREASON_MAPSTR,
+            pub MQIMMREASON, mq::MQLONG, mapping::MQIMMREASON_MAPSTR,
             r##"Immovable Reasons"##
         );
-        impl_value!(MQIMMREASON, mqsys::MQLONG);
+        impl_value!(MQIMMREASON, mq::MQLONG);
         define_new_type!(
-            pub MQINBD, mqsys::MQLONG, mapping::MQINBD_MAPSTR,
-            r##"Inbound Dispositions"##
+            pub MQINBD, mq::MQLONG, mapping::MQINBD_MAPSTR, r##"Inbound Dispositions"##
         );
-        impl_value!(MQINBD, mqsys::MQLONG);
+        impl_value!(MQINBD, mq::MQLONG);
         define_new_type!(
-            pub MQIS, mqsys::MQLONG, mapping::MQIS_MAPSTR, r##"State Options"##
+            pub MQIS, mq::MQLONG, mapping::MQIS_MAPSTR, r##"State Options"##
         );
-        impl_value!(MQIS, mqsys::MQLONG);
+        impl_value!(MQIS, mq::MQLONG);
         define_new_type!(
-            pub MQLDAPC, mqsys::MQLONG, mapping::MQLDAPC_MAPSTR,
+            pub MQLDAPC, mq::MQLONG, mapping::MQLDAPC_MAPSTR,
             r##"QMgr LDAP Connection Status"##
         );
-        impl_value!(MQLDAPC, mqsys::MQLONG);
+        impl_value!(MQLDAPC, mq::MQLONG);
         define_new_type!(
-            pub MQLDAP_AUTHORMD, mqsys::MQLONG, mapping::MQLDAP_AUTHORMD_MAPSTR,
+            pub MQLDAP_AUTHORMD, mq::MQLONG, mapping::MQLDAP_AUTHORMD_MAPSTR,
             r##"LDAP Authorisation Method"##
         );
-        impl_value!(MQLDAP_AUTHORMD, mqsys::MQLONG);
+        impl_value!(MQLDAP_AUTHORMD, mq::MQLONG);
         define_new_type!(
-            pub MQLDAP_NESTGRP, mqsys::MQLONG, mapping::MQLDAP_NESTGRP_MAPSTR,
+            pub MQLDAP_NESTGRP, mq::MQLONG, mapping::MQLDAP_NESTGRP_MAPSTR,
             r##"LDAP Nested Group Policy"##
         );
-        impl_value!(MQLDAP_NESTGRP, mqsys::MQLONG);
+        impl_value!(MQLDAP_NESTGRP, mq::MQLONG);
         define_new_type!(
-            pub MQLOGTYPE, mqsys::MQLONG, mapping::MQLOGTYPE_MAPSTR, r##"Log Types"##
+            pub MQLOGTYPE, mq::MQLONG, mapping::MQLOGTYPE_MAPSTR, r##"Log Types"##
         );
-        impl_value!(MQLOGTYPE, mqsys::MQLONG);
+        impl_value!(MQLOGTYPE, mq::MQLONG);
         define_new_type!(
-            pub MQLR, mqsys::MQLONG, mapping::MQLR_MAPSTR, r##"Reduce Log Options"##
+            pub MQLR, mq::MQLONG, mapping::MQLR_MAPSTR, r##"Reduce Log Options"##
         );
-        impl_value!(MQLR, mqsys::MQLONG);
+        impl_value!(MQLR, mq::MQLONG);
         define_new_type!(
-            pub MQMATCH, mqsys::MQLONG, mapping::MQMATCH_MAPSTR, r##"Match Types"##
+            pub MQMATCH, mq::MQLONG, mapping::MQMATCH_MAPSTR, r##"Match Types"##
         );
-        impl_value!(MQMATCH, mqsys::MQLONG);
+        impl_value!(MQMATCH, mq::MQLONG);
         define_new_type!(
-            pub MQMCAS, mqsys::MQLONG, mapping::MQMCAS_MAPSTR,
+            pub MQMCAS, mq::MQLONG, mapping::MQMCAS_MAPSTR,
             r##"Message Channel Agent Status"##
         );
-        impl_value!(MQMCAS, mqsys::MQLONG);
+        impl_value!(MQMCAS, mq::MQLONG);
         define_new_type!(
-            pub MQMCP, mqsys::MQLONG, mapping::MQMCP_MAPSTR,
+            pub MQMCP, mq::MQLONG, mapping::MQMCP_MAPSTR,
             r##"Multicast Properties Options"##
         );
-        impl_value!(MQMCP, mqsys::MQLONG);
+        impl_value!(MQMCP, mq::MQLONG);
         define_new_type!(
-            pub MQMLP_ENCRYPTION, mqsys::MQLONG, mapping::MQMLP_ENCRYPTION_MAPSTR,
+            pub MQMLP_ENCRYPTION, mq::MQLONG, mapping::MQMLP_ENCRYPTION_MAPSTR,
             r##"Message Level Protection"##
         );
-        impl_value!(MQMLP_ENCRYPTION, mqsys::MQLONG);
+        impl_value!(MQMLP_ENCRYPTION, mq::MQLONG);
         define_new_type!(
-            pub MQMLP_SIGN, mqsys::MQLONG, mapping::MQMLP_SIGN_MAPSTR,
+            pub MQMLP_SIGN, mq::MQLONG, mapping::MQMLP_SIGN_MAPSTR,
             r##"Message Level Protection"##
         );
-        impl_value!(MQMLP_SIGN, mqsys::MQLONG);
+        impl_value!(MQMLP_SIGN, mq::MQLONG);
         define_new_type!(
-            pub MQMLP_TOLERATE, mqsys::MQLONG, mapping::MQMLP_TOLERATE_MAPSTR,
+            pub MQMLP_TOLERATE, mq::MQLONG, mapping::MQMLP_TOLERATE_MAPSTR,
             r##"Message Level Protection"##
         );
-        impl_value!(MQMLP_TOLERATE, mqsys::MQLONG);
+        impl_value!(MQMLP_TOLERATE, mq::MQLONG);
         define_new_type!(
-            pub MQMODE, mqsys::MQLONG, mapping::MQMODE_MAPSTR, r##"Mode Options"##
+            pub MQMODE, mq::MQLONG, mapping::MQMODE_MAPSTR, r##"Mode Options"##
         );
-        impl_value!(MQMODE, mqsys::MQLONG);
+        impl_value!(MQMODE, mq::MQLONG);
         define_new_type!(
-            pub MQMULC, mqsys::MQLONG, mapping::MQMULC_MAPSTR,
-            r##"Measured usage by API"##
+            pub MQMULC, mq::MQLONG, mapping::MQMULC_MAPSTR, r##"Measured usage by API"##
         );
-        impl_value!(MQMULC, mqsys::MQLONG);
+        impl_value!(MQMULC, mq::MQLONG);
         define_new_type!(
-            pub MQNHABACKLOG, mqsys::MQLONG, mapping::MQNHABACKLOG_MAPSTR,
+            pub MQNHABACKLOG, mq::MQLONG, mapping::MQNHABACKLOG_MAPSTR,
             r##"Native HA Backlog Values"##
         );
-        impl_value!(MQNHABACKLOG, mqsys::MQLONG);
+        impl_value!(MQNHABACKLOG, mq::MQLONG);
         define_new_type!(
-            pub MQNHACONNACTV, mqsys::MQLONG, mapping::MQNHACONNACTV_MAPSTR,
+            pub MQNHACONNACTV, mq::MQLONG, mapping::MQNHACONNACTV_MAPSTR,
             r##"Native HA Active Connection Values"##
         );
-        impl_value!(MQNHACONNACTV, mqsys::MQLONG);
+        impl_value!(MQNHACONNACTV, mq::MQLONG);
         define_new_type!(
-            pub MQNHACONNGRP, mqsys::MQLONG, mapping::MQNHACONNGRP_MAPSTR,
+            pub MQNHACONNGRP, mq::MQLONG, mapping::MQNHACONNGRP_MAPSTR,
             r##"Native HA Group Connected Values"##
         );
-        impl_value!(MQNHACONNGRP, mqsys::MQLONG);
+        impl_value!(MQNHACONNGRP, mq::MQLONG);
         define_new_type!(
-            pub MQNHAGRPROLE, mqsys::MQLONG, mapping::MQNHAGRPROLE_MAPSTR,
+            pub MQNHAGRPROLE, mq::MQLONG, mapping::MQNHAGRPROLE_MAPSTR,
             r##"Native HA Group Roles"##
         );
-        impl_value!(MQNHAGRPROLE, mqsys::MQLONG);
+        impl_value!(MQNHAGRPROLE, mq::MQLONG);
         define_new_type!(
-            pub MQNHAINSYNC, mqsys::MQLONG, mapping::MQNHAINSYNC_MAPSTR,
+            pub MQNHAINSYNC, mq::MQLONG, mapping::MQNHAINSYNC_MAPSTR,
             r##"Native HA In Sync Values"##
         );
-        impl_value!(MQNHAINSYNC, mqsys::MQLONG);
+        impl_value!(MQNHAINSYNC, mq::MQLONG);
         define_new_type!(
-            pub MQNHAROLE, mqsys::MQLONG, mapping::MQNHAROLE_MAPSTR,
+            pub MQNHAROLE, mq::MQLONG, mapping::MQNHAROLE_MAPSTR,
             r##"Native HA Instance Roles"##
         );
-        impl_value!(MQNHAROLE, mqsys::MQLONG);
+        impl_value!(MQNHAROLE, mq::MQLONG);
         define_new_type!(
-            pub MQNHASTATUS, mqsys::MQLONG, mapping::MQNHASTATUS_MAPSTR,
+            pub MQNHASTATUS, mq::MQLONG, mapping::MQNHASTATUS_MAPSTR,
             r##"Native HA Status Values"##
         );
-        impl_value!(MQNHASTATUS, mqsys::MQLONG);
+        impl_value!(MQNHASTATUS, mq::MQLONG);
         define_new_type!(
-            pub MQNHATYPE, mqsys::MQLONG, mapping::MQNHATYPE_MAPSTR,
-            r##"Native HA Types"##
+            pub MQNHATYPE, mq::MQLONG, mapping::MQNHATYPE_MAPSTR, r##"Native HA Types"##
         );
-        impl_value!(MQNHATYPE, mqsys::MQLONG);
+        impl_value!(MQNHATYPE, mq::MQLONG);
         define_new_type!(
-            pub MQNSH, mqsys::MQLONG, mapping::MQNSH_MAPSTR,
+            pub MQNSH, mq::MQLONG, mapping::MQNSH_MAPSTR,
             r##"Multicast New Subscriber History Options"##
         );
-        impl_value!(MQNSH, mqsys::MQLONG);
+        impl_value!(MQNSH, mq::MQLONG);
         define_new_type!(
-            pub MQOPER, mqsys::MQLONG, mapping::MQOPER_MAPSTR, r##"Activity Operations"##
+            pub MQOPER, mq::MQLONG, mapping::MQOPER_MAPSTR, r##"Activity Operations"##
         );
-        impl_value!(MQOPER, mqsys::MQLONG);
+        impl_value!(MQOPER, mq::MQLONG);
         define_new_type!(
-            pub MQOPMODE, mqsys::MQLONG, mapping::MQOPMODE_MAPSTR,
+            pub MQOPMODE, mq::MQLONG, mapping::MQOPMODE_MAPSTR,
             r##"Major Release Function"##
         );
-        impl_value!(MQOPMODE, mqsys::MQLONG);
+        impl_value!(MQOPMODE, mq::MQLONG);
         define_new_type!(
-            pub MQPAGECLAS, mqsys::MQLONG, mapping::MQPAGECLAS_MAPSTR,
+            pub MQPAGECLAS, mq::MQLONG, mapping::MQPAGECLAS_MAPSTR,
             r##"Values for MQIACF_PAGECLAS."##
         );
-        impl_value!(MQPAGECLAS, mqsys::MQLONG);
+        impl_value!(MQPAGECLAS, mq::MQLONG);
         define_new_type!(
-            pub MQPO, mqsys::MQLONG, mapping::MQPO_MAPSTR, r##"Purge Options"##
+            pub MQPO, mq::MQLONG, mapping::MQPO_MAPSTR, r##"Purge Options"##
         );
-        impl_value!(MQPO, mqsys::MQLONG);
+        impl_value!(MQPO, mq::MQLONG);
         define_new_type!(
-            pub MQPSCT, mqsys::MQLONG, mapping::MQPSCT_MAPSTR,
-            r##"Pub/Sub Status Counts"##
+            pub MQPSCT, mq::MQLONG, mapping::MQPSCT_MAPSTR, r##"Pub/Sub Status Counts"##
         );
-        impl_value!(MQPSCT, mqsys::MQLONG);
+        impl_value!(MQPSCT, mq::MQLONG);
         define_new_type!(
-            pub MQPSST, mqsys::MQLONG, mapping::MQPSST_MAPSTR, r##"Pub/Sub Status Type"##
+            pub MQPSST, mq::MQLONG, mapping::MQPSST_MAPSTR, r##"Pub/Sub Status Type"##
         );
-        impl_value!(MQPSST, mqsys::MQLONG);
+        impl_value!(MQPSST, mq::MQLONG);
         define_new_type!(
-            pub MQPS, mqsys::MQLONG, mapping::MQPS_MAPSTR, r##"Pub/Sub Status"##
+            pub MQPS, mq::MQLONG, mapping::MQPS_MAPSTR, r##"Pub/Sub Status"##
         );
-        impl_value!(MQPS, mqsys::MQLONG);
+        impl_value!(MQPS, mq::MQLONG);
         define_new_type!(
-            pub MQPUBO, mqsys::MQLONG, mapping::MQPUBO_MAPSTR, r##"Publication Options"##
+            pub MQPUBO, mq::MQLONG, mapping::MQPUBO_MAPSTR, r##"Publication Options"##
         );
-        impl_bitflags!(MQPUBO, mqsys::MQLONG);
+        impl_bitflags!(MQPUBO, mq::MQLONG);
         define_new_type!(
-            pub MQQMDT, mqsys::MQLONG, mapping::MQQMDT_MAPSTR,
+            pub MQQMDT, mq::MQLONG, mapping::MQQMDT_MAPSTR,
             r##"Queue Manager Definition Types"##
         );
-        impl_value!(MQQMDT, mqsys::MQLONG);
+        impl_value!(MQQMDT, mq::MQLONG);
         define_new_type!(
-            pub MQQMFAC, mqsys::MQLONG, mapping::MQQMFAC_MAPSTR,
+            pub MQQMFAC, mq::MQLONG, mapping::MQQMFAC_MAPSTR,
             r##"Queue Manager Facility"##
         );
-        impl_value!(MQQMFAC, mqsys::MQLONG);
+        impl_value!(MQQMFAC, mq::MQLONG);
         define_new_type!(
-            pub MQQMSTA, mqsys::MQLONG, mapping::MQQMSTA_MAPSTR,
-            r##"Queue Manager Status"##
+            pub MQQMSTA, mq::MQLONG, mapping::MQQMSTA_MAPSTR, r##"Queue Manager Status"##
         );
-        impl_value!(MQQMSTA, mqsys::MQLONG);
+        impl_value!(MQQMSTA, mq::MQLONG);
         define_new_type!(
-            pub MQQMT, mqsys::MQLONG, mapping::MQQMT_MAPSTR, r##"Queue Manager Types"##
+            pub MQQMT, mq::MQLONG, mapping::MQQMT_MAPSTR, r##"Queue Manager Types"##
         );
-        impl_value!(MQQMT, mqsys::MQLONG);
+        impl_value!(MQQMT, mq::MQLONG);
         define_new_type!(
-            pub MQQO, mqsys::MQLONG, mapping::MQQO_MAPSTR, r##"Quiesce Options"##
+            pub MQQO, mq::MQLONG, mapping::MQQO_MAPSTR, r##"Quiesce Options"##
         );
-        impl_value!(MQQO, mqsys::MQLONG);
+        impl_value!(MQQO, mq::MQLONG);
         define_new_type!(
-            pub MQQSGS, mqsys::MQLONG, mapping::MQQSGS_MAPSTR, r##"QSG Status"##
+            pub MQQSGS, mq::MQLONG, mapping::MQQSGS_MAPSTR, r##"QSG Status"##
         );
-        impl_value!(MQQSGS, mqsys::MQLONG);
+        impl_value!(MQQSGS, mq::MQLONG);
         define_new_type!(
-            pub MQQSIE, mqsys::MQLONG, mapping::MQQSIE_MAPSTR,
+            pub MQQSIE, mq::MQLONG, mapping::MQQSIE_MAPSTR,
             r##"Queue Service-Interval Events"##
         );
-        impl_value!(MQQSIE, mqsys::MQLONG);
+        impl_value!(MQQSIE, mq::MQLONG);
         define_new_type!(
-            pub MQQSOT, mqsys::MQLONG, mapping::MQQSOT_MAPSTR,
+            pub MQQSOT, mq::MQLONG, mapping::MQQSOT_MAPSTR,
             r##"Queue Status Open Types"##
         );
-        impl_value!(MQQSOT, mqsys::MQLONG);
+        impl_value!(MQQSOT, mq::MQLONG);
         define_new_type!(
-            pub MQQSO, mqsys::MQLONG, mapping::MQQSO_MAPSTR,
+            pub MQQSO, mq::MQLONG, mapping::MQQSO_MAPSTR,
             r##"Queue Status Open Options for SET, BROWSE, INPUT"##
         );
-        impl_value!(MQQSO, mqsys::MQLONG);
+        impl_value!(MQQSO, mq::MQLONG);
         define_new_type!(
-            pub MQQSUM, mqsys::MQLONG, mapping::MQQSUM_MAPSTR,
+            pub MQQSUM, mq::MQLONG, mapping::MQQSUM_MAPSTR,
             r##"Queue Status Uncommitted Messages"##
         );
-        impl_value!(MQQSUM, mqsys::MQLONG);
+        impl_value!(MQQSUM, mq::MQLONG);
         define_new_type!(
-            pub MQRAR, mqsys::MQLONG, mapping::MQRAR_MAPSTR,
+            pub MQRAR, mq::MQLONG, mapping::MQRAR_MAPSTR,
             r##"Remove Authority Record Options"##
         );
-        impl_value!(MQRAR, mqsys::MQLONG);
+        impl_value!(MQRAR, mq::MQLONG);
         define_new_type!(
-            pub MQRCCF, mqsys::MQLONG, mapping::MQRCCF_MAPSTR, r##"Reason Codes"##
+            pub MQRCCF, mq::MQLONG, mapping::MQRCCF_MAPSTR, r##"Reason Codes"##
         );
-        impl_value!(MQRCCF, mqsys::MQLONG);
+        impl_value!(MQRCCF, mq::MQLONG);
         define_new_type!(
-            pub MQRDNS, mqsys::MQLONG, mapping::MQRDNS_MAPSTR, r##"REVDNS QMGR State"##
+            pub MQRDNS, mq::MQLONG, mapping::MQRDNS_MAPSTR, r##"REVDNS QMGR State"##
         );
-        impl_value!(MQRDNS, mqsys::MQLONG);
+        impl_value!(MQRDNS, mq::MQLONG);
         define_new_type!(
-            pub MQREGO, mqsys::MQLONG, mapping::MQREGO_MAPSTR,
-            r##"Registration Options"##
+            pub MQREGO, mq::MQLONG, mapping::MQREGO_MAPSTR, r##"Registration Options"##
         );
-        impl_bitflags!(MQREGO, mqsys::MQLONG);
+        impl_bitflags!(MQREGO, mq::MQLONG);
         define_new_type!(
-            pub MQROUTE, mqsys::MQLONG, mapping::MQROUTE_MAPSTR,
+            pub MQROUTE, mq::MQLONG, mapping::MQROUTE_MAPSTR,
             r##"Trace-route Accumulation (MQIACF_ROUTE_ACCUMULATION)"##
         );
-        impl_value!(MQROUTE, mqsys::MQLONG);
+        impl_value!(MQROUTE, mq::MQLONG);
         define_new_type!(
-            pub MQRP, mqsys::MQLONG, mapping::MQRP_MAPSTR, r##"Replace Options"##
+            pub MQRP, mq::MQLONG, mapping::MQRP_MAPSTR, r##"Replace Options"##
         );
-        impl_value!(MQRP, mqsys::MQLONG);
+        impl_value!(MQRP, mq::MQLONG);
         define_new_type!(
-            pub MQRQ, mqsys::MQLONG, mapping::MQRQ_MAPSTR, r##"Reason Qualifiers"##
+            pub MQRQ, mq::MQLONG, mapping::MQRQ_MAPSTR, r##"Reason Qualifiers"##
         );
-        impl_value!(MQRQ, mqsys::MQLONG);
+        impl_value!(MQRQ, mq::MQLONG);
         define_new_type!(
-            pub MQRT, mqsys::MQLONG, mapping::MQRT_MAPSTR, r##"Refresh Types"##
+            pub MQRT, mq::MQLONG, mapping::MQRT_MAPSTR, r##"Refresh Types"##
         );
-        impl_value!(MQRT, mqsys::MQLONG);
+        impl_value!(MQRT, mq::MQLONG);
         define_new_type!(
-            pub MQSECCOMM, mqsys::MQLONG, mapping::MQSECCOMM_MAPSTR,
+            pub MQSECCOMM, mq::MQLONG, mapping::MQSECCOMM_MAPSTR,
             r##"LDAP SSL/TLS Connection State"##
         );
-        impl_value!(MQSECCOMM, mqsys::MQLONG);
+        impl_value!(MQSECCOMM, mq::MQLONG);
         define_new_type!(
-            pub MQSECITEM, mqsys::MQLONG, mapping::MQSECITEM_MAPSTR,
-            r##"Security Items"##
+            pub MQSECITEM, mq::MQLONG, mapping::MQSECITEM_MAPSTR, r##"Security Items"##
         );
-        impl_value!(MQSECITEM, mqsys::MQLONG);
+        impl_value!(MQSECITEM, mq::MQLONG);
         define_new_type!(
-            pub MQSECSW, mqsys::MQLONG, mapping::MQSECSW_MAPSTR,
+            pub MQSECSW, mq::MQLONG, mapping::MQSECSW_MAPSTR,
             r##"Security Switch States"##
         );
-        impl_value!(MQSECSW, mqsys::MQLONG);
+        impl_value!(MQSECSW, mq::MQLONG);
         define_new_type!(
-            pub MQSECTYPE, mqsys::MQLONG, mapping::MQSECTYPE_MAPSTR,
-            r##"Security Types"##
+            pub MQSECTYPE, mq::MQLONG, mapping::MQSECTYPE_MAPSTR, r##"Security Types"##
         );
-        impl_value!(MQSECTYPE, mqsys::MQLONG);
+        impl_value!(MQSECTYPE, mq::MQLONG);
         define_new_type!(
-            pub MQSELTYPE, mqsys::MQLONG, mapping::MQSELTYPE_MAPSTR,
-            r##"Selector types"##
+            pub MQSELTYPE, mq::MQLONG, mapping::MQSELTYPE_MAPSTR, r##"Selector types"##
         );
-        impl_value!(MQSELTYPE, mqsys::MQLONG);
+        impl_value!(MQSELTYPE, mq::MQLONG);
         define_new_type!(
-            pub MQSTDBY, mqsys::MQLONG, mapping::MQSTDBY_MAPSTR,
+            pub MQSTDBY, mq::MQLONG, mapping::MQSTDBY_MAPSTR,
             r##"Multi-instance Queue Managers"##
         );
-        impl_value!(MQSTDBY, mqsys::MQLONG);
+        impl_value!(MQSTDBY, mq::MQLONG);
         define_new_type!(
-            pub MQSUBTYPE, mqsys::MQLONG, mapping::MQSUBTYPE_MAPSTR,
+            pub MQSUBTYPE, mq::MQLONG, mapping::MQSUBTYPE_MAPSTR,
             r##"Subscription Types"##
         );
-        impl_value!(MQSUBTYPE, mqsys::MQLONG);
+        impl_value!(MQSUBTYPE, mq::MQLONG);
         define_new_type!(
-            pub MQSUS, mqsys::MQLONG, mapping::MQSUS_MAPSTR, r##"Suspend Status"##
+            pub MQSUS, mq::MQLONG, mapping::MQSUS_MAPSTR, r##"Suspend Status"##
         );
-        impl_value!(MQSUS, mqsys::MQLONG);
+        impl_value!(MQSUS, mq::MQLONG);
         define_new_type!(
-            pub MQSYNCPOINT, mqsys::MQLONG, mapping::MQSYNCPOINT_MAPSTR,
+            pub MQSYNCPOINT, mq::MQLONG, mapping::MQSYNCPOINT_MAPSTR,
             r##"Syncpoint values for Pub/Sub migration"##
         );
-        impl_value!(MQSYNCPOINT, mqsys::MQLONG);
+        impl_value!(MQSYNCPOINT, mq::MQLONG);
         define_new_type!(
-            pub MQSYSOBJ, mqsys::MQLONG, mapping::MQSYSOBJ_MAPSTR, r##"System Objects"##
+            pub MQSYSOBJ, mq::MQLONG, mapping::MQSYSOBJ_MAPSTR, r##"System Objects"##
         );
-        impl_value!(MQSYSOBJ, mqsys::MQLONG);
+        impl_value!(MQSYSOBJ, mq::MQLONG);
         define_new_type!(
-            pub MQSYSP, mqsys::MQLONG, mapping::MQSYSP_MAPSTR,
+            pub MQSYSP, mq::MQLONG, mapping::MQSYSP_MAPSTR,
             r##"System Parameter Values"##
         );
-        impl_value!(MQSYSP, mqsys::MQLONG);
+        impl_value!(MQSYSP, mq::MQLONG);
         define_new_type!(
-            pub MQS_AVAIL, mqsys::MQLONG, mapping::MQS_AVAIL_MAPSTR,
+            pub MQS_AVAIL, mq::MQLONG, mapping::MQS_AVAIL_MAPSTR,
             r##"SMDS Availability Options"##
         );
-        impl_value!(MQS_AVAIL, mqsys::MQLONG);
+        impl_value!(MQS_AVAIL, mq::MQLONG);
         define_new_type!(
-            pub MQS_EXPANDST, mqsys::MQLONG, mapping::MQS_EXPANDST_MAPSTR,
+            pub MQS_EXPANDST, mq::MQLONG, mapping::MQS_EXPANDST_MAPSTR,
             r##"Expandst Options"##
         );
-        impl_value!(MQS_EXPANDST, mqsys::MQLONG);
+        impl_value!(MQS_EXPANDST, mq::MQLONG);
         define_new_type!(
-            pub MQS_OPENMODE, mqsys::MQLONG, mapping::MQS_OPENMODE_MAPSTR,
+            pub MQS_OPENMODE, mq::MQLONG, mapping::MQS_OPENMODE_MAPSTR,
             r##"Open Mode Options"##
         );
-        impl_value!(MQS_OPENMODE, mqsys::MQLONG);
+        impl_value!(MQS_OPENMODE, mq::MQLONG);
         define_new_type!(
-            pub MQS_STATUS, mqsys::MQLONG, mapping::MQS_STATUS_MAPSTR,
+            pub MQS_STATUS, mq::MQLONG, mapping::MQS_STATUS_MAPSTR,
             r##"SMDS Status Options"##
         );
-        impl_value!(MQS_STATUS, mqsys::MQLONG);
+        impl_value!(MQS_STATUS, mq::MQLONG);
         define_new_type!(
-            pub MQTIME, mqsys::MQLONG, mapping::MQTIME_MAPSTR, r##"Time units"##
+            pub MQTIME, mq::MQLONG, mapping::MQTIME_MAPSTR, r##"Time units"##
         );
-        impl_value!(MQTIME, mqsys::MQLONG);
+        impl_value!(MQTIME, mq::MQLONG);
         define_new_type!(
-            pub MQUCI, mqsys::MQLONG, mapping::MQUCI_MAPSTR, r##"Use ClientID"##
+            pub MQUCI, mq::MQLONG, mapping::MQUCI_MAPSTR, r##"Use ClientID"##
         );
-        impl_value!(MQUCI, mqsys::MQLONG);
+        impl_value!(MQUCI, mq::MQLONG);
         define_new_type!(
-            pub MQUIDSUPP, mqsys::MQLONG, mapping::MQUIDSUPP_MAPSTR,
-            r##"User ID Support"##
+            pub MQUIDSUPP, mq::MQLONG, mapping::MQUIDSUPP_MAPSTR, r##"User ID Support"##
         );
-        impl_value!(MQUIDSUPP, mqsys::MQLONG);
+        impl_value!(MQUIDSUPP, mq::MQLONG);
         define_new_type!(
-            pub MQUNDELIVERED, mqsys::MQLONG, mapping::MQUNDELIVERED_MAPSTR,
+            pub MQUNDELIVERED, mq::MQLONG, mapping::MQUNDELIVERED_MAPSTR,
             r##"Undelivered values for Pub/Sub migration"##
         );
-        impl_value!(MQUNDELIVERED, mqsys::MQLONG);
+        impl_value!(MQUNDELIVERED, mq::MQLONG);
         define_new_type!(
-            pub MQUOWST, mqsys::MQLONG, mapping::MQUOWST_MAPSTR, r##"UOW States"##
+            pub MQUOWST, mq::MQLONG, mapping::MQUOWST_MAPSTR, r##"UOW States"##
         );
-        impl_value!(MQUOWST, mqsys::MQLONG);
+        impl_value!(MQUOWST, mq::MQLONG);
         define_new_type!(
-            pub MQUOWT, mqsys::MQLONG, mapping::MQUOWT_MAPSTR, r##"UOW Types"##
+            pub MQUOWT, mq::MQLONG, mapping::MQUOWT_MAPSTR, r##"UOW Types"##
         );
-        impl_value!(MQUOWT, mqsys::MQLONG);
+        impl_value!(MQUOWT, mq::MQLONG);
         define_new_type!(
-            pub MQUSAGE_DS, mqsys::MQLONG, mapping::MQUSAGE_DS_MAPSTR,
+            pub MQUSAGE_DS, mq::MQLONG, mapping::MQUSAGE_DS_MAPSTR,
             r##"Data Set Usage Values"##
         );
-        impl_value!(MQUSAGE_DS, mqsys::MQLONG);
+        impl_value!(MQUSAGE_DS, mq::MQLONG);
         define_new_type!(
-            pub MQUSAGE_EXPAND, mqsys::MQLONG, mapping::MQUSAGE_EXPAND_MAPSTR,
+            pub MQUSAGE_EXPAND, mq::MQLONG, mapping::MQUSAGE_EXPAND_MAPSTR,
             r##"Expand Usage Values"##
         );
-        impl_value!(MQUSAGE_EXPAND, mqsys::MQLONG);
+        impl_value!(MQUSAGE_EXPAND, mq::MQLONG);
         define_new_type!(
-            pub MQUSAGE_PS, mqsys::MQLONG, mapping::MQUSAGE_PS_MAPSTR,
+            pub MQUSAGE_PS, mq::MQLONG, mapping::MQUSAGE_PS_MAPSTR,
             r##"Page Set Usage Values"##
         );
-        impl_value!(MQUSAGE_PS, mqsys::MQLONG);
+        impl_value!(MQUSAGE_PS, mq::MQLONG);
         define_new_type!(
-            pub MQUSAGE_SMDS, mqsys::MQLONG, mapping::MQUSAGE_SMDS_MAPSTR,
+            pub MQUSAGE_SMDS, mq::MQLONG, mapping::MQUSAGE_SMDS_MAPSTR,
             r##"Usage SMDS Options"##
         );
-        impl_value!(MQUSAGE_SMDS, mqsys::MQLONG);
+        impl_value!(MQUSAGE_SMDS, mq::MQLONG);
     }
     #[cfg(feature = "pcf")]
     pub use pcf::*;
