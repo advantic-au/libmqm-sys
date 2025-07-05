@@ -1,5 +1,5 @@
 /* Generated with MQ client version 9.4.3.0 */
-pub const MQMD_DEFAULT: libmqm_sys::lib::MQMD = unsafe {
+pub const MQMD_DEFAULT: libmqm_sys::MQMD = unsafe {
     std::mem::transmute::<
         [u8; 364],
         _,
@@ -30,7 +30,7 @@ pub const MQMD_DEFAULT: libmqm_sys::lib::MQMD = unsafe {
         0xff,
     ])
 };
-pub const MQMDE_DEFAULT: libmqm_sys::lib::MQMDE = unsafe {
+pub const MQMDE_DEFAULT: libmqm_sys::MQMDE = unsafe {
     std::mem::transmute::<
         [u8; 72],
         _,
@@ -42,7 +42,7 @@ pub const MQMDE_DEFAULT: libmqm_sys::lib::MQMDE = unsafe {
         0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0xff, 0xff, 0xff, 0xff,
     ])
 };
-pub const MQMD1_DEFAULT: libmqm_sys::lib::MQMD1 = unsafe {
+pub const MQMD1_DEFAULT: libmqm_sys::MQMD1 = unsafe {
     std::mem::transmute::<
         [u8; 324],
         _,
@@ -70,7 +70,7 @@ pub const MQMD1_DEFAULT: libmqm_sys::lib::MQMD1 = unsafe {
         0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0,
     ])
 };
-pub const MQMD2_DEFAULT: libmqm_sys::lib::MQMD2 = unsafe {
+pub const MQMD2_DEFAULT: libmqm_sys::MQMD2 = unsafe {
     std::mem::transmute::<
         [u8; 364],
         _,
@@ -101,7 +101,7 @@ pub const MQMD2_DEFAULT: libmqm_sys::lib::MQMD2 = unsafe {
         0xff,
     ])
 };
-pub const MQPD_DEFAULT: libmqm_sys::lib::MQPD = unsafe {
+pub const MQPD_DEFAULT: libmqm_sys::MQPD = unsafe {
     std::mem::transmute::<
         [u8; 24],
         _,
@@ -110,7 +110,7 @@ pub const MQPD_DEFAULT: libmqm_sys::lib::MQPD = unsafe {
         0x0, 0x0, 0x0, 0x0, 0x0, 0x16, 0x0, 0x0, 0x0,
     ])
 };
-pub const MQIMPO_DEFAULT: libmqm_sys::lib::MQIMPO = unsafe {
+pub const MQIMPO_DEFAULT: libmqm_sys::MQIMPO = unsafe {
     std::mem::transmute::<
         [u8; 64],
         _,
@@ -122,31 +122,31 @@ pub const MQIMPO_DEFAULT: libmqm_sys::lib::MQIMPO = unsafe {
         0x0,
     ])
 };
-pub const MQMHBO_DEFAULT: libmqm_sys::lib::MQMHBO = unsafe {
+pub const MQMHBO_DEFAULT: libmqm_sys::MQMHBO = unsafe {
     std::mem::transmute::<
         [u8; 12],
         _,
     >([b'M', b'H', b'B', b'O', 0x1, 0x0, 0x0, 0x0, 0x1, 0x0, 0x0, 0x0])
 };
-pub const MQBO_DEFAULT: libmqm_sys::lib::MQBO = unsafe {
+pub const MQBO_DEFAULT: libmqm_sys::MQBO = unsafe {
     std::mem::transmute::<
         [u8; 12],
         _,
     >([b'B', b'O', b' ', b' ', 0x1, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0])
 };
-pub const MQDMHO_DEFAULT: libmqm_sys::lib::MQDMHO = unsafe {
+pub const MQDMHO_DEFAULT: libmqm_sys::MQDMHO = unsafe {
     std::mem::transmute::<
         [u8; 12],
         _,
     >([b'D', b'M', b'H', b'O', 0x1, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0])
 };
-pub const MQCMHO_DEFAULT: libmqm_sys::lib::MQCMHO = unsafe {
+pub const MQCMHO_DEFAULT: libmqm_sys::MQCMHO = unsafe {
     std::mem::transmute::<
         [u8; 12],
         _,
     >([b'C', b'M', b'H', b'O', 0x1, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0])
 };
-pub const MQSRO_DEFAULT: libmqm_sys::lib::MQSRO = unsafe {
+pub const MQSRO_DEFAULT: libmqm_sys::MQSRO = unsafe {
     std::mem::transmute::<
         [u8; 16],
         _,
@@ -155,7 +155,7 @@ pub const MQSRO_DEFAULT: libmqm_sys::lib::MQSRO = unsafe {
         0x0,
     ])
 };
-pub const MQSD_DEFAULT: libmqm_sys::lib::MQSD = unsafe {
+pub const MQSD_DEFAULT: libmqm_sys::MQSD = unsafe {
     std::mem::transmute::<
         [u8; 344],
         _,
@@ -184,7 +184,7 @@ pub const MQSD_DEFAULT: libmqm_sys::lib::MQSD = unsafe {
         0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0xb8, 0x4, 0x0, 0x0,
     ])
 };
-pub const MQGMO_DEFAULT: libmqm_sys::lib::MQGMO = unsafe {
+pub const MQGMO_DEFAULT: libmqm_sys::MQGMO = unsafe {
     std::mem::transmute::<
         [u8; 112],
         _,
@@ -199,7 +199,7 @@ pub const MQGMO_DEFAULT: libmqm_sys::lib::MQGMO = unsafe {
         0x0, 0x0, 0x0,
     ])
 };
-pub const MQPMO_DEFAULT: libmqm_sys::lib::MQPMO = unsafe {
+pub const MQPMO_DEFAULT: libmqm_sys::MQPMO = unsafe {
     std::mem::transmute::<
         [u8; 184],
         _,
@@ -218,7 +218,7 @@ pub const MQPMO_DEFAULT: libmqm_sys::lib::MQPMO = unsafe {
         0x0, 0x0, 0x0, 0x0, 0x0, 0x9, 0x0, 0x0, 0x0,
     ])
 };
-pub const MQOD_DEFAULT: libmqm_sys::lib::MQOD = unsafe {
+pub const MQOD_DEFAULT: libmqm_sys::MQOD = unsafe {
     std::mem::transmute::<
         [u8; 424],
         _,
@@ -252,7 +252,7 @@ pub const MQOD_DEFAULT: libmqm_sys::lib::MQOD = unsafe {
         0x4, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0,
     ])
 };
-pub const MQCNO_DEFAULT: libmqm_sys::lib::MQCNO = unsafe {
+pub const MQCNO_DEFAULT: libmqm_sys::MQCNO = unsafe {
     std::mem::transmute::<
         [u8; 272],
         _,
@@ -277,7 +277,7 @@ pub const MQCNO_DEFAULT: libmqm_sys::lib::MQCNO = unsafe {
         0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0,
     ])
 };
-pub const MQCD_DEFAULT: libmqm_sys::lib::MQCD = unsafe {
+pub const MQCD_DEFAULT: libmqm_sys::MQCD = unsafe {
     std::mem::transmute::<
         [u8; 1992],
         _,
@@ -410,7 +410,7 @@ pub const MQCD_DEFAULT: libmqm_sys::lib::MQCD = unsafe {
         0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0,
     ])
 };
-pub const MQCD_CLIENT_CONN_DEFAULT: libmqm_sys::lib::MQCD = unsafe {
+pub const MQCD_CLIENT_CONN_DEFAULT: libmqm_sys::MQCD = unsafe {
     std::mem::transmute::<
         [u8; 1992],
         _,
@@ -543,7 +543,7 @@ pub const MQCD_CLIENT_CONN_DEFAULT: libmqm_sys::lib::MQCD = unsafe {
         0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0,
     ])
 };
-pub const MQCSP_DEFAULT: libmqm_sys::lib::MQCSP = unsafe {
+pub const MQCSP_DEFAULT: libmqm_sys::MQCSP = unsafe {
     std::mem::transmute::<
         [u8; 104],
         _,
@@ -557,7 +557,7 @@ pub const MQCSP_DEFAULT: libmqm_sys::lib::MQCSP = unsafe {
         0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0,
     ])
 };
-pub const MQSCO_DEFAULT: libmqm_sys::lib::MQSCO = unsafe {
+pub const MQSCO_DEFAULT: libmqm_sys::MQSCO = unsafe {
     std::mem::transmute::<
         [u8; 672],
         _,
@@ -608,7 +608,7 @@ pub const MQSCO_DEFAULT: libmqm_sys::lib::MQSCO = unsafe {
     ])
 };
 #[cfg(feature = "mqc_9_3_0_0")]
-pub const MQBNO_DEFAULT: libmqm_sys::lib::MQBNO = unsafe {
+pub const MQBNO_DEFAULT: libmqm_sys::MQBNO = unsafe {
     std::mem::transmute::<
         [u8; 20],
         _,
@@ -617,7 +617,7 @@ pub const MQBNO_DEFAULT: libmqm_sys::lib::MQBNO = unsafe {
         0xff, 0x0, 0x0, 0x0, 0x0,
     ])
 };
-pub const MQAIR_DEFAULT: libmqm_sys::lib::MQAIR = unsafe {
+pub const MQAIR_DEFAULT: libmqm_sys::MQAIR = unsafe {
     std::mem::transmute::<
         [u8; 584],
         _,
@@ -661,13 +661,13 @@ pub const MQAIR_DEFAULT: libmqm_sys::lib::MQAIR = unsafe {
         0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0,
     ])
 };
-pub const MQBMHO_DEFAULT: libmqm_sys::lib::MQBMHO = unsafe {
+pub const MQBMHO_DEFAULT: libmqm_sys::MQBMHO = unsafe {
     std::mem::transmute::<
         [u8; 12],
         _,
     >([b'B', b'M', b'H', b'O', 0x1, 0x0, 0x0, 0x0, 0x1, 0x0, 0x0, 0x0])
 };
-pub const MQCBD_DEFAULT: libmqm_sys::lib::MQCBD = unsafe {
+pub const MQCBD_DEFAULT: libmqm_sys::MQCBD = unsafe {
     std::mem::transmute::<
         [u8; 168],
         _,
@@ -685,7 +685,7 @@ pub const MQCBD_DEFAULT: libmqm_sys::lib::MQCBD = unsafe {
         0x0, 0xff, 0xff, 0xff, 0xff, 0x0, 0x0, 0x0, 0x0,
     ])
 };
-pub const MQCHARV_DEFAULT: libmqm_sys::lib::MQCHARV = unsafe {
+pub const MQCHARV_DEFAULT: libmqm_sys::MQCHARV = unsafe {
     std::mem::transmute::<
         [u8; 24],
         _,
@@ -694,7 +694,7 @@ pub const MQCHARV_DEFAULT: libmqm_sys::lib::MQCHARV = unsafe {
         0x0, 0x0, 0x0, 0x0, 0xb8, 0x4, 0x0, 0x0,
     ])
 };
-pub const MQCIH_DEFAULT: libmqm_sys::lib::MQCIH = unsafe {
+pub const MQCIH_DEFAULT: libmqm_sys::MQCIH = unsafe {
     std::mem::transmute::<
         [u8; 180],
         _,
@@ -714,7 +714,7 @@ pub const MQCIH_DEFAULT: libmqm_sys::lib::MQCIH = unsafe {
         0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0,
     ])
 };
-pub const MQCTLO_DEFAULT: libmqm_sys::lib::MQCTLO = unsafe {
+pub const MQCTLO_DEFAULT: libmqm_sys::MQCTLO = unsafe {
     std::mem::transmute::<
         [u8; 24],
         _,
@@ -723,7 +723,7 @@ pub const MQCTLO_DEFAULT: libmqm_sys::lib::MQCTLO = unsafe {
         0xff, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0,
     ])
 };
-pub const MQDH_DEFAULT: libmqm_sys::lib::MQDH = unsafe {
+pub const MQDH_DEFAULT: libmqm_sys::MQDH = unsafe {
     std::mem::transmute::<
         [u8; 48],
         _,
@@ -734,7 +734,7 @@ pub const MQDH_DEFAULT: libmqm_sys::lib::MQDH = unsafe {
         0x0, 0x0, 0x0,
     ])
 };
-pub const MQDLH_DEFAULT: libmqm_sys::lib::MQDLH = unsafe {
+pub const MQDLH_DEFAULT: libmqm_sys::MQDLH = unsafe {
     std::mem::transmute::<
         [u8; 172],
         _,
@@ -752,13 +752,13 @@ pub const MQDLH_DEFAULT: libmqm_sys::lib::MQDLH = unsafe {
         0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0,
     ])
 };
-pub const MQDMPO_DEFAULT: libmqm_sys::lib::MQDMPO = unsafe {
+pub const MQDMPO_DEFAULT: libmqm_sys::MQDMPO = unsafe {
     std::mem::transmute::<
         [u8; 12],
         _,
     >([b'D', b'M', b'P', b'O', 0x1, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0])
 };
-pub const MQIIH_DEFAULT: libmqm_sys::lib::MQIIH = unsafe {
+pub const MQIIH_DEFAULT: libmqm_sys::MQIIH = unsafe {
     std::mem::transmute::<
         [u8; 84],
         _,
@@ -771,7 +771,7 @@ pub const MQIIH_DEFAULT: libmqm_sys::lib::MQIIH = unsafe {
         0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, b' ', b'0', b'C', b' ',
     ])
 };
-pub const MQOR_DEFAULT: libmqm_sys::lib::MQOR = unsafe {
+pub const MQOR_DEFAULT: libmqm_sys::MQOR = unsafe {
     std::mem::transmute::<
         [u8; 96],
         _,
@@ -784,7 +784,7 @@ pub const MQOR_DEFAULT: libmqm_sys::lib::MQOR = unsafe {
         0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0,
     ])
 };
-pub const MQRFH_DEFAULT: libmqm_sys::lib::MQRFH = unsafe {
+pub const MQRFH_DEFAULT: libmqm_sys::MQRFH = unsafe {
     std::mem::transmute::<
         [u8; 32],
         _,
@@ -794,7 +794,7 @@ pub const MQRFH_DEFAULT: libmqm_sys::lib::MQRFH = unsafe {
         0x0, 0x0, 0x0,
     ])
 };
-pub const MQRFH2_DEFAULT: libmqm_sys::lib::MQRFH2 = unsafe {
+pub const MQRFH2_DEFAULT: libmqm_sys::MQRFH2 = unsafe {
     std::mem::transmute::<
         [u8; 36],
         _,
@@ -804,7 +804,7 @@ pub const MQRFH2_DEFAULT: libmqm_sys::lib::MQRFH2 = unsafe {
         0x0, 0x0, 0x0, 0xb8, 0x4, 0x0, 0x0,
     ])
 };
-pub const MQRMH_DEFAULT: libmqm_sys::lib::MQRMH = unsafe {
+pub const MQRMH_DEFAULT: libmqm_sys::MQRMH = unsafe {
     std::mem::transmute::<
         [u8; 108],
         _,
@@ -819,10 +819,10 @@ pub const MQRMH_DEFAULT: libmqm_sys::lib::MQRMH = unsafe {
         0x0,
     ])
 };
-pub const MQRR_DEFAULT: libmqm_sys::lib::MQRR = unsafe {
+pub const MQRR_DEFAULT: libmqm_sys::MQRR = unsafe {
     std::mem::transmute::<[u8; 8], _>([0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0])
 };
-pub const MQSMPO_DEFAULT: libmqm_sys::lib::MQSMPO = unsafe {
+pub const MQSMPO_DEFAULT: libmqm_sys::MQSMPO = unsafe {
     std::mem::transmute::<
         [u8; 20],
         _,
@@ -831,7 +831,7 @@ pub const MQSMPO_DEFAULT: libmqm_sys::lib::MQSMPO = unsafe {
         0x0, 0xb8, 0x4, 0x0, 0x0,
     ])
 };
-pub const MQSTS_DEFAULT: libmqm_sys::lib::MQSTS = unsafe {
+pub const MQSTS_DEFAULT: libmqm_sys::MQSTS = unsafe {
     std::mem::transmute::<
         [u8; 280],
         _,
@@ -856,7 +856,7 @@ pub const MQSTS_DEFAULT: libmqm_sys::lib::MQSTS = unsafe {
         0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0,
     ])
 };
-pub const MQTM_DEFAULT: libmqm_sys::lib::MQTM = unsafe {
+pub const MQTM_DEFAULT: libmqm_sys::MQTM = unsafe {
     std::mem::transmute::<
         [u8; 684],
         _,
@@ -906,7 +906,7 @@ pub const MQTM_DEFAULT: libmqm_sys::lib::MQTM = unsafe {
         0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0,
     ])
 };
-pub const MQTMC2_DEFAULT: libmqm_sys::lib::MQTMC2 = unsafe {
+pub const MQTMC2_DEFAULT: libmqm_sys::MQTMC2 = unsafe {
     std::mem::transmute::<
         [u8; 732],
         _,
@@ -959,7 +959,7 @@ pub const MQTMC2_DEFAULT: libmqm_sys::lib::MQTMC2 = unsafe {
         0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0,
     ])
 };
-pub const MQWIH_DEFAULT: libmqm_sys::lib::MQWIH = unsafe {
+pub const MQWIH_DEFAULT: libmqm_sys::MQWIH = unsafe {
     std::mem::transmute::<
         [u8; 120],
         _,
@@ -975,7 +975,7 @@ pub const MQWIH_DEFAULT: libmqm_sys::lib::MQWIH = unsafe {
         b' ', b' ', b' ', b' ', b' ', b' ', b' ', b' ', b' ',
     ])
 };
-pub const MQXQH_DEFAULT: libmqm_sys::lib::MQXQH = unsafe {
+pub const MQXQH_DEFAULT: libmqm_sys::MQXQH = unsafe {
     std::mem::transmute::<
         [u8; 428],
         _,
@@ -1012,7 +1012,7 @@ pub const MQXQH_DEFAULT: libmqm_sys::lib::MQXQH = unsafe {
 };
 #[cfg(feature = "pcf")]
 pub mod pcf {
-    pub const MQCFH_DEFAULT: libmqm_sys::lib::MQCFH = unsafe {
+    pub const MQCFH_DEFAULT: libmqm_sys::pcf::MQCFH = unsafe {
         std::mem::transmute::<
             [u8; 36],
             _,
@@ -1022,7 +1022,7 @@ pub mod pcf {
             0x0, 0x0, 0x0, 0x0, 0x0, 0x0,
         ])
     };
-    pub const MQCFBF_DEFAULT: libmqm_sys::lib::MQCFBF = unsafe {
+    pub const MQCFBF_DEFAULT: libmqm_sys::pcf::MQCFBF = unsafe {
         std::mem::transmute::<
             [u8; 24],
             _,
@@ -1031,7 +1031,7 @@ pub mod pcf {
             0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0,
         ])
     };
-    pub const MQCFBS_DEFAULT: libmqm_sys::lib::MQCFBS = unsafe {
+    pub const MQCFBS_DEFAULT: libmqm_sys::pcf::MQCFBS = unsafe {
         std::mem::transmute::<
             [u8; 20],
             _,
@@ -1040,7 +1040,7 @@ pub mod pcf {
             0x0, 0x0, 0x0, 0x0, 0x0,
         ])
     };
-    pub const MQCFGR_DEFAULT: libmqm_sys::lib::MQCFGR = unsafe {
+    pub const MQCFGR_DEFAULT: libmqm_sys::pcf::MQCFGR = unsafe {
         std::mem::transmute::<
             [u8; 16],
             _,
@@ -1049,7 +1049,7 @@ pub mod pcf {
             0x0,
         ])
     };
-    pub const MQCFIF_DEFAULT: libmqm_sys::lib::MQCFIF = unsafe {
+    pub const MQCFIF_DEFAULT: libmqm_sys::pcf::MQCFIF = unsafe {
         std::mem::transmute::<
             [u8; 20],
             _,
@@ -1058,7 +1058,7 @@ pub mod pcf {
             0x0, 0x0, 0x0, 0x0, 0x0,
         ])
     };
-    pub const MQCFIL_DEFAULT: libmqm_sys::lib::MQCFIL = unsafe {
+    pub const MQCFIL_DEFAULT: libmqm_sys::pcf::MQCFIL = unsafe {
         std::mem::transmute::<
             [u8; 20],
             _,
@@ -1067,7 +1067,7 @@ pub mod pcf {
             0x0, 0x0, 0x0, 0x0, 0x0,
         ])
     };
-    pub const MQCFIL64_DEFAULT: libmqm_sys::lib::MQCFIL64 = unsafe {
+    pub const MQCFIL64_DEFAULT: libmqm_sys::pcf::MQCFIL64 = unsafe {
         std::mem::transmute::<
             [u8; 24],
             _,
@@ -1076,7 +1076,7 @@ pub mod pcf {
             0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0,
         ])
     };
-    pub const MQCFIN_DEFAULT: libmqm_sys::lib::MQCFIN = unsafe {
+    pub const MQCFIN_DEFAULT: libmqm_sys::pcf::MQCFIN = unsafe {
         std::mem::transmute::<
             [u8; 16],
             _,
@@ -1085,7 +1085,7 @@ pub mod pcf {
             0x0,
         ])
     };
-    pub const MQCFIN64_DEFAULT: libmqm_sys::lib::MQCFIN64 = unsafe {
+    pub const MQCFIN64_DEFAULT: libmqm_sys::pcf::MQCFIN64 = unsafe {
         std::mem::transmute::<
             [u8; 24],
             _,
@@ -1094,7 +1094,7 @@ pub mod pcf {
             0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0,
         ])
     };
-    pub const MQCFSF_DEFAULT: libmqm_sys::lib::MQCFSF = unsafe {
+    pub const MQCFSF_DEFAULT: libmqm_sys::pcf::MQCFSF = unsafe {
         std::mem::transmute::<
             [u8; 28],
             _,
@@ -1103,7 +1103,7 @@ pub mod pcf {
             0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0,
         ])
     };
-    pub const MQCFSL_DEFAULT: libmqm_sys::lib::MQCFSL = unsafe {
+    pub const MQCFSL_DEFAULT: libmqm_sys::pcf::MQCFSL = unsafe {
         std::mem::transmute::<
             [u8; 28],
             _,
@@ -1112,7 +1112,7 @@ pub mod pcf {
             0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0,
         ])
     };
-    pub const MQCFST_DEFAULT: libmqm_sys::lib::MQCFST = unsafe {
+    pub const MQCFST_DEFAULT: libmqm_sys::pcf::MQCFST = unsafe {
         std::mem::transmute::<
             [u8; 24],
             _,
@@ -1121,7 +1121,7 @@ pub mod pcf {
             0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0,
         ])
     };
-    pub const MQEPH_DEFAULT: libmqm_sys::lib::MQEPH = unsafe {
+    pub const MQEPH_DEFAULT: libmqm_sys::pcf::MQEPH = unsafe {
         std::mem::transmute::<
             [u8; 68],
             _,
@@ -1136,7 +1136,7 @@ pub mod pcf {
 }
 #[cfg(feature = "exits")]
 pub mod exits {
-    pub const MQACH_DEFAULT: libmqm_sys::lib::MQACH = unsafe {
+    pub const MQACH_DEFAULT: libmqm_sys::exits::MQACH = unsafe {
         std::mem::transmute::<
             [u8; 72],
             _,
@@ -1148,7 +1148,7 @@ pub mod exits {
             0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0,
         ])
     };
-    pub const MQAXC_DEFAULT: libmqm_sys::lib::MQAXC = unsafe {
+    pub const MQAXC_DEFAULT: libmqm_sys::exits::MQAXC = unsafe {
         std::mem::transmute::<
             [u8; 424],
             _,
@@ -1184,7 +1184,7 @@ pub mod exits {
             0x0, 0x0, 0x0, 0x0, 0x0,
         ])
     };
-    pub const MQAXP_DEFAULT: libmqm_sys::lib::MQAXP = unsafe {
+    pub const MQAXP_DEFAULT: libmqm_sys::exits::MQAXP = unsafe {
         std::mem::transmute::<
             [u8; 256],
             _,
@@ -1209,7 +1209,7 @@ pub mod exits {
             0x0, 0x0,
         ])
     };
-    pub const MQCXP_DEFAULT: libmqm_sys::lib::MQCXP = unsafe {
+    pub const MQCXP_DEFAULT: libmqm_sys::exits::MQCXP = unsafe {
         std::mem::transmute::<
             [u8; 240],
             _,
@@ -1233,7 +1233,7 @@ pub mod exits {
             0x0, 0x0,
         ])
     };
-    pub const MQDXP_DEFAULT: libmqm_sys::lib::MQDXP = unsafe {
+    pub const MQDXP_DEFAULT: libmqm_sys::exits::MQDXP = unsafe {
         std::mem::transmute::<
             [u8; 56],
             _,
@@ -1244,7 +1244,7 @@ pub mod exits {
             0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0,
         ])
     };
-    pub const MQNXP_DEFAULT: libmqm_sys::lib::MQNXP = unsafe {
+    pub const MQNXP_DEFAULT: libmqm_sys::exits::MQNXP = unsafe {
         std::mem::transmute::<
             [u8; 72],
             _,
@@ -1256,7 +1256,7 @@ pub mod exits {
             0x0, 0xc, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0,
         ])
     };
-    pub const MQPBC_DEFAULT: libmqm_sys::lib::MQPBC = unsafe {
+    pub const MQPBC_DEFAULT: libmqm_sys::exits::MQPBC = unsafe {
         std::mem::transmute::<
             [u8; 40],
             _,
@@ -1266,7 +1266,7 @@ pub mod exits {
             0x4, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0,
         ])
     };
-    pub const MQPSXP_DEFAULT: libmqm_sys::lib::MQPSXP = unsafe {
+    pub const MQPSXP_DEFAULT: libmqm_sys::exits::MQPSXP = unsafe {
         std::mem::transmute::<
             [u8; 184],
             _,
@@ -1286,7 +1286,7 @@ pub mod exits {
             0x0, 0x0, 0x0, 0x0, 0x0,
         ])
     };
-    pub const MQSBC_DEFAULT: libmqm_sys::lib::MQSBC = unsafe {
+    pub const MQSBC_DEFAULT: libmqm_sys::exits::MQSBC = unsafe {
         std::mem::transmute::<
             [u8; 288],
             _,
@@ -1313,7 +1313,7 @@ pub mod exits {
             0x0, 0x0, 0x0, 0x0,
         ])
     };
-    pub const MQWCR_DEFAULT: libmqm_sys::lib::MQWCR = unsafe {
+    pub const MQWCR_DEFAULT: libmqm_sys::exits::MQWCR = unsafe {
         std::mem::transmute::<
             [u8; 56],
             _,
@@ -1324,7 +1324,7 @@ pub mod exits {
             0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0,
         ])
     };
-    pub const MQWDR_DEFAULT: libmqm_sys::lib::MQWDR = unsafe {
+    pub const MQWDR_DEFAULT: libmqm_sys::exits::MQWDR = unsafe {
         std::mem::transmute::<
             [u8; 136],
             _,
@@ -1341,7 +1341,7 @@ pub mod exits {
             0x0, 0x0,
         ])
     };
-    pub const MQWDR1_DEFAULT: libmqm_sys::lib::MQWDR1 = unsafe {
+    pub const MQWDR1_DEFAULT: libmqm_sys::exits::MQWDR1 = unsafe {
         std::mem::transmute::<
             [u8; 124],
             _,
@@ -1357,7 +1357,7 @@ pub mod exits {
             0x0, 0x0, 0x0, 0x0, 0x0,
         ])
     };
-    pub const MQWDR2_DEFAULT: libmqm_sys::lib::MQWDR2 = unsafe {
+    pub const MQWDR2_DEFAULT: libmqm_sys::exits::MQWDR2 = unsafe {
         std::mem::transmute::<
             [u8; 136],
             _,
@@ -1374,7 +1374,7 @@ pub mod exits {
             0x0, 0x0,
         ])
     };
-    pub const MQWQR_DEFAULT: libmqm_sys::lib::MQWQR = unsafe {
+    pub const MQWQR_DEFAULT: libmqm_sys::exits::MQWQR = unsafe {
         std::mem::transmute::<
             [u8; 216],
             _,
@@ -1396,7 +1396,7 @@ pub mod exits {
             0x0, 0x0, 0x0, 0xff, 0xff, 0xff, 0xff,
         ])
     };
-    pub const MQWQR1_DEFAULT: libmqm_sys::lib::MQWQR1 = unsafe {
+    pub const MQWQR1_DEFAULT: libmqm_sys::exits::MQWQR1 = unsafe {
         std::mem::transmute::<
             [u8; 200],
             _,
@@ -1417,7 +1417,7 @@ pub mod exits {
             0x0, 0x0, 0x0, 0x0, 0x0, 0x0,
         ])
     };
-    pub const MQWQR2_DEFAULT: libmqm_sys::lib::MQWQR2 = unsafe {
+    pub const MQWQR2_DEFAULT: libmqm_sys::exits::MQWQR2 = unsafe {
         std::mem::transmute::<
             [u8; 208],
             _,
@@ -1438,7 +1438,7 @@ pub mod exits {
             0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0,
         ])
     };
-    pub const MQWQR3_DEFAULT: libmqm_sys::lib::MQWQR3 = unsafe {
+    pub const MQWQR3_DEFAULT: libmqm_sys::exits::MQWQR3 = unsafe {
         std::mem::transmute::<
             [u8; 212],
             _,
@@ -1461,7 +1461,7 @@ pub mod exits {
         ])
     };
     #[cfg(feature = "mqc_9_3_1_0")]
-    pub const MQWQR4_DEFAULT: libmqm_sys::lib::MQWQR4 = unsafe {
+    pub const MQWQR4_DEFAULT: libmqm_sys::exits::MQWQR4 = unsafe {
         std::mem::transmute::<
             [u8; 216],
             _,
@@ -1483,7 +1483,7 @@ pub mod exits {
             0x0, 0x0, 0x0, 0xff, 0xff, 0xff, 0xff,
         ])
     };
-    pub const MQWXP_DEFAULT: libmqm_sys::lib::MQWXP = unsafe {
+    pub const MQWXP_DEFAULT: libmqm_sys::exits::MQWXP = unsafe {
         std::mem::transmute::<
             [u8; 248],
             _,
@@ -1507,7 +1507,7 @@ pub mod exits {
             0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0,
         ])
     };
-    pub const MQWXP1_DEFAULT: libmqm_sys::lib::MQWXP1 = unsafe {
+    pub const MQWXP1_DEFAULT: libmqm_sys::exits::MQWXP1 = unsafe {
         std::mem::transmute::<
             [u8; 224],
             _,
@@ -1529,7 +1529,7 @@ pub mod exits {
             0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0,
         ])
     };
-    pub const MQWXP2_DEFAULT: libmqm_sys::lib::MQWXP2 = unsafe {
+    pub const MQWXP2_DEFAULT: libmqm_sys::exits::MQWXP2 = unsafe {
         std::mem::transmute::<
             [u8; 240],
             _,
@@ -1553,7 +1553,7 @@ pub mod exits {
             0x0,
         ])
     };
-    pub const MQWXP3_DEFAULT: libmqm_sys::lib::MQWXP3 = unsafe {
+    pub const MQWXP3_DEFAULT: libmqm_sys::exits::MQWXP3 = unsafe {
         std::mem::transmute::<
             [u8; 240],
             _,
@@ -1577,7 +1577,7 @@ pub mod exits {
             0x0,
         ])
     };
-    pub const MQWXP4_DEFAULT: libmqm_sys::lib::MQWXP4 = unsafe {
+    pub const MQWXP4_DEFAULT: libmqm_sys::exits::MQWXP4 = unsafe {
         std::mem::transmute::<
             [u8; 248],
             _,
@@ -1601,7 +1601,7 @@ pub mod exits {
             0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0,
         ])
     };
-    pub const MQXEPO_DEFAULT: libmqm_sys::lib::MQXEPO = unsafe {
+    pub const MQXEPO_DEFAULT: libmqm_sys::exits::MQXEPO = unsafe {
         std::mem::transmute::<
             [u8; 40],
             _,
@@ -1611,7 +1611,7 @@ pub mod exits {
             0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0xb8, 0x4, 0x0, 0x0,
         ])
     };
-    pub const MQIEP_DEFAULT: libmqm_sys::lib::MQIEP = unsafe {
+    pub const MQIEP_DEFAULT: libmqm_sys::exits::MQIEP = unsafe {
         std::mem::transmute::<
             [u8; 264],
             _,
@@ -1636,7 +1636,7 @@ pub mod exits {
             0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0,
         ])
     };
-    pub const MQZED_DEFAULT: libmqm_sys::lib::MQZED = unsafe {
+    pub const MQZED_DEFAULT: libmqm_sys::exits::MQZED = unsafe {
         std::mem::transmute::<
             [u8; 72],
             _,
@@ -1648,7 +1648,7 @@ pub mod exits {
             0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0,
         ])
     };
-    pub const MQZAC_DEFAULT: libmqm_sys::lib::MQZAC = unsafe {
+    pub const MQZAC_DEFAULT: libmqm_sys::exits::MQZAC = unsafe {
         std::mem::transmute::<
             [u8; 84],
             _,
@@ -1661,7 +1661,7 @@ pub mod exits {
             0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0,
         ])
     };
-    pub const MQZAD_DEFAULT: libmqm_sys::lib::MQZAD = unsafe {
+    pub const MQZAD_DEFAULT: libmqm_sys::exits::MQZAD = unsafe {
         std::mem::transmute::<
             [u8; 80],
             _,
@@ -1674,7 +1674,7 @@ pub mod exits {
             0x0, 0x0, 0x21, 0x0, 0x0, 0x0,
         ])
     };
-    pub const MQZFP_DEFAULT: libmqm_sys::lib::MQZFP = unsafe {
+    pub const MQZFP_DEFAULT: libmqm_sys::exits::MQZFP = unsafe {
         std::mem::transmute::<
             [u8; 24],
             _,
@@ -1683,7 +1683,7 @@ pub mod exits {
             0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0,
         ])
     };
-    pub const MQZIC_DEFAULT: libmqm_sys::lib::MQZIC = unsafe {
+    pub const MQZIC_DEFAULT: libmqm_sys::exits::MQZIC = unsafe {
         std::mem::transmute::<
             [u8; 1108],
             _,
