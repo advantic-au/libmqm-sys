@@ -304,7 +304,8 @@ fn main() -> Result<(), io::Error> {
                 .replace_fns(["MQXDX"], "pDataConvExitParms", &parse_quote!(&mut MQDXP))
                 .replace_fns(["MQ_PUBLISH_EXIT"], "pExitParms", &parse_quote!(&mut MQPSXP))
                 .replace_fns(["MQ_TRANSPORT_EXIT"], "pExitParms", &parse_quote!(PMQVOID))
-                .replace_fns(["MQ_PRECONNECT_EXIT"], "pExitParms", &parse_quote!(&mut MQNXP));
+                .replace_fns(["MQ_PRECONNECT_EXIT"], "pExitParms", &parse_quote!(&mut MQNXP))
+                .replace_fns(["MQCB_FUNCTION"], "pContext", &parse_quote!(&mut MQCBC));
 
             let mut traits = vec![];
             let mut mock_impls = vec![];
