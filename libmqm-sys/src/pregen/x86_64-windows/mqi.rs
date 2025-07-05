@@ -144,7 +144,7 @@ pub type MQCB_FUNCTION = ::std::option::Option<
         MsgDesc: PMQVOID,
         GetMsgOpts: &mut MQGMO,
         Buffer: PMQVOID,
-        Context: PMQCBC,
+        Context: &mut MQCBC,
     ),
 >;
 pub type PMQCB_FUNCTION = MQCB_FUNCTION;
