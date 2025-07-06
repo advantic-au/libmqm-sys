@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.10.1](https://github.com/advantic-au/libmqm-sys/compare/libmqm-sys-v0.10.0...libmqm-sys-v0.10.1) - 2025-07-06
+
+### Fixed
+
+- feature gate MQ 9.4.3 constants
+- MQDCC should not be gated
+
+### Other
+
+- MQ client 9.4.3.0 Linux ppc64le
+- MQ client 9.4.3.0 Linux s390x
+- MQ client 9.4.3.0 macOS ARM64
+- MQ client 9.4.3.0 Linux ARM64
+- MQ client 9.4.3.0 Windows X64
+
 ## [0.10.0](https://github.com/advantic-au/libmqm-sys/compare/libmqm-sys-v0.9.0...libmqm-sys-v0.10.0) - 2025-07-05
 
 ### Fixed
