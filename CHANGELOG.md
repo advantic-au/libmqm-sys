@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.10.1](https://github.com/advantic-au/libmqm-sys/compare/libmqm-sys-v0.10.0...libmqm-sys-v0.10.1) - 2025-07-06
+
+### Fixed
+
+- Feature gate MQ 9.4.3 constants
+- Removed feature gates for MQDCC
+
 ## [0.10.0](https://github.com/advantic-au/libmqm-sys/compare/libmqm-sys-v0.9.0...libmqm-sys-v0.10.0) - 2025-07-05
 
 ### Fixed
