@@ -46,7 +46,6 @@ impl_default_value!(types::MQCMHO, constants::MQCMHO_DEFAULT_VALIDATION);
 impl_default_value!(types::MQSMPO, constants::MQSMPO_SET_FIRST);
 impl_default_value!(types::MQDMPO, constants::MQDMPO_DEL_FIRST);
 impl_default_value!(types::MQIMPO, constants::MQIMPO_NONE);
-#[cfg(feature = "exits")]
 impl_default_value!(types::MQDCC, constants::MQDCC_NONE);
 #[cfg(feature = "pcf")]
 impl_default_value!(types::MQCMD, constants::MQCMD_NONE);

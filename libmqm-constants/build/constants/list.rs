@@ -983,7 +983,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
         mqstr::MQDCC_STR,
         "MQLONG",
         "bitflags",
-        Some("exits"),
+        None,
         Some("Conversion Options Masks and Factors"),
     ),
     c(
