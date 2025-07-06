@@ -1,0 +1,27 @@
+name: semver-command
+on:
+  repository_dispatch:
+    types: [semver-command]
+
+permissions: {}
+
+jobs:
+  semver:
+    runs-on: ubuntu-24.04
+    steps:
+      # Checkout the pull request branch
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          token: ${{ secrets.SCD }}
+          repository: ${{ github.event.client_payload.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.client_payload.pull_request.head.ref }}
+      - name: Install rust stable
+        uses: dtolnay/rust-toolchain@b3b07ba8b418998c39fb20f53e8b695cdcc8de1b
+        with:
+          toolchain: stable
+      - uses: Swatinem/rust-cache@9d47c6ad4b02e050fd481d890b2ea34778fd09d6 # v2.7.8
+        with:
+          shared-key: "build"
+      - name: Check semver
+        uses: obi1kenobi/cargo-semver-checks-action@5b298c9520f7096a4683c0bd981a7ac5a7e249ae # v2.8
