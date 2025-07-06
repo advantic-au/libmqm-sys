@@ -216,6 +216,11 @@ pub mod types {
     );
     impl_value!(MQCUOWC, mq::MQLONG);
     define_new_type!(
+        pub MQDCC, mq::MQLONG, mapping::MQDCC_MAPSTR,
+        r##"Conversion Options Masks and Factors"##
+    );
+    impl_bitflags!(MQDCC, mq::MQLONG);
+    define_new_type!(
         pub MQDC, mq::MQLONG, mapping::MQDC_MAPSTR, r##"Destination Class"##
     );
     impl_value!(MQDC, mq::MQLONG);
@@ -750,11 +755,6 @@ pub mod types {
             r##"Channel Compression"##
         );
         impl_value!(MQCOMPRESS, mq::MQLONG);
-        define_new_type!(
-            pub MQDCC, mq::MQLONG, mapping::MQDCC_MAPSTR,
-            r##"Conversion Options Masks and Factors"##
-        );
-        impl_bitflags!(MQDCC, mq::MQLONG);
         define_new_type!(
             pub MQIEPF, mq::MQLONG, mapping::MQIEPF_MAPSTR, r##"IEP Flags"##
         );
@@ -2039,6 +2039,22 @@ pub mod constants {
     pub const MQCUOWC_CONTINUE: types::MQCUOWC = types::MQCUOWC(65536);
     pub const MQCUOWC_FIRST: types::MQCUOWC = types::MQCUOWC(17);
     pub const MQCUOWC_LAST: types::MQCUOWC = types::MQCUOWC(272);
+    pub const MQDCC_NONE: types::MQDCC = types::MQDCC(0);
+    pub const MQDCC_DEFAULT_CONVERSION: types::MQDCC = types::MQDCC(1);
+    pub const MQDCC_FILL_TARGET_BUFFER: types::MQDCC = types::MQDCC(2);
+    pub const MQDCC_INT_DEFAULT_CONVERSION: types::MQDCC = types::MQDCC(4);
+    pub const MQDCC_SOURCE_ENC_NORMAL: types::MQDCC = types::MQDCC(16);
+    pub const MQDCC_SOURCE_ENC_REVERSED: types::MQDCC = types::MQDCC(32);
+    pub const MQDCC_SOURCE_ENC_MASK: types::MQDCC = types::MQDCC(240);
+    pub const MQDCC_TARGET_ENC_NORMAL: types::MQDCC = types::MQDCC(256);
+    pub const MQDCC_TARGET_ENC_REVERSED: types::MQDCC = types::MQDCC(512);
+    pub const MQDCC_TARGET_ENC_MASK: types::MQDCC = types::MQDCC(3840);
+    pub const MQDCC_SOURCE_ENC_UNDEFINED: types::MQDCC = types::MQDCC(0);
+    pub const MQDCC_TARGET_ENC_UNDEFINED: types::MQDCC = types::MQDCC(0);
+    pub const MQDCC_SOURCE_ENC_FACTOR: types::MQDCC = types::MQDCC(16);
+    pub const MQDCC_SOURCE_ENC_NATIVE: types::MQDCC = types::MQDCC(32);
+    pub const MQDCC_TARGET_ENC_FACTOR: types::MQDCC = types::MQDCC(256);
+    pub const MQDCC_TARGET_ENC_NATIVE: types::MQDCC = types::MQDCC(512);
     pub const MQDC_MANAGED: types::MQDC = types::MQDC(1);
     pub const MQDC_PROVIDED: types::MQDC = types::MQDC(2);
     pub const MQDHF_NONE: types::MQDHF = types::MQDHF(0);
@@ -3593,22 +3609,6 @@ pub mod constants {
         pub const MQCOMPRESS_LZ4FAST: types::MQCOMPRESS = types::MQCOMPRESS(16);
         pub const MQCOMPRESS_LZ4HIGH: types::MQCOMPRESS = types::MQCOMPRESS(32);
         pub const MQCOMPRESS_ANY: types::MQCOMPRESS = types::MQCOMPRESS(268435455);
-        pub const MQDCC_NONE: types::MQDCC = types::MQDCC(0);
-        pub const MQDCC_DEFAULT_CONVERSION: types::MQDCC = types::MQDCC(1);
-        pub const MQDCC_FILL_TARGET_BUFFER: types::MQDCC = types::MQDCC(2);
-        pub const MQDCC_INT_DEFAULT_CONVERSION: types::MQDCC = types::MQDCC(4);
-        pub const MQDCC_SOURCE_ENC_NORMAL: types::MQDCC = types::MQDCC(16);
-        pub const MQDCC_SOURCE_ENC_REVERSED: types::MQDCC = types::MQDCC(32);
-        pub const MQDCC_SOURCE_ENC_MASK: types::MQDCC = types::MQDCC(240);
-        pub const MQDCC_TARGET_ENC_NORMAL: types::MQDCC = types::MQDCC(256);
-        pub const MQDCC_TARGET_ENC_REVERSED: types::MQDCC = types::MQDCC(512);
-        pub const MQDCC_TARGET_ENC_MASK: types::MQDCC = types::MQDCC(3840);
-        pub const MQDCC_SOURCE_ENC_UNDEFINED: types::MQDCC = types::MQDCC(0);
-        pub const MQDCC_TARGET_ENC_UNDEFINED: types::MQDCC = types::MQDCC(0);
-        pub const MQDCC_SOURCE_ENC_FACTOR: types::MQDCC = types::MQDCC(16);
-        pub const MQDCC_SOURCE_ENC_NATIVE: types::MQDCC = types::MQDCC(32);
-        pub const MQDCC_TARGET_ENC_FACTOR: types::MQDCC = types::MQDCC(256);
-        pub const MQDCC_TARGET_ENC_NATIVE: types::MQDCC = types::MQDCC(512);
         pub const MQIEPF_NONE: types::MQIEPF = types::MQIEPF(0);
         pub const MQIEPF_THREADED_LIBRARY: types::MQIEPF = types::MQIEPF(1);
         pub const MQIEPF_LOCAL_LIBRARY: types::MQIEPF = types::MQIEPF(2);
