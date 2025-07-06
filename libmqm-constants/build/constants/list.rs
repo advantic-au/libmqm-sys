@@ -161,6 +161,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
         None,
         Some("Put Application Types"),
     ),
+    #[cfg(feature = "mqc_9_4_3_0")]
     c(
         "MQAUSC_",
         "MQAUSC",
@@ -1919,6 +1920,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
         None,
         Some("Operation codes for MQCTL and MQCB"),
     ),
+    #[cfg(feature = "mqc_9_4_3_0")]
     c(
         "MQOTEL_PCTL_",
         "MQOTEL_PCTL",
@@ -1928,6 +1930,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
         None,
         Some("OTELPCTL values"),
     ),
+    #[cfg(feature = "mqc_9_4_3_0")]
     c(
         "MQOTEL_TRACE_",
         "MQOTEL_TRACE",
