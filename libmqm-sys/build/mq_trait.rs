@@ -170,6 +170,23 @@ pub fn impl_dlopen2_fn(wrapper_name: &Path) -> impl Fn(&mut ImplItemFn, &TraitIt
     }
 }
 
+pub fn impl_iep_fn(impl_item_fn: &mut ImplItemFn, trait_fn: &TraitItemFn) {
+    let fn_name = &trait_fn.sig.ident;
+    let fn_name_call = Ident::new(&format!("{fn_name}_Call"), fn_name.span());
+    let inputs = trait_fn.sig.inputs.iter().filter_map(|arg: &FnArg| -> Option<syn::Expr> {
+        if let syn::FnArg::Typed(PatType { pat, .. }) = arg {
+            Some(parse_quote!(#pat))
+        } else {
+            None
+        }
+    });
+    impl_item_fn.block = parse_quote!({
+        unsafe {
+            self.#fn_name_call.unwrap()(#(#inputs), *);
+        }
+    });
+}
+
 pub fn impl_link_fn(mod_path: &Path) -> impl Fn(&mut ImplItemFn, &TraitItemFn) + use<'_> {
     move |impl_item_fn, trait_fn| {
         let fn_name = &trait_fn.sig.ident;

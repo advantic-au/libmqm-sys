@@ -215,25 +215,41 @@ fn main() -> Result<(), io::Error> {
                 rustify::PrefixMqTypes,
             };
 
-            type SourceTrait<'a> = (&'a str, Option<syn::Ident>, syn::Path, Option<syn::LitStr>, bool);
+            fn write_file(file: &syn::File, target: &std::path::Path) -> io::Result<()> {
+                let mut out_file = io::BufWriter::new(std::fs::File::create(target)?);
+                out_file.write_all(prettyplease::unparse(file).as_bytes())
+            }
+
+            #[derive(Debug, PartialEq)]
+            enum TraitImpl {
+                Dlopen2,
+                Iep,
+            }
+            type SourceTrait<'a, 'b> = (&'a str, Option<syn::Ident>, syn::Path, Option<syn::LitStr>, &'b [TraitImpl]);
 
             let source_trait: &[SourceTrait] = &[
-                ("mqi.rs", syn::parse_quote!(Mqi), syn::parse_quote!(crate), None, true),
+                (
+                    "mqi.rs",
+                    syn::parse_quote!(Mqi),
+                    syn::parse_quote!(crate),
+                    None,
+                    &[TraitImpl::Dlopen2, TraitImpl::Iep],
+                ),
                 (
                     "mqai.rs",
                     syn::parse_quote!(Mqai),
                     syn::parse_quote!(crate::mqai),
                     syn::parse_quote!("mqai"),
-                    true,
+                    &[TraitImpl::Dlopen2],
                 ),
                 (
                     "exits.rs",
                     syn::parse_quote!(Exits),
                     syn::parse_quote!(crate::exits),
                     syn::parse_quote!("exits"),
-                    false,
+                    &[TraitImpl::Iep],
                 ),
-                ("pcf.rs", None, syn::parse_quote!(crate::pcf), syn::parse_quote!("pcf"), false),
+                ("pcf.rs", None, syn::parse_quote!(crate::pcf), syn::parse_quote!("pcf"), &[]),
             ];
 
             let mut arg_type = crate::rustify::FnArgType::new()
@@ -309,6 +325,7 @@ fn main() -> Result<(), io::Error> {
             let mut traits = vec![];
             let mut mock_impls = vec![];
             let mut dlopen_impls = vec![];
+            let mut iep_impls = vec![];
             let mut link_impls = vec![];
 
             let mock_name = parse_quote!(Mq);
@@ -372,7 +389,10 @@ fn main() -> Result<(), io::Error> {
                     .collect();
                 PrefixMqTypes(&parse_quote!(crate), &symbols).visit_file_mut(&mut generated);
 
-                if let Some((.., path, feat, _)) = source_trait.iter().find(|(source, .., dlopen)| *source == name && *dlopen) {
+                if let Some((.., path, feat, _)) = source_trait
+                    .iter()
+                    .find(|(source, .., impls)| *source == name && impls.contains(&TraitImpl::Dlopen2))
+                {
                     WrapperGenerator(|mut field: syn::Field| {
                         if let Some(feat) = &feat {
                             field.attrs.push(parse_quote!(#[cfg(feature = #feat)]));
@@ -383,7 +403,7 @@ fn main() -> Result<(), io::Error> {
                     .visit_file(&generated);
                 }
 
-                if let Some((_, Some(trait_name), path, feature, dlopen)) =
+                if let Some((_, Some(trait_name), path, feature, impls)) =
                     source_trait.iter().find(|(source, ..)| *source == name)
                 {
                     // Generate the trait
@@ -392,7 +412,7 @@ fn main() -> Result<(), io::Error> {
 
                     use syn::{ImplItemFn, TraitItemFn};
 
-                    use crate::mq_trait::{impl_dlopen2_fn, impl_link_fn, DesugarForMockall, ImplFnGenerator};
+                    use crate::mq_trait::{DesugarForMockall, ImplFnGenerator};
 
                     let feat_cfg = feature.as_ref().map(|feat| parse_quote!(#[cfg(feature = #feat)]));
 
@@ -412,9 +432,9 @@ fn main() -> Result<(), io::Error> {
                     PrefixMqTypes(path, &HashSet::new()).visit_item_impl_mut(&mut mock_impl_trait);
                     DesugarForMockall.visit_item_impl_mut(&mut mock_impl_trait);
 
-                    if *dlopen {
+                    if impls.contains(&TraitImpl::Dlopen2) {
                         // Generate the dlopen2 struct
-                        let mut dg = ImplFnGenerator::new(impl_dlopen2_fn(&wrapper_name));
+                        let mut dg = ImplFnGenerator::new(mq_trait::impl_dlopen2_fn(&wrapper_name));
                         dg.visit_item_trait(&item_trait);
                         let mut dlopen2_impl_trait = dg.generate(&parse_quote!(crate::#trait_name), &dlopen2_name);
                         dlopen2_impl_trait.attrs.extend(feat_cfg.clone());
@@ -422,8 +442,18 @@ fn main() -> Result<(), io::Error> {
                         dlopen_impls.push(dlopen2_impl_trait);
                     }
 
+                    if impls.contains(&TraitImpl::Iep) {
+                        let mut ig = ImplFnGenerator::new(mq_trait::impl_iep_fn);
+                        ig.visit_item_trait(&item_trait);
+                        let mut iep_impl_trait =
+                            ig.generate(&parse_quote!(crate::#trait_name), &parse_quote!(crate::exits::MQIEP));
+                        iep_impl_trait.attrs.extend(feat_cfg.clone());
+                        PrefixMqTypes(path, &HashSet::new()).visit_item_impl_mut(&mut iep_impl_trait);
+                        iep_impls.push(iep_impl_trait);
+                    }
+
                     // Generate the link struct
-                    let mut lg = ImplFnGenerator::new(impl_link_fn(path));
+                    let mut lg = ImplFnGenerator::new(mq_trait::impl_link_fn(path));
                     lg.visit_item_trait(&item_trait);
                     let mut link_impl_trait = lg.generate(&parse_quote!(crate::#trait_name), &link_name);
                     link_impl_trait.attrs.extend(feat_cfg.clone());
@@ -497,25 +527,25 @@ fn main() -> Result<(), io::Error> {
 
             );
 
+            let iep_file = parse_quote!(
+                #(
+                    #iep_impls
+                )*
+            );
+
             let out_mock = out_path.join("mock.rs");
             let mut out_file = io::BufWriter::new(std::fs::File::create(&out_mock)?);
             out_file.write_all(mock_file_content.as_bytes())?;
             drop(out_file);
 
             let out_function = out_path.join("function.rs");
-            let mut out_file = io::BufWriter::new(std::fs::File::create(&out_function)?);
-            out_file.write_all(prettyplease::unparse(&trait_file).as_bytes())?;
-            drop(out_file);
-
             let out_link = out_path.join("link.rs");
-            let mut out_file = io::BufWriter::new(std::fs::File::create(&out_link)?);
-            out_file.write_all(prettyplease::unparse(&link_file).as_bytes())?;
-            drop(out_file);
-
             let out_wrapper = out_path.join("dlopen2.rs");
-            let mut out_file = io::BufWriter::new(std::fs::File::create(&out_wrapper)?);
-            out_file.write_all(prettyplease::unparse(&wrapper_file).as_bytes())?;
-            drop(out_file);
+            let out_iep = out_path.join("iep.rs");
+            write_file(&trait_file, &out_function)?;
+            write_file(&link_file, &out_link)?;
+            write_file(&wrapper_file, &out_wrapper)?;
+            write_file(&iep_file, &out_iep)?;
 
             #[cfg(feature = "pregen")]
             {
@@ -523,6 +553,7 @@ fn main() -> Result<(), io::Error> {
                 std::fs::copy(out_mock, std::path::PathBuf::from("./src/pregen/mock.rs"))?;
                 std::fs::copy(out_wrapper, std::path::PathBuf::from("./src/pregen/dlopen2.rs"))?;
                 std::fs::copy(out_link, std::path::PathBuf::from("./src/pregen/link.rs"))?;
+                std::fs::copy(out_iep, std::path::PathBuf::from("./src/pregen/iep.rs"))?;
             }
         }
     }

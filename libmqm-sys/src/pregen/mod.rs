@@ -18,3 +18,6 @@ pub mod mock;
 
 #[cfg(feature = "link_api")]
 pub mod link;
+
+#[cfg(feature = "exits")]
+mod iep;
