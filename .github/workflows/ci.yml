@@ -27,7 +27,7 @@ jobs:
           - client-version: 9.3
             feature: mqc_9_3_5_0
           - client-version: 9.4
-            feature: mqc_9_4_3_0
+            feature: mqc_9_4_4_0
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v5
@@ -84,7 +84,7 @@ jobs:
         run: |
           cargo hack -p libmqm-sys --each-feature --include-features mqai,pcf,exits,dlopen2,link,mqc_latest,mock,bindgen --features bindgen clippy --tests
           cargo hack -p libmqm-sys --feature-powerset --depth 2 --include-features mqai,pcf,exits,dlopen2,link,mqc_latest,mock,default clippy --tests
-          cargo hack -p libmqm-constants --feature-powerset --depth 2 --include-features mqai,pcf,exits,mqc_9_4_3_0,default,generate clippy --tests
+          cargo hack -p libmqm-constants --feature-powerset --depth 2 --include-features mqai,pcf,exits,mqc_9_4_4_0,default,generate clippy --tests
           cargo hack -p libmqm-default --feature-powerset --depth 2 --include-features pcf,exits,mqc_9_3_1_0,default,generate clippy --tests
         env:
           MQ_HOME: ${{ steps.mq-client.outputs.client-install-path }}

@@ -23,7 +23,7 @@ docsrs = [
     "mqai",
     "exits",
     "pcf",
-    "mqc_9_4_3_0",           # Latest MQ version
+    "mqc_9_4_4_0",           # Latest MQ version
     "dep:document-features",
 ]
 
@@ -37,7 +37,7 @@ generate = [
 ]
 
 ## Generate the constants and save them in the src folder
-pregen = ["generate", "mqai", "exits", "pcf", "mqc_9_4_3_0"]
+pregen = ["generate", "mqai", "exits", "pcf", "mqc_9_4_4_0"]
 
 ## Administrative Interface (MQAI) constants
 mqai = ["pcf", "libmqm-sys/mqai"]
@@ -70,6 +70,8 @@ mqc_9_4_1_0 = ["libmqm-sys/mqc_9_4_1_0", "mqc_9_4_0_0"]
 mqc_9_4_2_0 = ["libmqm-sys/mqc_9_4_2_0", "mqc_9_4_1_0"]
 ## Minimum MQ client version 9.4.3.0
 mqc_9_4_3_0 = ["libmqm-sys/mqc_9_4_3_0", "mqc_9_4_2_0"]
+## Minimum MQ client version 9.4.4.0
+mqc_9_4_4_0 = ["libmqm-sys/mqc_9_4_4_0", "mqc_9_4_3_0"]
 
 [dependencies]
 libmqm-sys = { version = "0.10.1", default-features = false, path = "../libmqm-sys" }
