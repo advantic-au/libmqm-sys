@@ -103,7 +103,6 @@ files.
 
  */
 #![cfg_attr(docsrs, feature(doc_cfg))]
-#![cfg_attr(docsrs, doc(hide(feature = "bindgen")))]
 
 #[cfg(feature = "bindgen")]
 #[rustfmt::skip]
