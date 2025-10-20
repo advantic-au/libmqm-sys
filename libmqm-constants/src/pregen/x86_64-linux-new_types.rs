@@ -1,4 +1,4 @@
-/* Generated with MQ client version 9.4.3.0 */
+/* Generated with MQ client version 9.4.4.0 */
 /*
  * Unmapped constants:
  *  MQBA_FIRST
@@ -1949,7 +1949,8 @@ pub mod constants {
     pub const MQCMDL_LEVEL_941: types::MQCMDL = types::MQCMDL(941);
     pub const MQCMDL_LEVEL_942: types::MQCMDL = types::MQCMDL(942);
     pub const MQCMDL_LEVEL_943: types::MQCMDL = types::MQCMDL(943);
-    pub const MQCMDL_CURRENT_LEVEL: types::MQCMDL = types::MQCMDL(943);
+    pub const MQCMDL_LEVEL_944: types::MQCMDL = types::MQCMDL(944);
+    pub const MQCMDL_CURRENT_LEVEL: types::MQCMDL = types::MQCMDL(944);
     pub const MQCMHO_NONE: types::MQCMHO = types::MQCMHO(0);
     pub const MQCMHO_NO_VALIDATION: types::MQCMHO = types::MQCMHO(1);
     pub const MQCMHO_VALIDATE: types::MQCMHO = types::MQCMHO(2);
