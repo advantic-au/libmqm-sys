@@ -1,9 +1,9 @@
 {
-    "macOSARM64": "9.4.3.0",
-    "macOSX64": "9.4.3.0",
-    "LinuxX64": "9.4.3.0",
-    "LinuxARM64": "9.4.3.0",
-    "LinuxPPC64LE": "9.4.3.0",
-    "LinuxS390X": "9.4.3.0",
-    "WindowsX64": "9.4.3.0"
+    "macOSARM64": "9.4.4.0",
+    "macOSX64": "9.4.4.0",
+    "LinuxX64": "9.4.4.0",
+    "LinuxARM64": "9.4.4.0",
+    "LinuxPPC64LE": "9.4.4.0",
+    "LinuxS390X": "9.4.4.0",
+    "WindowsX64": "9.4.4.0"
 }
