@@ -1,4 +1,4 @@
-/* Generated with MQ client version 9.4.3.0 */
+/* Generated with MQ client version 9.4.4.0 */
 
 pub type MQBYTE = ::std::os::raw::c_uchar;
 pub type PMQBYTE = *mut MQBYTE;
@@ -2505,6 +2505,7 @@ pub const MQ_FUNCTION_LENGTH: usize = 4;
 pub const MQ_GROUP_ID_LENGTH: usize = 24;
 pub const MQ_APPL_FUNCTION_NAME_LENGTH: usize = 10;
 pub const MQ_INITIAL_KEY_LENGTH: usize = 256;
+pub const MQ_ENCRYPTION_KEY_LENGTH: usize = 256;
 pub const MQ_INSTALLATION_DESC_LENGTH: usize = 64;
 pub const MQ_INSTALLATION_NAME_LENGTH: usize = 16;
 pub const MQ_INSTALLATION_PATH_LENGTH: usize = 256;
@@ -3895,7 +3896,8 @@ pub const MQCMDL_LEVEL_940: MQLONG = 940;
 pub const MQCMDL_LEVEL_941: MQLONG = 941;
 pub const MQCMDL_LEVEL_942: MQLONG = 942;
 pub const MQCMDL_LEVEL_943: MQLONG = 943;
-pub const MQCMDL_CURRENT_LEVEL: MQLONG = 943;
+pub const MQCMDL_LEVEL_944: MQLONG = 944;
+pub const MQCMDL_CURRENT_LEVEL: MQLONG = 944;
 pub const MQCSRV_CONVERT_NO: MQLONG = 0;
 pub const MQCSRV_CONVERT_YES: MQLONG = 1;
 pub const MQCSRV_DLQ_NO: MQLONG = 0;
