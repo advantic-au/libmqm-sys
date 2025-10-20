@@ -102,8 +102,7 @@ from the MQ library header files. Accuracy of the documentation is dependent on 
 files.
 
  */
-#![cfg_attr(docsrs, feature(doc_auto_cfg, doc_cfg, doc_cfg_hide))]
-#![cfg_attr(docsrs, doc(cfg_hide(feature = "bindgen")))]
+#![cfg_attr(docsrs, feature(doc_cfg))]
 
 #[cfg(feature = "bindgen")]
 #[rustfmt::skip]
