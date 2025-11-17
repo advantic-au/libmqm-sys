@@ -37,7 +37,7 @@ jobs:
         with:
           client-version: ${{ steps.mq_version_pregen.outputs.client-version }}
       - name: Install rust stable
-        uses: dtolnay/rust-toolchain@6d653acede28d24f02e3cd41383119e8b1b35921
+        uses: dtolnay/rust-toolchain@0f44b27771c32bda9f458f75a1e241b09791b331
         with:
           toolchain: stable
       - uses: Swatinem/rust-cache@f13886b937689c021905a6b90929199931d60db1 # v2.8.1
