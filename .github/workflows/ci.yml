@@ -42,7 +42,7 @@ jobs:
         uses: dtolnay/rust-toolchain@6d653acede28d24f02e3cd41383119e8b1b35921
         with:
           toolchain: stable
-      - uses: Swatinem/rust-cache@f13886b937689c021905a6b90929199931d60db1 # v2.8.1
+      - uses: Swatinem/rust-cache@779680da715d629ac1d338a641029a2f4372abb5 # v2.8.2
         with:
           shared-key: "build"
       - uses: taiki-e/install-action@e43a5023a747770bfcb71ae048541a681714b951 # v2.62.33
@@ -68,7 +68,7 @@ jobs:
         with:
           toolchain: ${{ matrix.toolchain }}
           components: clippy, rustfmt
-      - uses: Swatinem/rust-cache@f13886b937689c021905a6b90929199931d60db1 # v2.8.1
+      - uses: Swatinem/rust-cache@779680da715d629ac1d338a641029a2f4372abb5 # v2.8.2
         with:
           shared-key: "build"
       - uses: taiki-e/install-action@e43a5023a747770bfcb71ae048541a681714b951 # v2.62.33
@@ -251,7 +251,7 @@ jobs:
         uses: dtolnay/rust-toolchain@6d653acede28d24f02e3cd41383119e8b1b35921
         with:
           toolchain: stable
-      - uses: Swatinem/rust-cache@f13886b937689c021905a6b90929199931d60db1 # v2.8.1
+      - uses: Swatinem/rust-cache@779680da715d629ac1d338a641029a2f4372abb5 # v2.8.2
         with:
           shared-key: "build"
       - name: Refresh pregenerated content
