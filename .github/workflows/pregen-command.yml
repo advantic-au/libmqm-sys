@@ -17,7 +17,7 @@ jobs:
       contents: write
     steps:
       # Checkout the pull request branch
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           persist-credentials: true
           fetch-depth: 0
@@ -75,7 +75,7 @@ jobs:
       contents: write
     steps:
       # Checkout the pull request branch
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           persist-credentials: true
           fetch-depth: 0
@@ -151,7 +151,7 @@ jobs:
     needs: [ pregen, pregen_arch ]
     if: ${{ always() }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           persist-credentials: true
           fetch-depth: 0
