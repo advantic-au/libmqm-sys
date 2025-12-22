@@ -102,7 +102,7 @@ jobs:
           arch: ${{ matrix.env.client_arch }}
       - id: cache-target-restore
         name: Cache restore Rust target
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@v5
         with:
           path: |
             **/target
@@ -132,7 +132,7 @@ jobs:
       - id: cache-target-save
         name: Cache save Rust target
         if: ${{ steps.cache-target-restore.outputs.cache-hit != 'true' }}
-        uses: actions/cache/save@v4
+        uses: actions/cache/save@v5
         with:
           path: |
             **/target
