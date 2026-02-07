@@ -5,7 +5,8 @@ mod c {
         non_upper_case_globals,
         clippy::unreadable_literal,
         clippy::needless_raw_string_hashes,
-        clippy::upper_case_acronyms
+        clippy::upper_case_acronyms,
+        clippy::wildcard_imports
     )]
 
     pub mod mapping {
@@ -22,7 +23,8 @@ mod c {
         non_upper_case_globals,
         clippy::unreadable_literal,
         clippy::needless_raw_string_hashes,
-        clippy::upper_case_acronyms
+        clippy::upper_case_acronyms,
+        clippy::wildcard_imports
     )]
 
     pub mod mapping {
@@ -38,7 +40,8 @@ mod c {
         non_upper_case_globals,
         clippy::unreadable_literal,
         clippy::needless_raw_string_hashes,
-        clippy::upper_case_acronyms
+        clippy::upper_case_acronyms,
+        clippy::wildcard_imports
     )]
 
     pub mod mapping {
@@ -54,7 +57,8 @@ mod c {
         non_upper_case_globals,
         clippy::unreadable_literal,
         clippy::needless_raw_string_hashes,
-        clippy::upper_case_acronyms
+        clippy::upper_case_acronyms,
+        clippy::wildcard_imports
     )]
 
     pub mod mapping {
@@ -70,7 +74,8 @@ mod c {
         non_upper_case_globals,
         clippy::unreadable_literal,
         clippy::needless_raw_string_hashes,
-        clippy::upper_case_acronyms
+        clippy::upper_case_acronyms,
+        clippy::wildcard_imports
     )]
 
     pub mod mapping {
@@ -86,7 +91,8 @@ mod c {
         non_upper_case_globals,
         clippy::unreadable_literal,
         clippy::needless_raw_string_hashes,
-        clippy::upper_case_acronyms
+        clippy::upper_case_acronyms,
+        clippy::wildcard_imports
     )]
 
     pub mod mapping {
@@ -101,7 +107,8 @@ mod c {
         non_upper_case_globals,
         clippy::unreadable_literal,
         clippy::needless_raw_string_hashes,
-        clippy::upper_case_acronyms
+        clippy::upper_case_acronyms,
+        clippy::wildcard_imports
     )]
 
     pub mod mapping {
