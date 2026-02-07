@@ -22,8 +22,6 @@ jobs:
       fail-fast: false
       matrix:
         version:
-          - client-version: 9.2
-            feature: mqc_9_2_0_0
           - client-version: 9.3
             feature: mqc_9_3_5_0
           - client-version: 9.4

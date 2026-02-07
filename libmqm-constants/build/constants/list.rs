@@ -3423,6 +3423,16 @@ pub const CONSTANTS: &[ConstantEntry] = &[
         Some("pcf"),
         Some("Native HA Types"),
     ),
+    #[cfg(feature = "mqc_9_4_5_0")]
+    c(
+        "MQERO_",
+        "MQERO",
+        mqstr::MQERO_STR,
+        "MQLONG",
+        "value",
+        Some("pcf"),
+        Some("Error Log Option Values"),
+    ),
 ];
 
 pub const CONSTANTS_DOC: &[(&str, &str)] = &[

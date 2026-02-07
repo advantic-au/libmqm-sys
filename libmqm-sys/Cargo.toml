@@ -18,7 +18,7 @@ build = "build/main.rs"
 workspace = true
 
 [features]
-default = ["link", "mqc_9_2_0_0"]
+default = ["link", "mqc_9_3_0_0"]
 
 mock = ["dep:mockall"]
 

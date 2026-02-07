@@ -16,7 +16,7 @@ path = "src/lib.rs"
 crate-type = ["lib"]
 
 [features]
-default = ["mqc_9_2_0_0"]
+default = ["mqc_9_3_0_0"]
 
 docsrs = [
     "libmqm-sys/docsrs",     # Ensure libmqm-sys uses built in docsrs mode
