@@ -80,7 +80,7 @@ impl VisitMut for FnArgType<'_> {
                         // .. or match on just arg_name
                         .or_else(|| self.0.get(&(&arg_name, None)))
                     {
-                        pat.ty = Box::new(ty.clone()); // Set the new type
+                        *pat.ty = ty.clone(); // Set the new type
                     }
                     ident.ident = syn::Ident::new(arg_name.trim_start_matches('p'), proc_macro2::Span::call_site());
                 }
@@ -110,7 +110,7 @@ impl VisitMut for MqLongConstWrap {
                         // Wrap the literal integer into an i32
                         #[allow(clippy::cast_possible_wrap)]
                         let lit = syn::LitInt::new(&(unsigned as i32).to_string(), Span::call_site());
-                        item.expr = Box::new(syn::parse_quote!(#lit));
+                        *item.expr = syn::parse_quote!(#lit);
                     }
                 }
             }

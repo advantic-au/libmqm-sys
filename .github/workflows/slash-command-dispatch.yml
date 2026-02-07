@@ -12,7 +12,7 @@ jobs:
       issues: write # for reactions
       pull-requests: write # for reactions
     steps:
-      - uses: peter-evans/slash-command-dispatch@13bc09769d122a64f75aa5037256f6f2d78be8c4 # v4
+      - uses: peter-evans/slash-command-dispatch@9bdcd7914ec1b75590b790b844aa3b8eee7c683a # v4
         with:
           token: ${{ secrets.SCD }} 
           issue-type: pull-request
