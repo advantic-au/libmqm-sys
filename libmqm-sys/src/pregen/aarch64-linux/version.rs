@@ -1,2 +1,2 @@
-pub const CLIENT_BUILD_VERSION: &str = "9.4.4.0";
-pub const CLIENT_BUILD_VERSION_INT: u32 = 0x09040400;
+pub const CLIENT_BUILD_VERSION: &str = "9.4.5.0";
+pub const CLIENT_BUILD_VERSION_INT: u32 = 0x09040500;

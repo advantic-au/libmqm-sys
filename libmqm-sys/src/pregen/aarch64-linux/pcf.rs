@@ -1,4 +1,4 @@
-/* Generated with MQ client version 9.4.4.0 */
+/* Generated with MQ client version 9.4.5.0 */
 
 pub type PMQCFH = *mut MQCFH;
 pub type PMQCFBF = *mut MQCFBF;
@@ -470,6 +470,7 @@ pub const MQCMD_AMQP_DIAGNOSTICS: crate::MQLONG = 217;
 pub const MQCMD_INTER_Q_MGR_STATUS: crate::MQLONG = 218;
 pub const MQCMD_INTER_Q_MGR_BALANCE: crate::MQLONG = 219;
 pub const MQCMD_INQUIRE_APPL_STATUS: crate::MQLONG = 220;
+pub const MQCMD_INQUIRE_ERROR_LOG: crate::MQLONG = 221;
 pub const MQCFC_LAST: crate::MQLONG = 1;
 pub const MQCFC_NOT_LAST: crate::MQLONG = 0;
 /// [IBM `MQRCCF_CFH_TYPE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046050_.html)
@@ -1433,6 +1434,7 @@ pub const MQIAMO_MONITOR_FLAGS_OBJNAME: crate::MQLONG = 1;
 pub const MQIAMO_MONITOR_UNIT: crate::MQLONG = 1;
 pub const MQIAMO_MONITOR_DELTA: crate::MQLONG = 2;
 pub const MQIAMO_MONITOR_LSN: crate::MQLONG = 3;
+pub const MQIAMO_MONITOR_TIMESTAMP: crate::MQLONG = 4;
 pub const MQIAMO_MONITOR_HUNDREDTHS: crate::MQLONG = 100;
 pub const MQIAMO_MONITOR_KB: crate::MQLONG = 1024;
 pub const MQIAMO_MONITOR_PERCENT: crate::MQLONG = 10000;
@@ -1851,7 +1853,9 @@ pub const MQIACF_NHA_GROUP_STATUS: crate::MQLONG = 1475;
 pub const MQIACF_NHA_INSTANCE_STATUS: crate::MQLONG = 1476;
 pub const MQIACF_NHA_TYPE: crate::MQLONG = 1477;
 pub const MQIACF_EVENT_DUPLICATE_COUNT: crate::MQLONG = 1478;
-pub const MQIACF_LAST_USED: crate::MQLONG = 1478;
+pub const MQIACF_ERROR_LOG_OPTIONS: crate::MQLONG = 1479;
+pub const MQIACF_LAST_USED: crate::MQLONG = 1479;
+pub const MQERO_NONE: crate::MQLONG = 0;
 pub const MQCFACCESS_ENABLED: crate::MQLONG = 0;
 pub const MQCFACCESS_SUSPENDED: crate::MQLONG = 1;
 pub const MQCFACCESS_DISABLED: crate::MQLONG = 2;
@@ -2257,7 +2261,11 @@ pub const MQCACF_NHA_GROUP_RECOV_LSN: crate::MQLONG = 3229;
 pub const MQCACF_NHA_GROUP_RECOV_ISOTIME: crate::MQLONG = 3230;
 pub const MQCACF_NHA_SYNC_ISOTIME: crate::MQLONG = 3231;
 pub const MQCACF_EVENT_DUPLICATE_FROM: crate::MQLONG = 3232;
-pub const MQCACF_LAST_USED: crate::MQLONG = 3232;
+pub const MQCACF_ERROR_LOG_AFTER_ISOTIME: crate::MQLONG = 3233;
+pub const MQCACF_ERROR_LOG_NAME: crate::MQLONG = 3234;
+pub const MQCACF_ERROR_LOG_RECORD: crate::MQLONG = 3235;
+pub const MQCACF_ERROR_LOG_ISOTIME: crate::MQLONG = 3236;
+pub const MQCACF_LAST_USED: crate::MQLONG = 3236;
 pub const MQCACH_FIRST: crate::MQLONG = 3501;
 pub const MQCACH_CHANNEL_NAME: crate::MQLONG = 3501;
 pub const MQCACH_DESC: crate::MQLONG = 3502;
