@@ -1,4 +1,4 @@
-/* Generated with MQ client version 9.4.4.0 */
+/* Generated with MQ client version 9.4.5.0 */
 /*
  * Unmapped constants:
  *  MQBA_FIRST
@@ -1167,6 +1167,10 @@ pub mod types {
         );
         impl_value!(MQEPH, mq::MQLONG);
         define_new_type!(
+            pub MQERO, mq::MQLONG, mapping::MQERO_MAPSTR, r##"Error Log Option Values"##
+        );
+        impl_value!(MQERO, mq::MQLONG);
+        define_new_type!(
             pub MQET, mq::MQLONG, mapping::MQET_MAPSTR, r##"Escape Types"##
         );
         impl_value!(MQET, mq::MQLONG);
@@ -1950,7 +1954,8 @@ pub mod constants {
     pub const MQCMDL_LEVEL_942: types::MQCMDL = types::MQCMDL(942);
     pub const MQCMDL_LEVEL_943: types::MQCMDL = types::MQCMDL(943);
     pub const MQCMDL_LEVEL_944: types::MQCMDL = types::MQCMDL(944);
-    pub const MQCMDL_CURRENT_LEVEL: types::MQCMDL = types::MQCMDL(944);
+    pub const MQCMDL_LEVEL_945: types::MQCMDL = types::MQCMDL(945);
+    pub const MQCMDL_CURRENT_LEVEL: types::MQCMDL = types::MQCMDL(945);
     pub const MQCMHO_NONE: types::MQCMHO = types::MQCMHO(0);
     pub const MQCMHO_NO_VALIDATION: types::MQCMHO = types::MQCMHO(1);
     pub const MQCMHO_VALIDATE: types::MQCMHO = types::MQCMHO(2);
@@ -4280,8 +4285,12 @@ pub mod constants {
         pub const MQCACF_NHA_GROUP_RECOV_ISOTIME: types::MQCACF = types::MQCACF(3230);
         pub const MQCACF_NHA_SYNC_ISOTIME: types::MQCACF = types::MQCACF(3231);
         pub const MQCACF_EVENT_DUPLICATE_FROM: types::MQCACF = types::MQCACF(3232);
+        pub const MQCACF_ERROR_LOG_AFTER_ISOTIME: types::MQCACF = types::MQCACF(3233);
+        pub const MQCACF_ERROR_LOG_NAME: types::MQCACF = types::MQCACF(3234);
+        pub const MQCACF_ERROR_LOG_RECORD: types::MQCACF = types::MQCACF(3235);
+        pub const MQCACF_ERROR_LOG_ISOTIME: types::MQCACF = types::MQCACF(3236);
         pub const MQCACF_FIRST: types::MQCACF = types::MQCACF(3001);
-        pub const MQCACF_LAST_USED: types::MQCACF = types::MQCACF(3232);
+        pub const MQCACF_LAST_USED: types::MQCACF = types::MQCACF(3236);
         pub const MQCACH_CHANNEL_NAME: types::MQCACH = types::MQCACH(3501);
         pub const MQCACH_DESC: types::MQCACH = types::MQCACH(3502);
         pub const MQCACH_MODE_NAME: types::MQCACH = types::MQCACH(3503);
@@ -4718,6 +4727,7 @@ pub mod constants {
         pub const MQCMD_INTER_Q_MGR_STATUS: types::MQCMD = types::MQCMD(218);
         pub const MQCMD_INTER_Q_MGR_BALANCE: types::MQCMD = types::MQCMD(219);
         pub const MQCMD_INQUIRE_APPL_STATUS: types::MQCMD = types::MQCMD(220);
+        pub const MQCMD_INQUIRE_ERROR_LOG: types::MQCMD = types::MQCMD(221);
         pub const MQCMD_SET_PROT_POLICY: types::MQCMD = types::MQCMD(208);
         pub const MQDELO_NONE: types::MQDELO = types::MQDELO(0);
         pub const MQDELO_LOCAL: types::MQDELO = types::MQDELO(4);
@@ -4728,6 +4738,7 @@ pub mod constants {
         pub const MQDOPT_DEFINED: types::MQDOPT = types::MQDOPT(1);
         pub const MQEPH_NONE: types::MQEPH = types::MQEPH(0);
         pub const MQEPH_CCSID_EMBEDDED: types::MQEPH = types::MQEPH(1);
+        pub const MQERO_NONE: types::MQERO = types::MQERO(0);
         pub const MQET_MQSC: types::MQET = types::MQET(1);
         pub const MQEVO_OTHER: types::MQEVO = types::MQEVO(0);
         pub const MQEVO_CONSOLE: types::MQEVO = types::MQEVO(1);
@@ -5190,11 +5201,12 @@ pub mod constants {
         pub const MQIACF_NHA_INSTANCE_STATUS: types::MQIACF = types::MQIACF(1476);
         pub const MQIACF_NHA_TYPE: types::MQIACF = types::MQIACF(1477);
         pub const MQIACF_EVENT_DUPLICATE_COUNT: types::MQIACF = types::MQIACF(1478);
+        pub const MQIACF_ERROR_LOG_OPTIONS: types::MQIACF = types::MQIACF(1479);
         pub const MQIACF_FIRST: types::MQIACF = types::MQIACF(1001);
         pub const MQIACF_MODE: types::MQIACF = types::MQIACF(1008);
         pub const MQIACF_ERROR_IDENTIFIER: types::MQIACF = types::MQIACF(1013);
         pub const MQIACF_SYSP_SMF_STAT_TIME_MINS: types::MQIACF = types::MQIACF(1199);
-        pub const MQIACF_LAST_USED: types::MQIACF = types::MQIACF(1478);
+        pub const MQIACF_LAST_USED: types::MQIACF = types::MQIACF(1479);
         pub const MQIACH_XMIT_PROTOCOL_TYPE: types::MQIACH = types::MQIACH(1501);
         pub const MQIACH_BATCH_SIZE: types::MQIACH = types::MQIACH(1502);
         pub const MQIACH_DISC_INTERVAL: types::MQIACH = types::MQIACH(1503);
@@ -5481,6 +5493,9 @@ pub mod constants {
         );
         pub const MQIAMO_MONITOR_LSN: types::MQIAMO_MONITOR_DATATYPE = types::MQIAMO_MONITOR_DATATYPE(
             3,
+        );
+        pub const MQIAMO_MONITOR_TIMESTAMP: types::MQIAMO_MONITOR_DATATYPE = types::MQIAMO_MONITOR_DATATYPE(
+            4,
         );
         pub const MQIAMO_MONITOR_HUNDREDTHS: types::MQIAMO_MONITOR_DATATYPE = types::MQIAMO_MONITOR_DATATYPE(
             100,
