@@ -1,4 +1,4 @@
-/* Generated with MQ client version 9.4.4.0 */
+/* Generated with MQ client version 9.4.5.0 */
 
 pub type PPMQCHAR = *mut crate::PMQCHAR;
 pub type PPMQLONG = *mut crate::PMQLONG;

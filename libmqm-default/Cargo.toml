@@ -27,7 +27,7 @@ syn = { version = "2.0.90", optional = true, default-features = false, features 
 workspace = true
 
 [features]
-default = ["mqc_9_2_0_0"]
+default = ["mqc_9_3_0_0"]
 pregen = ["generate", "pcf", "exits", "mqc_9_3_1_0", "libmqm-sys/mqc_latest"]
 generate = [
     "libmqm-sys/struct_defaults",

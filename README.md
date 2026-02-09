@@ -88,7 +88,7 @@ Feature flags
 | mqai              |   | Expose the MQAI functions |
 | pcf               |   | Generate the PCF structures |
 | exits             |   | Generate the exit structures |
-| mqc_*             | mqc_9_2_0_0 | Enable features of a specific MQI library version eg `mqc_9_3_1_0` |
+| mqc_*             | mqc_9_3_0_0 | Enable features of a specific MQI library version eg `mqc_9_3_1_0` |
 | mqc_latest        |   | Enable features of the latest MQI library version |
 
 Status
