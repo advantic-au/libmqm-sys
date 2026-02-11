@@ -11,28 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Other
 
-- MQ client 9.4.5.0 Linux ppc64le
-- MQ client 9.4.5.0 Linux s390x
-- MQ client 9.4.5.0 macOS ARM64
-- MQ client 9.4.5.0 Linux ARM64
-- MQ client 9.4.5.0 Windows X64
-- MQ 9.4.5 generated files (x64)
-- IBM MQ 9.4.5
+- IBM MQ 9.4.4 and 9.4.5
 - Bump dependencies
 - Addressed clippy warnings / errors
-- MQ client 9.4.4.0 Linux ppc64le
-- MQ client 9.4.4.0 Linux s390x
-- MQ client 9.4.4.0 macOS ARM64
-- MQ client 9.4.4.0 Linux ARM64
-- MQ client 9.4.4.0 Linux X64
-- MQ client 9.4.4.0 Windows X64
-- fixed docsrs generation
-- renamed cfg_hide to hide
-- removed doc_cfg_hide and doc_auto_cfg
-- MQ 9.4.4
-- *(deps)* update phf_generator requirement from 0.12.1 to 0.13.1
-- *(deps)* update phf_codegen requirement from 0.12.1 to 0.13.1
-- *(deps)* update phf requirement from 0.12.1 to 0.13.1
 
 ## [0.10.1](https://github.com/advantic-au/libmqm-sys/compare/libmqm-sys-v0.10.0...libmqm-sys-v0.10.1) - 2025-07-06
 
