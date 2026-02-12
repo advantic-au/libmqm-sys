@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.10.2](https://github.com/advantic-au/libmqm-sys/compare/libmqm-sys-v0.10.1...libmqm-sys-v0.10.2) - 2026-02-09
+
+### Other
+
+- IBM MQ 9.4.4 and 9.4.5
+- Bump dependencies
+- Addressed clippy warnings / errors
+
 ## [0.10.1](https://github.com/advantic-au/libmqm-sys/compare/libmqm-sys-v0.10.0...libmqm-sys-v0.10.1) - 2025-07-06
 
 ### Fixed
