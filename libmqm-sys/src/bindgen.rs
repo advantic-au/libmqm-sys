@@ -44,3 +44,8 @@ pub mod mock {
 pub mod link {
     include!(concat!(env!("OUT_DIR"), "/link.rs"));
 }
+
+#[cfg(feature = "exits")]
+mod iep {
+    include!(concat!(env!("OUT_DIR"), "/iep.rs"));
+}
