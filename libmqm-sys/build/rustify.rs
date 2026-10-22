@@ -102,16 +102,16 @@ impl VisitMut for MqLongConstWrap {
                 Expr::Lit(syn::ExprLit {
                     lit: Lit::Int(lit_int), ..
                 }),
-            ) if path.is_ident(&mqlong) /* MQLONG */=> {
+            ) if path.is_ident(&mqlong)
                 // Parse as i32
-                if lit_int.base10_parse::<i32>().is_err() {
-                    // Parse as u32
-                    if let Ok(unsigned) = lit_int.base10_parse::<u32>() {
-                        // Wrap the literal integer into an i32
-                        #[allow(clippy::cast_possible_wrap)]
-                        let lit = syn::LitInt::new(&(unsigned as i32).to_string(), Span::call_site());
-                        *item.expr = syn::parse_quote!(#lit);
-                    }
+                && lit_int.base10_parse::<i32>().is_err() =>
+            {
+                // Parse as u32
+                if let Ok(unsigned) = lit_int.base10_parse::<u32>() {
+                    // Wrap the literal integer into an i32
+                    #[allow(clippy::cast_possible_wrap)]
+                    let lit = syn::LitInt::new(&(unsigned as i32).to_string(), Span::call_site());
+                    *item.expr = syn::parse_quote!(#lit);
                 }
             }
             _ => (),

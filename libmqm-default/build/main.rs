@@ -24,7 +24,7 @@ pub fn generate_defaults(w: &mut impl std::io::Write) -> Result<(), std::io::Err
             if s_byte.is_ascii_alphanumeric() || *s_byte == 0x20 {
                 write!(write, "b'{}',", *s_byte as char)?;
             } else {
-                write!(write, "{s_byte:#02x},")?;
+                write!(write, "{s_byte:#x},")?;
             }
         }
 

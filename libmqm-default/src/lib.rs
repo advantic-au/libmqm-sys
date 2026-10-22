@@ -10,7 +10,7 @@ Default structures for the IBM® MQ Interface (MQI), Programmable Command Format
 /*!
  *
  * Minimum MQ client can be set using the `mqc_*` features
-*/
+ */
 
 #[cfg(feature = "generate")]
 #[rustfmt::skip]

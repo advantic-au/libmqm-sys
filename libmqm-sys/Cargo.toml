@@ -25,7 +25,7 @@ mock = ["dep:mockall"]
 ## Generate the bindings and save them in the src folder
 pregen = ["pcf", "exits", "mqai", "bindgen", "mqc_latest"]
 
-## Enable runtime loading of the MQI library using [`dlopen2`](dlopen2)
+## Enable runtime loading of the MQI library using (dlopen2)
 dlopen2 = ["dep:dlopen2", "dep:libc"]
 
 ## [`Link`](link) the MQI library at compile time

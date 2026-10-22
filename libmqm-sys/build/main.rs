@@ -98,11 +98,11 @@ mod link_mqm {
     use std::env;
 
     pub fn link_lib() -> &'static str {
-        env::var("CARGO_CFG_WINDOWS").map(|_| "mqm").unwrap_or("mqm_r")
+        env::var("CARGO_CFG_WINDOWS").map_or("mqm_r", |_| "mqm")
     }
 
     pub fn lib_path() -> &'static str {
-        env::var("CARGO_CFG_WINDOWS").map(|_| "tools/lib64").unwrap_or("lib64")
+        env::var("CARGO_CFG_WINDOWS").map_or("lib64", |_| "tools/lib64")
     }
 }
 
@@ -111,13 +111,11 @@ mod mq_path {
     use std::{env, path::PathBuf};
 
     fn default_home() -> &'static str {
-        env::var("CARGO_CFG_WINDOWS")
-            .map(|_| "c:/Program Files/IBM/MQ")
-            .unwrap_or("/opt/mqm")
+        env::var("CARGO_CFG_WINDOWS").map_or("/opt/mqm", |_| "c:/Program Files/IBM/MQ")
     }
 
     fn inc_sub_path() -> &'static str {
-        env::var("CARGO_CFG_WINDOWS").map(|_| "tools/c/include").unwrap_or("inc")
+        env::var("CARGO_CFG_WINDOWS").map_or("inc", |_| "tools/c/include")
     }
 
     pub fn home_path() -> PathBuf {
@@ -176,9 +174,7 @@ fn main() -> Result<(), io::Error> {
         if let Some(((min_mqc, feature), current_mqc)) = min_mqc_version.zip(versions::parse_version(&mqc_version)) {
             assert!(
                 min_mqc <= current_mqc,
-                "MQC version {} does not meet the minimum requirement for feature {}",
-                &mqc_version,
-                &feature
+                "MQC version {mqc_version} does not meet the minimum requirement for feature {feature}",
             );
         }
 
@@ -426,7 +422,7 @@ fn main() -> Result<(), io::Error> {
                     let mut lg = ImplFnGenerator::new(impl_link_fn(path));
                     lg.visit_item_trait(&item_trait);
                     let mut link_impl_trait = lg.generate(&parse_quote!(crate::#trait_name), &link_name);
-                    link_impl_trait.attrs.extend(feat_cfg.clone());
+                    link_impl_trait.attrs.extend(feat_cfg);
                     PrefixMqTypes(path, &HashSet::new()).visit_item_impl_mut(&mut link_impl_trait);
 
                     mock_impls.push(mock_impl_trait);
