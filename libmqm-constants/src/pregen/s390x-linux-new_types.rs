@@ -1,4 +1,4 @@
-/* Generated with MQ client version 9.4.5.0 */
+/* Generated with MQ client version 10.0.0.0 */
 /*
  * Unmapped constants:
  *  MQBA_FIRST
@@ -500,6 +500,15 @@ pub mod types {
         r##"Queue Sharing Group Dispositions"##
     );
     impl_value!(MQQSGD, mq::MQLONG);
+    define_new_type!(
+        pub MQQSR, mq::MQLONG, mapping::MQQSR_MAPSTR,
+        r##"Quantum Safe Required Options"##
+    );
+    impl_value!(MQQSR, mq::MQLONG);
+    define_new_type!(
+        pub MQQS, mq::MQLONG, mapping::MQQS_MAPSTR, r##"Quantum Safe Algorithm"##
+    );
+    impl_value!(MQQS, mq::MQLONG);
     define_new_type!(
         pub MQQT, mq::MQLONG, mapping::MQQT_MAPSTR, r##"Extended Queue Types"##
     );
@@ -1955,7 +1964,8 @@ pub mod constants {
     pub const MQCMDL_LEVEL_943: types::MQCMDL = types::MQCMDL(943);
     pub const MQCMDL_LEVEL_944: types::MQCMDL = types::MQCMDL(944);
     pub const MQCMDL_LEVEL_945: types::MQCMDL = types::MQCMDL(945);
-    pub const MQCMDL_CURRENT_LEVEL: types::MQCMDL = types::MQCMDL(945);
+    pub const MQCMDL_LEVEL_1000: types::MQCMDL = types::MQCMDL(1000);
+    pub const MQCMDL_CURRENT_LEVEL: types::MQCMDL = types::MQCMDL(1000);
     pub const MQCMHO_NONE: types::MQCMHO = types::MQCMHO(0);
     pub const MQCMHO_NO_VALIDATION: types::MQCMHO = types::MQCMHO(1);
     pub const MQCMHO_VALIDATE: types::MQCMHO = types::MQCMHO(2);
@@ -2785,6 +2795,12 @@ pub mod constants {
     pub const MQQSGD_GROUP: types::MQQSGD = types::MQQSGD(3);
     pub const MQQSGD_PRIVATE: types::MQQSGD = types::MQQSGD(4);
     pub const MQQSGD_LIVE: types::MQQSGD = types::MQQSGD(6);
+    pub const MQQSR_OPTIONAL: types::MQQSR = types::MQQSR(0);
+    pub const MQQSR_REQUIRED: types::MQQSR = types::MQQSR(1);
+    pub const MQQS_UNKNOWN: types::MQQS = types::MQQS(-1);
+    pub const MQQS_UNPROTECTED: types::MQQS = types::MQQS(0);
+    pub const MQQS_HYBMLKEM: types::MQQS = types::MQQS(1);
+    pub const MQQS_MLKEM: types::MQQS = types::MQQS(2);
     pub const MQQT_LOCAL: types::MQQT = types::MQQT(1);
     pub const MQQT_MODEL: types::MQQT = types::MQQT(2);
     pub const MQQT_ALIAS: types::MQQT = types::MQQT(3);
@@ -5333,13 +5349,15 @@ pub mod constants {
         pub const MQIACH_AMQP_KEEP_ALIVE: types::MQIACH = types::MQIACH(1644);
         pub const MQIACH_SECURITY_PROTOCOL: types::MQIACH = types::MQIACH(1645);
         pub const MQIACH_SPL_PROTECTION: types::MQIACH = types::MQIACH(1646);
+        pub const MQIACH_SSL_QS: types::MQIACH = types::MQIACH(1647);
+        pub const MQIACH_SSL_QSR: types::MQIACH = types::MQIACH(1648);
         pub const MQIACH_FIRST: types::MQIACH = types::MQIACH(1501);
         pub const MQIACH_LAST_SEQUENCE_NUMBER: types::MQIACH = types::MQIACH(1529);
         pub const MQIACH_CURRENT_SEQUENCE_NUMBER: types::MQIACH = types::MQIACH(1532);
         pub const MQIACH_BYTES_RECEIVED: types::MQIACH = types::MQIACH(1536);
         pub const MQIACH_BUFFERS_RECEIVED: types::MQIACH = types::MQIACH(1539);
         pub const MQIACH_MSGS_RECEIVED: types::MQIACH = types::MQIACH(1634);
-        pub const MQIACH_LAST_USED: types::MQIACH = types::MQIACH(1646);
+        pub const MQIACH_LAST_USED: types::MQIACH = types::MQIACH(1648);
         pub const MQIAMO64_AVG_Q_TIME: types::MQIAMO64 = types::MQIAMO64(703);
         pub const MQIAMO64_Q_TIME_AVG: types::MQIAMO64 = types::MQIAMO64(741);
         pub const MQIAMO64_Q_TIME_MAX: types::MQIAMO64 = types::MQIAMO64(742);
@@ -5639,6 +5657,7 @@ pub mod constants {
         pub const MQNHASTATUS_DISK_FULL: types::MQNHASTATUS = types::MQNHASTATUS(5);
         pub const MQNHASTATUS_DISCONNECTED: types::MQNHASTATUS = types::MQNHASTATUS(6);
         pub const MQNHASTATUS_PARTITIONED: types::MQNHASTATUS = types::MQNHASTATUS(7);
+        pub const MQNHASTATUS_SYNC_FAILED: types::MQNHASTATUS = types::MQNHASTATUS(8);
         pub const MQNHATYPE_ALL: types::MQNHATYPE = types::MQNHATYPE(-1);
         pub const MQNHATYPE_INSTANCE: types::MQNHATYPE = types::MQNHATYPE(0);
         pub const MQNHATYPE_GROUP: types::MQNHATYPE = types::MQNHATYPE(1);
@@ -5990,6 +6009,8 @@ pub mod constants {
         pub const MQRCCF_INCOMPATIBLE_QM_IN_QSG: types::MQRCCF = types::MQRCCF(3389);
         pub const MQRCCF_ATTR_VALUE_ERROR_QSG_QM: types::MQRCCF = types::MQRCCF(3390);
         pub const MQRCCF_AUTHORIZED: types::MQRCCF = types::MQRCCF(3391);
+        pub const MQRCCF_QUANTUM_ATTR_CONFLICT: types::MQRCCF = types::MQRCCF(3392);
+        pub const MQRCCF_SSL_QS_ALG_DISABLED: types::MQRCCF = types::MQRCCF(3393);
         pub const MQRCCF_OBJECT_ALREADY_EXISTS: types::MQRCCF = types::MQRCCF(4001);
         pub const MQRCCF_OBJECT_WRONG_TYPE: types::MQRCCF = types::MQRCCF(4002);
         pub const MQRCCF_LIKE_OBJECT_WRONG_TYPE: types::MQRCCF = types::MQRCCF(4003);
