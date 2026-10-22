@@ -1,18 +1,16 @@
 use syn::{
     parse_quote,
-    token::Colon,
     visit::Visit,
     visit_mut::{visit_pat_type_mut, visit_type_mut, VisitMut},
-    BareFnArg, FnArg, ForeignItemFn, Ident, ImplItem, ImplItemFn, Lifetime, PatIdent, PatType, Path, TraitItem, TraitItemFn,
+    FnArg, FnModifiers, ForeignItemFn, Ident, ImplItem, ImplItemFn, Lifetime, PatIdent, PatType, Path, TraitItem, TraitItemFn,
     TypeReference,
 };
 
-#[derive(Debug, Default)]
+#[derive(Default)]
 pub struct TraitGenerator {
     foreign_fn: Vec<TraitItem>,
 }
 
-#[derive(Debug)]
 pub struct ImplFnGenerator<F> {
     foreign_fn: Vec<ImplItem>,
     block_fn: F,
@@ -71,7 +69,7 @@ impl Visit<'_> for TraitGenerator {
         let mut sig = sig.clone();
         let self_arg = parse_quote!(&self);
         sig.inputs.insert(0, syn::FnArg::Receiver(self_arg));
-        sig.unsafety = Some(parse_quote!(unsafe));
+        sig.safety = parse_quote!(unsafe);
 
         let doc_link_re = regex_lite::Regex::new(r"\[`(.+?)`\]").unwrap();
         let new_attrs = attrs.iter().map(|attr| match attr.meta.require_name_value() {
@@ -92,6 +90,7 @@ impl Visit<'_> for TraitGenerator {
         });
         self.foreign_fn.push(TraitItem::Fn(TraitItemFn {
             attrs: new_attrs.collect(),
+            modifiers: FnModifiers::default(),
             sig,
             default: None,
             semi_token: Some(*semi_token),
@@ -104,14 +103,14 @@ impl<F: FnMut(syn::Field)> Visit<'_> for WrapperGenerator<F> {
         let field_name = &item.sig.ident;
         let fn_args = item.sig.inputs.iter().filter_map(|arg| match arg {
             syn::FnArg::Receiver(_) => None?,
-            syn::FnArg::Typed(pat_type) => Some(BareFnArg {
-                attrs: vec![],
-                name: Some(match &*pat_type.pat {
-                    syn::Pat::Ident(PatIdent { ident, .. }) => (ident.clone(), Colon(proc_macro2::Span::call_site())),
-                    _ => None?,
-                }),
-                ty: *pat_type.ty.clone(),
-            }),
+            syn::FnArg::Typed(pat_type) => match &*pat_type.pat {
+                syn::Pat::Ident(PatIdent { ident, .. }) => {
+                    let ty = &pat_type.ty;
+                    let fn_arg: syn::FnArg = parse_quote!(#ident: #ty);
+                    Some(fn_arg)
+                }
+                _ => None?,
+            },
         });
         let f = &mut self.0;
         f(parse_quote!(
@@ -126,7 +125,7 @@ impl<F: Fn(&mut ImplItemFn, &TraitItemFn)> Visit<'_> for ImplFnGenerator<F> {
         let mut impl_item_fn = ImplItemFn {
             attrs: vec![],
             vis: syn::Visibility::Inherited,
-            defaultness: None,
+            modifiers: FnModifiers::default(),
             sig: item.sig.clone(),
             block: parse_quote!({}),
         };

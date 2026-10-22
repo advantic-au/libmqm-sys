@@ -17,8 +17,8 @@ document-features = { version = "0.2.10", optional = true }
 
 [build-dependencies]
 libmqm-sys = { version = "0.10.2", path = "../libmqm-sys", default-features = false }
-prettyplease = { version = "0.2.31", optional = true }
-syn = { version = "2.0.90", optional = true, default-features = false, features = [
+prettyplease = { version = "0.3", optional = true }
+syn = { version = "3.0.9", optional = true, default-features = false, features = [
     "full",
     "parsing",
 ] }

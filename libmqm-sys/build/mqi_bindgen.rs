@@ -188,6 +188,7 @@ pub mod mqi {
             items_acc.extend(new_ns);
             let entry = result.entry(name).or_insert_with(|| syn::File {
                 shebang: None,
+                frontmatter: None,
                 attrs: Vec::new(),
                 items: Vec::new(),
             });

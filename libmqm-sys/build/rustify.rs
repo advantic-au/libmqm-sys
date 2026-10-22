@@ -13,10 +13,10 @@ pub struct MqLongConstWrap;
 pub struct FnArgType<'a>(HashMap<(&'a str, Option<&'a str>), Type>);
 pub struct PrefixMqTypes<'a>(pub &'a syn::Path, pub &'a HashSet<syn::Ident>);
 
-struct BareFnArgType<T>(pub T);
+struct NamedArgVisitor<T>(pub T);
 
-impl<T: Fn(&mut syn::BareFnArg)> VisitMut for BareFnArgType<T> {
-    fn visit_bare_fn_arg_mut(&mut self, item: &mut syn::BareFnArg) {
+impl<T: Fn(&mut syn::NamedArg)> VisitMut for NamedArgVisitor<T> {
+    fn visit_named_arg_mut(&mut self, item: &mut syn::NamedArg) {
         self.0(item);
     }
 }
@@ -46,8 +46,8 @@ impl<'a> FnArgType<'a> {
 impl VisitMut for FnArgType<'_> {
     fn visit_item_type_mut(&mut self, item: &mut syn::ItemType) {
         let fn_name = item.ident.to_string();
-        BareFnArgType(|bare_arg: &mut syn::BareFnArg| {
-            if let Some((arg_name, colon)) = &bare_arg.name {
+        NamedArgVisitor(|named_arg: &mut syn::NamedArg| {
+            if let Some((arg_name, colon)) = &named_arg.name {
                 let arg_name = arg_name.to_string();
                 if let Some(ty) = self
                     .0
@@ -56,9 +56,9 @@ impl VisitMut for FnArgType<'_> {
                     // .. or match on just arg_name
                     .or_else(|| self.0.get(&(&arg_name, None)))
                 {
-                    bare_arg.ty = ty.clone(); // Set the new type
+                    named_arg.ty = ty.clone(); // Set the new type
                 }
-                bare_arg.name = Some((
+                named_arg.name = Some((
                     syn::Ident::new(arg_name.trim_start_matches('p'), proc_macro2::Span::call_site()),
                     *colon,
                 ));
