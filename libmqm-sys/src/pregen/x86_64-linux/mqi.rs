@@ -1,4 +1,4 @@
-/* Generated with MQ client version 9.4.5.0 */
+/* Generated with MQ client version 10.0.0.0 */
 
 pub type MQBYTE = ::std::os::raw::c_uchar;
 pub type PMQBYTE = *mut MQBYTE;
@@ -3897,7 +3897,8 @@ pub const MQCMDL_LEVEL_942: MQLONG = 942;
 pub const MQCMDL_LEVEL_943: MQLONG = 943;
 pub const MQCMDL_LEVEL_944: MQLONG = 944;
 pub const MQCMDL_LEVEL_945: MQLONG = 945;
-pub const MQCMDL_CURRENT_LEVEL: MQLONG = 945;
+pub const MQCMDL_LEVEL_1000: MQLONG = 1000;
+pub const MQCMDL_CURRENT_LEVEL: MQLONG = 1000;
 pub const MQCSRV_CONVERT_NO: MQLONG = 0;
 pub const MQCSRV_CONVERT_YES: MQLONG = 1;
 pub const MQCSRV_DLQ_NO: MQLONG = 0;
@@ -5373,6 +5374,14 @@ pub struct MQCD {
     ///
     /// [`MQCD::Version`] >= 12
     pub SPLProtection: MQLONG,
+    /// Quantum Cryptography Algorithm
+    ///
+    /// [`MQCD::Version`] >= 13
+    pub QuantumSafeAlgorithm: MQLONG,
+    /// Quantum Cryptography Requirement
+    ///
+    /// [`MQCD::Version`] >= 13
+    pub QuantumSafeRequired: MQLONG,
 }
 pub const MQCD_VERSION_1: MQLONG = 1;
 pub const MQCD_VERSION_2: MQLONG = 2;
@@ -5386,7 +5395,8 @@ pub const MQCD_VERSION_9: MQLONG = 9;
 pub const MQCD_VERSION_10: MQLONG = 10;
 pub const MQCD_VERSION_11: MQLONG = 11;
 pub const MQCD_VERSION_12: MQLONG = 12;
-pub const MQCD_CURRENT_VERSION: MQLONG = 12;
+pub const MQCD_VERSION_13: MQLONG = 13;
+pub const MQCD_CURRENT_VERSION: MQLONG = 13;
 pub const MQCD_LENGTH_1: usize = 984;
 pub const MQCD_LENGTH_2: usize = 1312;
 pub const MQCD_LENGTH_3: usize = 1480;
@@ -5399,7 +5409,8 @@ pub const MQCD_LENGTH_9: usize = 1912;
 pub const MQCD_LENGTH_10: usize = 1920;
 pub const MQCD_LENGTH_11: usize = 1984;
 pub const MQCD_LENGTH_12: usize = 1992;
-pub const MQCD_CURRENT_LENGTH: usize = 1992;
+pub const MQCD_LENGTH_13: usize = 2000;
+pub const MQCD_CURRENT_LENGTH: usize = 2000;
 pub const MQCHT_SENDER: MQLONG = 1;
 pub const MQCHT_SERVER: MQLONG = 2;
 pub const MQCHT_RECEIVER: MQLONG = 3;
