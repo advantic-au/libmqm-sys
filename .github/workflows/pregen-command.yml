@@ -37,10 +37,10 @@ jobs:
         with:
           client-version: ${{ steps.mq_version_pregen.outputs.client-version }}
       - name: Install rust stable
-        uses: dtolnay/rust-toolchain@f7ccc83f9ed1e5b9c81d8a67d7ad1a747e22a561
+        uses: dtolnay/rust-toolchain@3c5f7ea28cd621ae0bf5283f0e981fb97b8a7af9
         with:
           toolchain: stable
-      - uses: Swatinem/rust-cache@779680da715d629ac1d338a641029a2f4372abb5 # v2.8.2
+      - uses: Swatinem/rust-cache@c19371144df3bb44fab255c43d04cbc2ab54d1c4 # v2.9.1
         with:
           shared-key: "build"
       - name: Run build and refresh generated source code
@@ -108,7 +108,7 @@ jobs:
             **/target
           key: rust-target-pregen-${{ matrix.env.distro }}-${{ matrix.env.arch }}
       - name: Pregenerate arch container
-        uses: uraimo/run-on-arch-action@d94c13912ea685de38fccc1109385b83fd79427d # v3.0.1
+        uses: uraimo/run-on-arch-action@f9b26e3a1a408d5fd530d20c17b9f3f4428ff8d9 # v3.1.0
         with:
           arch: ${{ matrix.env.arch }}
           distro: ${{ matrix.env.distro }}
