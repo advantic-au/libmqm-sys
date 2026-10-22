@@ -1,4 +1,4 @@
-/* Generated with MQ client version 9.4.5.0 */
+/* Generated with MQ client version 10.0.0.0 */
 
 pub type PPMQCHAR = *mut crate::PMQCHAR;
 pub type PPMQLONG = *mut crate::PMQLONG;
@@ -3275,6 +3275,12 @@ pub const MQSECPROT_TLSV13: crate::MQLONG = 8;
 pub const MQSPL_PASSTHRU: crate::MQLONG = 0;
 pub const MQSPL_REMOVE: crate::MQLONG = 1;
 pub const MQSPL_AS_POLICY: crate::MQLONG = 2;
+pub const MQQS_UNKNOWN: crate::MQLONG = -1;
+pub const MQQS_UNPROTECTED: crate::MQLONG = 0;
+pub const MQQS_HYBMLKEM: crate::MQLONG = 1;
+pub const MQQS_MLKEM: crate::MQLONG = 2;
+pub const MQQSR_OPTIONAL: crate::MQLONG = 0;
+pub const MQQSR_REQUIRED: crate::MQLONG = 1;
 pub const MQACH_STRUC_ID: &::std::ffi::CStr = c"ACH ";
 pub const MQACH_VERSION_1: crate::MQLONG = 1;
 pub const MQACH_CURRENT_VERSION: crate::MQLONG = 1;
