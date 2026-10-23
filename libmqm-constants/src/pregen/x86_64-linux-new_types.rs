@@ -1,6 +1,8 @@
-/* Generated with MQ client version 10.0.0.0 */
+/* Generated with MQ client version 10.0.1.0 */
 /*
  * Unmapped constants:
+ *  MQAM_JAAS
+ *  MQAM_QMGR
  *  MQBA_FIRST
  *  MQBA_LAST
  *  MQGA_FIRST
@@ -1965,7 +1967,8 @@ pub mod constants {
     pub const MQCMDL_LEVEL_944: types::MQCMDL = types::MQCMDL(944);
     pub const MQCMDL_LEVEL_945: types::MQCMDL = types::MQCMDL(945);
     pub const MQCMDL_LEVEL_1000: types::MQCMDL = types::MQCMDL(1000);
-    pub const MQCMDL_CURRENT_LEVEL: types::MQCMDL = types::MQCMDL(1000);
+    pub const MQCMDL_LEVEL_1001: types::MQCMDL = types::MQCMDL(1001);
+    pub const MQCMDL_CURRENT_LEVEL: types::MQCMDL = types::MQCMDL(1001);
     pub const MQCMHO_NONE: types::MQCMHO = types::MQCMHO(0);
     pub const MQCMHO_NO_VALIDATION: types::MQCMHO = types::MQCMHO(1);
     pub const MQCMHO_VALIDATE: types::MQCMHO = types::MQCMHO(2);
@@ -3680,6 +3683,8 @@ pub mod constants {
         pub const MQPROTO_HTTP: types::MQPROTO = types::MQPROTO(2);
         pub const MQPROTO_AMQP: types::MQPROTO = types::MQPROTO(3);
         pub const MQPROTO_MQTTV311: types::MQPROTO = types::MQPROTO(4);
+        pub const MQPROTO_MQTTV5: types::MQPROTO = types::MQPROTO(5);
+        pub const MQPROTO_MQTTV5_MASK: types::MQPROTO = types::MQPROTO(8);
         pub const MQQF_LOCAL_Q: types::MQQF = types::MQQF(1);
         pub const MQQF_CLWL_USEQ_ANY: types::MQQF = types::MQQF(64);
         pub const MQQF_CLWL_USEQ_LOCAL: types::MQQF = types::MQQF(128);
@@ -5351,13 +5356,14 @@ pub mod constants {
         pub const MQIACH_SPL_PROTECTION: types::MQIACH = types::MQIACH(1646);
         pub const MQIACH_SSL_QS: types::MQIACH = types::MQIACH(1647);
         pub const MQIACH_SSL_QSR: types::MQIACH = types::MQIACH(1648);
+        pub const MQIACH_AUTHMODE: types::MQIACH = types::MQIACH(1649);
         pub const MQIACH_FIRST: types::MQIACH = types::MQIACH(1501);
         pub const MQIACH_LAST_SEQUENCE_NUMBER: types::MQIACH = types::MQIACH(1529);
         pub const MQIACH_CURRENT_SEQUENCE_NUMBER: types::MQIACH = types::MQIACH(1532);
         pub const MQIACH_BYTES_RECEIVED: types::MQIACH = types::MQIACH(1536);
         pub const MQIACH_BUFFERS_RECEIVED: types::MQIACH = types::MQIACH(1539);
         pub const MQIACH_MSGS_RECEIVED: types::MQIACH = types::MQIACH(1634);
-        pub const MQIACH_LAST_USED: types::MQIACH = types::MQIACH(1648);
+        pub const MQIACH_LAST_USED: types::MQIACH = types::MQIACH(1649);
         pub const MQIAMO64_AVG_Q_TIME: types::MQIAMO64 = types::MQIAMO64(703);
         pub const MQIAMO64_Q_TIME_AVG: types::MQIAMO64 = types::MQIAMO64(741);
         pub const MQIAMO64_Q_TIME_MAX: types::MQIAMO64 = types::MQIAMO64(742);
