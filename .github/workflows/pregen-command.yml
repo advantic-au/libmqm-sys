@@ -31,7 +31,7 @@ jobs:
           git switch --track origin/${PREGEN_BRANCH} || git switch -c ${PREGEN_BRANCH}
       - name: Determine MQ version
         id: mq_version_pregen
-        uses: ./.github/action/mq_version_pregen
+        uses: $/.github/action/mq_version_pregen
       - uses: advantic-au/action-mq-client@stable
         id: mq_client
         with:
@@ -47,7 +47,7 @@ jobs:
         run: cargo build --no-default-features --features pregen
         env:
           MQ_HOME: ${{ steps.mq_client.outputs.client-install-path }}
-      - uses: qoomon/actions--setup-git@8e6bd30ac05e17a81b61169daae62cb6b7e61294 #v1.1
+      - uses: qoomon/actions--setup-git@8e6bd30ac05e17a81b61169daae62cb6b7e61294 # v1.1.1
       - name: Modify pregen branch with refreshed pregen files
         shell: bash
         run: |
@@ -89,7 +89,7 @@ jobs:
           git switch --track origin/${PREGEN_BRANCH} || git switch -c ${PREGEN_BRANCH}
       - name: Determine MQ version
         id: mq_version_pregen
-        uses: ./.github/action/mq_version_pregen
+        uses: $/.github/action/mq_version_pregen
         with:
           os: Linux
           arch: ${{ matrix.env.client_arch }}
@@ -137,7 +137,7 @@ jobs:
           path: |
             **/target
           key: rust-target-pregen-${{ matrix.env.distro }}-${{ matrix.env.arch }}
-      - uses: qoomon/actions--setup-git@8e6bd30ac05e17a81b61169daae62cb6b7e61294 #v1.1
+      - uses: qoomon/actions--setup-git@8e6bd30ac05e17a81b61169daae62cb6b7e61294 # v1.1.1
       - name: Modify pull request with refreshed pregen files
         shell: bash
         run: |

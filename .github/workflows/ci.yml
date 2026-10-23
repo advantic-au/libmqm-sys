@@ -172,7 +172,7 @@ jobs:
           persist-credentials: false
       - name: Determine MQ version
         id: mq_version_pregen
-        uses: ./.github/action/mq_version_pregen
+        uses: $/.github/action/mq_version_pregen
         with:
           os: Linux
           arch: ${{ matrix.env.client_arch }}
@@ -239,7 +239,7 @@ jobs:
           persist-credentials: false
       - name: Determine MQ version
         id: mq_version_pregen
-        uses: ./.github/action/mq_version_pregen
+        uses: $/.github/action/mq_version_pregen
       - name: Install MQ client
         uses: advantic-au/action-mq-client@stable
         id: mq-client
