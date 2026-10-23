@@ -101,7 +101,8 @@ The following needs further work:
 Contributions
 -------------
 
-All feedback, suggestions, contributions and enhancements are welcome.
+All feedback, suggestions, contributions and enhancements are welcome. See
+[CONTRIBUTING.md](CONTRIBUTING.md) for how to build, test and regenerate the bindings.
 
 Support
 -------
@@ -111,6 +112,9 @@ is subject to change based on feedback and enhancements. Relentless refactoring 
 before a stable crate is released.
 
 This crate is provided as-is with no guarantees of support or updates.
+
+Report bugs and feature requests with the issue templates. Report security issues privately, as
+described in [SECURITY.md](SECURITY.md).
 
 **This crate is not approved, endorsed, acknowledged, or supported by IBM. You cannot use
 IBM formal support channels (Cases/PMRs) for assistance on the use of this crate.**

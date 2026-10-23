@@ -1,0 +1,39 @@
+name: Feature request
+description: Suggest an improvement to the bindings, the constants or the generators
+title: "[Feature]: "
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem would this solve?
+      description: Describe the MQ setup, API area or workflow this would help with
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: The functions, structures, constants or generator behaviour you would like to see
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Workarounds you use today
+  - type: input
+    id: mq-version
+    attributes:
+      label: MQ client version
+      description: If the request comes from a newer MQ release, which client version exposes it?
+      placeholder: 10.0.1.0
+  - type: markdown
+    attributes:
+      value: |
+        Two things worth knowing before you file this:
+
+        - This crate exposes the raw IBM MQ API and keeps it that way. A safer API layer belongs in
+          [mqi](https://github.com/advantic-au/mqi), not here.
+        - Functions, structures and constants arrive with an MQ client version. If something is
+          missing, say which client version defines it, and it can be exposed with an `mqc_*`
+          feature and a regenerated `src/pregen`.
