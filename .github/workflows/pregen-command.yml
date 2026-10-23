@@ -17,7 +17,7 @@ jobs:
       contents: write
     steps:
       # Checkout the pull request branch
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           persist-credentials: true
           fetch-depth: 0
@@ -37,10 +37,10 @@ jobs:
         with:
           client-version: ${{ steps.mq_version_pregen.outputs.client-version }}
       - name: Install rust stable
-        uses: dtolnay/rust-toolchain@3c5f7ea28cd621ae0bf5283f0e981fb97b8a7af9
+        uses: dtolnay/rust-toolchain@683b588c487a69d01f6c6ddf40f036ff682cc2c8
         with:
           toolchain: stable
-      - uses: Swatinem/rust-cache@c19371144df3bb44fab255c43d04cbc2ab54d1c4 # v2.9.1
+      - uses: Swatinem/rust-cache@6323deb102c322ba6fcbdcafc7e3dddab59af2b6 # v2.9.2
         with:
           shared-key: "build"
       - name: Run build and refresh generated source code
@@ -75,7 +75,7 @@ jobs:
       contents: write
     steps:
       # Checkout the pull request branch
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           persist-credentials: true
           fetch-depth: 0
@@ -102,13 +102,13 @@ jobs:
           arch: ${{ matrix.env.client_arch }}
       - id: cache-target-restore
         name: Cache restore Rust target
-        uses: actions/cache/restore@v5
+        uses: actions/cache/restore@v6
         with:
           path: |
             **/target
           key: rust-target-pregen-${{ matrix.env.distro }}-${{ matrix.env.arch }}
       - name: Pregenerate arch container
-        uses: uraimo/run-on-arch-action@f9b26e3a1a408d5fd530d20c17b9f3f4428ff8d9 # v3.1.0
+        uses: uraimo/run-on-arch-action@fa1f3e7de95534497266c7265950b5188355fbfb # v3.2.1
         with:
           arch: ${{ matrix.env.arch }}
           distro: ${{ matrix.env.distro }}
@@ -132,7 +132,7 @@ jobs:
       - id: cache-target-save
         name: Cache save Rust target
         if: ${{ steps.cache-target-restore.outputs.cache-hit != 'true' }}
-        uses: actions/cache/save@v5
+        uses: actions/cache/save@v6
         with:
           path: |
             **/target
@@ -151,7 +151,7 @@ jobs:
     needs: [ pregen, pregen_arch ]
     if: ${{ always() }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           persist-credentials: true
           fetch-depth: 0
