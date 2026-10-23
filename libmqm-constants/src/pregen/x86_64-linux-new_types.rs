@@ -1,8 +1,6 @@
 /* Generated with MQ client version 10.0.1.0 */
 /*
  * Unmapped constants:
- *  MQAM_JAAS
- *  MQAM_QMGR
  *  MQBA_FIRST
  *  MQBA_LAST
  *  MQGA_FIRST
@@ -975,6 +973,8 @@ pub mod types {
             r##"Authentication Adoption Context"##
         );
         impl_value!(MQADPCTX, mq::MQLONG);
+        define_new_type!(pub MQAM, mq::MQLONG, mapping::MQAM_MAPSTR, r##"Auth Mode"##);
+        impl_value!(MQAM, mq::MQLONG);
         define_new_type!(
             pub MQAPPL, mq::MQLONG, mapping::MQAPPL_MAPSTR, r##"Movable Options"##
         );
@@ -3975,6 +3975,8 @@ pub mod constants {
         pub const MQACT_ARCHIVE_LOG: types::MQACT = types::MQACT(11);
         pub const MQADPCTX_NO: types::MQADPCTX = types::MQADPCTX(0);
         pub const MQADPCTX_YES: types::MQADPCTX = types::MQADPCTX(1);
+        pub const MQAM_JAAS: types::MQAM = types::MQAM(0);
+        pub const MQAM_QMGR: types::MQAM = types::MQAM(1);
         pub const MQAPPL_IMMOVABLE: types::MQAPPL = types::MQAPPL(0);
         pub const MQAPPL_MOVABLE: types::MQAPPL = types::MQAPPL(1);
         pub const MQAS_NONE: types::MQAS = types::MQAS(0);

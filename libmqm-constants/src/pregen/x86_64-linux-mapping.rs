@@ -68,6 +68,10 @@ pub const MQAIT_MAPSTR: LinearSource = ConstSource(
     ],
     &[],
 );
+pub const MQAM_MAPSTR: LinearSource = ConstSource(
+    &[(0, "MQAM_JAAS"), (1, "MQAM_QMGR")],
+    &[],
+);
 pub const MQAPPL_MAPSTR: LinearSource = ConstSource(
     &[(0, "MQAPPL_IMMOVABLE"), (1, "MQAPPL_MOVABLE")],
     &[],
