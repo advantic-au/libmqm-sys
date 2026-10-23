@@ -1,4 +1,4 @@
-/* Generated with MQ client version 10.0.0.0 */
+/* Generated with MQ client version 10.0.1.0 */
 pub const MQMD_DEFAULT: libmqm_sys::MQMD = unsafe {
     std::mem::transmute::<
         [u8; 364],

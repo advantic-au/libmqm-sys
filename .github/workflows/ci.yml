@@ -82,7 +82,7 @@ jobs:
         run: |
           cargo hack -p libmqm-sys --each-feature --include-features mqai,pcf,exits,dlopen2,link,mqc_latest,mock,bindgen --features bindgen clippy --tests
           cargo hack -p libmqm-sys --feature-powerset --depth 2 --include-features mqai,pcf,exits,dlopen2,link,mqc_latest,mock,default clippy --tests
-          cargo hack -p libmqm-constants --feature-powerset --depth 2 --include-features mqai,pcf,exits,mqc_9_4_5_0,default,generate clippy --tests
+          cargo hack -p libmqm-constants --feature-powerset --depth 2 --include-features mqai,pcf,exits,mqc_10_0_1_0,default,generate clippy --tests
           cargo hack -p libmqm-default --feature-powerset --depth 2 --include-features pcf,exits,mqc_9_3_1_0,default,generate clippy --tests
         env:
           MQ_HOME: ${{ steps.mq-client.outputs.client-install-path }}
@@ -172,7 +172,7 @@ jobs:
           persist-credentials: false
       - name: Determine MQ version
         id: mq_version_pregen
-        uses: ./.github/action/mq_version_pregen
+        uses: $/.github/action/mq_version_pregen
         with:
           os: Linux
           arch: ${{ matrix.env.client_arch }}
@@ -239,7 +239,7 @@ jobs:
           persist-credentials: false
       - name: Determine MQ version
         id: mq_version_pregen
-        uses: ./.github/action/mq_version_pregen
+        uses: $/.github/action/mq_version_pregen
       - name: Install MQ client
         uses: advantic-au/action-mq-client@stable
         id: mq-client

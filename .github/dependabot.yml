@@ -8,14 +8,14 @@ updates:
   # Maintain dependencies for Cargo
   - package-ecosystem: "cargo"
     cooldown:
-      default-days: 4
+      default-days: 7
     directory: "/"
     schedule:
       interval: "weekly"
   # Maintain dependencies for GitHub Actions
   - package-ecosystem: github-actions
     cooldown:
-      default-days: 4
+      default-days: 7
     directory: "/"
     schedule:
       interval: weekly

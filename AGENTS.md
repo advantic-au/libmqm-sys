@@ -161,10 +161,10 @@ libmqm-sys:   default = ["link", "mqc_9_3_0_0"]
 ```
 
 `mqc_*` features form a chain: each implies the previous (`mqc_9_3_1_0` -> `mqc_9_3_0_0` ...),
-and `mqc_latest` currently resolves to `mqc_9_4_5_0`. `libmqm-default` and
+and `mqc_latest` currently resolves to `mqc_10_0_1_0`. `libmqm-default` and
 `libmqm-constants` have their own `mqc_*` features that forward to `libmqm-sys`.
 
-Note that `libmqm-default` caps at `mqc_9_3_1_0` / `libmqm-constants` at `mqc_9_4_5_0` for
+Note that `libmqm-default` caps at `mqc_9_3_1_0` / `libmqm-constants` at `mqc_10_0_1_0` for
 their *pregen* sets - the versions are intentionally different per crate (the defaults
 changed least recently).
 

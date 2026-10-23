@@ -3453,6 +3453,16 @@ pub const CONSTANTS: &[ConstantEntry] = &[
         None,
         Some("Quantum Safe Algorithm"),
     ),
+    #[cfg(feature = "mqc_10_0_1_0")]
+    c(
+        "MQAM_",
+        "MQAM",
+        mqstr::MQAM_STR,
+        "MQLONG",
+        "value",
+        Some("pcf"),
+        Some("Auth Mode"),
+    ),
 ];
 
 pub const CONSTANTS_DOC: &[(&str, &str)] = &[(

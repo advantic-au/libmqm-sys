@@ -1,2 +1,2 @@
-pub const CLIENT_BUILD_VERSION: &str = "10.0.0.0";
-pub const CLIENT_BUILD_VERSION_INT: u32 = 0x0a000000;
+pub const CLIENT_BUILD_VERSION: &str = "10.0.1.0";
+pub const CLIENT_BUILD_VERSION_INT: u32 = 0x0a000100;

@@ -1,4 +1,4 @@
-/* Generated with MQ client version 10.0.0.0 */
+/* Generated with MQ client version 10.0.1.0 */
 
 pub type PMQCFH = *mut MQCFH;
 pub type PMQCFBF = *mut MQCFBF;
@@ -2022,7 +2022,8 @@ pub const MQIACH_SECURITY_PROTOCOL: crate::MQLONG = 1645;
 pub const MQIACH_SPL_PROTECTION: crate::MQLONG = 1646;
 pub const MQIACH_SSL_QS: crate::MQLONG = 1647;
 pub const MQIACH_SSL_QSR: crate::MQLONG = 1648;
-pub const MQIACH_LAST_USED: crate::MQLONG = 1648;
+pub const MQIACH_AUTHMODE: crate::MQLONG = 1649;
+pub const MQIACH_LAST_USED: crate::MQLONG = 1649;
 pub const MQCAMO_FIRST: crate::MQLONG = 2701;
 pub const MQCAMO_CLOSE_DATE: crate::MQLONG = 2701;
 pub const MQCAMO_CLOSE_TIME: crate::MQLONG = 2702;
@@ -2431,6 +2432,8 @@ pub const MQAUTHOPT_NAME_ALL_MATCHING: crate::MQLONG = 32;
 pub const MQAUTHOPT_NAME_AS_WILDCARD: crate::MQLONG = 64;
 pub const MQAUTHOPT_CUMULATIVE: crate::MQLONG = 256;
 pub const MQAUTHOPT_EXCLUDE_TEMP: crate::MQLONG = 512;
+pub const MQAM_QMGR: crate::MQLONG = 1;
+pub const MQAM_JAAS: crate::MQLONG = 0;
 pub const MQBT_OTMA: crate::MQLONG = 1;
 pub const MQCFO_REFRESH_REPOSITORY_YES: crate::MQLONG = 1;
 pub const MQCFO_REFRESH_REPOSITORY_NO: crate::MQLONG = 0;

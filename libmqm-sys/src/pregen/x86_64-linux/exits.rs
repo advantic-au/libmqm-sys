@@ -1,4 +1,4 @@
-/* Generated with MQ client version 10.0.0.0 */
+/* Generated with MQ client version 10.0.1.0 */
 
 pub type PPMQCHAR = *mut crate::PMQCHAR;
 pub type PPMQLONG = *mut crate::PMQLONG;
@@ -3267,6 +3267,8 @@ pub const MQPROTO_MQTTV3: crate::MQLONG = 1;
 pub const MQPROTO_HTTP: crate::MQLONG = 2;
 pub const MQPROTO_AMQP: crate::MQLONG = 3;
 pub const MQPROTO_MQTTV311: crate::MQLONG = 4;
+pub const MQPROTO_MQTTV5: crate::MQLONG = 5;
+pub const MQPROTO_MQTTV5_MASK: crate::MQLONG = 8;
 pub const MQSECPROT_NONE: crate::MQLONG = 0;
 pub const MQSECPROT_SSLV30: crate::MQLONG = 1;
 pub const MQSECPROT_TLSV10: crate::MQLONG = 2;

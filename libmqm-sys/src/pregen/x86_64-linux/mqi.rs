@@ -1,4 +1,4 @@
-/* Generated with MQ client version 10.0.0.0 */
+/* Generated with MQ client version 10.0.1.0 */
 
 pub type MQBYTE = ::std::os::raw::c_uchar;
 pub type PMQBYTE = *mut MQBYTE;
@@ -3898,7 +3898,8 @@ pub const MQCMDL_LEVEL_943: MQLONG = 943;
 pub const MQCMDL_LEVEL_944: MQLONG = 944;
 pub const MQCMDL_LEVEL_945: MQLONG = 945;
 pub const MQCMDL_LEVEL_1000: MQLONG = 1000;
-pub const MQCMDL_CURRENT_LEVEL: MQLONG = 1000;
+pub const MQCMDL_LEVEL_1001: MQLONG = 1001;
+pub const MQCMDL_CURRENT_LEVEL: MQLONG = 1001;
 pub const MQCSRV_CONVERT_NO: MQLONG = 0;
 pub const MQCSRV_CONVERT_YES: MQLONG = 1;
 pub const MQCSRV_DLQ_NO: MQLONG = 0;
