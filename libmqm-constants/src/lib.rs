@@ -16,7 +16,7 @@ Programming constants for the IBM® MQ Interface (MQI), Programmable Command For
 /*!
  *
  * Minimum MQ client can be set using the `mqc_*` features
-*/
+ */
 
 mod generated;
 pub mod lookup;

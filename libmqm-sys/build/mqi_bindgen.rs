@@ -6,8 +6,8 @@ pub mod mqi {
     };
 
     use bindgen::{
-        callbacks::{IntKind, ParseCallbacks},
         BindgenError,
+        callbacks::{IntKind, ParseCallbacks},
     };
     use regex_lite::Regex;
     use syn::{
@@ -188,6 +188,7 @@ pub mod mqi {
             items_acc.extend(new_ns);
             let entry = result.entry(name).or_insert_with(|| syn::File {
                 shebang: None,
+                frontmatter: None,
                 attrs: Vec::new(),
                 items: Vec::new(),
             });
@@ -330,12 +331,13 @@ pub fn bindgen_builder(mq_inc_path: &std::path::Path) -> bindgen::Builder {
     }
 
     bindgen::builder()
-        .rust_target(bindgen::RustTarget::stable(82, 0).expect("rust target should exist"))
+        .rust_target(bindgen::RustTarget::stable(95, 0).expect("rust target should exist"))
         .clang_arg(format!("-I{}", mq_inc_path.display()))
         .sort_semantically(true)
         .merge_extern_blocks(true)
         .generate_cstr(true)
         .parse_callbacks(Box::new(bindgen::CargoCallbacks::new()))
         .parse_callbacks(Box::new(RemoveTag))
+        .formatter(bindgen::Formatter::None)
         .layout_tests(false)
 }

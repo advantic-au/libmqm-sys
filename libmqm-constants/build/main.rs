@@ -117,7 +117,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                     for (_, (_, new_type, _, _, _, primary, extra)) in prefix_constants {
                         for (value, constant, doc) in primary.iter().chain(extra) {
                             if let Some(doc_lines) = doc {
-                                writeln!(w, "#[doc = r##\"{doc_lines}\"##]",)?;
+                                writeln!(w, "#[doc = r##\"{doc_lines}\"##]")?;
                             }
                             writeln!(w, "pub const {constant}: types::{new_type} = types::{new_type}({value});")?;
                             // writeln!(

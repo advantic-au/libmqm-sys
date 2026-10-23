@@ -1,4 +1,4 @@
-/* Generated with MQ client version 9.4.5.0 */
+/* Generated with MQ client version 10.0.0.0 */
 
 pub type PMQCFH = *mut MQCFH;
 pub type PMQCFBF = *mut MQCFBF;
@@ -965,6 +965,8 @@ pub const MQRCCF_INCOMPATIBLE_QM_IN_QSG: crate::MQLONG = 3389;
 pub const MQRCCF_ATTR_VALUE_ERROR_QSG_QM: crate::MQLONG = 3390;
 /// [IBM `MQRCCF_AUTHORIZED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/rc3391.html)
 pub const MQRCCF_AUTHORIZED: crate::MQLONG = 3391;
+pub const MQRCCF_QUANTUM_ATTR_CONFLICT: crate::MQLONG = 3392;
+pub const MQRCCF_SSL_QS_ALG_DISABLED: crate::MQLONG = 3393;
 /// [IBM `MQRCCF_OBJECT_ALREADY_EXISTS` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048200_.html)
 pub const MQRCCF_OBJECT_ALREADY_EXISTS: crate::MQLONG = 4001;
 /// [IBM `MQRCCF_OBJECT_WRONG_TYPE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048210_.html)
@@ -2018,7 +2020,9 @@ pub const MQIACH_PROTOCOL: crate::MQLONG = 1643;
 pub const MQIACH_AMQP_KEEP_ALIVE: crate::MQLONG = 1644;
 pub const MQIACH_SECURITY_PROTOCOL: crate::MQLONG = 1645;
 pub const MQIACH_SPL_PROTECTION: crate::MQLONG = 1646;
-pub const MQIACH_LAST_USED: crate::MQLONG = 1646;
+pub const MQIACH_SSL_QS: crate::MQLONG = 1647;
+pub const MQIACH_SSL_QSR: crate::MQLONG = 1648;
+pub const MQIACH_LAST_USED: crate::MQLONG = 1648;
 pub const MQCAMO_FIRST: crate::MQLONG = 2701;
 pub const MQCAMO_CLOSE_DATE: crate::MQLONG = 2701;
 pub const MQCAMO_CLOSE_TIME: crate::MQLONG = 2702;
@@ -2855,6 +2859,7 @@ pub const MQNHASTATUS_REBASING: crate::MQLONG = 4;
 pub const MQNHASTATUS_DISK_FULL: crate::MQLONG = 5;
 pub const MQNHASTATUS_DISCONNECTED: crate::MQLONG = 6;
 pub const MQNHASTATUS_PARTITIONED: crate::MQLONG = 7;
+pub const MQNHASTATUS_SYNC_FAILED: crate::MQLONG = 8;
 pub const MQNHATYPE_INSTANCE: crate::MQLONG = 0;
 pub const MQNHATYPE_GROUP: crate::MQLONG = 1;
 pub const MQNHATYPE_ALL: crate::MQLONG = -1;

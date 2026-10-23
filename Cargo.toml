@@ -7,8 +7,8 @@ authors = ["Warren Spits <warren@advantic.au>"]
 repository = "https://github.com/advantic-au/libmqm-sys"
 license = "Apache-2.0"
 readme = "README.md"
-edition = "2021"
-rust-version = "1.82"                                    # Note: Also change the github workflow "minimum" action
+edition = "2024"
+rust-version = "1.95"                                    # Note: Also change the github workflow "minimum" action
 
 [workspace.lints.rust]
 rust_2024_compatibility = { level = "warn", priority = -1 }

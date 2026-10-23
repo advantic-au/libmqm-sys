@@ -4,19 +4,18 @@ use proc_macro2::Span;
 use quote::ToTokens;
 use regex_lite::Captures;
 use syn::{
-    parse_quote,
-    visit_mut::{visit_path_mut, VisitMut},
-    Expr, Ident, Lit, LitStr, Type, TypePath,
+    Expr, Ident, Lit, LitStr, Type, TypePath, parse_quote,
+    visit_mut::{VisitMut, visit_path_mut},
 };
 
 pub struct MqLongConstWrap;
 pub struct FnArgType<'a>(HashMap<(&'a str, Option<&'a str>), Type>);
 pub struct PrefixMqTypes<'a>(pub &'a syn::Path, pub &'a HashSet<syn::Ident>);
 
-struct BareFnArgType<T>(pub T);
+struct NamedArgVisitor<T>(pub T);
 
-impl<T: Fn(&mut syn::BareFnArg)> VisitMut for BareFnArgType<T> {
-    fn visit_bare_fn_arg_mut(&mut self, item: &mut syn::BareFnArg) {
+impl<T: Fn(&mut syn::NamedArg)> VisitMut for NamedArgVisitor<T> {
+    fn visit_named_arg_mut(&mut self, item: &mut syn::NamedArg) {
         self.0(item);
     }
 }
@@ -46,8 +45,8 @@ impl<'a> FnArgType<'a> {
 impl VisitMut for FnArgType<'_> {
     fn visit_item_type_mut(&mut self, item: &mut syn::ItemType) {
         let fn_name = item.ident.to_string();
-        BareFnArgType(|bare_arg: &mut syn::BareFnArg| {
-            if let Some((arg_name, colon)) = &bare_arg.name {
+        NamedArgVisitor(|named_arg: &mut syn::NamedArg| {
+            if let Some((arg_name, colon)) = &named_arg.name {
                 let arg_name = arg_name.to_string();
                 if let Some(ty) = self
                     .0
@@ -56,9 +55,9 @@ impl VisitMut for FnArgType<'_> {
                     // .. or match on just arg_name
                     .or_else(|| self.0.get(&(&arg_name, None)))
                 {
-                    bare_arg.ty = ty.clone(); // Set the new type
+                    named_arg.ty = ty.clone(); // Set the new type
                 }
-                bare_arg.name = Some((
+                named_arg.name = Some((
                     syn::Ident::new(arg_name.trim_start_matches('p'), proc_macro2::Span::call_site()),
                     *colon,
                 ));
@@ -70,20 +69,20 @@ impl VisitMut for FnArgType<'_> {
     fn visit_foreign_item_fn_mut(&mut self, item: &mut syn::ForeignItemFn) {
         let fn_name = item.sig.ident.to_string();
         for arg in &mut item.sig.inputs {
-            if let syn::FnArg::Typed(pat) = arg {
-                if let syn::Pat::Ident(ident) = &mut *pat.pat {
-                    let arg_name = ident.ident.to_string();
-                    if let Some(ty) = self
-                        .0
-                        // Match on arg name and fn name
-                        .get(&(&arg_name, Some(&fn_name)))
-                        // .. or match on just arg_name
-                        .or_else(|| self.0.get(&(&arg_name, None)))
-                    {
-                        *pat.ty = ty.clone(); // Set the new type
-                    }
-                    ident.ident = syn::Ident::new(arg_name.trim_start_matches('p'), proc_macro2::Span::call_site());
+            if let syn::FnArg::Typed(pat) = arg
+                && let syn::Pat::Ident(ident) = &mut *pat.pat
+            {
+                let arg_name = ident.ident.to_string();
+                if let Some(ty) = self
+                    .0
+                    // Match on arg name and fn name
+                    .get(&(&arg_name, Some(&fn_name)))
+                    // .. or match on just arg_name
+                    .or_else(|| self.0.get(&(&arg_name, None)))
+                {
+                    *pat.ty = ty.clone(); // Set the new type
                 }
+                ident.ident = syn::Ident::new(arg_name.trim_start_matches('p'), proc_macro2::Span::call_site());
             }
         }
     }
@@ -102,16 +101,16 @@ impl VisitMut for MqLongConstWrap {
                 Expr::Lit(syn::ExprLit {
                     lit: Lit::Int(lit_int), ..
                 }),
-            ) if path.is_ident(&mqlong) /* MQLONG */=> {
+            ) if path.is_ident(&mqlong)
                 // Parse as i32
-                if lit_int.base10_parse::<i32>().is_err() {
-                    // Parse as u32
-                    if let Ok(unsigned) = lit_int.base10_parse::<u32>() {
-                        // Wrap the literal integer into an i32
-                        #[allow(clippy::cast_possible_wrap)]
-                        let lit = syn::LitInt::new(&(unsigned as i32).to_string(), Span::call_site());
-                        *item.expr = syn::parse_quote!(#lit);
-                    }
+                && lit_int.base10_parse::<i32>().is_err() =>
+            {
+                // Parse as u32
+                if let Ok(unsigned) = lit_int.base10_parse::<u32>() {
+                    // Wrap the literal integer into an i32
+                    #[allow(clippy::cast_possible_wrap)]
+                    let lit = syn::LitInt::new(&(unsigned as i32).to_string(), Span::call_site());
+                    *item.expr = syn::parse_quote!(#lit);
                 }
             }
             _ => (),

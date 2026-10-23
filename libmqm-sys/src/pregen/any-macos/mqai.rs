@@ -1,4 +1,4 @@
-/* Generated with MQ client version 9.4.5.0 */
+/* Generated with MQ client version 10.0.0.0 */
 
 pub type MQHBAG = crate::MQLONG;
 pub type PMQHBAG = *mut MQHBAG;

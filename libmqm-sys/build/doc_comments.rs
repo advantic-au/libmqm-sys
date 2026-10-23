@@ -2,9 +2,8 @@ use std::{borrow::Cow, collections::HashMap};
 
 use regex_lite::{Captures, Regex};
 use syn::{
-    parse_quote,
-    visit_mut::{visit_item_mut, VisitMut},
-    Attribute,
+    Attribute, parse_quote,
+    visit_mut::{VisitMut, visit_item_mut},
 };
 
 // Used to match code comments above structures / functions

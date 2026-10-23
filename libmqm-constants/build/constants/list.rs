@@ -3433,8 +3433,29 @@ pub const CONSTANTS: &[ConstantEntry] = &[
         Some("pcf"),
         Some("Error Log Option Values"),
     ),
+    #[cfg(feature = "mqc_10_0_0_0")]
+    c(
+        "MQQSR_",
+        "MQQSR",
+        mqstr::MQQSR_STR,
+        "MQLONG",
+        "value",
+        None,
+        Some("Quantum Safe Required Options"),
+    ),
+    #[cfg(feature = "mqc_10_0_0_0")]
+    c(
+        "MQQS_",
+        "MQQS",
+        mqstr::MQQS_STR,
+        "MQLONG",
+        "value",
+        None,
+        Some("Quantum Safe Algorithm"),
+    ),
 ];
 
-pub const CONSTANTS_DOC: &[(&str, &str)] = &[
-    ("MQCNO_STANDARD_BINDING", "The application and the local-queue-manager agent (the component that manages queuing operations) run in separate units of execution")
-];
+pub const CONSTANTS_DOC: &[(&str, &str)] = &[(
+    "MQCNO_STANDARD_BINDING",
+    "The application and the local-queue-manager agent (the component that manages queuing operations) run in separate units of execution",
+)];
