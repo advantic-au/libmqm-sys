@@ -62,15 +62,15 @@ macro_rules! impl_bitflags {
                 Self(!self.0)
             }
 
-            pub fn insert(&mut self, other: Self) {
+            pub const fn insert(&mut self, other: Self) {
                 self.0 |= other.0;
             }
 
-            pub fn remove(&mut self, other: Self) {
+            pub const fn remove(&mut self, other: Self) {
                 self.0 &= !other.0;
             }
 
-            pub fn toggle(&mut self, other: Self) {
+            pub const fn toggle(&mut self, other: Self) {
                 self.0 ^= other.0;
             }
 

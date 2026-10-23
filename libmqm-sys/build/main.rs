@@ -388,7 +388,7 @@ fn main() -> Result<(), io::Error> {
 
                     use syn::{ImplItemFn, TraitItemFn};
 
-                    use crate::mq_trait::{impl_dlopen2_fn, impl_link_fn, DesugarForMockall, ImplFnGenerator};
+                    use crate::mq_trait::{DesugarForMockall, ImplFnGenerator, impl_dlopen2_fn, impl_link_fn};
 
                     let feat_cfg = feature.as_ref().map(|feat| parse_quote!(#[cfg(feature = #feat)]));
 

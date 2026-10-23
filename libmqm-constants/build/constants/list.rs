@@ -3455,6 +3455,7 @@ pub const CONSTANTS: &[ConstantEntry] = &[
     ),
 ];
 
-pub const CONSTANTS_DOC: &[(&str, &str)] = &[
-    ("MQCNO_STANDARD_BINDING", "The application and the local-queue-manager agent (the component that manages queuing operations) run in separate units of execution")
-];
+pub const CONSTANTS_DOC: &[(&str, &str)] = &[(
+    "MQCNO_STANDARD_BINDING",
+    "The application and the local-queue-manager agent (the component that manages queuing operations) run in separate units of execution",
+)];

@@ -4,9 +4,8 @@ use proc_macro2::Span;
 use quote::ToTokens;
 use regex_lite::Captures;
 use syn::{
-    parse_quote,
-    visit_mut::{visit_path_mut, VisitMut},
-    Expr, Ident, Lit, LitStr, Type, TypePath,
+    Expr, Ident, Lit, LitStr, Type, TypePath, parse_quote,
+    visit_mut::{VisitMut, visit_path_mut},
 };
 
 pub struct MqLongConstWrap;

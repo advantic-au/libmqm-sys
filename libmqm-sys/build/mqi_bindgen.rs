@@ -6,8 +6,8 @@ pub mod mqi {
     };
 
     use bindgen::{
-        callbacks::{IntKind, ParseCallbacks},
         BindgenError,
+        callbacks::{IntKind, ParseCallbacks},
     };
     use regex_lite::Regex;
     use syn::{
@@ -331,7 +331,7 @@ pub fn bindgen_builder(mq_inc_path: &std::path::Path) -> bindgen::Builder {
     }
 
     bindgen::builder()
-        .rust_target(bindgen::RustTarget::stable(82, 0).expect("rust target should exist"))
+        .rust_target(bindgen::RustTarget::stable(85, 0).expect("rust target should exist"))
         .clang_arg(format!("-I{}", mq_inc_path.display()))
         .sort_semantically(true)
         .merge_extern_blocks(true)

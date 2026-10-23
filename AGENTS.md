@@ -53,7 +53,7 @@ An IBM MQ client or server install is **required** to build or test anything:
 - The MQ shared library must be discoverable at runtime for the `dlopen2` tests
   (`libmqm_r.so` / `mqm.dll`); on Linux set `LD_LIBRARY_PATH` to `$MQ_HOME/lib64`.
 - Header parsing needs `libclang` (`bindgen`).
-- Rust 1.82 minimum (see `rust-version` in the workspace `Cargo.toml`).
+- Rust 1.85 minimum (see `rust-version` in the workspace `Cargo.toml`).
 
 A quick local queue manager for experiments: `docker run -d --publish 1414:1414 icr.io/ibm-messaging/mq:latest`.
 
@@ -208,7 +208,7 @@ changed least recently).
 
 - PRs target **`develop`** (that is also where the release workflow runs). `Cargo.lock` is
   gitignored and not committed; the `minimum` job regenerates it with `-Z minimal-versions`
-  and checks on Rust 1.82.
+  and checks on Rust 1.85.
 - Workflow files are checked by **zizmor**; third-party actions must be pinned (SHAs, with a
   policy allow-list in `.github/zizmor.yml`). Keep new actions pinned.
 - Slash commands on a PR: `/pregen` (regenerate platform bindings and commit them to the PR)

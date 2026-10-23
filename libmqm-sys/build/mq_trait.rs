@@ -1,9 +1,8 @@
 use syn::{
-    parse_quote,
-    visit::Visit,
-    visit_mut::{visit_pat_type_mut, visit_type_mut, VisitMut},
     FnArg, FnModifiers, ForeignItemFn, Ident, ImplItem, ImplItemFn, Lifetime, PatIdent, PatType, Path, TraitItem, TraitItemFn,
-    TypeReference,
+    TypeReference, parse_quote,
+    visit::Visit,
+    visit_mut::{VisitMut, visit_pat_type_mut, visit_type_mut},
 };
 
 #[derive(Default)]
