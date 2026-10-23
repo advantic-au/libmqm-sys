@@ -338,5 +338,6 @@ pub fn bindgen_builder(mq_inc_path: &std::path::Path) -> bindgen::Builder {
         .generate_cstr(true)
         .parse_callbacks(Box::new(bindgen::CargoCallbacks::new()))
         .parse_callbacks(Box::new(RemoveTag))
+        .formatter(bindgen::Formatter::Prettyplease)
         .layout_tests(false)
 }
