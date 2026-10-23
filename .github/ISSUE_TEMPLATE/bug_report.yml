@@ -1,0 +1,103 @@
+name: Bug report
+description: Report a problem with the MQ bindings, the constants or the generators
+title: "[Bug]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a problem.
+
+        Most problems here come from a mismatch between the committed bindings and the IBM MQ
+        client you build against, or from a structure layout, signature or constant the generator
+        got wrong. Include your client version, target and enabled features, and a minimal
+        reproduction of the call that misbehaves.
+
+        Do not report security issues here, see the
+        [security policy](https://github.com/advantic-au/libmqm-sys/blob/main/SECURITY.md) instead.
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened?
+      description: What did the code or the generated bindings do, and what did you expect instead?
+    validations:
+      required: true
+  - type: dropdown
+    id: crate
+    attributes:
+      label: Crate
+      multiple: false
+      options:
+        - libmqm-sys
+        - libmqm-constants
+        - libmqm-default
+        - not sure, or more than one
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Crate version or git ref
+      placeholder: "libmqm-sys 0.10.2, or a commit SHA"
+    validations:
+      required: true
+  - type: input
+    id: mq-client
+    attributes:
+      label: IBM MQ client
+      description: The `Version:` line in `README.Redist` under your `MQ_HOME`
+      placeholder: "10.0.1.0, MQ_HOME=/opt/mqm"
+    validations:
+      required: true
+  - type: input
+    id: target
+    attributes:
+      label: Target triple
+      placeholder: x86_64-unknown-linux-gnu
+    validations:
+      required: true
+  - type: textarea
+    id: features
+    attributes:
+      label: Cargo features
+      description: The features you enabled, including any `mqc_*` version feature
+      placeholder: |
+        default = ["link", "mqc_9_3_0_0"]
+        plus: pcf, exits, mqai, dlopen2
+    validations:
+      required: true
+  - type: dropdown
+    id: bindings
+    attributes:
+      label: Where did the bindings come from?
+      multiple: false
+      options:
+        - The committed src/pregen files, from a normal build
+        - Generated locally with the bindgen feature
+        - Not sure
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: The smallest call and structures that show the problem, with the completion and reason codes you got
+      render: rust
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant log output
+      description: Output of the failing build, test or call. Rendered as shell, so no backticks needed.
+      render: shell
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I searched the existing issues for this problem
+          required: true
+        - label: I read the prerequisites in CONTRIBUTING.md (MQ_HOME, client version, LD_LIBRARY_PATH)
+          required: true
+        - label: This is not a security issue (see the security policy for private reporting)
+          required: true

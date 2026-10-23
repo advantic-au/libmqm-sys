@@ -26,7 +26,7 @@ jobs:
             feature: mqc_9_3_5_0
           - client-version: 9.4
             feature: mqc_9_4_5_0
-          - client-version: 10.0
+          - client-version: '10.0'
             feature: mqc_10_0_1_0
     runs-on: ubuntu-24.04
     steps:
