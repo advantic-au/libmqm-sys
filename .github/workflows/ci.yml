@@ -28,7 +28,7 @@ jobs:
             feature: mqc_9_4_5_0
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           persist-credentials: false
       - name: Install MQ client
@@ -58,7 +58,7 @@ jobs:
         toolchain: [ stable, beta ]
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           persist-credentials: false
       - name: Install rust ${{ matrix.toolchain }}
@@ -105,7 +105,7 @@ jobs:
   minimum:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           persist-credentials: false
       - uses: advantic-au/action-mq-client@stable
@@ -138,7 +138,7 @@ jobs:
     env:
       RUSTDOCFLAGS: -Dwarnings
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           persist-credentials: false
       - uses: dtolnay/rust-toolchain@3c5f7ea28cd621ae0bf5283f0e981fb97b8a7af9
@@ -167,7 +167,7 @@ jobs:
     permissions:
       packages: write
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           persist-credentials: false
       - name: Determine MQ version
@@ -234,7 +234,7 @@ jobs:
         os: [ubuntu-24.04, ubuntu-24.04-arm, macos-latest, windows-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           persist-credentials: false
       - name: Determine MQ version
