@@ -108,7 +108,7 @@ jobs:
             **/target
           key: rust-target-pregen-${{ matrix.env.distro }}-${{ matrix.env.arch }}
       - name: Pregenerate arch container
-        uses: uraimo/run-on-arch-action@f9b26e3a1a408d5fd530d20c17b9f3f4428ff8d9 # v3.1.0
+        uses: uraimo/run-on-arch-action@fa1f3e7de95534497266c7265950b5188355fbfb # v3.2.1
         with:
           arch: ${{ matrix.env.arch }}
           distro: ${{ matrix.env.distro }}
