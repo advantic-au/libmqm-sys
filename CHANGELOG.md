@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.11.0](https://github.com/advantic-au/libmqm-sys/compare/libmqm-sys-v0.10.2...libmqm-sys-v0.11.0) - 2026-10-23
+
+### Added
+
+- MQ client 10.0 constants and features
+
+### Other
+
+- add contributing and security policies and issue templates
+- [**breaking**] raise the MSRV to 1.95 and use what it unlocks
+- *(deps)* bump phf, derive_more, mockall, dlopen2, cc and csv
+- *(deps)* bump bindgen from 0.72.1 to 0.73.2
+- move the binding generator to syn 3
+
 ## [0.10.2](https://github.com/advantic-au/libmqm-sys/compare/libmqm-sys-v0.10.1...libmqm-sys-v0.10.2) - 2026-02-09
 
 ### Other
