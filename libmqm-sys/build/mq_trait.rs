@@ -40,12 +40,12 @@ impl VisitMut for DesugarForMockall {
     fn visit_impl_item_fn_mut(&mut self, item: &mut syn::ImplItemFn) {
         let mut generics = item.sig.generics.clone();
         let mut add_lifetime = DesugarFn(|item: &mut syn::Type| {
-            if let syn::Type::Reference(tr @ TypeReference { lifetime: None, .. }) = item {
-                if let Some(lt_char) = ('a'..='z').find(|c| !generics.lifetimes().any(|lt| lt.lifetime.ident == c.to_string())) {
-                    let lt = Lifetime::new(&format!("'{lt_char}"), proc_macro2::Span::call_site());
-                    tr.lifetime = Some(lt.clone());
-                    generics.params.insert(0, parse_quote!(#lt));
-                }
+            if let syn::Type::Reference(tr @ TypeReference { lifetime: None, .. }) = item
+                && let Some(lt_char) = ('a'..='z').find(|c| !generics.lifetimes().any(|lt| lt.lifetime.ident == c.to_string()))
+            {
+                let lt = Lifetime::new(&format!("'{lt_char}"), proc_macro2::Span::call_site());
+                tr.lifetime = Some(lt.clone());
+                generics.params.insert(0, parse_quote!(#lt));
             }
         });
         for mut input in item.sig.inputs.pairs_mut() {

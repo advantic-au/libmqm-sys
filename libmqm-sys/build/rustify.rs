@@ -69,20 +69,20 @@ impl VisitMut for FnArgType<'_> {
     fn visit_foreign_item_fn_mut(&mut self, item: &mut syn::ForeignItemFn) {
         let fn_name = item.sig.ident.to_string();
         for arg in &mut item.sig.inputs {
-            if let syn::FnArg::Typed(pat) = arg {
-                if let syn::Pat::Ident(ident) = &mut *pat.pat {
-                    let arg_name = ident.ident.to_string();
-                    if let Some(ty) = self
-                        .0
-                        // Match on arg name and fn name
-                        .get(&(&arg_name, Some(&fn_name)))
-                        // .. or match on just arg_name
-                        .or_else(|| self.0.get(&(&arg_name, None)))
-                    {
-                        *pat.ty = ty.clone(); // Set the new type
-                    }
-                    ident.ident = syn::Ident::new(arg_name.trim_start_matches('p'), proc_macro2::Span::call_site());
+            if let syn::FnArg::Typed(pat) = arg
+                && let syn::Pat::Ident(ident) = &mut *pat.pat
+            {
+                let arg_name = ident.ident.to_string();
+                if let Some(ty) = self
+                    .0
+                    // Match on arg name and fn name
+                    .get(&(&arg_name, Some(&fn_name)))
+                    // .. or match on just arg_name
+                    .or_else(|| self.0.get(&(&arg_name, None)))
+                {
+                    *pat.ty = ty.clone(); // Set the new type
                 }
+                ident.ident = syn::Ident::new(arg_name.trim_start_matches('p'), proc_macro2::Span::call_site());
             }
         }
     }
