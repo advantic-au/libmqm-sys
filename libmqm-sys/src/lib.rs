@@ -2,77 +2,68 @@
 
 Bindings to the IBM® MQ Interface (MQI), Programmable Command Format (PCF) and MQ Administration Interface (MQAI) C libraries.
 
-Overview
---------
+## Overview
 
-You can use `libmqm_sys` to:
+- Connect to IBM MQ and send or receive messages through the MQI functions.
+- Administer IBM MQ through PCF structures and MQAI functions.
+- Create, send, and receive PCF messages.
+- Develop MQ exit programs (untested).
 
-- Connect to an IBM MQ server to send and receive MQ messages through the MQI functions
-- Administer IBM MQ server through the PCF structures and MQAI functions
-- Create, send, and receive PCF messages
-- Develop MQ exit programs (untested)
+For application development, start with the safe [`mqi`](https://github.com/advantic-au/mqi) crate.
+Use `libmqm_sys` for direct access to the MQ C API or when building a safe wrapper.
 
-Compile time dynamic linking and run-time dynamic linking is supported.
+## Linking and installation
 
-Developers must download the [MQI library](https://ibm.biz/mq94redistclients) directly from IBM.
-Refer to the [Usage](#usage) instructions.
+Compile-time linking is enabled by default. Runtime loading is available with the `dlopen2`
+feature, used with `--no-default-features`. Download the
+[MQI library](https://ibm.biz/mq94redistclients) directly from IBM.
 
-Safety
-------
+Install the client in `/opt/mqm` or another location and set `MQ_HOME` for a non-default
+installation. The MQ shared library must be discoverable at build time for compile-time
+linking and at runtime (`LD_LIBRARY_PATH` on Linux, `DYLD_LIBRARY_PATH` on macOS, or `PATH`
+on Windows). Normal builds use the committed bindings and do not require MQ headers.
+Generating bindings from headers additionally requires `libclang` and a C compiler.
 
-Functions provided in this crate are the raw `unsafe` functions exposed from the
-IBM provided library. Developers should build safe rust API wrappers over these functions.
-Developers who do not want to use the unsafe API should use the
-[mqi](https://github.com/advantic-au/mqi) crate for a *safe* API over the MQI.
+## Raw FFI example
 
-Usage
------
-
-1. Download and install the redistributable client from IBM:
-   <https://ibm.biz/mq94redistclients>
-
-2. Install the client in `/opt/mqm` or another location.
-
-3. Set the `MQ_HOME` environment variable to the installed location.
-
-    ```bash
-    MQ_HOME=/opt/mqm
-    ```
-
-4. Add the `libmqm_sys` crate to your project:
-
-    ```sh
-    cargo add libmqm_sys
-    ```
-
-5. Use the crate in your source code:
-
-    ```rust
-    use libmqm_sys as mq;
-    ```
-
-Example
--------
+This example checks completion codes and reports reason codes. A warning can still leave
+a valid connection, so the example reports it and proceeds to disconnect. For application
+code, prefer `mqi`.
 
 ```no_run
+use std::error::Error;
+
 use libmqm_sys as mq;
 
-let mut hconn = mq::MQHC_DEF_HCONN;
-let mut comp_code = mq::MQCC_UNKNOWN;
-let mut reason = mq::MQRC_NONE;
-let mut qmgr: mq::MQCHAR48 = [32; 48]; // All spaces = default qmgr
+fn main() -> Result<(), Box<dyn Error>> {
+    let mut hconn = mq::MQHC_DEF_HCONN;
+    let mut comp_code = mq::MQCC_UNKNOWN;
+    let mut reason = mq::MQRC_NONE;
+    let qmgr: mq::MQCHAR48 = [32; 48];
 
-unsafe {
-    mq::MQCONN(
-        &qmgr,
-        &mut hconn,
-        &mut comp_code,
-        &mut reason,
-    );
-    assert_eq!(reason, mq::MQRC_NONE, "MQRC");
-    assert_eq!(comp_code, mq::MQCC_OK, "MQCC");
-    mq::MQDISC(&mut hconn, &mut comp_code, &mut reason);
-};
+    // SAFETY: The MQ client is installed, the arguments meet the MQI contract, and
+    // the returned connection handle is used only after a successful connection.
+    unsafe {
+        mq::MQCONN(&qmgr, &mut hconn, &mut comp_code, &mut reason);
+    }
+    match comp_code {
+        mq::MQCC_OK => {}
+        mq::MQCC_WARNING => eprintln!("MQCONN completed with warning: reason {reason}"),
+        _ => return Err(format!("MQCONN failed: completion code {comp_code}, reason {reason}").into()),
+    }
+
+    // SAFETY: hconn is the live connection returned by the successful MQCONN above.
+    unsafe {
+        mq::MQDISC(&mut hconn, &mut comp_code, &mut reason);
+    }
+    match comp_code {
+        mq::MQCC_OK => {}
+        mq::MQCC_WARNING => eprintln!("MQDISC completed with warning: reason {reason}"),
+        _ => return Err(format!("MQDISC failed: completion code {comp_code}, reason {reason}").into()),
+    }
+
+    Ok(())
+}
 ```
 
 ## Features
