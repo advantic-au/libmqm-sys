@@ -65,7 +65,7 @@ unsafe extern "C" {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqAddBag` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089150_.html)
+    /// * [IBM `mqAddBag` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089150_.html)
     pub fn mqAddBag(
         Bag: MQHBAG,
         Selector: crate::MQLONG,
@@ -84,7 +84,7 @@ unsafe extern "C" {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqAddByteString` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089160_.html)
+    /// * [IBM `mqAddByteString` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089160_.html)
     pub fn mqAddByteString(
         Bag: MQHBAG,
         Selector: crate::MQLONG,
@@ -105,7 +105,7 @@ unsafe extern "C" {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqAddByteStringFilter` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089170_.html)
+    /// * [IBM `mqAddByteStringFilter` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089170_.html)
     pub fn mqAddByteStringFilter(
         Bag: MQHBAG,
         Selector: crate::MQLONG,
@@ -124,7 +124,7 @@ unsafe extern "C" {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqAddInquiry` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089180_.html)
+    /// * [IBM `mqAddInquiry` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089180_.html)
     pub fn mqAddInquiry(
         Bag: MQHBAG,
         Selector: crate::MQLONG,
@@ -141,7 +141,7 @@ unsafe extern "C" {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqAddInteger` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089190_.html)
+    /// * [IBM `mqAddInteger` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089190_.html)
     pub fn mqAddInteger(
         Bag: MQHBAG,
         Selector: crate::MQLONG,
@@ -159,7 +159,7 @@ unsafe extern "C" {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqAddInteger64` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089200_.html)
+    /// * [IBM `mqAddInteger64` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089200_.html)
     pub fn mqAddInteger64(
         Bag: MQHBAG,
         Selector: crate::MQLONG,
@@ -178,7 +178,7 @@ unsafe extern "C" {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqAddIntegerFilter` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089210_.html)
+    /// * [IBM `mqAddIntegerFilter` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089210_.html)
     pub fn mqAddIntegerFilter(
         Bag: MQHBAG,
         Selector: crate::MQLONG,
@@ -198,7 +198,7 @@ unsafe extern "C" {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqAddString` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089220_.html)
+    /// * [IBM `mqAddString` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089220_.html)
     pub fn mqAddString(
         Bag: MQHBAG,
         Selector: crate::MQLONG,
@@ -219,7 +219,7 @@ unsafe extern "C" {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqAddStringFilter` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089230_.html)
+    /// * [IBM `mqAddStringFilter` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089230_.html)
     pub fn mqAddStringFilter(
         Bag: MQHBAG,
         Selector: crate::MQLONG,
@@ -241,7 +241,7 @@ unsafe extern "C" {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqBagToBuffer` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089240_.html)
+    /// * [IBM `mqBagToBuffer` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089240_.html)
     pub fn mqBagToBuffer(
         OptionsBag: MQHBAG,
         DataBag: MQHBAG,
@@ -262,7 +262,7 @@ unsafe extern "C" {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqBufferToBag` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089250_.html)
+    /// * [IBM `mqBufferToBag` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089250_.html)
     pub fn mqBufferToBag(
         OptionsBag: MQHBAG,
         BufferLength: crate::MQLONG,
@@ -279,7 +279,7 @@ unsafe extern "C" {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqClearBag` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089260_.html)
+    /// * [IBM `mqClearBag` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089260_.html)
     pub fn mqClearBag(
         Bag: MQHBAG,
         CompCode: &mut crate::MQLONG,
@@ -295,7 +295,7 @@ unsafe extern "C" {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqCountItems` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089270_.html)
+    /// * [IBM `mqCountItems` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089270_.html)
     pub fn mqCountItems(
         Bag: MQHBAG,
         Selector: crate::MQLONG,
@@ -312,7 +312,7 @@ unsafe extern "C" {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqCreateBag` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089280_.html)
+    /// * [IBM `mqCreateBag` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089280_.html)
     pub fn mqCreateBag(
         Options: crate::MQLONG,
         Bag: &mut MQHBAG,
@@ -327,7 +327,7 @@ unsafe extern "C" {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqDeleteBag` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089290_.html)
+    /// * [IBM `mqDeleteBag` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089290_.html)
     pub fn mqDeleteBag(
         Bag: &mut MQHBAG,
         CompCode: &mut crate::MQLONG,
@@ -343,7 +343,7 @@ unsafe extern "C" {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqDeleteItem` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089300_.html)
+    /// * [IBM `mqDeleteItem` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089300_.html)
     pub fn mqDeleteItem(
         Bag: MQHBAG,
         Selector: crate::MQLONG,
@@ -365,7 +365,7 @@ unsafe extern "C" {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqExecute` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089310_.html)
+    /// * [IBM `mqExecute` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089310_.html)
     pub fn mqExecute(
         Hconn: crate::MQHCONN,
         Command: crate::MQLONG,
@@ -389,7 +389,7 @@ unsafe extern "C" {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqGetBag` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089320_.html)
+    /// * [IBM `mqGetBag` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089320_.html)
     pub fn mqGetBag(
         Hconn: crate::MQHCONN,
         Hobj: crate::MQHOBJ,
@@ -410,7 +410,7 @@ unsafe extern "C" {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqInquireBag` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089330_.html)
+    /// * [IBM `mqInquireBag` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089330_.html)
     pub fn mqInquireBag(
         Bag: MQHBAG,
         Selector: crate::MQLONG,
@@ -432,7 +432,7 @@ unsafe extern "C" {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqInquireByteString` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089340_.html)
+    /// * [IBM `mqInquireByteString` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089340_.html)
     pub fn mqInquireByteString(
         Bag: MQHBAG,
         Selector: crate::MQLONG,
@@ -457,7 +457,7 @@ unsafe extern "C" {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqInquireByteStringFilter` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089350_.html)
+    /// * [IBM `mqInquireByteStringFilter` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089350_.html)
     pub fn mqInquireByteStringFilter(
         Bag: MQHBAG,
         Selector: crate::MQLONG,
@@ -480,7 +480,7 @@ unsafe extern "C" {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqInquireInteger` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089360_.html)
+    /// * [IBM `mqInquireInteger` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089360_.html)
     pub fn mqInquireInteger(
         Bag: MQHBAG,
         Selector: crate::MQLONG,
@@ -500,7 +500,7 @@ unsafe extern "C" {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqInquireInteger64` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089370_.html)
+    /// * [IBM `mqInquireInteger64` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089370_.html)
     pub fn mqInquireInteger64(
         Bag: MQHBAG,
         Selector: crate::MQLONG,
@@ -521,7 +521,7 @@ unsafe extern "C" {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqInquireIntegerFilter` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089380_.html)
+    /// * [IBM `mqInquireIntegerFilter` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089380_.html)
     pub fn mqInquireIntegerFilter(
         Bag: MQHBAG,
         Selector: crate::MQLONG,
@@ -543,7 +543,7 @@ unsafe extern "C" {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqInquireItemInfo` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089390_.html)
+    /// * [IBM `mqInquireItemInfo` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089390_.html)
     pub fn mqInquireItemInfo(
         Bag: MQHBAG,
         Selector: crate::MQLONG,
@@ -567,7 +567,7 @@ unsafe extern "C" {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqInquireString` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089400_.html)
+    /// * [IBM `mqInquireString` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089400_.html)
     pub fn mqInquireString(
         Bag: MQHBAG,
         Selector: crate::MQLONG,
@@ -594,7 +594,7 @@ unsafe extern "C" {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqInquireStringFilter` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089410_.html)
+    /// * [IBM `mqInquireStringFilter` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089410_.html)
     pub fn mqInquireStringFilter(
         Bag: MQHBAG,
         Selector: crate::MQLONG,
@@ -617,7 +617,7 @@ unsafe extern "C" {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqPad` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089420_.html)
+    /// * [IBM `mqPad` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089420_.html)
     pub fn mqPad(
         String: crate::PMQCHAR,
         BufferLength: crate::MQLONG,
@@ -637,7 +637,7 @@ unsafe extern "C" {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqPutBag` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089430_.html)
+    /// * [IBM `mqPutBag` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089430_.html)
     pub fn mqPutBag(
         Hconn: crate::MQHCONN,
         Hobj: crate::MQHOBJ,
@@ -659,7 +659,7 @@ unsafe extern "C" {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqSetByteString` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089440_.html)
+    /// * [IBM `mqSetByteString` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089440_.html)
     pub fn mqSetByteString(
         Bag: MQHBAG,
         Selector: crate::MQLONG,
@@ -682,7 +682,7 @@ unsafe extern "C" {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqSetByteStringFilter` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089450_.html)
+    /// * [IBM `mqSetByteStringFilter` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089450_.html)
     pub fn mqSetByteStringFilter(
         Bag: MQHBAG,
         Selector: crate::MQLONG,
@@ -704,7 +704,7 @@ unsafe extern "C" {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqSetInteger` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089460_.html)
+    /// * [IBM `mqSetInteger` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089460_.html)
     pub fn mqSetInteger(
         Bag: MQHBAG,
         Selector: crate::MQLONG,
@@ -724,7 +724,7 @@ unsafe extern "C" {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqSetInteger64` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089470_.html)
+    /// * [IBM `mqSetInteger64` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089470_.html)
     pub fn mqSetInteger64(
         Bag: MQHBAG,
         Selector: crate::MQLONG,
@@ -745,7 +745,7 @@ unsafe extern "C" {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqSetIntegerFilter` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089480_.html)
+    /// * [IBM `mqSetIntegerFilter` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089480_.html)
     pub fn mqSetIntegerFilter(
         Bag: MQHBAG,
         Selector: crate::MQLONG,
@@ -767,7 +767,7 @@ unsafe extern "C" {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqSetString` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089490_.html)
+    /// * [IBM `mqSetString` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089490_.html)
     pub fn mqSetString(
         Bag: MQHBAG,
         Selector: crate::MQLONG,
@@ -790,7 +790,7 @@ unsafe extern "C" {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqSetStringFilter` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089500_.html)
+    /// * [IBM `mqSetStringFilter` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089500_.html)
     pub fn mqSetStringFilter(
         Bag: MQHBAG,
         Selector: crate::MQLONG,
@@ -811,7 +811,7 @@ unsafe extern "C" {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqTrim` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089510_.html)
+    /// * [IBM `mqTrim` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089510_.html)
     pub fn mqTrim(
         BufferLength: crate::MQLONG,
         Buffer: crate::PMQCHAR,
@@ -828,7 +828,7 @@ unsafe extern "C" {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqTruncateBag` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089520_.html)
+    /// * [IBM `mqTruncateBag` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089520_.html)
     pub fn mqTruncateBag(
         Bag: MQHBAG,
         ItemCount: crate::MQLONG,

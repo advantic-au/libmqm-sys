@@ -12,7 +12,7 @@ pub trait Exits {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `MQXEP` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q109660_.html)
+    /// * [IBM `MQXEP` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refdev/q109660_.html)
     unsafe fn MQXEP(
         &self,
         Hconfig: crate::exits::MQHCONFIG,
@@ -34,7 +34,7 @@ pub trait Exits {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `MQXCLWLN` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q082540_.html)
+    /// * [IBM `MQXCLWLN` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refdev/q082540_.html)
     unsafe fn MQXCLWLN(
         &self,
         ExitParms: &mut crate::exits::MQWXP,
@@ -72,7 +72,7 @@ pub trait Exits {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `MQZEP` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q110350_.html)
+    /// * [IBM `MQZEP` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refdev/q110350_.html)
     unsafe fn MQZEP(
         &self,
         Hconfig: crate::exits::MQHCONFIG,
@@ -94,7 +94,7 @@ pub trait Mqai {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqAddBag` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089150_.html)
+    /// * [IBM `mqAddBag` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089150_.html)
     unsafe fn mqAddBag(
         &self,
         Bag: crate::mqai::MQHBAG,
@@ -114,7 +114,7 @@ pub trait Mqai {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqAddByteString` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089160_.html)
+    /// * [IBM `mqAddByteString` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089160_.html)
     unsafe fn mqAddByteString(
         &self,
         Bag: crate::mqai::MQHBAG,
@@ -136,7 +136,7 @@ pub trait Mqai {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqAddByteStringFilter` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089170_.html)
+    /// * [IBM `mqAddByteStringFilter` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089170_.html)
     unsafe fn mqAddByteStringFilter(
         &self,
         Bag: crate::mqai::MQHBAG,
@@ -156,7 +156,7 @@ pub trait Mqai {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqAddInquiry` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089180_.html)
+    /// * [IBM `mqAddInquiry` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089180_.html)
     unsafe fn mqAddInquiry(
         &self,
         Bag: crate::mqai::MQHBAG,
@@ -174,7 +174,7 @@ pub trait Mqai {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqAddInteger` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089190_.html)
+    /// * [IBM `mqAddInteger` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089190_.html)
     unsafe fn mqAddInteger(
         &self,
         Bag: crate::mqai::MQHBAG,
@@ -193,7 +193,7 @@ pub trait Mqai {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqAddInteger64` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089200_.html)
+    /// * [IBM `mqAddInteger64` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089200_.html)
     unsafe fn mqAddInteger64(
         &self,
         Bag: crate::mqai::MQHBAG,
@@ -213,7 +213,7 @@ pub trait Mqai {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqAddIntegerFilter` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089210_.html)
+    /// * [IBM `mqAddIntegerFilter` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089210_.html)
     unsafe fn mqAddIntegerFilter(
         &self,
         Bag: crate::mqai::MQHBAG,
@@ -234,7 +234,7 @@ pub trait Mqai {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqAddString` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089220_.html)
+    /// * [IBM `mqAddString` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089220_.html)
     unsafe fn mqAddString(
         &self,
         Bag: crate::mqai::MQHBAG,
@@ -256,7 +256,7 @@ pub trait Mqai {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqAddStringFilter` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089230_.html)
+    /// * [IBM `mqAddStringFilter` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089230_.html)
     unsafe fn mqAddStringFilter(
         &self,
         Bag: crate::mqai::MQHBAG,
@@ -279,7 +279,7 @@ pub trait Mqai {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqBagToBuffer` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089240_.html)
+    /// * [IBM `mqBagToBuffer` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089240_.html)
     unsafe fn mqBagToBuffer(
         &self,
         OptionsBag: crate::mqai::MQHBAG,
@@ -301,7 +301,7 @@ pub trait Mqai {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqBufferToBag` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089250_.html)
+    /// * [IBM `mqBufferToBag` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089250_.html)
     unsafe fn mqBufferToBag(
         &self,
         OptionsBag: crate::mqai::MQHBAG,
@@ -319,7 +319,7 @@ pub trait Mqai {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqClearBag` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089260_.html)
+    /// * [IBM `mqClearBag` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089260_.html)
     unsafe fn mqClearBag(
         &self,
         Bag: crate::mqai::MQHBAG,
@@ -336,7 +336,7 @@ pub trait Mqai {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqCountItems` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089270_.html)
+    /// * [IBM `mqCountItems` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089270_.html)
     unsafe fn mqCountItems(
         &self,
         Bag: crate::mqai::MQHBAG,
@@ -354,7 +354,7 @@ pub trait Mqai {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqCreateBag` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089280_.html)
+    /// * [IBM `mqCreateBag` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089280_.html)
     unsafe fn mqCreateBag(
         &self,
         Options: crate::MQLONG,
@@ -370,7 +370,7 @@ pub trait Mqai {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqDeleteBag` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089290_.html)
+    /// * [IBM `mqDeleteBag` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089290_.html)
     unsafe fn mqDeleteBag(
         &self,
         Bag: &mut crate::mqai::MQHBAG,
@@ -387,7 +387,7 @@ pub trait Mqai {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqDeleteItem` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089300_.html)
+    /// * [IBM `mqDeleteItem` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089300_.html)
     unsafe fn mqDeleteItem(
         &self,
         Bag: crate::mqai::MQHBAG,
@@ -410,7 +410,7 @@ pub trait Mqai {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqExecute` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089310_.html)
+    /// * [IBM `mqExecute` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089310_.html)
     unsafe fn mqExecute(
         &self,
         Hconn: crate::MQHCONN,
@@ -435,7 +435,7 @@ pub trait Mqai {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqGetBag` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089320_.html)
+    /// * [IBM `mqGetBag` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089320_.html)
     unsafe fn mqGetBag(
         &self,
         Hconn: crate::MQHCONN,
@@ -457,7 +457,7 @@ pub trait Mqai {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqInquireBag` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089330_.html)
+    /// * [IBM `mqInquireBag` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089330_.html)
     unsafe fn mqInquireBag(
         &self,
         Bag: crate::mqai::MQHBAG,
@@ -480,7 +480,7 @@ pub trait Mqai {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqInquireByteString` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089340_.html)
+    /// * [IBM `mqInquireByteString` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089340_.html)
     unsafe fn mqInquireByteString(
         &self,
         Bag: crate::mqai::MQHBAG,
@@ -506,7 +506,7 @@ pub trait Mqai {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqInquireByteStringFilter` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089350_.html)
+    /// * [IBM `mqInquireByteStringFilter` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089350_.html)
     unsafe fn mqInquireByteStringFilter(
         &self,
         Bag: crate::mqai::MQHBAG,
@@ -530,7 +530,7 @@ pub trait Mqai {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqInquireInteger` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089360_.html)
+    /// * [IBM `mqInquireInteger` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089360_.html)
     unsafe fn mqInquireInteger(
         &self,
         Bag: crate::mqai::MQHBAG,
@@ -551,7 +551,7 @@ pub trait Mqai {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqInquireInteger64` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089370_.html)
+    /// * [IBM `mqInquireInteger64` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089370_.html)
     unsafe fn mqInquireInteger64(
         &self,
         Bag: crate::mqai::MQHBAG,
@@ -573,7 +573,7 @@ pub trait Mqai {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqInquireIntegerFilter` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089380_.html)
+    /// * [IBM `mqInquireIntegerFilter` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089380_.html)
     unsafe fn mqInquireIntegerFilter(
         &self,
         Bag: crate::mqai::MQHBAG,
@@ -596,7 +596,7 @@ pub trait Mqai {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqInquireItemInfo` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089390_.html)
+    /// * [IBM `mqInquireItemInfo` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089390_.html)
     unsafe fn mqInquireItemInfo(
         &self,
         Bag: crate::mqai::MQHBAG,
@@ -621,7 +621,7 @@ pub trait Mqai {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqInquireString` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089400_.html)
+    /// * [IBM `mqInquireString` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089400_.html)
     unsafe fn mqInquireString(
         &self,
         Bag: crate::mqai::MQHBAG,
@@ -649,7 +649,7 @@ pub trait Mqai {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqInquireStringFilter` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089410_.html)
+    /// * [IBM `mqInquireStringFilter` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089410_.html)
     unsafe fn mqInquireStringFilter(
         &self,
         Bag: crate::mqai::MQHBAG,
@@ -673,7 +673,7 @@ pub trait Mqai {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqPad` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089420_.html)
+    /// * [IBM `mqPad` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089420_.html)
     unsafe fn mqPad(
         &self,
         String: crate::PMQCHAR,
@@ -694,7 +694,7 @@ pub trait Mqai {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqPutBag` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089430_.html)
+    /// * [IBM `mqPutBag` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089430_.html)
     unsafe fn mqPutBag(
         &self,
         Hconn: crate::MQHCONN,
@@ -717,7 +717,7 @@ pub trait Mqai {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqSetByteString` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089440_.html)
+    /// * [IBM `mqSetByteString` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089440_.html)
     unsafe fn mqSetByteString(
         &self,
         Bag: crate::mqai::MQHBAG,
@@ -741,7 +741,7 @@ pub trait Mqai {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqSetByteStringFilter` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089450_.html)
+    /// * [IBM `mqSetByteStringFilter` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089450_.html)
     unsafe fn mqSetByteStringFilter(
         &self,
         Bag: crate::mqai::MQHBAG,
@@ -764,7 +764,7 @@ pub trait Mqai {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqSetInteger` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089460_.html)
+    /// * [IBM `mqSetInteger` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089460_.html)
     unsafe fn mqSetInteger(
         &self,
         Bag: crate::mqai::MQHBAG,
@@ -785,7 +785,7 @@ pub trait Mqai {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqSetInteger64` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089470_.html)
+    /// * [IBM `mqSetInteger64` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089470_.html)
     unsafe fn mqSetInteger64(
         &self,
         Bag: crate::mqai::MQHBAG,
@@ -807,7 +807,7 @@ pub trait Mqai {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqSetIntegerFilter` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089480_.html)
+    /// * [IBM `mqSetIntegerFilter` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089480_.html)
     unsafe fn mqSetIntegerFilter(
         &self,
         Bag: crate::mqai::MQHBAG,
@@ -830,7 +830,7 @@ pub trait Mqai {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqSetString` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089490_.html)
+    /// * [IBM `mqSetString` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089490_.html)
     unsafe fn mqSetString(
         &self,
         Bag: crate::mqai::MQHBAG,
@@ -854,7 +854,7 @@ pub trait Mqai {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqSetStringFilter` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089500_.html)
+    /// * [IBM `mqSetStringFilter` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089500_.html)
     unsafe fn mqSetStringFilter(
         &self,
         Bag: crate::mqai::MQHBAG,
@@ -876,7 +876,7 @@ pub trait Mqai {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqTrim` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089510_.html)
+    /// * [IBM `mqTrim` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089510_.html)
     unsafe fn mqTrim(
         &self,
         BufferLength: crate::MQLONG,
@@ -894,7 +894,7 @@ pub trait Mqai {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `mqTruncateBag` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q089520_.html)
+    /// * [IBM `mqTruncateBag` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q089520_.html)
     unsafe fn mqTruncateBag(
         &self,
         Bag: crate::mqai::MQHBAG,
@@ -912,7 +912,7 @@ pub trait Mqi {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `MQBACK` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101690_.html)
+    /// * [IBM `MQBACK` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refdev/q101690_.html)
     unsafe fn MQBACK(
         &self,
         Hconn: crate::MQHCONN,
@@ -928,7 +928,7 @@ pub trait Mqi {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `MQBEGIN` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101700_.html)
+    /// * [IBM `MQBEGIN` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refdev/q101700_.html)
     unsafe fn MQBEGIN(
         &self,
         Hconn: crate::MQHCONN,
@@ -950,7 +950,7 @@ pub trait Mqi {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `MQBUFMH` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101710_.html)
+    /// * [IBM `MQBUFMH` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refdev/q101710_.html)
     unsafe fn MQBUFMH(
         &self,
         Hconn: crate::MQHCONN,
@@ -976,7 +976,7 @@ pub trait Mqi {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `MQCB` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101720_.html)
+    /// * [IBM `MQCB` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refdev/q101720_.html)
     unsafe fn MQCB(
         &self,
         Hconn: crate::MQHCONN,
@@ -998,7 +998,7 @@ pub trait Mqi {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `MQCLOSE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101740_.html)
+    /// * [IBM `MQCLOSE` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refdev/q101740_.html)
     unsafe fn MQCLOSE(
         &self,
         Hconn: crate::MQHCONN,
@@ -1015,7 +1015,7 @@ pub trait Mqi {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `MQCMIT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101750_.html)
+    /// * [IBM `MQCMIT` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refdev/q101750_.html)
     unsafe fn MQCMIT(
         &self,
         Hconn: crate::MQHCONN,
@@ -1031,7 +1031,7 @@ pub trait Mqi {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `MQCONN` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101760_.html)
+    /// * [IBM `MQCONN` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refdev/q101760_.html)
     unsafe fn MQCONN(
         &self,
         QMgrName: &crate::MQCHAR48,
@@ -1049,7 +1049,7 @@ pub trait Mqi {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `MQCONNX` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101770_.html)
+    /// * [IBM `MQCONNX` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refdev/q101770_.html)
     unsafe fn MQCONNX(
         &self,
         QMgrName: &crate::MQCHAR48,
@@ -1068,7 +1068,7 @@ pub trait Mqi {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `MQCRTMH` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101780_.html)
+    /// * [IBM `MQCRTMH` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refdev/q101780_.html)
     unsafe fn MQCRTMH(
         &self,
         Hconn: crate::MQHCONN,
@@ -1087,7 +1087,7 @@ pub trait Mqi {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `MQCTL` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101790_.html)
+    /// * [IBM `MQCTL` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refdev/q101790_.html)
     unsafe fn MQCTL(
         &self,
         Hconn: crate::MQHCONN,
@@ -1104,7 +1104,7 @@ pub trait Mqi {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `MQDISC` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101800_.html)
+    /// * [IBM `MQDISC` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refdev/q101800_.html)
     unsafe fn MQDISC(
         &self,
         Hconn: &mut crate::MQHCONN,
@@ -1121,7 +1121,7 @@ pub trait Mqi {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `MQDLTMH` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101810_.html)
+    /// * [IBM `MQDLTMH` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refdev/q101810_.html)
     unsafe fn MQDLTMH(
         &self,
         Hconn: crate::MQHCONN,
@@ -1141,7 +1141,7 @@ pub trait Mqi {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `MQDLTMP` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101820_.html)
+    /// * [IBM `MQDLTMP` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refdev/q101820_.html)
     unsafe fn MQDLTMP(
         &self,
         Hconn: crate::MQHCONN,
@@ -1165,7 +1165,7 @@ pub trait Mqi {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `MQGET` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101830_.html)
+    /// * [IBM `MQGET` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refdev/q101830_.html)
     unsafe fn MQGET(
         &self,
         Hconn: crate::MQHCONN,
@@ -1193,7 +1193,7 @@ pub trait Mqi {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `MQINQ` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101840_.html)
+    /// * [IBM `MQINQ` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refdev/q101840_.html)
     unsafe fn MQINQ(
         &self,
         Hconn: crate::MQHCONN,
@@ -1223,7 +1223,7 @@ pub trait Mqi {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `MQINQMP` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101850_.html)
+    /// * [IBM `MQINQMP` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refdev/q101850_.html)
     unsafe fn MQINQMP(
         &self,
         Hconn: crate::MQHCONN,
@@ -1253,7 +1253,7 @@ pub trait Mqi {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `MQMHBUF` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101860_.html)
+    /// * [IBM `MQMHBUF` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refdev/q101860_.html)
     unsafe fn MQMHBUF(
         &self,
         Hconn: crate::MQHCONN,
@@ -1278,7 +1278,7 @@ pub trait Mqi {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `MQOPEN` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101870_.html)
+    /// * [IBM `MQOPEN` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refdev/q101870_.html)
     unsafe fn MQOPEN(
         &self,
         Hconn: crate::MQHCONN,
@@ -1301,7 +1301,7 @@ pub trait Mqi {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `MQPUT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101880_.html)
+    /// * [IBM `MQPUT` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refdev/q101880_.html)
     unsafe fn MQPUT(
         &self,
         Hconn: crate::MQHCONN,
@@ -1326,7 +1326,7 @@ pub trait Mqi {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `MQPUT1` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101890_.html)
+    /// * [IBM `MQPUT1` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refdev/q101890_.html)
     unsafe fn MQPUT1(
         &self,
         Hconn: crate::MQHCONN,
@@ -1353,7 +1353,7 @@ pub trait Mqi {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `MQSET` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101900_.html)
+    /// * [IBM `MQSET` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refdev/q101900_.html)
     unsafe fn MQSET(
         &self,
         Hconn: crate::MQHCONN,
@@ -1382,7 +1382,7 @@ pub trait Mqi {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `MQSETMP` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101910_.html)
+    /// * [IBM `MQSETMP` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refdev/q101910_.html)
     unsafe fn MQSETMP(
         &self,
         Hconn: crate::MQHCONN,
@@ -1406,7 +1406,7 @@ pub trait Mqi {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `MQSTAT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101920_.html)
+    /// * [IBM `MQSTAT` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refdev/q101920_.html)
     unsafe fn MQSTAT(
         &self,
         Hconn: crate::MQHCONN,
@@ -1426,7 +1426,7 @@ pub trait Mqi {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `MQSUB` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101930_.html)
+    /// * [IBM `MQSUB` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refdev/q101930_.html)
     unsafe fn MQSUB(
         &self,
         Hconn: crate::MQHCONN,
@@ -1447,7 +1447,7 @@ pub trait Mqi {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `MQSUBRQ` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q101940_.html)
+    /// * [IBM `MQSUBRQ` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refdev/q101940_.html)
     unsafe fn MQSUBRQ(
         &self,
         Hconn: crate::MQHCONN,
@@ -1473,7 +1473,7 @@ pub trait Mqi {
     /// * `Reason` (Output): Reason code qualifying `CompCode`
     ///
     /// # References
-    /// * [IBM `MQXCNVC` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refdev/q104110_.html)
+    /// * [IBM `MQXCNVC` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refdev/q104110_.html)
     unsafe fn MQXCNVC(
         &self,
         Hconn: crate::MQHCONN,

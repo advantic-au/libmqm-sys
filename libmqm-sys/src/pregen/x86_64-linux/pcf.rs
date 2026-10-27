@@ -16,7 +16,7 @@ pub type PMQEPH = *mut MQEPH;
 /// PCF Header
 ///
 /// # References
-/// * [IBM `MQCFH` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q049400_.html)
+/// * [IBM `MQCFH` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q049400_.html)
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct MQCFH {
@@ -42,7 +42,7 @@ pub struct MQCFH {
 /// PCF Byte String Filter Parameter
 ///
 /// # References
-/// * [IBM `MQCFBF` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q088610_.html)
+/// * [IBM `MQCFBF` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q088610_.html)
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct MQCFBF {
@@ -62,7 +62,7 @@ pub struct MQCFBF {
 /// PCF Byte String Parameter
 ///
 /// # References
-/// * [IBM `MQCFBS` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q049380_.html)
+/// * [IBM `MQCFBS` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q049380_.html)
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct MQCFBS {
@@ -80,7 +80,7 @@ pub struct MQCFBS {
 /// PCF Group Parameter
 ///
 /// # References
-/// * [IBM `MQCFGR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q049390_.html)
+/// * [IBM `MQCFGR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q049390_.html)
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct MQCFGR {
@@ -96,7 +96,7 @@ pub struct MQCFGR {
 /// PCF Integer Filter Parameter
 ///
 /// # References
-/// * [IBM `MQCFIF` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q088630_.html)
+/// * [IBM `MQCFIF` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q088630_.html)
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct MQCFIF {
@@ -114,7 +114,7 @@ pub struct MQCFIF {
 /// PCF Integer-List Parameter
 ///
 /// # References
-/// * [IBM `MQCFIL` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q049410_.html)
+/// * [IBM `MQCFIL` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q049410_.html)
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct MQCFIL {
@@ -132,7 +132,7 @@ pub struct MQCFIL {
 /// PCF 64-bit Integer-List Parameter
 ///
 /// # References
-/// * [IBM `MQCFIL64` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q049420_.html)
+/// * [IBM `MQCFIL64` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q049420_.html)
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct MQCFIL64 {
@@ -150,7 +150,7 @@ pub struct MQCFIL64 {
 /// PCF Integer Parameter
 ///
 /// # References
-/// * [IBM `MQCFIN` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q049430_.html)
+/// * [IBM `MQCFIN` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q049430_.html)
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct MQCFIN {
@@ -166,7 +166,7 @@ pub struct MQCFIN {
 /// PCF 64-bit Integer Parameter
 ///
 /// # References
-/// * [IBM `MQCFIN64` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q049440_.html)
+/// * [IBM `MQCFIN64` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q049440_.html)
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct MQCFIN64 {
@@ -184,7 +184,7 @@ pub struct MQCFIN64 {
 /// PCF String Filter Parameter
 ///
 /// # References
-/// * [IBM `MQCFSF` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/refadmin/q088660_.html)
+/// * [IBM `MQCFSF` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/refadmin/q088660_.html)
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct MQCFSF {
@@ -206,7 +206,7 @@ pub struct MQCFSF {
 /// PCF String-List Parameter
 ///
 /// # References
-/// * [IBM `MQCFSL` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q049450_.html)
+/// * [IBM `MQCFSL` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q049450_.html)
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct MQCFSL {
@@ -228,7 +228,7 @@ pub struct MQCFSL {
 /// PCF String Parameter
 ///
 /// # References
-/// * [IBM `MQCFST` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q049460_.html)
+/// * [IBM `MQCFST` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q049460_.html)
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct MQCFST {
@@ -248,7 +248,7 @@ pub struct MQCFST {
 /// Embedded PCF header
 ///
 /// # References
-/// * [IBM `MQEPH` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q049470_.html)
+/// * [IBM `MQEPH` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q049470_.html)
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct MQEPH {
@@ -473,399 +473,399 @@ pub const MQCMD_INQUIRE_APPL_STATUS: crate::MQLONG = 220;
 pub const MQCMD_INQUIRE_ERROR_LOG: crate::MQLONG = 221;
 pub const MQCFC_LAST: crate::MQLONG = 1;
 pub const MQCFC_NOT_LAST: crate::MQLONG = 0;
-/// [IBM `MQRCCF_CFH_TYPE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046050_.html)
+/// [IBM `MQRCCF_CFH_TYPE_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046050_.html)
 pub const MQRCCF_CFH_TYPE_ERROR: crate::MQLONG = 3001;
-/// [IBM `MQRCCF_CFH_LENGTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046060_.html)
+/// [IBM `MQRCCF_CFH_LENGTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046060_.html)
 pub const MQRCCF_CFH_LENGTH_ERROR: crate::MQLONG = 3002;
-/// [IBM `MQRCCF_CFH_VERSION_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046070_.html)
+/// [IBM `MQRCCF_CFH_VERSION_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046070_.html)
 pub const MQRCCF_CFH_VERSION_ERROR: crate::MQLONG = 3003;
-/// [IBM `MQRCCF_CFH_MSG_SEQ_NUMBER_ERR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046080_.html)
+/// [IBM `MQRCCF_CFH_MSG_SEQ_NUMBER_ERR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046080_.html)
 pub const MQRCCF_CFH_MSG_SEQ_NUMBER_ERR: crate::MQLONG = 3004;
-/// [IBM `MQRCCF_CFH_CONTROL_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046090_.html)
+/// [IBM `MQRCCF_CFH_CONTROL_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046090_.html)
 pub const MQRCCF_CFH_CONTROL_ERROR: crate::MQLONG = 3005;
-/// [IBM `MQRCCF_CFH_PARM_COUNT_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046100_.html)
+/// [IBM `MQRCCF_CFH_PARM_COUNT_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046100_.html)
 pub const MQRCCF_CFH_PARM_COUNT_ERROR: crate::MQLONG = 3006;
-/// [IBM `MQRCCF_CFH_COMMAND_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046110_.html)
+/// [IBM `MQRCCF_CFH_COMMAND_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046110_.html)
 pub const MQRCCF_CFH_COMMAND_ERROR: crate::MQLONG = 3007;
-/// [IBM `MQRCCF_COMMAND_FAILED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046120_.html)
+/// [IBM `MQRCCF_COMMAND_FAILED` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046120_.html)
 pub const MQRCCF_COMMAND_FAILED: crate::MQLONG = 3008;
-/// [IBM `MQRCCF_CFIN_LENGTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046130_.html)
+/// [IBM `MQRCCF_CFIN_LENGTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046130_.html)
 pub const MQRCCF_CFIN_LENGTH_ERROR: crate::MQLONG = 3009;
-/// [IBM `MQRCCF_CFST_LENGTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046140_.html)
+/// [IBM `MQRCCF_CFST_LENGTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046140_.html)
 pub const MQRCCF_CFST_LENGTH_ERROR: crate::MQLONG = 3010;
-/// [IBM `MQRCCF_CFST_STRING_LENGTH_ERR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046150_.html)
+/// [IBM `MQRCCF_CFST_STRING_LENGTH_ERR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046150_.html)
 pub const MQRCCF_CFST_STRING_LENGTH_ERR: crate::MQLONG = 3011;
-/// [IBM `MQRCCF_FORCE_VALUE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046160_.html)
+/// [IBM `MQRCCF_FORCE_VALUE_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046160_.html)
 pub const MQRCCF_FORCE_VALUE_ERROR: crate::MQLONG = 3012;
-/// [IBM `MQRCCF_STRUCTURE_TYPE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046170_.html)
+/// [IBM `MQRCCF_STRUCTURE_TYPE_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046170_.html)
 pub const MQRCCF_STRUCTURE_TYPE_ERROR: crate::MQLONG = 3013;
-/// [IBM `MQRCCF_CFIN_PARM_ID_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046180_.html)
+/// [IBM `MQRCCF_CFIN_PARM_ID_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046180_.html)
 pub const MQRCCF_CFIN_PARM_ID_ERROR: crate::MQLONG = 3014;
-/// [IBM `MQRCCF_CFST_PARM_ID_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046190_.html)
+/// [IBM `MQRCCF_CFST_PARM_ID_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046190_.html)
 pub const MQRCCF_CFST_PARM_ID_ERROR: crate::MQLONG = 3015;
-/// [IBM `MQRCCF_MSG_LENGTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046200_.html)
+/// [IBM `MQRCCF_MSG_LENGTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046200_.html)
 pub const MQRCCF_MSG_LENGTH_ERROR: crate::MQLONG = 3016;
-/// [IBM `MQRCCF_CFIN_DUPLICATE_PARM` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046210_.html)
+/// [IBM `MQRCCF_CFIN_DUPLICATE_PARM` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046210_.html)
 pub const MQRCCF_CFIN_DUPLICATE_PARM: crate::MQLONG = 3017;
-/// [IBM `MQRCCF_CFST_DUPLICATE_PARM` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046220_.html)
+/// [IBM `MQRCCF_CFST_DUPLICATE_PARM` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046220_.html)
 pub const MQRCCF_CFST_DUPLICATE_PARM: crate::MQLONG = 3018;
-/// [IBM `MQRCCF_PARM_COUNT_TOO_SMALL` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046230_.html)
+/// [IBM `MQRCCF_PARM_COUNT_TOO_SMALL` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046230_.html)
 pub const MQRCCF_PARM_COUNT_TOO_SMALL: crate::MQLONG = 3019;
-/// [IBM `MQRCCF_PARM_COUNT_TOO_BIG` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046240_.html)
+/// [IBM `MQRCCF_PARM_COUNT_TOO_BIG` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046240_.html)
 pub const MQRCCF_PARM_COUNT_TOO_BIG: crate::MQLONG = 3020;
-/// [IBM `MQRCCF_Q_ALREADY_IN_CELL` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046250_.html)
+/// [IBM `MQRCCF_Q_ALREADY_IN_CELL` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046250_.html)
 pub const MQRCCF_Q_ALREADY_IN_CELL: crate::MQLONG = 3021;
-/// [IBM `MQRCCF_Q_TYPE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046260_.html)
+/// [IBM `MQRCCF_Q_TYPE_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046260_.html)
 pub const MQRCCF_Q_TYPE_ERROR: crate::MQLONG = 3022;
-/// [IBM `MQRCCF_MD_FORMAT_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046270_.html)
+/// [IBM `MQRCCF_MD_FORMAT_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046270_.html)
 pub const MQRCCF_MD_FORMAT_ERROR: crate::MQLONG = 3023;
-/// [IBM `MQRCCF_CFSL_LENGTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046280_.html)
+/// [IBM `MQRCCF_CFSL_LENGTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046280_.html)
 pub const MQRCCF_CFSL_LENGTH_ERROR: crate::MQLONG = 3024;
-/// [IBM `MQRCCF_REPLACE_VALUE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046290_.html)
+/// [IBM `MQRCCF_REPLACE_VALUE_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046290_.html)
 pub const MQRCCF_REPLACE_VALUE_ERROR: crate::MQLONG = 3025;
-/// [IBM `MQRCCF_CFIL_DUPLICATE_VALUE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046300_.html)
+/// [IBM `MQRCCF_CFIL_DUPLICATE_VALUE` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046300_.html)
 pub const MQRCCF_CFIL_DUPLICATE_VALUE: crate::MQLONG = 3026;
-/// [IBM `MQRCCF_CFIL_COUNT_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046310_.html)
+/// [IBM `MQRCCF_CFIL_COUNT_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046310_.html)
 pub const MQRCCF_CFIL_COUNT_ERROR: crate::MQLONG = 3027;
-/// [IBM `MQRCCF_CFIL_LENGTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046320_.html)
+/// [IBM `MQRCCF_CFIL_LENGTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046320_.html)
 pub const MQRCCF_CFIL_LENGTH_ERROR: crate::MQLONG = 3028;
-/// [IBM `MQRCCF_QUIESCE_VALUE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046340_.html)
+/// [IBM `MQRCCF_QUIESCE_VALUE_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046340_.html)
 pub const MQRCCF_QUIESCE_VALUE_ERROR: crate::MQLONG = 3029;
-/// [IBM `MQRCCF_MODE_VALUE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046330_.html)
+/// [IBM `MQRCCF_MODE_VALUE_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046330_.html)
 pub const MQRCCF_MODE_VALUE_ERROR: crate::MQLONG = 3029;
-/// [IBM `MQRCCF_MSG_SEQ_NUMBER_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046350_.html)
+/// [IBM `MQRCCF_MSG_SEQ_NUMBER_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046350_.html)
 pub const MQRCCF_MSG_SEQ_NUMBER_ERROR: crate::MQLONG = 3030;
-/// [IBM `MQRCCF_PING_DATA_COUNT_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046360_.html)
+/// [IBM `MQRCCF_PING_DATA_COUNT_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046360_.html)
 pub const MQRCCF_PING_DATA_COUNT_ERROR: crate::MQLONG = 3031;
-/// [IBM `MQRCCF_PING_DATA_COMPARE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046370_.html)
+/// [IBM `MQRCCF_PING_DATA_COMPARE_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046370_.html)
 pub const MQRCCF_PING_DATA_COMPARE_ERROR: crate::MQLONG = 3032;
-/// [IBM `MQRCCF_CFSL_PARM_ID_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046380_.html)
+/// [IBM `MQRCCF_CFSL_PARM_ID_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046380_.html)
 pub const MQRCCF_CFSL_PARM_ID_ERROR: crate::MQLONG = 3033;
-/// [IBM `MQRCCF_CHANNEL_TYPE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046390_.html)
+/// [IBM `MQRCCF_CHANNEL_TYPE_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046390_.html)
 pub const MQRCCF_CHANNEL_TYPE_ERROR: crate::MQLONG = 3034;
-/// [IBM `MQRCCF_PARM_SEQUENCE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046400_.html)
+/// [IBM `MQRCCF_PARM_SEQUENCE_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046400_.html)
 pub const MQRCCF_PARM_SEQUENCE_ERROR: crate::MQLONG = 3035;
-/// [IBM `MQRCCF_XMIT_PROTOCOL_TYPE_ERR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046410_.html)
+/// [IBM `MQRCCF_XMIT_PROTOCOL_TYPE_ERR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046410_.html)
 pub const MQRCCF_XMIT_PROTOCOL_TYPE_ERR: crate::MQLONG = 3036;
-/// [IBM `MQRCCF_BATCH_SIZE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046420_.html)
+/// [IBM `MQRCCF_BATCH_SIZE_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046420_.html)
 pub const MQRCCF_BATCH_SIZE_ERROR: crate::MQLONG = 3037;
-/// [IBM `MQRCCF_DISC_INT_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046430_.html)
+/// [IBM `MQRCCF_DISC_INT_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046430_.html)
 pub const MQRCCF_DISC_INT_ERROR: crate::MQLONG = 3038;
-/// [IBM `MQRCCF_SHORT_RETRY_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046440_.html)
+/// [IBM `MQRCCF_SHORT_RETRY_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046440_.html)
 pub const MQRCCF_SHORT_RETRY_ERROR: crate::MQLONG = 3039;
-/// [IBM `MQRCCF_SHORT_TIMER_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046450_.html)
+/// [IBM `MQRCCF_SHORT_TIMER_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046450_.html)
 pub const MQRCCF_SHORT_TIMER_ERROR: crate::MQLONG = 3040;
-/// [IBM `MQRCCF_LONG_RETRY_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046460_.html)
+/// [IBM `MQRCCF_LONG_RETRY_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046460_.html)
 pub const MQRCCF_LONG_RETRY_ERROR: crate::MQLONG = 3041;
-/// [IBM `MQRCCF_LONG_TIMER_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046470_.html)
+/// [IBM `MQRCCF_LONG_TIMER_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046470_.html)
 pub const MQRCCF_LONG_TIMER_ERROR: crate::MQLONG = 3042;
-/// [IBM `MQRCCF_SEQ_NUMBER_WRAP_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046480_.html)
+/// [IBM `MQRCCF_SEQ_NUMBER_WRAP_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046480_.html)
 pub const MQRCCF_SEQ_NUMBER_WRAP_ERROR: crate::MQLONG = 3043;
-/// [IBM `MQRCCF_MAX_MSG_LENGTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046490_.html)
+/// [IBM `MQRCCF_MAX_MSG_LENGTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046490_.html)
 pub const MQRCCF_MAX_MSG_LENGTH_ERROR: crate::MQLONG = 3044;
-/// [IBM `MQRCCF_PUT_AUTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046500_.html)
+/// [IBM `MQRCCF_PUT_AUTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046500_.html)
 pub const MQRCCF_PUT_AUTH_ERROR: crate::MQLONG = 3045;
-/// [IBM `MQRCCF_PURGE_VALUE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046510_.html)
+/// [IBM `MQRCCF_PURGE_VALUE_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046510_.html)
 pub const MQRCCF_PURGE_VALUE_ERROR: crate::MQLONG = 3046;
-/// [IBM `MQRCCF_CFIL_PARM_ID_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046520_.html)
+/// [IBM `MQRCCF_CFIL_PARM_ID_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046520_.html)
 pub const MQRCCF_CFIL_PARM_ID_ERROR: crate::MQLONG = 3047;
-/// [IBM `MQRCCF_MSG_TRUNCATED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046530_.html)
+/// [IBM `MQRCCF_MSG_TRUNCATED` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046530_.html)
 pub const MQRCCF_MSG_TRUNCATED: crate::MQLONG = 3048;
-/// [IBM `MQRCCF_CCSID_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046540_.html)
+/// [IBM `MQRCCF_CCSID_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046540_.html)
 pub const MQRCCF_CCSID_ERROR: crate::MQLONG = 3049;
-/// [IBM `MQRCCF_ENCODING_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046550_.html)
+/// [IBM `MQRCCF_ENCODING_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046550_.html)
 pub const MQRCCF_ENCODING_ERROR: crate::MQLONG = 3050;
 pub const MQRCCF_QUEUES_VALUE_ERROR: crate::MQLONG = 3051;
-/// [IBM `MQRCCF_DATA_CONV_VALUE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046560_.html)
+/// [IBM `MQRCCF_DATA_CONV_VALUE_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046560_.html)
 pub const MQRCCF_DATA_CONV_VALUE_ERROR: crate::MQLONG = 3052;
-/// [IBM `MQRCCF_INDOUBT_VALUE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046570_.html)
+/// [IBM `MQRCCF_INDOUBT_VALUE_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046570_.html)
 pub const MQRCCF_INDOUBT_VALUE_ERROR: crate::MQLONG = 3053;
-/// [IBM `MQRCCF_ESCAPE_TYPE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046580_.html)
+/// [IBM `MQRCCF_ESCAPE_TYPE_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046580_.html)
 pub const MQRCCF_ESCAPE_TYPE_ERROR: crate::MQLONG = 3054;
 pub const MQRCCF_REPOS_VALUE_ERROR: crate::MQLONG = 3055;
-/// [IBM `MQRCCF_CHANNEL_TABLE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046590_.html)
+/// [IBM `MQRCCF_CHANNEL_TABLE_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046590_.html)
 pub const MQRCCF_CHANNEL_TABLE_ERROR: crate::MQLONG = 3062;
-/// [IBM `MQRCCF_MCA_TYPE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046600_.html)
+/// [IBM `MQRCCF_MCA_TYPE_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046600_.html)
 pub const MQRCCF_MCA_TYPE_ERROR: crate::MQLONG = 3063;
-/// [IBM `MQRCCF_CHL_INST_TYPE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046610_.html)
+/// [IBM `MQRCCF_CHL_INST_TYPE_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046610_.html)
 pub const MQRCCF_CHL_INST_TYPE_ERROR: crate::MQLONG = 3064;
-/// [IBM `MQRCCF_CHL_STATUS_NOT_FOUND` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046620_.html)
+/// [IBM `MQRCCF_CHL_STATUS_NOT_FOUND` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046620_.html)
 pub const MQRCCF_CHL_STATUS_NOT_FOUND: crate::MQLONG = 3065;
-/// [IBM `MQRCCF_CFSL_DUPLICATE_PARM` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046630_.html)
+/// [IBM `MQRCCF_CFSL_DUPLICATE_PARM` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046630_.html)
 pub const MQRCCF_CFSL_DUPLICATE_PARM: crate::MQLONG = 3066;
-/// [IBM `MQRCCF_CFSL_TOTAL_LENGTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046640_.html)
+/// [IBM `MQRCCF_CFSL_TOTAL_LENGTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046640_.html)
 pub const MQRCCF_CFSL_TOTAL_LENGTH_ERROR: crate::MQLONG = 3067;
-/// [IBM `MQRCCF_CFSL_COUNT_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046650_.html)
+/// [IBM `MQRCCF_CFSL_COUNT_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046650_.html)
 pub const MQRCCF_CFSL_COUNT_ERROR: crate::MQLONG = 3068;
-/// [IBM `MQRCCF_CFSL_STRING_LENGTH_ERR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046660_.html)
+/// [IBM `MQRCCF_CFSL_STRING_LENGTH_ERR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046660_.html)
 pub const MQRCCF_CFSL_STRING_LENGTH_ERR: crate::MQLONG = 3069;
-/// [IBM `MQRCCF_BROKER_DELETED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046670_.html)
+/// [IBM `MQRCCF_BROKER_DELETED` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046670_.html)
 pub const MQRCCF_BROKER_DELETED: crate::MQLONG = 3070;
-/// [IBM `MQRCCF_STREAM_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046680_.html)
+/// [IBM `MQRCCF_STREAM_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046680_.html)
 pub const MQRCCF_STREAM_ERROR: crate::MQLONG = 3071;
-/// [IBM `MQRCCF_TOPIC_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046690_.html)
+/// [IBM `MQRCCF_TOPIC_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046690_.html)
 pub const MQRCCF_TOPIC_ERROR: crate::MQLONG = 3072;
-/// [IBM `MQRCCF_NOT_REGISTERED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046700_.html)
+/// [IBM `MQRCCF_NOT_REGISTERED` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046700_.html)
 pub const MQRCCF_NOT_REGISTERED: crate::MQLONG = 3073;
-/// [IBM `MQRCCF_Q_MGR_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046710_.html)
+/// [IBM `MQRCCF_Q_MGR_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046710_.html)
 pub const MQRCCF_Q_MGR_NAME_ERROR: crate::MQLONG = 3074;
-/// [IBM `MQRCCF_INCORRECT_STREAM` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046720_.html)
+/// [IBM `MQRCCF_INCORRECT_STREAM` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046720_.html)
 pub const MQRCCF_INCORRECT_STREAM: crate::MQLONG = 3075;
-/// [IBM `MQRCCF_Q_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046730_.html)
+/// [IBM `MQRCCF_Q_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046730_.html)
 pub const MQRCCF_Q_NAME_ERROR: crate::MQLONG = 3076;
-/// [IBM `MQRCCF_NO_RETAINED_MSG` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046740_.html)
+/// [IBM `MQRCCF_NO_RETAINED_MSG` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046740_.html)
 pub const MQRCCF_NO_RETAINED_MSG: crate::MQLONG = 3077;
-/// [IBM `MQRCCF_DUPLICATE_IDENTITY` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046750_.html)
+/// [IBM `MQRCCF_DUPLICATE_IDENTITY` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046750_.html)
 pub const MQRCCF_DUPLICATE_IDENTITY: crate::MQLONG = 3078;
-/// [IBM `MQRCCF_INCORRECT_Q` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046760_.html)
+/// [IBM `MQRCCF_INCORRECT_Q` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046760_.html)
 pub const MQRCCF_INCORRECT_Q: crate::MQLONG = 3079;
-/// [IBM `MQRCCF_CORREL_ID_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046770_.html)
+/// [IBM `MQRCCF_CORREL_ID_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046770_.html)
 pub const MQRCCF_CORREL_ID_ERROR: crate::MQLONG = 3080;
-/// [IBM `MQRCCF_NOT_AUTHORIZED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046780_.html)
+/// [IBM `MQRCCF_NOT_AUTHORIZED` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046780_.html)
 pub const MQRCCF_NOT_AUTHORIZED: crate::MQLONG = 3081;
-/// [IBM `MQRCCF_UNKNOWN_STREAM` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046790_.html)
+/// [IBM `MQRCCF_UNKNOWN_STREAM` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046790_.html)
 pub const MQRCCF_UNKNOWN_STREAM: crate::MQLONG = 3082;
-/// [IBM `MQRCCF_REG_OPTIONS_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046800_.html)
+/// [IBM `MQRCCF_REG_OPTIONS_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046800_.html)
 pub const MQRCCF_REG_OPTIONS_ERROR: crate::MQLONG = 3083;
-/// [IBM `MQRCCF_PUB_OPTIONS_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046810_.html)
+/// [IBM `MQRCCF_PUB_OPTIONS_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046810_.html)
 pub const MQRCCF_PUB_OPTIONS_ERROR: crate::MQLONG = 3084;
-/// [IBM `MQRCCF_UNKNOWN_BROKER` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046820_.html)
+/// [IBM `MQRCCF_UNKNOWN_BROKER` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046820_.html)
 pub const MQRCCF_UNKNOWN_BROKER: crate::MQLONG = 3085;
-/// [IBM `MQRCCF_Q_MGR_CCSID_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046830_.html)
+/// [IBM `MQRCCF_Q_MGR_CCSID_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046830_.html)
 pub const MQRCCF_Q_MGR_CCSID_ERROR: crate::MQLONG = 3086;
-/// [IBM `MQRCCF_DEL_OPTIONS_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046840_.html)
+/// [IBM `MQRCCF_DEL_OPTIONS_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046840_.html)
 pub const MQRCCF_DEL_OPTIONS_ERROR: crate::MQLONG = 3087;
-/// [IBM `MQRCCF_CLUSTER_NAME_CONFLICT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046850_.html)
+/// [IBM `MQRCCF_CLUSTER_NAME_CONFLICT` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046850_.html)
 pub const MQRCCF_CLUSTER_NAME_CONFLICT: crate::MQLONG = 3088;
-/// [IBM `MQRCCF_REPOS_NAME_CONFLICT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046860_.html)
+/// [IBM `MQRCCF_REPOS_NAME_CONFLICT` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046860_.html)
 pub const MQRCCF_REPOS_NAME_CONFLICT: crate::MQLONG = 3089;
-/// [IBM `MQRCCF_CLUSTER_Q_USAGE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046870_.html)
+/// [IBM `MQRCCF_CLUSTER_Q_USAGE_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046870_.html)
 pub const MQRCCF_CLUSTER_Q_USAGE_ERROR: crate::MQLONG = 3090;
-/// [IBM `MQRCCF_ACTION_VALUE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046880_.html)
+/// [IBM `MQRCCF_ACTION_VALUE_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046880_.html)
 pub const MQRCCF_ACTION_VALUE_ERROR: crate::MQLONG = 3091;
-/// [IBM `MQRCCF_COMMS_LIBRARY_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046890_.html)
+/// [IBM `MQRCCF_COMMS_LIBRARY_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046890_.html)
 pub const MQRCCF_COMMS_LIBRARY_ERROR: crate::MQLONG = 3092;
-/// [IBM `MQRCCF_NETBIOS_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046900_.html)
+/// [IBM `MQRCCF_NETBIOS_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046900_.html)
 pub const MQRCCF_NETBIOS_NAME_ERROR: crate::MQLONG = 3093;
-/// [IBM `MQRCCF_BROKER_COMMAND_FAILED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046910_.html)
+/// [IBM `MQRCCF_BROKER_COMMAND_FAILED` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046910_.html)
 pub const MQRCCF_BROKER_COMMAND_FAILED: crate::MQLONG = 3094;
-/// [IBM `MQRCCF_CFST_CONFLICTING_PARM` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046920_.html)
+/// [IBM `MQRCCF_CFST_CONFLICTING_PARM` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046920_.html)
 pub const MQRCCF_CFST_CONFLICTING_PARM: crate::MQLONG = 3095;
-/// [IBM `MQRCCF_PATH_NOT_VALID` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046930_.html)
+/// [IBM `MQRCCF_PATH_NOT_VALID` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046930_.html)
 pub const MQRCCF_PATH_NOT_VALID: crate::MQLONG = 3096;
-/// [IBM `MQRCCF_PARM_SYNTAX_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046940_.html)
+/// [IBM `MQRCCF_PARM_SYNTAX_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046940_.html)
 pub const MQRCCF_PARM_SYNTAX_ERROR: crate::MQLONG = 3097;
-/// [IBM `MQRCCF_PWD_LENGTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046950_.html)
+/// [IBM `MQRCCF_PWD_LENGTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046950_.html)
 pub const MQRCCF_PWD_LENGTH_ERROR: crate::MQLONG = 3098;
-/// [IBM `MQRCCF_FILTER_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046960_.html)
+/// [IBM `MQRCCF_FILTER_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046960_.html)
 pub const MQRCCF_FILTER_ERROR: crate::MQLONG = 3150;
-/// [IBM `MQRCCF_WRONG_USER` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046970_.html)
+/// [IBM `MQRCCF_WRONG_USER` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046970_.html)
 pub const MQRCCF_WRONG_USER: crate::MQLONG = 3151;
-/// [IBM `MQRCCF_DUPLICATE_SUBSCRIPTION` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046980_.html)
+/// [IBM `MQRCCF_DUPLICATE_SUBSCRIPTION` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046980_.html)
 pub const MQRCCF_DUPLICATE_SUBSCRIPTION: crate::MQLONG = 3152;
-/// [IBM `MQRCCF_SUB_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q046990_.html)
+/// [IBM `MQRCCF_SUB_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q046990_.html)
 pub const MQRCCF_SUB_NAME_ERROR: crate::MQLONG = 3153;
-/// [IBM `MQRCCF_SUB_IDENTITY_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047000_.html)
+/// [IBM `MQRCCF_SUB_IDENTITY_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047000_.html)
 pub const MQRCCF_SUB_IDENTITY_ERROR: crate::MQLONG = 3154;
-/// [IBM `MQRCCF_SUBSCRIPTION_IN_USE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047010_.html)
+/// [IBM `MQRCCF_SUBSCRIPTION_IN_USE` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047010_.html)
 pub const MQRCCF_SUBSCRIPTION_IN_USE: crate::MQLONG = 3155;
-/// [IBM `MQRCCF_SUBSCRIPTION_LOCKED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047020_.html)
+/// [IBM `MQRCCF_SUBSCRIPTION_LOCKED` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047020_.html)
 pub const MQRCCF_SUBSCRIPTION_LOCKED: crate::MQLONG = 3156;
-/// [IBM `MQRCCF_ALREADY_JOINED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047030_.html)
+/// [IBM `MQRCCF_ALREADY_JOINED` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047030_.html)
 pub const MQRCCF_ALREADY_JOINED: crate::MQLONG = 3157;
-/// [IBM `MQRCCF_OBJECT_IN_USE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047040_.html)
+/// [IBM `MQRCCF_OBJECT_IN_USE` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047040_.html)
 pub const MQRCCF_OBJECT_IN_USE: crate::MQLONG = 3160;
-/// [IBM `MQRCCF_UNKNOWN_FILE_NAME` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047050_.html)
+/// [IBM `MQRCCF_UNKNOWN_FILE_NAME` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047050_.html)
 pub const MQRCCF_UNKNOWN_FILE_NAME: crate::MQLONG = 3161;
-/// [IBM `MQRCCF_FILE_NOT_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047060_.html)
+/// [IBM `MQRCCF_FILE_NOT_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047060_.html)
 pub const MQRCCF_FILE_NOT_AVAILABLE: crate::MQLONG = 3162;
-/// [IBM `MQRCCF_DISC_RETRY_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047070_.html)
+/// [IBM `MQRCCF_DISC_RETRY_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047070_.html)
 pub const MQRCCF_DISC_RETRY_ERROR: crate::MQLONG = 3163;
-/// [IBM `MQRCCF_ALLOC_RETRY_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047080_.html)
+/// [IBM `MQRCCF_ALLOC_RETRY_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047080_.html)
 pub const MQRCCF_ALLOC_RETRY_ERROR: crate::MQLONG = 3164;
-/// [IBM `MQRCCF_ALLOC_SLOW_TIMER_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047090_.html)
+/// [IBM `MQRCCF_ALLOC_SLOW_TIMER_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047090_.html)
 pub const MQRCCF_ALLOC_SLOW_TIMER_ERROR: crate::MQLONG = 3165;
-/// [IBM `MQRCCF_ALLOC_FAST_TIMER_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047100_.html)
+/// [IBM `MQRCCF_ALLOC_FAST_TIMER_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047100_.html)
 pub const MQRCCF_ALLOC_FAST_TIMER_ERROR: crate::MQLONG = 3166;
-/// [IBM `MQRCCF_PORT_NUMBER_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047110_.html)
+/// [IBM `MQRCCF_PORT_NUMBER_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047110_.html)
 pub const MQRCCF_PORT_NUMBER_ERROR: crate::MQLONG = 3167;
-/// [IBM `MQRCCF_CHL_SYSTEM_NOT_ACTIVE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047120_.html)
+/// [IBM `MQRCCF_CHL_SYSTEM_NOT_ACTIVE` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047120_.html)
 pub const MQRCCF_CHL_SYSTEM_NOT_ACTIVE: crate::MQLONG = 3168;
-/// [IBM `MQRCCF_ENTITY_NAME_MISSING` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047130_.html)
+/// [IBM `MQRCCF_ENTITY_NAME_MISSING` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047130_.html)
 pub const MQRCCF_ENTITY_NAME_MISSING: crate::MQLONG = 3169;
-/// [IBM `MQRCCF_PROFILE_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047140_.html)
+/// [IBM `MQRCCF_PROFILE_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047140_.html)
 pub const MQRCCF_PROFILE_NAME_ERROR: crate::MQLONG = 3170;
-/// [IBM `MQRCCF_AUTH_VALUE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047150_.html)
+/// [IBM `MQRCCF_AUTH_VALUE_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047150_.html)
 pub const MQRCCF_AUTH_VALUE_ERROR: crate::MQLONG = 3171;
-/// [IBM `MQRCCF_AUTH_VALUE_MISSING` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047160_.html)
+/// [IBM `MQRCCF_AUTH_VALUE_MISSING` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047160_.html)
 pub const MQRCCF_AUTH_VALUE_MISSING: crate::MQLONG = 3172;
-/// [IBM `MQRCCF_OBJECT_TYPE_MISSING` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047170_.html)
+/// [IBM `MQRCCF_OBJECT_TYPE_MISSING` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047170_.html)
 pub const MQRCCF_OBJECT_TYPE_MISSING: crate::MQLONG = 3173;
-/// [IBM `MQRCCF_CONNECTION_ID_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047180_.html)
+/// [IBM `MQRCCF_CONNECTION_ID_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047180_.html)
 pub const MQRCCF_CONNECTION_ID_ERROR: crate::MQLONG = 3174;
-/// [IBM `MQRCCF_LOG_TYPE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047190_.html)
+/// [IBM `MQRCCF_LOG_TYPE_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047190_.html)
 pub const MQRCCF_LOG_TYPE_ERROR: crate::MQLONG = 3175;
-/// [IBM `MQRCCF_PROGRAM_NOT_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047200_.html)
+/// [IBM `MQRCCF_PROGRAM_NOT_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047200_.html)
 pub const MQRCCF_PROGRAM_NOT_AVAILABLE: crate::MQLONG = 3176;
-/// [IBM `MQRCCF_PROGRAM_AUTH_FAILED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047210_.html)
+/// [IBM `MQRCCF_PROGRAM_AUTH_FAILED` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047210_.html)
 pub const MQRCCF_PROGRAM_AUTH_FAILED: crate::MQLONG = 3177;
-/// [IBM `MQRCCF_NONE_FOUND` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047220_.html)
+/// [IBM `MQRCCF_NONE_FOUND` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047220_.html)
 pub const MQRCCF_NONE_FOUND: crate::MQLONG = 3200;
-/// [IBM `MQRCCF_SECURITY_SWITCH_OFF` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047230_.html)
+/// [IBM `MQRCCF_SECURITY_SWITCH_OFF` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047230_.html)
 pub const MQRCCF_SECURITY_SWITCH_OFF: crate::MQLONG = 3201;
-/// [IBM `MQRCCF_SECURITY_REFRESH_FAILED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047240_.html)
+/// [IBM `MQRCCF_SECURITY_REFRESH_FAILED` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047240_.html)
 pub const MQRCCF_SECURITY_REFRESH_FAILED: crate::MQLONG = 3202;
-/// [IBM `MQRCCF_PARM_CONFLICT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047250_.html)
+/// [IBM `MQRCCF_PARM_CONFLICT` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047250_.html)
 pub const MQRCCF_PARM_CONFLICT: crate::MQLONG = 3203;
-/// [IBM `MQRCCF_COMMAND_INHIBITED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047260_.html)
+/// [IBM `MQRCCF_COMMAND_INHIBITED` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047260_.html)
 pub const MQRCCF_COMMAND_INHIBITED: crate::MQLONG = 3204;
-/// [IBM `MQRCCF_OBJECT_BEING_DELETED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047270_.html)
+/// [IBM `MQRCCF_OBJECT_BEING_DELETED` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047270_.html)
 pub const MQRCCF_OBJECT_BEING_DELETED: crate::MQLONG = 3205;
-/// [IBM `MQRCCF_STORAGE_CLASS_IN_USE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047280_.html)
+/// [IBM `MQRCCF_STORAGE_CLASS_IN_USE` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047280_.html)
 pub const MQRCCF_STORAGE_CLASS_IN_USE: crate::MQLONG = 3207;
-/// [IBM `MQRCCF_OBJECT_NAME_RESTRICTED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047290_.html)
+/// [IBM `MQRCCF_OBJECT_NAME_RESTRICTED` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047290_.html)
 pub const MQRCCF_OBJECT_NAME_RESTRICTED: crate::MQLONG = 3208;
-/// [IBM `MQRCCF_OBJECT_LIMIT_EXCEEDED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047300_.html)
+/// [IBM `MQRCCF_OBJECT_LIMIT_EXCEEDED` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047300_.html)
 pub const MQRCCF_OBJECT_LIMIT_EXCEEDED: crate::MQLONG = 3209;
-/// [IBM `MQRCCF_OBJECT_OPEN_FORCE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047310_.html)
+/// [IBM `MQRCCF_OBJECT_OPEN_FORCE` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047310_.html)
 pub const MQRCCF_OBJECT_OPEN_FORCE: crate::MQLONG = 3210;
-/// [IBM `MQRCCF_DISPOSITION_CONFLICT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047320_.html)
+/// [IBM `MQRCCF_DISPOSITION_CONFLICT` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047320_.html)
 pub const MQRCCF_DISPOSITION_CONFLICT: crate::MQLONG = 3211;
-/// [IBM `MQRCCF_Q_MGR_NOT_IN_QSG` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047330_.html)
+/// [IBM `MQRCCF_Q_MGR_NOT_IN_QSG` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047330_.html)
 pub const MQRCCF_Q_MGR_NOT_IN_QSG: crate::MQLONG = 3212;
-/// [IBM `MQRCCF_ATTR_VALUE_FIXED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047340_.html)
+/// [IBM `MQRCCF_ATTR_VALUE_FIXED` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047340_.html)
 pub const MQRCCF_ATTR_VALUE_FIXED: crate::MQLONG = 3213;
-/// [IBM `MQRCCF_NAMELIST_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047350_.html)
+/// [IBM `MQRCCF_NAMELIST_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047350_.html)
 pub const MQRCCF_NAMELIST_ERROR: crate::MQLONG = 3215;
-/// [IBM `MQRCCF_NO_CHANNEL_INITIATOR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047360_.html)
+/// [IBM `MQRCCF_NO_CHANNEL_INITIATOR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047360_.html)
 pub const MQRCCF_NO_CHANNEL_INITIATOR: crate::MQLONG = 3217;
-/// [IBM `MQRCCF_CHANNEL_INITIATOR_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047370_.html)
+/// [IBM `MQRCCF_CHANNEL_INITIATOR_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047370_.html)
 pub const MQRCCF_CHANNEL_INITIATOR_ERROR: crate::MQLONG = 3218;
-/// [IBM `MQRCCF_COMMAND_LEVEL_CONFLICT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047380_.html)
+/// [IBM `MQRCCF_COMMAND_LEVEL_CONFLICT` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047380_.html)
 pub const MQRCCF_COMMAND_LEVEL_CONFLICT: crate::MQLONG = 3222;
-/// [IBM `MQRCCF_Q_ATTR_CONFLICT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047390_.html)
+/// [IBM `MQRCCF_Q_ATTR_CONFLICT` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047390_.html)
 pub const MQRCCF_Q_ATTR_CONFLICT: crate::MQLONG = 3223;
-/// [IBM `MQRCCF_EVENTS_DISABLED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047400_.html)
+/// [IBM `MQRCCF_EVENTS_DISABLED` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047400_.html)
 pub const MQRCCF_EVENTS_DISABLED: crate::MQLONG = 3224;
-/// [IBM `MQRCCF_COMMAND_SCOPE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047410_.html)
+/// [IBM `MQRCCF_COMMAND_SCOPE_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047410_.html)
 pub const MQRCCF_COMMAND_SCOPE_ERROR: crate::MQLONG = 3225;
-/// [IBM `MQRCCF_COMMAND_REPLY_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047420_.html)
+/// [IBM `MQRCCF_COMMAND_REPLY_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047420_.html)
 pub const MQRCCF_COMMAND_REPLY_ERROR: crate::MQLONG = 3226;
-/// [IBM `MQRCCF_FUNCTION_RESTRICTED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047430_.html)
+/// [IBM `MQRCCF_FUNCTION_RESTRICTED` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047430_.html)
 pub const MQRCCF_FUNCTION_RESTRICTED: crate::MQLONG = 3227;
-/// [IBM `MQRCCF_PARM_MISSING` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047440_.html)
+/// [IBM `MQRCCF_PARM_MISSING` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047440_.html)
 pub const MQRCCF_PARM_MISSING: crate::MQLONG = 3228;
-/// [IBM `MQRCCF_PARM_VALUE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047450_.html)
+/// [IBM `MQRCCF_PARM_VALUE_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047450_.html)
 pub const MQRCCF_PARM_VALUE_ERROR: crate::MQLONG = 3229;
-/// [IBM `MQRCCF_COMMAND_LENGTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047460_.html)
+/// [IBM `MQRCCF_COMMAND_LENGTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047460_.html)
 pub const MQRCCF_COMMAND_LENGTH_ERROR: crate::MQLONG = 3230;
-/// [IBM `MQRCCF_COMMAND_ORIGIN_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047470_.html)
+/// [IBM `MQRCCF_COMMAND_ORIGIN_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047470_.html)
 pub const MQRCCF_COMMAND_ORIGIN_ERROR: crate::MQLONG = 3231;
-/// [IBM `MQRCCF_LISTENER_CONFLICT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047480_.html)
+/// [IBM `MQRCCF_LISTENER_CONFLICT` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047480_.html)
 pub const MQRCCF_LISTENER_CONFLICT: crate::MQLONG = 3232;
-/// [IBM `MQRCCF_LISTENER_STARTED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047490_.html)
+/// [IBM `MQRCCF_LISTENER_STARTED` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047490_.html)
 pub const MQRCCF_LISTENER_STARTED: crate::MQLONG = 3233;
-/// [IBM `MQRCCF_LISTENER_STOPPED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047500_.html)
+/// [IBM `MQRCCF_LISTENER_STOPPED` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047500_.html)
 pub const MQRCCF_LISTENER_STOPPED: crate::MQLONG = 3234;
-/// [IBM `MQRCCF_CHANNEL_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047510_.html)
+/// [IBM `MQRCCF_CHANNEL_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047510_.html)
 pub const MQRCCF_CHANNEL_ERROR: crate::MQLONG = 3235;
-/// [IBM `MQRCCF_CF_STRUC_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047520_.html)
+/// [IBM `MQRCCF_CF_STRUC_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047520_.html)
 pub const MQRCCF_CF_STRUC_ERROR: crate::MQLONG = 3236;
-/// [IBM `MQRCCF_UNKNOWN_USER_ID` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047530_.html)
+/// [IBM `MQRCCF_UNKNOWN_USER_ID` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047530_.html)
 pub const MQRCCF_UNKNOWN_USER_ID: crate::MQLONG = 3237;
-/// [IBM `MQRCCF_UNEXPECTED_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047540_.html)
+/// [IBM `MQRCCF_UNEXPECTED_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047540_.html)
 pub const MQRCCF_UNEXPECTED_ERROR: crate::MQLONG = 3238;
-/// [IBM `MQRCCF_NO_XCF_PARTNER` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047550_.html)
+/// [IBM `MQRCCF_NO_XCF_PARTNER` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047550_.html)
 pub const MQRCCF_NO_XCF_PARTNER: crate::MQLONG = 3239;
-/// [IBM `MQRCCF_CFGR_PARM_ID_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047560_.html)
+/// [IBM `MQRCCF_CFGR_PARM_ID_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047560_.html)
 pub const MQRCCF_CFGR_PARM_ID_ERROR: crate::MQLONG = 3240;
-/// [IBM `MQRCCF_CFIF_LENGTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047570_.html)
+/// [IBM `MQRCCF_CFIF_LENGTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047570_.html)
 pub const MQRCCF_CFIF_LENGTH_ERROR: crate::MQLONG = 3241;
-/// [IBM `MQRCCF_CFIF_OPERATOR_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047580_.html)
+/// [IBM `MQRCCF_CFIF_OPERATOR_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047580_.html)
 pub const MQRCCF_CFIF_OPERATOR_ERROR: crate::MQLONG = 3242;
-/// [IBM `MQRCCF_CFIF_PARM_ID_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047590_.html)
+/// [IBM `MQRCCF_CFIF_PARM_ID_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047590_.html)
 pub const MQRCCF_CFIF_PARM_ID_ERROR: crate::MQLONG = 3243;
-/// [IBM `MQRCCF_CFSF_FILTER_VAL_LEN_ERR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047600_.html)
+/// [IBM `MQRCCF_CFSF_FILTER_VAL_LEN_ERR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047600_.html)
 pub const MQRCCF_CFSF_FILTER_VAL_LEN_ERR: crate::MQLONG = 3244;
-/// [IBM `MQRCCF_CFSF_LENGTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047610_.html)
+/// [IBM `MQRCCF_CFSF_LENGTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047610_.html)
 pub const MQRCCF_CFSF_LENGTH_ERROR: crate::MQLONG = 3245;
-/// [IBM `MQRCCF_CFSF_OPERATOR_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047620_.html)
+/// [IBM `MQRCCF_CFSF_OPERATOR_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047620_.html)
 pub const MQRCCF_CFSF_OPERATOR_ERROR: crate::MQLONG = 3246;
-/// [IBM `MQRCCF_CFSF_PARM_ID_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047630_.html)
+/// [IBM `MQRCCF_CFSF_PARM_ID_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047630_.html)
 pub const MQRCCF_CFSF_PARM_ID_ERROR: crate::MQLONG = 3247;
-/// [IBM `MQRCCF_TOO_MANY_FILTERS` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047640_.html)
+/// [IBM `MQRCCF_TOO_MANY_FILTERS` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047640_.html)
 pub const MQRCCF_TOO_MANY_FILTERS: crate::MQLONG = 3248;
-/// [IBM `MQRCCF_LISTENER_RUNNING` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047650_.html)
+/// [IBM `MQRCCF_LISTENER_RUNNING` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047650_.html)
 pub const MQRCCF_LISTENER_RUNNING: crate::MQLONG = 3249;
-/// [IBM `MQRCCF_LSTR_STATUS_NOT_FOUND` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047660_.html)
+/// [IBM `MQRCCF_LSTR_STATUS_NOT_FOUND` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047660_.html)
 pub const MQRCCF_LSTR_STATUS_NOT_FOUND: crate::MQLONG = 3250;
-/// [IBM `MQRCCF_SERVICE_RUNNING` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047670_.html)
+/// [IBM `MQRCCF_SERVICE_RUNNING` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047670_.html)
 pub const MQRCCF_SERVICE_RUNNING: crate::MQLONG = 3251;
-/// [IBM `MQRCCF_SERV_STATUS_NOT_FOUND` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047680_.html)
+/// [IBM `MQRCCF_SERV_STATUS_NOT_FOUND` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047680_.html)
 pub const MQRCCF_SERV_STATUS_NOT_FOUND: crate::MQLONG = 3252;
-/// [IBM `MQRCCF_SERVICE_STOPPED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047690_.html)
+/// [IBM `MQRCCF_SERVICE_STOPPED` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047690_.html)
 pub const MQRCCF_SERVICE_STOPPED: crate::MQLONG = 3253;
-/// [IBM `MQRCCF_CFBS_DUPLICATE_PARM` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047700_.html)
+/// [IBM `MQRCCF_CFBS_DUPLICATE_PARM` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047700_.html)
 pub const MQRCCF_CFBS_DUPLICATE_PARM: crate::MQLONG = 3254;
-/// [IBM `MQRCCF_CFBS_LENGTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047710_.html)
+/// [IBM `MQRCCF_CFBS_LENGTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047710_.html)
 pub const MQRCCF_CFBS_LENGTH_ERROR: crate::MQLONG = 3255;
-/// [IBM `MQRCCF_CFBS_PARM_ID_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047720_.html)
+/// [IBM `MQRCCF_CFBS_PARM_ID_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047720_.html)
 pub const MQRCCF_CFBS_PARM_ID_ERROR: crate::MQLONG = 3256;
-/// [IBM `MQRCCF_CFBS_STRING_LENGTH_ERR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047730_.html)
+/// [IBM `MQRCCF_CFBS_STRING_LENGTH_ERR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047730_.html)
 pub const MQRCCF_CFBS_STRING_LENGTH_ERR: crate::MQLONG = 3257;
-/// [IBM `MQRCCF_CFGR_LENGTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047740_.html)
+/// [IBM `MQRCCF_CFGR_LENGTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047740_.html)
 pub const MQRCCF_CFGR_LENGTH_ERROR: crate::MQLONG = 3258;
-/// [IBM `MQRCCF_CFGR_PARM_COUNT_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047750_.html)
+/// [IBM `MQRCCF_CFGR_PARM_COUNT_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047750_.html)
 pub const MQRCCF_CFGR_PARM_COUNT_ERROR: crate::MQLONG = 3259;
-/// [IBM `MQRCCF_CONN_NOT_STOPPED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047760_.html)
+/// [IBM `MQRCCF_CONN_NOT_STOPPED` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047760_.html)
 pub const MQRCCF_CONN_NOT_STOPPED: crate::MQLONG = 3260;
-/// [IBM `MQRCCF_SERVICE_REQUEST_PENDING` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047770_.html)
+/// [IBM `MQRCCF_SERVICE_REQUEST_PENDING` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047770_.html)
 pub const MQRCCF_SERVICE_REQUEST_PENDING: crate::MQLONG = 3261;
-/// [IBM `MQRCCF_NO_START_CMD` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047780_.html)
+/// [IBM `MQRCCF_NO_START_CMD` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047780_.html)
 pub const MQRCCF_NO_START_CMD: crate::MQLONG = 3262;
-/// [IBM `MQRCCF_NO_STOP_CMD` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047790_.html)
+/// [IBM `MQRCCF_NO_STOP_CMD` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047790_.html)
 pub const MQRCCF_NO_STOP_CMD: crate::MQLONG = 3263;
-/// [IBM `MQRCCF_CFBF_LENGTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047800_.html)
+/// [IBM `MQRCCF_CFBF_LENGTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047800_.html)
 pub const MQRCCF_CFBF_LENGTH_ERROR: crate::MQLONG = 3264;
-/// [IBM `MQRCCF_CFBF_PARM_ID_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047810_.html)
+/// [IBM `MQRCCF_CFBF_PARM_ID_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047810_.html)
 pub const MQRCCF_CFBF_PARM_ID_ERROR: crate::MQLONG = 3265;
-/// [IBM `MQRCCF_CFBF_OPERATOR_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047830_.html)
+/// [IBM `MQRCCF_CFBF_OPERATOR_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047830_.html)
 pub const MQRCCF_CFBF_OPERATOR_ERROR: crate::MQLONG = 3266;
-/// [IBM `MQRCCF_CFBF_FILTER_VAL_LEN_ERR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047820_.html)
+/// [IBM `MQRCCF_CFBF_FILTER_VAL_LEN_ERR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047820_.html)
 pub const MQRCCF_CFBF_FILTER_VAL_LEN_ERR: crate::MQLONG = 3267;
-/// [IBM `MQRCCF_LISTENER_STILL_ACTIVE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047840_.html)
+/// [IBM `MQRCCF_LISTENER_STILL_ACTIVE` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047840_.html)
 pub const MQRCCF_LISTENER_STILL_ACTIVE: crate::MQLONG = 3268;
-/// [IBM `MQRCCF_DEF_XMIT_Q_CLUS_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047850_.html)
+/// [IBM `MQRCCF_DEF_XMIT_Q_CLUS_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047850_.html)
 pub const MQRCCF_DEF_XMIT_Q_CLUS_ERROR: crate::MQLONG = 3269;
-/// [IBM `MQRCCF_TOPICSTR_ALREADY_EXISTS` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047860_.html)
+/// [IBM `MQRCCF_TOPICSTR_ALREADY_EXISTS` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047860_.html)
 pub const MQRCCF_TOPICSTR_ALREADY_EXISTS: crate::MQLONG = 3300;
-/// [IBM `MQRCCF_SHARING_CONVS_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047870_.html)
+/// [IBM `MQRCCF_SHARING_CONVS_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047870_.html)
 pub const MQRCCF_SHARING_CONVS_ERROR: crate::MQLONG = 3301;
-/// [IBM `MQRCCF_SHARING_CONVS_TYPE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047880_.html)
+/// [IBM `MQRCCF_SHARING_CONVS_TYPE` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047880_.html)
 pub const MQRCCF_SHARING_CONVS_TYPE: crate::MQLONG = 3302;
-/// [IBM `MQRCCF_SECURITY_CASE_CONFLICT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047890_.html)
+/// [IBM `MQRCCF_SECURITY_CASE_CONFLICT` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047890_.html)
 pub const MQRCCF_SECURITY_CASE_CONFLICT: crate::MQLONG = 3303;
-/// [IBM `MQRCCF_TOPIC_TYPE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047900_.html)
+/// [IBM `MQRCCF_TOPIC_TYPE_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047900_.html)
 pub const MQRCCF_TOPIC_TYPE_ERROR: crate::MQLONG = 3305;
-/// [IBM `MQRCCF_MAX_INSTANCES_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047910_.html)
+/// [IBM `MQRCCF_MAX_INSTANCES_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047910_.html)
 pub const MQRCCF_MAX_INSTANCES_ERROR: crate::MQLONG = 3306;
-/// [IBM `MQRCCF_MAX_INSTS_PER_CLNT_ERR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047920_.html)
+/// [IBM `MQRCCF_MAX_INSTS_PER_CLNT_ERR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047920_.html)
 pub const MQRCCF_MAX_INSTS_PER_CLNT_ERR: crate::MQLONG = 3307;
-/// [IBM `MQRCCF_TOPIC_STRING_NOT_FOUND` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047930_.html)
+/// [IBM `MQRCCF_TOPIC_STRING_NOT_FOUND` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047930_.html)
 pub const MQRCCF_TOPIC_STRING_NOT_FOUND: crate::MQLONG = 3308;
-/// [IBM `MQRCCF_SUBSCRIPTION_POINT_ERR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047940_.html)
+/// [IBM `MQRCCF_SUBSCRIPTION_POINT_ERR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047940_.html)
 pub const MQRCCF_SUBSCRIPTION_POINT_ERR: crate::MQLONG = 3309;
-/// [IBM `MQRCCF_SUB_ALREADY_EXISTS` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047950_.html)
+/// [IBM `MQRCCF_SUB_ALREADY_EXISTS` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047950_.html)
 pub const MQRCCF_SUB_ALREADY_EXISTS: crate::MQLONG = 3311;
 pub const MQRCCF_UNKNOWN_OBJECT_NAME: crate::MQLONG = 3312;
 pub const MQRCCF_REMOTE_Q_NAME_ERROR: crate::MQLONG = 3313;
-/// [IBM `MQRCCF_DURABILITY_NOT_ALLOWED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047960_.html)
+/// [IBM `MQRCCF_DURABILITY_NOT_ALLOWED` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047960_.html)
 pub const MQRCCF_DURABILITY_NOT_ALLOWED: crate::MQLONG = 3314;
 pub const MQRCCF_HOBJ_ERROR: crate::MQLONG = 3315;
 pub const MQRCCF_DEST_NAME_ERROR: crate::MQLONG = 3316;
-/// [IBM `MQRCCF_INVALID_DESTINATION` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047970_.html)
+/// [IBM `MQRCCF_INVALID_DESTINATION` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047970_.html)
 pub const MQRCCF_INVALID_DESTINATION: crate::MQLONG = 3317;
-/// [IBM `MQRCCF_PUBSUB_INHIBITED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047980_.html)
+/// [IBM `MQRCCF_PUBSUB_INHIBITED` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047980_.html)
 pub const MQRCCF_PUBSUB_INHIBITED: crate::MQLONG = 3318;
 pub const MQRCCF_GROUPUR_CHECKS_FAILED: crate::MQLONG = 3319;
 pub const MQRCCF_COMM_INFO_TYPE_ERROR: crate::MQLONG = 3320;
@@ -874,9 +874,9 @@ pub const MQRCCF_CLIENT_ID_NOT_FOUND: crate::MQLONG = 3322;
 pub const MQRCCF_CLIENT_ID_ERROR: crate::MQLONG = 3323;
 pub const MQRCCF_PORT_IN_USE: crate::MQLONG = 3324;
 pub const MQRCCF_SSL_ALT_PROVIDER_REQD: crate::MQLONG = 3325;
-/// [IBM `MQRCCF_CHLAUTH_TYPE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q047990_.html)
+/// [IBM `MQRCCF_CHLAUTH_TYPE_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q047990_.html)
 pub const MQRCCF_CHLAUTH_TYPE_ERROR: crate::MQLONG = 3326;
-/// [IBM `MQRCCF_CHLAUTH_ACTION_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048000_.html)
+/// [IBM `MQRCCF_CHLAUTH_ACTION_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048000_.html)
 pub const MQRCCF_CHLAUTH_ACTION_ERROR: crate::MQLONG = 3327;
 pub const MQRCCF_POLICY_NOT_FOUND: crate::MQLONG = 3328;
 pub const MQRCCF_ENCRYPTION_ALG_ERROR: crate::MQLONG = 3329;
@@ -886,40 +886,40 @@ pub const MQRCCF_POLICY_VERSION_ERROR: crate::MQLONG = 3332;
 pub const MQRCCF_RECIPIENT_DN_MISSING: crate::MQLONG = 3333;
 pub const MQRCCF_POLICY_NAME_MISSING: crate::MQLONG = 3334;
 pub const MQRCCF_CHLAUTH_USERSRC_ERROR: crate::MQLONG = 3335;
-/// [IBM `MQRCCF_WRONG_CHLAUTH_TYPE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048020_.html)
+/// [IBM `MQRCCF_WRONG_CHLAUTH_TYPE` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048020_.html)
 pub const MQRCCF_WRONG_CHLAUTH_TYPE: crate::MQLONG = 3336;
-/// [IBM `MQRCCF_CHLAUTH_ALREADY_EXISTS` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048030_.html)
+/// [IBM `MQRCCF_CHLAUTH_ALREADY_EXISTS` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048030_.html)
 pub const MQRCCF_CHLAUTH_ALREADY_EXISTS: crate::MQLONG = 3337;
-/// [IBM `MQRCCF_CHLAUTH_NOT_FOUND` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048040_.html)
+/// [IBM `MQRCCF_CHLAUTH_NOT_FOUND` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048040_.html)
 pub const MQRCCF_CHLAUTH_NOT_FOUND: crate::MQLONG = 3338;
-/// [IBM `MQRCCF_WRONG_CHLAUTH_ACTION` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048050_.html)
+/// [IBM `MQRCCF_WRONG_CHLAUTH_ACTION` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048050_.html)
 pub const MQRCCF_WRONG_CHLAUTH_ACTION: crate::MQLONG = 3339;
-/// [IBM `MQRCCF_WRONG_CHLAUTH_USERSRC` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048060_.html)
+/// [IBM `MQRCCF_WRONG_CHLAUTH_USERSRC` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048060_.html)
 pub const MQRCCF_WRONG_CHLAUTH_USERSRC: crate::MQLONG = 3340;
-/// [IBM `MQRCCF_CHLAUTH_WARN_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048070_.html)
+/// [IBM `MQRCCF_CHLAUTH_WARN_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048070_.html)
 pub const MQRCCF_CHLAUTH_WARN_ERROR: crate::MQLONG = 3341;
-/// [IBM `MQRCCF_WRONG_CHLAUTH_MATCH` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048080_.html)
+/// [IBM `MQRCCF_WRONG_CHLAUTH_MATCH` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048080_.html)
 pub const MQRCCF_WRONG_CHLAUTH_MATCH: crate::MQLONG = 3342;
-/// [IBM `MQRCCF_IPADDR_RANGE_CONFLICT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048090_.html)
+/// [IBM `MQRCCF_IPADDR_RANGE_CONFLICT` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048090_.html)
 pub const MQRCCF_IPADDR_RANGE_CONFLICT: crate::MQLONG = 3343;
-/// [IBM `MQRCCF_CHLAUTH_MAX_EXCEEDED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048100_.html)
+/// [IBM `MQRCCF_CHLAUTH_MAX_EXCEEDED` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048100_.html)
 pub const MQRCCF_CHLAUTH_MAX_EXCEEDED: crate::MQLONG = 3344;
-/// [IBM `MQRCCF_IPADDR_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048110_.html)
+/// [IBM `MQRCCF_IPADDR_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048110_.html)
 pub const MQRCCF_IPADDR_ERROR: crate::MQLONG = 3345;
 pub const MQRCCF_ADDRESS_ERROR: crate::MQLONG = 3345;
-/// [IBM `MQRCCF_IPADDR_RANGE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048120_.html)
+/// [IBM `MQRCCF_IPADDR_RANGE_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048120_.html)
 pub const MQRCCF_IPADDR_RANGE_ERROR: crate::MQLONG = 3346;
-/// [IBM `MQRCCF_PROFILE_NAME_MISSING` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048130_.html)
+/// [IBM `MQRCCF_PROFILE_NAME_MISSING` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048130_.html)
 pub const MQRCCF_PROFILE_NAME_MISSING: crate::MQLONG = 3347;
-/// [IBM `MQRCCF_CHLAUTH_CLNTUSER_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048140_.html)
+/// [IBM `MQRCCF_CHLAUTH_CLNTUSER_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048140_.html)
 pub const MQRCCF_CHLAUTH_CLNTUSER_ERROR: crate::MQLONG = 3348;
-/// [IBM `MQRCCF_CHLAUTH_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048150_.html)
+/// [IBM `MQRCCF_CHLAUTH_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048150_.html)
 pub const MQRCCF_CHLAUTH_NAME_ERROR: crate::MQLONG = 3349;
-/// [IBM `MQRCCF_CHLAUTH_RUNCHECK_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048160_.html)
+/// [IBM `MQRCCF_CHLAUTH_RUNCHECK_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048160_.html)
 pub const MQRCCF_CHLAUTH_RUNCHECK_ERROR: crate::MQLONG = 3350;
 pub const MQRCCF_CF_STRUC_ALREADY_FAILED: crate::MQLONG = 3351;
 pub const MQRCCF_CFCONLOS_CHECKS_FAILED: crate::MQLONG = 3352;
-/// [IBM `MQRCCF_SUITE_B_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048170_.html)
+/// [IBM `MQRCCF_SUITE_B_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048170_.html)
 pub const MQRCCF_SUITE_B_ERROR: crate::MQLONG = 3353;
 pub const MQRCCF_CHANNEL_NOT_STARTED: crate::MQLONG = 3354;
 pub const MQRCCF_CUSTOM_ERROR: crate::MQLONG = 3355;
@@ -930,17 +930,17 @@ pub const MQRCCF_PSCLUS_DISABLED_TOPDEF: crate::MQLONG = 3359;
 pub const MQRCCF_PSCLUS_TOPIC_EXISTS: crate::MQLONG = 3360;
 pub const MQRCCF_SSL_CIPHER_SUITE_ERROR: crate::MQLONG = 3361;
 pub const MQRCCF_SOCKET_ERROR: crate::MQLONG = 3362;
-/// [IBM `MQRCCF_CLUS_XMIT_Q_USAGE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048180_.html)
+/// [IBM `MQRCCF_CLUS_XMIT_Q_USAGE_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048180_.html)
 pub const MQRCCF_CLUS_XMIT_Q_USAGE_ERROR: crate::MQLONG = 3363;
-/// [IBM `MQRCCF_CERT_VAL_POLICY_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048190_.html)
+/// [IBM `MQRCCF_CERT_VAL_POLICY_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048190_.html)
 pub const MQRCCF_CERT_VAL_POLICY_ERROR: crate::MQLONG = 3364;
 pub const MQRCCF_INVALID_PROTOCOL: crate::MQLONG = 3365;
-/// [IBM `MQRCCF_REVDNS_DISABLED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q113230_.html)
+/// [IBM `MQRCCF_REVDNS_DISABLED` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q113230_.html)
 pub const MQRCCF_REVDNS_DISABLED: crate::MQLONG = 3366;
 pub const MQRCCF_CLROUTE_NOT_ALTERABLE: crate::MQLONG = 3367;
 pub const MQRCCF_CLUSTER_TOPIC_CONFLICT: crate::MQLONG = 3368;
 pub const MQRCCF_DEFCLXQ_MODEL_Q_ERROR: crate::MQLONG = 3369;
-/// [IBM `MQRCCF_CHLAUTH_CHKCLI_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q120540_.html)
+/// [IBM `MQRCCF_CHLAUTH_CHKCLI_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q120540_.html)
 pub const MQRCCF_CHLAUTH_CHKCLI_ERROR: crate::MQLONG = 3370;
 pub const MQRCCF_CERT_LABEL_NOT_ALLOWED: crate::MQLONG = 3371;
 pub const MQRCCF_Q_MGR_ATTR_CONFLICT: crate::MQLONG = 3372;
@@ -948,7 +948,7 @@ pub const MQRCCF_ENTITY_TYPE_MISSING: crate::MQLONG = 3373;
 pub const MQRCCF_CLWL_EXIT_NAME_ERROR: crate::MQLONG = 3374;
 pub const MQRCCF_SERVICE_NAME_ERROR: crate::MQLONG = 3375;
 pub const MQRCCF_REMOTE_CHL_TYPE_ERROR: crate::MQLONG = 3376;
-/// [IBM `MQRCCF_TOPIC_RESTRICTED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q120545_.html)
+/// [IBM `MQRCCF_TOPIC_RESTRICTED` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q120545_.html)
 pub const MQRCCF_TOPIC_RESTRICTED: crate::MQLONG = 3377;
 pub const MQRCCF_CURRENT_LOG_EXTENT: crate::MQLONG = 3378;
 pub const MQRCCF_LOG_EXTENT_NOT_FOUND: crate::MQLONG = 3379;
@@ -960,190 +960,191 @@ pub const MQRCCF_STREAMQ_DEST_NOT_SUPP: crate::MQLONG = 3384;
 pub const MQRCCF_STREAMQ_DEST_CONFLICT: crate::MQLONG = 3385;
 pub const MQRCCF_STREAMQ_NOT_SUPPORTED: crate::MQLONG = 3386;
 pub const MQRCCF_STREAMQ_CONFLICT: crate::MQLONG = 3387;
-/// [IBM `MQRCCF_INCOMPATIBLE_QM_IN_QSG` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/rc3389.html)
+/// [IBM `MQRCCF_INCOMPATIBLE_QM_IN_QSG` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/rc3389.html)
 pub const MQRCCF_INCOMPATIBLE_QM_IN_QSG: crate::MQLONG = 3389;
+/// [IBM `MQRCCF_ATTR_VALUE_ERROR_QSG_QM` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/rc3390.html)
 pub const MQRCCF_ATTR_VALUE_ERROR_QSG_QM: crate::MQLONG = 3390;
-/// [IBM `MQRCCF_AUTHORIZED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/rc3391.html)
+/// [IBM `MQRCCF_AUTHORIZED` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/rc3391.html)
 pub const MQRCCF_AUTHORIZED: crate::MQLONG = 3391;
 pub const MQRCCF_QUANTUM_ATTR_CONFLICT: crate::MQLONG = 3392;
 pub const MQRCCF_SSL_QS_ALG_DISABLED: crate::MQLONG = 3393;
-/// [IBM `MQRCCF_OBJECT_ALREADY_EXISTS` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048200_.html)
+/// [IBM `MQRCCF_OBJECT_ALREADY_EXISTS` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048200_.html)
 pub const MQRCCF_OBJECT_ALREADY_EXISTS: crate::MQLONG = 4001;
-/// [IBM `MQRCCF_OBJECT_WRONG_TYPE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048210_.html)
+/// [IBM `MQRCCF_OBJECT_WRONG_TYPE` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048210_.html)
 pub const MQRCCF_OBJECT_WRONG_TYPE: crate::MQLONG = 4002;
-/// [IBM `MQRCCF_LIKE_OBJECT_WRONG_TYPE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048220_.html)
+/// [IBM `MQRCCF_LIKE_OBJECT_WRONG_TYPE` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048220_.html)
 pub const MQRCCF_LIKE_OBJECT_WRONG_TYPE: crate::MQLONG = 4003;
-/// [IBM `MQRCCF_OBJECT_OPEN` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048230_.html)
+/// [IBM `MQRCCF_OBJECT_OPEN` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048230_.html)
 pub const MQRCCF_OBJECT_OPEN: crate::MQLONG = 4004;
-/// [IBM `MQRCCF_ATTR_VALUE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048240_.html)
+/// [IBM `MQRCCF_ATTR_VALUE_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048240_.html)
 pub const MQRCCF_ATTR_VALUE_ERROR: crate::MQLONG = 4005;
-/// [IBM `MQRCCF_UNKNOWN_Q_MGR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048250_.html)
+/// [IBM `MQRCCF_UNKNOWN_Q_MGR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048250_.html)
 pub const MQRCCF_UNKNOWN_Q_MGR: crate::MQLONG = 4006;
-/// [IBM `MQRCCF_Q_WRONG_TYPE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048260_.html)
+/// [IBM `MQRCCF_Q_WRONG_TYPE` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048260_.html)
 pub const MQRCCF_Q_WRONG_TYPE: crate::MQLONG = 4007;
-/// [IBM `MQRCCF_OBJECT_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048270_.html)
+/// [IBM `MQRCCF_OBJECT_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048270_.html)
 pub const MQRCCF_OBJECT_NAME_ERROR: crate::MQLONG = 4008;
-/// [IBM `MQRCCF_ALLOCATE_FAILED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048280_.html)
+/// [IBM `MQRCCF_ALLOCATE_FAILED` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048280_.html)
 pub const MQRCCF_ALLOCATE_FAILED: crate::MQLONG = 4009;
-/// [IBM `MQRCCF_HOST_NOT_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048290_.html)
+/// [IBM `MQRCCF_HOST_NOT_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048290_.html)
 pub const MQRCCF_HOST_NOT_AVAILABLE: crate::MQLONG = 4010;
-/// [IBM `MQRCCF_CONFIGURATION_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048300_.html)
+/// [IBM `MQRCCF_CONFIGURATION_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048300_.html)
 pub const MQRCCF_CONFIGURATION_ERROR: crate::MQLONG = 4011;
-/// [IBM `MQRCCF_CONNECTION_REFUSED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048310_.html)
+/// [IBM `MQRCCF_CONNECTION_REFUSED` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048310_.html)
 pub const MQRCCF_CONNECTION_REFUSED: crate::MQLONG = 4012;
-/// [IBM `MQRCCF_ENTRY_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048320_.html)
+/// [IBM `MQRCCF_ENTRY_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048320_.html)
 pub const MQRCCF_ENTRY_ERROR: crate::MQLONG = 4013;
-/// [IBM `MQRCCF_SEND_FAILED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048330_.html)
+/// [IBM `MQRCCF_SEND_FAILED` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048330_.html)
 pub const MQRCCF_SEND_FAILED: crate::MQLONG = 4014;
-/// [IBM `MQRCCF_RECEIVED_DATA_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048340_.html)
+/// [IBM `MQRCCF_RECEIVED_DATA_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048340_.html)
 pub const MQRCCF_RECEIVED_DATA_ERROR: crate::MQLONG = 4015;
-/// [IBM `MQRCCF_RECEIVE_FAILED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048350_.html)
+/// [IBM `MQRCCF_RECEIVE_FAILED` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048350_.html)
 pub const MQRCCF_RECEIVE_FAILED: crate::MQLONG = 4016;
-/// [IBM `MQRCCF_CONNECTION_CLOSED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048360_.html)
+/// [IBM `MQRCCF_CONNECTION_CLOSED` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048360_.html)
 pub const MQRCCF_CONNECTION_CLOSED: crate::MQLONG = 4017;
-/// [IBM `MQRCCF_NO_STORAGE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048370_.html)
+/// [IBM `MQRCCF_NO_STORAGE` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048370_.html)
 pub const MQRCCF_NO_STORAGE: crate::MQLONG = 4018;
-/// [IBM `MQRCCF_NO_COMMS_MANAGER` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048380_.html)
+/// [IBM `MQRCCF_NO_COMMS_MANAGER` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048380_.html)
 pub const MQRCCF_NO_COMMS_MANAGER: crate::MQLONG = 4019;
-/// [IBM `MQRCCF_LISTENER_NOT_STARTED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048390_.html)
+/// [IBM `MQRCCF_LISTENER_NOT_STARTED` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048390_.html)
 pub const MQRCCF_LISTENER_NOT_STARTED: crate::MQLONG = 4020;
-/// [IBM `MQRCCF_BIND_FAILED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048400_.html)
+/// [IBM `MQRCCF_BIND_FAILED` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048400_.html)
 pub const MQRCCF_BIND_FAILED: crate::MQLONG = 4024;
-/// [IBM `MQRCCF_CHANNEL_INDOUBT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048410_.html)
+/// [IBM `MQRCCF_CHANNEL_INDOUBT` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048410_.html)
 pub const MQRCCF_CHANNEL_INDOUBT: crate::MQLONG = 4025;
-/// [IBM `MQRCCF_MQCONN_FAILED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048420_.html)
+/// [IBM `MQRCCF_MQCONN_FAILED` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048420_.html)
 pub const MQRCCF_MQCONN_FAILED: crate::MQLONG = 4026;
-/// [IBM `MQRCCF_MQOPEN_FAILED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048430_.html)
+/// [IBM `MQRCCF_MQOPEN_FAILED` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048430_.html)
 pub const MQRCCF_MQOPEN_FAILED: crate::MQLONG = 4027;
-/// [IBM `MQRCCF_MQGET_FAILED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048440_.html)
+/// [IBM `MQRCCF_MQGET_FAILED` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048440_.html)
 pub const MQRCCF_MQGET_FAILED: crate::MQLONG = 4028;
-/// [IBM `MQRCCF_MQPUT_FAILED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048450_.html)
+/// [IBM `MQRCCF_MQPUT_FAILED` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048450_.html)
 pub const MQRCCF_MQPUT_FAILED: crate::MQLONG = 4029;
-/// [IBM `MQRCCF_PING_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048460_.html)
+/// [IBM `MQRCCF_PING_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048460_.html)
 pub const MQRCCF_PING_ERROR: crate::MQLONG = 4030;
-/// [IBM `MQRCCF_CHANNEL_IN_USE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048470_.html)
+/// [IBM `MQRCCF_CHANNEL_IN_USE` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048470_.html)
 pub const MQRCCF_CHANNEL_IN_USE: crate::MQLONG = 4031;
-/// [IBM `MQRCCF_CHANNEL_NOT_FOUND` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048480_.html)
+/// [IBM `MQRCCF_CHANNEL_NOT_FOUND` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048480_.html)
 pub const MQRCCF_CHANNEL_NOT_FOUND: crate::MQLONG = 4032;
-/// [IBM `MQRCCF_UNKNOWN_REMOTE_CHANNEL` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048490_.html)
+/// [IBM `MQRCCF_UNKNOWN_REMOTE_CHANNEL` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048490_.html)
 pub const MQRCCF_UNKNOWN_REMOTE_CHANNEL: crate::MQLONG = 4033;
-/// [IBM `MQRCCF_REMOTE_QM_UNAVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048500_.html)
+/// [IBM `MQRCCF_REMOTE_QM_UNAVAILABLE` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048500_.html)
 pub const MQRCCF_REMOTE_QM_UNAVAILABLE: crate::MQLONG = 4034;
-/// [IBM `MQRCCF_REMOTE_QM_TERMINATING` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048510_.html)
+/// [IBM `MQRCCF_REMOTE_QM_TERMINATING` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048510_.html)
 pub const MQRCCF_REMOTE_QM_TERMINATING: crate::MQLONG = 4035;
-/// [IBM `MQRCCF_MQINQ_FAILED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048520_.html)
+/// [IBM `MQRCCF_MQINQ_FAILED` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048520_.html)
 pub const MQRCCF_MQINQ_FAILED: crate::MQLONG = 4036;
-/// [IBM `MQRCCF_NOT_XMIT_Q` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048530_.html)
+/// [IBM `MQRCCF_NOT_XMIT_Q` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048530_.html)
 pub const MQRCCF_NOT_XMIT_Q: crate::MQLONG = 4037;
-/// [IBM `MQRCCF_CHANNEL_DISABLED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048540_.html)
+/// [IBM `MQRCCF_CHANNEL_DISABLED` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048540_.html)
 pub const MQRCCF_CHANNEL_DISABLED: crate::MQLONG = 4038;
-/// [IBM `MQRCCF_USER_EXIT_NOT_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048550_.html)
+/// [IBM `MQRCCF_USER_EXIT_NOT_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048550_.html)
 pub const MQRCCF_USER_EXIT_NOT_AVAILABLE: crate::MQLONG = 4039;
-/// [IBM `MQRCCF_COMMIT_FAILED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048560_.html)
+/// [IBM `MQRCCF_COMMIT_FAILED` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048560_.html)
 pub const MQRCCF_COMMIT_FAILED: crate::MQLONG = 4040;
-/// [IBM `MQRCCF_WRONG_CHANNEL_TYPE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048570_.html)
+/// [IBM `MQRCCF_WRONG_CHANNEL_TYPE` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048570_.html)
 pub const MQRCCF_WRONG_CHANNEL_TYPE: crate::MQLONG = 4041;
-/// [IBM `MQRCCF_CHANNEL_ALREADY_EXISTS` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048580_.html)
+/// [IBM `MQRCCF_CHANNEL_ALREADY_EXISTS` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048580_.html)
 pub const MQRCCF_CHANNEL_ALREADY_EXISTS: crate::MQLONG = 4042;
-/// [IBM `MQRCCF_DATA_TOO_LARGE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048590_.html)
+/// [IBM `MQRCCF_DATA_TOO_LARGE` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048590_.html)
 pub const MQRCCF_DATA_TOO_LARGE: crate::MQLONG = 4043;
-/// [IBM `MQRCCF_CHANNEL_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048600_.html)
+/// [IBM `MQRCCF_CHANNEL_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048600_.html)
 pub const MQRCCF_CHANNEL_NAME_ERROR: crate::MQLONG = 4044;
-/// [IBM `MQRCCF_XMIT_Q_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048610_.html)
+/// [IBM `MQRCCF_XMIT_Q_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048610_.html)
 pub const MQRCCF_XMIT_Q_NAME_ERROR: crate::MQLONG = 4045;
-/// [IBM `MQRCCF_MCA_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048620_.html)
+/// [IBM `MQRCCF_MCA_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048620_.html)
 pub const MQRCCF_MCA_NAME_ERROR: crate::MQLONG = 4047;
-/// [IBM `MQRCCF_SEND_EXIT_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048630_.html)
+/// [IBM `MQRCCF_SEND_EXIT_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048630_.html)
 pub const MQRCCF_SEND_EXIT_NAME_ERROR: crate::MQLONG = 4048;
-/// [IBM `MQRCCF_SEC_EXIT_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048640_.html)
+/// [IBM `MQRCCF_SEC_EXIT_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048640_.html)
 pub const MQRCCF_SEC_EXIT_NAME_ERROR: crate::MQLONG = 4049;
-/// [IBM `MQRCCF_MSG_EXIT_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048650_.html)
+/// [IBM `MQRCCF_MSG_EXIT_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048650_.html)
 pub const MQRCCF_MSG_EXIT_NAME_ERROR: crate::MQLONG = 4050;
-/// [IBM `MQRCCF_RCV_EXIT_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048660_.html)
+/// [IBM `MQRCCF_RCV_EXIT_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048660_.html)
 pub const MQRCCF_RCV_EXIT_NAME_ERROR: crate::MQLONG = 4051;
-/// [IBM `MQRCCF_XMIT_Q_NAME_WRONG_TYPE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048670_.html)
+/// [IBM `MQRCCF_XMIT_Q_NAME_WRONG_TYPE` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048670_.html)
 pub const MQRCCF_XMIT_Q_NAME_WRONG_TYPE: crate::MQLONG = 4052;
-/// [IBM `MQRCCF_MCA_NAME_WRONG_TYPE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048680_.html)
+/// [IBM `MQRCCF_MCA_NAME_WRONG_TYPE` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048680_.html)
 pub const MQRCCF_MCA_NAME_WRONG_TYPE: crate::MQLONG = 4053;
-/// [IBM `MQRCCF_DISC_INT_WRONG_TYPE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048690_.html)
+/// [IBM `MQRCCF_DISC_INT_WRONG_TYPE` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048690_.html)
 pub const MQRCCF_DISC_INT_WRONG_TYPE: crate::MQLONG = 4054;
-/// [IBM `MQRCCF_SHORT_RETRY_WRONG_TYPE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048700_.html)
+/// [IBM `MQRCCF_SHORT_RETRY_WRONG_TYPE` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048700_.html)
 pub const MQRCCF_SHORT_RETRY_WRONG_TYPE: crate::MQLONG = 4055;
-/// [IBM `MQRCCF_SHORT_TIMER_WRONG_TYPE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048710_.html)
+/// [IBM `MQRCCF_SHORT_TIMER_WRONG_TYPE` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048710_.html)
 pub const MQRCCF_SHORT_TIMER_WRONG_TYPE: crate::MQLONG = 4056;
-/// [IBM `MQRCCF_LONG_RETRY_WRONG_TYPE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048720_.html)
+/// [IBM `MQRCCF_LONG_RETRY_WRONG_TYPE` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048720_.html)
 pub const MQRCCF_LONG_RETRY_WRONG_TYPE: crate::MQLONG = 4057;
-/// [IBM `MQRCCF_LONG_TIMER_WRONG_TYPE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048730_.html)
+/// [IBM `MQRCCF_LONG_TIMER_WRONG_TYPE` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048730_.html)
 pub const MQRCCF_LONG_TIMER_WRONG_TYPE: crate::MQLONG = 4058;
-/// [IBM `MQRCCF_PUT_AUTH_WRONG_TYPE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048740_.html)
+/// [IBM `MQRCCF_PUT_AUTH_WRONG_TYPE` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048740_.html)
 pub const MQRCCF_PUT_AUTH_WRONG_TYPE: crate::MQLONG = 4059;
 pub const MQRCCF_KEEP_ALIVE_INT_ERROR: crate::MQLONG = 4060;
-/// [IBM `MQRCCF_MISSING_CONN_NAME` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048750_.html)
+/// [IBM `MQRCCF_MISSING_CONN_NAME` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048750_.html)
 pub const MQRCCF_MISSING_CONN_NAME: crate::MQLONG = 4061;
-/// [IBM `MQRCCF_CONN_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048760_.html)
+/// [IBM `MQRCCF_CONN_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048760_.html)
 pub const MQRCCF_CONN_NAME_ERROR: crate::MQLONG = 4062;
-/// [IBM `MQRCCF_MQSET_FAILED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048770_.html)
+/// [IBM `MQRCCF_MQSET_FAILED` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048770_.html)
 pub const MQRCCF_MQSET_FAILED: crate::MQLONG = 4063;
-/// [IBM `MQRCCF_CHANNEL_NOT_ACTIVE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048780_.html)
+/// [IBM `MQRCCF_CHANNEL_NOT_ACTIVE` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048780_.html)
 pub const MQRCCF_CHANNEL_NOT_ACTIVE: crate::MQLONG = 4064;
-/// [IBM `MQRCCF_TERMINATED_BY_SEC_EXIT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048790_.html)
+/// [IBM `MQRCCF_TERMINATED_BY_SEC_EXIT` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048790_.html)
 pub const MQRCCF_TERMINATED_BY_SEC_EXIT: crate::MQLONG = 4065;
-/// [IBM `MQRCCF_DYNAMIC_Q_SCOPE_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048800_.html)
+/// [IBM `MQRCCF_DYNAMIC_Q_SCOPE_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048800_.html)
 pub const MQRCCF_DYNAMIC_Q_SCOPE_ERROR: crate::MQLONG = 4067;
-/// [IBM `MQRCCF_CELL_DIR_NOT_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048810_.html)
+/// [IBM `MQRCCF_CELL_DIR_NOT_AVAILABLE` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048810_.html)
 pub const MQRCCF_CELL_DIR_NOT_AVAILABLE: crate::MQLONG = 4068;
-/// [IBM `MQRCCF_MR_COUNT_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048820_.html)
+/// [IBM `MQRCCF_MR_COUNT_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048820_.html)
 pub const MQRCCF_MR_COUNT_ERROR: crate::MQLONG = 4069;
-/// [IBM `MQRCCF_MR_COUNT_WRONG_TYPE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048830_.html)
+/// [IBM `MQRCCF_MR_COUNT_WRONG_TYPE` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048830_.html)
 pub const MQRCCF_MR_COUNT_WRONG_TYPE: crate::MQLONG = 4070;
-/// [IBM `MQRCCF_MR_EXIT_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048840_.html)
+/// [IBM `MQRCCF_MR_EXIT_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048840_.html)
 pub const MQRCCF_MR_EXIT_NAME_ERROR: crate::MQLONG = 4071;
-/// [IBM `MQRCCF_MR_EXIT_NAME_WRONG_TYPE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048850_.html)
+/// [IBM `MQRCCF_MR_EXIT_NAME_WRONG_TYPE` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048850_.html)
 pub const MQRCCF_MR_EXIT_NAME_WRONG_TYPE: crate::MQLONG = 4072;
-/// [IBM `MQRCCF_MR_INTERVAL_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048860_.html)
+/// [IBM `MQRCCF_MR_INTERVAL_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048860_.html)
 pub const MQRCCF_MR_INTERVAL_ERROR: crate::MQLONG = 4073;
-/// [IBM `MQRCCF_MR_INTERVAL_WRONG_TYPE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048870_.html)
+/// [IBM `MQRCCF_MR_INTERVAL_WRONG_TYPE` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048870_.html)
 pub const MQRCCF_MR_INTERVAL_WRONG_TYPE: crate::MQLONG = 4074;
-/// [IBM `MQRCCF_NPM_SPEED_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048880_.html)
+/// [IBM `MQRCCF_NPM_SPEED_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048880_.html)
 pub const MQRCCF_NPM_SPEED_ERROR: crate::MQLONG = 4075;
-/// [IBM `MQRCCF_NPM_SPEED_WRONG_TYPE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048890_.html)
+/// [IBM `MQRCCF_NPM_SPEED_WRONG_TYPE` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048890_.html)
 pub const MQRCCF_NPM_SPEED_WRONG_TYPE: crate::MQLONG = 4076;
-/// [IBM `MQRCCF_HB_INTERVAL_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048900_.html)
+/// [IBM `MQRCCF_HB_INTERVAL_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048900_.html)
 pub const MQRCCF_HB_INTERVAL_ERROR: crate::MQLONG = 4077;
-/// [IBM `MQRCCF_HB_INTERVAL_WRONG_TYPE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048910_.html)
+/// [IBM `MQRCCF_HB_INTERVAL_WRONG_TYPE` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048910_.html)
 pub const MQRCCF_HB_INTERVAL_WRONG_TYPE: crate::MQLONG = 4078;
-/// [IBM `MQRCCF_CHAD_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048920_.html)
+/// [IBM `MQRCCF_CHAD_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048920_.html)
 pub const MQRCCF_CHAD_ERROR: crate::MQLONG = 4079;
-/// [IBM `MQRCCF_CHAD_WRONG_TYPE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048930_.html)
+/// [IBM `MQRCCF_CHAD_WRONG_TYPE` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048930_.html)
 pub const MQRCCF_CHAD_WRONG_TYPE: crate::MQLONG = 4080;
-/// [IBM `MQRCCF_CHAD_EVENT_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048940_.html)
+/// [IBM `MQRCCF_CHAD_EVENT_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048940_.html)
 pub const MQRCCF_CHAD_EVENT_ERROR: crate::MQLONG = 4081;
-/// [IBM `MQRCCF_CHAD_EVENT_WRONG_TYPE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048950_.html)
+/// [IBM `MQRCCF_CHAD_EVENT_WRONG_TYPE` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048950_.html)
 pub const MQRCCF_CHAD_EVENT_WRONG_TYPE: crate::MQLONG = 4082;
-/// [IBM `MQRCCF_CHAD_EXIT_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048960_.html)
+/// [IBM `MQRCCF_CHAD_EXIT_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048960_.html)
 pub const MQRCCF_CHAD_EXIT_ERROR: crate::MQLONG = 4083;
-/// [IBM `MQRCCF_CHAD_EXIT_WRONG_TYPE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048970_.html)
+/// [IBM `MQRCCF_CHAD_EXIT_WRONG_TYPE` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048970_.html)
 pub const MQRCCF_CHAD_EXIT_WRONG_TYPE: crate::MQLONG = 4084;
-/// [IBM `MQRCCF_SUPPRESSED_BY_EXIT` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048980_.html)
+/// [IBM `MQRCCF_SUPPRESSED_BY_EXIT` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048980_.html)
 pub const MQRCCF_SUPPRESSED_BY_EXIT: crate::MQLONG = 4085;
-/// [IBM `MQRCCF_BATCH_INT_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q048990_.html)
+/// [IBM `MQRCCF_BATCH_INT_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q048990_.html)
 pub const MQRCCF_BATCH_INT_ERROR: crate::MQLONG = 4086;
-/// [IBM `MQRCCF_BATCH_INT_WRONG_TYPE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q049000_.html)
+/// [IBM `MQRCCF_BATCH_INT_WRONG_TYPE` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q049000_.html)
 pub const MQRCCF_BATCH_INT_WRONG_TYPE: crate::MQLONG = 4087;
-/// [IBM `MQRCCF_NET_PRIORITY_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q049010_.html)
+/// [IBM `MQRCCF_NET_PRIORITY_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q049010_.html)
 pub const MQRCCF_NET_PRIORITY_ERROR: crate::MQLONG = 4088;
-/// [IBM `MQRCCF_NET_PRIORITY_WRONG_TYPE` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q049020_.html)
+/// [IBM `MQRCCF_NET_PRIORITY_WRONG_TYPE` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q049020_.html)
 pub const MQRCCF_NET_PRIORITY_WRONG_TYPE: crate::MQLONG = 4089;
-/// [IBM `MQRCCF_CHANNEL_CLOSED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q049030_.html)
+/// [IBM `MQRCCF_CHANNEL_CLOSED` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q049030_.html)
 pub const MQRCCF_CHANNEL_CLOSED: crate::MQLONG = 4090;
 pub const MQRCCF_Q_STATUS_NOT_FOUND: crate::MQLONG = 4091;
-/// [IBM `MQRCCF_SSL_CIPHER_SPEC_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q049040_.html)
+/// [IBM `MQRCCF_SSL_CIPHER_SPEC_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q049040_.html)
 pub const MQRCCF_SSL_CIPHER_SPEC_ERROR: crate::MQLONG = 4092;
-/// [IBM `MQRCCF_SSL_PEER_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q049050_.html)
+/// [IBM `MQRCCF_SSL_PEER_NAME_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q049050_.html)
 pub const MQRCCF_SSL_PEER_NAME_ERROR: crate::MQLONG = 4093;
-/// [IBM `MQRCCF_SSL_CLIENT_AUTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q049060_.html)
+/// [IBM `MQRCCF_SSL_CLIENT_AUTH_ERROR` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q049060_.html)
 pub const MQRCCF_SSL_CLIENT_AUTH_ERROR: crate::MQLONG = 4094;
-/// [IBM `MQRCCF_RETAINED_NOT_SUPPORTED` Documentation](https://www.ibm.com/docs/en/SSFKSJ_latest/reference/q049070_.html)
+/// [IBM `MQRCCF_RETAINED_NOT_SUPPORTED` Documentation](https://www.ibm.com/docs/en/SSYHRD_10.0.0/reference/q049070_.html)
 pub const MQRCCF_RETAINED_NOT_SUPPORTED: crate::MQLONG = 4095;
 pub const MQRCCF_KWD_VALUE_WRONG_TYPE: crate::MQLONG = 4096;
 pub const MQRCCF_APPL_STATUS_NOT_FOUND: crate::MQLONG = 4097;
