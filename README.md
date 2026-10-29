@@ -158,15 +158,18 @@ Contributions
 
 All feedback, suggestions, contributions and enhancements are welcome. See
 [CONTRIBUTING.md](CONTRIBUTING.md) for how to build, test and regenerate the bindings.
+Contributors are expected to follow the [Code of Conduct](CODE_OF_CONDUCT.md).
 
 Support
 -------
 
-There are no guarantees of compatibility with any future versions of the crate; the API
-is subject to change based on feedback and enhancements. Relentless refactoring may occur
-before a stable crate is released.
+This project is maintained on a best-effort basis. Maintainers intend to address security
+vulnerabilities in the latest published release of each crate and on the `develop` branch,
+as described in [SECURITY.md](SECURITY.md). There is no guaranteed response time or
+compatibility with future versions; the API may change based on feedback and enhancements.
+Older releases do not receive security fixes, so users should upgrade to the latest release.
 
-This crate is provided as-is with no guarantees of support or updates.
+There is no guaranteed general support or update schedule.
 
 Report bugs and feature requests with the issue templates. Report security issues privately, as
 described in [SECURITY.md](SECURITY.md).

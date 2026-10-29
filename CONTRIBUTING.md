@@ -104,3 +104,6 @@ later, so keep them in step.
 
 - Bugs and feature requests: use the issue templates.
 - Security issues: report them privately, see [SECURITY.md](SECURITY.md).
+- Conduct concerns: contact the project maintainer as described in
+  [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
+- Please follow the [Code of Conduct](CODE_OF_CONDUCT.md) in project spaces.
