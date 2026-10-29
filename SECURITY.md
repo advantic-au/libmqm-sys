@@ -4,10 +4,14 @@
 
 These crates are consumed from crates.io or by git ref, so what you pin decides what you run:
 
-- The latest published release of each crate and the `develop` branch get fixes.
+- Maintainers intend to provide security fixes for the latest published release of each crate and
+  the `develop` branch.
 - Older releases are not patched. Move to a newer version to pick up a fix.
 - The `mqc_*` features select the oldest IBM MQ client you build against, so a release is only
   tested against the newest client it supports.
+
+Security maintenance is best-effort: there is no guaranteed response or fix timeline. This policy
+does not promise general support, compatibility with future versions, or updates to older releases.
 
 ## Reporting a vulnerability
 
