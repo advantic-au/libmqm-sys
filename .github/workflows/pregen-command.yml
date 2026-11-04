@@ -11,7 +11,7 @@ jobs:
       fail-fast: true
       max-parallel: 1
       matrix:
-        os: [windows-latest, ubuntu-24.04, ubuntu-24.04-arm, macos-latest]
+        os: [windows-latest, ubuntu-26.04, ubuntu-26.04-arm, macos-latest]
     runs-on: ${{ matrix.os }}
     permissions:
       contents: write
@@ -64,10 +64,10 @@ jobs:
       matrix:
         env:
           - arch: s390x
-            distro: ubuntu24.04
+            distro: ubuntu26.04
             client_arch: S390X
           - arch: ppc64le
-            distro: ubuntu24.04
+            distro: ubuntu26.04
             client_arch: PPC64LE
     runs-on: ubuntu-26.04
     permissions:
