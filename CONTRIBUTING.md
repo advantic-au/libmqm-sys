@@ -12,7 +12,8 @@ An IBM MQ client or server install is required to build or test anything:
   highest enabled `mqc_*` feature is newer than the installed client.
 - Header parsing needs `libclang` (`bindgen`).
 - The `dlopen2` tests load the MQ shared library at runtime; on Linux set
-  `LD_LIBRARY_PATH=$MQ_HOME/lib64`.
+  `LD_LIBRARY_PATH=$MQ_HOME/lib64`, on macOS set `DYLD_LIBRARY_PATH=$MQ_HOME/lib64` (the macOS
+  library is `libmqm_r.dylib`), and on Windows put `$MQ_HOME\bin64` on `PATH`.
 - Rust 1.95 or newer (`rust-version` in the root `Cargo.toml`). `cargo-nextest` and `cargo-hack`
   are needed to reproduce the CI invocations below.
 
@@ -27,8 +28,11 @@ docker run -d --publish 1414:1414 icr.io/ibm-messaging/mq:latest
 ```sh
 cargo check --locked --all-features
 
-# tests (replace nextest with `cargo test` if you do not have it)
+# tests (replace nextest with `cargo test` if you do not have it) - runs on Linux, macOS and Windows
 cargo nextest run --profile ci --features mqc_9_3_5_0,pcf,exits,mqai,dlopen2
+
+# runtime loading only: no compile-time link, the library is discovered by dlopen2 at runtime
+cargo nextest run -p libmqm-sys --profile ci --no-default-features --features dlopen2,mqc_9_3_5_0,pcf,exits,mqai
 
 cargo fmt -- --check
 

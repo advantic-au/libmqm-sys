@@ -18,9 +18,11 @@ permissions: {}
 
 jobs:
   test:
+    name: Test (${{ matrix.os }}, MQ ${{ matrix.version.client-version }})
     strategy:
       fail-fast: false
       matrix:
+        os: [ubuntu-26.04, macos-latest, windows-latest]
         version:
           - client-version: 9.3
             feature: mqc_9_3_5_0
@@ -28,7 +30,17 @@ jobs:
             feature: mqc_9_4_5_0
           - client-version: '10.0'
             feature: mqc_10_0_1_0
-    runs-on: ubuntu-26.04
+        exclude:
+          # IBM publishes no macOS client for the 9.3 or 9.4 series
+          - os: macos-latest
+            version:
+              client-version: 9.3
+              feature: mqc_9_3_5_0
+          - os: macos-latest
+            version:
+              client-version: 9.4
+              feature: mqc_9_4_5_0
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
@@ -52,6 +64,14 @@ jobs:
         run: cargo nextest run --profile ci --features ${{ matrix.version.feature }},pcf,exits,mqai,dlopen2
         env:
           MQ_HOME: ${{ steps.mq-client.outputs.client-install-path }}
+          LD_LIBRARY_PATH: ${{ steps.mq-client.outputs.client-install-path }}/lib64
+          DYLD_LIBRARY_PATH: ${{ steps.mq-client.outputs.client-install-path }}/lib64
+      - name: Test runtime loading (dlopen2)
+        run: cargo nextest run -p libmqm-sys --profile ci --no-default-features --features dlopen2,${{ matrix.version.feature }},pcf,exits,mqai
+        env:
+          MQ_HOME: ${{ steps.mq-client.outputs.client-install-path }}
+          LD_LIBRARY_PATH: ${{ steps.mq-client.outputs.client-install-path }}/lib64
+          DYLD_LIBRARY_PATH: ${{ steps.mq-client.outputs.client-install-path }}/lib64
 
   clippy_fmt:
     strategy:
