@@ -70,6 +70,8 @@ cargo build --no-default-features --features pregen        # regenerates and REW
 # test (needs a client install; MQ_HOME + LD_LIBRARY_PATH)
 cargo nextest run --profile ci --features mqc_9_3_5_0,pcf,exits,mqai,dlopen2
 cargo nextest run --locked --profile ci --all-features
+# test runtime loading only (no compile-time link; CI runs this on Linux, macOS and Windows)
+cargo nextest run -p libmqm-sys --profile ci --no-default-features --features dlopen2,mqc_9_3_5_0,pcf,exits,mqai
 
 # format / lint (CI runs these with RUSTFLAGS=-Dwarnings)
 cargo fmt -- --check

@@ -39,7 +39,13 @@ use ::dlopen2::wrapper::Container;
 pub use super::generated::dlopen2::MqWrapper;
 
 /// Name of the platform dependent MQM dynamic library
-pub const MQM_LIB: &str = if cfg!(windows) { "mqm.dll" } else { "libmqm_r.so" };
+pub const MQM_LIB: &str = if cfg!(windows) {
+    "mqm.dll"
+} else if cfg!(target_os = "macos") {
+    "libmqm_r.dylib"
+} else {
+    "libmqm_r.so"
+};
 
 /// A [dlopen2] [Container] for the MQI library
 pub type MqmContainer = Container<MqWrapper>;
