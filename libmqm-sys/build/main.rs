@@ -220,6 +220,7 @@ fn main() -> Result<(), io::Error> {
             enum TraitImpl {
                 Dlopen2,
                 Iep,
+                Link,
             }
             type SourceTrait<'a, 'b> = (&'a str, Option<syn::Ident>, syn::Path, Option<syn::LitStr>, &'b [TraitImpl]);
 
@@ -229,14 +230,14 @@ fn main() -> Result<(), io::Error> {
                     syn::parse_quote!(Mqi),
                     syn::parse_quote!(crate),
                     None,
-                    &[TraitImpl::Dlopen2, TraitImpl::Iep],
+                    &[TraitImpl::Dlopen2, TraitImpl::Iep, TraitImpl::Link],
                 ),
                 (
                     "mqai.rs",
                     syn::parse_quote!(Mqai),
                     syn::parse_quote!(crate::mqai),
                     syn::parse_quote!("mqai"),
-                    &[TraitImpl::Dlopen2],
+                    &[TraitImpl::Dlopen2, TraitImpl::Link],
                 ),
                 (
                     "exits.rs",
@@ -245,7 +246,13 @@ fn main() -> Result<(), io::Error> {
                     syn::parse_quote!("exits"),
                     &[TraitImpl::Iep],
                 ),
-                ("pcf.rs", None, syn::parse_quote!(crate::pcf), syn::parse_quote!("pcf"), &[]),
+                (
+                    "pcf.rs",
+                    None,
+                    syn::parse_quote!(crate::pcf),
+                    syn::parse_quote!("pcf"),
+                    &[TraitImpl::Link],
+                ),
             ];
 
             let mut arg_type = crate::rustify::FnArgType::new()
@@ -448,16 +455,17 @@ fn main() -> Result<(), io::Error> {
                         iep_impls.push(iep_impl_trait);
                     }
 
-                    // Generate the link struct
-                    let mut lg = ImplFnGenerator::new(mq_trait::impl_link_fn(path));
-                    lg.visit_item_trait(&item_trait);
-                    let mut link_impl_trait = lg.generate(&parse_quote!(crate::#trait_name), &link_name);
-                    link_impl_trait.attrs.extend(feat_cfg);
-                    PrefixMqTypes(path, &HashSet::new()).visit_item_impl_mut(&mut link_impl_trait);
+                    if impls.contains(&TraitImpl::Link) {
+                        let mut lg = ImplFnGenerator::new(mq_trait::impl_link_fn(path));
+                        lg.visit_item_trait(&item_trait);
+                        let mut link_impl_trait = lg.generate(&parse_quote!(crate::#trait_name), &link_name);
+                        link_impl_trait.attrs.extend(feat_cfg);
+                        PrefixMqTypes(path, &HashSet::new()).visit_item_impl_mut(&mut link_impl_trait);
+                        link_impls.push(link_impl_trait);
+                    }
 
                     mock_impls.push(mock_impl_trait);
                     traits.push(item_trait);
-                    link_impls.push(link_impl_trait);
                 }
 
                 let mut bindings_str = format!("/* Generated with MQ client version {mqc_version} */\n\n");
