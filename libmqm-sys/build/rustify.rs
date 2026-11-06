@@ -9,6 +9,10 @@ use syn::{
 };
 
 pub struct MqLongConstWrap;
+/// Matches a ``[`MQName`]`` doc link to a generated MQ item.
+static MQ_LINK: std::sync::LazyLock<regex_lite::Regex> =
+    std::sync::LazyLock::new(|| regex_lite::Regex::new(r"(?i)\[`(MQ\w+?)`\]([^\(]|$)").expect("static MQ link regex"));
+
 pub struct FnArgType<'a>(HashMap<(&'a str, Option<&'a str>), Type>);
 pub struct PrefixMqTypes<'a>(pub &'a syn::Path, pub &'a HashSet<syn::Ident>);
 
@@ -142,9 +146,8 @@ impl VisitMut for PrefixMqTypes<'_> {
                 }),
                 ..
             }) if item.meta.path().is_ident("doc") => {
-                let link_search = regex_lite::Regex::new(r"(?i)\[`(MQ\w+?)`\]([^\(]|$)").unwrap();
                 let val = ls.value();
-                let new_doc_comment = link_search.replace_all(&val, |c: &Captures| {
+                let new_doc_comment = MQ_LINK.replace_all(&val, |c: &Captures| {
                     let mq_item = &c[1];
                     let ident = syn::Ident::new(mq_item, proc_macro2::Span::call_site());
                     if !self.1.contains(&ident) {

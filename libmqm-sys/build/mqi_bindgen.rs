@@ -5,10 +5,7 @@ pub mod mqi {
         path::Path,
     };
 
-    use bindgen::{
-        BindgenError,
-        callbacks::{IntKind, ParseCallbacks},
-    };
+    use bindgen::callbacks::{IntKind, ParseCallbacks};
     use regex_lite::Regex;
     use syn::{
         ForeignItem, ForeignItemFn, ForeignItemStatic, ForeignItemType, Item, ItemConst, ItemFn, ItemStatic, ItemStruct,
@@ -139,7 +136,7 @@ pub mod mqi {
     pub fn mqi_bindgen_generate(
         builder: &bindgen::Builder,
         mq_inc_path: &Path,
-    ) -> Result<BTreeMap<&'static str, syn::File>, BindgenError> {
+    ) -> std::io::Result<BTreeMap<&'static str, syn::File>> {
         let mut result = BTreeMap::new();
         let mut items_acc = HashSet::new();
 
@@ -177,12 +174,18 @@ pub mod mqi {
                 target_list.iter().copied(),
                 blocklist_other_target, // Block other target items
             )
-            .generate()?;
+            .generate()
+            .map_err(|e| std::io::Error::new(std::io::ErrorKind::InvalidData, e))?;
             let mut gen_bytes: Vec<u8> = Vec::new();
             generated
                 .write(Box::new(&mut gen_bytes))
-                .expect("write to buffer should always succeed");
-            let mut ast = syn::parse_file(&String::from_utf8_lossy(&gen_bytes)).expect("bindgen generated code should parse");
+                .map_err(|e| std::io::Error::new(std::io::ErrorKind::InvalidData, e))?;
+            let mut ast = syn::parse_file(&String::from_utf8_lossy(&gen_bytes)).map_err(|e| {
+                std::io::Error::new(
+                    std::io::ErrorKind::InvalidData,
+                    format!("generated bindings for {name} did not parse: {e}"),
+                )
+            })?;
             let (new_ns, items) = filtered_items(ast.items, &items_acc);
             ast.items = items;
             items_acc.extend(new_ns);
