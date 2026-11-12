@@ -46,7 +46,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Install MQ client
-        uses: advantic-au/action-mq-client@34d47069ef76049a2689b2c8100457223d964102 # stable
+        uses: advantic-au/action-mq-client@c1a22a36eb8340308dce3d1f845d0e2d2bbde3ca # stable
         id: mq-client
         with:
           client-version: ${{ matrix.version.client-version }}
@@ -95,7 +95,7 @@ jobs:
         with:
           tool: cargo-hack
       - name: Install MQ client
-        uses: advantic-au/action-mq-client@34d47069ef76049a2689b2c8100457223d964102 # stable
+        uses: advantic-au/action-mq-client@c1a22a36eb8340308dce3d1f845d0e2d2bbde3ca # stable
         id: mq-client
       - name: Lint with rustfmt
         run: |
@@ -130,7 +130,7 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           persist-credentials: false
-      - uses: advantic-au/action-mq-client@34d47069ef76049a2689b2c8100457223d964102 # stable
+      - uses: advantic-au/action-mq-client@c1a22a36eb8340308dce3d1f845d0e2d2bbde3ca # stable
         id: mq-client
       # Re-resolve Cargo.lock with minimal versions
       - name: Install rust nightly
@@ -199,7 +199,7 @@ jobs:
           os: Linux
           arch: ${{ matrix.env.client_arch }}
       - name: Download MQ library
-        uses: advantic-au/action-mq-client@34d47069ef76049a2689b2c8100457223d964102 # stable
+        uses: advantic-au/action-mq-client@c1a22a36eb8340308dce3d1f845d0e2d2bbde3ca # stable
         id: mq-client
         with:
           client-version: ${{ steps.mq_version_pregen.outputs.client-version }}
@@ -263,7 +263,7 @@ jobs:
         id: mq_version_pregen
         uses: $/.github/action/mq_version_pregen
       - name: Install MQ client
-        uses: advantic-au/action-mq-client@34d47069ef76049a2689b2c8100457223d964102 # stable
+        uses: advantic-au/action-mq-client@c1a22a36eb8340308dce3d1f845d0e2d2bbde3ca # stable
         id: mq-client
         with:
           client-version: ${{ steps.mq_version_pregen.outputs.client-version }}
