@@ -32,7 +32,7 @@ jobs:
       - name: Determine MQ version
         id: mq_version_pregen
         uses: $/.github/action/mq_version_pregen
-      - uses: advantic-au/action-mq-client@34d47069ef76049a2689b2c8100457223d964102 # stable
+      - uses: advantic-au/action-mq-client@c1a22a36eb8340308dce3d1f845d0e2d2bbde3ca # stable
         id: mq_client
         with:
           client-version: ${{ steps.mq_version_pregen.outputs.client-version }}
@@ -94,7 +94,7 @@ jobs:
           os: Linux
           arch: ${{ matrix.env.client_arch }}
       - name: Download MQ library
-        uses: advantic-au/action-mq-client@34d47069ef76049a2689b2c8100457223d964102 # stable
+        uses: advantic-au/action-mq-client@c1a22a36eb8340308dce3d1f845d0e2d2bbde3ca # stable
         id: mq_client
         with:
           client-version: ${{ steps.mq_version_pregen.outputs.client-version }}
