@@ -17,6 +17,10 @@ pub struct ImplFnGenerator<F> {
 
 pub struct WrapperGenerator<F>(pub F);
 
+/// Matches a ``[`Name`]`` doc link.
+static DOC_LINK: std::sync::LazyLock<regex_lite::Regex> =
+    std::sync::LazyLock::new(|| regex_lite::Regex::new(r"\[`(.+?)`\]").expect("static doc link regex"));
+
 impl TraitGenerator {
     #[must_use]
     pub fn generate(&self, ident: &Ident) -> syn::ItemTrait {
@@ -70,7 +74,6 @@ impl Visit<'_> for TraitGenerator {
         sig.inputs.insert(0, syn::FnArg::Receiver(self_arg));
         sig.safety = parse_quote!(unsafe);
 
-        let doc_link_re = regex_lite::Regex::new(r"\[`(.+?)`\]").unwrap();
         let new_attrs = attrs.iter().map(|attr| match attr.meta.require_name_value() {
             Ok(syn::MetaNameValue {
                 value: syn::Expr::Lit(syn::ExprLit {
@@ -79,7 +82,7 @@ impl Visit<'_> for TraitGenerator {
                 ..
             }) if attr.meta.path().is_ident("doc") => {
                 let val = ls.value();
-                let doc = doc_link_re.replace_all(&val, |c: &regex_lite::Captures<'_>| {
+                let doc = DOC_LINK.replace_all(&val, |c: &regex_lite::Captures<'_>| {
                     std::borrow::Cow::Owned(format!("{}(Self::{})", &c[0], &c[1]))
                 });
                 let doc_lit = syn::LitStr::new(&doc, proc_macro2::Span::call_site());
@@ -168,16 +171,21 @@ pub fn impl_dlopen2_fn(wrapper_name: &Path) -> impl Fn(&mut ImplItemFn, &TraitIt
     }
 }
 
-pub fn impl_iep_fn(impl_item_fn: &mut ImplItemFn, trait_fn: &TraitItemFn) {
-    let fn_name = &trait_fn.sig.ident;
-    let fn_name_call = Ident::new(&format!("{fn_name}_Call"), fn_name.span());
-    let inputs = trait_fn.sig.inputs.iter().filter_map(|arg: &FnArg| -> Option<syn::Expr> {
+/// The call arguments of a trait function, excluding the receiver, as expressions.
+fn call_args(trait_fn: &TraitItemFn) -> impl Iterator<Item = syn::Expr> + use<'_> {
+    trait_fn.sig.inputs.iter().filter_map(|arg: &FnArg| -> Option<syn::Expr> {
         if let syn::FnArg::Typed(PatType { pat, .. }) = arg {
             Some(parse_quote!(#pat))
         } else {
             None
         }
-    });
+    })
+}
+
+pub fn impl_iep_fn(impl_item_fn: &mut ImplItemFn, trait_fn: &TraitItemFn) {
+    let fn_name = &trait_fn.sig.ident;
+    let fn_name_call = Ident::new(&format!("{fn_name}_Call"), fn_name.span());
+    let inputs = call_args(trait_fn);
     impl_item_fn.block = parse_quote!({
         unsafe {
             self.#fn_name_call.unwrap()(#(#inputs), *);
@@ -188,13 +196,7 @@ pub fn impl_iep_fn(impl_item_fn: &mut ImplItemFn, trait_fn: &TraitItemFn) {
 pub fn impl_link_fn(mod_path: &Path) -> impl Fn(&mut ImplItemFn, &TraitItemFn) + use<'_> {
     move |impl_item_fn, trait_fn| {
         let fn_name = &trait_fn.sig.ident;
-        let inputs = trait_fn.sig.inputs.iter().filter_map(|arg: &FnArg| -> Option<syn::Expr> {
-            if let syn::FnArg::Typed(PatType { pat, .. }) = arg {
-                Some(parse_quote!(#pat))
-            } else {
-                None
-            }
-        });
+        let inputs = call_args(trait_fn);
         impl_item_fn.block = parse_quote!({
             unsafe {
                #mod_path::#fn_name(#(#inputs), *);

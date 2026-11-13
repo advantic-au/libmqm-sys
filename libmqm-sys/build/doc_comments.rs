@@ -55,6 +55,15 @@ const PARAM_REGEX: &str = r"(?msx)
 const IBM_REFERENCE_CSV: &str = include_str!("ibm_references.csv");
 static IBM_REFERENCES: std::sync::OnceLock<HashMap<String, String>> = std::sync::OnceLock::new();
 
+/// Compiles a pattern that is a compile-time constant, naming it if it is ever invalid.
+fn regex(pattern: &'static str) -> Regex {
+    Regex::new(pattern).unwrap_or_else(|e| panic!("static regex {pattern:?} is invalid: {e}"))
+}
+
+// Shared between the extractors below
+static SPLIT: std::sync::LazyLock<Regex> = std::sync::LazyLock::new(|| regex(SPLIT_REGEX));
+static MQ_ITEM: std::sync::LazyLock<Regex> = std::sync::LazyLock::new(|| regex(MQ_ITEM_REGEX));
+
 const EQUIV: &[(&str, &str)] = &[
     ("MQBACK", "MQ_BACK_CALL"),
     ("MQBEGIN", "MQ_BEGIN_CALL"),
@@ -136,9 +145,9 @@ pub struct FnParamExtract {
 impl Default for DescriptionRegex {
     fn default() -> Self {
         Self {
-            search: Regex::new(BARE_REGEX).unwrap(),
-            delim: Regex::new(SPLIT_REGEX).unwrap(),
-            mq_item: Regex::new(MQ_ITEM_REGEX).unwrap(),
+            search: regex(BARE_REGEX),
+            delim: SPLIT.clone(),
+            mq_item: MQ_ITEM.clone(),
         }
     }
 }
@@ -146,11 +155,11 @@ impl Default for DescriptionRegex {
 impl Default for StructFieldExtract {
     fn default() -> Self {
         Self {
-            struct_search: Regex::new(STRUCT_REGEX).unwrap(),
-            field_search: Regex::new(FIELD_REGEX).unwrap(),
-            ver_search: Regex::new(VER_REGEX).unwrap(),
-            delim: Regex::new(SPLIT_REGEX).unwrap(),
-            mq_item: Regex::new(MQ_ITEM_REGEX).unwrap(),
+            struct_search: regex(STRUCT_REGEX),
+            field_search: regex(FIELD_REGEX),
+            ver_search: regex(VER_REGEX),
+            delim: SPLIT.clone(),
+            mq_item: MQ_ITEM.clone(),
         }
     }
 }
@@ -158,10 +167,10 @@ impl Default for StructFieldExtract {
 impl Default for FnParamExtract {
     fn default() -> Self {
         Self {
-            fn_search: Regex::new(FN_REGEX).unwrap(),
-            param_search: Regex::new(PARAM_REGEX).unwrap(),
-            delim: Regex::new(SPLIT_REGEX).unwrap(),
-            mq_item: Regex::new(MQ_ITEM_REGEX).unwrap(),
+            fn_search: regex(FN_REGEX),
+            param_search: regex(PARAM_REGEX),
+            delim: SPLIT.clone(),
+            mq_item: MQ_ITEM.clone(),
         }
     }
 }
@@ -279,34 +288,32 @@ impl ExtractFromC for FnParamExtract {
 
 impl VisitMut for DocCommentType<'_> {
     fn visit_item_type_mut(&mut self, item: &mut syn::ItemType) {
-        if let Some(description) = self.0.get(&item.ident.to_string()) {
-            let doc_lit = syn::LitStr::new(description, proc_macro2::Span::call_site());
-            item.attrs.insert(0, syn::parse_quote!(#[doc = #doc_lit ]));
-        }
+        self.apply(&mut item.attrs, [item.ident.to_string()]);
     }
 
     fn visit_item_struct_mut(&mut self, item: &mut syn::ItemStruct) {
         let name = item.ident.to_string();
-        let mut names = vec![&*name, name.trim_start_matches("tag")];
+        // `tag` is an unneeded C relic which bindgen is configured to remove
+        let mut names = vec![name.clone(), name.trim_start_matches("tag").to_string()];
         names.dedup();
-
-        if let Some(description) = names.iter().find_map(|name| self.0.get(*name)) {
-            let doc_lit = syn::LitStr::new(description, proc_macro2::Span::call_site());
-            item.attrs.insert(0, syn::parse_quote!(#[doc = #doc_lit ]));
-        }
+        self.apply(&mut item.attrs, names);
     }
 
     fn visit_item_fn_mut(&mut self, item: &mut syn::ItemFn) {
-        if let Some(description) = self.0.get(&item.sig.ident.to_string()) {
-            let doc_lit = syn::LitStr::new(description, proc_macro2::Span::call_site());
-            item.attrs.insert(0, syn::parse_quote!(#[doc = #doc_lit ]));
-        }
+        self.apply(&mut item.attrs, [item.sig.ident.to_string()]);
     }
 
     fn visit_foreign_item_fn_mut(&mut self, item: &mut syn::ForeignItemFn) {
-        if let Some(description) = self.0.get(&item.sig.ident.to_string()) {
+        self.apply(&mut item.attrs, [item.sig.ident.to_string()]);
+    }
+}
+
+impl DocCommentType<'_> {
+    /// Prepends the extracted description as a doc comment, if any candidate name matches.
+    fn apply(&self, attrs: &mut Vec<syn::Attribute>, names: impl IntoIterator<Item = String>) {
+        if let Some(description) = names.into_iter().find_map(|name| self.0.get(&name)) {
             let doc_lit = syn::LitStr::new(description, proc_macro2::Span::call_site());
-            item.attrs.insert(0, syn::parse_quote!(#[doc = #doc_lit ]));
+            attrs.insert(0, syn::parse_quote!(#[doc = #doc_lit ]));
         }
     }
 }
@@ -316,7 +323,10 @@ impl VisitMut for DocCommentFields<'_> {
         let struct_name = item.ident.to_string();
         if let Some(fields) = self.0.get(&struct_name) {
             for field in &mut item.fields {
-                if let Some((description, version)) = fields.get(&field.ident.as_ref().unwrap().to_string()) {
+                let Some(field_ident) = &field.ident else {
+                    continue; // Unnamed (tuple) struct fields have no header comment to attach
+                };
+                if let Some((description, version)) = fields.get(&field_ident.to_string()) {
                     let version = version.iter().filter(|ver| **ver > 1).flat_map(|ver| {
                         [
                             syn::LitStr::new("", proc_macro2::Span::call_site()),
@@ -393,33 +403,53 @@ impl VisitMut for DocCommentReference {
     }
 }
 
+/// Parses the embedded IBM reference table into `symbol -> url`.
+///
+/// The input is a compile-time constant, so any error is a defect in `ibm_references.csv`
+/// rather than anything a user can cause. Errors name the offending row to make that defect
+/// locatable.
+fn ibm_references_from_csv() -> Result<HashMap<String, String>, String> {
+    let mut ibm_csv = csv::Reader::from_reader(IBM_REFERENCE_CSV.as_bytes());
+
+    let headers = ibm_csv
+        .headers()
+        .map_err(|e| format!("ibm_references.csv has unreadable headers: {e}"))?
+        .clone();
+    let name_column = headers
+        .iter()
+        .position(|h| h == "name")
+        .ok_or_else(|| "ibm_references.csv has no `name` column".to_string())?;
+    let url_column = headers
+        .iter()
+        .position(|h| h == "url")
+        .ok_or_else(|| "ibm_references.csv has no `url` column".to_string())?;
+    let symbol_re = regex_lite::Regex::new(r"(?i)\bmq\w+\b").expect("static symbol regex");
+
+    ibm_csv
+        .records()
+        .enumerate()
+        .map(|(index, record)| {
+            let row = index + 2; // 1-based, plus the header row
+            let record = record.map_err(|e| format!("ibm_references.csv row {row} is malformed: {e}"))?;
+            let name = record
+                .get(name_column)
+                .ok_or_else(|| format!("ibm_references.csv row {row} has no `name` value"))?;
+            let url = record
+                .get(url_column)
+                .ok_or_else(|| format!("ibm_references.csv row {row} has no `url` value"))?;
+            let symbol = symbol_re
+                .find(name)
+                .ok_or_else(|| format!("ibm_references.csv row {row} name `{name}` contains no MQ symbol"))?
+                .as_str()
+                .to_string();
+            Ok((symbol, url.to_string()))
+        })
+        .collect()
+}
+
 fn add_ibm_reference(attrs: &mut Vec<syn::Attribute>, ident: &syn::Ident) {
-    let references = IBM_REFERENCES.get_or_init(|| {
-        let mut ibm_csv = csv::Reader::from_reader(IBM_REFERENCE_CSV.as_bytes());
-
-        let headers = ibm_csv.headers().unwrap().clone();
-        let symbol_re = regex_lite::Regex::new(r"(?i)\bmq\w+\b").unwrap();
-
-        ibm_csv
-            .records()
-            .map(|record| {
-                let record = record.unwrap();
-                let row: Vec<_> = headers.iter().zip(record.iter()).collect();
-                (
-                    row.iter()
-                        .find_map(|(key, value)| (*key == "name").then(|| symbol_re.find(value)))
-                        .flatten()
-                        .unwrap()
-                        .as_str()
-                        .to_string(),
-                    row.iter()
-                        .find_map(|(key, value)| (*key == "url").then_some(*value))
-                        .unwrap()
-                        .to_string(),
-                )
-            })
-            .collect()
-    });
+    let references = IBM_REFERENCES
+        .get_or_init(|| ibm_references_from_csv().unwrap_or_else(|e| panic!("invalid embedded IBM reference table: {e}")));
 
     let ibm_url = references.get(&ident.to_string());
     if let Some(url) = ibm_url {
