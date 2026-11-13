@@ -7,6 +7,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.11.1](https://github.com/advantic-au/libmqm-sys/compare/libmqm-sys-v0.11.0...libmqm-sys-v0.11.1) - 2026-11-13
+
+### Added
+
+- MQ IEP trait implementations
+
+### Fixed
+
+- Remove exit functions for link
+- load the MQ library on macOS when using dlopen2
+
+### Other
+
+- contribution policy
+- MQ client 10.0.1.0 Linux ppc64le
+- MQ client 10.0.1.0 Linux s390x
+- MQ client 10.0.1.0 macOS ARM64
+- MQ client 10.0.1.0 Linux ARM64
+- MQ client 10.0.1.0 Windows X64
+- Update to the IBM references documentation
+
 ## [0.11.0](https://github.com/advantic-au/libmqm-sys/compare/libmqm-sys-v0.10.2...libmqm-sys-v0.11.0) - 2026-10-23
 
 ### Added
