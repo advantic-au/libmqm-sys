@@ -14,7 +14,7 @@ An IBM MQ client or server install is required to build or test anything:
 - The `dlopen2` tests load the MQ shared library at runtime; on Linux set
   `LD_LIBRARY_PATH=$MQ_HOME/lib64`, on macOS set `DYLD_LIBRARY_PATH=$MQ_HOME/lib64` (the macOS
   library is `libmqm_r.dylib`), and on Windows put `$MQ_HOME\bin64` on `PATH`.
-- Rust 1.95 or newer (`rust-version` in the root `Cargo.toml`). `cargo-nextest` and `cargo-hack`
+- Rust 1.96 or newer (`rust-version` in the root `Cargo.toml`). `cargo-nextest` and `cargo-hack`
   are needed to reproduce the CI invocations below.
 
 For a queue manager to experiment against:
